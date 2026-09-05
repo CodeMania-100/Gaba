@@ -1,0 +1,1487 @@
+{
+  "source": "C:\\Users\\vpine\\Desktop\\RealEstate\\gabay_pricing_core\\tax_enriched_ashkelon_3room_36m.json",
+  "source_rows": 975,
+  "modern_rows": 244,
+  "deduped_rows": 206,
+  "unique_parcels": 41,
+  "program_overlap_parcels": 37,
+  "non_overlap_parcels": 4,
+  "missing_cadastral_parcels": 0,
+  "transactions_on_program_overlap_parcels": 201,
+  "transactions_on_non_overlap_parcels": 5,
+  "parcels": [
+    {
+      "gush": 362,
+      "helka": 99,
+      "deduped_transaction_count": 6,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 2,
+      "projects": [
+        {
+          "ActiveProjectId": 61713,
+          "ProjectName": "עיר היין",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "ניצנים",
+          "LamasName": "אשקלון",
+          "ProviderName": "פרץ בוני הנגב (1993) בע\"מ",
+          "PriceForMeter": 8093,
+          "LotteryIds": [
+            1012,
+            2140
+          ]
+        },
+        {
+          "ActiveProjectId": 61712,
+          "ProjectName": "ניצנים",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "ניצנים",
+          "LamasName": "אשקלון",
+          "ProviderName": "גבעות טל ר.א בע\"מ                  ",
+          "PriceForMeter": 7894,
+          "LotteryIds": [
+            1086,
+            1645
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 363,
+      "helka": 63,
+      "deduped_transaction_count": 2,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 1,
+      "projects": [
+        {
+          "ActiveProjectId": 71404,
+          "ProjectName": "ניצנים",
+          "MarketingMethod": "מחיר מופחת - ר.מ.י",
+          "Neighborhood": "ניצנים",
+          "LamasName": "אשקלון",
+          "ProviderName": "רוי נחמיאס מסעדות בע\"מ",
+          "PriceForMeter": 7700,
+          "LotteryIds": [
+            2051
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 363,
+      "helka": 69,
+      "deduped_transaction_count": 1,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 2,
+      "projects": [
+        {
+          "ActiveProjectId": 61706,
+          "ProjectName": "ניצנים",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "ניצנים",
+          "LamasName": "אשקלון",
+          "ProviderName": "י.ח. דמרי בניה ופיתוח בע\"מ",
+          "PriceForMeter": 8100,
+          "LotteryIds": [
+            1747,
+            1098
+          ]
+        },
+        {
+          "ActiveProjectId": 61707,
+          "ProjectName": "ניצנים",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "ניצנים",
+          "LamasName": "אשקלון",
+          "ProviderName": "י.ח. דמרי בניה ופיתוח בע\"מ",
+          "PriceForMeter": 8100,
+          "LotteryIds": [
+            1099,
+            1667
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 369,
+      "helka": 58,
+      "deduped_transaction_count": 1,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 3,
+      "projects": [
+        {
+          "ActiveProjectId": 61705,
+          "ProjectName": "עיר היין",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "ניצנים",
+          "LamasName": "אשקלון",
+          "ProviderName": "אפרידר החברה לשכון ולפתוח ישרא",
+          "PriceForMeter": 7981,
+          "LotteryIds": [
+            1097,
+            1639
+          ]
+        },
+        {
+          "ActiveProjectId": 61703,
+          "ProjectName": "עיר היין",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "ניצנים",
+          "LamasName": "אשקלון",
+          "ProviderName": "אפרידר החברה לשכון ולפתוח ישרא",
+          "PriceForMeter": 8079,
+          "LotteryIds": [
+            1640,
+            1083
+          ]
+        },
+        {
+          "ActiveProjectId": 61704,
+          "ProjectName": "ניצנים",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "ניצנים",
+          "LamasName": "אשקלון",
+          "ProviderName": "הגבעה פרוייקטים הנדסיים בע\"מ       ",
+          "PriceForMeter": 7770,
+          "LotteryIds": [
+            1088,
+            2135
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 369,
+      "helka": 63,
+      "deduped_transaction_count": 1,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 3,
+      "projects": [
+        {
+          "ActiveProjectId": 61708,
+          "ProjectName": "ניצנים",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "ניצנים",
+          "LamasName": "אשקלון",
+          "ProviderName": "מ.נ ישיר בנין ופיתוח בע\"מ",
+          "PriceForMeter": 7759,
+          "LotteryIds": [
+            1089,
+            1728
+          ]
+        },
+        {
+          "ActiveProjectId": 61707,
+          "ProjectName": "ניצנים",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "ניצנים",
+          "LamasName": "אשקלון",
+          "ProviderName": "י.ח. דמרי בניה ופיתוח בע\"מ",
+          "PriceForMeter": 8100,
+          "LotteryIds": [
+            1099,
+            1667
+          ]
+        },
+        {
+          "ActiveProjectId": 61709,
+          "ProjectName": "ניצנים",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "ניצנים",
+          "LamasName": "אשקלון",
+          "ProviderName": "ליאם נחמיאס חברה לבניין בע\"מ",
+          "PriceForMeter": 7826,
+          "LotteryIds": [
+            1532
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 369,
+      "helka": 66,
+      "deduped_transaction_count": 2,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 3,
+      "projects": [
+        {
+          "ActiveProjectId": 61705,
+          "ProjectName": "עיר היין",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "ניצנים",
+          "LamasName": "אשקלון",
+          "ProviderName": "אפרידר החברה לשכון ולפתוח ישרא",
+          "PriceForMeter": 7981,
+          "LotteryIds": [
+            1097,
+            1639
+          ]
+        },
+        {
+          "ActiveProjectId": 71407,
+          "ProjectName": "ניצנים",
+          "MarketingMethod": "מחיר מופחת - ר.מ.י",
+          "Neighborhood": "ניצנים",
+          "LamasName": "אשקלון",
+          "ProviderName": "אודור נכסים בע\"מ",
+          "PriceForMeter": 7700,
+          "LotteryIds": [
+            1865
+          ]
+        },
+        {
+          "ActiveProjectId": 71406,
+          "ProjectName": "ניצנים",
+          "MarketingMethod": "מחיר מופחת - ר.מ.י",
+          "Neighborhood": "ניצנים",
+          "LamasName": "אשקלון",
+          "ProviderName": "יצחק אטיאס השקעות בע\"מ ",
+          "PriceForMeter": 7700,
+          "LotteryIds": [
+            2047
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 369,
+      "helka": 67,
+      "deduped_transaction_count": 3,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 2,
+      "projects": [
+        {
+          "ActiveProjectId": 61705,
+          "ProjectName": "עיר היין",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "ניצנים",
+          "LamasName": "אשקלון",
+          "ProviderName": "אפרידר החברה לשכון ולפתוח ישרא",
+          "PriceForMeter": 7981,
+          "LotteryIds": [
+            1097,
+            1639
+          ]
+        },
+        {
+          "ActiveProjectId": 71407,
+          "ProjectName": "ניצנים",
+          "MarketingMethod": "מחיר מופחת - ר.מ.י",
+          "Neighborhood": "ניצנים",
+          "LamasName": "אשקלון",
+          "ProviderName": "אודור נכסים בע\"מ",
+          "PriceForMeter": 7700,
+          "LotteryIds": [
+            1865
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 370,
+      "helka": 42,
+      "deduped_transaction_count": 1,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": false,
+      "matching_project_count": 0,
+      "projects": []
+    },
+    {
+      "gush": 370,
+      "helka": 45,
+      "deduped_transaction_count": 1,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 1,
+      "projects": [
+        {
+          "ActiveProjectId": 54106,
+          "ProjectName": "אשקלון-שכ' צפונית",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "אשקלון-שכ' צפונית",
+          "LamasName": "אשקלון",
+          "ProviderName": "הגבעה פרוייקטים הנדסיים בע\"מ",
+          "PriceForMeter": 7470,
+          "LotteryIds": [
+            741,
+            1666
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 370,
+      "helka": 48,
+      "deduped_transaction_count": 1,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 2,
+      "projects": [
+        {
+          "ActiveProjectId": 71409,
+          "ProjectName": "ניצנים",
+          "MarketingMethod": "מחיר מופחת - ר.מ.י",
+          "Neighborhood": "ניצנים",
+          "LamasName": "אשקלון",
+          "ProviderName": "הגבעה פרוייקטים הנדסיים בע\"מ       ",
+          "PriceForMeter": 7700,
+          "LotteryIds": [
+            1866
+          ]
+        },
+        {
+          "ActiveProjectId": 48213,
+          "ProjectName": "אשקלון-שכ' צפונית",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "אשקלון-שכ' צפונית",
+          "LamasName": "אשקלון",
+          "ProviderName": "אייל פרץ יזמות ונדל\"ן 2011 בע\"",
+          "PriceForMeter": 7776,
+          "LotteryIds": [
+            513,
+            1236,
+            1557
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 388,
+      "helka": 27,
+      "deduped_transaction_count": 2,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 1,
+      "projects": [
+        {
+          "ActiveProjectId": 61702,
+          "ProjectName": "עיר היין",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "ניצנים",
+          "LamasName": "אשקלון",
+          "ProviderName": "אפרידר החברה לשכון ולפתוח ישרא",
+          "PriceForMeter": 7776,
+          "LotteryIds": [
+            1727,
+            1011
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 1196,
+      "helka": 70,
+      "deduped_transaction_count": 1,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 3,
+      "projects": [
+        {
+          "ActiveProjectId": 77301,
+          "ProjectName": "א",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "אשקלון מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "זוהר וצפריר שרבט בע\"מ",
+          "PriceForMeter": 10877,
+          "LotteryIds": [
+            2531
+          ]
+        },
+        {
+          "ActiveProjectId": 74491,
+          "ProjectName": "ג",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "אשקלון מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "אחים בוסקילה בע\"מ",
+          "PriceForMeter": 10941,
+          "LotteryIds": [
+            2520
+          ]
+        },
+        {
+          "ActiveProjectId": 74488,
+          "ProjectName": "ב",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "אשקלון מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "שגיא בוני המחר בע\"מ",
+          "PriceForMeter": 11024,
+          "LotteryIds": [
+            2525
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 1196,
+      "helka": 75,
+      "deduped_transaction_count": 1,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 2,
+      "projects": [
+        {
+          "ActiveProjectId": 77301,
+          "ProjectName": "א",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "אשקלון מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "זוהר וצפריר שרבט בע\"מ",
+          "PriceForMeter": 10877,
+          "LotteryIds": [
+            2531
+          ]
+        },
+        {
+          "ActiveProjectId": 77302,
+          "ProjectName": "ב",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "אשקלון מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "זוהר וצפריר שרבט בע\"מ",
+          "PriceForMeter": 10934,
+          "LotteryIds": [
+            2532
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 1196,
+      "helka": 79,
+      "deduped_transaction_count": 34,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 4,
+      "projects": [
+        {
+          "ActiveProjectId": 74494,
+          "ProjectName": "יג",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "אשקלון מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "עיוש רפאל בעמ",
+          "PriceForMeter": 11077,
+          "LotteryIds": [
+            2328
+          ]
+        },
+        {
+          "ActiveProjectId": 74495,
+          "ProjectName": "יד",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "אשקלון מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "א.א.י.אבו החזקות בע\"מ",
+          "PriceForMeter": 11079,
+          "LotteryIds": [
+            2326
+          ]
+        },
+        {
+          "ActiveProjectId": 74492,
+          "ProjectName": "ד",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "אשקלון מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "לורן יזמות ובניה 2020 בע\"מ",
+          "PriceForMeter": 11135,
+          "LotteryIds": [
+            2527
+          ]
+        },
+        {
+          "ActiveProjectId": 74493,
+          "ProjectName": "ה",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "אשקלון מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "ש.ד.י מגדלי דויד בע\"מ",
+          "PriceForMeter": 11332,
+          "LotteryIds": [
+            2526
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 1196,
+      "helka": 100,
+      "deduped_transaction_count": 16,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 1,
+      "projects": [
+        {
+          "ActiveProjectId": 74497,
+          "ProjectName": "טז",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "אשקלון מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "אורות גת בע\"מ",
+          "PriceForMeter": 10833,
+          "LotteryIds": [
+            2334
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 1197,
+      "helka": 78,
+      "deduped_transaction_count": 15,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 2,
+      "projects": [
+        {
+          "ActiveProjectId": 74489,
+          "ProjectName": "ו",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "אשקלון מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "גשם למשתכן בע\"מ",
+          "PriceForMeter": 11263,
+          "LotteryIds": [
+            2517
+          ]
+        },
+        {
+          "ActiveProjectId": 74482,
+          "ProjectName": "א",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "אשקלון מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "י.ח. דמרי בניה ופיתוח בע\"מ",
+          "PriceForMeter": 11246,
+          "LotteryIds": [
+            2330
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 1197,
+      "helka": 81,
+      "deduped_transaction_count": 6,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 2,
+      "projects": [
+        {
+          "ActiveProjectId": 74483,
+          "ProjectName": "ב",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "אשקלון מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "אחים בוסקילה בע\"מ",
+          "PriceForMeter": 10833,
+          "LotteryIds": [
+            2329
+          ]
+        },
+        {
+          "ActiveProjectId": 74482,
+          "ProjectName": "א",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "אשקלון מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "י.ח. דמרי בניה ופיתוח בע\"מ",
+          "PriceForMeter": 11246,
+          "LotteryIds": [
+            2330
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 1197,
+      "helka": 82,
+      "deduped_transaction_count": 21,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 4,
+      "projects": [
+        {
+          "ActiveProjectId": 74483,
+          "ProjectName": "ב",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "אשקלון מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "אחים בוסקילה בע\"מ",
+          "PriceForMeter": 10833,
+          "LotteryIds": [
+            2329
+          ]
+        },
+        {
+          "ActiveProjectId": 74489,
+          "ProjectName": "ו",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "אשקלון מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "גשם למשתכן בע\"מ",
+          "PriceForMeter": 11263,
+          "LotteryIds": [
+            2517
+          ]
+        },
+        {
+          "ActiveProjectId": 74490,
+          "ProjectName": "ט",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "אשקלון מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "י.ח. דמרי בניה ופיתוח בע\"מ",
+          "PriceForMeter": 11381,
+          "LotteryIds": [
+            2327
+          ]
+        },
+        {
+          "ActiveProjectId": 74482,
+          "ProjectName": "א",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "אשקלון מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "י.ח. דמרי בניה ופיתוח בע\"מ",
+          "PriceForMeter": 11246,
+          "LotteryIds": [
+            2330
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 1197,
+      "helka": 86,
+      "deduped_transaction_count": 2,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 3,
+      "projects": [
+        {
+          "ActiveProjectId": 78377,
+          "ProjectName": "ג",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "אשקלון מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "שגיא אלמקייס יזמות ובניה בע\"מ",
+          "PriceForMeter": 10969,
+          "LotteryIds": [
+            2604
+          ]
+        },
+        {
+          "ActiveProjectId": 74483,
+          "ProjectName": "ב",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "אשקלון מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "אחים בוסקילה בע\"מ",
+          "PriceForMeter": 10833,
+          "LotteryIds": [
+            2329
+          ]
+        },
+        {
+          "ActiveProjectId": 74486,
+          "ProjectName": "ה",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "אשקלון מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "אייל פרץ יזמות ונדל\"ן 2011 בע\"מ",
+          "PriceForMeter": 11079,
+          "LotteryIds": [
+            2331
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 1197,
+      "helka": 87,
+      "deduped_transaction_count": 5,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 3,
+      "projects": [
+        {
+          "ActiveProjectId": 74483,
+          "ProjectName": "ב",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "אשקלון מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "אחים בוסקילה בע\"מ",
+          "PriceForMeter": 10833,
+          "LotteryIds": [
+            2329
+          ]
+        },
+        {
+          "ActiveProjectId": 74486,
+          "ProjectName": "ה",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "אשקלון מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "אייל פרץ יזמות ונדל\"ן 2011 בע\"מ",
+          "PriceForMeter": 11079,
+          "LotteryIds": [
+            2331
+          ]
+        },
+        {
+          "ActiveProjectId": 74485,
+          "ProjectName": "ד",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "אשקלון מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "א.ד.מ בוני ישראל יזמות ובניה בע\"מ",
+          "PriceForMeter": 11218,
+          "LotteryIds": [
+            2332
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 1197,
+      "helka": 90,
+      "deduped_transaction_count": 4,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 2,
+      "projects": [
+        {
+          "ActiveProjectId": 78377,
+          "ProjectName": "ג",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "אשקלון מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "שגיא אלמקייס יזמות ובניה בע\"מ",
+          "PriceForMeter": 10969,
+          "LotteryIds": [
+            2604
+          ]
+        },
+        {
+          "ActiveProjectId": 74487,
+          "ProjectName": "א",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "אשקלון מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "א.ד.מ. בוני ישראל יזמות ובניה בע\"מ ",
+          "PriceForMeter": 11024,
+          "LotteryIds": [
+            2524
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 1197,
+      "helka": 93,
+      "deduped_transaction_count": 32,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 3,
+      "projects": [
+        {
+          "ActiveProjectId": 74484,
+          "ProjectName": "ג",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "אשקלון מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "מ.א.י אביבי ייזום ובנייה בע\"מ      ",
+          "PriceForMeter": 11332,
+          "LotteryIds": [
+            2333
+          ]
+        },
+        {
+          "ActiveProjectId": 74490,
+          "ProjectName": "ט",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "אשקלון מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "י.ח. דמרי בניה ופיתוח בע\"מ",
+          "PriceForMeter": 11381,
+          "LotteryIds": [
+            2327
+          ]
+        },
+        {
+          "ActiveProjectId": 74485,
+          "ProjectName": "ד",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "אשקלון מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "א.ד.מ בוני ישראל יזמות ובניה בע\"מ",
+          "PriceForMeter": 11218,
+          "LotteryIds": [
+            2332
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 1199,
+      "helka": 60,
+      "deduped_transaction_count": 2,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 2,
+      "projects": [
+        {
+          "ActiveProjectId": 48212,
+          "ProjectName": "אשקלון-שכ' צפונית",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "אשקלון-שכ' צפונית",
+          "LamasName": "אשקלון",
+          "ProviderName": "י.ד. עשוש תשתיות בע\"מ",
+          "PriceForMeter": 7575,
+          "LotteryIds": [
+            480,
+            1356,
+            1696
+          ]
+        },
+        {
+          "ActiveProjectId": 48213,
+          "ProjectName": "אשקלון-שכ' צפונית",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "אשקלון-שכ' צפונית",
+          "LamasName": "אשקלון",
+          "ProviderName": "אייל פרץ יזמות ונדל\"ן 2011 בע\"",
+          "PriceForMeter": 7776,
+          "LotteryIds": [
+            513,
+            1236,
+            1557
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 1199,
+      "helka": 66,
+      "deduped_transaction_count": 14,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 2,
+      "projects": [
+        {
+          "ActiveProjectId": 71401,
+          "ProjectName": "ניצנים",
+          "MarketingMethod": "מחיר מופחת - ר.מ.י",
+          "Neighborhood": "ניצנים",
+          "LamasName": "אשקלון",
+          "ProviderName": "רמט טרום בע\"מ",
+          "PriceForMeter": 7700,
+          "LotteryIds": [
+            2046
+          ]
+        },
+        {
+          "ActiveProjectId": 77306,
+          "ProjectName": "א",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "ניצנים",
+          "LamasName": "אשקלון",
+          "ProviderName": "זוהר וצפריר שרבט בע\"מ",
+          "PriceForMeter": 11600,
+          "LotteryIds": [
+            2523
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 1199,
+      "helka": 67,
+      "deduped_transaction_count": 2,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 2,
+      "projects": [
+        {
+          "ActiveProjectId": 71401,
+          "ProjectName": "ניצנים",
+          "MarketingMethod": "מחיר מופחת - ר.מ.י",
+          "Neighborhood": "ניצנים",
+          "LamasName": "אשקלון",
+          "ProviderName": "רמט טרום בע\"מ",
+          "PriceForMeter": 7700,
+          "LotteryIds": [
+            2046
+          ]
+        },
+        {
+          "ActiveProjectId": 61700,
+          "ProjectName": "ניצנים",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "ניצנים",
+          "LamasName": "אשקלון",
+          "ProviderName": "שפרה יזום ובנייה בע\"מ",
+          "PriceForMeter": 7723,
+          "LotteryIds": [
+            1096,
+            1782
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 1199,
+      "helka": 77,
+      "deduped_transaction_count": 1,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 2,
+      "projects": [
+        {
+          "ActiveProjectId": 48197,
+          "ProjectName": "אשקלון-שכ' צפונית",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "אשקלון-שכ' צפונית",
+          "LamasName": "אשקלון",
+          "ProviderName": "ורדים ניהול ואחזקות מבנים 2007 בע\"מ",
+          "PriceForMeter": 7869,
+          "LotteryIds": [
+            1481,
+            1693,
+            476
+          ]
+        },
+        {
+          "ActiveProjectId": 48198,
+          "ProjectName": "אשקלון-שכ' צפונית",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "אשקלון-שכ' צפונית",
+          "LamasName": "אשקלון",
+          "ProviderName": "ורדים ניהול ואחזקות מבנים 2007 בע\"מ",
+          "PriceForMeter": 7869,
+          "LotteryIds": [
+            1457,
+            477
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 1200,
+      "helka": 72,
+      "deduped_transaction_count": 4,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 2,
+      "projects": [
+        {
+          "ActiveProjectId": 48189,
+          "ProjectName": "אשקלון-שכ' צפונית",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "אשקלון-שכ' צפונית",
+          "LamasName": "אשקלון",
+          "ProviderName": "ליאם נחמיאס חברה לבניין בע\"מ",
+          "PriceForMeter": 7518,
+          "LotteryIds": [
+            1809,
+            482,
+            1229
+          ]
+        },
+        {
+          "ActiveProjectId": 77308,
+          "ProjectName": "ג",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "ניצנים",
+          "LamasName": "אשקלון",
+          "ProviderName": "מולדת בקרית עקרון בע\"מ",
+          "PriceForMeter": 10257,
+          "LotteryIds": [
+            2529
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 1201,
+      "helka": 36,
+      "deduped_transaction_count": 1,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 3,
+      "projects": [
+        {
+          "ActiveProjectId": 104,
+          "ProjectName": "אשקלון-שכ' צפונית",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "אשקלון-שכ' צפונית",
+          "LamasName": "אשקלון",
+          "ProviderName": "ג.ג.א.ב יזום נכסים והשקעות בע\"",
+          "PriceForMeter": 7583,
+          "LotteryIds": [
+            542,
+            1542,
+            1725
+          ]
+        },
+        {
+          "ActiveProjectId": 48189,
+          "ProjectName": "אשקלון-שכ' צפונית",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "אשקלון-שכ' צפונית",
+          "LamasName": "אשקלון",
+          "ProviderName": "ליאם נחמיאס חברה לבניין בע\"מ",
+          "PriceForMeter": 7518,
+          "LotteryIds": [
+            1809,
+            482,
+            1229
+          ]
+        },
+        {
+          "ActiveProjectId": 77307,
+          "ProjectName": "ב",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "ניצנים",
+          "LamasName": "אשקלון",
+          "ProviderName": "מולדת בקרית עקרון בע\"מ",
+          "PriceForMeter": 10257,
+          "LotteryIds": [
+            2528
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 1224,
+      "helka": 74,
+      "deduped_transaction_count": 4,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 1,
+      "projects": [
+        {
+          "ActiveProjectId": 55145,
+          "ProjectName": "אגמים מזרח",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "אגמים מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "ורדים-ניהול ואחזקות מבנים (200",
+          "PriceForMeter": 6989,
+          "LotteryIds": [
+            834,
+            2117
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 1241,
+      "helka": 91,
+      "deduped_transaction_count": 3,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 2,
+      "projects": [
+        {
+          "ActiveProjectId": 67820,
+          "ProjectName": "2",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "ברנע אפרידר",
+          "LamasName": "אשקלון",
+          "ProviderName": null,
+          "PriceForMeter": 0,
+          "LotteryIds": [
+            0
+          ]
+        },
+        {
+          "ActiveProjectId": 67819,
+          "ProjectName": "1",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "ברנע אפרידר",
+          "LamasName": "אשקלון",
+          "ProviderName": null,
+          "PriceForMeter": 0,
+          "LotteryIds": [
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 1241,
+      "helka": 93,
+      "deduped_transaction_count": 1,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 1,
+      "projects": [
+        {
+          "ActiveProjectId": 62764,
+          "ProjectName": "אפרידר",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "ברנע אפרידר",
+          "LamasName": "אשקלון",
+          "ProviderName": "אפרידר החברה לשכון ולפתוח ישרא",
+          "PriceForMeter": 7581,
+          "LotteryIds": [
+            1628,
+            1085
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 1466,
+      "helka": 65,
+      "deduped_transaction_count": 2,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 1,
+      "projects": [
+        {
+          "ActiveProjectId": 55154,
+          "ProjectName": "אגמים מזרח",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "אגמים מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "ורדים-ניהול ואחזקות מבנים (200",
+          "PriceForMeter": 6789,
+          "LotteryIds": [
+            832,
+            2118
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 1475,
+      "helka": 1,
+      "deduped_transaction_count": 2,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 2,
+      "projects": [
+        {
+          "ActiveProjectId": 55154,
+          "ProjectName": "אגמים מזרח",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "אגמים מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "ורדים-ניהול ואחזקות מבנים (200",
+          "PriceForMeter": 6789,
+          "LotteryIds": [
+            832,
+            2118
+          ]
+        },
+        {
+          "ActiveProjectId": 55150,
+          "ProjectName": "אגמים מזרח",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "אגמים מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "ורדים-ניהול ואחזקות מבנים (200",
+          "PriceForMeter": 6589,
+          "LotteryIds": [
+            2116,
+            833
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 1475,
+      "helka": 6,
+      "deduped_transaction_count": 2,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": false,
+      "matching_project_count": 0,
+      "projects": []
+    },
+    {
+      "gush": 1475,
+      "helka": 58,
+      "deduped_transaction_count": 2,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 1,
+      "projects": [
+        {
+          "ActiveProjectId": 55159,
+          "ProjectName": "אגמים מזרח",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "אגמים מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "אודור נכסים בע\"מ",
+          "PriceForMeter": 6978,
+          "LotteryIds": [
+            831,
+            1742
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 1476,
+      "helka": 10,
+      "deduped_transaction_count": 1,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 1,
+      "projects": [
+        {
+          "ActiveProjectId": 128,
+          "ProjectName": "אגמים מזרח",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "אגמים מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "ורדים-ניהול ואחזקות מבנים (200",
+          "PriceForMeter": 7099,
+          "LotteryIds": [
+            1673,
+            838
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 1476,
+      "helka": 68,
+      "deduped_transaction_count": 3,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 1,
+      "projects": [
+        {
+          "ActiveProjectId": 128,
+          "ProjectName": "אגמים מזרח",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "אגמים מזרח",
+          "LamasName": "אשקלון",
+          "ProviderName": "ורדים-ניהול ואחזקות מבנים (200",
+          "PriceForMeter": 7099,
+          "LotteryIds": [
+            1673,
+            838
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 1938,
+      "helka": 432,
+      "deduped_transaction_count": 1,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": false,
+      "matching_project_count": 0,
+      "projects": []
+    },
+    {
+      "gush": 2884,
+      "helka": 12,
+      "deduped_transaction_count": 1,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": false,
+      "matching_project_count": 0,
+      "projects": []
+    },
+    {
+      "gush": 2950,
+      "helka": 15,
+      "deduped_transaction_count": 1,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 1,
+      "projects": [
+        {
+          "ActiveProjectId": 44194,
+          "ProjectName": "ברנע אפרידר",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "ברנע אפרידר",
+          "LamasName": "אשקלון",
+          "ProviderName": "אלון מרדכי ובניו חברה לבנין ופיתוח בע\"מ",
+          "PriceForMeter": 7311,
+          "LotteryIds": [
+            360,
+            1684,
+            1213,
+            1541
+          ]
+        }
+      ]
+    },
+    {
+      "gush": 2950,
+      "helka": 47,
+      "deduped_transaction_count": 1,
+      "cadastral_record_count": 1,
+      "gush_suffixes": [
+        0
+      ],
+      "program_overlap": true,
+      "matching_project_count": 2,
+      "projects": [
+        {
+          "ActiveProjectId": 44197,
+          "ProjectName": "ברנע אפרידר",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "ברנע אפרידר",
+          "LamasName": "אשקלון",
+          "ProviderName": "יואב את רמי בניה ניהול ופיקוח בע\"מ",
+          "PriceForMeter": 7126,
+          "LotteryIds": [
+            1342,
+            364,
+            1154
+          ]
+        },
+        {
+          "ActiveProjectId": 44196,
+          "ProjectName": "ברנע אפרידר",
+          "MarketingMethod": "מחיר למשתכן - ר.מ.י",
+          "Neighborhood": "ברנע אפרידר",
+          "LamasName": "אשקלון",
+          "ProviderName": "י.ד. עשוש תשתיות בע\"מ",
+          "PriceForMeter": 7426,
+          "LotteryIds": [
+            1603,
+            361,
+            1341
+          ]
+        }
+      ]
+    }
+  ]
+}

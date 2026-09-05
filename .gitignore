@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.db
+.venv/
+.env
+uvicorn.log
+data/raw/parcel_all.zip
+gabay_pricing.db
+qa_output_wine_city/
+tests/
+qa_output_wine_city_5room/

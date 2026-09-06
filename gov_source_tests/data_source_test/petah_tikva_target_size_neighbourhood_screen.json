@@ -1,0 +1,558 @@
+{
+  "city": "Petah Tikva",
+  "bands": {
+    "3R": [
+      58.65,
+      79.35
+    ],
+    "5R": [
+      94.435,
+      127.765
+    ]
+  },
+  "3R": {
+    "raw_count": 161,
+    "target_count": 94,
+    "neighbourhoods": [
+      {
+        "neighbourhood": "המרכז השקט",
+        "records": 18,
+        "independent_locations": 16,
+        "median_area": 71.0,
+        "median_price": 1982500.0,
+        "min_area": 60.0,
+        "max_area": 79.0
+      },
+      {
+        "neighbourhood": "מחנה יהודה",
+        "records": 14,
+        "independent_locations": 14,
+        "median_area": 73.0,
+        "median_price": 1770000.0,
+        "min_area": 65.0,
+        "max_area": 79.0
+      },
+      {
+        "neighbourhood": "מרכז העיר",
+        "records": 12,
+        "independent_locations": 12,
+        "median_area": 70.0,
+        "median_price": 1750000.0,
+        "min_area": 59.0,
+        "max_area": 75.0
+      },
+      {
+        "neighbourhood": "רמת ורבר",
+        "records": 7,
+        "independent_locations": 7,
+        "median_area": 65.0,
+        "median_price": 2050000.0,
+        "min_area": 60.0,
+        "max_area": 77.0
+      },
+      {
+        "neighbourhood": "קריית חזני",
+        "records": 6,
+        "independent_locations": 6,
+        "median_area": 70.0,
+        "median_price": 1725000.0,
+        "min_area": 60.0,
+        "max_area": 76.0
+      },
+      {
+        "neighbourhood": "שיפר",
+        "records": 5,
+        "independent_locations": 5,
+        "median_area": 69.0,
+        "median_price": 2190000.0,
+        "min_area": 65.0,
+        "max_area": 78.0
+      },
+      {
+        "neighbourhood": "עין גנים",
+        "records": 5,
+        "independent_locations": 4,
+        "median_area": 76.0,
+        "median_price": 1890000.0,
+        "min_area": 63.0,
+        "max_area": 78.0
+      },
+      {
+        "neighbourhood": "קרית הרב סלומון",
+        "records": 4,
+        "independent_locations": 4,
+        "median_area": 68.5,
+        "median_price": 1849500.0,
+        "min_area": 60.0,
+        "max_area": 75.0
+      },
+      {
+        "neighbourhood": "הדר גנים",
+        "records": 4,
+        "independent_locations": 4,
+        "median_area": 65.0,
+        "median_price": 1832500.0,
+        "min_area": 60.0,
+        "max_area": 76.0
+      },
+      {
+        "neighbourhood": "יוספטל",
+        "records": 4,
+        "independent_locations": 4,
+        "median_area": 61.5,
+        "median_price": 1682500.0,
+        "min_area": 60.0,
+        "max_area": 65.0
+      },
+      {
+        "neighbourhood": "שעריה",
+        "records": 3,
+        "independent_locations": 3,
+        "median_area": 70.0,
+        "median_price": 1920000.0,
+        "min_area": 68.0,
+        "max_area": 73.0
+      },
+      {
+        "neighbourhood": "אחדות",
+        "records": 3,
+        "independent_locations": 3,
+        "median_area": 61.0,
+        "median_price": 1820000.0,
+        "min_area": 59.0,
+        "max_area": 76.0
+      },
+      {
+        "neighbourhood": "כפר אברהם",
+        "records": 2,
+        "independent_locations": 2,
+        "median_area": 72.0,
+        "median_price": 2030000.0,
+        "min_area": 71.0,
+        "max_area": 73.0
+      },
+      {
+        "neighbourhood": "שיכון מפ\"ם",
+        "records": 2,
+        "independent_locations": 2,
+        "median_area": 61.0,
+        "median_price": 1769500.0,
+        "min_area": 61.0,
+        "max_area": 61.0
+      },
+      {
+        "neighbourhood": "כפר גנים ב",
+        "records": 2,
+        "independent_locations": 2,
+        "median_area": 75.0,
+        "median_price": 2330000.0,
+        "min_area": 75.0,
+        "max_area": 75.0
+      },
+      {
+        "neighbourhood": "אם המושבות הותיקה",
+        "records": 1,
+        "independent_locations": 1,
+        "median_area": 70.0,
+        "median_price": 2350000.0,
+        "min_area": 70.0,
+        "max_area": 70.0
+      },
+      {
+        "neighbourhood": "קרית אליעזר פרי",
+        "records": 1,
+        "independent_locations": 1,
+        "median_area": 62.0,
+        "median_price": 1840000.0,
+        "min_area": 62.0,
+        "max_area": 62.0
+      },
+      {
+        "neighbourhood": "קרול",
+        "records": 1,
+        "independent_locations": 1,
+        "median_area": 73.0,
+        "median_price": 2130000.0,
+        "min_area": 73.0,
+        "max_area": 73.0
+      }
+    ]
+  },
+  "5R": {
+    "raw_count": 124,
+    "target_count": 70,
+    "neighbourhoods": [
+      {
+        "neighbourhood": "המרכז השקט",
+        "records": 20,
+        "independent_locations": 19,
+        "median_area": 117.0,
+        "median_price": 2780000.0,
+        "min_area": 95.0,
+        "max_area": 125.0
+      },
+      {
+        "neighbourhood": "נווה גן",
+        "records": 10,
+        "independent_locations": 8,
+        "median_area": 124.5,
+        "median_price": 3620000.0,
+        "min_area": 114.0,
+        "max_area": 127.0
+      },
+      {
+        "neighbourhood": "אם המושבות החדשה",
+        "records": 9,
+        "independent_locations": 8,
+        "median_area": 123.0,
+        "median_price": 3370000.0,
+        "min_area": 120.0,
+        "max_area": 125.0
+      },
+      {
+        "neighbourhood": "הדר גנים",
+        "records": 7,
+        "independent_locations": 7,
+        "median_area": 118.0,
+        "median_price": 3100000.0,
+        "min_area": 110.0,
+        "max_area": 126.0
+      },
+      {
+        "neighbourhood": "כפר גנים ג",
+        "records": 4,
+        "independent_locations": 4,
+        "median_area": 124.0,
+        "median_price": 3555000.0,
+        "min_area": 122.0,
+        "max_area": 125.0
+      },
+      {
+        "neighbourhood": "מרכז העיר",
+        "records": 4,
+        "independent_locations": 3,
+        "median_area": 108.0,
+        "median_price": 2525000.0,
+        "min_area": 100.0,
+        "max_area": 116.0
+      },
+      {
+        "neighbourhood": "כפר גנים ב",
+        "records": 3,
+        "independent_locations": 3,
+        "median_area": 116.0,
+        "median_price": 2650000.0,
+        "min_area": 116.0,
+        "max_area": 120.0
+      },
+      {
+        "neighbourhood": "שיפר",
+        "records": 2,
+        "independent_locations": 2,
+        "median_area": 116.5,
+        "median_price": 2735000.0,
+        "min_area": 115.0,
+        "max_area": 118.0
+      },
+      {
+        "neighbourhood": "רמת ורבר",
+        "records": 2,
+        "independent_locations": 2,
+        "median_area": 114.0,
+        "median_price": 3040000.0,
+        "min_area": 113.0,
+        "max_area": 115.0
+      },
+      {
+        "neighbourhood": "חן הצפון",
+        "records": 2,
+        "independent_locations": 2,
+        "median_area": 118.0,
+        "median_price": 2745000.0,
+        "min_area": 110.0,
+        "max_area": 126.0
+      },
+      {
+        "neighbourhood": "יוספטל",
+        "records": 1,
+        "independent_locations": 1,
+        "median_area": 117.0,
+        "median_price": 2690000.0,
+        "min_area": 117.0,
+        "max_area": 117.0
+      },
+      {
+        "neighbourhood": "קרול",
+        "records": 1,
+        "independent_locations": 1,
+        "median_area": 120.0,
+        "median_price": 2600000.0,
+        "min_area": 120.0,
+        "max_area": 120.0
+      },
+      {
+        "neighbourhood": "מחנה יהודה",
+        "records": 1,
+        "independent_locations": 1,
+        "median_area": 105.0,
+        "median_price": 2049000.0,
+        "min_area": 105.0,
+        "max_area": 105.0
+      },
+      {
+        "neighbourhood": "הקריה האקדמית",
+        "records": 1,
+        "independent_locations": 1,
+        "median_area": 127.0,
+        "median_price": 3489000.0,
+        "min_area": 127.0,
+        "max_area": 127.0
+      },
+      {
+        "neighbourhood": "כפר גנים א",
+        "records": 1,
+        "independent_locations": 1,
+        "median_area": 105.0,
+        "median_price": 2780000.0,
+        "min_area": 105.0,
+        "max_area": 105.0
+      },
+      {
+        "neighbourhood": "אחדות",
+        "records": 1,
+        "independent_locations": 1,
+        "median_area": 105.0,
+        "median_price": 2690000.0,
+        "min_area": 105.0,
+        "max_area": 105.0
+      },
+      {
+        "neighbourhood": "עין גנים",
+        "records": 1,
+        "independent_locations": 1,
+        "median_area": 121.0,
+        "median_price": 3290000.0,
+        "min_area": 121.0,
+        "max_area": 121.0
+      }
+    ]
+  },
+  "combined": [
+    {
+      "neighbourhood": "המרכז השקט",
+      "3r_records": 18,
+      "3r_independent": 16,
+      "5r_records": 20,
+      "5r_independent": 19,
+      "minimum_family_depth": 16,
+      "combined_depth": 35
+    },
+    {
+      "neighbourhood": "הדר גנים",
+      "3r_records": 4,
+      "3r_independent": 4,
+      "5r_records": 7,
+      "5r_independent": 7,
+      "minimum_family_depth": 4,
+      "combined_depth": 11
+    },
+    {
+      "neighbourhood": "מרכז העיר",
+      "3r_records": 12,
+      "3r_independent": 12,
+      "5r_records": 4,
+      "5r_independent": 3,
+      "minimum_family_depth": 3,
+      "combined_depth": 15
+    },
+    {
+      "neighbourhood": "רמת ורבר",
+      "3r_records": 7,
+      "3r_independent": 7,
+      "5r_records": 2,
+      "5r_independent": 2,
+      "minimum_family_depth": 2,
+      "combined_depth": 9
+    },
+    {
+      "neighbourhood": "שיפר",
+      "3r_records": 5,
+      "3r_independent": 5,
+      "5r_records": 2,
+      "5r_independent": 2,
+      "minimum_family_depth": 2,
+      "combined_depth": 7
+    },
+    {
+      "neighbourhood": "כפר גנים ב",
+      "3r_records": 2,
+      "3r_independent": 2,
+      "5r_records": 3,
+      "5r_independent": 3,
+      "minimum_family_depth": 2,
+      "combined_depth": 5
+    },
+    {
+      "neighbourhood": "מחנה יהודה",
+      "3r_records": 14,
+      "3r_independent": 14,
+      "5r_records": 1,
+      "5r_independent": 1,
+      "minimum_family_depth": 1,
+      "combined_depth": 15
+    },
+    {
+      "neighbourhood": "יוספטל",
+      "3r_records": 4,
+      "3r_independent": 4,
+      "5r_records": 1,
+      "5r_independent": 1,
+      "minimum_family_depth": 1,
+      "combined_depth": 5
+    },
+    {
+      "neighbourhood": "עין גנים",
+      "3r_records": 5,
+      "3r_independent": 4,
+      "5r_records": 1,
+      "5r_independent": 1,
+      "minimum_family_depth": 1,
+      "combined_depth": 5
+    },
+    {
+      "neighbourhood": "אחדות",
+      "3r_records": 3,
+      "3r_independent": 3,
+      "5r_records": 1,
+      "5r_independent": 1,
+      "minimum_family_depth": 1,
+      "combined_depth": 4
+    },
+    {
+      "neighbourhood": "קרול",
+      "3r_records": 1,
+      "3r_independent": 1,
+      "5r_records": 1,
+      "5r_independent": 1,
+      "minimum_family_depth": 1,
+      "combined_depth": 2
+    },
+    {
+      "neighbourhood": "אם המושבות החדשה",
+      "3r_records": 0,
+      "3r_independent": 0,
+      "5r_records": 9,
+      "5r_independent": 8,
+      "minimum_family_depth": 0,
+      "combined_depth": 8
+    },
+    {
+      "neighbourhood": "נווה גן",
+      "3r_records": 0,
+      "3r_independent": 0,
+      "5r_records": 10,
+      "5r_independent": 8,
+      "minimum_family_depth": 0,
+      "combined_depth": 8
+    },
+    {
+      "neighbourhood": "קריית חזני",
+      "3r_records": 6,
+      "3r_independent": 6,
+      "5r_records": 0,
+      "5r_independent": 0,
+      "minimum_family_depth": 0,
+      "combined_depth": 6
+    },
+    {
+      "neighbourhood": "כפר גנים ג",
+      "3r_records": 0,
+      "3r_independent": 0,
+      "5r_records": 4,
+      "5r_independent": 4,
+      "minimum_family_depth": 0,
+      "combined_depth": 4
+    },
+    {
+      "neighbourhood": "קרית הרב סלומון",
+      "3r_records": 4,
+      "3r_independent": 4,
+      "5r_records": 0,
+      "5r_independent": 0,
+      "minimum_family_depth": 0,
+      "combined_depth": 4
+    },
+    {
+      "neighbourhood": "שעריה",
+      "3r_records": 3,
+      "3r_independent": 3,
+      "5r_records": 0,
+      "5r_independent": 0,
+      "minimum_family_depth": 0,
+      "combined_depth": 3
+    },
+    {
+      "neighbourhood": "חן הצפון",
+      "3r_records": 0,
+      "3r_independent": 0,
+      "5r_records": 2,
+      "5r_independent": 2,
+      "minimum_family_depth": 0,
+      "combined_depth": 2
+    },
+    {
+      "neighbourhood": "כפר אברהם",
+      "3r_records": 2,
+      "3r_independent": 2,
+      "5r_records": 0,
+      "5r_independent": 0,
+      "minimum_family_depth": 0,
+      "combined_depth": 2
+    },
+    {
+      "neighbourhood": "שיכון מפ\"ם",
+      "3r_records": 2,
+      "3r_independent": 2,
+      "5r_records": 0,
+      "5r_independent": 0,
+      "minimum_family_depth": 0,
+      "combined_depth": 2
+    },
+    {
+      "neighbourhood": "אם המושבות הותיקה",
+      "3r_records": 1,
+      "3r_independent": 1,
+      "5r_records": 0,
+      "5r_independent": 0,
+      "minimum_family_depth": 0,
+      "combined_depth": 1
+    },
+    {
+      "neighbourhood": "הקריה האקדמית",
+      "3r_records": 0,
+      "3r_independent": 0,
+      "5r_records": 1,
+      "5r_independent": 1,
+      "minimum_family_depth": 0,
+      "combined_depth": 1
+    },
+    {
+      "neighbourhood": "כפר גנים א",
+      "3r_records": 0,
+      "3r_independent": 0,
+      "5r_records": 1,
+      "5r_independent": 1,
+      "minimum_family_depth": 0,
+      "combined_depth": 1
+    },
+    {
+      "neighbourhood": "קרית אליעזר פרי",
+      "3r_records": 1,
+      "3r_independent": 1,
+      "5r_records": 0,
+      "5r_independent": 0,
+      "minimum_family_depth": 0,
+      "combined_depth": 1
+    }
+  ]
+}

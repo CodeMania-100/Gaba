@@ -1,0 +1,43 @@
+[
+  {
+    "url": "https://www.yad2.co.il/yad1/newprojects/south?area=21&category=1&city=7100&neighborhood=991473",
+    "crawl": {
+      "loadedUrl": "https://www.yad2.co.il/yad1/newprojects/south?area=21&category=1&city=7100&neighborhood=991473",
+      "loadedTime": "2026-09-06T14:47:52.883Z",
+      "referrerUrl": "https://www.yad2.co.il/yad1/newprojects/south?area=21&category=1&city=7100&neighborhood=991473",
+      "httpStatusCode": 200,
+      "depth": 0,
+      "contentType": "text/html; charset=UTF-8"
+    },
+    "metadata": {
+      "canonicalUrl": "https://www.yad2.co.il/yad1/newprojects/south?area=21&category=1&city=7100&neighborhood=991473",
+      "title": "Radware Bot Manager Block",
+      "description": null,
+      "author": null,
+      "keywords": null,
+      "languageCode": null,
+      "jsonLd": null,
+      "headers": {
+        "content-type": "text/html; charset=UTF-8",
+        "server": "rdwr",
+        "date": "Sun, 06 Sep 2026 14:47:52 GMT",
+        "cache-control": "no-store, no-cache, must-revalidate, post-check=0, pre-check=0",
+        "strict-transport-security": "max-age=31536000",
+        "set-cookie": "__uzma=074dbe90-bc25-482b-acf8-b7358b66b0dd; HttpOnly; path=/; Expires=Sun, 07-Mar-27 14:47:52 GMT; Max-Age=15724800; SameSite=Lax\n__uzmb=1788706072; HttpOnly; path=/; Expires=Sun, 07-Mar-27 14:47:52 GMT; Max-Age=15724800; SameSite=Lax\n__uzme=5672; HttpOnly; path=/; Expires=Sun, 07-Mar-27 14:47:52 GMT; Max-Age=15724800; SameSite=Lax\n__uzmc=514840764507; HttpOnly; path=/; Expires=Sun, 07-Mar-27 14:47:52 GMT; Max-Age=15724800; SameSite=Lax\n__uzmd=1788706072; HttpOnly; path=/; Expires=Sun, 07-Mar-27 14:47:52 GMT; Max-Age=15724800; SameSite=Lax\n__uzmf=7f9000074dbe90-bc25-482b-acf8-b7358b66b0dd1-17887060721640-00484b1c397e927ed3a07; HttpOnly; path=/; Expires=Sun, 07-Mar-27 14:47:52 GMT; Max-Age=15724800; SameSite=Lax\nuzmx=7fc00029ddb0dd-04cc-4a4d-81ba-91215cd926981-17887060721640-003316069018c32eb8510; Domain=.yad2.co.il; HttpOnly; path=/; Expires=Sun, 07-Mar-27 14:47:52 GMT; Max-Age=15724800; SameSite=Lax",
+        "x-cache": "Miss from cloudfront",
+        "via": "1.1 4f5cef7de681bca9cdb5f180d32b6db8.cloudfront.net (CloudFront)",
+        "x-amz-cf-pop": "LAX54-P1",
+        "x-amz-cf-id": "O-A_BtHtGbxStshOmBcQISIA-HW7uovhjWiXAxPDuLbppX8Y39lpWQ==",
+        "x-firefox-spdy": "h2"
+      }
+    },
+    "screenshotUrl": null,
+    "text": "Radware Bot Manager Block\nמתנצלים,\nמסיבות אבטחה והגנה על האתר, לא נוכל להמשיך את פעולתך.\nIncident ID: e828033e-bhcz-4899-b2bc-45d210ed56ad",
+    "html": null,
+    "htmlUrl": null,
+    "markdown": "# Radware Bot Manager Block\n\n## מתנצלים,\n\n## מסיבות אבטחה והגנה על האתר, לא נוכל להמשיך את פעולתך.\n\n![](https://assets.yad2.co.il/y2_captcha_error_page/robot_checkup_failed.png)\n\n**Incident ID: e828033e-bhcz-4899-b2bc-45d210ed56ad**",
+    "debug": {
+      "requestHandlerMode": "browser"
+    }
+  }
+]

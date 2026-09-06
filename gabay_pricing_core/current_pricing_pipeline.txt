@@ -1,0 +1,3337 @@
+
+
+================================================================================
+FILE: .\pricing_core\sold_qa.py
+================================================================================
+
+from __future__ import annotations
+
+from collections import defaultdict
+from dataclasses import dataclass
+from datetime import timedelta
+from math import isclose
+from statistics import median
+from typing import Iterable
+
+from .models import QAResult, QualityStatus, SoldTransaction
+from .normalization import normalize_address, normalize_property_type
+
+
+@dataclass(slots=True)
+class SoldQAOutput:
+    records: list[QAResult]
+    summary: dict
+
+    @property
+    def usable_primary(self) -> list[QAResult]:
+        return [r for r in self.records if r.status is QualityStatus.USABLE]
+
+    @property
+    def review(self) -> list[QAResult]:
+        return [
+            r
+            for r in self.records
+            if r.status in {QualityStatus.LOW_CONFIDENCE, QualityStatus.AMBIGUOUS}
+        ]
+
+    @property
+    def rejected(self) -> list[QAResult]:
+        return [r for r in self.records if r.status is QualityStatus.REJECTED]
+
+
+def run_sold_qa(raw_records: Iterable[dict]) -> SoldQAOutput:
+    results = [
+        QAResult(
+            transaction=SoldTransaction.from_raw(raw, source_index=i),
+        )
+        for i, raw in enumerate(raw_records)
+    ]
+
+    for result in results:
+        result.normalized_address = normalize_address(result.transaction.address)
+        result.normalized_property_type = normalize_property_type(result.transaction.property_type)
+        _basic_validation(result)
+        if result.normalized_property_type is None:
+            result.add_reason("property_type_unknown", QualityStatus.LOW_CONFIDENCE)
+
+    _collapse_exact_duplicates(results)
+    _mark_same_registered_unit_same_day_conflicts(results)
+    _mark_possible_companion_records(results)
+    _mark_far_ppsqm_outliers(results)
+
+    summary = _build_summary(results)
+    return SoldQAOutput(records=results, summary=summary)
+
+
+def _basic_validation(result: QAResult) -> None:
+    tx = result.transaction
+    missing = []
+    if tx.deal_date is None:
+        missing.append("deal_date")
+    if tx.deal_amount is None or tx.deal_amount <= 0:
+        missing.append("deal_amount")
+    if tx.area is None or tx.area <= 0:
+        missing.append("area")
+    if tx.rooms is None or tx.rooms <= 0:
+        missing.append("rooms")
+
+    # A human-readable address is useful but not strictly required when the
+    # transaction still has a valid geographic/cadastral locator. Some GovMap
+    # records in the tested feed omit address while preserving coordinates plus
+    # block/parcel identifiers. Reject only when no usable location remains.
+    if not result.normalized_address:
+        has_coords = tx.latitude is not None and tx.longitude is not None
+        has_cadastral = bool(tx.gush and tx.helka)
+        if has_coords or has_cadastral:
+            result.add_reason("address_missing_but_geographic_locator_available")
+        else:
+            missing.append("address_or_geographic_locator")
+
+    if missing:
+        result.add_reason(
+            "invalid_or_missing_required_fields:" + ",".join(missing),
+            QualityStatus.REJECTED,
+        )
+
+    if tx.price_per_sqm is not None and tx.price_per_sqm <= 0:
+        result.add_reason("invalid_price_per_sqm", QualityStatus.REJECTED)
+
+
+def _collapse_exact_duplicates(results: list[QAResult]) -> None:
+    groups: dict[tuple, list[QAResult]] = defaultdict(list)
+    for result in results:
+        if result.status is QualityStatus.REJECTED:
+            continue
+        tx = result.transaction
+        key = (
+            tx.deal_date,
+            tx.deal_amount,
+            result.normalized_address,
+            tx.rooms,
+            tx.floor,
+            tx.area,
+            tx.gush,
+            tx.helka,
+            tx.tat_helka,
+            tx.asset_id,
+        )
+        groups[key].append(result)
+
+    for group in groups.values():
+        if len(group) < 2:
+            continue
+        keeper = max(group, key=_record_richness)
+        indices = [g.transaction.source_index for g in group]
+        for item in group:
+            item.related_source_indices = sorted(i for i in indices if i != item.transaction.source_index)
+            if item is keeper:
+                item.add_reason("exact_duplicate_group_keeper")
+            else:
+                item.add_reason("exact_duplicate", QualityStatus.REJECTED)
+
+
+def _mark_same_registered_unit_same_day_conflicts(results: list[QAResult]) -> None:
+    groups: dict[tuple, list[QAResult]] = defaultdict(list)
+    for result in results:
+        if result.status is QualityStatus.REJECTED:
+            continue
+        tx = result.transaction
+        if not (tx.deal_date and tx.gush and tx.helka and tx.tat_helka):
+            continue
+        key = (tx.deal_date, tx.gush, tx.helka, tx.tat_helka)
+        groups[key].append(result)
+
+    for group in groups.values():
+        if len(group) < 2:
+            continue
+        material = {
+            (
+                item.transaction.deal_amount,
+                item.transaction.rooms,
+                item.transaction.floor,
+                item.transaction.area,
+            )
+            for item in group
+        }
+        if len(material) <= 1:
+            continue
+        indices = sorted(item.transaction.source_index for item in group)
+        for item in group:
+            item.related_source_indices = sorted(
+                set(item.related_source_indices)
+                | {i for i in indices if i != item.transaction.source_index}
+            )
+            item.add_reason("same_registered_unit_same_day_conflict", QualityStatus.AMBIGUOUS)
+
+
+def _mark_possible_companion_records(results: list[QAResult]) -> None:
+    candidates = [
+        r
+        for r in results
+        if r.status in {QualityStatus.USABLE, QualityStatus.LOW_CONFIDENCE}
+        and r.transaction.deal_date is not None
+    ]
+    by_address: dict[str, list[QAResult]] = defaultdict(list)
+    for result in candidates:
+        if result.normalized_address:
+            by_address[result.normalized_address].append(result)
+
+    for group in by_address.values():
+        group.sort(key=lambda r: r.transaction.deal_date)
+        for i, left in enumerate(group):
+            for right in group[i + 1 :]:
+                day_gap = (right.transaction.deal_date - left.transaction.deal_date).days
+                if day_gap > 1:
+                    break
+                if day_gap < 0 or not _same_observed_sale_shape(left, right):
+                    continue
+                if left.transaction.tat_helka == right.transaction.tat_helka:
+                    continue
+
+                left_known = left.normalized_property_type is not None
+                right_known = right.normalized_property_type is not None
+                if left_known == right_known:
+                    continue
+
+                lower = right if left_known else left
+                richer = left if left_known else right
+                lower.add_reason("possible_companion_record", QualityStatus.LOW_CONFIDENCE)
+                lower.related_source_indices = sorted(
+                    set(lower.related_source_indices) | {richer.transaction.source_index}
+                )
+                richer.related_source_indices = sorted(
+                    set(richer.related_source_indices) | {lower.transaction.source_index}
+                )
+
+
+def _same_observed_sale_shape(a: QAResult, b: QAResult) -> bool:
+    ta, tb = a.transaction, b.transaction
+    if ta.deal_amount != tb.deal_amount:
+        return False
+    if ta.rooms != tb.rooms or ta.floor != tb.floor or ta.area != tb.area:
+        return False
+    if ta.gush != tb.gush or ta.helka != tb.helka:
+        return False
+    if not _same_coord(ta.latitude, tb.latitude) or not _same_coord(ta.longitude, tb.longitude):
+        return False
+    return True
+
+
+def _same_coord(a: float | None, b: float | None) -> bool:
+    if a is None or b is None:
+        return False
+    return isclose(a, b, abs_tol=1e-7)
+
+
+def _mark_far_ppsqm_outliers(results: list[QAResult]) -> None:
+    """Conservative statistical QA flag only; never an automatic rejection.
+
+    Uses a standard far-outlier Tukey fence (3 x IQR), grouped by room count.
+    This is deliberately conservative and only changes records to LOW_CONFIDENCE.
+    """
+
+    by_rooms: dict[float, list[float]] = defaultdict(list)
+    for result in results:
+        tx = result.transaction
+        if result.status in {QualityStatus.REJECTED, QualityStatus.AMBIGUOUS}:
+            continue
+        if tx.rooms is None or tx.price_per_sqm is None or tx.price_per_sqm <= 0:
+            continue
+        by_rooms[tx.rooms].append(tx.price_per_sqm)
+
+    fences: dict[float, tuple[float, float]] = {}
+    for rooms, values in by_rooms.items():
+        if len(values) < 8:
+            continue
+        q1 = _percentile(values, 25)
+        q3 = _percentile(values, 75)
+        iqr = q3 - q1
+        if iqr <= 0:
+            continue
+        fences[rooms] = (q1 - 3 * iqr, q3 + 3 * iqr)
+
+    for result in results:
+        tx = result.transaction
+        if result.status in {QualityStatus.REJECTED, QualityStatus.AMBIGUOUS}:
+            continue
+        if tx.rooms not in fences or tx.price_per_sqm is None:
+            continue
+        low, high = fences[tx.rooms]
+        if tx.price_per_sqm < low or tx.price_per_sqm > high:
+            result.add_reason("far_price_per_sqm_outlier", QualityStatus.LOW_CONFIDENCE)
+
+
+def _percentile(values: list[float], percentile: float) -> float:
+    ordered = sorted(values)
+    if len(ordered) == 1:
+        return ordered[0]
+    position = (len(ordered) - 1) * percentile / 100
+    lower = int(position)
+    upper = min(lower + 1, len(ordered) - 1)
+    weight = position - lower
+    return ordered[lower] * (1 - weight) + ordered[upper] * weight
+
+
+def _record_richness(result: QAResult) -> int:
+    tx = result.transaction
+    fields = [
+        tx.property_type,
+        tx.asset_id,
+        tx.gush,
+        tx.helka,
+        tx.tat_helka,
+        tx.latitude,
+        tx.longitude,
+        tx.neighborhood,
+    ]
+    return sum(value is not None for value in fields)
+
+
+def _build_summary(results: list[QAResult]) -> dict:
+    statuses = {status.value: 0 for status in QualityStatus}
+    reason_counts: dict[str, int] = defaultdict(int)
+    for result in results:
+        statuses[result.status.value] += 1
+        for reason in result.reasons:
+            reason_counts[reason] += 1
+
+    return {
+        "raw_records": len(results),
+        "status_counts": statuses,
+        "reason_counts": dict(sorted(reason_counts.items())),
+        "primary_usable_records": statuses[QualityStatus.USABLE.value],
+        "review_records": statuses[QualityStatus.LOW_CONFIDENCE.value]
+        + statuses[QualityStatus.AMBIGUOUS.value],
+        "rejected_records": statuses[QualityStatus.REJECTED.value],
+        "policy_notes": [
+            "Unknown property type is preserved and marked low-confidence, not guessed.",
+            "Possible consecutive-day companion records are flagged, not silently deleted.",
+            "Same registered unit/date conflicts are excluded from primary evidence as ambiguous.",
+            "Far price-per-sqm outliers are low-confidence flags, not automatic rejections.",
+            "Missing human-readable address is allowed when coordinates or cadastral identifiers preserve geographic traceability.",
+        ],
+    }
+
+
+================================================================================
+FILE: .\pricing_core\comparables.py
+================================================================================
+
+from __future__ import annotations
+
+from dataclasses import dataclass, asdict, field
+from datetime import date, datetime
+from math import asin, cos, inf, radians, sin, sqrt
+from statistics import median
+from typing import Any, Iterable
+from collections import defaultdict
+
+from .models import ProjectLocation, QAResult, QualityStatus, Unit
+
+
+@dataclass(slots=True)
+class ComparableCandidate:
+    lane: str
+    source: str
+    source_id: str | None
+    source_url: str | None
+    price: float | None
+    rooms: float | None
+    area: float | None
+    floor: str | None
+    property_type: str | None
+    latitude: float | None
+    longitude: float | None
+    event_date: date | None
+    project_name: str | None = None
+    neighborhood: str | None = None
+    address: str | None = None
+    distance_m: float | None = None
+    area_difference_pct: float | None = None
+    floor_difference: float | None = None
+    quality_status: str = "usable"
+    reasons: list[str] | None = None
+    raw: dict[str, Any] | None = None
+
+    def public_dict(self) -> dict[str, Any]:
+        payload = asdict(self)
+        payload.pop("raw", None)
+        if payload.get("event_date") is not None:
+            payload["event_date"] = payload["event_date"].isoformat()
+        return payload
+
+
+@dataclass(slots=True)
+class CandidateSelectionTrace:
+    """Observability record of one raw evidence row's eligibility decision.
+
+    This does not introduce a second definition of "eligible comparable": it is
+    produced inline by the same predicates `_sold_candidates`/`_madlan_listing_candidates`/
+    `_project_candidates` already evaluate, for every row they look at (not only the
+    ones that pass). ``rank`` is filled in by ``build_comparable_set`` once the lane's
+    candidate list has been sorted, so it reflects the actual ranking order used.
+    """
+
+    lane: str
+    source: str
+    source_id: str | None
+    included: bool
+    reasons: list[str] = field(default_factory=list)
+    rank: int | None = None
+
+    def public_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass(slots=True)
+class SoldBuildingCluster:
+    address: str
+    record_count: int
+    newest_sale_date: date | None
+    oldest_sale_date: date | None
+    median_price: float | None
+    median_price_per_sqm: float | None
+    median_area: float | None
+    distance_m: float | None
+    source_ids: list[str]
+
+    def public_dict(self) -> dict[str, Any]:
+        payload = asdict(self)
+        if self.newest_sale_date is not None:
+            payload["newest_sale_date"] = self.newest_sale_date.isoformat()
+        if self.oldest_sale_date is not None:
+            payload["oldest_sale_date"] = self.oldest_sale_date.isoformat()
+        return payload
+
+
+@dataclass(slots=True)
+class ComparableSet:
+    target_unit: Unit
+    target_location: ProjectLocation
+    sold: list[ComparableCandidate]
+    sold_building_clusters: list[SoldBuildingCluster]
+    current_asking: list[ComparableCandidate]
+    new_development: list[ComparableCandidate]
+    excluded_counts: dict[str, int]
+    ranking_policy: list[str]
+    source_context: dict[str, Any] = field(default_factory=dict)
+    selection_trace: list[CandidateSelectionTrace] = field(default_factory=list)
+
+    def public_dict(self) -> dict[str, Any]:
+        return {
+            "target_unit": asdict(self.target_unit),
+            "target_location": asdict(self.target_location),
+            "ranking_policy": self.ranking_policy,
+            "excluded_counts": self.excluded_counts,
+            "source_context": self.source_context,
+            "sold": [c.public_dict() for c in self.sold],
+            "sold_building_clusters": [c.public_dict() for c in self.sold_building_clusters],
+            "current_asking": [c.public_dict() for c in self.current_asking],
+            "new_development": [c.public_dict() for c in self.new_development],
+            "selection_trace": [t.public_dict() for t in self.selection_trace],
+        }
+
+
+def build_comparable_set(
+    target_unit: Unit,
+    target_location: ProjectLocation,
+    sold_qa: Iterable[QAResult],
+    madlan_listings: Iterable[dict],
+    madlan_projects: Iterable[dict],
+    as_of: date | None = None,
+    source_context: dict[str, Any] | None = None,
+) -> ComparableSet:
+    """Build ranked comparable candidates without inventing weighted scores.
+
+    Eligibility is intentionally conservative. Ranking is lexicographic rather than
+    a black-box weighted score: geography first, then recency, then area/floor similarity.
+    The function ranks evidence; it does not yet calculate a price range.
+    """
+
+    as_of = as_of or date.today()
+    sold, sold_excluded, sold_trace = _sold_candidates(target_unit, target_location, sold_qa)
+    current, current_excluded, current_trace = _madlan_listing_candidates(target_unit, target_location, madlan_listings)
+    projects, project_excluded, project_trace = _project_candidates(target_unit, target_location, madlan_projects)
+
+    sold.sort(key=lambda c: _rank_key(c, target_unit, as_of, use_recency=True))
+    current.sort(key=lambda c: _rank_key(c, target_unit, as_of, use_recency=False))
+    projects.sort(key=lambda c: _rank_key(c, target_unit, as_of, use_recency=False))
+
+    clusters = build_sold_building_clusters(sold)
+
+    selection_trace = (
+        _ranked_trace(sold, sold_trace)
+        + _ranked_trace(current, current_trace)
+        + _ranked_trace(projects, project_trace)
+    )
+
+    return ComparableSet(
+        target_unit=target_unit,
+        target_location=target_location,
+        sold=sold,
+        sold_building_clusters=clusters,
+        current_asking=current,
+        new_development=projects,
+        excluded_counts={
+            "sold": sold_excluded,
+            "current_asking": current_excluded,
+            "new_development": project_excluded,
+        },
+        ranking_policy=[
+            "Exact room count and compatible property type are eligibility gates.",
+            "Usable evidence only enters the primary comparable lanes.",
+            "Geographic distance ranks before structural similarity when coordinates are available.",
+            "For completed sales, recency ranks before area/floor tie-breakers after geography.",
+            "No weighted relevance score or hidden price premium is used.",
+        ],
+        source_context=source_context or {},
+        selection_trace=selection_trace,
+    )
+
+
+def _ranked_trace(
+    sorted_candidates: list[ComparableCandidate],
+    trace_entries: list[tuple[CandidateSelectionTrace, ComparableCandidate | None]],
+) -> list[CandidateSelectionTrace]:
+    """Attach the real post-sort rank (1-based) to each included trace entry."""
+
+    rank_by_identity = {id(c): i + 1 for i, c in enumerate(sorted_candidates)}
+    out: list[CandidateSelectionTrace] = []
+    for entry, candidate in trace_entries:
+        if candidate is not None:
+            entry.rank = rank_by_identity.get(id(candidate))
+        out.append(entry)
+    return out
+
+
+def build_sold_building_clusters(candidates: Iterable[ComparableCandidate]) -> list[SoldBuildingCluster]:
+    by_address: dict[str, list[ComparableCandidate]] = defaultdict(list)
+    for candidate in candidates:
+        if candidate.lane != "sold":
+            continue
+        key = sold_group_key(candidate)
+        if key:
+            by_address[key].append(candidate)
+
+    clusters: list[SoldBuildingCluster] = []
+    for address, rows in by_address.items():
+        dates = sorted([r.event_date for r in rows if r.event_date is not None])
+        prices = [r.price for r in rows if r.price is not None]
+        areas = [r.area for r in rows if r.area is not None]
+        ppsqm = []
+        for r in rows:
+            if r.raw and r.raw.get("pricePerSqm") is not None:
+                try:
+                    ppsqm.append(float(r.raw["pricePerSqm"]))
+                except (TypeError, ValueError):
+                    pass
+        distances = [r.distance_m for r in rows if r.distance_m is not None]
+        source_ids = sorted({r.source_id for r in rows if r.source_id})
+        clusters.append(
+            SoldBuildingCluster(
+                address=address,
+                record_count=len(rows),
+                newest_sale_date=dates[-1] if dates else None,
+                oldest_sale_date=dates[0] if dates else None,
+                median_price=median(prices) if prices else None,
+                median_price_per_sqm=median(ppsqm) if ppsqm else None,
+                median_area=median(areas) if areas else None,
+                distance_m=min(distances) if distances else None,
+                source_ids=source_ids,
+            )
+        )
+
+    clusters.sort(
+        key=lambda c: (
+            c.distance_m if c.distance_m is not None else inf,
+            -(c.newest_sale_date.toordinal()) if c.newest_sale_date else inf,
+        )
+    )
+    return clusters
+
+
+
+def sold_group_key(candidate: ComparableCandidate) -> str | None:
+    """Return the most defensible available building/location grouping key.
+
+    GovMap-derived records sometimes omit the street address while still carrying
+    a shared geocoded building/location point. In that case exact source
+    coordinates are a better independence key than treating every transaction
+    asset id as a separate building.
+    """
+
+    if candidate.address:
+        return candidate.address
+    if candidate.latitude is not None and candidate.longitude is not None:
+        # Source coordinates repeat exactly for the same geocoded location in the
+        # tested feeds. Six decimals is ~0.1 m latitude precision and is used only
+        # as a grouping identifier, not as a claim about cadastral boundaries.
+        return f"coord:{candidate.latitude:.6f},{candidate.longitude:.6f}"
+    return candidate.source_id
+
+def _sold_candidates(
+    target: Unit, location: ProjectLocation, rows: Iterable[QAResult]
+) -> tuple[list[ComparableCandidate], int, list[tuple[CandidateSelectionTrace, ComparableCandidate | None]]]:
+    candidates: list[ComparableCandidate] = []
+    excluded = 0
+    trace: list[tuple[CandidateSelectionTrace, ComparableCandidate | None]] = []
+    source = "govmap_via_nadlan_deals"
+    for result in rows:
+        tx = result.transaction
+        if result.status is not QualityStatus.USABLE:
+            excluded += 1
+            reasons = [f"quality_status:{result.status.value}"] + [f"qa_reason:{r}" for r in result.reasons]
+            trace.append((CandidateSelectionTrace("sold", source, tx.asset_id, False, reasons), None))
+            continue
+        if result.normalized_property_type != "standard_apartment":
+            excluded += 1
+            trace.append((
+                CandidateSelectionTrace(
+                    "sold", source, tx.asset_id, False,
+                    [f"property_type_not_standard_apartment:{result.normalized_property_type}"],
+                ),
+                None,
+            ))
+            continue
+        if target.rooms is not None and tx.rooms != target.rooms:
+            excluded += 1
+            trace.append((
+                CandidateSelectionTrace(
+                    "sold", source, tx.asset_id, False,
+                    [f"room_count_mismatch:target={target.rooms}:actual={tx.rooms}"],
+                ),
+                None,
+            ))
+            continue
+        if location.city and tx.city and tx.city != location.city:
+            excluded += 1
+            trace.append((
+                CandidateSelectionTrace(
+                    "sold", source, tx.asset_id, False,
+                    [f"city_mismatch:target={location.city}:actual={tx.city}"],
+                ),
+                None,
+            ))
+            continue
+        candidate = _candidate(
+            lane="sold",
+            source=source,
+            source_id=tx.asset_id,
+            source_url=None,
+            price=tx.deal_amount,
+            rooms=tx.rooms,
+            area=tx.area,
+            floor=tx.floor,
+            property_type=result.normalized_property_type,
+            lat=tx.latitude,
+            lng=tx.longitude,
+            event_date=tx.deal_date,
+            neighborhood=tx.neighborhood,
+            address=result.normalized_address,
+            target=target,
+            location=location,
+            quality_status=result.status.value,
+            reasons=list(result.reasons),
+            raw=tx.raw,
+        )
+        candidates.append(candidate)
+        trace.append((CandidateSelectionTrace("sold", source, tx.asset_id, True, ["eligible_comparable"]), candidate))
+    return candidates, excluded, trace
+
+
+def _madlan_listing_candidates(
+    target: Unit, location: ProjectLocation, rows: Iterable[dict]
+) -> tuple[list[ComparableCandidate], int, list[tuple[CandidateSelectionTrace, ComparableCandidate | None]]]:
+    candidates: list[ComparableCandidate] = []
+    excluded = 0
+    trace: list[tuple[CandidateSelectionTrace, ComparableCandidate | None]] = []
+    source = "madlan_listing"
+    for raw in rows:
+        source_id = _text(raw.get("id"))
+        if (raw.get("cityHebrew") or raw.get("city")) not in {location.city, "Ashkelon" if location.city == "אשקלון" else location.city}:
+            excluded += 1
+            trace.append((CandidateSelectionTrace("current_asking", source, source_id, False, ["city_mismatch"]), None))
+            continue
+        if raw.get("propertyType") != "flat":
+            excluded += 1
+            trace.append((
+                CandidateSelectionTrace("current_asking", source, source_id, False, [f"property_type_not_flat:{raw.get('propertyType')}"]),
+                None,
+            ))
+            continue
+        rooms = _num(raw.get("rooms"))
+        if target.rooms is not None and rooms != target.rooms:
+            excluded += 1
+            trace.append((
+                CandidateSelectionTrace("current_asking", source, source_id, False, [f"room_count_mismatch:target={target.rooms}:actual={rooms}"]),
+                None,
+            ))
+            continue
+        area = _num(raw.get("areaSqm"))
+        price = _num(raw.get("price"))
+        if area is None or area <= 1 or price is None or price <= 0:
+            excluded += 1
+            trace.append((
+                CandidateSelectionTrace("current_asking", source, source_id, False, ["missing_or_invalid_price_or_area"]),
+                None,
+            ))
+            continue
+        lat, lng = _normalize_israel_coords(_num(raw.get("latitude")), _num(raw.get("longitude")))
+        candidate = _candidate(
+            lane="current_asking",
+            source=source,
+            source_id=source_id,
+            source_url=_text(raw.get("url")),
+            price=price,
+            rooms=rooms,
+            area=area,
+            floor=_text(raw.get("floor")),
+            property_type="standard_apartment",
+            lat=lat,
+            lng=lng,
+            event_date=_date_from_timestamp(raw.get("firstSeen") or raw.get("scrapedAt")),
+            neighborhood=_text(raw.get("neighbourhood")),
+            address=_text(raw.get("address")),
+            target=target,
+            location=location,
+            raw=raw,
+        )
+        candidates.append(candidate)
+        trace.append((CandidateSelectionTrace("current_asking", source, source_id, True, ["eligible_comparable"]), candidate))
+    return candidates, excluded, trace
+
+
+def _project_candidates(
+    target: Unit, location: ProjectLocation, projects: Iterable[dict]
+) -> tuple[list[ComparableCandidate], int, list[tuple[CandidateSelectionTrace, ComparableCandidate | None]]]:
+    candidates: list[ComparableCandidate] = []
+    excluded = 0
+    trace: list[tuple[CandidateSelectionTrace, ComparableCandidate | None]] = []
+    source = "madlan_project"
+    for project in projects:
+        address = project.get("addressDetails") or {}
+        project_id = _text(project.get("id"))
+        if address.get("city") != location.city:
+            excluded += 1
+            trace.append((CandidateSelectionTrace("new_development", source, project_id, False, ["city_mismatch"]), None))
+            continue
+        point = project.get("locationPoint") or {}
+        lat, lng = _normalize_israel_coords(_num(point.get("lat")), _num(point.get("lng")))
+        project_name = _text(project.get("projectName"))
+        project_url = _text(project.get("url"))
+        project_offers = 0
+        for i, offer in enumerate(project.get("apartmentType") or []):
+            offer_id = f"{project.get('id')}:{i}"
+            rooms = _num(offer.get("beds"))
+            if target.rooms is not None and rooms != target.rooms:
+                trace.append((
+                    CandidateSelectionTrace("new_development", source, offer_id, False, [f"room_count_mismatch:target={target.rooms}:actual={rooms}"]),
+                    None,
+                ))
+                continue
+            if offer.get("type") != "FLAT":
+                trace.append((
+                    CandidateSelectionTrace("new_development", source, offer_id, False, [f"offer_type_not_flat:{offer.get('type')}"]),
+                    None,
+                ))
+                continue
+            price = _num(offer.get("price"))
+            if price is None or price <= 0:
+                # Do not assign a project-level priceRange to a unit type unless the unit itself is priced.
+                trace.append((
+                    CandidateSelectionTrace("new_development", source, offer_id, False, ["offer_not_explicitly_priced"]),
+                    None,
+                ))
+                continue
+            project_offers += 1
+            candidate = _candidate(
+                lane="new_development",
+                source=source,
+                source_id=offer_id,
+                source_url=project_url,
+                price=price,
+                rooms=rooms,
+                area=_num(offer.get("size")),
+                floor=None,
+                property_type="standard_apartment",
+                lat=lat,
+                lng=lng,
+                event_date=_project_event_date(project.get("firstTimeSeen")),
+                project_name=project_name,
+                neighborhood=_text(address.get("neighbourhood")),
+                address=_project_address(address),
+                target=target,
+                location=location,
+                raw=project,
+            )
+            candidates.append(candidate)
+            trace.append((CandidateSelectionTrace("new_development", source, offer_id, True, ["eligible_comparable"]), candidate))
+        if project_offers == 0:
+            excluded += 1
+    return candidates, excluded, trace
+
+
+def _candidate(
+    *, lane: str, source: str, source_id: str | None, source_url: str | None,
+    price: float | None, rooms: float | None, area: float | None, floor: str | None,
+    property_type: str | None, lat: float | None, lng: float | None,
+    event_date: date | None, target: Unit, location: ProjectLocation,
+    project_name: str | None = None, neighborhood: str | None = None,
+    address: str | None = None, quality_status: str = "usable",
+    reasons: list[str] | None = None, raw: dict[str, Any] | None = None,
+) -> ComparableCandidate:
+    distance = None
+    if None not in (location.latitude, location.longitude, lat, lng):
+        distance = haversine_m(location.latitude, location.longitude, lat, lng)
+    area_diff = None
+    if target.internal_area and area:
+        area_diff = abs(area - target.internal_area) / target.internal_area
+    floor_diff = _floor_difference(target.floor, floor)
+    return ComparableCandidate(
+        lane=lane,
+        source=source,
+        source_id=source_id,
+        source_url=source_url,
+        price=price,
+        rooms=rooms,
+        area=area,
+        floor=floor,
+        property_type=property_type,
+        latitude=lat,
+        longitude=lng,
+        event_date=event_date,
+        project_name=project_name,
+        neighborhood=neighborhood,
+        address=address,
+        distance_m=round(distance, 1) if distance is not None else None,
+        area_difference_pct=round(area_diff, 4) if area_diff is not None else None,
+        floor_difference=floor_diff,
+        quality_status=quality_status,
+        reasons=reasons or [],
+        raw=raw,
+    )
+
+
+def _rank_key(candidate: ComparableCandidate, target: Unit, as_of: date, use_recency: bool) -> tuple:
+    distance = candidate.distance_m if candidate.distance_m is not None else inf
+    recency_days = (as_of - candidate.event_date).days if use_recency and candidate.event_date else inf
+    if recency_days < 0:
+        recency_days = 0
+    area_diff = candidate.area_difference_pct if candidate.area_difference_pct is not None else inf
+    floor_diff = candidate.floor_difference if candidate.floor_difference is not None else inf
+    return (distance, recency_days, area_diff, floor_diff, candidate.price or inf)
+
+
+def haversine_m(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    radius = 6_371_000.0
+    p1, p2 = radians(lat1), radians(lat2)
+    dphi = radians(lat2 - lat1)
+    dlambda = radians(lon2 - lon1)
+    a = sin(dphi / 2) ** 2 + cos(p1) * cos(p2) * sin(dlambda / 2) ** 2
+    return 2 * radius * asin(sqrt(a))
+
+
+def _floor_difference(target_floor: str | int | None, comp_floor: str | None) -> float | None:
+    try:
+        return abs(float(target_floor) - float(comp_floor))
+    except (TypeError, ValueError):
+        return None
+
+
+def _normalize_israel_coords(lat: float | None, lng: float | None) -> tuple[float | None, float | None]:
+    if lat is None or lng is None:
+        return lat, lng
+    normal = 29 <= lat <= 34.6 and 34 <= lng <= 36.6
+    reversed_ok = 29 <= lng <= 34.6 and 34 <= lat <= 36.6
+    if not normal and reversed_ok:
+        return lng, lat
+    return lat, lng
+
+
+def _project_address(address: dict) -> str | None:
+    street = _text(address.get("streetName"))
+    number = _text(address.get("streetNumber"))
+    if street and number:
+        return f"{street} {number}"
+    return street
+
+
+
+def _project_event_date(value: Any) -> date | None:
+    text = _text(value)
+    if text and text.startswith("1990-01-01"):
+        # Observed Madlan-project actor sentinel/default, not a credible project date.
+        return None
+    return _date_from_timestamp(value)
+
+def _date_from_timestamp(value: Any) -> date | None:
+    text = _text(value)
+    if not text:
+        return None
+    try:
+        return datetime.fromisoformat(text.replace("Z", "+00:00")).date()
+    except ValueError:
+        try:
+            return date.fromisoformat(text[:10])
+        except ValueError:
+            return None
+
+
+def _num(value: Any) -> float | None:
+    if value is None or value == "":
+        return None
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def _text(value: Any) -> str | None:
+    if value is None:
+        return None
+    text = str(value).strip()
+    return text or None
+
+
+================================================================================
+FILE: .\pricing_core\market_range.py
+================================================================================
+
+from __future__ import annotations
+
+from dataclasses import asdict, dataclass, field
+from datetime import date
+from enum import Enum
+from itertools import combinations
+from math import inf
+from statistics import median
+from typing import Iterable
+import calendar
+
+from .comparables import ComparableCandidate, ComparableSet, sold_group_key
+
+
+class EvidenceConfidence(str, Enum):
+    HIGH = "high"
+    MEDIUM = "medium"
+    LOW = "low"
+    INSUFFICIENT = "insufficient"
+
+
+class RangeStatus(str, Enum):
+    CONSENSUS = "consensus"
+    NO_CONSENSUS = "no_consensus"
+    INSUFFICIENT = "insufficient_evidence"
+    MANUAL_REVIEW = "manual_review_required"
+
+
+@dataclass(slots=True)
+class RangeMethodology:
+    """Versioned, explicit methodology controls.
+
+    These values govern evidence freshness/fallback only. They are not price
+    premiums, discounts, or source weights.
+    """
+
+    version: str = "market-range-v1"
+    sold_primary_lookback_months: int = 24
+    sold_fallback_lookback_months: int = 60
+    min_independent_sold_buildings: int = 2
+    min_independent_contributors_for_medium: int = 2
+    min_independent_contributors_for_high: int = 3
+
+
+@dataclass(slots=True)
+class EvidenceContribution:
+    lane: str
+    group_key: str
+    source_ids: list[str]
+    observed_prices: list[float]
+    observed_areas: list[float]
+    representative_observed_price: float | None
+    representative_observed_area: float | None
+    representative_price_per_sqm: float | None
+    area_normalized_indication_ils: float | None
+    newest_event_date: date | None = None
+    neighborhood: str | None = None
+    distance_m: float | None = None
+    reasons: list[str] = field(default_factory=list)
+
+    @property
+    def target_equivalent_indication(self) -> float | None:
+        # Deprecated alias. "Target equivalent" overstated what this normalization
+        # does (area only -- balcony/floor/parking/orientation may still differ).
+        # Kept for attribute-level access by any older internal code; public JSON
+        # payloads carry both keys via public_dict() below.
+        return self.area_normalized_indication_ils
+
+    def public_dict(self) -> dict:
+        payload = asdict(self)
+        if self.newest_event_date is not None:
+            payload["newest_event_date"] = self.newest_event_date.isoformat()
+        payload["target_equivalent_indication"] = payload["area_normalized_indication_ils"]
+        return payload
+
+
+@dataclass(slots=True)
+class LaneRange:
+    lane: str
+    confidence: EvidenceConfidence
+    lower: float | None
+    center: float | None
+    upper: float | None
+    primary_contributors: list[EvidenceContribution]
+    reference_records: list[dict]
+    warnings: list[str]
+    methodology_notes: list[str]
+    can_enter_consensus: bool
+
+    def public_dict(self) -> dict:
+        return {
+            "lane": self.lane,
+            "confidence": self.confidence.value,
+            "range": {
+                "lower": self.lower,
+                "center": self.center,
+                "upper": self.upper,
+            },
+            "primary_contributor_count": len(self.primary_contributors),
+            "primary_contributors": [c.public_dict() for c in self.primary_contributors],
+            "reference_records": self.reference_records,
+            "warnings": self.warnings,
+            "methodology_notes": self.methodology_notes,
+            "can_enter_consensus": self.can_enter_consensus,
+        }
+
+
+@dataclass(slots=True)
+class MarketRangeResult:
+    status: RangeStatus
+    confidence: EvidenceConfidence
+    methodology: RangeMethodology
+    target_unit_number: str
+    target_internal_area: float | None
+    supported_lower: float | None
+    supported_upper: float | None
+    support_lanes: list[str]
+    sold: LaneRange
+    current_asking: LaneRange
+    new_development: LaneRange
+    warnings: list[str]
+    assumptions: list[str]
+    decision_notes: list[str]
+
+    def public_dict(self) -> dict:
+        return {
+            "status": self.status.value,
+            "confidence": self.confidence.value,
+            "methodology": asdict(self.methodology),
+            "target_unit_number": self.target_unit_number,
+            "target_internal_area": self.target_internal_area,
+            "supported_range": {
+                "lower": self.supported_lower,
+                "upper": self.supported_upper,
+                "support_lanes": self.support_lanes,
+            },
+            "lanes": {
+                "sold": self.sold.public_dict(),
+                "current_asking": self.current_asking.public_dict(),
+                "new_development": self.new_development.public_dict(),
+            },
+            "warnings": self.warnings,
+            "assumptions": self.assumptions,
+            "decision_notes": self.decision_notes,
+        }
+
+
+def build_market_range(
+    comparable_set: ComparableSet,
+    *,
+    as_of: date | None = None,
+    methodology: RangeMethodology | None = None,
+) -> MarketRangeResult:
+    """Create a transparent market-supported interval from independent evidence lanes.
+
+    The function intentionally does not apply a company strategy and does not
+    invent floor/balcony/parking premiums. Where source area is known, it emits a
+    target-equivalent *indication* using observed price-per-sqm x target internal
+    area. This is a transparent normalization, not a claim that area pricing is
+    perfectly linear. The limitation is surfaced in the output.
+
+    A final supported interval is only produced when at least two sufficiently
+    independent evidence lanes overlap. No numerical source weights are used.
+    """
+
+    methodology = methodology or RangeMethodology()
+    as_of = as_of or date.today()
+    target = comparable_set.target_unit
+
+    if target.unit_type and target.unit_type != "standard_apartment":
+        empty = _empty_lane("sold", "Special units are not forced through the standard-apartment range engine.")
+        empty_ask = _empty_lane("current_asking", "Special units require separately relevant evidence.")
+        empty_dev = _empty_lane("new_development", "Special units require separately relevant evidence.")
+        return MarketRangeResult(
+            status=RangeStatus.MANUAL_REVIEW,
+            confidence=EvidenceConfidence.INSUFFICIENT,
+            methodology=methodology,
+            target_unit_number=target.unit_number,
+            target_internal_area=target.internal_area,
+            supported_lower=None,
+            supported_upper=None,
+            support_lanes=[],
+            sold=empty,
+            current_asking=empty_ask,
+            new_development=empty_dev,
+            warnings=["special_unit_requires_individual_pricing_review"],
+            assumptions=[],
+            decision_notes=["No standard-apartment market range was calculated for this unit."],
+        )
+
+    if target.internal_area is None or target.internal_area <= 0:
+        empty = _empty_lane("sold", "Target internal area is required for area-normalized indications.")
+        empty_ask = _empty_lane("current_asking", "Target internal area is required for area-normalized indications.")
+        empty_dev = _empty_lane("new_development", "Target internal area is required for area-normalized indications.")
+        return MarketRangeResult(
+            status=RangeStatus.INSUFFICIENT,
+            confidence=EvidenceConfidence.INSUFFICIENT,
+            methodology=methodology,
+            target_unit_number=target.unit_number,
+            target_internal_area=target.internal_area,
+            supported_lower=None,
+            supported_upper=None,
+            support_lanes=[],
+            sold=empty,
+            current_asking=empty_ask,
+            new_development=empty_dev,
+            warnings=["target_internal_area_missing"],
+            assumptions=[],
+            decision_notes=["A market range cannot be normalized without a target internal area."],
+        )
+
+    sold = _sold_lane(comparable_set, target.internal_area, as_of, methodology)
+    asking = _asking_lane(comparable_set, target.internal_area, methodology)
+    new_dev = _new_development_lane(comparable_set, target.internal_area, methodology)
+
+    consensus_lanes = [lane for lane in (sold, asking, new_dev) if lane.can_enter_consensus]
+    supported = _consensus_interval(consensus_lanes)
+
+    warnings: list[str] = []
+    decision_notes: list[str] = []
+    if supported is None:
+        if len(consensus_lanes) < 2:
+            status = RangeStatus.INSUFFICIENT
+            confidence = EvidenceConfidence.LOW if consensus_lanes else EvidenceConfidence.INSUFFICIENT
+            warnings.append("fewer_than_two_independent_lanes_support_consensus")
+            decision_notes.append("No single market-supported range is produced when fewer than two evidence lanes are sufficiently independent.")
+        else:
+            status = RangeStatus.NO_CONSENSUS
+            confidence = EvidenceConfidence.LOW
+            warnings.append("independent_evidence_lanes_do_not_form_one_consensus_interval")
+            decision_notes.append("Evidence lanes disagree materially; preserve lane ranges separately and require pricing review rather than forcing a blended number.")
+        lower = upper = None
+        support_lanes: list[str] = []
+    else:
+        lower, upper, support_lanes = supported
+        status = RangeStatus.CONSENSUS
+        confidence = EvidenceConfidence.HIGH if len(support_lanes) >= 3 else EvidenceConfidence.MEDIUM
+        decision_notes.append(
+            "The supported range is the overlap shared by independent evidence lanes; no numerical source weights are applied."
+        )
+
+    supporting_lane_objects = [lane for lane in (sold, asking, new_dev) if lane.lane in support_lanes]
+    supporting_area_extrapolation = [
+        lane for lane in supporting_lane_objects
+        if "target_area_outside_observed_area_envelope" in lane.warnings
+    ]
+    if supporting_area_extrapolation:
+        warnings.append("target_is_smaller_or_larger_than_observed_primary_comparable_areas")
+    if support_lanes and len(supporting_area_extrapolation) == len(supporting_lane_objects):
+        # The lanes agree numerically, but both/all require an area extrapolation.
+        # Preserve the range while lowering confidence rather than pretending the
+        # overlap is directly observed for the target size.
+        confidence = EvidenceConfidence.LOW
+        warnings.append("supported_range_requires_area_extrapolation_in_all_supporting_lanes")
+        decision_notes.append("The overlap is directionally useful but is not directly observed at the target unit size; manual pricing review is recommended.")
+
+    if target.balcony_area is not None and target.balcony_area > 0:
+        warnings.append("target_balcony_present_without_verified_monetary_adjustment")
+
+    assumptions = [
+        "Target-equivalent indications use observed price-per-sqm multiplied by the target INTERNAL area only when source area is known.",
+        "Balcony, orientation, parking, storage and floor are not assigned monetary premiums unless a verified company rule or market-derived adjustment is supplied.",
+        "Closed sales, current asking and new-development evidence remain separate; the supported range is based on overlap, not a weighted average.",
+        "Project/unit offers with missing area remain visible as reference evidence but do not create an area-normalized target indication.",
+    ]
+
+    return MarketRangeResult(
+        status=status,
+        confidence=confidence,
+        methodology=methodology,
+        target_unit_number=target.unit_number,
+        target_internal_area=target.internal_area,
+        supported_lower=_round_money(lower),
+        supported_upper=_round_money(upper),
+        support_lanes=support_lanes,
+        sold=sold,
+        current_asking=asking,
+        new_development=new_dev,
+        warnings=warnings,
+        assumptions=assumptions,
+        decision_notes=decision_notes,
+    )
+
+
+def _sold_lane(comp: ComparableSet, target_area: float, as_of: date, method: RangeMethodology) -> LaneRange:
+    primary_cutoff = _subtract_months(as_of, method.sold_primary_lookback_months)
+    fallback_cutoff = _subtract_months(as_of, method.sold_fallback_lookback_months)
+
+    target_neighborhood = _normalize_neighborhood(comp.target_location.neighborhood, comp.target_location.city)
+    sold_scope = (comp.source_context or {}).get("sold_query_scope") or {}
+    scoped_neighborhoods = {
+        _normalize_neighborhood(n, comp.target_location.city)
+        for n in (sold_scope.get("neighborhoods") or [])
+        if n
+    }
+    explicitly_scoped_to_target = bool(target_neighborhood and target_neighborhood in scoped_neighborhoods)
+    exact_labeled = [
+        c for c in comp.sold
+        if _normalize_neighborhood(c.neighborhood, comp.target_location.city) == target_neighborhood
+    ]
+
+    if not explicitly_scoped_to_target and not exact_labeled:
+        return LaneRange(
+            lane="sold",
+            confidence=EvidenceConfidence.INSUFFICIENT,
+            lower=None,
+            center=None,
+            upper=None,
+            primary_contributors=[],
+            reference_records=[c.public_dict() for c in comp.sold[:10]],
+            warnings=["sold_evidence_not_verified_as_target_neighborhood_scope"],
+            methodology_notes=[
+                "Completed-sale evidence must be explicitly collected for the target neighborhood or carry a matching neighborhood label before it can create a primary lane range.",
+                "Citywide completed sales may remain visible as context but do not drive the target range.",
+            ],
+            can_enter_consensus=False,
+        )
+
+    sold_pool = comp.sold if explicitly_scoped_to_target else exact_labeled
+    recent = [c for c in sold_pool if c.event_date is not None and c.event_date >= primary_cutoff and _valid_price_area(c)]
+    grouped = _group_candidates(recent, key=lambda c: sold_group_key(c) or f"record:{id(c)}")
+    used_fallback = False
+
+    if len(grouped) < method.min_independent_sold_buildings:
+        widened = [c for c in sold_pool if c.event_date is not None and c.event_date >= fallback_cutoff and _valid_price_area(c)]
+        grouped = _group_candidates(widened, key=lambda c: sold_group_key(c) or f"record:{id(c)}")
+        used_fallback = True
+
+    contributions = [_contribution_from_group("sold", key, rows, target_area) for key, rows in grouped.items()]
+    contributions.sort(key=lambda c: (c.distance_m if c.distance_m is not None else inf, -(c.newest_event_date.toordinal()) if c.newest_event_date else inf))
+
+    warnings: list[str] = []
+    notes = [
+        f"Each building contributes once, using the median observed price-per-sqm within the selected sale window.",
+        f"Primary completed-sale lookback is {method.sold_primary_lookback_months} months; fallback is {method.sold_fallback_lookback_months} months only when independent-building evidence is insufficient.",
+    ]
+    if used_fallback:
+        warnings.append("sold_recency_window_expanded")
+    if sold_pool and all(c.neighborhood is None for c in sold_pool):
+        if explicitly_scoped_to_target:
+            warnings.append("sold_neighborhood_labels_missing_but_source_run_is_target_neighborhood_scoped")
+        else:
+            warnings.append("sold_neighborhood_labels_missing_geographic_anchor_used")
+
+    lane = _finish_lane("sold", contributions, [], warnings, notes, method, target_area)
+
+    # A query that intentionally covers the target plus adjacent neighborhoods is
+    # useful local evidence, but it is not the same as verified exact-neighborhood
+    # attribution when returned records lack/mislabel neighborhood names. Preserve
+    # the evidence while capping confidence rather than pretending precision.
+    if explicitly_scoped_to_target and len(scoped_neighborhoods) > 1 and not exact_labeled:
+        lane.warnings.append("sold_scope_includes_target_plus_adjacent_neighborhoods_without_exact_record_labels")
+        lane.methodology_notes.append(
+            "The source run targeted the project neighborhood plus adjacent areas; returned coordinates drive geographic ranking, but exact neighborhood attribution is unverified."
+        )
+        if lane.confidence is EvidenceConfidence.HIGH:
+            lane.confidence = EvidenceConfidence.MEDIUM
+
+    return lane
+
+
+def _asking_lane(comp: ComparableSet, target_area: float, method: RangeMethodology) -> LaneRange:
+    target_neighborhood = _normalize_neighborhood(comp.target_location.neighborhood, comp.target_location.city)
+    exact = [
+        c for c in comp.current_asking
+        if _normalize_neighborhood(c.neighborhood, comp.target_location.city) == target_neighborhood
+        and _valid_price_area(c)
+    ]
+    warnings: list[str] = []
+    notes = ["Current asking evidence uses exact normalized neighborhood matches when available."]
+
+    if not exact:
+        return LaneRange(
+            lane="current_asking",
+            confidence=EvidenceConfidence.INSUFFICIENT,
+            lower=None,
+            center=None,
+            upper=None,
+            primary_contributors=[],
+            reference_records=[c.public_dict() for c in comp.current_asking[:10]],
+            warnings=["no_exact_neighborhood_current_asking_evidence"],
+            methodology_notes=notes,
+            can_enter_consensus=False,
+        )
+
+    grouped = _group_candidates(exact, key=lambda c: c.address or c.source_id or f"record:{id(c)}")
+    contributions = [_contribution_from_group("current_asking", key, rows, target_area) for key, rows in grouped.items()]
+    contributions.sort(key=lambda c: c.distance_m if c.distance_m is not None else inf)
+    return _finish_lane("current_asking", contributions, [], warnings, notes, method, target_area)
+
+
+def _new_development_lane(comp: ComparableSet, target_area: float, method: RangeMethodology) -> LaneRange:
+    target_neighborhood = _normalize_neighborhood(comp.target_location.neighborhood, comp.target_location.city)
+    exact = [
+        c for c in comp.new_development
+        if _normalize_neighborhood(c.neighborhood, comp.target_location.city) == target_neighborhood
+    ]
+    nearby_reference = [c for c in comp.new_development if c not in exact]
+
+    known_area = [c for c in exact if _valid_price_area(c)]
+    missing_area = [c for c in exact if c.price is not None and (c.area is None or c.area <= 0)]
+    grouped = _group_candidates(known_area, key=lambda c: c.project_name or c.source_id or f"record:{id(c)}")
+    contributions = [_contribution_from_group("new_development", key, rows, target_area) for key, rows in grouped.items()]
+    contributions.sort(key=lambda c: c.distance_m if c.distance_m is not None else inf)
+
+    references = [c.public_dict() for c in missing_area + nearby_reference]
+    warnings: list[str] = []
+    if missing_area:
+        warnings.append("new_development_offer_area_missing_reference_only")
+    if nearby_reference:
+        warnings.append("other_neighborhood_new_development_kept_as_reference")
+    notes = [
+        "Only explicitly priced unit offers are used.",
+        "Exact-neighborhood offers with known unit area can create target-equivalent indications.",
+        "Offers with missing area or from other neighborhoods remain visible as reference evidence and do not create a normalized range contribution.",
+    ]
+    return _finish_lane("new_development", contributions, references, warnings, notes, method, target_area)
+
+
+def _finish_lane(
+    lane: str,
+    contributions: list[EvidenceContribution],
+    references: list[dict],
+    warnings: list[str],
+    notes: list[str],
+    method: RangeMethodology,
+    target_area: float,
+) -> LaneRange:
+    values = [c.area_normalized_indication_ils for c in contributions if c.area_normalized_indication_ils is not None]
+    areas = [a for c in contributions for a in c.observed_areas if a is not None]
+
+    if not values:
+        confidence = EvidenceConfidence.INSUFFICIENT
+        low = center = high = None
+        can_enter = False
+    else:
+        low = min(values)
+        center = median(values)
+        high = max(values)
+
+        if len(contributions) < method.min_independent_contributors_for_medium:
+            confidence = EvidenceConfidence.LOW
+        elif len(contributions) >= method.min_independent_contributors_for_high:
+            confidence = EvidenceConfidence.HIGH
+        else:
+            confidence = EvidenceConfidence.MEDIUM
+
+        if areas and not (min(areas) <= target_area <= max(areas)):
+            warnings.append("target_area_outside_observed_area_envelope")
+            if confidence is EvidenceConfidence.HIGH:
+                confidence = EvidenceConfidence.MEDIUM
+
+        can_enter = confidence in {EvidenceConfidence.HIGH, EvidenceConfidence.MEDIUM}
+
+    return LaneRange(
+        lane=lane,
+        confidence=confidence,
+        lower=_round_money(low),
+        center=_round_money(center),
+        upper=_round_money(high),
+        primary_contributors=contributions,
+        reference_records=references,
+        warnings=warnings,
+        methodology_notes=notes,
+        can_enter_consensus=can_enter,
+    )
+
+
+def _contribution_from_group(lane: str, key: str, rows: list[ComparableCandidate], target_area: float) -> EvidenceContribution:
+    prices = [float(c.price) for c in rows if c.price is not None and c.price > 0]
+    areas = [float(c.area) for c in rows if c.area is not None and c.area > 0]
+    ppsqm = [float(c.price) / float(c.area) for c in rows if c.price is not None and c.area is not None and c.price > 0 and c.area > 0]
+    dates = [c.event_date for c in rows if c.event_date is not None]
+    distances = [c.distance_m for c in rows if c.distance_m is not None]
+    source_ids = sorted({c.source_id for c in rows if c.source_id})
+    neighborhoods = [c.neighborhood for c in rows if c.neighborhood]
+
+    representative_ppsqm = median(ppsqm) if ppsqm else None
+    indication = representative_ppsqm * target_area if representative_ppsqm is not None else None
+    return EvidenceContribution(
+        lane=lane,
+        group_key=key,
+        source_ids=source_ids,
+        observed_prices=prices,
+        observed_areas=areas,
+        representative_observed_price=median(prices) if prices else None,
+        representative_observed_area=median(areas) if areas else None,
+        representative_price_per_sqm=round(representative_ppsqm, 2) if representative_ppsqm is not None else None,
+        area_normalized_indication_ils=_round_money(indication),
+        newest_event_date=max(dates) if dates else None,
+        neighborhood=neighborhoods[0] if neighborhoods else None,
+        distance_m=min(distances) if distances else None,
+        reasons=["independent_group_contribution", "area_normalized_using_observed_price_per_sqm"],
+    )
+
+
+def _group_candidates(rows: Iterable[ComparableCandidate], key) -> dict[str, list[ComparableCandidate]]:
+    grouped: dict[str, list[ComparableCandidate]] = {}
+    for row in rows:
+        grouped.setdefault(str(key(row)), []).append(row)
+    return grouped
+
+
+def _valid_price_area(c: ComparableCandidate) -> bool:
+    return c.price is not None and c.price > 0 and c.area is not None and c.area > 1
+
+
+def _normalize_neighborhood(value: str | None, city: str | None) -> str | None:
+    if not value:
+        return None
+    text = " ".join(str(value).replace("׳", "'").replace("״", '"').split()).strip()
+    if city:
+        suffixes = [f", {city}", f" {city}"]
+        for suffix in suffixes:
+            if text.endswith(suffix):
+                text = text[: -len(suffix)].strip(" ,")
+    return text or None
+
+
+def _consensus_interval(lanes: list[LaneRange]) -> tuple[float, float, list[str]] | None:
+    """Return one overlap region supported by the maximum number of eligible lanes.
+
+    If equally strong overlap exists in disconnected regions, return None rather
+    than arbitrarily choosing one region.
+    """
+
+    eligible = [l for l in lanes if l.lower is not None and l.upper is not None]
+    if len(eligible) < 2:
+        return None
+
+    best_support = 1
+    intersections: list[tuple[float, float, tuple[str, ...]]] = []
+    for size in range(2, len(eligible) + 1):
+        for combo in combinations(eligible, size):
+            low = max(l.lower for l in combo if l.lower is not None)
+            high = min(l.upper for l in combo if l.upper is not None)
+            if low <= high:
+                names = tuple(sorted(l.lane for l in combo))
+                if size > best_support:
+                    best_support = size
+                    intersections = [(low, high, names)]
+                elif size == best_support:
+                    intersections.append((low, high, names))
+
+    if best_support < 2 or not intersections:
+        return None
+
+    # Merge regions that overlap/touch. If more than one disconnected maximum-support
+    # region remains, the evidence is fragmented and should not be forced into one range.
+    regions = sorted(intersections, key=lambda x: (x[0], x[1]))
+    merged: list[tuple[float, float, set[str]]] = []
+    for low, high, names in regions:
+        if not merged or low > merged[-1][1]:
+            merged.append((low, high, set(names)))
+        else:
+            prev_low, prev_high, prev_names = merged[-1]
+            merged[-1] = (min(prev_low, low), max(prev_high, high), prev_names | set(names))
+
+    if len(merged) != 1:
+        return None
+    low, high, names = merged[0]
+    return low, high, sorted(names)
+
+
+def _empty_lane(lane: str, note: str) -> LaneRange:
+    return LaneRange(
+        lane=lane,
+        confidence=EvidenceConfidence.INSUFFICIENT,
+        lower=None,
+        center=None,
+        upper=None,
+        primary_contributors=[],
+        reference_records=[],
+        warnings=[],
+        methodology_notes=[note],
+        can_enter_consensus=False,
+    )
+
+
+def _subtract_months(value: date, months: int) -> date:
+    year = value.year
+    month = value.month - months
+    while month <= 0:
+        month += 12
+        year -= 1
+    day = min(value.day, calendar.monthrange(year, month)[1])
+    return date(year, month, day)
+
+
+def _round_money(value: float | None) -> float | None:
+    if value is None:
+        return None
+    # Avoid false precision in a market-supported range. Round to the nearest ₪1,000.
+    return float(round(value / 1000.0) * 1000)
+
+
+================================================================================
+FILE: .\app_api\demo_snapshot.py
+================================================================================
+
+from __future__ import annotations
+
+import hashlib
+import json
+from dataclasses import dataclass
+from datetime import date, datetime, timezone
+from pathlib import Path
+from statistics import median
+from typing import Any
+
+from pricing_core import ProjectLocation, QAResult, QualityStatus, SoldQAOutput, SoldTransaction, haversine_m, run_sold_qa
+from pricing_core.comparison import ComparableAttributes
+
+from .db_models import EvidenceRecordRow, MarketSnapshotRow, ProjectRow, SourceRunRow
+from .source_manifest import DEMO_SOURCE_MANIFEST, SourceManifestEntry, default_demo_data_dir, resolve_source_path
+
+DEMO_DISCLAIMER = (
+    "Demo market selected for the assignment. The supplied apartment mix did not include a "
+    "project location. עיר היין, אשקלון is a candidate-selected demo market; this does not "
+    "claim the supplied 39-unit workbook belongs to a real Gabay project there."
+)
+
+# Only these primary sources actually feed pricing_core.build_comparable_set; only their
+# own embedded collection timestamps may ever drive pricing_as_of.
+PRIMARY_SOURCE_KEYS = ("govmap_sold_3room", "govmap_sold_5room", "madlan_listings", "madlan_projects")
+
+# Which of the primary sources carry a real, trustworthy per-record collection
+# timestamp field. madlan_projects deliberately has none: its only "seen" field
+# (firstTimeSeen) is a known bogus sentinel (1990-01-01) that pricing_core.comparables
+# already discards -- so it never participates in pricing_as_of.
+_TIMESTAMP_FIELDS_BY_SOURCE: dict[str, tuple[str, ...]] = {
+    "govmap_sold_3room": ("scrapedAt",),
+    "govmap_sold_5room": ("scrapedAt",),
+    "madlan_listings": ("scrapedAt", "firstSeen"),
+    "yad2_listings": ("scrapedAt", "publishedAt"),
+    "tax_enrichment": ("scrapedAt",),
+}
+
+
+class RequiredSourceMissingError(RuntimeError):
+    pass
+
+
+@dataclass
+class _LoadedSource:
+    entry: SourceManifestEntry
+    records: Any = None
+    sha256: str | None = None
+    collected_at: datetime | None = None
+    collected_at_basis: str | None = None
+    error: str | None = None
+
+
+def build_demo_market_snapshot(db, project: ProjectRow, demo_data_dir: Path | None = None) -> MarketSnapshotRow:
+    """Ingest the frozen real market files into one immutable market snapshot.
+
+    Required primary sources (the ones pricing_core.build_comparable_set actually
+    consumes) abort snapshot creation with a clear error if missing. Optional
+    secondary/reference sources are recorded as 'unavailable' and do not block
+    the snapshot.
+    """
+
+    demo_data_dir = demo_data_dir or default_demo_data_dir()
+    loaded: dict[str, _LoadedSource] = {
+        entry.source_key: _load_source(entry, demo_data_dir) for entry in DEMO_SOURCE_MANIFEST
+    }
+
+    sold_3_qa = run_sold_qa(loaded["govmap_sold_3room"].records)
+    sold_5_qa = run_sold_qa(loaded["govmap_sold_5room"].records)
+    madlan_listings = loaded["madlan_listings"].records
+    madlan_projects = loaded["madlan_projects"].records
+
+    location = _demo_location(madlan_listings)
+    pricing_as_of, pricing_as_of_basis, excluded_sources = _derive_pricing_as_of(loaded)
+
+    snapshot = MarketSnapshotRow(
+        project_id=project.id,
+        status="complete",
+        location_city=location.city,
+        location_neighborhood=location.neighborhood,
+        location_latitude=location.latitude,
+        location_longitude=location.longitude,
+        location_source=location.source,
+        pricing_as_of=pricing_as_of.isoformat(),
+        pricing_as_of_basis=pricing_as_of_basis,
+        pricing_as_of_excluded_sources_json=json.dumps(excluded_sources, ensure_ascii=False),
+        demo_disclaimer=DEMO_DISCLAIMER,
+    )
+    db.add(snapshot)
+    db.flush()
+
+    _persist_sold_source(db, snapshot, "govmap_sold_3room", loaded["govmap_sold_3room"], sold_3_qa, location)
+    _persist_sold_source(db, snapshot, "govmap_sold_5room", loaded["govmap_sold_5room"], sold_5_qa, location)
+    _persist_listing_source(db, snapshot, "madlan_listings", loaded["madlan_listings"], location)
+    _persist_project_source(db, snapshot, "madlan_projects", loaded["madlan_projects"], location)
+
+    for key in (
+        "yad2_listings",
+        "xplan_area",
+        "xplan_point",
+        "construction_competitor_matches",
+        "construction_summary",
+        "tax_enrichment",
+    ):
+        _persist_reference_source(db, snapshot, key, loaded[key])
+
+    db.flush()
+    return snapshot
+
+
+def sold_result_to_normalized_payload(result: QAResult) -> dict[str, Any]:
+    """The exact normalized representation the QA pass derived from raw -- what the
+    pricing core actually consumes. Kept separate from the untouched raw payload."""
+
+    tx = result.transaction
+    return {
+        "source_index": tx.source_index,
+        "deal_date": tx.deal_date.isoformat() if tx.deal_date else None,
+        "deal_amount": tx.deal_amount,
+        "price_per_sqm": tx.price_per_sqm,
+        "address": tx.address,
+        "city": tx.city,
+        "neighborhood": tx.neighborhood,
+        "rooms": tx.rooms,
+        "floor": tx.floor,
+        "area": tx.area,
+        "property_type": tx.property_type,
+        "is_first_hand": tx.is_first_hand,
+        "gush": tx.gush,
+        "helka": tx.helka,
+        "tat_helka": tx.tat_helka,
+        "asset_id": tx.asset_id,
+        "latitude": tx.latitude,
+        "longitude": tx.longitude,
+        "scraped_at": tx.scraped_at,
+        "normalized_address": result.normalized_address,
+        "normalized_property_type": result.normalized_property_type,
+        "related_source_indices": list(result.related_source_indices),
+    }
+
+
+def normalized_payload_to_qa_result(normalized: dict[str, Any], raw_payload: dict[str, Any], quality_status: str, quality_reasons: list[str]) -> QAResult:
+    """Reconstruct the exact QAResult the QA pass produced, from persisted state --
+    never by re-deriving normalization from raw at read time."""
+
+    tx = SoldTransaction(
+        source_index=normalized["source_index"],
+        deal_date=date.fromisoformat(normalized["deal_date"]) if normalized.get("deal_date") else None,
+        deal_amount=normalized.get("deal_amount"),
+        price_per_sqm=normalized.get("price_per_sqm"),
+        address=normalized.get("address"),
+        city=normalized.get("city"),
+        neighborhood=normalized.get("neighborhood"),
+        rooms=normalized.get("rooms"),
+        floor=normalized.get("floor"),
+        area=normalized.get("area"),
+        property_type=normalized.get("property_type"),
+        is_first_hand=normalized.get("is_first_hand"),
+        gush=normalized.get("gush"),
+        helka=normalized.get("helka"),
+        tat_helka=normalized.get("tat_helka"),
+        asset_id=normalized.get("asset_id"),
+        latitude=normalized.get("latitude"),
+        longitude=normalized.get("longitude"),
+        scraped_at=normalized.get("scraped_at"),
+        raw=raw_payload,
+    )
+    return QAResult(
+        transaction=tx,
+        status=QualityStatus(quality_status),
+        reasons=list(quality_reasons),
+        normalized_address=normalized.get("normalized_address"),
+        normalized_property_type=normalized.get("normalized_property_type"),
+        related_source_indices=list(normalized.get("related_source_indices") or []),
+    )
+
+
+def _load_source(entry: SourceManifestEntry, demo_data_dir: Path) -> _LoadedSource:
+    path = resolve_source_path(entry, demo_data_dir)
+    if not path.exists():
+        if entry.required:
+            raise RequiredSourceMissingError(
+                f"required source '{entry.source_key}' not found at {entry.relative_path} under {demo_data_dir}"
+            )
+        return _LoadedSource(entry=entry, error="source_file_not_found")
+
+    try:
+        raw_text = path.read_text(encoding="utf-8")
+        records = json.loads(raw_text)
+    except Exception as exc:  # noqa: BLE001 -- surfaced as a failed source run, never a crash
+        if entry.required:
+            raise RequiredSourceMissingError(f"required source '{entry.source_key}' failed to parse: {exc}") from exc
+        return _LoadedSource(entry=entry, error=f"parse_error:{exc}")
+
+    sha256 = hashlib.sha256(raw_text.encode("utf-8")).hexdigest()
+    collected_at, basis = _collected_at_for(entry.source_key, records, path)
+    return _LoadedSource(entry=entry, records=records, sha256=sha256, collected_at=collected_at, collected_at_basis=basis)
+
+
+def _collected_at_for(source_key: str, records: Any, path: Path) -> tuple[datetime, str]:
+    keys = _TIMESTAMP_FIELDS_BY_SOURCE.get(source_key)
+    if keys:
+        found = _max_iso_timestamp(records, keys)
+        if found is not None:
+            return found, "source_embedded_timestamp"
+    mtime = datetime.fromtimestamp(path.stat().st_mtime, tz=timezone.utc)
+    return mtime, "file_mtime_fallback_no_embedded_timestamp"
+
+
+def _max_iso_timestamp(records: Any, keys: tuple[str, ...]) -> datetime | None:
+    values: list[datetime] = []
+    rows = records if isinstance(records, list) else [records]
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        for key in keys:
+            raw = row.get(key)
+            if not raw:
+                continue
+            try:
+                parsed = datetime.fromisoformat(str(raw).replace("Z", "+00:00"))
+            except ValueError:
+                continue
+            if parsed.tzinfo is None:
+                parsed = parsed.replace(tzinfo=timezone.utc)
+            values.append(parsed)
+    return max(values) if values else None
+
+
+def _derive_pricing_as_of(loaded: dict[str, _LoadedSource]) -> tuple[date, str, list[dict[str, str]]]:
+    candidates: list[tuple[str, datetime]] = []
+    excluded: list[dict[str, str]] = []
+    for key in PRIMARY_SOURCE_KEYS:
+        source = loaded[key]
+        if key in _TIMESTAMP_FIELDS_BY_SOURCE and source.collected_at_basis == "source_embedded_timestamp":
+            candidates.append((key, source.collected_at))
+        else:
+            reason = (
+                "no trustworthy embedded per-record collection timestamp field exists on this primary source"
+                if key not in _TIMESTAMP_FIELDS_BY_SOURCE
+                else "embedded timestamp lookup failed for this primary source; only a file-mtime fallback was available"
+            )
+            excluded.append({"source_key": key, "reason": reason})
+
+    if not candidates:
+        now = datetime.now(timezone.utc)
+        return now.date(), "no_trustworthy_primary_source_timestamp_found_using_application_date", excluded
+
+    best_key, best_dt = max(candidates, key=lambda kv: kv[1])
+    basis = f"max_embedded_collection_timestamp_across_primary_sources(driving_source={best_key})"
+    return best_dt.date(), basis, excluded
+
+
+def _demo_location(listings: list[dict]) -> ProjectLocation:
+    points: list[tuple[float, float]] = []
+    for row in listings:
+        if row.get("neighbourhood") != "עיר היין":
+            continue
+        try:
+            lat, lng = float(row.get("latitude")), float(row.get("longitude"))
+        except (TypeError, ValueError):
+            continue
+        lat, lng = _swap_if_reversed(lat, lng)
+        points.append((lat, lng))
+    if not points:
+        raise RuntimeError("Could not derive the demo neighborhood anchor from madlan_listings")
+    return ProjectLocation(
+        city="אשקלון",
+        neighborhood="עיר היין",
+        latitude=median(p[0] for p in points),
+        longitude=median(p[1] for p in points),
+        source="candidate_demo_neighborhood_centroid_from_current_listings",
+    )
+
+
+def _swap_if_reversed(lat: float, lng: float) -> tuple[float, float]:
+    normal = 29 <= lat <= 34.6 and 34 <= lng <= 36.6
+    reversed_ok = 29 <= lng <= 34.6 and 34 <= lat <= 36.6
+    if not normal and reversed_ok:
+        return lng, lat
+    return lat, lng
+
+
+def _extract_comparable_attributes(
+    source_type: str,
+    raw: dict[str, Any],
+    *,
+    rooms: float | None,
+    internal_area: float | None,
+    floor: Any,
+    property_type: str | None,
+) -> ComparableAttributes:
+    """Computed once, at ingestion time, from the exact parsing logic that exists
+    right now. A later change to this function never rewrites an already-persisted
+    snapshot's stored comparable_attributes_json -- only future snapshots see it."""
+
+    if source_type == "madlan_listings":
+        has_balcony = raw.get("hasBalcony")
+        has_balcony = has_balcony if isinstance(has_balcony, bool) else None
+        parking_count = _num(raw.get("parking"))
+        has_garden = raw.get("hasGarden")
+        return ComparableAttributes(
+            rooms=rooms,
+            internal_area=internal_area,
+            floor=floor,
+            balcony_present=has_balcony,
+            balcony_area_sqm=0.0 if has_balcony is False else None,
+            parking_present=None if parking_count is None else parking_count > 0,
+            parking_count=None if parking_count is None else int(parking_count),
+            garden=has_garden if isinstance(has_garden, bool) else None,
+            property_type=property_type,
+        )
+
+    # GovMap sold records and Madlan new-development offers carry none of the
+    # balcony/parking/storage/orientation/garden fields -- correctly left unknown
+    # rather than guessed.
+    return ComparableAttributes(rooms=rooms, internal_area=internal_area, floor=floor, property_type=property_type)
+
+
+def _distance_m(location: ProjectLocation, lat: float | None, lng: float | None) -> float | None:
+    if location.latitude is None or location.longitude is None or lat is None or lng is None:
+        return None
+    return round(haversine_m(location.latitude, location.longitude, lat, lng), 1)
+
+
+def _persist_source_run(
+    db,
+    snapshot: MarketSnapshotRow,
+    key: str,
+    loaded: _LoadedSource,
+    *,
+    status: str,
+    raw_count: int = 0,
+    usable_count: int = 0,
+    rejected_count: int = 0,
+) -> SourceRunRow:
+    entry = loaded.entry
+    run = SourceRunRow(
+        market_snapshot_id=snapshot.id,
+        source_key=key,
+        lane=entry.lane,
+        status=status,
+        raw_count=raw_count,
+        usable_count=usable_count,
+        rejected_count=rejected_count,
+        source_filename=Path(entry.relative_path).name,
+        relative_source_path=entry.relative_path,
+        sha256=loaded.sha256,
+        collected_at=loaded.collected_at,
+        collected_at_basis=loaded.collected_at_basis,
+        error_code=None if status == "success" else (loaded.error or status),
+        safe_error_message=loaded.error,
+        completed_at=datetime.now(timezone.utc),
+    )
+    db.add(run)
+    db.flush()
+    return run
+
+
+def _persist_sold_source(db, snapshot: MarketSnapshotRow, key: str, loaded: _LoadedSource, qa_output: SoldQAOutput, location: ProjectLocation) -> None:
+    summary = qa_output.summary
+    run = _persist_source_run(
+        db, snapshot, key, loaded,
+        status="success",
+        raw_count=summary["raw_records"],
+        usable_count=summary["primary_usable_records"],
+        rejected_count=summary["rejected_records"],
+    )
+    for result in qa_output.records:
+        tx = result.transaction
+        db.add(EvidenceRecordRow(
+            market_snapshot_id=snapshot.id,
+            source_run_id=run.id,
+            lane="sold",
+            source_type=key,
+            source_record_id=tx.asset_id,
+            quality_status=result.status.value,
+            quality_reasons_json=json.dumps(result.reasons, ensure_ascii=False),
+            address=result.normalized_address,
+            price=tx.deal_amount,
+            rooms=tx.rooms,
+            area=tx.area,
+            floor=tx.floor,
+            event_date=tx.deal_date.isoformat() if tx.deal_date else None,
+            neighborhood=tx.neighborhood,
+            project_name=None,
+            distance_m=_distance_m(location, tx.latitude, tx.longitude),
+            raw_payload_json=json.dumps(tx.raw, ensure_ascii=False, default=str),
+            normalized_payload_json=json.dumps(sold_result_to_normalized_payload(result), ensure_ascii=False),
+            comparable_attributes_json=json.dumps(
+                _extract_comparable_attributes(
+                    key, tx.raw, rooms=tx.rooms, internal_area=tx.area, floor=tx.floor,
+                    property_type=result.normalized_property_type,
+                ).public_dict(),
+                ensure_ascii=False,
+            ),
+        ))
+
+
+def _persist_listing_source(db, snapshot: MarketSnapshotRow, key: str, loaded: _LoadedSource, location: ProjectLocation) -> None:
+    records = loaded.records or []
+    run = _persist_source_run(db, snapshot, key, loaded, status="success", raw_count=len(records), usable_count=len(records))
+    for raw in records:
+        lat, lng = _num(raw.get("latitude")), _num(raw.get("longitude"))
+        if lat is not None and lng is not None:
+            lat, lng = _swap_if_reversed(lat, lng)
+        event = raw.get("firstSeen") or raw.get("scrapedAt")
+        db.add(EvidenceRecordRow(
+            market_snapshot_id=snapshot.id,
+            source_run_id=run.id,
+            lane="current_asking",
+            source_type=key,
+            source_record_id=_text(raw.get("id")),
+            quality_status="usable",
+            quality_reasons_json="[]",
+            address=_text(raw.get("address")),
+            price=_num(raw.get("price")),
+            rooms=_num(raw.get("rooms")),
+            area=_num(raw.get("areaSqm")),
+            floor=_text(raw.get("floor")),
+            event_date=_iso_date_or_none(event),
+            neighborhood=_text(raw.get("neighbourhood")),
+            project_name=None,
+            distance_m=_distance_m(location, lat, lng),
+            raw_payload_json=json.dumps(raw, ensure_ascii=False, default=str),
+            normalized_payload_json=None,
+            comparable_attributes_json=json.dumps(
+                _extract_comparable_attributes(
+                    key, raw, rooms=_num(raw.get("rooms")), internal_area=_num(raw.get("areaSqm")),
+                    floor=_text(raw.get("floor")), property_type="standard_apartment",
+                ).public_dict(),
+                ensure_ascii=False,
+            ),
+        ))
+
+
+def _persist_project_source(db, snapshot: MarketSnapshotRow, key: str, loaded: _LoadedSource, location: ProjectLocation) -> None:
+    projects = loaded.records or []
+    offer_count = sum(len(p.get("apartmentType") or []) for p in projects)
+    run = _persist_source_run(db, snapshot, key, loaded, status="success", raw_count=offer_count, usable_count=offer_count)
+    for project in projects:
+        address = project.get("addressDetails") or {}
+        point = project.get("locationPoint") or {}
+        lat, lng = _num(point.get("lat")), _num(point.get("lng"))
+        if lat is not None and lng is not None:
+            lat, lng = _swap_if_reversed(lat, lng)
+        project_name = _text(project.get("projectName"))
+        street = _text(address.get("streetName"))
+        number = _text(address.get("streetNumber"))
+        proj_address = f"{street} {number}" if street and number else street
+        for i, offer in enumerate(project.get("apartmentType") or []):
+            db.add(EvidenceRecordRow(
+                market_snapshot_id=snapshot.id,
+                source_run_id=run.id,
+                lane="new_development",
+                source_type=key,
+                source_record_id=f"{project.get('id')}:{i}",
+                quality_status="usable",
+                quality_reasons_json="[]",
+                address=proj_address,
+                price=_num(offer.get("price")),
+                rooms=_num(offer.get("beds")),
+                area=_num(offer.get("size")),
+                floor=None,
+                event_date=None,
+                neighborhood=_text(address.get("neighbourhood")),
+                project_name=project_name,
+                distance_m=_distance_m(location, lat, lng),
+                raw_payload_json=json.dumps(project, ensure_ascii=False, default=str),
+                normalized_payload_json=None,
+                comparable_attributes_json=json.dumps(
+                    _extract_comparable_attributes(
+                        key, offer, rooms=_num(offer.get("beds")), internal_area=_num(offer.get("size")),
+                        floor=None, property_type="standard_apartment",
+                    ).public_dict(),
+                    ensure_ascii=False,
+                ),
+            ))
+
+
+def _persist_reference_source(db, snapshot: MarketSnapshotRow, key: str, loaded: _LoadedSource) -> None:
+    if loaded.records is None:
+        _persist_source_run(db, snapshot, key, loaded, status="unavailable" if loaded.error == "source_file_not_found" else "failed")
+        return
+
+    rows = loaded.records if isinstance(loaded.records, list) else [loaded.records]
+    run = _persist_source_run(db, snapshot, key, loaded, status="success", raw_count=len(rows), usable_count=len(rows))
+    for i, row in enumerate(rows):
+        if not isinstance(row, dict):
+            continue
+        db.add(EvidenceRecordRow(
+            market_snapshot_id=snapshot.id,
+            source_run_id=run.id,
+            lane="reference",
+            source_type=key,
+            source_record_id=_reference_record_id(key, row, i),
+            quality_status="reference_only",
+            quality_reasons_json=json.dumps(["not_used_in_range_calculation"]),
+            address=_text(row.get("address") or row.get("site_name")),
+            price=_num(row.get("price")),
+            rooms=_num(row.get("rooms")),
+            area=_num(row.get("areaSqm") or row.get("area")),
+            floor=_text(row.get("floor")),
+            event_date=_iso_date_or_none(row.get("scrapedAt") or row.get("publishedAt") or row.get("dealDate")),
+            neighborhood=_text(row.get("neighbourhood") or row.get("neighborhoodName")),
+            project_name=_text(row.get("layer_name") or row.get("site_name")),
+            distance_m=None,
+            raw_payload_json=json.dumps(row, ensure_ascii=False, default=str),
+            normalized_payload_json=None,
+        ))
+
+
+def _reference_record_id(key: str, row: dict, index: int) -> str:
+    for field_name in ("listingId", "_id", "id", "layer_id", "assetId"):
+        if row.get(field_name) is not None:
+            return f"{key}:{row.get(field_name)}"
+    return f"{key}:{index}"
+
+
+def _iso_date_or_none(value: Any) -> str | None:
+    text = _text(value)
+    if not text:
+        return None
+    try:
+        return datetime.fromisoformat(text.replace("Z", "+00:00")).date().isoformat()
+    except ValueError:
+        try:
+            return date.fromisoformat(text[:10]).isoformat()
+        except ValueError:
+            return None
+
+
+def _num(value: Any) -> float | None:
+    if value is None or value == "":
+        return None
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def _text(value: Any) -> str | None:
+    if value is None:
+        return None
+    text = str(value).strip()
+    return text or None
+
+
+================================================================================
+FILE: .\app_api\pricing_service.py
+================================================================================
+
+from __future__ import annotations
+
+import json
+from dataclasses import dataclass
+from datetime import date, datetime, time, timezone
+from typing import Any
+
+from sqlalchemy import delete, select
+
+from pricing_core import (
+    ComparableAttributes,
+    FloorRule,
+    FamilyStrategyDecision,
+    OwnProjectSaleRecord,
+    PricingBasis,
+    ProjectDecisionPlan,
+    ProjectLocation,
+    StrategyProfile,
+    Unit,
+    build_comparable_set,
+    build_comparable_price_gap,
+    build_market_range,
+    compare_against_own_sales,
+    compare_decision_scenarios,
+    family_key,
+    price_project_decision,
+    summarize_own_project_sales,
+)
+
+from .db_models import (
+    EvidenceRecordRow,
+    MarketSnapshotRow,
+    PricingSessionRow,
+    ProjectSaleRow,
+    ProjectStateSnapshotRow,
+    ProjectStateUnitRow,
+    ScenarioPricingRunRow,
+    ScenarioRow,
+    StrategyProfileRow,
+    UnitLifecycleEventRow,
+    UnitMarketResultRow,
+    UnitPriceResultRow,
+    UnitRow,
+)
+from .demo_snapshot import normalized_payload_to_qa_result
+
+# The two sold sources that pricing_core.comparables actually knows how to route by
+# room count in this demo, mirroring scripts/run_project_dry_run.py exactly.
+SOLD_SOURCE_BY_ROOMS = {3: "govmap_sold_3room", 5: "govmap_sold_5room"}
+
+AVAILABLE = "AVAILABLE"
+GENERIC_LIFECYCLE_STATUSES = {"AVAILABLE", "RESERVED", "ON_HOLD", "WITHDRAWN"}
+
+
+class NotPricedError(RuntimeError):
+    pass
+
+
+class DuplicateSaleError(RuntimeError):
+    pass
+
+
+class UnitAlreadySoldError(RuntimeError):
+    pass
+
+
+def load_units(db, inventory_version_id: str) -> list[Unit]:
+    rows = db.scalars(select(UnitRow).where(UnitRow.inventory_version_id == inventory_version_id)).all()
+    units = [
+        Unit(
+            unit_number=r.unit_number,
+            floor=r.floor,
+            rooms=r.rooms,
+            internal_area=r.internal_area,
+            balcony_area=r.balcony_area,
+            orientation=r.orientation,
+            parking=r.parking,
+            storage=None if r.storage is None else bool(r.storage),
+            unit_type=r.unit_type,
+            notes=r.notes,
+        )
+        for r in rows
+    ]
+    units.sort(key=lambda u: _unit_sort_key(u.unit_number))
+    return units
+
+
+# --- commercial state: live (snapshot-building only) vs session-frozen -------------
+
+
+def resolve_commercial_state(db, project_id: str, unit_numbers: list[str], as_of: datetime) -> dict[str, dict]:
+    """The one temporal-resolution primitive. For each unit, considers only events
+    with effective_at <= as_of and picks the max by (effective_at, created_at, id) --
+    a deterministic tie-break when two events share an effective_at. Defaults to
+    AVAILABLE when no qualifying event exists."""
+
+    if not unit_numbers:
+        return {}
+    events = db.scalars(
+        select(UnitLifecycleEventRow).where(
+            UnitLifecycleEventRow.project_id == project_id,
+            UnitLifecycleEventRow.unit_number.in_(unit_numbers),
+            UnitLifecycleEventRow.effective_at <= as_of,
+        )
+    ).all()
+    by_unit: dict[str, list[UnitLifecycleEventRow]] = {}
+    for event in events:
+        by_unit.setdefault(event.unit_number, []).append(event)
+
+    result: dict[str, dict] = {}
+    for unit_number in unit_numbers:
+        rows = by_unit.get(unit_number)
+        if not rows:
+            result[unit_number] = {"status": AVAILABLE, "effective_at": None, "sale": None}
+            continue
+        latest = max(rows, key=lambda e: (e.effective_at, e.created_at, e.id))
+        sale = None
+        if latest.status == "SOLD":
+            sale = db.scalar(
+                select(ProjectSaleRow).where(
+                    ProjectSaleRow.project_id == project_id, ProjectSaleRow.unit_number == unit_number
+                )
+            )
+        result[unit_number] = {"status": latest.status, "effective_at": latest.effective_at, "sale": sale}
+    return result
+
+
+def current_commercial_state(db, project_id: str, unit_numbers: list[str]) -> dict[str, dict]:
+    """Live. Used only to build a new snapshot -- never for pricing or evidence."""
+    return resolve_commercial_state(db, project_id, unit_numbers, as_of=datetime.now(timezone.utc))
+
+
+def create_state_snapshot(db, project_id: str, inventory_version_id: str, as_of: datetime | None = None) -> ProjectStateSnapshotRow:
+    as_of = as_of or datetime.now(timezone.utc)
+    unit_numbers = [u.unit_number for u in load_units(db, inventory_version_id)]
+    state = resolve_commercial_state(db, project_id, unit_numbers, as_of)
+
+    snapshot = ProjectStateSnapshotRow(project_id=project_id, inventory_version_id=inventory_version_id, as_of=as_of)
+    db.add(snapshot)
+    db.flush()
+    for unit_number in unit_numbers:
+        info = state[unit_number]
+        db.add(ProjectStateUnitRow(
+            project_state_snapshot_id=snapshot.id,
+            unit_number=unit_number,
+            status=info["status"],
+            effective_at=info["effective_at"],
+            project_sale_id=info["sale"].id if info["sale"] is not None else None,
+        ))
+    db.flush()
+    return snapshot
+
+
+def record_sale(db, project_id: str, payload: dict) -> ProjectSaleRow:
+    """The only writer of ProjectSaleRow, and the only path that may ever write a
+    SOLD lifecycle event. Atomic: both rows are added in the same flush."""
+
+    unit_number = payload["unit_number"]
+    existing = db.scalar(
+        select(ProjectSaleRow).where(ProjectSaleRow.project_id == project_id, ProjectSaleRow.unit_number == unit_number)
+    )
+    if existing is not None:
+        raise DuplicateSaleError(f"unit {unit_number} already has a recorded sale")
+
+    contract_date: date = payload["contract_date"]
+    source = payload.get("source") or "marketing_input"
+
+    sale = ProjectSaleRow(
+        project_id=project_id,
+        unit_number=unit_number,
+        contract_date=contract_date.isoformat(),
+        contract_price_ils=payload["contract_price_ils"],
+        list_price_at_sale_ils=payload.get("list_price_at_sale_ils"),
+        discount_ils=payload.get("discount_ils"),
+        payment_terms_json=json.dumps(payload["payment_terms"], ensure_ascii=False) if payload.get("payment_terms") is not None else None,
+        concessions_json=json.dumps(payload["concessions"], ensure_ascii=False) if payload.get("concessions") is not None else None,
+        effective_price_ils=payload.get("effective_price_ils"),
+        effective_price_basis=payload.get("effective_price_basis"),
+        source=source,
+        note=payload.get("note"),
+    )
+    db.add(sale)
+    db.flush()
+
+    db.add(UnitLifecycleEventRow(
+        project_id=project_id,
+        unit_number=unit_number,
+        status="SOLD",
+        effective_at=datetime.combine(contract_date, time.min, tzinfo=timezone.utc),
+        source=source,
+        reason="own_project_sale_recorded",
+    ))
+    db.flush()
+    return sale
+
+
+def record_lifecycle_event(db, project_id: str, unit_number: str, payload: dict) -> UnitLifecycleEventRow:
+    """SOLD is rejected here unconditionally, and nothing may be posted at all for a
+    unit that has ever been sold -- SOLD is terminal from the moment it is recorded,
+    regardless of whether its contract_date has "taken effect" yet relative to now.
+    Checked against ProjectSaleRow existence directly (not temporal state resolution)
+    so a future-dated contract cannot leave a terminal unit briefly editable."""
+
+    if payload["status"] == "SOLD":
+        raise ValueError("status=SOLD may only be created via POST /projects/{project_id}/sales")
+
+    existing_sale = db.scalar(
+        select(ProjectSaleRow).where(ProjectSaleRow.project_id == project_id, ProjectSaleRow.unit_number == unit_number)
+    )
+    if existing_sale is not None:
+        raise UnitAlreadySoldError(f"unit {unit_number} is already sold; lifecycle is terminal")
+
+    effective_at = payload.get("effective_at") or datetime.now(timezone.utc)
+    event = UnitLifecycleEventRow(
+        project_id=project_id,
+        unit_number=unit_number,
+        status=payload["status"],
+        effective_at=effective_at,
+        source=payload.get("source") or "marketing_input",
+        reason=payload.get("reason"),
+    )
+    db.add(event)
+    db.flush()
+    return event
+
+
+def _load_session_commercial_state(db, session: PricingSessionRow) -> dict[str, dict]:
+    """The only function pricing/evidence code may use to resolve commercial state --
+    scoped to this session's frozen snapshot, never live."""
+
+    rows = db.scalars(
+        select(ProjectStateUnitRow).where(ProjectStateUnitRow.project_state_snapshot_id == session.project_state_snapshot_id)
+    ).all()
+    result: dict[str, dict] = {}
+    for row in rows:
+        sale = db.get(ProjectSaleRow, row.project_sale_id) if row.project_sale_id else None
+        result[row.unit_number] = {"status": row.status, "effective_at": row.effective_at, "sale": sale}
+    return result
+
+
+def _load_own_project_sales_for_session(db, session: PricingSessionRow) -> list[OwnProjectSaleRecord]:
+    """Built exclusively from this session's frozen snapshot -- a sale recorded after
+    the snapshot was taken can never appear here, regardless of when this is called."""
+
+    units_by_number = {u.unit_number: u for u in load_units(db, session.inventory_version_id)}
+    state = _load_session_commercial_state(db, session)
+
+    records: list[OwnProjectSaleRecord] = []
+    for unit_number, info in state.items():
+        if info["status"] != "SOLD" or info["sale"] is None:
+            continue
+        unit = units_by_number.get(unit_number)
+        if unit is None:
+            continue
+        sale = info["sale"]
+        records.append(OwnProjectSaleRecord(
+            unit_number=unit_number,
+            family_key=family_key(unit),
+            contract_date=date.fromisoformat(sale.contract_date),
+            contract_price_ils=sale.contract_price_ils,
+            floor=unit.floor,
+            internal_area=unit.internal_area,
+            balcony_area=unit.balcony_area,
+            source=sale.source,
+            recorded_at=sale.created_at,
+        ))
+    return records
+
+
+def _non_priced_units_payload(db, session: PricingSessionRow) -> list[dict]:
+    units_by_number = {u.unit_number: u for u in load_units(db, session.inventory_version_id)}
+    state = _load_session_commercial_state(db, session)
+
+    out: list[dict] = []
+    for unit_number, info in state.items():
+        if info["status"] == AVAILABLE:
+            continue
+        unit = units_by_number.get(unit_number)
+        sale = info["sale"]
+        out.append({
+            "unit_number": unit_number,
+            "status": info["status"].lower(),
+            "floor": unit.floor if unit else None,
+            "rooms": unit.rooms if unit else None,
+            "internal_area": unit.internal_area if unit else None,
+            "balcony_area": unit.balcony_area if unit else None,
+            "unit_type": unit.unit_type if unit else None,
+            "family_key": family_key(unit) if unit else None,
+            "contract_price_ils": sale.contract_price_ils if sale else None,
+            "contract_date": sale.contract_date if sale else None,
+            "effective_at": info["effective_at"].isoformat() if info["effective_at"] else None,
+        })
+    return out
+
+
+# --- pricing ------------------------------------------------------------------------
+
+
+def build_unit_market_results(db, session: PricingSessionRow) -> list[tuple[Unit, Any, Any]]:
+    """Returns (unit, MarketRangeResult, ComparableSet) triples for units whose
+    session-scoped commercial state is AVAILABLE, replaying the exact sold-source
+    routing logic from scripts/run_project_dry_run.py against the session's frozen
+    market snapshot. Non-available units never reach build_comparable_set at all."""
+
+    snapshot = db.get(MarketSnapshotRow, session.market_snapshot_id)
+    units = load_units(db, session.inventory_version_id)
+    state = _load_session_commercial_state(db, session)
+    available_units = [u for u in units if state.get(u.unit_number, {"status": AVAILABLE})["status"] == AVAILABLE]
+
+    location = ProjectLocation(
+        city=snapshot.location_city,
+        neighborhood=snapshot.location_neighborhood,
+        latitude=snapshot.location_latitude,
+        longitude=snapshot.location_longitude,
+        source=snapshot.location_source,
+    )
+    as_of = date.fromisoformat(snapshot.pricing_as_of)
+
+    sold_by_source = {
+        source_key: _load_sold_qa_results(db, snapshot.id, source_key)
+        for source_key in SOLD_SOURCE_BY_ROOMS.values()
+    }
+    madlan_listings = _load_madlan_listings(db, snapshot.id)
+    madlan_projects = _load_madlan_projects(db, snapshot.id)
+
+    triples: list[tuple[Unit, Any, Any]] = []
+    for unit in available_units:
+        source_key = SOLD_SOURCE_BY_ROOMS.get(int(unit.rooms)) if unit.rooms is not None else None
+        if unit.unit_type == "standard_apartment" and source_key is not None:
+            sold_records = sold_by_source[source_key]
+            source_context = {
+                "sold_query_scope": {
+                    "city": snapshot.location_city,
+                    "neighborhoods": [snapshot.location_neighborhood] if snapshot.location_neighborhood else [],
+                    "rooms": [unit.rooms],
+                    "source_file": source_key,
+                }
+            }
+        else:
+            sold_records = []
+            source_context = {
+                "sold_query_scope": {
+                    "city": snapshot.location_city,
+                    "neighborhoods": [],
+                    "rooms": [unit.rooms] if unit.rooms is not None else [],
+                    "note": "No scoped completed-sale source is available for this room count/unit type in the demo snapshot.",
+                }
+            }
+
+        comps = build_comparable_set(
+            unit, location, sold_records, madlan_listings, madlan_projects,
+            as_of=as_of, source_context=source_context,
+        )
+        market = build_market_range(comps, as_of=as_of)
+        triples.append((unit, market, comps))
+    return triples
+
+
+def build_decision_plan(db, scenario: ScenarioRow) -> ProjectDecisionPlan:
+    rows = db.scalars(select(StrategyProfileRow).where(StrategyProfileRow.scenario_id == scenario.id)).all()
+    decisions = [
+        FamilyStrategyDecision(
+            family_key=row.family_key,
+            rationale=row.rationale,
+            source=row.source,
+            strategy=StrategyProfile(
+                name=row.name,
+                basis=PricingBasis(row.basis),
+                range_position_pct=row.range_position_pct,
+                competitor_reference_ils=row.competitor_reference_ils,
+                competitor_reference_source_id=row.competitor_reference_source_id,
+                competitor_reference_name=row.competitor_reference_name,
+                competitor_delta_ils=row.competitor_delta_ils,
+                negotiation_buffer_ils=row.negotiation_buffer_ils,
+                floor_rule=FloorRule(**json.loads(row.floor_rule_json)) if row.floor_rule_json else None,
+                minimum_price_ils=row.minimum_price_ils,
+                maximum_price_ils=row.maximum_price_ils,
+                internal_sale_plus_amount_ils=row.internal_sale_plus_amount_ils,
+                minimum_not_below_last_realized_sale=row.minimum_not_below_last_realized_sale,
+                source=row.source,
+                note=row.note,
+            ),
+        )
+        for row in rows
+    ]
+    return ProjectDecisionPlan(name=f"scenario:{scenario.name}", family_decisions=decisions, source="marketing_input")
+
+
+def reprice_scenario(db, scenario: ScenarioRow):
+    """The only function in this module that writes pricing results. GET endpoints
+    only ever read what this persisted."""
+
+    session = db.get(PricingSessionRow, scenario.pricing_session_id)
+    triples = build_unit_market_results(db, session)
+    own_sales = _load_own_project_sales_for_session(db, session)
+    plan = build_decision_plan(db, scenario)
+    pairs = [(unit, market) for unit, market, _comps in triples]
+    result = price_project_decision(pairs, plan, own_project_sales=own_sales)
+
+    db.execute(delete(UnitMarketResultRow).where(UnitMarketResultRow.scenario_id == scenario.id))
+    db.execute(delete(UnitPriceResultRow).where(UnitPriceResultRow.scenario_id == scenario.id))
+    db.execute(delete(ScenarioPricingRunRow).where(ScenarioPricingRunRow.scenario_id == scenario.id))
+    db.flush()
+
+    comps_by_unit = {unit.unit_number: comps for unit, _market, comps in triples}
+    market_by_unit = {unit.unit_number: market for unit, market, _comps in triples}
+
+    for unit_result in result.units:
+        market = market_by_unit[unit_result.unit_number]
+        comps = comps_by_unit[unit_result.unit_number]
+        db.add(UnitMarketResultRow(
+            scenario_id=scenario.id,
+            unit_number=unit_result.unit_number,
+            result_json=json.dumps(market.public_dict(), ensure_ascii=False),
+            selection_trace_json=json.dumps([t.public_dict() for t in comps.selection_trace], ensure_ascii=False),
+        ))
+        db.add(UnitPriceResultRow(
+            scenario_id=scenario.id,
+            unit_number=unit_result.unit_number,
+            result_json=json.dumps(unit_result.public_dict(), ensure_ascii=False),
+        ))
+
+    non_priced = _non_priced_units_payload(db, session)
+
+    payload = result.public_dict()
+    db.add(ScenarioPricingRunRow(
+        scenario_id=scenario.id,
+        plan_json=json.dumps(payload["plan"], ensure_ascii=False),
+        family_summaries_json=json.dumps(payload["family_summaries"], ensure_ascii=False),
+        project_metrics_json=json.dumps(payload["project_metrics"], ensure_ascii=False),
+        non_priced_units_json=json.dumps(non_priced, ensure_ascii=False),
+    ))
+    db.flush()
+    return result
+
+
+def get_price_list(db, scenario: ScenarioRow) -> dict:
+    """Strictly read-only: never computes or persists. Returns {'status': 'not_priced'}
+    if POST /reprice has not run yet for this scenario."""
+
+    run = db.get(ScenarioPricingRunRow, scenario.id)
+    if run is None:
+        return {"status": "not_priced"}
+
+    session = db.get(PricingSessionRow, scenario.pricing_session_id)
+    units_by_number = {u.unit_number: u for u in load_units(db, session.inventory_version_id)}
+
+    price_rows = db.scalars(select(UnitPriceResultRow).where(UnitPriceResultRow.scenario_id == scenario.id)).all()
+    rows = []
+    available_value = 0.0
+    for pr in price_rows:
+        result = json.loads(pr.result_json)
+        unit = units_by_number.get(pr.unit_number)
+        rows.append({
+            "unit_number": pr.unit_number,
+            "floor": unit.floor if unit else None,
+            "rooms": unit.rooms if unit else None,
+            "internal_area": unit.internal_area if unit else None,
+            "balcony_area": unit.balcony_area if unit else None,
+            "unit_type": unit.unit_type if unit else None,
+            **result,
+        })
+        if result.get("proposed_list_price_ils") is not None:
+            available_value += float(result["proposed_list_price_ils"])
+
+    non_priced = json.loads(run.non_priced_units_json)
+    counts = {"sold_count": 0, "reserved_count": 0, "on_hold_count": 0, "withdrawn_count": 0}
+    realized_value = 0.0
+    for np_unit in non_priced:
+        counts[f"{np_unit['status']}_count"] = counts.get(f"{np_unit['status']}_count", 0) + 1
+        if np_unit["status"] == "sold" and np_unit.get("contract_price_ils") is not None:
+            realized_value += float(np_unit["contract_price_ils"])
+    rows.extend(non_priced)
+    rows.sort(key=lambda r: _unit_sort_key(r["unit_number"]))
+
+    return {
+        "status": "priced",
+        "repriced_at": run.repriced_at.isoformat(),
+        "project_metrics": json.loads(run.project_metrics_json),
+        "units": rows,
+        # Deliberately not "project value"/"total": reserved/on_hold/withdrawn units
+        # are excluded by construction, so the counts make coverage explicit.
+        "realized_contract_value_ils": round(realized_value),
+        "available_proposed_list_value_ils": round(available_value),
+        "realized_plus_available_proposed_value_ils": round(realized_value + available_value),
+        "available_count": len(price_rows),
+        **counts,
+    }
+
+
+def get_families(db, scenario: ScenarioRow) -> dict:
+    run = db.get(ScenarioPricingRunRow, scenario.id)
+    if run is None:
+        return {"status": "not_priced"}
+    return {
+        "status": "priced",
+        "repriced_at": run.repriced_at.isoformat(),
+        "family_summaries": json.loads(run.family_summaries_json),
+    }
+
+
+def unit_evidence_payload(db, scenario: ScenarioRow, unit_number: str) -> dict:
+    session = db.get(PricingSessionRow, scenario.pricing_session_id)
+    units_by_number = {u.unit_number: u for u in load_units(db, session.inventory_version_id)}
+    unit = units_by_number.get(unit_number)
+    if unit is None:
+        return {"status": "unit_not_found"}
+
+    session_state = _load_session_commercial_state(db, session)
+    lifecycle = session_state.get(unit_number, {"status": AVAILABLE, "effective_at": None, "sale": None})
+
+    if lifecycle["status"] != AVAILABLE:
+        sale = lifecycle["sale"]
+        return {
+            "status": "not_available_this_session",
+            "unit_number": unit_number,
+            "lifecycle_status": lifecycle["status"].lower(),
+            "contract_price_ils": sale.contract_price_ils if sale else None,
+            "contract_date": sale.contract_date if sale else None,
+        }
+
+    market_row = db.scalar(
+        select(UnitMarketResultRow).where(
+            UnitMarketResultRow.scenario_id == scenario.id,
+            UnitMarketResultRow.unit_number == unit_number,
+        )
+    )
+    run = db.get(ScenarioPricingRunRow, scenario.id)
+    if market_row is None or run is None:
+        return {"status": "not_priced"}
+
+    snapshot_id = session.market_snapshot_id
+    trace = json.loads(market_row.selection_trace_json)
+    market_dict = json.loads(market_row.result_json)
+
+    area_norm_by_source_id: dict[str, float | None] = {}
+    for lane_name in ("sold", "current_asking", "new_development"):
+        for contrib in market_dict.get("lanes", {}).get(lane_name, {}).get("primary_contributors", []):
+            for sid in contrib.get("source_ids", []):
+                area_norm_by_source_id[sid] = contrib.get("area_normalized_indication_ils")
+
+    price_row = db.scalar(
+        select(UnitPriceResultRow).where(
+            UnitPriceResultRow.scenario_id == scenario.id,
+            UnitPriceResultRow.unit_number == unit_number,
+        )
+    )
+    pricing = json.loads(price_row.result_json) if price_row else None
+    proposed_price = pricing.get("proposed_list_price_ils") if pricing else None
+
+    target_attributes = ComparableAttributes(
+        rooms=unit.rooms,
+        internal_area=unit.internal_area,
+        floor=unit.floor,
+        balcony_present=None if unit.balcony_area is None else unit.balcony_area > 0,
+        balcony_area_sqm=unit.balcony_area,
+        parking_present=None if unit.parking is None else unit.parking > 0,
+        parking_count=unit.parking,
+        storage_present=unit.storage,
+        storage_area_sqm=None,
+        orientation=unit.orientation,
+        property_type=unit.unit_type,
+        garden=None,
+        special_type=None if unit.unit_type == "standard_apartment" else unit.unit_type,
+    )
+
+    evidence_by_key: dict[tuple[str, str | None], EvidenceRecordRow] = {}
+    for row in db.scalars(
+        select(EvidenceRecordRow).where(
+            EvidenceRecordRow.market_snapshot_id == snapshot_id,
+            EvidenceRecordRow.lane.in_(["sold", "current_asking", "new_development"]),
+        )
+    ).all():
+        evidence_by_key[(row.lane, row.source_record_id)] = row
+
+    candidate_records = []
+    for t in trace:
+        row = evidence_by_key.get((t["lane"], t["source_id"]))
+        entry: dict[str, Any] = {
+            "lane": t["lane"],
+            "source": t["source"],
+            "source_id": t["source_id"],
+            "included": t["included"],
+            "reasons": t["reasons"],
+            "rank": t["rank"],
+            "evidence": None,
+            "attribute_comparison": None,
+            "price_gap": None,
+        }
+        if row is not None:
+            entry["evidence"] = _evidence_display(row)
+            comparable_attrs = (
+                ComparableAttributes(**json.loads(row.comparable_attributes_json))
+                if row.comparable_attributes_json
+                else ComparableAttributes()
+            )
+            gap = build_comparable_price_gap(
+                lane=t["lane"],
+                source_id=t["source_id"],
+                target=target_attributes,
+                comparable=comparable_attrs,
+                observed_price_ils=row.price,
+                area_normalized_indication_ils=area_norm_by_source_id.get(t["source_id"]),
+                target_proposed_price_ils=proposed_price,
+            )
+            entry["attribute_comparison"] = [c.public_dict() for c in gap.attribute_comparison]
+            entry["price_gap"] = gap.public_dict()
+        candidate_records.append(entry)
+
+    reference_records = [
+        _evidence_display(row)
+        for row in db.scalars(
+            select(EvidenceRecordRow).where(
+                EvidenceRecordRow.market_snapshot_id == snapshot_id,
+                EvidenceRecordRow.lane == "reference",
+            )
+        ).all()
+    ]
+
+    fam_key = family_key(unit)
+    own_sales = _load_own_project_sales_for_session(db, session)
+    own_sales_for_family = [s for s in own_sales if s.family_key == fam_key]
+    own_summary = summarize_own_project_sales(fam_key, own_sales)
+    own_comparison = compare_against_own_sales(
+        proposed_price,
+        market_dict.get("supported_range", {}).get("lower"),
+        market_dict.get("supported_range", {}).get("upper"),
+        own_summary,
+    )
+
+    plan = json.loads(run.plan_json)
+    active_strategy = next((d for d in plan.get("family_decisions", []) if d["family_key"] == fam_key), None)
+
+    return {
+        "status": "priced",
+        "unit_number": unit_number,
+        "lifecycle_status": "available",
+        "market_range": market_dict,
+        "pricing": pricing,
+        "active_strategy": active_strategy,
+        "candidate_records": candidate_records,
+        "secondary_reference_records": reference_records,
+        "own_project_sales": [s.public_dict() for s in own_sales_for_family],
+        "own_project_sales_summary": own_summary.public_dict(),
+        "own_sales_comparison": own_comparison.public_dict(),
+    }
+
+
+def impact_payload(db, scenario: ScenarioRow, against: ScenarioRow) -> dict:
+    scenario_result = _load_result_stub(db, scenario)
+    baseline_result = _load_result_stub(db, against)
+    if scenario_result is None or baseline_result is None:
+        return {"status": "not_priced"}
+
+    impact = compare_decision_scenarios(baseline_result, scenario_result)
+    payload = impact.public_dict()
+
+    by_family: dict[str, dict[str, int]] = {}
+    for u in payload["unit_impacts"]:
+        family = u["family_key"] or "unknown"
+        bucket = by_family.setdefault(family, {"changed": 0, "unchanged": 0})
+        bucket["changed" if u["before_ils"] != u["after_ils"] else "unchanged"] += 1
+    payload["family_changed_breakdown"] = by_family
+    payload["status"] = "priced"
+    return payload
+
+
+def compare_pricing_sessions(
+    db,
+    session_a: PricingSessionRow,
+    scenario_a: ScenarioRow,
+    session_b: PricingSessionRow,
+    scenario_b: ScenarioRow,
+) -> dict:
+    """Session-to-session comparison over time. Keeps 'the market changed' and 'the
+    strategy changed' visible as separate facts -- never blended into one number."""
+
+    run_a = db.get(ScenarioPricingRunRow, scenario_a.id)
+    run_b = db.get(ScenarioPricingRunRow, scenario_b.id)
+    if run_a is None or run_b is None:
+        return {"status": "not_priced"}
+
+    snapshot_a = db.get(MarketSnapshotRow, session_a.market_snapshot_id)
+    snapshot_b = db.get(MarketSnapshotRow, session_b.market_snapshot_id)
+
+    state_a = {
+        r.unit_number: r.status
+        for r in db.scalars(
+            select(ProjectStateUnitRow).where(ProjectStateUnitRow.project_state_snapshot_id == session_a.project_state_snapshot_id)
+        ).all()
+    }
+    state_b = {
+        r.unit_number: r.status
+        for r in db.scalars(
+            select(ProjectStateUnitRow).where(ProjectStateUnitRow.project_state_snapshot_id == session_b.project_state_snapshot_id)
+        ).all()
+    }
+
+    def _counts(state: dict[str, str]) -> dict[str, int]:
+        out = {"available": 0, "sold": 0, "reserved": 0, "on_hold": 0, "withdrawn": 0}
+        for status in state.values():
+            key = status.lower()
+            out[key] = out.get(key, 0) + 1
+        return out
+
+    state_diff = {
+        "before_counts": _counts(state_a),
+        "after_counts": _counts(state_b),
+        "newly_sold": sorted(
+            [u for u, s in state_b.items() if s == "SOLD" and state_a.get(u) != "SOLD"], key=_unit_sort_key
+        ),
+        "newly_reserved": sorted(
+            [u for u, s in state_b.items() if s == "RESERVED" and state_a.get(u) != "RESERVED"], key=_unit_sort_key
+        ),
+    }
+
+    families_a = {f["family_key"]: f for f in json.loads(run_a.family_summaries_json)}
+    families_b = {f["family_key"]: f for f in json.loads(run_b.family_summaries_json)}
+    plan_a = {d["family_key"]: d for d in json.loads(run_a.plan_json).get("family_decisions", [])}
+    plan_b = {d["family_key"]: d for d in json.loads(run_b.plan_json).get("family_decisions", [])}
+
+    family_rows = []
+    for fam in sorted(set(families_a) | set(families_b)):
+        fa, fb = families_a.get(fam), families_b.get(fam)
+        da, db_ = plan_a.get(fam), plan_b.get(fam)
+        strategy_changed = (da is None) != (db_ is None) or (
+            da is not None and db_ is not None and (da["strategy"] != db_["strategy"] or da["rationale"] != db_["rationale"])
+        )
+        family_rows.append({
+            "family_key": fam,
+            "external_range_before_ils": fa.get("supported_range_envelope_ils") if fa else None,
+            "external_range_after_ils": fb.get("supported_range_envelope_ils") if fb else None,
+            "average_proposed_price_before_ils": fa.get("average_proposed_price_ils") if fa else None,
+            "average_proposed_price_after_ils": fb.get("average_proposed_price_ils") if fb else None,
+            "strategy_changed": strategy_changed,
+        })
+
+    metrics_a = json.loads(run_a.project_metrics_json)
+    metrics_b = json.loads(run_b.project_metrics_json)
+
+    return {
+        "status": "priced",
+        "market_snapshot_before": {"id": snapshot_a.id, "pricing_as_of": snapshot_a.pricing_as_of},
+        "market_snapshot_after": {"id": snapshot_b.id, "pricing_as_of": snapshot_b.pricing_as_of},
+        "market_snapshot_changed": snapshot_a.id != snapshot_b.id,
+        "state_diff": state_diff,
+        "family_comparison": family_rows,
+        "remaining_list_value_before_ils": metrics_a.get("total_proposed_list_value_ils"),
+        "remaining_list_value_after_ils": metrics_b.get("total_proposed_list_value_ils"),
+    }
+
+
+# --- internal helpers -------------------------------------------------------------
+
+
+@dataclass
+class _UnitStub:
+    unit_number: str
+    family_key: str
+    proposed_list_price_ils: float | None
+    requires_review: bool
+
+
+@dataclass
+class _FamilyStub:
+    family_key: str
+    total_proposed_list_value_ils: float
+    average_proposed_price_ils: float | None
+
+
+@dataclass
+class _PlanStub:
+    name: str
+
+
+@dataclass
+class _ResultStub:
+    plan: _PlanStub
+    units: list[_UnitStub]
+    family_summaries: list[_FamilyStub]
+    project_metrics: dict
+
+
+def _load_result_stub(db, scenario: ScenarioRow) -> _ResultStub | None:
+    """Adapts persisted pricing JSON back into the minimal shape
+    pricing_core.decision.compare_decision_scenarios reads. This is pure
+    deserialization, not a reimplementation of any decision/eligibility logic --
+    the actual comparison arithmetic still runs inside pricing_core."""
+
+    run = db.get(ScenarioPricingRunRow, scenario.id)
+    if run is None:
+        return None
+
+    price_rows = db.scalars(select(UnitPriceResultRow).where(UnitPriceResultRow.scenario_id == scenario.id)).all()
+    units = []
+    for pr in price_rows:
+        d = json.loads(pr.result_json)
+        units.append(_UnitStub(
+            unit_number=d["unit_number"],
+            family_key=d["family_key"],
+            proposed_list_price_ils=d["proposed_list_price_ils"],
+            requires_review=d["requires_review"],
+        ))
+
+    families = [
+        _FamilyStub(
+            family_key=f["family_key"],
+            total_proposed_list_value_ils=f["total_proposed_list_value_ils"],
+            average_proposed_price_ils=f["average_proposed_price_ils"],
+        )
+        for f in json.loads(run.family_summaries_json)
+    ]
+    plan = _PlanStub(name=json.loads(run.plan_json)["name"])
+    metrics = json.loads(run.project_metrics_json)
+    return _ResultStub(plan=plan, units=units, family_summaries=families, project_metrics=metrics)
+
+
+def _load_sold_qa_results(db, snapshot_id: str, source_type: str) -> list:
+    rows = db.scalars(
+        select(EvidenceRecordRow).where(
+            EvidenceRecordRow.market_snapshot_id == snapshot_id,
+            EvidenceRecordRow.source_type == source_type,
+        )
+    ).all()
+    results = []
+    for r in rows:
+        raw = json.loads(r.raw_payload_json)
+        normalized = json.loads(r.normalized_payload_json)
+        results.append(normalized_payload_to_qa_result(normalized, raw, r.quality_status, json.loads(r.quality_reasons_json)))
+    return results
+
+
+def _load_madlan_listings(db, snapshot_id: str) -> list[dict]:
+    rows = db.scalars(
+        select(EvidenceRecordRow).where(
+            EvidenceRecordRow.market_snapshot_id == snapshot_id,
+            EvidenceRecordRow.source_type == "madlan_listings",
+        )
+    ).all()
+    return [json.loads(r.raw_payload_json) for r in rows]
+
+
+def _load_madlan_projects(db, snapshot_id: str) -> list[dict]:
+    rows = db.scalars(
+        select(EvidenceRecordRow).where(
+            EvidenceRecordRow.market_snapshot_id == snapshot_id,
+            EvidenceRecordRow.source_type == "madlan_projects",
+        )
+    ).all()
+    seen: dict[Any, dict] = {}
+    for r in rows:
+        project = json.loads(r.raw_payload_json)
+        seen[project.get("id")] = project
+    return list(seen.values())
+
+
+def _evidence_display(row: EvidenceRecordRow) -> dict:
+    return {
+        "id": row.id,
+        "source_type": row.source_type,
+        "source_record_id": row.source_record_id,
+        "quality_status": row.quality_status,
+        "quality_reasons": json.loads(row.quality_reasons_json),
+        "address": row.address,
+        "price": row.price,
+        "rooms": row.rooms,
+        "area": row.area,
+        "floor": row.floor,
+        "event_date": row.event_date,
+        "neighborhood": row.neighborhood,
+        "project_name": row.project_name,
+        "distance_m": row.distance_m,
+        "raw": json.loads(row.raw_payload_json),
+    }
+
+
+def _unit_sort_key(value: str) -> tuple[int, str]:
+    try:
+        return (0, f"{int(float(value)):09d}")
+    except (TypeError, ValueError):
+        return (1, str(value))
+
+
+================================================================================
+FILE: .\app_api\db_models.py
+================================================================================
+
+from __future__ import annotations
+
+from datetime import datetime, timezone
+from uuid import uuid4
+
+from sqlalchemy import Float, ForeignKey, Integer, String, Text, UniqueConstraint
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+
+from .database import Base
+
+# App-level source-run status strings (distinct from pricing_core.models.SourceRunStatus,
+# which only covers the core's own smaller SoldTransaction ingestion model):
+#   success     -- source parsed and ingested normally.
+#   failed      -- a required or optional source file existed but errored while parsing.
+#   unavailable -- an optional/secondary source file simply isn't present in this
+#                  environment. Distinct from "failed" so the UI never confuses a
+#                  missing supporting file with an actual processing error.
+
+
+def _id() -> str:
+    return str(uuid4())
+
+
+def _now() -> datetime:
+    return datetime.now(timezone.utc)
+
+
+class ProjectRow(Base):
+    __tablename__ = "projects"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_id)
+    demo_key: Mapped[str | None] = mapped_column(String(80), unique=True, index=True)
+    name: Mapped[str] = mapped_column(String(255), nullable=False)
+    city: Mapped[str] = mapped_column(String(120), nullable=False)
+    neighborhood: Mapped[str | None] = mapped_column(String(160))
+    address: Mapped[str | None] = mapped_column(String(255))
+    latitude: Mapped[float | None] = mapped_column(Float)
+    longitude: Mapped[float | None] = mapped_column(Float)
+    location_source: Mapped[str | None] = mapped_column(String(255))
+    created_at: Mapped[datetime] = mapped_column(default=_now, nullable=False)
+    updated_at: Mapped[datetime] = mapped_column(default=_now, onupdate=_now, nullable=False)
+
+    inventory_versions: Mapped[list["InventoryVersionRow"]] = relationship(back_populates="project")
+
+
+class InventoryVersionRow(Base):
+    __tablename__ = "inventory_versions"
+    __table_args__ = (
+        UniqueConstraint("project_id", "version_number", name="uq_inventory_project_version"),
+        UniqueConstraint("project_id", "source_hash", name="uq_inventory_project_source_hash"),
+    )
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_id)
+    project_id: Mapped[str] = mapped_column(ForeignKey("projects.id"), nullable=False, index=True)
+    version_number: Mapped[int] = mapped_column(Integer, nullable=False)
+    source_filename: Mapped[str] = mapped_column(String(255), nullable=False)
+    source_hash: Mapped[str] = mapped_column(String(64), nullable=False)
+    status: Mapped[str] = mapped_column(String(40), default="complete", nullable=False)
+    imported_at: Mapped[datetime] = mapped_column(default=_now, nullable=False)
+
+    project: Mapped[ProjectRow] = relationship(back_populates="inventory_versions")
+    units: Mapped[list["UnitRow"]] = relationship(back_populates="inventory_version", cascade="all, delete-orphan")
+
+
+class UnitRow(Base):
+    __tablename__ = "units"
+    __table_args__ = (
+        UniqueConstraint("inventory_version_id", "unit_number", name="uq_unit_inventory_number"),
+    )
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_id)
+    inventory_version_id: Mapped[str] = mapped_column(ForeignKey("inventory_versions.id"), nullable=False, index=True)
+    unit_number: Mapped[str] = mapped_column(String(80), nullable=False)
+    floor: Mapped[str | None] = mapped_column(String(80))
+    rooms: Mapped[float | None] = mapped_column(Float)
+    internal_area: Mapped[float | None] = mapped_column(Float)
+    balcony_area: Mapped[float | None] = mapped_column(Float)
+    orientation: Mapped[str | None] = mapped_column(String(160))
+    parking: Mapped[int | None] = mapped_column(Integer)
+    storage: Mapped[int | None] = mapped_column(Integer)
+    unit_type: Mapped[str | None] = mapped_column(String(80))
+    notes: Mapped[str | None] = mapped_column(Text)
+    source_row_numbers_json: Mapped[str] = mapped_column(Text, nullable=False)
+    derivation_reasons_json: Mapped[str] = mapped_column(Text, nullable=False)
+    raw_rows_json: Mapped[str] = mapped_column(Text, nullable=False)
+
+    inventory_version: Mapped[InventoryVersionRow] = relationship(back_populates="units")
+
+
+class MarketSnapshotRow(Base):
+    """Immutable once created. See APPLICATION_CONTRACT.md."""
+
+    __tablename__ = "market_snapshots"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_id)
+    project_id: Mapped[str] = mapped_column(ForeignKey("projects.id"), nullable=False, index=True)
+    status: Mapped[str] = mapped_column(String(40), default="complete", nullable=False)
+
+    location_city: Mapped[str] = mapped_column(String(120), nullable=False)
+    location_neighborhood: Mapped[str | None] = mapped_column(String(160))
+    location_latitude: Mapped[float | None] = mapped_column(Float)
+    location_longitude: Mapped[float | None] = mapped_column(Float)
+    location_source: Mapped[str | None] = mapped_column(String(255))
+
+    # Administrative: when this snapshot row was built. Never used for pricing math.
+    snapshot_created_at: Mapped[datetime] = mapped_column(default=_now, nullable=False)
+
+    # The date passed into build_market_range/build_comparable_set. Derived only from
+    # real embedded collection timestamps of the primary sources actually used by the
+    # pricing calculation -- see app_api/demo_snapshot.py.
+    pricing_as_of: Mapped[str] = mapped_column(String(10), nullable=False)
+    pricing_as_of_basis: Mapped[str] = mapped_column(Text, nullable=False)
+    pricing_as_of_excluded_sources_json: Mapped[str] = mapped_column(Text, default="[]", nullable=False)
+
+    demo_disclaimer: Mapped[str] = mapped_column(Text, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(default=_now, nullable=False)
+
+    project: Mapped[ProjectRow] = relationship()
+    source_runs: Mapped[list["SourceRunRow"]] = relationship(
+        back_populates="market_snapshot", cascade="all, delete-orphan"
+    )
+    evidence_records: Mapped[list["EvidenceRecordRow"]] = relationship(
+        back_populates="market_snapshot", cascade="all, delete-orphan"
+    )
+
+
+class SourceRunRow(Base):
+    __tablename__ = "source_runs"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_id)
+    market_snapshot_id: Mapped[str] = mapped_column(ForeignKey("market_snapshots.id"), nullable=False, index=True)
+    source_key: Mapped[str] = mapped_column(String(80), nullable=False)
+    lane: Mapped[str] = mapped_column(String(40), nullable=False)
+    status: Mapped[str] = mapped_column(String(40), nullable=False)  # success / failed / unavailable
+    raw_count: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
+    usable_count: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
+    rejected_count: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
+
+    # Portable provenance only -- never an absolute local filesystem path.
+    source_filename: Mapped[str | None] = mapped_column(String(255))
+    relative_source_path: Mapped[str | None] = mapped_column(String(255))
+    sha256: Mapped[str | None] = mapped_column(String(64))
+
+    collected_at: Mapped[datetime | None] = mapped_column()
+    collected_at_basis: Mapped[str | None] = mapped_column(String(120))
+
+    error_code: Mapped[str | None] = mapped_column(String(120))
+    safe_error_message: Mapped[str | None] = mapped_column(Text)
+
+    started_at: Mapped[datetime] = mapped_column(default=_now, nullable=False)
+    completed_at: Mapped[datetime | None] = mapped_column()
+
+    market_snapshot: Mapped[MarketSnapshotRow] = relationship(back_populates="source_runs")
+
+
+class EvidenceRecordRow(Base):
+    __tablename__ = "evidence_records"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_id)
+    market_snapshot_id: Mapped[str] = mapped_column(ForeignKey("market_snapshots.id"), nullable=False, index=True)
+    source_run_id: Mapped[str] = mapped_column(ForeignKey("source_runs.id"), nullable=False, index=True)
+    lane: Mapped[str] = mapped_column(String(40), nullable=False, index=True)  # sold / current_asking / new_development / reference
+    source_type: Mapped[str] = mapped_column(String(80), nullable=False)
+    source_record_id: Mapped[str | None] = mapped_column(String(160), index=True)
+
+    quality_status: Mapped[str] = mapped_column(String(40), default="usable", nullable=False)
+    quality_reasons_json: Mapped[str] = mapped_column(Text, default="[]", nullable=False)
+
+    # Canonical display fields, precomputed once (distance_m is fixed because the
+    # project location is fixed per project).
+    address: Mapped[str | None] = mapped_column(String(255))
+    price: Mapped[float | None] = mapped_column(Float)
+    rooms: Mapped[float | None] = mapped_column(Float)
+    area: Mapped[float | None] = mapped_column(Float)
+    floor: Mapped[str | None] = mapped_column(String(80))
+    event_date: Mapped[str | None] = mapped_column(String(10))
+    neighborhood: Mapped[str | None] = mapped_column(String(160))
+    project_name: Mapped[str | None] = mapped_column(String(255))
+    distance_m: Mapped[float | None] = mapped_column(Float)
+
+    # Provenance vs. what the core actually consumed -- kept separate on purpose.
+    raw_payload_json: Mapped[str] = mapped_column(Text, nullable=False)
+    normalized_payload_json: Mapped[str | None] = mapped_column(Text)
+
+    # A pricing_core.comparison.ComparableAttributes-shaped dict, computed ONCE at
+    # snapshot-ingestion time (see app_api/demo_snapshot.py). Evidence explanations
+    # read this frozen value -- never re-derived from raw_payload_json with whatever
+    # parsing logic happens to exist when the API is later called, so a future parser
+    # change can never silently rewrite a historical evidence explanation.
+    comparable_attributes_json: Mapped[str | None] = mapped_column(Text)
+
+    market_snapshot: Mapped[MarketSnapshotRow] = relationship(back_populates="evidence_records")
+
+
+class StrategyProfileRow(Base):
+    __tablename__ = "strategy_profiles"
+    __table_args__ = (
+        UniqueConstraint("scenario_id", "family_key", name="uq_strategy_scenario_family"),
+    )
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_id)
+    scenario_id: Mapped[str] = mapped_column(ForeignKey("scenarios.id"), nullable=False, index=True)
+    family_key: Mapped[str] = mapped_column(String(160), nullable=False)
+    name: Mapped[str] = mapped_column(String(255), nullable=False)
+    basis: Mapped[str] = mapped_column(String(40), nullable=False)
+    range_position_pct: Mapped[float | None] = mapped_column(Float)
+    competitor_reference_ils: Mapped[float | None] = mapped_column(Float)
+    competitor_reference_source_id: Mapped[str | None] = mapped_column(String(160))
+    competitor_reference_name: Mapped[str | None] = mapped_column(String(255))
+    competitor_delta_ils: Mapped[float] = mapped_column(Float, default=0.0, nullable=False)
+    negotiation_buffer_ils: Mapped[float] = mapped_column(Float, default=0.0, nullable=False)
+    floor_rule_json: Mapped[str | None] = mapped_column(Text)
+    minimum_price_ils: Mapped[float | None] = mapped_column(Float)
+    maximum_price_ils: Mapped[float | None] = mapped_column(Float)
+    internal_sale_plus_amount_ils: Mapped[float] = mapped_column(Float, default=0.0, nullable=False)
+    minimum_not_below_last_realized_sale: Mapped[bool] = mapped_column(default=False, nullable=False)
+    rationale: Mapped[str] = mapped_column(Text, nullable=False)
+    source: Mapped[str] = mapped_column(String(80), default="marketing_input", nullable=False)
+    note: Mapped[str | None] = mapped_column(Text)
+    created_at: Mapped[datetime] = mapped_column(default=_now, nullable=False)
+    updated_at: Mapped[datetime] = mapped_column(default=_now, onupdate=_now, nullable=False)
+
+    scenario: Mapped["ScenarioRow"] = relationship(back_populates="family_decisions")
+
+
+class PricingSessionRow(Base):
+    __tablename__ = "pricing_sessions"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_id)
+    project_id: Mapped[str] = mapped_column(ForeignKey("projects.id"), nullable=False, index=True)
+    inventory_version_id: Mapped[str] = mapped_column(ForeignKey("inventory_versions.id"), nullable=False)
+    market_snapshot_id: Mapped[str] = mapped_column(ForeignKey("market_snapshots.id"), nullable=False)
+    # Nullable only so an omitted value can be filled in by an auto-created snapshot
+    # at creation time (see app_api.main.create_pricing_session) -- once set, this
+    # session's pricing/evidence never resolve commercial state any other way.
+    project_state_snapshot_id: Mapped[str | None] = mapped_column(ForeignKey("project_state_snapshots.id"))
+    status: Mapped[str] = mapped_column(String(40), default="draft", nullable=False)
+    created_at: Mapped[datetime] = mapped_column(default=_now, nullable=False)
+
+    scenarios: Mapped[list["ScenarioRow"]] = relationship(
+        back_populates="pricing_session", cascade="all, delete-orphan"
+    )
+
+
+class ScenarioRow(Base):
+    __tablename__ = "scenarios"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_id)
+    pricing_session_id: Mapped[str] = mapped_column(ForeignKey("pricing_sessions.id"), nullable=False, index=True)
+    parent_scenario_id: Mapped[str | None] = mapped_column(ForeignKey("scenarios.id"))
+    name: Mapped[str] = mapped_column(String(255), nullable=False)
+    created_by: Mapped[str] = mapped_column(String(120), default="current_user", nullable=False)
+    created_at: Mapped[datetime] = mapped_column(default=_now, nullable=False)
+
+    pricing_session: Mapped[PricingSessionRow] = relationship(back_populates="scenarios")
+    family_decisions: Mapped[list[StrategyProfileRow]] = relationship(
+        back_populates="scenario", cascade="all, delete-orphan"
+    )
+
+
+class UnitMarketResultRow(Base):
+    """Written only by POST /reprice. GET endpoints only ever read these."""
+
+    __tablename__ = "unit_market_results"
+    __table_args__ = (
+        UniqueConstraint("scenario_id", "unit_number", name="uq_market_result_scenario_unit"),
+    )
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_id)
+    scenario_id: Mapped[str] = mapped_column(ForeignKey("scenarios.id"), nullable=False, index=True)
+    unit_number: Mapped[str] = mapped_column(String(80), nullable=False)
+    result_json: Mapped[str] = mapped_column(Text, nullable=False)
+    selection_trace_json: Mapped[str] = mapped_column(Text, default="[]", nullable=False)
+    created_at: Mapped[datetime] = mapped_column(default=_now, nullable=False)
+
+
+class UnitPriceResultRow(Base):
+    """Written only by POST /reprice. GET endpoints only ever read these."""
+
+    __tablename__ = "unit_price_results"
+    __table_args__ = (
+        UniqueConstraint("scenario_id", "unit_number", name="uq_price_result_scenario_unit"),
+    )
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_id)
+    scenario_id: Mapped[str] = mapped_column(ForeignKey("scenarios.id"), nullable=False, index=True)
+    unit_number: Mapped[str] = mapped_column(String(80), nullable=False)
+    result_json: Mapped[str] = mapped_column(Text, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(default=_now, nullable=False)
+
+
+class ScenarioPricingRunRow(Base):
+    """One row per scenario: the aggregate ProjectDecisionResult overview.
+
+    Written only by POST /reprice, alongside the per-unit rows above. Its presence
+    is exactly what makes GET /price-list, /families and /impact read-only.
+    """
+
+    __tablename__ = "scenario_pricing_runs"
+
+    scenario_id: Mapped[str] = mapped_column(ForeignKey("scenarios.id"), primary_key=True)
+    plan_json: Mapped[str] = mapped_column(Text, nullable=False)
+    family_summaries_json: Mapped[str] = mapped_column(Text, nullable=False)
+    project_metrics_json: Mapped[str] = mapped_column(Text, nullable=False)
+    # Units excluded from pricing this run because their session-scoped commercial
+    # state was not AVAILABLE (sold/reserved/on_hold/withdrawn), with their status and
+    # (for sold) contract facts -- so GET /price-list can merge them in without ever
+    # computing or querying anything live.
+    non_priced_units_json: Mapped[str] = mapped_column(Text, default="[]", nullable=False)
+    repriced_at: Mapped[datetime] = mapped_column(default=_now, nullable=False)
+
+
+class UnitLifecycleEventRow(Base):
+    """Append-only. ``status`` may legitimately be SOLD here (written only by
+    record_sale), but the generic lifecycle-events endpoint refuses to write SOLD
+    itself and refuses to write anything at all once a unit has resolved to SOLD."""
+
+    __tablename__ = "unit_lifecycle_events"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_id)
+    project_id: Mapped[str] = mapped_column(ForeignKey("projects.id"), nullable=False, index=True)
+    unit_number: Mapped[str] = mapped_column(String(80), nullable=False, index=True)
+    status: Mapped[str] = mapped_column(String(40), nullable=False)
+    # The commercial/contractual date this event took effect -- kept distinct from
+    # created_at (when the row was inserted) so state can be resolved as of any
+    # historical point in time, not just "whatever is most recent right now".
+    effective_at: Mapped[datetime] = mapped_column(nullable=False)
+    source: Mapped[str] = mapped_column(String(80), nullable=False)
+    reason: Mapped[str | None] = mapped_column(Text)
+    created_at: Mapped[datetime] = mapped_column(default=_now, nullable=False)
+
+
+class ProjectSaleRow(Base):
+    """Written only by pricing_service.record_sale, atomically with a SOLD
+    UnitLifecycleEventRow. SOLD is terminal for this milestone: at most one row may
+    ever exist per (project_id, unit_number)."""
+
+    __tablename__ = "project_sales"
+    __table_args__ = (
+        UniqueConstraint("project_id", "unit_number", name="uq_project_sale_unit"),
+    )
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_id)
+    project_id: Mapped[str] = mapped_column(ForeignKey("projects.id"), nullable=False, index=True)
+    unit_number: Mapped[str] = mapped_column(String(80), nullable=False)
+
+    contract_date: Mapped[str] = mapped_column(String(10), nullable=False)
+    contract_price_ils: Mapped[float] = mapped_column(Float, nullable=False)
+
+    list_price_at_sale_ils: Mapped[float | None] = mapped_column(Float)
+    discount_ils: Mapped[float | None] = mapped_column(Float)
+
+    payment_terms_json: Mapped[str | None] = mapped_column(Text)
+    concessions_json: Mapped[str | None] = mapped_column(Text)
+
+    # Never auto-derived from list_price_at_sale_ils/discount_ils/payment_terms_json.
+    # Stays null unless a caller explicitly supplies both a value and its basis.
+    effective_price_ils: Mapped[float | None] = mapped_column(Float)
+    effective_price_basis: Mapped[str | None] = mapped_column(String(160))
+
+    source: Mapped[str] = mapped_column(String(80), nullable=False)
+    note: Mapped[str | None] = mapped_column(Text)
+    created_at: Mapped[datetime] = mapped_column(default=_now, nullable=False)
+
+
+class ProjectStateSnapshotRow(Base):
+    """Immutable once created -- the frozen commercial-state counterpart to
+    MarketSnapshotRow. Every pricing session pins one of these; nothing pricing- or
+    evidence-related for an existing session may resolve state any other way."""
+
+    __tablename__ = "project_state_snapshots"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_id)
+    project_id: Mapped[str] = mapped_column(ForeignKey("projects.id"), nullable=False, index=True)
+    inventory_version_id: Mapped[str] = mapped_column(ForeignKey("inventory_versions.id"), nullable=False)
+    as_of: Mapped[datetime] = mapped_column(nullable=False)
+    created_at: Mapped[datetime] = mapped_column(default=_now, nullable=False)
+
+    units: Mapped[list["ProjectStateUnitRow"]] = relationship(
+        back_populates="snapshot", cascade="all, delete-orphan"
+    )
+
+
+class ProjectStateUnitRow(Base):
+    __tablename__ = "project_state_units"
+    __table_args__ = (
+        UniqueConstraint("project_state_snapshot_id", "unit_number", name="uq_state_unit_snapshot_number"),
+    )
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_id)
+    project_state_snapshot_id: Mapped[str] = mapped_column(
+        ForeignKey("project_state_snapshots.id"), nullable=False, index=True
+    )
+    unit_number: Mapped[str] = mapped_column(String(80), nullable=False)
+    status: Mapped[str] = mapped_column(String(40), nullable=False)
+    effective_at: Mapped[datetime | None] = mapped_column()
+    project_sale_id: Mapped[str | None] = mapped_column(ForeignKey("project_sales.id"))
+
+    snapshot: Mapped[ProjectStateSnapshotRow] = relationship(back_populates="units")

@@ -1,0 +1,17 @@
+{
+  "city": "אשקלון",
+  "total_active_sites": 210,
+  "residential_sites": 24,
+  "known_competitor_matches": 3,
+  "missing_residential_site_names": 0,
+  "missing_residential_executors": 0,
+  "duplicate_residential_work_ids": 0,
+  "build_type_counts": {
+    "(missing)": 134,
+    "תעשייה": 22,
+    "ציבורי": 24,
+    "מסחר": 6,
+    "מגורים": 23,
+    "מגורים- מגורים": 1
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "disclaimer": "This is an engineering validation. The assignment supplied no project location or Gabay pricing rules. City Wine, Ashkelon is a candidate-selected demo market. No floor, orientation, balcony, parking, storage or relative-unit rule is assumed.",
+  "pricing_summary": {
+    "priced_unit_count": 32,
+    "unpriced_or_manual_unit_count": 7,
+    "requires_review_count": 31,
+    "units_outside_supported_range": 0,
+    "total_proposed_list_value_ils": 46128000.0,
+    "average_price_by_family_ils": {
+      "standard_apartment|3r|69sqm": 1335500.0,
+      "standard_apartment|5r|111.1sqm": 1759500.0
+    }
+  },
+  "consistency": {
+    "status": "pass",
+    "blocker_count": 0,
+    "review_count": 0,
+    "issue_count": 0,
+    "checks_applied": [
+      "inventory_pricing_cardinality",
+      "supported_range_integrity",
+      "proposed_price_market_range",
+      "explicit_strategy_constraints"
+    ],
+    "checks_not_applied": [
+      "floor_ordering_without_explicit_relationship",
+      "orientation_premium_without_company_rule",
+      "balcony_premium_without_company_rule",
+      "parking_or_storage_premium_without_company_rule",
+      "explicit_floor_rule_adjustment_integrity",
+      "explicit_relative_price_rules"
+    ],
+    "issues": []
+  }
+}

@@ -1,0 +1,3413 @@
+{
+  "disclaimer": "Assignment supplied no project location or internal Gabay strategy. City Wine, Ashkelon and the two range-position values are candidate-selected engineering test inputs only; they are not presented as Gabay data, policy or recommended pricing.",
+  "location": {
+    "city": "אשקלון",
+    "neighborhood": "עיר היין",
+    "latitude": 31.684216297625014,
+    "longitude": 34.59379980000001,
+    "source": "candidate_demo_neighborhood_centroid_from_current_listings"
+  },
+  "baseline": {
+    "strategy": {
+      "name": "engineering_baseline_50pct_of_supported_range",
+      "basis": "market_range_position",
+      "range_position_pct": 50.0,
+      "competitor_reference_ils": null,
+      "competitor_reference_source_id": null,
+      "competitor_reference_name": null,
+      "competitor_delta_ils": 0.0,
+      "negotiation_buffer_ils": 0.0,
+      "floor_rule": null,
+      "minimum_price_ils": null,
+      "maximum_price_ils": null,
+      "source": "candidate_engineering_test_input",
+      "note": "Engineering validation only. This is not a Gabay strategy or recommendation."
+    },
+    "project_metrics": {
+      "priced_unit_count": 32,
+      "unpriced_or_manual_unit_count": 7,
+      "requires_review_count": 31,
+      "units_outside_supported_range": 0,
+      "total_proposed_list_value_ils": 46128000.0,
+      "average_price_by_family_ils": {
+        "standard_apartment|3r|69sqm": 1335500.0,
+        "standard_apartment|5r|111.1sqm": 1759500.0
+      }
+    },
+    "units": [
+      {
+        "unit_number": "1",
+        "family_key": "garden_apartment|3r|70.8sqm",
+        "status": "manual_review",
+        "market_confidence": "insufficient",
+        "supported_range": {
+          "lower": null,
+          "upper": null
+        },
+        "commercial_base_price_ils": null,
+        "proposed_list_price_ils": null,
+        "adjustments": [],
+        "warnings": [
+          "special_unit_requires_individual_pricing_review",
+          "strategy_not_applied_to_manual_review_unit"
+        ],
+        "decision_trace": [
+          "Market engine requires individual pricing review; no automatic commercial price was created."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "2",
+        "family_key": "garden_apartment|3r|65.6sqm",
+        "status": "manual_review",
+        "market_confidence": "insufficient",
+        "supported_range": {
+          "lower": null,
+          "upper": null
+        },
+        "commercial_base_price_ils": null,
+        "proposed_list_price_ils": null,
+        "adjustments": [],
+        "warnings": [
+          "special_unit_requires_individual_pricing_review",
+          "strategy_not_applied_to_manual_review_unit"
+        ],
+        "decision_trace": [
+          "Market engine requires individual pricing review; no automatic commercial price was created."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "3",
+        "family_key": "garden_apartment|2r|57sqm",
+        "status": "manual_review",
+        "market_confidence": "insufficient",
+        "supported_range": {
+          "lower": null,
+          "upper": null
+        },
+        "commercial_base_price_ils": null,
+        "proposed_list_price_ils": null,
+        "adjustments": [],
+        "warnings": [
+          "special_unit_requires_individual_pricing_review",
+          "strategy_not_applied_to_manual_review_unit"
+        ],
+        "decision_trace": [
+          "Market engine requires individual pricing review; no automatic commercial price was created."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "4",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "5",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "6",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "7",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1759500.0,
+        "proposed_list_price_ils": 1759500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "8",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "9",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "10",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "11",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1759500.0,
+        "proposed_list_price_ils": 1759500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "12",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "13",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "14",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "15",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1759500.0,
+        "proposed_list_price_ils": 1759500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "16",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "17",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "18",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "19",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1759500.0,
+        "proposed_list_price_ils": 1759500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "20",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "21",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "22",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "23",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1759500.0,
+        "proposed_list_price_ils": 1759500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "24",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "25",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "26",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "27",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1759500.0,
+        "proposed_list_price_ils": 1759500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "28",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "29",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "30",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "31",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1759500.0,
+        "proposed_list_price_ils": 1759500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "32",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "33",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "34",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "35",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1759500.0,
+        "proposed_list_price_ils": 1759500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "36",
+        "family_key": "triplex|6r|255.2sqm",
+        "status": "manual_review",
+        "market_confidence": "insufficient",
+        "supported_range": {
+          "lower": null,
+          "upper": null
+        },
+        "commercial_base_price_ils": null,
+        "proposed_list_price_ils": null,
+        "adjustments": [],
+        "warnings": [
+          "special_unit_requires_individual_pricing_review",
+          "strategy_not_applied_to_manual_review_unit"
+        ],
+        "decision_trace": [
+          "Market engine requires individual pricing review; no automatic commercial price was created."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "37",
+        "family_key": "triplex|6r|260.1sqm",
+        "status": "manual_review",
+        "market_confidence": "insufficient",
+        "supported_range": {
+          "lower": null,
+          "upper": null
+        },
+        "commercial_base_price_ils": null,
+        "proposed_list_price_ils": null,
+        "adjustments": [],
+        "warnings": [
+          "special_unit_requires_individual_pricing_review",
+          "strategy_not_applied_to_manual_review_unit"
+        ],
+        "decision_trace": [
+          "Market engine requires individual pricing review; no automatic commercial price was created."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "38",
+        "family_key": "duplex|7r|170.1sqm",
+        "status": "manual_review",
+        "market_confidence": "insufficient",
+        "supported_range": {
+          "lower": null,
+          "upper": null
+        },
+        "commercial_base_price_ils": null,
+        "proposed_list_price_ils": null,
+        "adjustments": [],
+        "warnings": [
+          "special_unit_requires_individual_pricing_review",
+          "strategy_not_applied_to_manual_review_unit"
+        ],
+        "decision_trace": [
+          "Market engine requires individual pricing review; no automatic commercial price was created."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "39",
+        "family_key": "duplex|5r|158.6sqm",
+        "status": "manual_review",
+        "market_confidence": "insufficient",
+        "supported_range": {
+          "lower": null,
+          "upper": null
+        },
+        "commercial_base_price_ils": null,
+        "proposed_list_price_ils": null,
+        "adjustments": [],
+        "warnings": [
+          "special_unit_requires_individual_pricing_review",
+          "strategy_not_applied_to_manual_review_unit"
+        ],
+        "decision_trace": [
+          "Market engine requires individual pricing review; no automatic commercial price was created."
+        ],
+        "requires_review": true
+      }
+    ]
+  },
+  "scenario": {
+    "strategy": {
+      "name": "engineering_scenario_75pct_of_supported_range",
+      "basis": "market_range_position",
+      "range_position_pct": 75.0,
+      "competitor_reference_ils": null,
+      "competitor_reference_source_id": null,
+      "competitor_reference_name": null,
+      "competitor_delta_ils": 0.0,
+      "negotiation_buffer_ils": 0.0,
+      "floor_rule": null,
+      "minimum_price_ils": null,
+      "maximum_price_ils": null,
+      "source": "candidate_engineering_test_input",
+      "note": "Engineering validation only. This is not a Gabay strategy or recommendation."
+    },
+    "project_metrics": {
+      "priced_unit_count": 32,
+      "unpriced_or_manual_unit_count": 7,
+      "requires_review_count": 31,
+      "units_outside_supported_range": 0,
+      "total_proposed_list_value_ils": 47736000.0,
+      "average_price_by_family_ils": {
+        "standard_apartment|3r|69sqm": 1355750.0,
+        "standard_apartment|5r|111.1sqm": 1899750.0
+      }
+    },
+    "units": [
+      {
+        "unit_number": "1",
+        "family_key": "garden_apartment|3r|70.8sqm",
+        "status": "manual_review",
+        "market_confidence": "insufficient",
+        "supported_range": {
+          "lower": null,
+          "upper": null
+        },
+        "commercial_base_price_ils": null,
+        "proposed_list_price_ils": null,
+        "adjustments": [],
+        "warnings": [
+          "special_unit_requires_individual_pricing_review",
+          "strategy_not_applied_to_manual_review_unit"
+        ],
+        "decision_trace": [
+          "Market engine requires individual pricing review; no automatic commercial price was created."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "2",
+        "family_key": "garden_apartment|3r|65.6sqm",
+        "status": "manual_review",
+        "market_confidence": "insufficient",
+        "supported_range": {
+          "lower": null,
+          "upper": null
+        },
+        "commercial_base_price_ils": null,
+        "proposed_list_price_ils": null,
+        "adjustments": [],
+        "warnings": [
+          "special_unit_requires_individual_pricing_review",
+          "strategy_not_applied_to_manual_review_unit"
+        ],
+        "decision_trace": [
+          "Market engine requires individual pricing review; no automatic commercial price was created."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "3",
+        "family_key": "garden_apartment|2r|57sqm",
+        "status": "manual_review",
+        "market_confidence": "insufficient",
+        "supported_range": {
+          "lower": null,
+          "upper": null
+        },
+        "commercial_base_price_ils": null,
+        "proposed_list_price_ils": null,
+        "adjustments": [],
+        "warnings": [
+          "special_unit_requires_individual_pricing_review",
+          "strategy_not_applied_to_manual_review_unit"
+        ],
+        "decision_trace": [
+          "Market engine requires individual pricing review; no automatic commercial price was created."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "4",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1355750.0,
+        "proposed_list_price_ils": 1355750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "5",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1355750.0,
+        "proposed_list_price_ils": 1355750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "6",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1355750.0,
+        "proposed_list_price_ils": 1355750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "7",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1899750.0,
+        "proposed_list_price_ils": 1899750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "8",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1355750.0,
+        "proposed_list_price_ils": 1355750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "9",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1355750.0,
+        "proposed_list_price_ils": 1355750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "10",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1355750.0,
+        "proposed_list_price_ils": 1355750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "11",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1899750.0,
+        "proposed_list_price_ils": 1899750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "12",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1355750.0,
+        "proposed_list_price_ils": 1355750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "13",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1355750.0,
+        "proposed_list_price_ils": 1355750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "14",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1355750.0,
+        "proposed_list_price_ils": 1355750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "15",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1899750.0,
+        "proposed_list_price_ils": 1899750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "16",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1355750.0,
+        "proposed_list_price_ils": 1355750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "17",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1355750.0,
+        "proposed_list_price_ils": 1355750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "18",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1355750.0,
+        "proposed_list_price_ils": 1355750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "19",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1899750.0,
+        "proposed_list_price_ils": 1899750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "20",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1355750.0,
+        "proposed_list_price_ils": 1355750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "21",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1355750.0,
+        "proposed_list_price_ils": 1355750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "22",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1355750.0,
+        "proposed_list_price_ils": 1355750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "23",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1899750.0,
+        "proposed_list_price_ils": 1899750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "24",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1355750.0,
+        "proposed_list_price_ils": 1355750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "25",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1355750.0,
+        "proposed_list_price_ils": 1355750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "26",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1355750.0,
+        "proposed_list_price_ils": 1355750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "27",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1899750.0,
+        "proposed_list_price_ils": 1899750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "28",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1355750.0,
+        "proposed_list_price_ils": 1355750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "29",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1355750.0,
+        "proposed_list_price_ils": 1355750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "30",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1355750.0,
+        "proposed_list_price_ils": 1355750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "31",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1899750.0,
+        "proposed_list_price_ils": 1899750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "32",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1355750.0,
+        "proposed_list_price_ils": 1355750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "33",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1355750.0,
+        "proposed_list_price_ils": 1355750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "34",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1355750.0,
+        "proposed_list_price_ils": 1355750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "35",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1899750.0,
+        "proposed_list_price_ils": 1899750.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "36",
+        "family_key": "triplex|6r|255.2sqm",
+        "status": "manual_review",
+        "market_confidence": "insufficient",
+        "supported_range": {
+          "lower": null,
+          "upper": null
+        },
+        "commercial_base_price_ils": null,
+        "proposed_list_price_ils": null,
+        "adjustments": [],
+        "warnings": [
+          "special_unit_requires_individual_pricing_review",
+          "strategy_not_applied_to_manual_review_unit"
+        ],
+        "decision_trace": [
+          "Market engine requires individual pricing review; no automatic commercial price was created."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "37",
+        "family_key": "triplex|6r|260.1sqm",
+        "status": "manual_review",
+        "market_confidence": "insufficient",
+        "supported_range": {
+          "lower": null,
+          "upper": null
+        },
+        "commercial_base_price_ils": null,
+        "proposed_list_price_ils": null,
+        "adjustments": [],
+        "warnings": [
+          "special_unit_requires_individual_pricing_review",
+          "strategy_not_applied_to_manual_review_unit"
+        ],
+        "decision_trace": [
+          "Market engine requires individual pricing review; no automatic commercial price was created."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "38",
+        "family_key": "duplex|7r|170.1sqm",
+        "status": "manual_review",
+        "market_confidence": "insufficient",
+        "supported_range": {
+          "lower": null,
+          "upper": null
+        },
+        "commercial_base_price_ils": null,
+        "proposed_list_price_ils": null,
+        "adjustments": [],
+        "warnings": [
+          "special_unit_requires_individual_pricing_review",
+          "strategy_not_applied_to_manual_review_unit"
+        ],
+        "decision_trace": [
+          "Market engine requires individual pricing review; no automatic commercial price was created."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "39",
+        "family_key": "duplex|5r|158.6sqm",
+        "status": "manual_review",
+        "market_confidence": "insufficient",
+        "supported_range": {
+          "lower": null,
+          "upper": null
+        },
+        "commercial_base_price_ils": null,
+        "proposed_list_price_ils": null,
+        "adjustments": [],
+        "warnings": [
+          "special_unit_requires_individual_pricing_review",
+          "strategy_not_applied_to_manual_review_unit"
+        ],
+        "decision_trace": [
+          "Market engine requires individual pricing review; no automatic commercial price was created."
+        ],
+        "requires_review": true
+      }
+    ]
+  },
+  "impact": {
+    "baseline_strategy_name": "engineering_baseline_50pct_of_supported_range",
+    "scenario_strategy_name": "engineering_scenario_75pct_of_supported_range",
+    "changed_unit_count": 32,
+    "total_list_value_before_ils": 46128000.0,
+    "total_list_value_after_ils": 47736000.0,
+    "total_list_value_delta_ils": 1608000.0,
+    "units_outside_supported_range_before": 0,
+    "units_outside_supported_range_after": 0,
+    "manual_or_unpriced_before": 7,
+    "manual_or_unpriced_after": 7,
+    "unit_impacts": [
+      {
+        "unit_number": "1",
+        "baseline_price_ils": null,
+        "scenario_price_ils": null,
+        "delta_ils": null,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "2",
+        "baseline_price_ils": null,
+        "scenario_price_ils": null,
+        "delta_ils": null,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "3",
+        "baseline_price_ils": null,
+        "scenario_price_ils": null,
+        "delta_ils": null,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "4",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "5",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "6",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "7",
+        "baseline_price_ils": 1759500.0,
+        "scenario_price_ils": 1899750.0,
+        "delta_ils": 140250.0,
+        "baseline_requires_review": false,
+        "scenario_requires_review": false
+      },
+      {
+        "unit_number": "8",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "9",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "10",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "11",
+        "baseline_price_ils": 1759500.0,
+        "scenario_price_ils": 1899750.0,
+        "delta_ils": 140250.0,
+        "baseline_requires_review": false,
+        "scenario_requires_review": false
+      },
+      {
+        "unit_number": "12",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "13",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "14",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "15",
+        "baseline_price_ils": 1759500.0,
+        "scenario_price_ils": 1899750.0,
+        "delta_ils": 140250.0,
+        "baseline_requires_review": false,
+        "scenario_requires_review": false
+      },
+      {
+        "unit_number": "16",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "17",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "18",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "19",
+        "baseline_price_ils": 1759500.0,
+        "scenario_price_ils": 1899750.0,
+        "delta_ils": 140250.0,
+        "baseline_requires_review": false,
+        "scenario_requires_review": false
+      },
+      {
+        "unit_number": "20",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "21",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "22",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "23",
+        "baseline_price_ils": 1759500.0,
+        "scenario_price_ils": 1899750.0,
+        "delta_ils": 140250.0,
+        "baseline_requires_review": false,
+        "scenario_requires_review": false
+      },
+      {
+        "unit_number": "24",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "25",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "26",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "27",
+        "baseline_price_ils": 1759500.0,
+        "scenario_price_ils": 1899750.0,
+        "delta_ils": 140250.0,
+        "baseline_requires_review": false,
+        "scenario_requires_review": false
+      },
+      {
+        "unit_number": "28",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "29",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "30",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "31",
+        "baseline_price_ils": 1759500.0,
+        "scenario_price_ils": 1899750.0,
+        "delta_ils": 140250.0,
+        "baseline_requires_review": false,
+        "scenario_requires_review": false
+      },
+      {
+        "unit_number": "32",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "33",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "34",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "35",
+        "baseline_price_ils": 1759500.0,
+        "scenario_price_ils": 1899750.0,
+        "delta_ils": 140250.0,
+        "baseline_requires_review": false,
+        "scenario_requires_review": false
+      },
+      {
+        "unit_number": "36",
+        "baseline_price_ils": null,
+        "scenario_price_ils": null,
+        "delta_ils": null,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "37",
+        "baseline_price_ils": null,
+        "scenario_price_ils": null,
+        "delta_ils": null,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "38",
+        "baseline_price_ils": null,
+        "scenario_price_ils": null,
+        "delta_ils": null,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "39",
+        "baseline_price_ils": null,
+        "scenario_price_ils": null,
+        "delta_ils": null,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      }
+    ]
+  },
+  "locked_reprice": {
+    "pricing": {
+      "strategy": {
+        "name": "engineering_scenario_75pct_of_supported_range",
+        "basis": "market_range_position",
+        "range_position_pct": 75.0,
+        "competitor_reference_ils": null,
+        "competitor_reference_source_id": null,
+        "competitor_reference_name": null,
+        "competitor_delta_ils": 0.0,
+        "negotiation_buffer_ils": 0.0,
+        "floor_rule": null,
+        "minimum_price_ils": null,
+        "maximum_price_ils": null,
+        "source": "candidate_engineering_test_input",
+        "note": "Engineering validation only. This is not a Gabay strategy or recommendation."
+      },
+      "project_metrics": {
+        "priced_unit_count": 32,
+        "unpriced_or_manual_unit_count": 7,
+        "requires_review_count": 31,
+        "units_outside_supported_range": 0,
+        "total_proposed_list_value_ils": 47715750.0,
+        "average_price_by_family_ils": {
+          "standard_apartment|3r|69sqm": 1354906.0,
+          "standard_apartment|5r|111.1sqm": 1899750.0
+        }
+      },
+      "units": [
+        {
+          "unit_number": "1",
+          "family_key": "garden_apartment|3r|70.8sqm",
+          "status": "manual_review",
+          "market_confidence": "insufficient",
+          "supported_range": {
+            "lower": null,
+            "upper": null
+          },
+          "commercial_base_price_ils": null,
+          "proposed_list_price_ils": null,
+          "adjustments": [],
+          "warnings": [
+            "special_unit_requires_individual_pricing_review",
+            "strategy_not_applied_to_manual_review_unit"
+          ],
+          "decision_trace": [
+            "Market engine requires individual pricing review; no automatic commercial price was created."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "2",
+          "family_key": "garden_apartment|3r|65.6sqm",
+          "status": "manual_review",
+          "market_confidence": "insufficient",
+          "supported_range": {
+            "lower": null,
+            "upper": null
+          },
+          "commercial_base_price_ils": null,
+          "proposed_list_price_ils": null,
+          "adjustments": [],
+          "warnings": [
+            "special_unit_requires_individual_pricing_review",
+            "strategy_not_applied_to_manual_review_unit"
+          ],
+          "decision_trace": [
+            "Market engine requires individual pricing review; no automatic commercial price was created."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "3",
+          "family_key": "garden_apartment|2r|57sqm",
+          "status": "manual_review",
+          "market_confidence": "insufficient",
+          "supported_range": {
+            "lower": null,
+            "upper": null
+          },
+          "commercial_base_price_ils": null,
+          "proposed_list_price_ils": null,
+          "adjustments": [],
+          "warnings": [
+            "special_unit_requires_individual_pricing_review",
+            "strategy_not_applied_to_manual_review_unit"
+          ],
+          "decision_trace": [
+            "Market engine requires individual pricing review; no automatic commercial price was created."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "4",
+          "family_key": "standard_apartment|3r|69sqm",
+          "status": "priced",
+          "market_confidence": "low",
+          "supported_range": {
+            "lower": 1295000.0,
+            "upper": 1376000.0
+          },
+          "commercial_base_price_ils": 1355750.0,
+          "proposed_list_price_ils": 1355750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "5",
+          "family_key": "standard_apartment|3r|69sqm",
+          "status": "priced",
+          "market_confidence": "low",
+          "supported_range": {
+            "lower": 1295000.0,
+            "upper": 1376000.0
+          },
+          "commercial_base_price_ils": 1355750.0,
+          "proposed_list_price_ils": 1355750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "6",
+          "family_key": "standard_apartment|3r|69sqm",
+          "status": "priced",
+          "market_confidence": "low",
+          "supported_range": {
+            "lower": 1295000.0,
+            "upper": 1376000.0
+          },
+          "commercial_base_price_ils": 1355750.0,
+          "proposed_list_price_ils": 1355750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "7",
+          "family_key": "standard_apartment|5r|111.1sqm",
+          "status": "priced",
+          "market_confidence": "medium",
+          "supported_range": {
+            "lower": 1479000.0,
+            "upper": 2040000.0
+          },
+          "commercial_base_price_ils": 1899750.0,
+          "proposed_list_price_ils": 1899750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": false
+        },
+        {
+          "unit_number": "8",
+          "family_key": "standard_apartment|3r|69sqm",
+          "status": "priced",
+          "market_confidence": "low",
+          "supported_range": {
+            "lower": 1295000.0,
+            "upper": 1376000.0
+          },
+          "commercial_base_price_ils": 1355750.0,
+          "proposed_list_price_ils": 1355750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "9",
+          "family_key": "standard_apartment|3r|69sqm",
+          "status": "priced",
+          "market_confidence": "low",
+          "supported_range": {
+            "lower": 1295000.0,
+            "upper": 1376000.0
+          },
+          "commercial_base_price_ils": 1355750.0,
+          "proposed_list_price_ils": 1355750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "10",
+          "family_key": "standard_apartment|3r|69sqm",
+          "status": "priced",
+          "market_confidence": "low",
+          "supported_range": {
+            "lower": 1295000.0,
+            "upper": 1376000.0
+          },
+          "commercial_base_price_ils": 1355750.0,
+          "proposed_list_price_ils": 1355750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "11",
+          "family_key": "standard_apartment|5r|111.1sqm",
+          "status": "priced",
+          "market_confidence": "medium",
+          "supported_range": {
+            "lower": 1479000.0,
+            "upper": 2040000.0
+          },
+          "commercial_base_price_ils": 1899750.0,
+          "proposed_list_price_ils": 1899750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": false
+        },
+        {
+          "unit_number": "12",
+          "family_key": "standard_apartment|3r|69sqm",
+          "status": "priced",
+          "market_confidence": "low",
+          "supported_range": {
+            "lower": 1295000.0,
+            "upper": 1376000.0
+          },
+          "commercial_base_price_ils": 1355750.0,
+          "proposed_list_price_ils": 1355750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "13",
+          "family_key": "standard_apartment|3r|69sqm",
+          "status": "priced",
+          "market_confidence": "low",
+          "supported_range": {
+            "lower": 1295000.0,
+            "upper": 1376000.0
+          },
+          "commercial_base_price_ils": 1355750.0,
+          "proposed_list_price_ils": 1355750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "14",
+          "family_key": "standard_apartment|3r|69sqm",
+          "status": "priced",
+          "market_confidence": "low",
+          "supported_range": {
+            "lower": 1295000.0,
+            "upper": 1376000.0
+          },
+          "commercial_base_price_ils": 1355750.0,
+          "proposed_list_price_ils": 1355750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "15",
+          "family_key": "standard_apartment|5r|111.1sqm",
+          "status": "priced",
+          "market_confidence": "medium",
+          "supported_range": {
+            "lower": 1479000.0,
+            "upper": 2040000.0
+          },
+          "commercial_base_price_ils": 1899750.0,
+          "proposed_list_price_ils": 1899750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": false
+        },
+        {
+          "unit_number": "16",
+          "family_key": "standard_apartment|3r|69sqm",
+          "status": "priced",
+          "market_confidence": "low",
+          "supported_range": {
+            "lower": 1295000.0,
+            "upper": 1376000.0
+          },
+          "commercial_base_price_ils": 1355750.0,
+          "proposed_list_price_ils": 1355750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "17",
+          "family_key": "standard_apartment|3r|69sqm",
+          "status": "priced",
+          "market_confidence": "low",
+          "supported_range": {
+            "lower": 1295000.0,
+            "upper": 1376000.0
+          },
+          "commercial_base_price_ils": 1355750.0,
+          "proposed_list_price_ils": 1335500.0,
+          "adjustments": [
+            {
+              "kind": "manual_override",
+              "amount_ils": -20250.0,
+              "source": "manual_override",
+              "explanation": "Manual pricing decision. Reason: Engineering lock-preservation validation using the existing baseline price."
+            }
+          ],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+            "target_balcony_present_without_verified_monetary_adjustment",
+            "manual_price_override_applied"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval.",
+            "Manual override set unit price to 1,335,500 ILS; locked=True. Reason recorded."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "18",
+          "family_key": "standard_apartment|3r|69sqm",
+          "status": "priced",
+          "market_confidence": "low",
+          "supported_range": {
+            "lower": 1295000.0,
+            "upper": 1376000.0
+          },
+          "commercial_base_price_ils": 1355750.0,
+          "proposed_list_price_ils": 1355750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "19",
+          "family_key": "standard_apartment|5r|111.1sqm",
+          "status": "priced",
+          "market_confidence": "medium",
+          "supported_range": {
+            "lower": 1479000.0,
+            "upper": 2040000.0
+          },
+          "commercial_base_price_ils": 1899750.0,
+          "proposed_list_price_ils": 1899750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": false
+        },
+        {
+          "unit_number": "20",
+          "family_key": "standard_apartment|3r|69sqm",
+          "status": "priced",
+          "market_confidence": "low",
+          "supported_range": {
+            "lower": 1295000.0,
+            "upper": 1376000.0
+          },
+          "commercial_base_price_ils": 1355750.0,
+          "proposed_list_price_ils": 1355750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "21",
+          "family_key": "standard_apartment|3r|69sqm",
+          "status": "priced",
+          "market_confidence": "low",
+          "supported_range": {
+            "lower": 1295000.0,
+            "upper": 1376000.0
+          },
+          "commercial_base_price_ils": 1355750.0,
+          "proposed_list_price_ils": 1355750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "22",
+          "family_key": "standard_apartment|3r|69sqm",
+          "status": "priced",
+          "market_confidence": "low",
+          "supported_range": {
+            "lower": 1295000.0,
+            "upper": 1376000.0
+          },
+          "commercial_base_price_ils": 1355750.0,
+          "proposed_list_price_ils": 1355750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "23",
+          "family_key": "standard_apartment|5r|111.1sqm",
+          "status": "priced",
+          "market_confidence": "medium",
+          "supported_range": {
+            "lower": 1479000.0,
+            "upper": 2040000.0
+          },
+          "commercial_base_price_ils": 1899750.0,
+          "proposed_list_price_ils": 1899750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": false
+        },
+        {
+          "unit_number": "24",
+          "family_key": "standard_apartment|3r|69sqm",
+          "status": "priced",
+          "market_confidence": "low",
+          "supported_range": {
+            "lower": 1295000.0,
+            "upper": 1376000.0
+          },
+          "commercial_base_price_ils": 1355750.0,
+          "proposed_list_price_ils": 1355750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "25",
+          "family_key": "standard_apartment|3r|69sqm",
+          "status": "priced",
+          "market_confidence": "low",
+          "supported_range": {
+            "lower": 1295000.0,
+            "upper": 1376000.0
+          },
+          "commercial_base_price_ils": 1355750.0,
+          "proposed_list_price_ils": 1355750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "26",
+          "family_key": "standard_apartment|3r|69sqm",
+          "status": "priced",
+          "market_confidence": "low",
+          "supported_range": {
+            "lower": 1295000.0,
+            "upper": 1376000.0
+          },
+          "commercial_base_price_ils": 1355750.0,
+          "proposed_list_price_ils": 1355750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "27",
+          "family_key": "standard_apartment|5r|111.1sqm",
+          "status": "priced",
+          "market_confidence": "medium",
+          "supported_range": {
+            "lower": 1479000.0,
+            "upper": 2040000.0
+          },
+          "commercial_base_price_ils": 1899750.0,
+          "proposed_list_price_ils": 1899750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": false
+        },
+        {
+          "unit_number": "28",
+          "family_key": "standard_apartment|3r|69sqm",
+          "status": "priced",
+          "market_confidence": "low",
+          "supported_range": {
+            "lower": 1295000.0,
+            "upper": 1376000.0
+          },
+          "commercial_base_price_ils": 1355750.0,
+          "proposed_list_price_ils": 1355750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "29",
+          "family_key": "standard_apartment|3r|69sqm",
+          "status": "priced",
+          "market_confidence": "low",
+          "supported_range": {
+            "lower": 1295000.0,
+            "upper": 1376000.0
+          },
+          "commercial_base_price_ils": 1355750.0,
+          "proposed_list_price_ils": 1355750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "30",
+          "family_key": "standard_apartment|3r|69sqm",
+          "status": "priced",
+          "market_confidence": "low",
+          "supported_range": {
+            "lower": 1295000.0,
+            "upper": 1376000.0
+          },
+          "commercial_base_price_ils": 1355750.0,
+          "proposed_list_price_ils": 1355750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "31",
+          "family_key": "standard_apartment|5r|111.1sqm",
+          "status": "priced",
+          "market_confidence": "medium",
+          "supported_range": {
+            "lower": 1479000.0,
+            "upper": 2040000.0
+          },
+          "commercial_base_price_ils": 1899750.0,
+          "proposed_list_price_ils": 1899750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": false
+        },
+        {
+          "unit_number": "32",
+          "family_key": "standard_apartment|3r|69sqm",
+          "status": "priced",
+          "market_confidence": "low",
+          "supported_range": {
+            "lower": 1295000.0,
+            "upper": 1376000.0
+          },
+          "commercial_base_price_ils": 1355750.0,
+          "proposed_list_price_ils": 1355750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "33",
+          "family_key": "standard_apartment|3r|69sqm",
+          "status": "priced",
+          "market_confidence": "low",
+          "supported_range": {
+            "lower": 1295000.0,
+            "upper": 1376000.0
+          },
+          "commercial_base_price_ils": 1355750.0,
+          "proposed_list_price_ils": 1355750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "34",
+          "family_key": "standard_apartment|3r|69sqm",
+          "status": "priced",
+          "market_confidence": "low",
+          "supported_range": {
+            "lower": 1295000.0,
+            "upper": 1376000.0
+          },
+          "commercial_base_price_ils": 1355750.0,
+          "proposed_list_price_ils": 1355750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "35",
+          "family_key": "standard_apartment|5r|111.1sqm",
+          "status": "priced",
+          "market_confidence": "medium",
+          "supported_range": {
+            "lower": 1479000.0,
+            "upper": 2040000.0
+          },
+          "commercial_base_price_ils": 1899750.0,
+          "proposed_list_price_ils": 1899750.0,
+          "adjustments": [],
+          "warnings": [
+            "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+            "target_balcony_present_without_verified_monetary_adjustment"
+          ],
+          "decision_trace": [
+            "Commercial base selected at 75% of the supported market interval (0%=lower bound, 100%=upper bound).",
+            "Proposed list price remains inside the supported market interval."
+          ],
+          "requires_review": false
+        },
+        {
+          "unit_number": "36",
+          "family_key": "triplex|6r|255.2sqm",
+          "status": "manual_review",
+          "market_confidence": "insufficient",
+          "supported_range": {
+            "lower": null,
+            "upper": null
+          },
+          "commercial_base_price_ils": null,
+          "proposed_list_price_ils": null,
+          "adjustments": [],
+          "warnings": [
+            "special_unit_requires_individual_pricing_review",
+            "strategy_not_applied_to_manual_review_unit"
+          ],
+          "decision_trace": [
+            "Market engine requires individual pricing review; no automatic commercial price was created."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "37",
+          "family_key": "triplex|6r|260.1sqm",
+          "status": "manual_review",
+          "market_confidence": "insufficient",
+          "supported_range": {
+            "lower": null,
+            "upper": null
+          },
+          "commercial_base_price_ils": null,
+          "proposed_list_price_ils": null,
+          "adjustments": [],
+          "warnings": [
+            "special_unit_requires_individual_pricing_review",
+            "strategy_not_applied_to_manual_review_unit"
+          ],
+          "decision_trace": [
+            "Market engine requires individual pricing review; no automatic commercial price was created."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "38",
+          "family_key": "duplex|7r|170.1sqm",
+          "status": "manual_review",
+          "market_confidence": "insufficient",
+          "supported_range": {
+            "lower": null,
+            "upper": null
+          },
+          "commercial_base_price_ils": null,
+          "proposed_list_price_ils": null,
+          "adjustments": [],
+          "warnings": [
+            "special_unit_requires_individual_pricing_review",
+            "strategy_not_applied_to_manual_review_unit"
+          ],
+          "decision_trace": [
+            "Market engine requires individual pricing review; no automatic commercial price was created."
+          ],
+          "requires_review": true
+        },
+        {
+          "unit_number": "39",
+          "family_key": "duplex|5r|158.6sqm",
+          "status": "manual_review",
+          "market_confidence": "insufficient",
+          "supported_range": {
+            "lower": null,
+            "upper": null
+          },
+          "commercial_base_price_ils": null,
+          "proposed_list_price_ils": null,
+          "adjustments": [],
+          "warnings": [
+            "special_unit_requires_individual_pricing_review",
+            "strategy_not_applied_to_manual_review_unit"
+          ],
+          "decision_trace": [
+            "Market engine requires individual pricing review; no automatic commercial price was created."
+          ],
+          "requires_review": true
+        }
+      ]
+    },
+    "locked_units": [
+      "17"
+    ],
+    "overrides": [
+      {
+        "unit_number": "17",
+        "price_ils": 1335500.0,
+        "reason": "Engineering lock-preservation validation using the existing baseline price.",
+        "locked": true,
+        "created_by": "engineering_test",
+        "source": "manual_override"
+      }
+    ],
+    "audit_entries": [
+      {
+        "unit_number": "17",
+        "recommended_price_before_override_ils": 1355750.0,
+        "override_price_ils": 1335500.0,
+        "delta_ils": -20250.0,
+        "reason": "Engineering lock-preservation validation using the existing baseline price.",
+        "locked": true,
+        "created_by": "engineering_test",
+        "source": "manual_override"
+      }
+    ]
+  },
+  "locked_impact": {
+    "baseline_strategy_name": "engineering_baseline_50pct_of_supported_range",
+    "scenario_strategy_name": "engineering_scenario_75pct_of_supported_range",
+    "changed_unit_count": 31,
+    "total_list_value_before_ils": 46128000.0,
+    "total_list_value_after_ils": 47715750.0,
+    "total_list_value_delta_ils": 1587750.0,
+    "units_outside_supported_range_before": 0,
+    "units_outside_supported_range_after": 0,
+    "manual_or_unpriced_before": 7,
+    "manual_or_unpriced_after": 7,
+    "unit_impacts": [
+      {
+        "unit_number": "1",
+        "baseline_price_ils": null,
+        "scenario_price_ils": null,
+        "delta_ils": null,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "2",
+        "baseline_price_ils": null,
+        "scenario_price_ils": null,
+        "delta_ils": null,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "3",
+        "baseline_price_ils": null,
+        "scenario_price_ils": null,
+        "delta_ils": null,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "4",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "5",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "6",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "7",
+        "baseline_price_ils": 1759500.0,
+        "scenario_price_ils": 1899750.0,
+        "delta_ils": 140250.0,
+        "baseline_requires_review": false,
+        "scenario_requires_review": false
+      },
+      {
+        "unit_number": "8",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "9",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "10",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "11",
+        "baseline_price_ils": 1759500.0,
+        "scenario_price_ils": 1899750.0,
+        "delta_ils": 140250.0,
+        "baseline_requires_review": false,
+        "scenario_requires_review": false
+      },
+      {
+        "unit_number": "12",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "13",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "14",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "15",
+        "baseline_price_ils": 1759500.0,
+        "scenario_price_ils": 1899750.0,
+        "delta_ils": 140250.0,
+        "baseline_requires_review": false,
+        "scenario_requires_review": false
+      },
+      {
+        "unit_number": "16",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "17",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1335500.0,
+        "delta_ils": 0.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "18",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "19",
+        "baseline_price_ils": 1759500.0,
+        "scenario_price_ils": 1899750.0,
+        "delta_ils": 140250.0,
+        "baseline_requires_review": false,
+        "scenario_requires_review": false
+      },
+      {
+        "unit_number": "20",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "21",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "22",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "23",
+        "baseline_price_ils": 1759500.0,
+        "scenario_price_ils": 1899750.0,
+        "delta_ils": 140250.0,
+        "baseline_requires_review": false,
+        "scenario_requires_review": false
+      },
+      {
+        "unit_number": "24",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "25",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "26",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "27",
+        "baseline_price_ils": 1759500.0,
+        "scenario_price_ils": 1899750.0,
+        "delta_ils": 140250.0,
+        "baseline_requires_review": false,
+        "scenario_requires_review": false
+      },
+      {
+        "unit_number": "28",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "29",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "30",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "31",
+        "baseline_price_ils": 1759500.0,
+        "scenario_price_ils": 1899750.0,
+        "delta_ils": 140250.0,
+        "baseline_requires_review": false,
+        "scenario_requires_review": false
+      },
+      {
+        "unit_number": "32",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "33",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "34",
+        "baseline_price_ils": 1335500.0,
+        "scenario_price_ils": 1355750.0,
+        "delta_ils": 20250.0,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "35",
+        "baseline_price_ils": 1759500.0,
+        "scenario_price_ils": 1899750.0,
+        "delta_ils": 140250.0,
+        "baseline_requires_review": false,
+        "scenario_requires_review": false
+      },
+      {
+        "unit_number": "36",
+        "baseline_price_ils": null,
+        "scenario_price_ils": null,
+        "delta_ils": null,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "37",
+        "baseline_price_ils": null,
+        "scenario_price_ils": null,
+        "delta_ils": null,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "38",
+        "baseline_price_ils": null,
+        "scenario_price_ils": null,
+        "delta_ils": null,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      },
+      {
+        "unit_number": "39",
+        "baseline_price_ils": null,
+        "scenario_price_ils": null,
+        "delta_ils": null,
+        "baseline_requires_review": true,
+        "scenario_requires_review": true
+      }
+    ]
+  }
+}

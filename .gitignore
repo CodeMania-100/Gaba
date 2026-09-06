@@ -1,11 +1,24 @@
+# Python / gabay_pricing_core
 __pycache__/
 *.pyc
 *.db
 .venv/
+.venv-market/
+.venv-yad2/
+gabay_pricing_core/.venv/
+gabay_pricing_core/uvicorn.log
+gabay_pricing_core/data/raw/parcel_all.zip
+gabay_pricing_core/gabay_pricing.db
+gabay_pricing_core/qa_output_wine_city/
+gabay_pricing_core/qa_output_wine_city_5room/
+
+# Secrets
 .env
-uvicorn.log
-data/raw/parcel_all.zip
-gabay_pricing.db
-qa_output_wine_city/
-tests/
-qa_output_wine_city_5room/
+.env.local
+.env.*.local
+
+# Node / frontend
+frontend/node_modules/
+frontend/.next/
+frontend/*.tsbuildinfo
+frontend/*.log

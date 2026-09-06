@@ -1,0 +1,294 @@
+@'
+import json
+from pathlib import Path
+from collections import defaultdict
+from statistics import median
+
+
+SOLD_PATH = Path(
+    r"C:\Users\vpine\Desktop\RealEstate\gov_source_tests\wine_city_sold_5room_raw.json"
+)
+
+GIS_PATH = Path(
+    r"C:\Users\vpine\Desktop\RealEstate\gabay_pricing_core\data\diagnostics\three_room_program_overlap_parcels.json"
+)
+
+
+def num(v):
+    try:
+        return float(v)
+    except (TypeError, ValueError):
+        return None
+
+
+def integer(v):
+    try:
+        return int(float(v))
+    except (TypeError, ValueError):
+        return None
+
+
+sold = json.loads(
+    SOLD_PATH.read_text(encoding="utf-8")
+)
+
+gis = json.loads(
+    GIS_PATH.read_text(encoding="utf-8")
+)
+
+
+# ============================================================
+# Existing official program references
+# ============================================================
+
+official = {}
+
+for p in gis.get("parcels", []):
+
+    gush = integer(p.get("gush"))
+    helka = integer(p.get("helka"))
+
+    if gush is None or helka is None:
+        continue
+
+    prices = sorted({
+        float(project["PriceForMeter"])
+        for project in p.get("projects", [])
+        if isinstance(
+            project.get("PriceForMeter"),
+            (int, float),
+        )
+        and project["PriceForMeter"] > 0
+    })
+
+    official[(gush, helka)] = {
+        "prices": prices,
+        "projects": p.get("projects", []),
+    }
+
+
+# ============================================================
+# Exact 5-room local source, grouped by parcel
+# ============================================================
+
+by_parcel = defaultdict(list)
+
+usable_rows = 0
+
+for row in sold:
+
+    if num(row.get("rooms")) != 5:
+        continue
+
+    gush = integer(row.get("gush"))
+    helka = integer(row.get("helka"))
+
+    area = num(row.get("area"))
+    amount = num(row.get("dealAmount"))
+    ppsm = num(row.get("pricePerSqm"))
+
+    if (
+        gush is None
+        or helka is None
+        or area is None
+        or amount is None
+    ):
+        continue
+
+    if ppsm is None and area > 0:
+        ppsm = amount / area
+
+    if ppsm is None:
+        continue
+
+    usable_rows += 1
+
+    by_parcel[(gush, helka)].append({
+        "date": row.get("dealDate"),
+        "amount": amount,
+        "area": area,
+        "ppsm": ppsm,
+        "address": row.get("address"),
+        "floor": row.get("floor"),
+        "assetId": row.get("assetId"),
+        "lat": row.get("lat"),
+        "lng": row.get("lng"),
+    })
+
+
+print("=" * 95)
+print("STANDARD 5-ROOM LOCAL SOLD EVIDENCE — PARCEL CHECK")
+print("raw_rows:", len(sold))
+print("usable_5room_rows:", usable_rows)
+print("unique_parcels:", len(by_parcel))
+
+
+covered = 0
+not_covered = 0
+
+for key in by_parcel:
+
+    info = official.get(key)
+
+    if info and info["projects"]:
+        covered += 1
+    else:
+        not_covered += 1
+
+
+print("parcels_with_existing_program_GIS_reference:", covered)
+print("parcels_without_existing_program_GIS_reference:", not_covered)
+
+
+# ============================================================
+# Parcel-level structure
+# ============================================================
+
+print("\n" + "=" * 95)
+print("PARCEL PRICE STRUCTURE")
+
+
+for (gush, helka), rows in sorted(
+    by_parcel.items(),
+    key=lambda x: (-len(x[1]), x[0])
+):
+
+    prices = sorted(
+        r["ppsm"]
+        for r in rows
+    )
+
+    areas = sorted(
+        r["area"]
+        for r in rows
+    )
+
+    info = official.get(
+        (gush, helka)
+    )
+
+    official_prices = (
+        info["prices"]
+        if info
+        else []
+    )
+
+    print("\n" + "-" * 95)
+
+    print(
+        f"PARCEL {gush}/{helka}"
+    )
+
+    print(
+        "transactions:",
+        len(rows)
+    )
+
+    print(
+        "area_range:",
+        f"{min(areas):,.0f}",
+        "->",
+        f"{max(areas):,.0f}",
+        "m²"
+    )
+
+    print(
+        "ppsm_range:",
+        f"{min(prices):,.0f}",
+        "->",
+        f"{max(prices):,.0f}"
+    )
+
+    print(
+        "ppsm_median:",
+        f"{median(prices):,.0f}"
+    )
+
+
+    if official_prices:
+
+        print(
+            "official_program_ppsm:",
+            ", ".join(
+                f"{x:,.0f}"
+                for x in official_prices
+            )
+        )
+
+    else:
+
+        print(
+            "official_program_ppsm: NO EXISTING REFERENCE"
+        )
+
+
+    if len(prices) >= 2:
+
+        gaps = [
+            (
+                prices[i + 1] - prices[i],
+                prices[i],
+                prices[i + 1],
+            )
+            for i in range(
+                len(prices) - 1
+            )
+        ]
+
+        gap, lower, upper = max(
+            gaps,
+            key=lambda x: x[0]
+        )
+
+        print(
+            "largest_observed_gap:",
+            f"{gap:,.0f}",
+            "|",
+            f"{lower:,.0f}",
+            "->",
+            f"{upper:,.0f}"
+        )
+
+
+# ============================================================
+# Missing parcel references
+# ============================================================
+
+print("\n" + "=" * 95)
+print("PARCELS NEEDING 5-ROOM GIS RESOLUTION")
+
+missing = []
+
+for key, rows in by_parcel.items():
+
+    info = official.get(key)
+
+    if not info or not info["projects"]:
+
+        prices = [
+            r["ppsm"]
+            for r in rows
+        ]
+
+        missing.append(
+            (
+                len(rows),
+                key,
+                median(prices),
+            )
+        )
+
+
+for count, (gush, helka), med in sorted(
+    missing,
+    reverse=True
+):
+
+    print(
+        f"{gush}/{helka}",
+        "| tx",
+        count,
+        "| median_ppsm",
+        f"{med:,.0f}"
+    )
+'@ | .\.venv\Scripts\python.exe -

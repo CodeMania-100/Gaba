@@ -1,0 +1,2954 @@
+{
+  "disclaimer": "The assignment supplied no project location or Gabay internal pricing strategy. City Wine, Ashkelon is a candidate-selected demo market. The baseline 50% positions and the decision to anchor 3-room units to Afi are engineering scenario inputs only. The competitor evidence itself comes from the real collected market snapshot.",
+  "location": {
+    "city": "אשקלון",
+    "neighborhood": "עיר היין",
+    "latitude": 31.684216297625014,
+    "longitude": 34.59379980000001,
+    "source": "candidate_demo_neighborhood_centroid_from_current_listings"
+  },
+  "real_competitor_anchor_used_in_scenario": {
+    "project_name": "אפי בעיר היין, אשקלון",
+    "source_id": "היוצרים_61_אשקלון:0",
+    "observed_offer_price_ils": 1772000.0,
+    "observed_offer_area_sqm": 82.0,
+    "target_area_sqm": 69.0,
+    "transparent_target_area_indication_ils": 1491000.0,
+    "neighborhood": "עיר היין, אשקלון",
+    "distance_m": 683.2,
+    "warning": "Target-area indication uses observed price-per-sqm x target internal area; it is evidence normalization, not a claim of perfect linear pricing."
+  },
+  "baseline": {
+    "plan": {
+      "name": "engineering_family_baseline",
+      "source": "candidate_engineering_test_input",
+      "note": "50% range positions are engineering controls only; they are not Gabay strategy or recommended pricing.",
+      "family_decisions": [
+        {
+          "family_key": "standard_apartment|3r|69sqm",
+          "rationale": "Engineering baseline used only to prove family-level scenario mechanics.",
+          "source": "candidate_engineering_test_input",
+          "strategy": {
+            "name": "3-room baseline midpoint",
+            "basis": "market_range_position",
+            "range_position_pct": 50,
+            "competitor_reference_ils": null,
+            "competitor_reference_source_id": null,
+            "competitor_reference_name": null,
+            "competitor_delta_ils": 0.0,
+            "negotiation_buffer_ils": 0.0,
+            "floor_rule": null,
+            "minimum_price_ils": null,
+            "maximum_price_ils": null,
+            "source": "candidate_engineering_test_input",
+            "note": null
+          }
+        },
+        {
+          "family_key": "standard_apartment|5r|111.1sqm",
+          "rationale": "Engineering baseline used only to prove family-level scenario mechanics.",
+          "source": "candidate_engineering_test_input",
+          "strategy": {
+            "name": "5-room baseline midpoint",
+            "basis": "market_range_position",
+            "range_position_pct": 50,
+            "competitor_reference_ils": null,
+            "competitor_reference_source_id": null,
+            "competitor_reference_name": null,
+            "competitor_delta_ils": 0.0,
+            "negotiation_buffer_ils": 0.0,
+            "floor_rule": null,
+            "minimum_price_ils": null,
+            "maximum_price_ils": null,
+            "source": "candidate_engineering_test_input",
+            "note": null
+          }
+        }
+      ]
+    },
+    "project_metrics": {
+      "unit_count": 39,
+      "priced_unit_count": 32,
+      "manual_review_count": 7,
+      "strategy_required_count": 0,
+      "requires_review_count": 31,
+      "units_outside_supported_range": 0,
+      "total_proposed_list_value_ils": 46128000.0,
+      "family_count": 9,
+      "families_with_explicit_strategy": 2
+    },
+    "family_summaries": [
+      {
+        "family_key": "duplex|5r|158.6sqm",
+        "unit_numbers": [
+          "39"
+        ],
+        "strategy_name": null,
+        "strategy_basis": null,
+        "rationale": null,
+        "unit_count": 1,
+        "priced_unit_count": 0,
+        "review_unit_count": 1,
+        "strategy_required_count": 0,
+        "market_confidence_counts": {
+          "insufficient": 1
+        },
+        "supported_range_envelope_ils": {
+          "lower_min": null,
+          "lower_max": null,
+          "upper_min": null,
+          "upper_max": null
+        },
+        "average_proposed_price_ils": null,
+        "total_proposed_list_value_ils": 0.0,
+        "competitor_reference": null
+      },
+      {
+        "family_key": "duplex|7r|170.1sqm",
+        "unit_numbers": [
+          "38"
+        ],
+        "strategy_name": null,
+        "strategy_basis": null,
+        "rationale": null,
+        "unit_count": 1,
+        "priced_unit_count": 0,
+        "review_unit_count": 1,
+        "strategy_required_count": 0,
+        "market_confidence_counts": {
+          "insufficient": 1
+        },
+        "supported_range_envelope_ils": {
+          "lower_min": null,
+          "lower_max": null,
+          "upper_min": null,
+          "upper_max": null
+        },
+        "average_proposed_price_ils": null,
+        "total_proposed_list_value_ils": 0.0,
+        "competitor_reference": null
+      },
+      {
+        "family_key": "garden_apartment|2r|57sqm",
+        "unit_numbers": [
+          "3"
+        ],
+        "strategy_name": null,
+        "strategy_basis": null,
+        "rationale": null,
+        "unit_count": 1,
+        "priced_unit_count": 0,
+        "review_unit_count": 1,
+        "strategy_required_count": 0,
+        "market_confidence_counts": {
+          "insufficient": 1
+        },
+        "supported_range_envelope_ils": {
+          "lower_min": null,
+          "lower_max": null,
+          "upper_min": null,
+          "upper_max": null
+        },
+        "average_proposed_price_ils": null,
+        "total_proposed_list_value_ils": 0.0,
+        "competitor_reference": null
+      },
+      {
+        "family_key": "garden_apartment|3r|65.6sqm",
+        "unit_numbers": [
+          "2"
+        ],
+        "strategy_name": null,
+        "strategy_basis": null,
+        "rationale": null,
+        "unit_count": 1,
+        "priced_unit_count": 0,
+        "review_unit_count": 1,
+        "strategy_required_count": 0,
+        "market_confidence_counts": {
+          "insufficient": 1
+        },
+        "supported_range_envelope_ils": {
+          "lower_min": null,
+          "lower_max": null,
+          "upper_min": null,
+          "upper_max": null
+        },
+        "average_proposed_price_ils": null,
+        "total_proposed_list_value_ils": 0.0,
+        "competitor_reference": null
+      },
+      {
+        "family_key": "garden_apartment|3r|70.8sqm",
+        "unit_numbers": [
+          "1"
+        ],
+        "strategy_name": null,
+        "strategy_basis": null,
+        "rationale": null,
+        "unit_count": 1,
+        "priced_unit_count": 0,
+        "review_unit_count": 1,
+        "strategy_required_count": 0,
+        "market_confidence_counts": {
+          "insufficient": 1
+        },
+        "supported_range_envelope_ils": {
+          "lower_min": null,
+          "lower_max": null,
+          "upper_min": null,
+          "upper_max": null
+        },
+        "average_proposed_price_ils": null,
+        "total_proposed_list_value_ils": 0.0,
+        "competitor_reference": null
+      },
+      {
+        "family_key": "standard_apartment|3r|69sqm",
+        "unit_numbers": [
+          "4",
+          "5",
+          "6",
+          "8",
+          "9",
+          "10",
+          "12",
+          "13",
+          "14",
+          "16",
+          "17",
+          "18",
+          "20",
+          "21",
+          "22",
+          "24",
+          "25",
+          "26",
+          "28",
+          "29",
+          "30",
+          "32",
+          "33",
+          "34"
+        ],
+        "strategy_name": "3-room baseline midpoint",
+        "strategy_basis": "market_range_position",
+        "rationale": "Engineering baseline used only to prove family-level scenario mechanics.",
+        "unit_count": 24,
+        "priced_unit_count": 24,
+        "review_unit_count": 24,
+        "strategy_required_count": 0,
+        "market_confidence_counts": {
+          "low": 24
+        },
+        "supported_range_envelope_ils": {
+          "lower_min": 1295000.0,
+          "lower_max": 1295000.0,
+          "upper_min": 1376000.0,
+          "upper_max": 1376000.0
+        },
+        "average_proposed_price_ils": 1335500.0,
+        "total_proposed_list_value_ils": 32052000.0,
+        "competitor_reference": null
+      },
+      {
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "unit_numbers": [
+          "7",
+          "11",
+          "15",
+          "19",
+          "23",
+          "27",
+          "31",
+          "35"
+        ],
+        "strategy_name": "5-room baseline midpoint",
+        "strategy_basis": "market_range_position",
+        "rationale": "Engineering baseline used only to prove family-level scenario mechanics.",
+        "unit_count": 8,
+        "priced_unit_count": 8,
+        "review_unit_count": 0,
+        "strategy_required_count": 0,
+        "market_confidence_counts": {
+          "medium": 8
+        },
+        "supported_range_envelope_ils": {
+          "lower_min": 1479000.0,
+          "lower_max": 1479000.0,
+          "upper_min": 2040000.0,
+          "upper_max": 2040000.0
+        },
+        "average_proposed_price_ils": 1759500.0,
+        "total_proposed_list_value_ils": 14076000.0,
+        "competitor_reference": null
+      },
+      {
+        "family_key": "triplex|6r|255.2sqm",
+        "unit_numbers": [
+          "36"
+        ],
+        "strategy_name": null,
+        "strategy_basis": null,
+        "rationale": null,
+        "unit_count": 1,
+        "priced_unit_count": 0,
+        "review_unit_count": 1,
+        "strategy_required_count": 0,
+        "market_confidence_counts": {
+          "insufficient": 1
+        },
+        "supported_range_envelope_ils": {
+          "lower_min": null,
+          "lower_max": null,
+          "upper_min": null,
+          "upper_max": null
+        },
+        "average_proposed_price_ils": null,
+        "total_proposed_list_value_ils": 0.0,
+        "competitor_reference": null
+      },
+      {
+        "family_key": "triplex|6r|260.1sqm",
+        "unit_numbers": [
+          "37"
+        ],
+        "strategy_name": null,
+        "strategy_basis": null,
+        "rationale": null,
+        "unit_count": 1,
+        "priced_unit_count": 0,
+        "review_unit_count": 1,
+        "strategy_required_count": 0,
+        "market_confidence_counts": {
+          "insufficient": 1
+        },
+        "supported_range_envelope_ils": {
+          "lower_min": null,
+          "lower_max": null,
+          "upper_min": null,
+          "upper_max": null
+        },
+        "average_proposed_price_ils": null,
+        "total_proposed_list_value_ils": 0.0,
+        "competitor_reference": null
+      }
+    ],
+    "units": [
+      {
+        "unit_number": "1",
+        "family_key": "garden_apartment|3r|70.8sqm",
+        "status": "manual_review",
+        "market_confidence": "insufficient",
+        "supported_range": {
+          "lower": null,
+          "upper": null
+        },
+        "commercial_base_price_ils": null,
+        "proposed_list_price_ils": null,
+        "adjustments": [],
+        "warnings": [
+          "special_unit_requires_individual_pricing_review",
+          "family_strategy_not_applied_to_manual_review_unit"
+        ],
+        "decision_trace": [
+          "Market evidence routes this unit to individual pricing review; family strategy was not applied."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "2",
+        "family_key": "garden_apartment|3r|65.6sqm",
+        "status": "manual_review",
+        "market_confidence": "insufficient",
+        "supported_range": {
+          "lower": null,
+          "upper": null
+        },
+        "commercial_base_price_ils": null,
+        "proposed_list_price_ils": null,
+        "adjustments": [],
+        "warnings": [
+          "special_unit_requires_individual_pricing_review",
+          "family_strategy_not_applied_to_manual_review_unit"
+        ],
+        "decision_trace": [
+          "Market evidence routes this unit to individual pricing review; family strategy was not applied."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "3",
+        "family_key": "garden_apartment|2r|57sqm",
+        "status": "manual_review",
+        "market_confidence": "insufficient",
+        "supported_range": {
+          "lower": null,
+          "upper": null
+        },
+        "commercial_base_price_ils": null,
+        "proposed_list_price_ils": null,
+        "adjustments": [],
+        "warnings": [
+          "special_unit_requires_individual_pricing_review",
+          "family_strategy_not_applied_to_manual_review_unit"
+        ],
+        "decision_trace": [
+          "Market evidence routes this unit to individual pricing review; family strategy was not applied."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "4",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room baseline midpoint' selected for standard_apartment|3r|69sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "5",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room baseline midpoint' selected for standard_apartment|3r|69sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "6",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room baseline midpoint' selected for standard_apartment|3r|69sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "7",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1759500.0,
+        "proposed_list_price_ils": 1759500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '5-room baseline midpoint' selected for standard_apartment|5r|111.1sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "8",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room baseline midpoint' selected for standard_apartment|3r|69sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "9",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room baseline midpoint' selected for standard_apartment|3r|69sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "10",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room baseline midpoint' selected for standard_apartment|3r|69sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "11",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1759500.0,
+        "proposed_list_price_ils": 1759500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '5-room baseline midpoint' selected for standard_apartment|5r|111.1sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "12",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room baseline midpoint' selected for standard_apartment|3r|69sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "13",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room baseline midpoint' selected for standard_apartment|3r|69sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "14",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room baseline midpoint' selected for standard_apartment|3r|69sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "15",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1759500.0,
+        "proposed_list_price_ils": 1759500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '5-room baseline midpoint' selected for standard_apartment|5r|111.1sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "16",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room baseline midpoint' selected for standard_apartment|3r|69sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "17",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room baseline midpoint' selected for standard_apartment|3r|69sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "18",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room baseline midpoint' selected for standard_apartment|3r|69sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "19",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1759500.0,
+        "proposed_list_price_ils": 1759500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '5-room baseline midpoint' selected for standard_apartment|5r|111.1sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "20",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room baseline midpoint' selected for standard_apartment|3r|69sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "21",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room baseline midpoint' selected for standard_apartment|3r|69sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "22",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room baseline midpoint' selected for standard_apartment|3r|69sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "23",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1759500.0,
+        "proposed_list_price_ils": 1759500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '5-room baseline midpoint' selected for standard_apartment|5r|111.1sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "24",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room baseline midpoint' selected for standard_apartment|3r|69sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "25",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room baseline midpoint' selected for standard_apartment|3r|69sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "26",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room baseline midpoint' selected for standard_apartment|3r|69sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "27",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1759500.0,
+        "proposed_list_price_ils": 1759500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '5-room baseline midpoint' selected for standard_apartment|5r|111.1sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "28",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room baseline midpoint' selected for standard_apartment|3r|69sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "29",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room baseline midpoint' selected for standard_apartment|3r|69sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "30",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room baseline midpoint' selected for standard_apartment|3r|69sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "31",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1759500.0,
+        "proposed_list_price_ils": 1759500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '5-room baseline midpoint' selected for standard_apartment|5r|111.1sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "32",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room baseline midpoint' selected for standard_apartment|3r|69sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "33",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room baseline midpoint' selected for standard_apartment|3r|69sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "34",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1335500.0,
+        "proposed_list_price_ils": 1335500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room baseline midpoint' selected for standard_apartment|3r|69sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "35",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1759500.0,
+        "proposed_list_price_ils": 1759500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '5-room baseline midpoint' selected for standard_apartment|5r|111.1sqm. Rationale: Engineering baseline used only to prove family-level scenario mechanics.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "36",
+        "family_key": "triplex|6r|255.2sqm",
+        "status": "manual_review",
+        "market_confidence": "insufficient",
+        "supported_range": {
+          "lower": null,
+          "upper": null
+        },
+        "commercial_base_price_ils": null,
+        "proposed_list_price_ils": null,
+        "adjustments": [],
+        "warnings": [
+          "special_unit_requires_individual_pricing_review",
+          "family_strategy_not_applied_to_manual_review_unit"
+        ],
+        "decision_trace": [
+          "Market evidence routes this unit to individual pricing review; family strategy was not applied."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "37",
+        "family_key": "triplex|6r|260.1sqm",
+        "status": "manual_review",
+        "market_confidence": "insufficient",
+        "supported_range": {
+          "lower": null,
+          "upper": null
+        },
+        "commercial_base_price_ils": null,
+        "proposed_list_price_ils": null,
+        "adjustments": [],
+        "warnings": [
+          "special_unit_requires_individual_pricing_review",
+          "family_strategy_not_applied_to_manual_review_unit"
+        ],
+        "decision_trace": [
+          "Market evidence routes this unit to individual pricing review; family strategy was not applied."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "38",
+        "family_key": "duplex|7r|170.1sqm",
+        "status": "manual_review",
+        "market_confidence": "insufficient",
+        "supported_range": {
+          "lower": null,
+          "upper": null
+        },
+        "commercial_base_price_ils": null,
+        "proposed_list_price_ils": null,
+        "adjustments": [],
+        "warnings": [
+          "special_unit_requires_individual_pricing_review",
+          "family_strategy_not_applied_to_manual_review_unit"
+        ],
+        "decision_trace": [
+          "Market evidence routes this unit to individual pricing review; family strategy was not applied."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "39",
+        "family_key": "duplex|5r|158.6sqm",
+        "status": "manual_review",
+        "market_confidence": "insufficient",
+        "supported_range": {
+          "lower": null,
+          "upper": null
+        },
+        "commercial_base_price_ils": null,
+        "proposed_list_price_ils": null,
+        "adjustments": [],
+        "warnings": [
+          "special_unit_requires_individual_pricing_review",
+          "family_strategy_not_applied_to_manual_review_unit"
+        ],
+        "decision_trace": [
+          "Market evidence routes this unit to individual pricing review; family strategy was not applied."
+        ],
+        "requires_review": true
+      }
+    ]
+  },
+  "scenario": {
+    "plan": {
+      "name": "engineering_3room_competitor_anchor_scenario",
+      "source": "candidate_engineering_test_input",
+      "note": "Engineering scenario only. It demonstrates what the product reports if Marketing explicitly chooses to position the 3-room family against a real named competitor. It is not represented as Gabay strategy.",
+      "family_decisions": [
+        {
+          "family_key": "standard_apartment|3r|69sqm",
+          "rationale": "Demonstrate a deliberate Marketing decision to benchmark the 3-room family against the explicitly priced Afi City Wine offer. The reference value is the evidence engine's transparent target-area indication, not an invented competitor price.",
+          "source": "candidate_engineering_test_input",
+          "strategy": {
+            "name": "3-room explicit Afi competitor anchor",
+            "basis": "competitor_reference",
+            "range_position_pct": null,
+            "competitor_reference_ils": 1491000.0,
+            "competitor_reference_source_id": "היוצרים_61_אשקלון:0",
+            "competitor_reference_name": "אפי בעיר היין, אשקלון",
+            "competitor_delta_ils": 0,
+            "negotiation_buffer_ils": 0.0,
+            "floor_rule": null,
+            "minimum_price_ils": null,
+            "maximum_price_ils": null,
+            "source": "candidate_engineering_test_input",
+            "note": null
+          }
+        },
+        {
+          "family_key": "standard_apartment|5r|111.1sqm",
+          "rationale": "Hold the 5-room family unchanged so the scenario isolates the 3-room commercial decision.",
+          "source": "candidate_engineering_test_input",
+          "strategy": {
+            "name": "5-room unchanged baseline",
+            "basis": "market_range_position",
+            "range_position_pct": 50,
+            "competitor_reference_ils": null,
+            "competitor_reference_source_id": null,
+            "competitor_reference_name": null,
+            "competitor_delta_ils": 0.0,
+            "negotiation_buffer_ils": 0.0,
+            "floor_rule": null,
+            "minimum_price_ils": null,
+            "maximum_price_ils": null,
+            "source": "candidate_engineering_test_input",
+            "note": null
+          }
+        }
+      ]
+    },
+    "project_metrics": {
+      "unit_count": 39,
+      "priced_unit_count": 32,
+      "manual_review_count": 7,
+      "strategy_required_count": 0,
+      "requires_review_count": 31,
+      "units_outside_supported_range": 24,
+      "total_proposed_list_value_ils": 49860000.0,
+      "family_count": 9,
+      "families_with_explicit_strategy": 2
+    },
+    "family_summaries": [
+      {
+        "family_key": "duplex|5r|158.6sqm",
+        "unit_numbers": [
+          "39"
+        ],
+        "strategy_name": null,
+        "strategy_basis": null,
+        "rationale": null,
+        "unit_count": 1,
+        "priced_unit_count": 0,
+        "review_unit_count": 1,
+        "strategy_required_count": 0,
+        "market_confidence_counts": {
+          "insufficient": 1
+        },
+        "supported_range_envelope_ils": {
+          "lower_min": null,
+          "lower_max": null,
+          "upper_min": null,
+          "upper_max": null
+        },
+        "average_proposed_price_ils": null,
+        "total_proposed_list_value_ils": 0.0,
+        "competitor_reference": null
+      },
+      {
+        "family_key": "duplex|7r|170.1sqm",
+        "unit_numbers": [
+          "38"
+        ],
+        "strategy_name": null,
+        "strategy_basis": null,
+        "rationale": null,
+        "unit_count": 1,
+        "priced_unit_count": 0,
+        "review_unit_count": 1,
+        "strategy_required_count": 0,
+        "market_confidence_counts": {
+          "insufficient": 1
+        },
+        "supported_range_envelope_ils": {
+          "lower_min": null,
+          "lower_max": null,
+          "upper_min": null,
+          "upper_max": null
+        },
+        "average_proposed_price_ils": null,
+        "total_proposed_list_value_ils": 0.0,
+        "competitor_reference": null
+      },
+      {
+        "family_key": "garden_apartment|2r|57sqm",
+        "unit_numbers": [
+          "3"
+        ],
+        "strategy_name": null,
+        "strategy_basis": null,
+        "rationale": null,
+        "unit_count": 1,
+        "priced_unit_count": 0,
+        "review_unit_count": 1,
+        "strategy_required_count": 0,
+        "market_confidence_counts": {
+          "insufficient": 1
+        },
+        "supported_range_envelope_ils": {
+          "lower_min": null,
+          "lower_max": null,
+          "upper_min": null,
+          "upper_max": null
+        },
+        "average_proposed_price_ils": null,
+        "total_proposed_list_value_ils": 0.0,
+        "competitor_reference": null
+      },
+      {
+        "family_key": "garden_apartment|3r|65.6sqm",
+        "unit_numbers": [
+          "2"
+        ],
+        "strategy_name": null,
+        "strategy_basis": null,
+        "rationale": null,
+        "unit_count": 1,
+        "priced_unit_count": 0,
+        "review_unit_count": 1,
+        "strategy_required_count": 0,
+        "market_confidence_counts": {
+          "insufficient": 1
+        },
+        "supported_range_envelope_ils": {
+          "lower_min": null,
+          "lower_max": null,
+          "upper_min": null,
+          "upper_max": null
+        },
+        "average_proposed_price_ils": null,
+        "total_proposed_list_value_ils": 0.0,
+        "competitor_reference": null
+      },
+      {
+        "family_key": "garden_apartment|3r|70.8sqm",
+        "unit_numbers": [
+          "1"
+        ],
+        "strategy_name": null,
+        "strategy_basis": null,
+        "rationale": null,
+        "unit_count": 1,
+        "priced_unit_count": 0,
+        "review_unit_count": 1,
+        "strategy_required_count": 0,
+        "market_confidence_counts": {
+          "insufficient": 1
+        },
+        "supported_range_envelope_ils": {
+          "lower_min": null,
+          "lower_max": null,
+          "upper_min": null,
+          "upper_max": null
+        },
+        "average_proposed_price_ils": null,
+        "total_proposed_list_value_ils": 0.0,
+        "competitor_reference": null
+      },
+      {
+        "family_key": "standard_apartment|3r|69sqm",
+        "unit_numbers": [
+          "4",
+          "5",
+          "6",
+          "8",
+          "9",
+          "10",
+          "12",
+          "13",
+          "14",
+          "16",
+          "17",
+          "18",
+          "20",
+          "21",
+          "22",
+          "24",
+          "25",
+          "26",
+          "28",
+          "29",
+          "30",
+          "32",
+          "33",
+          "34"
+        ],
+        "strategy_name": "3-room explicit Afi competitor anchor",
+        "strategy_basis": "competitor_reference",
+        "rationale": "Demonstrate a deliberate Marketing decision to benchmark the 3-room family against the explicitly priced Afi City Wine offer. The reference value is the evidence engine's transparent target-area indication, not an invented competitor price.",
+        "unit_count": 24,
+        "priced_unit_count": 24,
+        "review_unit_count": 24,
+        "strategy_required_count": 0,
+        "market_confidence_counts": {
+          "low": 24
+        },
+        "supported_range_envelope_ils": {
+          "lower_min": 1295000.0,
+          "lower_max": 1295000.0,
+          "upper_min": 1376000.0,
+          "upper_max": 1376000.0
+        },
+        "average_proposed_price_ils": 1491000.0,
+        "total_proposed_list_value_ils": 35784000.0,
+        "competitor_reference": {
+          "source_id": "היוצרים_61_אשקלון:0",
+          "project_name": "אפי בעיר היין, אשקלון",
+          "evidence_role": "priced_offer_with_known_area",
+          "observed_price_ils": 1772000.0,
+          "target_equivalent_indication_ils": 1491000.0,
+          "area": 82.0,
+          "neighborhood": "עיר היין, אשקלון",
+          "source_url": null
+        }
+      },
+      {
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "unit_numbers": [
+          "7",
+          "11",
+          "15",
+          "19",
+          "23",
+          "27",
+          "31",
+          "35"
+        ],
+        "strategy_name": "5-room unchanged baseline",
+        "strategy_basis": "market_range_position",
+        "rationale": "Hold the 5-room family unchanged so the scenario isolates the 3-room commercial decision.",
+        "unit_count": 8,
+        "priced_unit_count": 8,
+        "review_unit_count": 0,
+        "strategy_required_count": 0,
+        "market_confidence_counts": {
+          "medium": 8
+        },
+        "supported_range_envelope_ils": {
+          "lower_min": 1479000.0,
+          "lower_max": 1479000.0,
+          "upper_min": 2040000.0,
+          "upper_max": 2040000.0
+        },
+        "average_proposed_price_ils": 1759500.0,
+        "total_proposed_list_value_ils": 14076000.0,
+        "competitor_reference": null
+      },
+      {
+        "family_key": "triplex|6r|255.2sqm",
+        "unit_numbers": [
+          "36"
+        ],
+        "strategy_name": null,
+        "strategy_basis": null,
+        "rationale": null,
+        "unit_count": 1,
+        "priced_unit_count": 0,
+        "review_unit_count": 1,
+        "strategy_required_count": 0,
+        "market_confidence_counts": {
+          "insufficient": 1
+        },
+        "supported_range_envelope_ils": {
+          "lower_min": null,
+          "lower_max": null,
+          "upper_min": null,
+          "upper_max": null
+        },
+        "average_proposed_price_ils": null,
+        "total_proposed_list_value_ils": 0.0,
+        "competitor_reference": null
+      },
+      {
+        "family_key": "triplex|6r|260.1sqm",
+        "unit_numbers": [
+          "37"
+        ],
+        "strategy_name": null,
+        "strategy_basis": null,
+        "rationale": null,
+        "unit_count": 1,
+        "priced_unit_count": 0,
+        "review_unit_count": 1,
+        "strategy_required_count": 0,
+        "market_confidence_counts": {
+          "insufficient": 1
+        },
+        "supported_range_envelope_ils": {
+          "lower_min": null,
+          "lower_max": null,
+          "upper_min": null,
+          "upper_max": null
+        },
+        "average_proposed_price_ils": null,
+        "total_proposed_list_value_ils": 0.0,
+        "competitor_reference": null
+      }
+    ],
+    "units": [
+      {
+        "unit_number": "1",
+        "family_key": "garden_apartment|3r|70.8sqm",
+        "status": "manual_review",
+        "market_confidence": "insufficient",
+        "supported_range": {
+          "lower": null,
+          "upper": null
+        },
+        "commercial_base_price_ils": null,
+        "proposed_list_price_ils": null,
+        "adjustments": [],
+        "warnings": [
+          "special_unit_requires_individual_pricing_review",
+          "family_strategy_not_applied_to_manual_review_unit"
+        ],
+        "decision_trace": [
+          "Market evidence routes this unit to individual pricing review; family strategy was not applied."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "2",
+        "family_key": "garden_apartment|3r|65.6sqm",
+        "status": "manual_review",
+        "market_confidence": "insufficient",
+        "supported_range": {
+          "lower": null,
+          "upper": null
+        },
+        "commercial_base_price_ils": null,
+        "proposed_list_price_ils": null,
+        "adjustments": [],
+        "warnings": [
+          "special_unit_requires_individual_pricing_review",
+          "family_strategy_not_applied_to_manual_review_unit"
+        ],
+        "decision_trace": [
+          "Market evidence routes this unit to individual pricing review; family strategy was not applied."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "3",
+        "family_key": "garden_apartment|2r|57sqm",
+        "status": "manual_review",
+        "market_confidence": "insufficient",
+        "supported_range": {
+          "lower": null,
+          "upper": null
+        },
+        "commercial_base_price_ils": null,
+        "proposed_list_price_ils": null,
+        "adjustments": [],
+        "warnings": [
+          "special_unit_requires_individual_pricing_review",
+          "family_strategy_not_applied_to_manual_review_unit"
+        ],
+        "decision_trace": [
+          "Market evidence routes this unit to individual pricing review; family strategy was not applied."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "4",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1491000.0,
+        "proposed_list_price_ils": 1491000.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment",
+          "proposed_list_price_outside_supported_market_range"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room explicit Afi competitor anchor' selected for standard_apartment|3r|69sqm. Rationale: Demonstrate a deliberate Marketing decision to benchmark the 3-room family against the explicitly priced Afi City Wine offer. The reference value is the evidence engine's transparent target-area indication, not an invented competitor price.",
+          "Commercial base uses the explicitly selected competitor evidence record היוצרים_61_אשקלון:0.",
+          "Commercial strategy moves the proposed list price outside the supported market interval; review is required."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "5",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1491000.0,
+        "proposed_list_price_ils": 1491000.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment",
+          "proposed_list_price_outside_supported_market_range"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room explicit Afi competitor anchor' selected for standard_apartment|3r|69sqm. Rationale: Demonstrate a deliberate Marketing decision to benchmark the 3-room family against the explicitly priced Afi City Wine offer. The reference value is the evidence engine's transparent target-area indication, not an invented competitor price.",
+          "Commercial base uses the explicitly selected competitor evidence record היוצרים_61_אשקלון:0.",
+          "Commercial strategy moves the proposed list price outside the supported market interval; review is required."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "6",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1491000.0,
+        "proposed_list_price_ils": 1491000.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment",
+          "proposed_list_price_outside_supported_market_range"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room explicit Afi competitor anchor' selected for standard_apartment|3r|69sqm. Rationale: Demonstrate a deliberate Marketing decision to benchmark the 3-room family against the explicitly priced Afi City Wine offer. The reference value is the evidence engine's transparent target-area indication, not an invented competitor price.",
+          "Commercial base uses the explicitly selected competitor evidence record היוצרים_61_אשקלון:0.",
+          "Commercial strategy moves the proposed list price outside the supported market interval; review is required."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "7",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1759500.0,
+        "proposed_list_price_ils": 1759500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '5-room unchanged baseline' selected for standard_apartment|5r|111.1sqm. Rationale: Hold the 5-room family unchanged so the scenario isolates the 3-room commercial decision.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "8",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1491000.0,
+        "proposed_list_price_ils": 1491000.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment",
+          "proposed_list_price_outside_supported_market_range"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room explicit Afi competitor anchor' selected for standard_apartment|3r|69sqm. Rationale: Demonstrate a deliberate Marketing decision to benchmark the 3-room family against the explicitly priced Afi City Wine offer. The reference value is the evidence engine's transparent target-area indication, not an invented competitor price.",
+          "Commercial base uses the explicitly selected competitor evidence record היוצרים_61_אשקלון:0.",
+          "Commercial strategy moves the proposed list price outside the supported market interval; review is required."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "9",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1491000.0,
+        "proposed_list_price_ils": 1491000.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment",
+          "proposed_list_price_outside_supported_market_range"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room explicit Afi competitor anchor' selected for standard_apartment|3r|69sqm. Rationale: Demonstrate a deliberate Marketing decision to benchmark the 3-room family against the explicitly priced Afi City Wine offer. The reference value is the evidence engine's transparent target-area indication, not an invented competitor price.",
+          "Commercial base uses the explicitly selected competitor evidence record היוצרים_61_אשקלון:0.",
+          "Commercial strategy moves the proposed list price outside the supported market interval; review is required."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "10",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1491000.0,
+        "proposed_list_price_ils": 1491000.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment",
+          "proposed_list_price_outside_supported_market_range"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room explicit Afi competitor anchor' selected for standard_apartment|3r|69sqm. Rationale: Demonstrate a deliberate Marketing decision to benchmark the 3-room family against the explicitly priced Afi City Wine offer. The reference value is the evidence engine's transparent target-area indication, not an invented competitor price.",
+          "Commercial base uses the explicitly selected competitor evidence record היוצרים_61_אשקלון:0.",
+          "Commercial strategy moves the proposed list price outside the supported market interval; review is required."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "11",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1759500.0,
+        "proposed_list_price_ils": 1759500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '5-room unchanged baseline' selected for standard_apartment|5r|111.1sqm. Rationale: Hold the 5-room family unchanged so the scenario isolates the 3-room commercial decision.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "12",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1491000.0,
+        "proposed_list_price_ils": 1491000.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment",
+          "proposed_list_price_outside_supported_market_range"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room explicit Afi competitor anchor' selected for standard_apartment|3r|69sqm. Rationale: Demonstrate a deliberate Marketing decision to benchmark the 3-room family against the explicitly priced Afi City Wine offer. The reference value is the evidence engine's transparent target-area indication, not an invented competitor price.",
+          "Commercial base uses the explicitly selected competitor evidence record היוצרים_61_אשקלון:0.",
+          "Commercial strategy moves the proposed list price outside the supported market interval; review is required."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "13",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1491000.0,
+        "proposed_list_price_ils": 1491000.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment",
+          "proposed_list_price_outside_supported_market_range"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room explicit Afi competitor anchor' selected for standard_apartment|3r|69sqm. Rationale: Demonstrate a deliberate Marketing decision to benchmark the 3-room family against the explicitly priced Afi City Wine offer. The reference value is the evidence engine's transparent target-area indication, not an invented competitor price.",
+          "Commercial base uses the explicitly selected competitor evidence record היוצרים_61_אשקלון:0.",
+          "Commercial strategy moves the proposed list price outside the supported market interval; review is required."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "14",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1491000.0,
+        "proposed_list_price_ils": 1491000.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment",
+          "proposed_list_price_outside_supported_market_range"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room explicit Afi competitor anchor' selected for standard_apartment|3r|69sqm. Rationale: Demonstrate a deliberate Marketing decision to benchmark the 3-room family against the explicitly priced Afi City Wine offer. The reference value is the evidence engine's transparent target-area indication, not an invented competitor price.",
+          "Commercial base uses the explicitly selected competitor evidence record היוצרים_61_אשקלון:0.",
+          "Commercial strategy moves the proposed list price outside the supported market interval; review is required."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "15",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1759500.0,
+        "proposed_list_price_ils": 1759500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '5-room unchanged baseline' selected for standard_apartment|5r|111.1sqm. Rationale: Hold the 5-room family unchanged so the scenario isolates the 3-room commercial decision.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "16",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1491000.0,
+        "proposed_list_price_ils": 1491000.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment",
+          "proposed_list_price_outside_supported_market_range"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room explicit Afi competitor anchor' selected for standard_apartment|3r|69sqm. Rationale: Demonstrate a deliberate Marketing decision to benchmark the 3-room family against the explicitly priced Afi City Wine offer. The reference value is the evidence engine's transparent target-area indication, not an invented competitor price.",
+          "Commercial base uses the explicitly selected competitor evidence record היוצרים_61_אשקלון:0.",
+          "Commercial strategy moves the proposed list price outside the supported market interval; review is required."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "17",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1491000.0,
+        "proposed_list_price_ils": 1491000.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment",
+          "proposed_list_price_outside_supported_market_range"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room explicit Afi competitor anchor' selected for standard_apartment|3r|69sqm. Rationale: Demonstrate a deliberate Marketing decision to benchmark the 3-room family against the explicitly priced Afi City Wine offer. The reference value is the evidence engine's transparent target-area indication, not an invented competitor price.",
+          "Commercial base uses the explicitly selected competitor evidence record היוצרים_61_אשקלון:0.",
+          "Commercial strategy moves the proposed list price outside the supported market interval; review is required."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "18",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1491000.0,
+        "proposed_list_price_ils": 1491000.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment",
+          "proposed_list_price_outside_supported_market_range"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room explicit Afi competitor anchor' selected for standard_apartment|3r|69sqm. Rationale: Demonstrate a deliberate Marketing decision to benchmark the 3-room family against the explicitly priced Afi City Wine offer. The reference value is the evidence engine's transparent target-area indication, not an invented competitor price.",
+          "Commercial base uses the explicitly selected competitor evidence record היוצרים_61_אשקלון:0.",
+          "Commercial strategy moves the proposed list price outside the supported market interval; review is required."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "19",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1759500.0,
+        "proposed_list_price_ils": 1759500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '5-room unchanged baseline' selected for standard_apartment|5r|111.1sqm. Rationale: Hold the 5-room family unchanged so the scenario isolates the 3-room commercial decision.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "20",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1491000.0,
+        "proposed_list_price_ils": 1491000.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment",
+          "proposed_list_price_outside_supported_market_range"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room explicit Afi competitor anchor' selected for standard_apartment|3r|69sqm. Rationale: Demonstrate a deliberate Marketing decision to benchmark the 3-room family against the explicitly priced Afi City Wine offer. The reference value is the evidence engine's transparent target-area indication, not an invented competitor price.",
+          "Commercial base uses the explicitly selected competitor evidence record היוצרים_61_אשקלון:0.",
+          "Commercial strategy moves the proposed list price outside the supported market interval; review is required."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "21",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1491000.0,
+        "proposed_list_price_ils": 1491000.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment",
+          "proposed_list_price_outside_supported_market_range"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room explicit Afi competitor anchor' selected for standard_apartment|3r|69sqm. Rationale: Demonstrate a deliberate Marketing decision to benchmark the 3-room family against the explicitly priced Afi City Wine offer. The reference value is the evidence engine's transparent target-area indication, not an invented competitor price.",
+          "Commercial base uses the explicitly selected competitor evidence record היוצרים_61_אשקלון:0.",
+          "Commercial strategy moves the proposed list price outside the supported market interval; review is required."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "22",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1491000.0,
+        "proposed_list_price_ils": 1491000.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment",
+          "proposed_list_price_outside_supported_market_range"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room explicit Afi competitor anchor' selected for standard_apartment|3r|69sqm. Rationale: Demonstrate a deliberate Marketing decision to benchmark the 3-room family against the explicitly priced Afi City Wine offer. The reference value is the evidence engine's transparent target-area indication, not an invented competitor price.",
+          "Commercial base uses the explicitly selected competitor evidence record היוצרים_61_אשקלון:0.",
+          "Commercial strategy moves the proposed list price outside the supported market interval; review is required."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "23",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1759500.0,
+        "proposed_list_price_ils": 1759500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '5-room unchanged baseline' selected for standard_apartment|5r|111.1sqm. Rationale: Hold the 5-room family unchanged so the scenario isolates the 3-room commercial decision.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "24",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1491000.0,
+        "proposed_list_price_ils": 1491000.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment",
+          "proposed_list_price_outside_supported_market_range"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room explicit Afi competitor anchor' selected for standard_apartment|3r|69sqm. Rationale: Demonstrate a deliberate Marketing decision to benchmark the 3-room family against the explicitly priced Afi City Wine offer. The reference value is the evidence engine's transparent target-area indication, not an invented competitor price.",
+          "Commercial base uses the explicitly selected competitor evidence record היוצרים_61_אשקלון:0.",
+          "Commercial strategy moves the proposed list price outside the supported market interval; review is required."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "25",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1491000.0,
+        "proposed_list_price_ils": 1491000.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment",
+          "proposed_list_price_outside_supported_market_range"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room explicit Afi competitor anchor' selected for standard_apartment|3r|69sqm. Rationale: Demonstrate a deliberate Marketing decision to benchmark the 3-room family against the explicitly priced Afi City Wine offer. The reference value is the evidence engine's transparent target-area indication, not an invented competitor price.",
+          "Commercial base uses the explicitly selected competitor evidence record היוצרים_61_אשקלון:0.",
+          "Commercial strategy moves the proposed list price outside the supported market interval; review is required."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "26",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1491000.0,
+        "proposed_list_price_ils": 1491000.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment",
+          "proposed_list_price_outside_supported_market_range"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room explicit Afi competitor anchor' selected for standard_apartment|3r|69sqm. Rationale: Demonstrate a deliberate Marketing decision to benchmark the 3-room family against the explicitly priced Afi City Wine offer. The reference value is the evidence engine's transparent target-area indication, not an invented competitor price.",
+          "Commercial base uses the explicitly selected competitor evidence record היוצרים_61_אשקלון:0.",
+          "Commercial strategy moves the proposed list price outside the supported market interval; review is required."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "27",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1759500.0,
+        "proposed_list_price_ils": 1759500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '5-room unchanged baseline' selected for standard_apartment|5r|111.1sqm. Rationale: Hold the 5-room family unchanged so the scenario isolates the 3-room commercial decision.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "28",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1491000.0,
+        "proposed_list_price_ils": 1491000.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment",
+          "proposed_list_price_outside_supported_market_range"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room explicit Afi competitor anchor' selected for standard_apartment|3r|69sqm. Rationale: Demonstrate a deliberate Marketing decision to benchmark the 3-room family against the explicitly priced Afi City Wine offer. The reference value is the evidence engine's transparent target-area indication, not an invented competitor price.",
+          "Commercial base uses the explicitly selected competitor evidence record היוצרים_61_אשקלון:0.",
+          "Commercial strategy moves the proposed list price outside the supported market interval; review is required."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "29",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1491000.0,
+        "proposed_list_price_ils": 1491000.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment",
+          "proposed_list_price_outside_supported_market_range"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room explicit Afi competitor anchor' selected for standard_apartment|3r|69sqm. Rationale: Demonstrate a deliberate Marketing decision to benchmark the 3-room family against the explicitly priced Afi City Wine offer. The reference value is the evidence engine's transparent target-area indication, not an invented competitor price.",
+          "Commercial base uses the explicitly selected competitor evidence record היוצרים_61_אשקלון:0.",
+          "Commercial strategy moves the proposed list price outside the supported market interval; review is required."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "30",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1491000.0,
+        "proposed_list_price_ils": 1491000.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment",
+          "proposed_list_price_outside_supported_market_range"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room explicit Afi competitor anchor' selected for standard_apartment|3r|69sqm. Rationale: Demonstrate a deliberate Marketing decision to benchmark the 3-room family against the explicitly priced Afi City Wine offer. The reference value is the evidence engine's transparent target-area indication, not an invented competitor price.",
+          "Commercial base uses the explicitly selected competitor evidence record היוצרים_61_אשקלון:0.",
+          "Commercial strategy moves the proposed list price outside the supported market interval; review is required."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "31",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1759500.0,
+        "proposed_list_price_ils": 1759500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '5-room unchanged baseline' selected for standard_apartment|5r|111.1sqm. Rationale: Hold the 5-room family unchanged so the scenario isolates the 3-room commercial decision.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "32",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1491000.0,
+        "proposed_list_price_ils": 1491000.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment",
+          "proposed_list_price_outside_supported_market_range"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room explicit Afi competitor anchor' selected for standard_apartment|3r|69sqm. Rationale: Demonstrate a deliberate Marketing decision to benchmark the 3-room family against the explicitly priced Afi City Wine offer. The reference value is the evidence engine's transparent target-area indication, not an invented competitor price.",
+          "Commercial base uses the explicitly selected competitor evidence record היוצרים_61_אשקלון:0.",
+          "Commercial strategy moves the proposed list price outside the supported market interval; review is required."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "33",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1491000.0,
+        "proposed_list_price_ils": 1491000.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment",
+          "proposed_list_price_outside_supported_market_range"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room explicit Afi competitor anchor' selected for standard_apartment|3r|69sqm. Rationale: Demonstrate a deliberate Marketing decision to benchmark the 3-room family against the explicitly priced Afi City Wine offer. The reference value is the evidence engine's transparent target-area indication, not an invented competitor price.",
+          "Commercial base uses the explicitly selected competitor evidence record היוצרים_61_אשקלון:0.",
+          "Commercial strategy moves the proposed list price outside the supported market interval; review is required."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "34",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "low",
+        "supported_range": {
+          "lower": 1295000.0,
+          "upper": 1376000.0
+        },
+        "commercial_base_price_ils": 1491000.0,
+        "proposed_list_price_ils": 1491000.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+          "target_balcony_present_without_verified_monetary_adjustment",
+          "proposed_list_price_outside_supported_market_range"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room explicit Afi competitor anchor' selected for standard_apartment|3r|69sqm. Rationale: Demonstrate a deliberate Marketing decision to benchmark the 3-room family against the explicitly priced Afi City Wine offer. The reference value is the evidence engine's transparent target-area indication, not an invented competitor price.",
+          "Commercial base uses the explicitly selected competitor evidence record היוצרים_61_אשקלון:0.",
+          "Commercial strategy moves the proposed list price outside the supported market interval; review is required."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "35",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "medium",
+        "supported_range": {
+          "lower": 1479000.0,
+          "upper": 2040000.0
+        },
+        "commercial_base_price_ils": 1759500.0,
+        "proposed_list_price_ils": 1759500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '5-room unchanged baseline' selected for standard_apartment|5r|111.1sqm. Rationale: Hold the 5-room family unchanged so the scenario isolates the 3-room commercial decision.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false
+      },
+      {
+        "unit_number": "36",
+        "family_key": "triplex|6r|255.2sqm",
+        "status": "manual_review",
+        "market_confidence": "insufficient",
+        "supported_range": {
+          "lower": null,
+          "upper": null
+        },
+        "commercial_base_price_ils": null,
+        "proposed_list_price_ils": null,
+        "adjustments": [],
+        "warnings": [
+          "special_unit_requires_individual_pricing_review",
+          "family_strategy_not_applied_to_manual_review_unit"
+        ],
+        "decision_trace": [
+          "Market evidence routes this unit to individual pricing review; family strategy was not applied."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "37",
+        "family_key": "triplex|6r|260.1sqm",
+        "status": "manual_review",
+        "market_confidence": "insufficient",
+        "supported_range": {
+          "lower": null,
+          "upper": null
+        },
+        "commercial_base_price_ils": null,
+        "proposed_list_price_ils": null,
+        "adjustments": [],
+        "warnings": [
+          "special_unit_requires_individual_pricing_review",
+          "family_strategy_not_applied_to_manual_review_unit"
+        ],
+        "decision_trace": [
+          "Market evidence routes this unit to individual pricing review; family strategy was not applied."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "38",
+        "family_key": "duplex|7r|170.1sqm",
+        "status": "manual_review",
+        "market_confidence": "insufficient",
+        "supported_range": {
+          "lower": null,
+          "upper": null
+        },
+        "commercial_base_price_ils": null,
+        "proposed_list_price_ils": null,
+        "adjustments": [],
+        "warnings": [
+          "special_unit_requires_individual_pricing_review",
+          "family_strategy_not_applied_to_manual_review_unit"
+        ],
+        "decision_trace": [
+          "Market evidence routes this unit to individual pricing review; family strategy was not applied."
+        ],
+        "requires_review": true
+      },
+      {
+        "unit_number": "39",
+        "family_key": "duplex|5r|158.6sqm",
+        "status": "manual_review",
+        "market_confidence": "insufficient",
+        "supported_range": {
+          "lower": null,
+          "upper": null
+        },
+        "commercial_base_price_ils": null,
+        "proposed_list_price_ils": null,
+        "adjustments": [],
+        "warnings": [
+          "special_unit_requires_individual_pricing_review",
+          "family_strategy_not_applied_to_manual_review_unit"
+        ],
+        "decision_trace": [
+          "Market evidence routes this unit to individual pricing review; family strategy was not applied."
+        ],
+        "requires_review": true
+      }
+    ]
+  },
+  "impact": {
+    "baseline_plan_name": "engineering_family_baseline",
+    "scenario_plan_name": "engineering_3room_competitor_anchor_scenario",
+    "changed_unit_count": 24,
+    "total_list_value_before_ils": 46128000.0,
+    "total_list_value_after_ils": 49860000.0,
+    "total_list_value_delta_ils": 3732000.0,
+    "review_units_before": 31,
+    "review_units_after": 31,
+    "strategy_required_before": 0,
+    "strategy_required_after": 0,
+    "family_impacts": [
+      {
+        "family_key": "duplex|5r|158.6sqm",
+        "changed_unit_count": 0,
+        "total_before_ils": 0.0,
+        "total_after_ils": 0.0,
+        "delta_ils": 0.0,
+        "average_before_ils": null,
+        "average_after_ils": null
+      },
+      {
+        "family_key": "duplex|7r|170.1sqm",
+        "changed_unit_count": 0,
+        "total_before_ils": 0.0,
+        "total_after_ils": 0.0,
+        "delta_ils": 0.0,
+        "average_before_ils": null,
+        "average_after_ils": null
+      },
+      {
+        "family_key": "garden_apartment|2r|57sqm",
+        "changed_unit_count": 0,
+        "total_before_ils": 0.0,
+        "total_after_ils": 0.0,
+        "delta_ils": 0.0,
+        "average_before_ils": null,
+        "average_after_ils": null
+      },
+      {
+        "family_key": "garden_apartment|3r|65.6sqm",
+        "changed_unit_count": 0,
+        "total_before_ils": 0.0,
+        "total_after_ils": 0.0,
+        "delta_ils": 0.0,
+        "average_before_ils": null,
+        "average_after_ils": null
+      },
+      {
+        "family_key": "garden_apartment|3r|70.8sqm",
+        "changed_unit_count": 0,
+        "total_before_ils": 0.0,
+        "total_after_ils": 0.0,
+        "delta_ils": 0.0,
+        "average_before_ils": null,
+        "average_after_ils": null
+      },
+      {
+        "family_key": "standard_apartment|3r|69sqm",
+        "changed_unit_count": 24,
+        "total_before_ils": 32052000.0,
+        "total_after_ils": 35784000.0,
+        "delta_ils": 3732000.0,
+        "average_before_ils": 1335500.0,
+        "average_after_ils": 1491000.0
+      },
+      {
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "changed_unit_count": 0,
+        "total_before_ils": 14076000.0,
+        "total_after_ils": 14076000.0,
+        "delta_ils": 0.0,
+        "average_before_ils": 1759500.0,
+        "average_after_ils": 1759500.0
+      },
+      {
+        "family_key": "triplex|6r|255.2sqm",
+        "changed_unit_count": 0,
+        "total_before_ils": 0.0,
+        "total_after_ils": 0.0,
+        "delta_ils": 0.0,
+        "average_before_ils": null,
+        "average_after_ils": null
+      },
+      {
+        "family_key": "triplex|6r|260.1sqm",
+        "changed_unit_count": 0,
+        "total_before_ils": 0.0,
+        "total_after_ils": 0.0,
+        "delta_ils": 0.0,
+        "average_before_ils": null,
+        "average_after_ils": null
+      }
+    ],
+    "unit_impacts": [
+      {
+        "unit_number": "1",
+        "family_key": "garden_apartment|3r|70.8sqm",
+        "before_ils": null,
+        "after_ils": null,
+        "delta_ils": null,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "2",
+        "family_key": "garden_apartment|3r|65.6sqm",
+        "before_ils": null,
+        "after_ils": null,
+        "delta_ils": null,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "3",
+        "family_key": "garden_apartment|2r|57sqm",
+        "before_ils": null,
+        "after_ils": null,
+        "delta_ils": null,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "4",
+        "family_key": "standard_apartment|3r|69sqm",
+        "before_ils": 1335500.0,
+        "after_ils": 1491000.0,
+        "delta_ils": 155500.0,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "5",
+        "family_key": "standard_apartment|3r|69sqm",
+        "before_ils": 1335500.0,
+        "after_ils": 1491000.0,
+        "delta_ils": 155500.0,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "6",
+        "family_key": "standard_apartment|3r|69sqm",
+        "before_ils": 1335500.0,
+        "after_ils": 1491000.0,
+        "delta_ils": 155500.0,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "7",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "before_ils": 1759500.0,
+        "after_ils": 1759500.0,
+        "delta_ils": 0.0,
+        "before_requires_review": false,
+        "after_requires_review": false
+      },
+      {
+        "unit_number": "8",
+        "family_key": "standard_apartment|3r|69sqm",
+        "before_ils": 1335500.0,
+        "after_ils": 1491000.0,
+        "delta_ils": 155500.0,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "9",
+        "family_key": "standard_apartment|3r|69sqm",
+        "before_ils": 1335500.0,
+        "after_ils": 1491000.0,
+        "delta_ils": 155500.0,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "10",
+        "family_key": "standard_apartment|3r|69sqm",
+        "before_ils": 1335500.0,
+        "after_ils": 1491000.0,
+        "delta_ils": 155500.0,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "11",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "before_ils": 1759500.0,
+        "after_ils": 1759500.0,
+        "delta_ils": 0.0,
+        "before_requires_review": false,
+        "after_requires_review": false
+      },
+      {
+        "unit_number": "12",
+        "family_key": "standard_apartment|3r|69sqm",
+        "before_ils": 1335500.0,
+        "after_ils": 1491000.0,
+        "delta_ils": 155500.0,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "13",
+        "family_key": "standard_apartment|3r|69sqm",
+        "before_ils": 1335500.0,
+        "after_ils": 1491000.0,
+        "delta_ils": 155500.0,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "14",
+        "family_key": "standard_apartment|3r|69sqm",
+        "before_ils": 1335500.0,
+        "after_ils": 1491000.0,
+        "delta_ils": 155500.0,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "15",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "before_ils": 1759500.0,
+        "after_ils": 1759500.0,
+        "delta_ils": 0.0,
+        "before_requires_review": false,
+        "after_requires_review": false
+      },
+      {
+        "unit_number": "16",
+        "family_key": "standard_apartment|3r|69sqm",
+        "before_ils": 1335500.0,
+        "after_ils": 1491000.0,
+        "delta_ils": 155500.0,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "17",
+        "family_key": "standard_apartment|3r|69sqm",
+        "before_ils": 1335500.0,
+        "after_ils": 1491000.0,
+        "delta_ils": 155500.0,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "18",
+        "family_key": "standard_apartment|3r|69sqm",
+        "before_ils": 1335500.0,
+        "after_ils": 1491000.0,
+        "delta_ils": 155500.0,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "19",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "before_ils": 1759500.0,
+        "after_ils": 1759500.0,
+        "delta_ils": 0.0,
+        "before_requires_review": false,
+        "after_requires_review": false
+      },
+      {
+        "unit_number": "20",
+        "family_key": "standard_apartment|3r|69sqm",
+        "before_ils": 1335500.0,
+        "after_ils": 1491000.0,
+        "delta_ils": 155500.0,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "21",
+        "family_key": "standard_apartment|3r|69sqm",
+        "before_ils": 1335500.0,
+        "after_ils": 1491000.0,
+        "delta_ils": 155500.0,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "22",
+        "family_key": "standard_apartment|3r|69sqm",
+        "before_ils": 1335500.0,
+        "after_ils": 1491000.0,
+        "delta_ils": 155500.0,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "23",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "before_ils": 1759500.0,
+        "after_ils": 1759500.0,
+        "delta_ils": 0.0,
+        "before_requires_review": false,
+        "after_requires_review": false
+      },
+      {
+        "unit_number": "24",
+        "family_key": "standard_apartment|3r|69sqm",
+        "before_ils": 1335500.0,
+        "after_ils": 1491000.0,
+        "delta_ils": 155500.0,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "25",
+        "family_key": "standard_apartment|3r|69sqm",
+        "before_ils": 1335500.0,
+        "after_ils": 1491000.0,
+        "delta_ils": 155500.0,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "26",
+        "family_key": "standard_apartment|3r|69sqm",
+        "before_ils": 1335500.0,
+        "after_ils": 1491000.0,
+        "delta_ils": 155500.0,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "27",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "before_ils": 1759500.0,
+        "after_ils": 1759500.0,
+        "delta_ils": 0.0,
+        "before_requires_review": false,
+        "after_requires_review": false
+      },
+      {
+        "unit_number": "28",
+        "family_key": "standard_apartment|3r|69sqm",
+        "before_ils": 1335500.0,
+        "after_ils": 1491000.0,
+        "delta_ils": 155500.0,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "29",
+        "family_key": "standard_apartment|3r|69sqm",
+        "before_ils": 1335500.0,
+        "after_ils": 1491000.0,
+        "delta_ils": 155500.0,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "30",
+        "family_key": "standard_apartment|3r|69sqm",
+        "before_ils": 1335500.0,
+        "after_ils": 1491000.0,
+        "delta_ils": 155500.0,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "31",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "before_ils": 1759500.0,
+        "after_ils": 1759500.0,
+        "delta_ils": 0.0,
+        "before_requires_review": false,
+        "after_requires_review": false
+      },
+      {
+        "unit_number": "32",
+        "family_key": "standard_apartment|3r|69sqm",
+        "before_ils": 1335500.0,
+        "after_ils": 1491000.0,
+        "delta_ils": 155500.0,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "33",
+        "family_key": "standard_apartment|3r|69sqm",
+        "before_ils": 1335500.0,
+        "after_ils": 1491000.0,
+        "delta_ils": 155500.0,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "34",
+        "family_key": "standard_apartment|3r|69sqm",
+        "before_ils": 1335500.0,
+        "after_ils": 1491000.0,
+        "delta_ils": 155500.0,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "35",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "before_ils": 1759500.0,
+        "after_ils": 1759500.0,
+        "delta_ils": 0.0,
+        "before_requires_review": false,
+        "after_requires_review": false
+      },
+      {
+        "unit_number": "36",
+        "family_key": "triplex|6r|255.2sqm",
+        "before_ils": null,
+        "after_ils": null,
+        "delta_ils": null,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "37",
+        "family_key": "triplex|6r|260.1sqm",
+        "before_ils": null,
+        "after_ils": null,
+        "delta_ils": null,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "38",
+        "family_key": "duplex|7r|170.1sqm",
+        "before_ils": null,
+        "after_ils": null,
+        "delta_ils": null,
+        "before_requires_review": true,
+        "after_requires_review": true
+      },
+      {
+        "unit_number": "39",
+        "family_key": "duplex|5r|158.6sqm",
+        "before_ils": null,
+        "after_ils": null,
+        "delta_ils": null,
+        "before_requires_review": true,
+        "after_requires_review": true
+      }
+    ]
+  }
+}

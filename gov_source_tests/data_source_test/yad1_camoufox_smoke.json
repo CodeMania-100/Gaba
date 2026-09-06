@@ -1,0 +1,23 @@
+[
+  {
+    "requestedUrl": "https://www.yad2.co.il/yad1/newprojects/south?area=21&category=1&city=7100",
+    "loadedUrl": "https://validate.perfdrive.com/ccb4768f5e2ea98586d13473d71efc83/?ssa=2d4cf549-168d-4e8e-9c49-d670bfa79d00&ssb=40619333483&ssc=https%3A%2F%2Fwww.yad2.co.il%2Fyad1%2Fnewprojects%2Fsouth%3Farea%3D21%26category%3D1%26city%3D7100&ssi=5f5bce73-bhcz-407f-b626-45d80c981dde&ssk=support@shieldsquare.com&ssm=92328571584298809106460384956132&ssn=50316b2be678756272bb947a4d8fc5246491a85dd447-3b22-45e0-96e2fe&sso=1278ef85-ae58ee44494b662b90b1150e0fc022ae49c5db9433284e0b&ssp=81279162571788525486178854775087462&ssq=67616454363314241148343631680284640224816&ssr=MjYwMDo0ODBhOjgwZDc6NTYwMDo3ODBiOjU4MTA6ZGFkMToyNDVj&sst=Mozilla/5.0%20(X11;%20Linux%20x86_64;%20rv:143.0)%20Gecko/20100101%20Firefox/143.0&ssu=WFFacHR0Tlp5VWxEU3BOdll3R0E0Wmc2ZWhkcG5lNjRTVklRNHVHdmd0MD0=&ssv=&ssw=&ssx=eyJfX3V6bWYiOiI3ZjkwMDBhODVkZDQ0Ny0zYjIyLTQ1ZTAtOWY4NS1hZTU4ZWU0NDQ5NGIxLTE3ODg1NDM2MzEzODMyMDcyLTAwNDg5NTdhYjkwNTk5ZTViZjIxMCIsInJkIjoieWFkMi5jby5pbCIsInV6bXgiOiI3ZmMwMDBjZWE4YTExZi0zYmU5LTRlN2ItOThiNS01MDFkNWY4YmMwYTExLTE3ODg1NDM2MzEzODMyMDcyLTAwMzc0YzI5ODg0M2ZkZGYwZTcxMyJ9",
+    "title": "Radware Bot Manager Block",
+    "bodyText": "מתנצלים,\nמסיבות אבטחה והגנה על האתר, לא נוכל להמשיך את פעולתך.\nIncident ID: 5f5bce73-bhcz-407f-b626-45d80c981dde",
+    "projectCount": 0,
+    "projectLinks": [],
+    "#error": false,
+    "#debug": {
+      "requestId": "RpuZKDU5DOd6UR9",
+      "url": "https://www.yad2.co.il/yad1/newprojects/south?area=21&category=1&city=7100",
+      "loadedUrl": "https://www.yad2.co.il/yad1/newprojects/south?area=21&category=1&city=7100",
+      "method": "GET",
+      "retryCount": 2,
+      "errorMessages": [
+        "Error: Request blocked - received 403 status code.\n    at PlaywrightCrawler._throwOnBlockedRequest (/home/myuser/node_modules/@crawlee/basic/internals/basic-crawler.js:954:19)\n    at PlaywrightCrawler._responseHandler (/home/myuser/node_modules/@crawlee/browser/internals/browser-crawler.js:396:22)\n    at PlaywrightCrawler._runRequestHandler (/home/myuser/node_modules/@crawlee/browser/internals/browser-crawler.js:271:24)\n    at async PlaywrightCrawler._runRequestHandler (/home/myuser/node_modules/@crawlee/playwright/internals/playwright-crawler.js:120:9)\n    at async wrap (/home/myuser/node_modules/@apify/timeout/cjs/index.cjs:56:21)",
+        "Error: Request blocked - received 403 status code.\n    at PlaywrightCrawler._throwOnBlockedRequest (/home/myuser/node_modules/@crawlee/basic/internals/basic-crawler.js:954:19)\n    at PlaywrightCrawler._responseHandler (/home/myuser/node_modules/@crawlee/browser/internals/browser-crawler.js:396:22)\n    at PlaywrightCrawler._runRequestHandler (/home/myuser/node_modules/@crawlee/browser/internals/browser-crawler.js:271:24)\n    at async PlaywrightCrawler._runRequestHandler (/home/myuser/node_modules/@crawlee/playwright/internals/playwright-crawler.js:120:9)\n    at async wrap (/home/myuser/node_modules/@apify/timeout/cjs/index.cjs:56:21)"
+      ],
+      "statusCode": 200
+    }
+  }
+]

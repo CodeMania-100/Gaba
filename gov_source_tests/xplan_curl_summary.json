@@ -1,0 +1,34 @@
+{
+  "test_point": {
+    "lat": 31.67666,
+    "lon": 34.59663
+  },
+  "total_feature_layers": 5,
+  "layers_with_nearby_data": [
+    {
+      "layer_id": 0,
+      "layer_name": "ישויות נקודתיות",
+      "matches": 50
+    },
+    {
+      "layer_id": 1,
+      "layer_name": "קוים כחולים-תכניות מקוונות",
+      "matches": 23
+    },
+    {
+      "layer_id": 2,
+      "layer_name": "ישויות קוויות",
+      "matches": 50
+    },
+    {
+      "layer_id": 3,
+      "layer_name": "ישויות פוליגונליות",
+      "matches": 50
+    },
+    {
+      "layer_id": 4,
+      "layer_name": "יעודי קרקע",
+      "matches": 50
+    }
+  ]
+}

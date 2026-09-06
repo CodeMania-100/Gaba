@@ -1,0 +1,524 @@
+{
+  "demo_disclaimer": "Assignment supplied no project location. City Wine, Ashkelon is a candidate-selected demo location; apartment mix is not represented as belonging to a real Gabay project.",
+  "target": {
+    "unit_number": "17",
+    "floor": 4,
+    "rooms": 3,
+    "internal_area": 69,
+    "balcony_area": 12,
+    "orientation": "מזרח",
+    "parking": null,
+    "storage": null,
+    "unit_type": "standard_apartment",
+    "notes": null
+  },
+  "target_location": {
+    "city": "אשקלון",
+    "neighborhood": "עיר היין",
+    "address": null,
+    "latitude": 31.684216297625014,
+    "longitude": 34.59379980000001,
+    "source": "candidate_demo_neighborhood_centroid_from_current_listings"
+  },
+  "market_range": {
+    "status": "consensus",
+    "confidence": "low",
+    "methodology": {
+      "version": "market-range-v1",
+      "sold_primary_lookback_months": 24,
+      "sold_fallback_lookback_months": 60,
+      "min_independent_sold_buildings": 2,
+      "min_independent_contributors_for_medium": 2,
+      "min_independent_contributors_for_high": 3
+    },
+    "target_unit_number": "17",
+    "target_internal_area": 69,
+    "supported_range": {
+      "lower": 1295000.0,
+      "upper": 1376000.0,
+      "support_lanes": [
+        "current_asking",
+        "sold"
+      ]
+    },
+    "lanes": {
+      "sold": {
+        "lane": "sold",
+        "confidence": "medium",
+        "range": {
+          "lower": 1295000.0,
+          "center": 1356000.0,
+          "upper": 1507000.0
+        },
+        "primary_contributor_count": 3,
+        "primary_contributors": [
+          {
+            "lane": "sold",
+            "group_key": "נחלה 32",
+            "source_ids": [
+              "11345387760"
+            ],
+            "observed_prices": [
+              1520000.0
+            ],
+            "observed_areas": [
+              81.0
+            ],
+            "representative_observed_price": 1520000.0,
+            "representative_observed_area": 81.0,
+            "representative_price_per_sqm": 18765.43,
+            "target_equivalent_indication": 1295000.0,
+            "newest_event_date": "2026-02-06",
+            "neighborhood": null,
+            "distance_m": 643.8,
+            "reasons": [
+              "independent_group_contribution",
+              "area_normalized_using_observed_price_per_sqm"
+            ]
+          },
+          {
+            "lane": "sold",
+            "group_key": "נחלה 7",
+            "source_ids": [
+              "11183068260",
+              "11186402940",
+              "11189999610",
+              "11252073240",
+              "11252756430",
+              "11260093590",
+              "11263118670",
+              "11263142430",
+              "11263160970",
+              "11267742330",
+              "11349281340",
+              "11349838890",
+              "11356029900",
+              "11356430310"
+            ],
+            "observed_prices": [
+              1680000.0,
+              1680000.0,
+              1750000.0,
+              1750000.0,
+              1720000.0,
+              1750000.0,
+              1826000.0,
+              1755000.0,
+              1750000.0,
+              1700000.0,
+              1760000.0,
+              1745000.0,
+              1740000.0,
+              1740000.0
+            ],
+            "observed_areas": [
+              80.0,
+              80.0,
+              80.0,
+              80.0,
+              80.0,
+              80.0,
+              80.0,
+              80.0,
+              80.0,
+              80.0,
+              80.0,
+              80.0,
+              80.0,
+              80.0
+            ],
+            "representative_observed_price": 1747500.0,
+            "representative_observed_area": 80.0,
+            "representative_price_per_sqm": 21843.75,
+            "target_equivalent_indication": 1507000.0,
+            "newest_event_date": "2026-07-21",
+            "neighborhood": null,
+            "distance_m": 888.9,
+            "reasons": [
+              "independent_group_contribution",
+              "area_normalized_using_observed_price_per_sqm"
+            ]
+          },
+          {
+            "lane": "sold",
+            "group_key": "נחלה 1",
+            "source_ids": [
+              "11355412950"
+            ],
+            "observed_prices": [
+              1670000.0
+            ],
+            "observed_areas": [
+              85.0
+            ],
+            "representative_observed_price": 1670000.0,
+            "representative_observed_area": 85.0,
+            "representative_price_per_sqm": 19647.06,
+            "target_equivalent_indication": 1356000.0,
+            "newest_event_date": "2026-06-15",
+            "neighborhood": null,
+            "distance_m": 999.2,
+            "reasons": [
+              "independent_group_contribution",
+              "area_normalized_using_observed_price_per_sqm"
+            ]
+          }
+        ],
+        "reference_records": [],
+        "warnings": [
+          "sold_neighborhood_labels_missing_but_source_run_is_target_neighborhood_scoped",
+          "target_area_outside_observed_area_envelope"
+        ],
+        "methodology_notes": [
+          "Each building contributes once, using the median observed price-per-sqm within the selected sale window.",
+          "Primary completed-sale lookback is 24 months; fallback is 60 months only when independent-building evidence is insufficient."
+        ],
+        "can_enter_consensus": true
+      },
+      "current_asking": {
+        "lane": "current_asking",
+        "confidence": "medium",
+        "range": {
+          "lower": 1200000.0,
+          "center": 1224000.0,
+          "upper": 1376000.0
+        },
+        "primary_contributor_count": 9,
+        "primary_contributors": [
+          {
+            "lane": "current_asking",
+            "group_key": "דוריף 36, אשקלון",
+            "source_ids": [
+              "5HdDAttmSZL"
+            ],
+            "observed_prices": [
+              1670000.0
+            ],
+            "observed_areas": [
+              92.0
+            ],
+            "representative_observed_price": 1670000.0,
+            "representative_observed_area": 92.0,
+            "representative_price_per_sqm": 18152.17,
+            "target_equivalent_indication": 1252000.0,
+            "newest_event_date": "2026-06-02",
+            "neighborhood": "עיר היין",
+            "distance_m": 111.1,
+            "reasons": [
+              "independent_group_contribution",
+              "area_normalized_using_observed_price_per_sqm"
+            ]
+          },
+          {
+            "lane": "current_asking",
+            "group_key": "שפיה 15, אשקלון",
+            "source_ids": [
+              "fqp4NnfvXv8"
+            ],
+            "observed_prices": [
+              1685000.0
+            ],
+            "observed_areas": [
+              95.0
+            ],
+            "representative_observed_price": 1685000.0,
+            "representative_observed_area": 95.0,
+            "representative_price_per_sqm": 17736.84,
+            "target_equivalent_indication": 1224000.0,
+            "newest_event_date": "2026-06-14",
+            "neighborhood": "עיר היין",
+            "distance_m": 355.2,
+            "reasons": [
+              "independent_group_contribution",
+              "area_normalized_using_observed_price_per_sqm"
+            ]
+          },
+          {
+            "lane": "current_asking",
+            "group_key": "דרך ארץ 10, אשקלון",
+            "source_ids": [
+              "p4dZZjb1Yfb"
+            ],
+            "observed_prices": [
+              1600000.0
+            ],
+            "observed_areas": [
+              92.0
+            ],
+            "representative_observed_price": 1600000.0,
+            "representative_observed_area": 92.0,
+            "representative_price_per_sqm": 17391.3,
+            "target_equivalent_indication": 1200000.0,
+            "newest_event_date": "2026-05-19",
+            "neighborhood": "עיר היין",
+            "distance_m": 383.1,
+            "reasons": [
+              "independent_group_contribution",
+              "area_normalized_using_observed_price_per_sqm"
+            ]
+          },
+          {
+            "lane": "current_asking",
+            "group_key": "ארגמן 10, אשקלון",
+            "source_ids": [
+              "pCnE9D9e957"
+            ],
+            "observed_prices": [
+              1700000.0
+            ],
+            "observed_areas": [
+              88.0
+            ],
+            "representative_observed_price": 1700000.0,
+            "representative_observed_area": 88.0,
+            "representative_price_per_sqm": 19318.18,
+            "target_equivalent_indication": 1333000.0,
+            "newest_event_date": "2026-08-25",
+            "neighborhood": "עיר היין",
+            "distance_m": 388.8,
+            "reasons": [
+              "independent_group_contribution",
+              "area_normalized_using_observed_price_per_sqm"
+            ]
+          },
+          {
+            "lane": "current_asking",
+            "group_key": "דרך ארץ 38, אשקלון",
+            "source_ids": [
+              "RTcDrMFuJMS"
+            ],
+            "observed_prices": [
+              1700000.0
+            ],
+            "observed_areas": [
+              92.0
+            ],
+            "representative_observed_price": 1700000.0,
+            "representative_observed_area": 92.0,
+            "representative_price_per_sqm": 18478.26,
+            "target_equivalent_indication": 1275000.0,
+            "newest_event_date": "2026-06-29",
+            "neighborhood": "עיר היין",
+            "distance_m": 445.2,
+            "reasons": [
+              "independent_group_contribution",
+              "area_normalized_using_observed_price_per_sqm"
+            ]
+          },
+          {
+            "lane": "current_asking",
+            "group_key": "דרך ארץ 44, אשקלון",
+            "source_ids": [
+              "kfTula92GJj"
+            ],
+            "observed_prices": [
+              1615000.0
+            ],
+            "observed_areas": [
+              81.0
+            ],
+            "representative_observed_price": 1615000.0,
+            "representative_observed_area": 81.0,
+            "representative_price_per_sqm": 19938.27,
+            "target_equivalent_indication": 1376000.0,
+            "newest_event_date": "2026-05-25",
+            "neighborhood": "עיר היין",
+            "distance_m": 546.7,
+            "reasons": [
+              "independent_group_contribution",
+              "area_normalized_using_observed_price_per_sqm"
+            ]
+          },
+          {
+            "lane": "current_asking",
+            "group_key": "נחלה 36, אשקלון",
+            "source_ids": [
+              "iyS35lGEX03"
+            ],
+            "observed_prices": [
+              1635000.0
+            ],
+            "observed_areas": [
+              93.0
+            ],
+            "representative_observed_price": 1635000.0,
+            "representative_observed_area": 93.0,
+            "representative_price_per_sqm": 17580.65,
+            "target_equivalent_indication": 1213000.0,
+            "newest_event_date": "2026-08-10",
+            "neighborhood": "עיר היין",
+            "distance_m": 603.6,
+            "reasons": [
+              "independent_group_contribution",
+              "area_normalized_using_observed_price_per_sqm"
+            ]
+          },
+          {
+            "lane": "current_asking",
+            "group_key": "היוצרים 40, אשקלון",
+            "source_ids": [
+              "wPPIlOjZKt5"
+            ],
+            "observed_prices": [
+              1600000.0
+            ],
+            "observed_areas": [
+              91.0
+            ],
+            "representative_observed_price": 1600000.0,
+            "representative_observed_area": 91.0,
+            "representative_price_per_sqm": 17582.42,
+            "target_equivalent_indication": 1213000.0,
+            "newest_event_date": "2026-07-21",
+            "neighborhood": "עיר היין",
+            "distance_m": 644.4,
+            "reasons": [
+              "independent_group_contribution",
+              "area_normalized_using_observed_price_per_sqm"
+            ]
+          },
+          {
+            "lane": "current_asking",
+            "group_key": "ארגמן 75, אשקלון",
+            "source_ids": [
+              "TEp23YPTOO9"
+            ],
+            "observed_prices": [
+              1650000.0
+            ],
+            "observed_areas": [
+              93.0
+            ],
+            "representative_observed_price": 1650000.0,
+            "representative_observed_area": 93.0,
+            "representative_price_per_sqm": 17741.94,
+            "target_equivalent_indication": 1224000.0,
+            "newest_event_date": "2026-05-31",
+            "neighborhood": "עיר היין",
+            "distance_m": 874.3,
+            "reasons": [
+              "independent_group_contribution",
+              "area_normalized_using_observed_price_per_sqm"
+            ]
+          }
+        ],
+        "reference_records": [],
+        "warnings": [
+          "target_area_outside_observed_area_envelope"
+        ],
+        "methodology_notes": [
+          "Current asking evidence uses exact normalized neighborhood matches when available."
+        ],
+        "can_enter_consensus": true
+      },
+      "new_development": {
+        "lane": "new_development",
+        "confidence": "low",
+        "range": {
+          "lower": 1491000.0,
+          "center": 1491000.0,
+          "upper": 1491000.0
+        },
+        "primary_contributor_count": 1,
+        "primary_contributors": [
+          {
+            "lane": "new_development",
+            "group_key": "אפי בעיר היין, אשקלון",
+            "source_ids": [
+              "היוצרים_61_אשקלון:0"
+            ],
+            "observed_prices": [
+              1772000.0
+            ],
+            "observed_areas": [
+              82.0
+            ],
+            "representative_observed_price": 1772000.0,
+            "representative_observed_area": 82.0,
+            "representative_price_per_sqm": 21609.76,
+            "target_equivalent_indication": 1491000.0,
+            "newest_event_date": null,
+            "neighborhood": "עיר היין, אשקלון",
+            "distance_m": 683.2,
+            "reasons": [
+              "independent_group_contribution",
+              "area_normalized_using_observed_price_per_sqm"
+            ]
+          }
+        ],
+        "reference_records": [
+          {
+            "lane": "new_development",
+            "source": "madlan_project",
+            "source_id": "אשקלון_מתחם_48:0",
+            "source_url": "https://www.madlan.co.il/projects/%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F_%D7%9E%D7%AA%D7%97%D7%9D_48",
+            "price": 1680000.0,
+            "rooms": 3.0,
+            "area": null,
+            "floor": null,
+            "property_type": "standard_apartment",
+            "latitude": 31.691238994527577,
+            "longitude": 34.59556929926041,
+            "event_date": null,
+            "project_name": "פרץ בוני הנגב בעיר היין, אשקלון",
+            "neighborhood": "עיר היין, אשקלון",
+            "address": "אריאל שרון 50",
+            "distance_m": 798.6,
+            "area_difference_pct": null,
+            "floor_difference": null,
+            "quality_status": "usable",
+            "reasons": []
+          },
+          {
+            "lane": "new_development",
+            "source": "madlan_project",
+            "source_id": "מתחם_ה_מתחם_74486_מגרש_109_אשקלון:0",
+            "source_url": "https://www.madlan.co.il/projects/%D7%9E%D7%AA%D7%97%D7%9D_%D7%94_%D7%9E%D7%AA%D7%97%D7%9D_74486_%D7%9E%D7%92%D7%A8%D7%A9_109_%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F",
+            "price": 1690000.0,
+            "rooms": 3.0,
+            "area": null,
+            "floor": null,
+            "property_type": "standard_apartment",
+            "latitude": 31.67493,
+            "longitude": 34.59457,
+            "event_date": null,
+            "project_name": "אייל פרץ ברמות",
+            "neighborhood": "רמות אשקלון, אשקלון",
+            "address": null,
+            "distance_m": 1035.2,
+            "area_difference_pct": null,
+            "floor_difference": null,
+            "quality_status": "usable",
+            "reasons": []
+          }
+        ],
+        "warnings": [
+          "new_development_offer_area_missing_reference_only",
+          "other_neighborhood_new_development_kept_as_reference",
+          "target_area_outside_observed_area_envelope"
+        ],
+        "methodology_notes": [
+          "Only explicitly priced unit offers are used.",
+          "Exact-neighborhood offers with known unit area can create target-equivalent indications.",
+          "Offers with missing area or from other neighborhoods remain visible as reference evidence and do not create a normalized range contribution."
+        ],
+        "can_enter_consensus": false
+      }
+    },
+    "warnings": [
+      "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+      "supported_range_requires_area_extrapolation_in_all_supporting_lanes",
+      "target_balcony_present_without_verified_monetary_adjustment"
+    ],
+    "assumptions": [
+      "Target-equivalent indications use observed price-per-sqm multiplied by the target INTERNAL area only when source area is known.",
+      "Balcony, orientation, parking, storage and floor are not assigned monetary premiums unless a verified company rule or market-derived adjustment is supplied.",
+      "Closed sales, current asking and new-development evidence remain separate; the supported range is based on overlap, not a weighted average.",
+      "Project/unit offers with missing area remain visible as reference evidence but do not create an area-normalized target indication."
+    ],
+    "decision_notes": [
+      "The supported range is the overlap shared by independent evidence lanes; no numerical source weights are applied.",
+      "The overlap is directionally useful but is not directly observed at the target unit size; manual pricing review is recommended."
+    ]
+  }
+}

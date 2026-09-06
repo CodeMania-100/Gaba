@@ -1,0 +1,397 @@
+[
+  {
+    "parcel": "1196-79",
+    "records": 37,
+    "gap_pct": 0.7532478632478632,
+    "gap_abs_ppsm": 8813.0,
+    "low_count": 28,
+    "high_count": 9,
+    "low_median_ppsm": 11375.0,
+    "high_median_ppsm": 21051.0,
+    "low_ppsm_max": 11700.0,
+    "high_ppsm_min": 20513.0,
+    "low_area_min": 77.0,
+    "low_area_max": 100.0,
+    "high_area_min": 78.0,
+    "high_area_max": 78.0,
+    "area_range_overlap": true,
+    "exact_area_overlap": [
+      78.0
+    ],
+    "address_overlap": [
+      "ניר עוז 14"
+    ],
+    "low_years": [
+      "2026",
+      "2029"
+    ],
+    "high_years": [
+      "2026",
+      "2029"
+    ],
+    "low_first_hand": {
+      "None": 14,
+      "True": 14
+    },
+    "high_first_hand": {
+      "True": 5,
+      "None": 4
+    }
+  },
+  {
+    "parcel": "1197-93",
+    "records": 45,
+    "gap_pct": 0.7299040828452592,
+    "gap_abs_ppsm": 8599.0,
+    "low_count": 33,
+    "high_count": 12,
+    "low_median_ppsm": 11098.0,
+    "high_median_ppsm": 20633.0,
+    "low_ppsm_max": 11781.0,
+    "high_ppsm_min": 20380.0,
+    "low_area_min": 78.0,
+    "low_area_max": 105.0,
+    "high_area_min": 79.0,
+    "high_area_max": 79.0,
+    "area_range_overlap": true,
+    "exact_area_overlap": [],
+    "address_overlap": [
+      "הרב יוסף שרביט 5"
+    ],
+    "low_years": [
+      "2030"
+    ],
+    "high_years": [
+      "2030"
+    ],
+    "low_first_hand": {
+      "None": 17,
+      "True": 16
+    },
+    "high_first_hand": {
+      "None": 7,
+      "True": 5
+    }
+  },
+  {
+    "parcel": "362-99",
+    "records": 6,
+    "gap_pct": 0.09061008940566073,
+    "gap_abs_ppsm": 1956.0,
+    "low_count": 3,
+    "high_count": 3,
+    "low_median_ppsm": 21337.0,
+    "high_median_ppsm": 23778.0,
+    "low_ppsm_max": 21587.0,
+    "high_ppsm_min": 23543.0,
+    "low_area_min": 80.0,
+    "low_area_max": 80.0,
+    "high_area_min": 81.0,
+    "high_area_max": 81.0,
+    "area_range_overlap": false,
+    "exact_area_overlap": [],
+    "address_overlap": [
+      "היינן 17"
+    ],
+    "low_years": [
+      "2023",
+      "2025"
+    ],
+    "high_years": [
+      "2023",
+      "2025"
+    ],
+    "low_first_hand": {
+      "None": 2,
+      "True": 1
+    },
+    "high_first_hand": {
+      "None": 2,
+      "True": 1
+    }
+  },
+  {
+    "parcel": "1200-72",
+    "records": 6,
+    "gap_pct": 0.04166666666666674,
+    "gap_abs_ppsm": 875.0,
+    "low_count": 3,
+    "high_count": 3,
+    "low_median_ppsm": 21000.0,
+    "high_median_ppsm": 21875.0,
+    "low_ppsm_max": 21000.0,
+    "high_ppsm_min": 21875.0,
+    "low_area_min": 80.0,
+    "low_area_max": 80.0,
+    "high_area_min": 80.0,
+    "high_area_max": 80.0,
+    "area_range_overlap": true,
+    "exact_area_overlap": [
+      80.0
+    ],
+    "address_overlap": [
+      "נחלה 7"
+    ],
+    "low_years": [
+      "2027"
+    ],
+    "high_years": [
+      "2027"
+    ],
+    "low_first_hand": {
+      "None": 3
+    },
+    "high_first_hand": {
+      "None": 2,
+      "True": 1
+    }
+  },
+  {
+    "parcel": "1241-91",
+    "records": 7,
+    "gap_pct": 0.022108458297467548,
+    "gap_abs_ppsm": 488.0,
+    "low_count": 3,
+    "high_count": 4,
+    "low_median_ppsm": 22073.0,
+    "high_median_ppsm": 22713.5,
+    "low_ppsm_max": 22073.0,
+    "high_ppsm_min": 22561.0,
+    "low_area_min": 82.0,
+    "low_area_max": 82.0,
+    "high_area_min": 82.0,
+    "high_area_max": 82.0,
+    "area_range_overlap": true,
+    "exact_area_overlap": [
+      82.0
+    ],
+    "address_overlap": [
+      "צפניה 25"
+    ],
+    "low_years": [
+      "2024"
+    ],
+    "high_years": [
+      "2024"
+    ],
+    "low_first_hand": {
+      "None": 2,
+      "True": 1
+    },
+    "high_first_hand": {
+      "None": 2,
+      "True": 2
+    }
+  },
+  {
+    "parcel": "1196-100",
+    "records": 16,
+    "gap_pct": 0.013097406540029555,
+    "gap_abs_ppsm": 151.0,
+    "low_count": 10,
+    "high_count": 6,
+    "low_median_ppsm": 11444.0,
+    "high_median_ppsm": 11693.5,
+    "low_ppsm_max": 11529.0,
+    "high_ppsm_min": 11680.0,
+    "low_area_min": 77.0,
+    "low_area_max": 78.0,
+    "high_area_min": 77.0,
+    "high_area_max": 77.0,
+    "area_range_overlap": true,
+    "exact_area_overlap": [
+      77.0
+    ],
+    "address_overlap": [],
+    "low_years": [
+      "2028"
+    ],
+    "high_years": [],
+    "low_first_hand": {
+      "True": 9,
+      "None": 1
+    },
+    "high_first_hand": {
+      "True": 6
+    }
+  },
+  {
+    "parcel": "1197-87",
+    "records": 8,
+    "gap_pct": 0.009404241312832129,
+    "gap_abs_ppsm": 200.0,
+    "low_count": 4,
+    "high_count": 4,
+    "low_median_ppsm": 21267.0,
+    "high_median_ppsm": 22727.0,
+    "low_ppsm_max": 21267.0,
+    "high_ppsm_min": 21467.0,
+    "low_area_min": 75.0,
+    "low_area_max": 75.0,
+    "high_area_min": 75.0,
+    "high_area_max": 75.0,
+    "area_range_overlap": true,
+    "exact_area_overlap": [
+      75.0
+    ],
+    "address_overlap": [
+      "הרב יוסף שרביט 7"
+    ],
+    "low_years": [
+      "2024"
+    ],
+    "high_years": [
+      "2024"
+    ],
+    "low_first_hand": {
+      "None": 3,
+      "True": 1
+    },
+    "high_first_hand": {
+      "True": 2,
+      "None": 2
+    }
+  },
+  {
+    "parcel": "1197-82",
+    "records": 22,
+    "gap_pct": 0.004998729136660218,
+    "gap_abs_ppsm": 59.0,
+    "low_count": 19,
+    "high_count": 3,
+    "low_median_ppsm": 11643.0,
+    "high_median_ppsm": 21299.0,
+    "low_ppsm_max": 11803.0,
+    "high_ppsm_min": 11862.0,
+    "low_area_min": 77.0,
+    "low_area_max": 77.0,
+    "high_area_min": 77.0,
+    "high_area_max": 77.0,
+    "area_range_overlap": true,
+    "exact_area_overlap": [
+      77.0
+    ],
+    "address_overlap": [],
+    "low_years": [
+      "2029"
+    ],
+    "high_years": [
+      "2029",
+      "2030"
+    ],
+    "low_first_hand": {
+      "None": 9,
+      "True": 10
+    },
+    "high_first_hand": {
+      "True": 1,
+      "None": 2
+    }
+  },
+  {
+    "parcel": "1197-78",
+    "records": 15,
+    "gap_pct": 0.0032986111111110716,
+    "gap_abs_ppsm": 38.0,
+    "low_count": 8,
+    "high_count": 7,
+    "low_median_ppsm": 11487.5,
+    "high_median_ppsm": 11578.0,
+    "low_ppsm_max": 11520.0,
+    "high_ppsm_min": 11558.0,
+    "low_area_min": 76.0,
+    "low_area_max": 78.0,
+    "high_area_min": 76.0,
+    "high_area_max": 78.0,
+    "area_range_overlap": true,
+    "exact_area_overlap": [
+      76.0,
+      78.0
+    ],
+    "address_overlap": [],
+    "low_years": [
+      "2029"
+    ],
+    "high_years": [
+      "2029"
+    ],
+    "low_first_hand": {
+      "None": 5,
+      "True": 3
+    },
+    "high_first_hand": {
+      "True": 6,
+      "None": 1
+    }
+  },
+  {
+    "parcel": "1197-81",
+    "records": 6,
+    "gap_pct": 0.003107520198881275,
+    "gap_abs_ppsm": 35.0,
+    "low_count": 3,
+    "high_count": 3,
+    "low_median_ppsm": 11217.0,
+    "high_median_ppsm": 11481.0,
+    "low_ppsm_max": 11263.0,
+    "high_ppsm_min": 11298.0,
+    "low_area_min": 82.0,
+    "low_area_max": 82.0,
+    "high_area_min": 82.0,
+    "high_area_max": 82.0,
+    "area_range_overlap": true,
+    "exact_area_overlap": [
+      82.0
+    ],
+    "address_overlap": [],
+    "low_years": [
+      "2028"
+    ],
+    "high_years": [
+      "2028"
+    ],
+    "low_first_hand": {
+      "None": 3
+    },
+    "high_first_hand": {
+      "True": 1,
+      "None": 2
+    }
+  },
+  {
+    "parcel": "1199-66",
+    "records": 15,
+    "gap_pct": 0.00205724508050098,
+    "gap_abs_ppsm": 23.0,
+    "low_count": 4,
+    "high_count": 11,
+    "low_median_ppsm": 11162.5,
+    "high_median_ppsm": 11230.0,
+    "low_ppsm_max": 11180.0,
+    "high_ppsm_min": 11203.0,
+    "low_area_min": 79.0,
+    "low_area_max": 80.0,
+    "high_area_min": 79.0,
+    "high_area_max": 80.0,
+    "area_range_overlap": true,
+    "exact_area_overlap": [
+      79.0,
+      80.0
+    ],
+    "address_overlap": [
+      "דרך ארץ 12"
+    ],
+    "low_years": [
+      "2029"
+    ],
+    "high_years": [
+      "2029"
+    ],
+    "low_first_hand": {
+      "None": 4
+    },
+    "high_first_hand": {
+      "None": 11
+    }
+  }
+]

@@ -1,0 +1,4122 @@
+[
+  {
+    "__typename": "Project",
+    "addressDetails": {
+      "docId": "פרויקט-מתחם_ט_מתחם_74490_מגרש_202_אשקלון-אשקלון-ישראל",
+      "city": "אשקלון",
+      "borough": null,
+      "zipcode": null,
+      "streetName": "",
+      "neighbourhood": "רמות אשקלון, אשקלון",
+      "neighbourhoodDocId": "שכונה-רמות-אשקלון-אשקלון-ישראל",
+      "cityDocId": "אשקלון-ישראל",
+      "resolutionPreferences": null,
+      "streetNumber": null,
+      "unitNumber": null,
+      "district": "מחוז הדרום",
+      "parcel": null,
+      "block": null,
+      "relevantDocIds": [
+        {
+          "docId": "אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "מחוז-הדרום-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "שכונה-רמות-אשקלון-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        }
+      ],
+      "__typename": "Address"
+    },
+    "apartmentType": [
+      {
+        "size": 133,
+        "beds": 5,
+        "apartmentSpecification": "projects/מתחם_ט_מתחם_74490_מגרש_202_אשקלון/A-1-59b4dec7-4a98-4d2a-9f64-2ae57ac1b319.jpg",
+        "type": "GARDEN_APARTMENT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": 123,
+        "beds": 5,
+        "apartmentSpecification": "projects/מתחם_ט_מתחם_74490_מגרש_202_אשקלון/B-1-35c80db9-c596-4ac6-b0c3-6c1ef3d7b80e.jpg",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": 109,
+        "beds": 4,
+        "apartmentSpecification": "projects/מתחם_ט_מתחם_74490_מגרש_202_אשקלון/C-1-8c6bbfc5-f158-4583-8eae-3998dfb2427d.jpg",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": 108,
+        "beds": 4,
+        "apartmentSpecification": "projects/מתחם_ט_מתחם_74490_מגרש_202_אשקלון/D1-1-b9064728-b350-49e4-9b76-07785ab46dac.jpg",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": 108,
+        "beds": 4,
+        "apartmentSpecification": "projects/מתחם_ט_מתחם_74490_מגרש_202_אשקלון/D1D1-1-d2bf1f68-f6c8-45c9-b096-28f66f68576b.jpg",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": 76,
+        "beds": 3,
+        "apartmentSpecification": "projects/מתחם_ט_מתחם_74490_מגרש_202_אשקלון/E-1-21419812-76bc-4325-8caa-3672a4c417f0.jpg",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": 179,
+        "beds": 6,
+        "apartmentSpecification": "projects/מתחם_ט_מתחם_74490_מגרש_202_אשקלון/F-1-7b111569-dfa6-4fb3-94e6-2b20a00792b4.jpg",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": 165,
+        "beds": 5,
+        "apartmentSpecification": "projects/מתחם_ט_מתחם_74490_מגרש_202_אשקלון/G-1-3787f4e5-9548-46a4-a9d6-d269676e494d.jpg",
+        "type": "MINI_PENTHOUSE",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": 157,
+        "beds": 5,
+        "apartmentSpecification": "projects/מתחם_ט_מתחם_74490_מגרש_202_אשקלון/I-1-718fe00b-1e5b-43da-86b1-62971c64d7e4.jpg",
+        "type": "PENTHOUSE_APP",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": 157,
+        "beds": 5,
+        "apartmentSpecification": "projects/מתחם_ט_מתחם_74490_מגרש_202_אשקלון/II-1-b28fd22e-f22b-4562-934e-e410c8717b64.jpg",
+        "type": "PENTHOUSE_APP",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": 123,
+        "beds": 5,
+        "apartmentSpecification": "projects/מתחם_ט_מתחם_74490_מגרש_202_אשקלון/K-1-8839a82c-336f-4265-8b86-5fd79c3e87d6.jpg",
+        "type": "GARDEN_APARTMENT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": 171,
+        "beds": 6,
+        "apartmentSpecification": "projects/מתחם_ט_מתחם_74490_מגרש_202_אשקלון/M-1-c67c98a4-2bc1-496d-b883-dbf8c6786db8.jpg",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      }
+    ],
+    "bedsRange": {
+      "min": 3,
+      "max": 6,
+      "__typename": "FloatRange"
+    },
+    "blockDetails": {
+      "buildingsNum": null,
+      "floorRange": {
+        "min": 13,
+        "max": 14,
+        "__typename": "Ranges"
+      },
+      "units": null,
+      "mishtakenPrice": null,
+      "urbanRenewal": null,
+      "__typename": "BlockDetails"
+    },
+    "buildingStage": "building",
+    "dealType": "unitBuy",
+    "developers": [
+      {
+        "id": "dimri",
+        "logoPath": "/developers/dimri/92350-34-madlan-400x400-fa8b3821-187e-41fb-9679-94c89538e805.jpg",
+        "__typename": "Developer"
+      }
+    ],
+    "discount": {
+      "showDiscount": true,
+      "description": "מחירי Presale ל20 דירות בלבד! \nמגוון דירות רחב 6-3 חד', דירות גן ופנטהאוזים\nדירת 4 חד' החל מ 1,940,000 ש\"ח | כולל מחסן וחניה\n\nלתיאום פגישה וקבלת פרטים , השאירו פרטים >>",
+      "bannerUrl": "project-extras/%D7%9E%D7%AA%D7%97%D7%9D_%D7%98_%D7%9E%D7%AA%D7%97%D7%9D_74490_%D7%9E%D7%92%D7%A8%D7%A9_202_%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F/153632_ramot_banners_06_1536%20%C3%97%20768%20-%20%D7%A8%D7%95%D7%9D-a34d71d8-4ae2-413d-bd67-10043009a04b.jpg",
+      "tagline": "PRESALE ל 20 דירות בלבד",
+      "__typename": "Discount"
+    },
+    "firstTimeSeen": "1990-01-01T00:00:00.000Z",
+    "id": "מתחם_ט_מתחם_74490_מגרש_202_אשקלון",
+    "images": [
+      {
+        "path": "projects/מתחם_ט_מתחם_74490_מגרש_202_אשקלון/154254_madlan_09_1230 × 768 - רום-427d0292-b39e-42fe-a550-dcec83b9272b.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/מתחם_ט_מתחם_74490_מגרש_202_אשקלון/154254_madlan_03_1230 × 768 - רום-39a1fe6a-962f-479b-94c6-614dae178a2d.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/מתחם_ט_מתחם_74490_מגרש_202_אשקלון/רמות אשקלון הדמיה למדלן-ab3a1b3a-0a99-44a4-8882-40c0343a560e.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/מתחם_ט_מתחם_74490_מגרש_202_אשקלון/154254_madlan_04_1230 × 768 - רום-aa598162-7bff-4853-82f1-f2fe0a82dd0f.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/מתחם_ט_מתחם_74490_מגרש_202_אשקלון/רמות אשקלון מדלן הדמיה-5ce4107a-8588-409c-91ce-669a5ea76fa4.jpg",
+        "description": null,
+        "__typename": "Image"
+      }
+    ],
+    "isCommercial": false,
+    "locationPoint": {
+      "lat": 31.67666,
+      "lng": 34.59663,
+      "__typename": "Point"
+    },
+    "page": 1,
+    "phoneNumber": [
+      "0738095676"
+    ],
+    "previewImage": {
+      "path": "projects/מתחם_ט_מתחם_74490_מגרש_202_אשקלון/154254_madlan_09_1230 × 768 - רום-427d0292-b39e-42fe-a550-dcec83b9272b.jpg",
+      "__typename": "Image"
+    },
+    "priceRange": {
+      "min": null,
+      "max": null,
+      "__typename": "Ranges"
+    },
+    "projectLogo": "project-extras/מתחם_ט_מתחם_74490_מגרש_202_אשקלון/154254_madlan_01_400 × 400 - רום-535fecef-0b63-4964-8000-7b8a64d96472.jpg",
+    "projectMessages": {
+      "listingDescription": "סטנדרט מגורים חדש לאשקלון",
+      "__typename": "ProjectMessages"
+    },
+    "projectName": "רמות אשקלון",
+    "promoInfo": {
+      "isVisible": false,
+      "description": null,
+      "bannerUrl": null,
+      "__typename": "PromoInfo"
+    },
+    "promotionStatus": {
+      "status": "promoted",
+      "__typename": "PromotionStatus"
+    },
+    "type": "project",
+    "url": "https://www.madlan.co.il/projects/%D7%9E%D7%AA%D7%97%D7%9D_%D7%98_%D7%9E%D7%AA%D7%97%D7%9D_74490_%D7%9E%D7%92%D7%A8%D7%A9_202_%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F"
+  },
+  {
+    "__typename": "Project",
+    "addressDetails": {
+      "docId": "אריאל-שרון-50-אשקלון-ישראל",
+      "city": "אשקלון",
+      "borough": null,
+      "zipcode": null,
+      "streetName": "אריאל שרון",
+      "neighbourhood": "עיר היין, אשקלון",
+      "neighbourhoodDocId": "שכונה-עיר-היין-אשקלון-ישראל",
+      "cityDocId": "אשקלון-ישראל",
+      "resolutionPreferences": null,
+      "streetNumber": "50",
+      "unitNumber": null,
+      "district": "מחוז הדרום",
+      "parcel": null,
+      "block": null,
+      "relevantDocIds": [
+        {
+          "docId": "אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "מחוז-הדרום-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "שכונה-עיר-היין-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "אריאל-שרון-50-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "אריאל-שרון-52-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "אריאל-שרון-54-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "היינן-17-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "היינן-19-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "היינן-21-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "היינן-23-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "אריאל-שרון-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "שכונה-הרצוג-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "אזור-דרום-ישראל",
+          "__typename": "RelevantDocId"
+        }
+      ],
+      "__typename": "Address"
+    },
+    "apartmentType": [
+      {
+        "size": null,
+        "beds": 3,
+        "apartmentSpecification": "projects/אשקלון_מתחם_48/20240418105257217-b-2d6cfcfe-6d26-4746-8afb-210124f01e67.jpg",
+        "type": "FLAT",
+        "price": 1680000,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 3,
+        "apartmentSpecification": "projects/אשקלון_מתחם_48/20240418105305461-b-23e386d0-9d55-43ba-8d0c-0229a93a4f5e.jpg",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 4,
+        "apartmentSpecification": "projects/אשקלון_מתחם_48/20240418105223889-b-784ff6a0-9475-4698-877b-c7208855c996.jpg",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 4,
+        "apartmentSpecification": "projects/אשקלון_מתחם_48/20240418105357309-b-d5ff47c9-298a-4615-9557-f30b31ace4c8.jpg",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": "projects/אשקלון_מתחם_48/2024041810563775-b-345989fd-fba9-4746-985c-112fe17d2ec8.jpg",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": "projects/אשקלון_מתחם_48/20240418105225289-b-0165cf11-d5bb-41ac-91bb-9e651e541093.jpg",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": "projects/אשקלון_מתחם_48/20240418105643745-b-f6da1b44-03b5-485a-a58f-ac19865c5bd1.jpg",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 3,
+        "apartmentSpecification": "projects/אשקלון_מתחם_48/202404181052540-b-d6480334-f669-4b28-98ae-541d75977afb.jpg",
+        "type": "GARDEN_APARTMENT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 3,
+        "apartmentSpecification": "projects/אשקלון_מתחם_48/20240418105302765-b-8d737af4-66f2-4fb1-803c-5cfe836b8599.jpg",
+        "type": "GARDEN_APARTMENT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 3,
+        "apartmentSpecification": "projects/אשקלון_מתחם_48/20240418105401839-b-0e83cb0c-6e7e-42b8-9595-a46e0a0175e9.jpg",
+        "type": "GARDEN_APARTMENT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": "projects/אשקלון_מתחם_48/20240418105259452-b-1835008b-eb85-493a-a26b-5c508f3c0ed6.jpg",
+        "type": "GARDEN_APARTMENT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": "projects/אשקלון_מתחם_48/20240418105410850-b-7480fdde-2ab2-4ecc-b4b6-78ab0bc9a76e.jpg",
+        "type": "GARDEN_APARTMENT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": "projects/אשקלון_מתחם_48/20240418105214612-b-47e785ee-717e-45e1-87a8-acc754a37a47.jpg",
+        "type": "PENTHOUSE_APP",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": "projects/אשקלון_מתחם_48/20240418105217210-b-2507810f-fed4-4fdd-90ec-98d3b915be10.jpg",
+        "type": "PENTHOUSE_APP",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": "projects/אשקלון_מתחם_48/20240418105407440-b-bf982a61-af58-4119-957d-e7cafbd8e336.jpg",
+        "type": "PENTHOUSE_APP",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 6,
+        "apartmentSpecification": "projects/אשקלון_מתחם_48/20240418105220275-b-3a3b9afe-748e-4e45-a7b0-bb8b5dae0f5e.jpg",
+        "type": "PENTHOUSE_APP",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 6,
+        "apartmentSpecification": "projects/אשקלון_מתחם_48/20240418105404872-b-356c7177-9dcc-48d7-a9c4-40eeb448cd2b.jpg",
+        "type": "PENTHOUSE_APP",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 6,
+        "apartmentSpecification": "projects/אשקלון_מתחם_48/20240418105640727-b-0c521cbe-8647-42cd-b556-33fac98627da.jpg",
+        "type": "PENTHOUSE_APP",
+        "price": null,
+        "__typename": "ApartmentType"
+      }
+    ],
+    "bedsRange": {
+      "min": 3,
+      "max": 6,
+      "__typename": "FloatRange"
+    },
+    "blockDetails": {
+      "buildingsNum": null,
+      "floorRange": {
+        "min": null,
+        "max": null,
+        "__typename": "Ranges"
+      },
+      "units": null,
+      "mishtakenPrice": null,
+      "urbanRenewal": null,
+      "__typename": "BlockDetails"
+    },
+    "buildingStage": "doneBuilding",
+    "dealType": "unitBuy",
+    "developers": [
+      {
+        "id": "peretzbh",
+        "logoPath": "/developers/logo_peretz_o.jpg",
+        "__typename": "Developer"
+      }
+    ],
+    "discount": {
+      "showDiscount": true,
+      "description": null,
+      "bannerUrl": "project-extras/%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F_%D7%9E%D7%AA%D7%97%D7%9D_48/8bb66dc8-7087-460e-bd4f-2ec09d9988ae-966a72af-60fa-4ed7-8c78-834c01525392.webp",
+      "tagline": "מבצע לקרנות השוטרים",
+      "__typename": "Discount"
+    },
+    "firstTimeSeen": "1990-01-01T00:00:00.000Z",
+    "id": "אשקלון_מתחם_48",
+    "images": [
+      {
+        "path": "projects/אשקלון_מתחם_48/20240418105113860-b-c617aeba-fab4-4624-ba4a-6a50fa16eb27.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/אשקלון_מתחם_48/20240418105116725-b-e304a2e4-0555-4be1-ae61-642036c658ca.jpg",
+        "description": null,
+        "__typename": "Image"
+      }
+    ],
+    "isCommercial": false,
+    "locationPoint": {
+      "lat": 31.691238994527577,
+      "lng": 34.59556929926041,
+      "__typename": "Point"
+    },
+    "page": 1,
+    "phoneNumber": [
+      "0738020884"
+    ],
+    "previewImage": {
+      "path": "projects/אשקלון_מתחם_48/20240418105113860-b-c617aeba-fab4-4624-ba4a-6a50fa16eb27.jpg",
+      "__typename": "Image"
+    },
+    "priceRange": {
+      "min": 1680000,
+      "max": 1680000,
+      "__typename": "Ranges"
+    },
+    "projectMessages": {
+      "listingDescription": "פרץ בוני הנגב משיקה את מתחם המגורים החדש בשכונת עיר היין, אשקלון",
+      "__typename": "ProjectMessages"
+    },
+    "projectName": "פרץ בוני הנגב בעיר היין, אשקלון",
+    "promoInfo": {
+      "isVisible": false,
+      "description": null,
+      "bannerUrl": null,
+      "__typename": "PromoInfo"
+    },
+    "promotionStatus": {
+      "status": "promoted",
+      "__typename": "PromotionStatus"
+    },
+    "type": "project",
+    "url": "https://www.madlan.co.il/projects/%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F_%D7%9E%D7%AA%D7%97%D7%9D_48"
+  },
+  {
+    "__typename": "Project",
+    "addressDetails": {
+      "docId": "פרויקט-מתחם_ה_מתחם_74486_מגרש_109_אשקלון-אשקלון-ישראל",
+      "city": "אשקלון",
+      "borough": null,
+      "zipcode": null,
+      "streetName": "",
+      "neighbourhood": "רמות אשקלון, אשקלון",
+      "neighbourhoodDocId": "שכונה-רמות-אשקלון-אשקלון-ישראל",
+      "cityDocId": "אשקלון-ישראל",
+      "resolutionPreferences": null,
+      "streetNumber": null,
+      "unitNumber": null,
+      "district": "מחוז הדרום",
+      "parcel": null,
+      "block": null,
+      "relevantDocIds": [
+        {
+          "docId": "אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "מחוז-הדרום-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "שכונה-רמות-אשקלון-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        }
+      ],
+      "__typename": "Address"
+    },
+    "apartmentType": [
+      {
+        "size": null,
+        "beds": 3,
+        "apartmentSpecification": "projects/מתחם_ה_מתחם_74486_מגרש_109_אשקלון/BA3 - David Bouchoucha-0de91412-5319-466d-b71e-210003a810c6.png",
+        "type": "FLAT",
+        "price": 1690000,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": "projects/מתחם_ה_מתחם_74486_מגרש_109_אשקלון/BB5 - David Bouchoucha-1daa570d-ed4b-47be-8aab-d4cd8147dd6b.png",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 4,
+        "apartmentSpecification": "projects/מתחם_ה_מתחם_74486_מגרש_109_אשקלון/BC4 - David Bouchoucha-2-85f7d5de-a58b-4768-ae4b-e9356c2a6191.jpg",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 4,
+        "apartmentSpecification": "projects/מתחם_ה_מתחם_74486_מגרש_109_אשקלון/BD4 - David Bouchoucha-2-e1070c69-f370-41b4-b0f6-d67f603e2865.jpg",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": "projects/מתחם_ה_מתחם_74486_מגרש_109_אשקלון/BD5 - David Bouchoucha-2-b5a1a700-9302-4860-a660-855a40c4e0c9.jpg",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 4,
+        "apartmentSpecification": "projects/מתחם_ה_מתחם_74486_מגרש_109_אשקלון/BG4 - David Bouchoucha-2-c30f87fb-bf10-4166-80a4-6093404468a7.jpg",
+        "type": "GARDEN_APARTMENT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": "projects/מתחם_ה_מתחם_74486_מגרש_109_אשקלון/BG5 - David Bouchoucha-2-38882419-a291-4d92-a81f-6826d401b7fd.jpg",
+        "type": "GARDEN_APARTMENT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": "projects/מתחם_ה_מתחם_74486_מגרש_109_אשקלון/BP3 - David Bouchoucha-2-d196b8e2-d33e-4e00-a4bd-f20198f2e019.jpg",
+        "type": "PENTHOUSE_APP",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": "projects/מתחם_ה_מתחם_74486_מגרש_109_אשקלון/BP7 - David Bouchoucha-dc8aa909-236a-454a-9f95-5d90174e7e8b.png",
+        "type": "PENTHOUSE_APP",
+        "price": null,
+        "__typename": "ApartmentType"
+      }
+    ],
+    "bedsRange": {
+      "min": 3,
+      "max": 5,
+      "__typename": "FloatRange"
+    },
+    "blockDetails": {
+      "buildingsNum": null,
+      "floorRange": {
+        "min": 8,
+        "max": 8,
+        "__typename": "Ranges"
+      },
+      "units": null,
+      "mishtakenPrice": null,
+      "urbanRenewal": null,
+      "__typename": "BlockDetails"
+    },
+    "buildingStage": "building",
+    "dealType": "unitBuy",
+    "developers": [
+      {
+        "id": "e-p",
+        "logoPath": "/developers/e-p/logo-ep-profil-blue-458738b8-eb46-4be3-b364-620d85efe7e6.png",
+        "__typename": "Developer"
+      }
+    ],
+    "discount": {
+      "showDiscount": false,
+      "description": null,
+      "bannerUrl": null,
+      "tagline": "",
+      "__typename": "Discount"
+    },
+    "firstTimeSeen": "1990-01-01T00:00:00.000Z",
+    "id": "מתחם_ה_מתחם_74486_מגרש_109_אשקלון",
+    "images": [
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_ה_מתחם_74486_מגרש_109_אשקלון/madlan_ramot_1230 × 76811 - David Bouchoucha-0e0134cd-9e5b-4f10-9041-10344b8d2c4d.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_ה_מתחם_74486_מגרש_109_אשקלון/madlan_ramot_1230 × 7689 - David Bouchoucha-485a6fbb-4ab7-43ce-98b1-d098eb4f0c82.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_ה_מתחם_74486_מגרש_109_אשקלון/madlan_ramot_1230 × 76810 - David Bouchoucha-986aabba-4860-42b1-aed1-9435eff441a6.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_ה_מתחם_74486_מגרש_109_אשקלון/madlan_ramot_1230 × 768 - David Bouchoucha-4ff40d59-a9e0-49ea-8554-570ee3bee68c.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_ה_מתחם_74486_מגרש_109_אשקלון/madlan_ramot_1230 × 7682 - David Bouchoucha-0a55a4f0-64f3-4173-806f-0a8cf96943da.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_ה_מתחם_74486_מגרש_109_אשקלון/madlan_ramot_1230 × 7683 - David Bouchoucha-1c86ff55-406c-4bbb-91c4-75d41ab46733.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_ה_מתחם_74486_מגרש_109_אשקלון/madlan_ramot_1230 × 7684 - David Bouchoucha-f0d0f13f-e2ed-4800-b761-cd003947458e.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_ה_מתחם_74486_מגרש_109_אשקלון/madlan_ramot_1230 × 7685 - David Bouchoucha-05545e7d-dbb3-481e-9b74-7ff9fc7a3d89.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_ה_מתחם_74486_מגרש_109_אשקלון/madlan_ramot_1230 × 7686 - David Bouchoucha-a8b558ad-88b2-405a-a146-867123a18281.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_ה_מתחם_74486_מגרש_109_אשקלון/madlan_ramot_1230 × 7687 - David Bouchoucha-33e9695b-deeb-46cf-852c-49ec0b3699aa.jpg",
+        "description": null,
+        "__typename": "Image"
+      }
+    ],
+    "isCommercial": false,
+    "locationPoint": {
+      "lat": 31.67493,
+      "lng": 34.59457,
+      "__typename": "Point"
+    },
+    "page": 1,
+    "phoneNumber": [
+      "083303683"
+    ],
+    "previewImage": {
+      "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_ה_מתחם_74486_מגרש_109_אשקלון/madlan_ramot_1230 × 76811 - David Bouchoucha-0e0134cd-9e5b-4f10-9041-10344b8d2c4d.jpg",
+      "__typename": "Image"
+    },
+    "priceRange": {
+      "min": 1690000,
+      "max": 1690000,
+      "__typename": "Ranges"
+    },
+    "projectLogo": "project-extras/מתחם_ה_מתחם_74486_מגרש_109_אשקלון/אייל פאץ ברמות לוגו-7a94555f-b71d-4aee-888c-ff304edbc739.png",
+    "projectMessages": {
+      "listingDescription": null,
+      "__typename": "ProjectMessages"
+    },
+    "projectName": "אייל פרץ ברמות",
+    "promoInfo": {
+      "isVisible": true,
+      "description": null,
+      "bannerUrl": "project-extras/%D7%9E%D7%AA%D7%97%D7%9D_%D7%94_%D7%9E%D7%AA%D7%97%D7%9D_74486_%D7%9E%D7%92%D7%A8%D7%A9_109_%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F/madlan_ramot_mivtsa_1536%20%C3%97%20768%20-%20David%20Bouchoucha-8b1cc640-9faf-436f-a5a7-d889eb5c17ee.jpg",
+      "__typename": "PromoInfo"
+    },
+    "promotionStatus": {
+      "status": "promoted",
+      "__typename": "PromotionStatus"
+    },
+    "type": "project",
+    "url": "https://www.madlan.co.il/projects/%D7%9E%D7%AA%D7%97%D7%9D_%D7%94_%D7%9E%D7%AA%D7%97%D7%9D_74486_%D7%9E%D7%92%D7%A8%D7%A9_109_%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F"
+  },
+  {
+    "__typename": "Project",
+    "addressDetails": {
+      "docId": "היין-16-אשקלון-ישראל",
+      "city": "אשקלון",
+      "borough": null,
+      "zipcode": null,
+      "streetName": "דרך היין",
+      "neighbourhood": "רמת כרמים, אשקלון",
+      "neighbourhoodDocId": "שכונה-רמת-כרמים-אשקלון-ישראל",
+      "cityDocId": "אשקלון-ישראל",
+      "resolutionPreferences": null,
+      "streetNumber": "77",
+      "unitNumber": null,
+      "district": "מחוז הדרום",
+      "parcel": null,
+      "block": null,
+      "relevantDocIds": [
+        {
+          "docId": "אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "מחוז-הדרום-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "שכונה-עיר-היין-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "היין-16-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "היין-18-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "היין-20-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "שאנין-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "ישראל",
+          "__typename": "RelevantDocId"
+        }
+      ],
+      "__typename": "Address"
+    },
+    "apartmentType": [
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": null,
+        "type": "GARDEN_APARTMENT",
+        "price": null,
+        "__typename": "ApartmentType"
+      }
+    ],
+    "bedsRange": {
+      "min": 5,
+      "max": 5,
+      "__typename": "FloatRange"
+    },
+    "blockDetails": {
+      "buildingsNum": null,
+      "floorRange": {
+        "min": 7,
+        "max": 7,
+        "__typename": "Ranges"
+      },
+      "units": null,
+      "mishtakenPrice": null,
+      "urbanRenewal": null,
+      "__typename": "BlockDetails"
+    },
+    "buildingStage": "doneBuilding",
+    "dealType": "unitBuy",
+    "developers": [
+      {
+        "id": "avisror",
+        "logoPath": "/developers/avisror/Untitled design (10)-adfd0910-83ff-48e1-93e1-a8c40a931851.png",
+        "__typename": "Developer"
+      }
+    ],
+    "discount": {
+      "showDiscount": true,
+      "description": "נותרו דירות גן 5 חד' אחרונות בהחלט עם גינות בגדלים משתנים של בין 45 ל- 80 מ'.\nועכשיו בהטבה מיוחדת: גינה קומפלט עלינו!",
+      "bannerUrl": "project-extras/%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F_%D7%9E%D7%AA%D7%97%D7%9D_49/IMG-20260331-WA0020-862a41c8-c1c3-4ae0-9573-fc1341534f9c.jpg",
+      "tagline": "גינה במתנה!",
+      "__typename": "Discount"
+    },
+    "firstTimeSeen": "1990-01-01T00:00:00.000Z",
+    "id": "אשקלון_מתחם_49",
+    "images": [
+      {
+        "path": "projects/אשקלון_מתחם_49/1 - עמית מלכא-b3d98373-7dd4-4fb0-83b5-e90cc4f18d09.png",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/אשקלון_מתחם_49/6 - עמית מלכא-9e309326-2f98-4e3a-99d7-d925e8cab0b5.png",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/אשקלון_מתחם_49/2 - עמית מלכא-016efe09-69e8-45b4-a792-98c24bf5858d.png",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/אשקלון_מתחם_49/3 - עמית מלכא-87e63a03-54e9-4891-a9be-c632b5db6da4.png",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/אשקלון_מתחם_49/4 - עמית מלכא-17ee4fec-007d-4532-af5b-283e73ac7bb9.png",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/אשקלון_מתחם_49/5 - עמית מלכא-cbdcb092-c8ef-4f53-9f1d-df64efc4caa8.png",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/אשקלון_מתחם_49/7 - עמית מלכא-83173f56-1e80-4299-8edc-3d9ca494c8d8.png",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/אשקלון_מתחם_49/8 - עמית מלכא-b2018c51-278f-4c93-9d79-a5c5f20c3025.png",
+        "description": null,
+        "__typename": "Image"
+      }
+    ],
+    "isCommercial": false,
+    "locationPoint": {
+      "lat": 31.690624572428813,
+      "lng": 34.59530919772534,
+      "__typename": "Point"
+    },
+    "page": 1,
+    "phoneNumber": [
+      "033305734"
+    ],
+    "previewImage": {
+      "path": "projects/אשקלון_מתחם_49/1 - עמית מלכא-b3d98373-7dd4-4fb0-83b5-e90cc4f18d09.png",
+      "__typename": "Image"
+    },
+    "priceRange": {
+      "min": null,
+      "max": null,
+      "__typename": "Ranges"
+    },
+    "projectLogo": "project-extras/אשקלון_מתחם_49/עיר הייו - עמית מלכא-7fadb222-5860-4604-b831-e3245a4a72ed.jpg",
+    "projectMessages": {
+      "listingDescription": "ארבעה בנייני יוקרה המציעים סטנדרט בנייה גבוה, מועדון דיירים וחדר כושר מאובזר",
+      "__typename": "ProjectMessages"
+    },
+    "projectName": "אביסרור בעיר היין",
+    "promoInfo": {
+      "isVisible": false,
+      "description": null,
+      "bannerUrl": null,
+      "__typename": "PromoInfo"
+    },
+    "promotionStatus": {
+      "status": "promoted",
+      "__typename": "PromotionStatus"
+    },
+    "type": "project",
+    "url": "https://www.madlan.co.il/projects/%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F_%D7%9E%D7%AA%D7%97%D7%9D_49"
+  },
+  {
+    "__typename": "Project",
+    "addressDetails": {
+      "docId": "הרב-משאש-שלום-6-אשקלון-ישראל",
+      "city": "אשקלון",
+      "borough": null,
+      "zipcode": null,
+      "streetName": "הרב משאש שלום",
+      "neighbourhood": "גבעת ציון, אשקלון",
+      "neighbourhoodDocId": "שכונה-גבעת-ציון-אשקלון-ישראל",
+      "cityDocId": "אשקלון-ישראל",
+      "resolutionPreferences": null,
+      "streetNumber": "6",
+      "unitNumber": null,
+      "district": "מחוז הדרום",
+      "parcel": null,
+      "block": null,
+      "relevantDocIds": [
+        {
+          "docId": "אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "מחוז-הדרום-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "שכונה-אגמים-מזרח-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "הרב-משאש-שלום-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "הרב-שלום-משאש-6-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "הרב-משאש-שלום-6-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "שכונה-גבעת-ציון-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "אזור-דרום-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-אגמים-616904-עין-עברונה-7",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-אורט-אדיבי-660092-שדרות-עופר-12",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-ברנע-613505-הר-כנען-2",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-ישיבת-צביה-641183-שיבת-ציון-30",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-מעיין-חיים-ושלום-640938-אבימלך-56",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-מעיין-חיים-ושלום-בנות-614420-אבימלך-24",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-מצפה-ימים-611921-שדרות-ירושלים-87",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-מרכז-נוער-630095-הסוכנות-היהודית-2",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-נווה-אילן-614396-אריה-8",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-סיני-610188-הצפצפה-12",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-רמבם-610204-שיבת-ציון-5",
+          "__typename": "RelevantDocId"
+        }
+      ],
+      "__typename": "Address"
+    },
+    "apartmentType": [
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": null,
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      }
+    ],
+    "bedsRange": {
+      "min": 5,
+      "max": 5,
+      "__typename": "FloatRange"
+    },
+    "blockDetails": {
+      "buildingsNum": null,
+      "floorRange": {
+        "min": 5,
+        "max": 8,
+        "__typename": "Ranges"
+      },
+      "units": null,
+      "mishtakenPrice": null,
+      "urbanRenewal": null,
+      "__typename": "BlockDetails"
+    },
+    "buildingStage": "doneBuilding",
+    "dealType": "unitBuy",
+    "developers": [
+      {
+        "id": "peretzbh",
+        "logoPath": "/developers/logo_peretz_o.jpg",
+        "__typename": "Developer"
+      }
+    ],
+    "discount": {
+      "showDiscount": true,
+      "description": "פרויקט לב אגמים, אשקלון\nמבצע בלעדי לחברי קרנות השוטרים ומקרוביהם\nדירות 5 חד' אחרונות החל מ- 2,000,000 ₪",
+      "bannerUrl": "project-extras/%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F_%D7%9E%D7%AA%D7%97%D7%9D_4/%D7%91%D7%90%D7%A0%D7%A8%20%D7%9E%D7%91%D7%A6%D7%A2%20%D7%90%D7%92%D7%9E%D7%99%D7%9D%20%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F-188cc4da-f852-4c66-aea7-e815869c4224.webp",
+      "tagline": "",
+      "__typename": "Discount"
+    },
+    "firstTimeSeen": "1990-01-01T00:00:00.000Z",
+    "id": "אשקלון_מתחם_4",
+    "images": [
+      {
+        "path": "projects/אשקלון_מתחם_4/1-12291cbe-bf2a-4546-bcf3-100ba2c8566b.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/אשקלון_מתחם_4/2-2d981db7-1bf8-4e3b-96a9-4b26df8bb9d9.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/אשקלון_מתחם_4/3-b0d9fc1d-6cc9-4c46-8e90-8757932dacf3.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/אשקלון_מתחם_4/4-b0865cdc-c7f9-453d-be66-5f1885af6528.jpg",
+        "description": null,
+        "__typename": "Image"
+      }
+    ],
+    "isCommercial": false,
+    "locationPoint": {
+      "lat": 31.65587,
+      "lng": 34.57529,
+      "__typename": "Point"
+    },
+    "page": 1,
+    "phoneNumber": [
+      "0738075739"
+    ],
+    "previewImage": {
+      "path": "projects/אשקלון_מתחם_4/1-12291cbe-bf2a-4546-bcf3-100ba2c8566b.jpg",
+      "__typename": "Image"
+    },
+    "priceRange": {
+      "min": null,
+      "max": null,
+      "__typename": "Ranges"
+    },
+    "projectLogo": "project-extras/אשקלון_מתחם_4/לוגו פרויקט-8ec5c170-b0e0-4b3a-8f18-6a64e9745d40.webp",
+    "projectMessages": {
+      "listingDescription": "פרויקט בלב מרחבים ירוקים המעניקים תחושה כפרית ובסביבת פארקים ",
+      "__typename": "ProjectMessages"
+    },
+    "projectName": "פרויקט לב אגמים 3 + 4 - גבעת ציון, אשקלון",
+    "promoInfo": {
+      "isVisible": false,
+      "description": null,
+      "bannerUrl": null,
+      "__typename": "PromoInfo"
+    },
+    "promotionStatus": {
+      "status": "promoted",
+      "__typename": "PromotionStatus"
+    },
+    "type": "project",
+    "url": "https://www.madlan.co.il/projects/%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F_%D7%9E%D7%AA%D7%97%D7%9D_4"
+  },
+  {
+    "__typename": "Project",
+    "addressDetails": {
+      "docId": "פרויקט-היוצרים_61_אשקלון-אשקלון-ישראל",
+      "city": "אשקלון",
+      "borough": null,
+      "zipcode": null,
+      "streetName": "היוצרים",
+      "neighbourhood": "עיר היין, אשקלון",
+      "neighbourhoodDocId": "שכונה-עיר-היין-אשקלון-ישראל",
+      "cityDocId": "אשקלון-ישראל",
+      "resolutionPreferences": null,
+      "streetNumber": "61",
+      "unitNumber": null,
+      "district": "מחוז הדרום",
+      "parcel": null,
+      "block": null,
+      "relevantDocIds": [
+        {
+          "docId": "אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "מחוז-הדרום-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "שכונה-עיר-היין-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "היוצרים-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        }
+      ],
+      "__typename": "Address"
+    },
+    "apartmentType": [
+      {
+        "size": 82,
+        "beds": 3,
+        "apartmentSpecification": "projects/היוצרים_61_אשקלון/103339-30_efi_capital_tochnit-dira_madlan_-3db81eac-7714-43b0-b940-bec27bfbc87d.jpg",
+        "type": "FLAT",
+        "price": 1772000,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": 123,
+        "beds": 5,
+        "apartmentSpecification": "projects/היוצרים_61_אשקלון/103340-33_efi_capital_tochnit-dira_madlan_11-594ccaf4-d043-4271-a0e4-6d86e39a9f8e.jpg",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": 123,
+        "beds": 5,
+        "apartmentSpecification": "projects/היוצרים_61_אשקלון/103339-30_efi_capital_tochnit-dira_madlan_3-19b642bd-b116-42d9-b6ea-f069327593c1.jpg",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      }
+    ],
+    "bedsRange": {
+      "min": 3,
+      "max": 5,
+      "__typename": "FloatRange"
+    },
+    "blockDetails": {
+      "buildingsNum": null,
+      "floorRange": {
+        "min": 24,
+        "max": 24,
+        "__typename": "Ranges"
+      },
+      "units": null,
+      "mishtakenPrice": null,
+      "urbanRenewal": null,
+      "__typename": "BlockDetails"
+    },
+    "buildingStage": "building",
+    "dealType": "unitBuy",
+    "developers": [
+      {
+        "id": "effiCapital",
+        "logoPath": "/developers/effiCapital/Logo Effi_400x400 (1)-bb8ed30b-7ac7-4ccf-bd98-5efaceca6bf8.jpg",
+        "__typename": "Developer"
+      }
+    ],
+    "discount": {
+      "showDiscount": true,
+      "description": "דירה חדשה באשקלון\nהמעבר שהכי משתלם לעשות\nהטבת מס שנתית 7%",
+      "bannerUrl": "project-extras/%D7%94%D7%99%D7%95%D7%A6%D7%A8%D7%99%D7%9D_61_%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F/1536%20%D7%A2%D7%9C%20768-d53f3a36-712c-4e1a-86bc-b6e509167eeb.jpg",
+      "tagline": "הטבת מס שנתית 7%",
+      "__typename": "Discount"
+    },
+    "firstTimeSeen": "1990-01-01T00:00:00.000Z",
+    "id": "היוצרים_61_אשקלון",
+    "images": [
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/היוצרים_61_אשקלון/103978-37_Effi-campaign24_ashkelon_madlan_1536x768_b9-273414ba-548f-426a-95b8-5582c4a719a5.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/היוצרים_61_אשקלון/103978-37_Effi-campaign24_ashkelon_madlan_1536x768_b2-4181238b-b9d5-4b02-b16b-c1c219b9e50b.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/היוצרים_61_אשקלון/103978-37_Effi-campaign24_ashkelon_madlan_1536x768_b3-6ca31811-648e-4deb-9418-32c22f2d0417.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/היוצרים_61_אשקלון/103978-37_Effi-campaign24_ashkelon_madlan_1536x768_b6-a6a07ea8-278b-407a-9ea5-81f67415bcd4.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/היוצרים_61_אשקלון/103978-37_Effi-campaign24_ashkelon_madlan_1536x768_b16-fde7c86d-6844-49a3-b739-a638284279df.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/היוצרים_61_אשקלון/103978-37_Effi-campaign24_ashkelon_madlan_1536x768_b4-3ff0ba6e-8b8a-4e96-968e-7ceaca3ce460.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/היוצרים_61_אשקלון/103978-37_Effi-campaign24_ashkelon_madlan_1536x768_b8-2db9d9ae-c723-4e49-9cdd-320c1ca04d93.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/היוצרים_61_אשקלון/103978-37_Effi-campaign24_ashkelon_madlan_1536x768_b14-eaa1edf5-9f3d-468a-b85e-5385e17130a5.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/היוצרים_61_אשקלון/103978-37_Effi-campaign24_ashkelon_madlan_1536x768_b13-2e246d63-4d0e-4d97-b35b-7b995b61f902.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/היוצרים_61_אשקלון/103978-37_Effi-campaign24_ashkelon_madlan_1536x768_b10-752b40b4-3f05-4d55-b88d-429a99e0c3d2.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/היוצרים_61_אשקלון/103978-37_Effi-campaign24_ashkelon_madlan_1536x768_b12-1576d817-732a-43b2-b129-a87ecbc7d102.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/היוצרים_61_אשקלון/103978-37_Effi-campaign24_ashkelon_madlan_1536x768_b15-ba64e18a-91f2-4ebf-913f-f483a8bd2309.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/היוצרים_61_אשקלון/103978-37_Effi-campaign24_ashkelon_madlan_1536x768_b11-04017d3e-0690-4a6a-ba36-7d49797d944d.jpg",
+        "description": null,
+        "__typename": "Image"
+      }
+    ],
+    "isCommercial": false,
+    "locationPoint": {
+      "lat": 31.68114,
+      "lng": 34.60005,
+      "__typename": "Point"
+    },
+    "page": 1,
+    "phoneNumber": [
+      "0738022096"
+    ],
+    "previewImage": {
+      "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/היוצרים_61_אשקלון/103978-37_Effi-campaign24_ashkelon_madlan_1536x768_b9-273414ba-548f-426a-95b8-5582c4a719a5.jpg",
+      "__typename": "Image"
+    },
+    "priceRange": {
+      "min": 1772000,
+      "max": 1772000,
+      "__typename": "Ranges"
+    },
+    "projectMessages": {
+      "listingDescription": "המגדל הגבוה עולה לאוויר ואתם מוזמנים לעלות איתו חווית מגורים יוקרתית ואיכותית מול נוף אורבני אינסופי",
+      "__typename": "ProjectMessages"
+    },
+    "projectName": "אפי בעיר היין, אשקלון",
+    "promoInfo": {
+      "isVisible": false,
+      "description": null,
+      "bannerUrl": null,
+      "__typename": "PromoInfo"
+    },
+    "promotionStatus": {
+      "status": "promoted",
+      "__typename": "PromotionStatus"
+    },
+    "type": "project",
+    "url": "https://www.madlan.co.il/projects/%D7%94%D7%99%D7%95%D7%A6%D7%A8%D7%99%D7%9D_61_%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F"
+  },
+  {
+    "__typename": "Project",
+    "addressDetails": {
+      "docId": "דוריף-86-אשקלון-ישראל",
+      "city": "אשקלון",
+      "borough": null,
+      "zipcode": null,
+      "streetName": "דוריף",
+      "neighbourhood": "עיר היין, אשקלון",
+      "neighbourhoodDocId": "שכונה-עיר-היין-אשקלון-ישראל",
+      "cityDocId": "אשקלון-ישראל",
+      "resolutionPreferences": null,
+      "streetNumber": "86",
+      "unitNumber": null,
+      "district": "מחוז הדרום",
+      "parcel": null,
+      "block": null,
+      "relevantDocIds": [
+        {
+          "docId": "אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "מחוז-הדרום-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "שכונה-עיר-היין-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "דרך-ארץ-67-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "היינן-30-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "היינן-36-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "דוריף-86-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "דוריף-92-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "קונדיטון-35-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "קונדיטון-41-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "דוריף-אשקלון-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "אזור-דרום-ישראל",
+          "__typename": "RelevantDocId"
+        }
+      ],
+      "__typename": "Address"
+    },
+    "apartmentType": [
+      {
+        "size": null,
+        "beds": null,
+        "apartmentSpecification": null,
+        "type": "PENTHOUSE_APP",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": null,
+        "apartmentSpecification": null,
+        "type": "GARDEN_APARTMENT",
+        "price": null,
+        "__typename": "ApartmentType"
+      }
+    ],
+    "bedsRange": {
+      "min": null,
+      "max": null,
+      "__typename": "FloatRange"
+    },
+    "blockDetails": {
+      "buildingsNum": null,
+      "floorRange": {
+        "min": 2,
+        "max": 6,
+        "__typename": "Ranges"
+      },
+      "units": null,
+      "mishtakenPrice": null,
+      "urbanRenewal": null,
+      "__typename": "BlockDetails"
+    },
+    "buildingStage": "building",
+    "dealType": "unitBuy",
+    "developers": [
+      {
+        "id": "e-p",
+        "logoPath": "/developers/e-p/logo-ep-profil-blue-458738b8-eb46-4be3-b364-620d85efe7e6.png",
+        "__typename": "Developer"
+      }
+    ],
+    "discount": {
+      "showDiscount": true,
+      "description": "הפנטהאוזים ודירות הגן האחרונים במיקום המבוקש ביותר בשכונה.",
+      "bannerUrl": "project-extras/%D7%9E%D7%AA%D7%97%D7%9D_71402_%D7%A2%D7%99%D7%A8_%D7%94%D7%99%D7%99%D7%9F_%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F/madlan_IR%20AYIN9_1536%20%C3%97%20768-10065693-a6fb-4a60-ae8f-e65d41f59470.jpg",
+      "tagline": "איכלוס מיידי! ",
+      "__typename": "Discount"
+    },
+    "firstTimeSeen": "1990-01-01T00:00:00.000Z",
+    "id": "מתחם_71402_עיר_היין_אשקלון",
+    "images": [
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_71402_עיר_היין_אשקלון/202308241113210-b-20fa615f-e567-4e4b-9aa6-a66b7450c09e.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_71402_עיר_היין_אשקלון/20230824111317577-b-76604126-3bbb-4597-8ec6-c3113b27ce1a.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_71402_עיר_היין_אשקלון/madlan_IR AYIN_admyot_1536 × 768 - David Bouchoucha-044aef45-39f3-4632-8d6d-37b5f3889557.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_71402_עיר_היין_אשקלון/madlan_IR AYIN_admyot_1536 × 7682 - David Bouchoucha-cfeb6d44-3822-4aec-abad-c6b9b2ec4e1b.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_71402_עיר_היין_אשקלון/madlan_IR AYIN_admyot_1536 × 7683 - David Bouchoucha-b4ad1efc-0c62-4c3a-9d0e-a33274cccc32.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_71402_עיר_היין_אשקלון/madlan_IR AYIN_admyot_1536 × 7684 - David Bouchoucha-ab59f8c3-d4b1-4e37-a4ba-efb24f3b77d2.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_71402_עיר_היין_אשקלון/madlan_IR AYIN_admyot_1536 × 7685 - David Bouchoucha-612d8bc5-5c1f-4d2e-8043-bbc0b2ed427f.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_71402_עיר_היין_אשקלון/madlan_IR AYIN_admyot_1536 × 7686 - David Bouchoucha-91c89065-1355-4000-9930-2126d1606cda.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_71402_עיר_היין_אשקלון/madlan_IR AYIN_admyot_1536 × 7687 - David Bouchoucha-0f36227a-e836-4e99-bc66-9567e305707a.jpg",
+        "description": null,
+        "__typename": "Image"
+      }
+    ],
+    "isCommercial": false,
+    "locationPoint": {
+      "lat": 31.689831051287786,
+      "lng": 34.597845207446674,
+      "__typename": "Point"
+    },
+    "page": 1,
+    "phoneNumber": [
+      "0738024318"
+    ],
+    "previewImage": {
+      "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_71402_עיר_היין_אשקלון/202308241113210-b-20fa615f-e567-4e4b-9aa6-a66b7450c09e.jpg",
+      "__typename": "Image"
+    },
+    "priceRange": {
+      "min": null,
+      "max": null,
+      "__typename": "Ranges"
+    },
+    "projectLogo": "project-extras/מתחם_71402_עיר_היין_אשקלון/LOGO-IR-AYIN_1133.8583 × 1133.8583 - David Bouchoucha-a1591fcc-f160-4fb2-bed1-23dd1ef445b6.jpg",
+    "projectMessages": {
+      "listingDescription": null,
+      "__typename": "ProjectMessages"
+    },
+    "projectName": "אייל פרץ בעיר היין",
+    "promoInfo": {
+      "isVisible": false,
+      "description": null,
+      "bannerUrl": null,
+      "__typename": "PromoInfo"
+    },
+    "promotionStatus": {
+      "status": "promoted",
+      "__typename": "PromotionStatus"
+    },
+    "type": "project",
+    "url": "https://www.madlan.co.il/projects/%D7%9E%D7%AA%D7%97%D7%9D_71402_%D7%A2%D7%99%D7%A8_%D7%94%D7%99%D7%99%D7%9F_%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F"
+  },
+  {
+    "__typename": "Project",
+    "addressDetails": {
+      "docId": "השבטים-10-בת-ים-ישראל",
+      "city": "בת ים",
+      "borough": null,
+      "zipcode": null,
+      "streetName": "השבטים",
+      "neighbourhood": "רמת הנשיא, בת ים",
+      "neighbourhoodDocId": "שכונה-רמת-הנשיא-בת-ים-ישראל",
+      "cityDocId": "בת-ים-ישראל",
+      "resolutionPreferences": null,
+      "streetNumber": "10",
+      "unitNumber": null,
+      "district": "מחוז תל אביב",
+      "parcel": null,
+      "block": null,
+      "relevantDocIds": [
+        {
+          "docId": "בת-ים-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "מחוז-תל-אביב-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "שכונה-רמת-הנשיא-בת-ים-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "השבטים-10-בת-ים-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "השבטים-14-בת-ים-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "השבטים-בת-ים-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "אזור-מרכז-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "אזור-גוש-דן-ישראל",
+          "__typename": "RelevantDocId"
+        }
+      ],
+      "__typename": "Address"
+    },
+    "apartmentType": [],
+    "bedsRange": {
+      "min": null,
+      "max": null,
+      "__typename": "FloatRange"
+    },
+    "blockDetails": {
+      "buildingsNum": null,
+      "floorRange": {
+        "min": 34,
+        "max": 35,
+        "__typename": "Ranges"
+      },
+      "units": null,
+      "mishtakenPrice": null,
+      "urbanRenewal": null,
+      "__typename": "BlockDetails"
+    },
+    "buildingStage": "doneBuilding",
+    "dealType": "unitBuy",
+    "developers": [
+      {
+        "id": "azorim",
+        "logoPath": "/developers/azorim/לוגו 6.12.22-cdd8a2c8-2477-4b31-bba8-fec33e329ad6.png",
+        "__typename": "Developer"
+      }
+    ],
+    "discount": {
+      "showDiscount": false,
+      "description": "פרויקט MOMENT בת ים - תתאהבו תוך מומנט, חווית מגורים יוקרתית בסביבה אורבנית מתחדשת\n\nדירות 5 חדרים ענקיות במתחם שיש בו הכל! \n\nאכלוס מיידי",
+      "bannerUrl": "project-extras/%D7%94%D7%A9%D7%91%D7%98%D7%99%D7%9D_%D7%91%D7%AA_%D7%99%D7%9D/885x609-82373f26-df30-4494-8156-cee30ab90452.jpg",
+      "tagline": "",
+      "__typename": "Discount"
+    },
+    "firstTimeSeen": "1990-01-01T00:00:00.000Z",
+    "id": "השבטים_בת_ים",
+    "images": [
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/השבטים_בת_ים_1574943444/hashvatim-shtila-0374_0 - אזורים יזמות נדלן.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/השבטים_בת_ים_1574943444/hashvatim-27-6K_0 - אזורים יזמות נדלן.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/השבטים_בת_ים_1574943444/hashvatim-35-6K_20 - אזורים יזמות נדלן.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/השבטים_בת_ים_1574943444/hashvatim-14-6K_80 - אזורים יזמות נדלן.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/השבטים_בת_ים_1574943444/hashvatim-19-6K_0 - אזורים יזמות נדלן.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/השבטים_בת_ים_1574943444/hashvatim-16-6K - אזורים יזמות נדלן.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/השבטים_בת_ים_1574943444/hashvatim-10-6K_90 - אזורים יזמות נדלן.jpg",
+        "description": null,
+        "__typename": "Image"
+      }
+    ],
+    "isCommercial": false,
+    "locationPoint": {
+      "lat": 32.004177419609135,
+      "lng": 34.749371539424274,
+      "__typename": "Point"
+    },
+    "page": 1,
+    "phoneNumber": [
+      "0738021659"
+    ],
+    "previewImage": {
+      "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/השבטים_בת_ים_1574943444/hashvatim-shtila-0374_0 - אזורים יזמות נדלן.jpg",
+      "__typename": "Image"
+    },
+    "priceRange": {
+      "min": null,
+      "max": null,
+      "__typename": "Ranges"
+    },
+    "projectLogo": "project-extras/השבטים_בת_ים/logo_400_400-6a4ddd3b-59c9-45d9-b013-1a8fa16a8341.jpg",
+    "projectMessages": {
+      "listingDescription": "זה הרגע למצוא את הדירה הבאה שלכם במתחם המגורים החדש של אזורים במיקום מנצח בבת-ים.",
+      "__typename": "ProjectMessages"
+    },
+    "projectName": "MOMENT בת-ים",
+    "promoInfo": {
+      "isVisible": true,
+      "description": "פרויקט MOMENT בת ים - תתאהבו תוך מומנט, חווית מגורים יוקרתית בסביבה אורבנית מתחדשת\n\nדירות 5 חדרים ענקיות במתחם שיש בו הכל! \n\nאכלוס מיידי",
+      "bannerUrl": null,
+      "__typename": "PromoInfo"
+    },
+    "promotionStatus": {
+      "status": "promoted",
+      "__typename": "PromotionStatus"
+    },
+    "type": "project",
+    "url": "https://www.madlan.co.il/projects/%D7%94%D7%A9%D7%91%D7%98%D7%99%D7%9D_%D7%91%D7%AA_%D7%99%D7%9D"
+  },
+  {
+    "__typename": "Project",
+    "addressDetails": {
+      "docId": "הרב-שאולי-19-אשדוד-ישראל",
+      "city": "אשדוד",
+      "borough": null,
+      "zipcode": null,
+      "streetName": "הרב שאולי",
+      "neighbourhood": "רובע ד, אשדוד",
+      "neighbourhoodDocId": "שכונה-רובע-ד-אשדוד-ישראל",
+      "cityDocId": "אשדוד-ישראל",
+      "resolutionPreferences": null,
+      "streetNumber": "19",
+      "unitNumber": null,
+      "district": "מחוז הדרום",
+      "parcel": null,
+      "block": null,
+      "relevantDocIds": [
+        {
+          "docId": "אשדוד-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "מחוז-הדרום-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "שכונה-רובע-ד-אשדוד-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "הרב-שאולי-21-אשדוד-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "הרב-שאולי-19-אשדוד-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "הרב-שאולי-אשדוד-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "אזור-דרום-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-ארזים-613208-הרב-שאולי-6",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-מקיף-ג-עש-רוגוזין-770461-הצוללים-4",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-מקיף-ד-640482-ביאליק-10",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-רעים-612333-זלמן-ארן-11",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-שזר-612556-שמואל-הנגיד-9",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-שחר-612440-המפרש-15",
+          "__typename": "RelevantDocId"
+        }
+      ],
+      "__typename": "Address"
+    },
+    "apartmentType": [
+      {
+        "size": null,
+        "beds": 2,
+        "apartmentSpecification": null,
+        "type": "FLAT",
+        "price": 1840000,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 3,
+        "apartmentSpecification": null,
+        "type": "FLAT",
+        "price": 2250000,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": 113,
+        "beds": 4,
+        "apartmentSpecification": null,
+        "type": "FLAT",
+        "price": 2730000,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": 141,
+        "beds": 5,
+        "apartmentSpecification": null,
+        "type": "FLAT",
+        "price": 3150000,
+        "__typename": "ApartmentType"
+      }
+    ],
+    "bedsRange": {
+      "min": 2,
+      "max": 5,
+      "__typename": "FloatRange"
+    },
+    "blockDetails": {
+      "buildingsNum": null,
+      "floorRange": {
+        "min": 5,
+        "max": 35,
+        "__typename": "Ranges"
+      },
+      "units": null,
+      "mishtakenPrice": null,
+      "urbanRenewal": null,
+      "__typename": "BlockDetails"
+    },
+    "buildingStage": "building",
+    "dealType": "unitBuy",
+    "developers": [
+      {
+        "id": "dimri",
+        "logoPath": "/developers/dimri/92350-34-madlan-400x400-fa8b3821-187e-41fb-9679-94c89538e805.jpg",
+        "__typename": "Developer"
+      }
+    ],
+    "discount": {
+      "showDiscount": false,
+      "description": null,
+      "bannerUrl": null,
+      "tagline": "",
+      "__typename": "Discount"
+    },
+    "firstTimeSeen": "1990-01-01T00:00:00.000Z",
+    "id": "הרב_שאולי_21_אשדוד",
+    "images": [
+      {
+        "path": "projects/הרב_שאולי_21_אשדוד/HRMN ASHDD_012-North East to South West_Day-26d3b79c-f5d6-443b-ace9-0b3ab93f59ab.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/הרב_שאולי_21_אשדוד/HRMN ASHDD_012-North East to South West_Senset-6d484d03-deb8-48f1-b090-e614f2ae9c78.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/הרב_שאולי_21_אשדוד/HRMN ASHDD_012-PHTMTCH_E to W 2_PS-e86025b1-9743-4548-aa52-6ad672c1b814.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/הרב_שאולי_21_אשדוד/HRMN ASHDD_012-PHTMTCH_E to W_PS-74908084-e47c-4e6b-a38f-61c8741796bc.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/הרב_שאולי_21_אשדוד/HRMN ASHDD_012-PHTMTCH_E to W_Zoom_PS-9543c967-fb4b-4a9a-a055-77ae37deaacb.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/הרב_שאולי_21_אשדוד/HRMN ASHDD_012-PHTMTCH_NE to SW_PS-aca9cd53-3cca-4fdd-8eb4-1ca4d6dc90a2.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/הרב_שאולי_21_אשדוד/HRMN ASHDD_012-PHTMTCH_NE to SW_Zoom_PS-d2b31c5d-3e75-4e6a-9686-774219b166c0.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/הרב_שאולי_21_אשדוד/HRMN ASHDD_012-PHTMTCH_NW to SE_Zoom_PS-ee2bf019-c893-491d-830b-0106e6082d0e.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/הרב_שאולי_21_אשדוד/HRMN ASHDD_012-PHTMTCH_S to N_Zoom_PS-f6288c86-9a0c-423e-a6c6-92b4cb7cb4a2.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/הרב_שאולי_21_אשדוד/HRMN ASHDD_012-PHTMTCH_SW to NE_Zoom_PS-7d1a25f2-0dd7-4198-adc1-da3284df3314.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/הרב_שאולי_21_אשדוד/HRMN ASHDD_012-PHTMTCH_W to E_Zoom 2_PS-553a00f1-416f-49a6-b881-53ec6ed180fc.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/הרב_שאולי_21_אשדוד/HRMN ASHDD_012-Top Floors 1-631632e6-88c1-497d-92b6-259267c9a35b.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/הרב_שאולי_21_אשדוד/HRMN ASHDD_012-Top Floors 3-4628d48f-e391-4305-8cdf-bb400127638e.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/הרב_שאולי_21_אשדוד/HRMN ASHDD_013-South to North_From Park-f8ea8d5a-9e20-4c07-ad0e-a77232cd9b42.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/הרב_שאולי_21_אשדוד/HRMN ASHDD_012-East to West 2-206cf8c1-ab8b-4f58-bfe5-267a355e1c89.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/הרב_שאולי_21_אשדוד/HRMN ASHDD_012-East to West_Close 2-990c7512-c3a3-472c-a133-249c08a9f73e.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/הרב_שאולי_21_אשדוד/HRMN ASHDD_012-East to West_Close-5da5c63a-2c21-41dd-9cba-4703da5a4860.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/הרב_שאולי_21_אשדוד/HRMN ASHDD_012-North East to South West_Day (1)-c3f3e9da-9609-464d-b289-8d2695d89f14.jpg",
+        "description": null,
+        "__typename": "Image"
+      }
+    ],
+    "isCommercial": false,
+    "locationPoint": {
+      "lat": 31.797608694449636,
+      "lng": 34.64366176060872,
+      "__typename": "Point"
+    },
+    "page": 1,
+    "phoneNumber": [
+      "0738054226"
+    ],
+    "previewImage": {
+      "path": "projects/הרב_שאולי_21_אשדוד/HRMN ASHDD_012-North East to South West_Day-26d3b79c-f5d6-443b-ace9-0b3ab93f59ab.jpg",
+      "__typename": "Image"
+    },
+    "priceRange": {
+      "min": 1840000,
+      "max": 3150000,
+      "__typename": "Ranges"
+    },
+    "projectLogo": "project-extras/הרב_שאולי_21_אשדוד/94177-10_Dimri_Madlan_400X400_-Harmony2-fde4ca12-04ec-4030-9f63-059827f1a2fd.jpg",
+    "projectMessages": {
+      "listingDescription": "מתחם הרמוני, פרויקט מגורים חדש באשדוד, ממוקם בליבה התוסס של העיר, בשכונה ד׳ האיכותית והמתחדשת",
+      "__typename": "ProjectMessages"
+    },
+    "projectName": "HARMONY BY DIMRI",
+    "promoInfo": {
+      "isVisible": true,
+      "description": null,
+      "bannerUrl": "project-extras/%D7%94%D7%A8%D7%91_%D7%A9%D7%90%D7%95%D7%9C%D7%99_21_%D7%90%D7%A9%D7%93%D7%95%D7%93/94177-21-5rooms-madlan_1536%20%20768-943f2e06-c719-4bbf-b8b1-d2338cc1ea94.jpg",
+      "__typename": "PromoInfo"
+    },
+    "promotionStatus": {
+      "status": "promoted",
+      "__typename": "PromotionStatus"
+    },
+    "type": "project",
+    "url": "https://www.madlan.co.il/projects/%D7%94%D7%A8%D7%91_%D7%A9%D7%90%D7%95%D7%9C%D7%99_21_%D7%90%D7%A9%D7%93%D7%95%D7%93"
+  },
+  {
+    "__typename": "Project",
+    "addressDetails": {
+      "docId": "הרצל-6-יבנה-ישראל",
+      "city": "יבנה",
+      "borough": null,
+      "zipcode": null,
+      "streetName": "הרצל",
+      "neighbourhood": "נאות שמיר, יבנה",
+      "neighbourhoodDocId": "שכונה-נאות-שמיר-יבנה-ישראל",
+      "cityDocId": "יבנה-ישראל",
+      "resolutionPreferences": null,
+      "streetNumber": "6",
+      "unitNumber": null,
+      "district": "מחוז המרכז",
+      "parcel": null,
+      "block": null,
+      "relevantDocIds": [
+        {
+          "docId": "יבנה-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "מחוז-המרכז-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "שכונה-נאות-שמיר-יבנה-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "הרצל-6-יבנה-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "הרצל-8-יבנה-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "הרצל-10-יבנה-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "הרצל-12-יבנה-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "רבי-יהודה-הלוי-5-יבנה-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "רבי-יהודה-הלוי-7-יבנה-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "רבי-יהודה-הלוי-9-יבנה-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "רבי-יהודה-הלוי-11-יבנה-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "הרצל-יבנה-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "אזור-מרכז-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "אזור-שפלה-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-אבירים-410795-שבזי-24",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-אלברט-אינשטיין-482117-הדוגית-25",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-ביאליק-410779-שבזי-7",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-בן-גוריון-413682-הנשר-11",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-דמוקרטי-482612-הציונות-14",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-הירוק-עש-יצחק-רבין-416586-הדייגים-4",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-יסודי-ממ-לאומנויות-411751-סנפיר-6",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-יסודי-ממלכתי-אקולוגי-411595-הנחשול-2",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-ממד-יחידני-413997-הדרור-21",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-ממד-נועם--עציון-413054-הזית-188",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-מעיין-414227-חרוב-31",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-מרחבים-482646-הציונות-14",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-עתידים-484055-הציונות-14",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-פרדס-צפוני-414813-פטל-50",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-רמות-ויצמן-410787-הנגב-1",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-שש-שנתי-יצחק-נבון-482620-הציונות-12",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-תורה-ומדע-עש-הרמבם-482216-הסירה-7",
+          "__typename": "RelevantDocId"
+        }
+      ],
+      "__typename": "Address"
+    },
+    "apartmentType": [
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": null,
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 6,
+        "apartmentSpecification": null,
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      }
+    ],
+    "bedsRange": {
+      "min": 5,
+      "max": 6,
+      "__typename": "FloatRange"
+    },
+    "blockDetails": {
+      "buildingsNum": null,
+      "floorRange": {
+        "min": 9,
+        "max": 9,
+        "__typename": "Ranges"
+      },
+      "units": null,
+      "mishtakenPrice": null,
+      "urbanRenewal": null,
+      "__typename": "BlockDetails"
+    },
+    "buildingStage": "doneBuilding",
+    "dealType": "unitBuy",
+    "developers": [
+      {
+        "id": "shviro",
+        "logoPath": "/developers/shviro/Untitled-1-b911e203-e3c1-4498-ab86-dc2c03b7b654.jpg",
+        "__typename": "Developer"
+      }
+    ],
+    "discount": {
+      "showDiscount": true,
+      "description": "מחיר בהפתעה\nמבחר דירות ברחבי הארץ עד 250,000 ₪ הנחה",
+      "bannerUrl": "project-extras/%D7%A8%D7%9E%D7%99_%D7%A9%D7%91%D7%99%D7%A8%D7%95_%D7%A0%D7%90%D7%95%D7%AA_%D7%A9%D7%9E%D7%99%D7%A8_%D7%9E%D7%AA%D7%97%D7%9D_%D7%90/1560x768-94e86415-4c6f-4a94-a4d6-b377799d49c4.jpg",
+      "tagline": "מחיר בהפתעה",
+      "__typename": "Discount"
+    },
+    "firstTimeSeen": "1990-01-01T00:00:00.000Z",
+    "id": "רמי_שבירו_נאות_שמיר_מתחם_א",
+    "images": [
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/רמי_שבירו_נאות_שמיר_מתחם_א/תמונה-של-WhatsApp_-2024-12-17-בשעה-15.35.46_c2998d95-bc25829d-0359-4fdd-82c4-35b1aefc2940.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/רמי_שבירו_נאות_שמיר_מתחם_א/df950x650-aa3f2e12-074c-44ef-b54a-aaecdbdaabba.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/רמי_שבירו_נאות_שמיר_מתחם_א/k950x650-a888f384-7260-40db-980c-3d2b700461ff.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/רמי_שבירו_נאות_שמיר_מתחם_א/po950x650-e7859100-41b8-4912-b442-1bbc82fc75f3.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/רמי_שבירו_נאות_שמיר_מתחם_א/t950x650-4c12627a-1492-4c62-bbc6-952770df4ca2.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/רמי_שבירו_נאות_שמיר_מתחם_א/950x650-ef412152-e110-400d-ba91-55f647700f85.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/רמי_שבירו_נאות_שמיר_מתחם_א/950x650a-781acfe6-5b99-4302-ad9c-ec4fdd10c03c.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/רמי_שבירו_נאות_שמיר_מתחם_א/950x650b-b1a41d70-2bde-4839-bb97-b962b4dce9f1.jpg",
+        "description": null,
+        "__typename": "Image"
+      }
+    ],
+    "isCommercial": false,
+    "locationPoint": {
+      "lat": 31.86826820889436,
+      "lng": 34.72912198020172,
+      "__typename": "Point"
+    },
+    "page": 1,
+    "phoneNumber": [
+      "0738025533"
+    ],
+    "previewImage": {
+      "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/רמי_שבירו_נאות_שמיר_מתחם_א/df950x650-aa3f2e12-074c-44ef-b54a-aaecdbdaabba.jpg",
+      "__typename": "Image"
+    },
+    "priceRange": {
+      "min": null,
+      "max": null,
+      "__typename": "Ranges"
+    },
+    "projectMessages": {
+      "listingDescription": "דירות 5 ו-6 חד' יד שנייה ישירות מהקבלן ולכניסה מיידית, בשכונת נאות שמיר המבוקשת, ביבנה הירוקה",
+      "__typename": "ProjectMessages"
+    },
+    "projectName": "שבירו בנאות שמיר יבנה",
+    "promoInfo": {
+      "isVisible": false,
+      "description": null,
+      "bannerUrl": "project-extras/%D7%A8%D7%9E%D7%99_%D7%A9%D7%91%D7%99%D7%A8%D7%95_%D7%A0%D7%90%D7%95%D7%AA_%D7%A9%D7%9E%D7%99%D7%A8_%D7%9E%D7%AA%D7%97%D7%9D_%D7%90/1560x768-479a543a-2e4f-4d1f-856e-c8395288a625.jpg",
+      "__typename": "PromoInfo"
+    },
+    "promotionStatus": {
+      "status": "promoted",
+      "__typename": "PromotionStatus"
+    },
+    "type": "project",
+    "url": "https://www.madlan.co.il/projects/%D7%A8%D7%9E%D7%99_%D7%A9%D7%91%D7%99%D7%A8%D7%95_%D7%A0%D7%90%D7%95%D7%AA_%D7%A9%D7%9E%D7%99%D7%A8_%D7%9E%D7%AA%D7%97%D7%9D_%D7%90"
+  },
+  {
+    "__typename": "Project",
+    "addressDetails": {
+      "docId": "פרויקט-מתחם_58096_פארק_לכיש_אשדוד-אשדוד-ישראל",
+      "city": "אשדוד",
+      "borough": null,
+      "zipcode": null,
+      "streetName": "",
+      "neighbourhood": "רובע לכיש, אשדוד",
+      "neighbourhoodDocId": "שכונה-רובע-לכיש-אשדוד-ישראל",
+      "cityDocId": "אשדוד-ישראל",
+      "resolutionPreferences": null,
+      "streetNumber": null,
+      "unitNumber": null,
+      "district": "מחוז הדרום",
+      "parcel": null,
+      "block": null,
+      "relevantDocIds": [
+        {
+          "docId": "אשדוד-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "מחוז-הדרום-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "שכונה-רובע-לכיש-אשדוד-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-ישיבת-תורה-אור-640995-ההסתדרות-15",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-החותרים-383927-האגמית-3",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-צמח-צדיק-רמבם-312538-הכלניות-15",
+          "__typename": "RelevantDocId"
+        }
+      ],
+      "__typename": "Address"
+    },
+    "apartmentType": [
+      {
+        "size": null,
+        "beds": 3,
+        "apartmentSpecification": null,
+        "type": "FLAT",
+        "price": 2190000,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 4,
+        "apartmentSpecification": "projects/מתחם_58096_פארק_לכיש_אשדוד/aqua park_plan_950x650_1_-26167469-4b4e-4d8f-8d77-707f4f851a02.jpg",
+        "type": "FLAT",
+        "price": 2590000,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 4,
+        "apartmentSpecification": "projects/מתחם_58096_פארק_לכיש_אשדוד/aqua park_plan_950x650_1_10-3fe7aeb6-a5f1-4cc8-a7d2-3195b92a0871.jpg",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": "projects/מתחם_58096_פארק_לכיש_אשדוד/aqua park_plan_950x650_1_3-4943cbf7-ea61-446c-9d3c-915e795a59c0.jpg",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 4,
+        "apartmentSpecification": "projects/מתחם_58096_פארק_לכיש_אשדוד/aqua park_plan_950x650_1_4-58d6ee73-14e5-414c-a441-1fc0d21d9c69.jpg",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 4,
+        "apartmentSpecification": "projects/מתחם_58096_פארק_לכיש_אשדוד/aqua park_plan_950x650_1_5-ead6ebb1-4052-4613-a3e4-8ed8c9dd766a.jpg",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": "projects/מתחם_58096_פארק_לכיש_אשדוד/aqua park_plan_950x650_1_6-215bb2f4-b056-40fe-b424-734beb79b291.jpg",
+        "type": "FLAT",
+        "price": 3150000,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": "projects/מתחם_58096_פארק_לכיש_אשדוד/aqua park_plan_950x650_1_7-d9fb5765-fa47-4d95-a6ad-05b18645b104.jpg",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": "projects/מתחם_58096_פארק_לכיש_אשדוד/aqua park_plan_950x650_2_-4ee09643-d56e-48e6-8ce6-8a7273d9dd38.jpg",
+        "type": "PENTHOUSE_APP",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": "projects/מתחם_58096_פארק_לכיש_אשדוד/aqua park_plan_950x650_2_5-adf64247-5d5f-46c5-8c2e-6c31337b5cd2.jpg",
+        "type": "PENTHOUSE_APP",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 6,
+        "apartmentSpecification": null,
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      }
+    ],
+    "bedsRange": {
+      "min": 3,
+      "max": 6,
+      "__typename": "FloatRange"
+    },
+    "blockDetails": {
+      "buildingsNum": null,
+      "floorRange": {
+        "min": 9,
+        "max": 29,
+        "__typename": "Ranges"
+      },
+      "units": null,
+      "mishtakenPrice": null,
+      "urbanRenewal": null,
+      "__typename": "BlockDetails"
+    },
+    "buildingStage": "building",
+    "dealType": "unitBuy",
+    "developers": [
+      {
+        "id": "amram",
+        "logoPath": "/developers/amramavraham.png",
+        "__typename": "Developer"
+      }
+    ],
+    "discount": {
+      "showDiscount": true,
+      "description": "נפתחה הדירה לדוגמה מעל הפארק, מול הים!\nבואו לראות את ההצלחה של אשדוד החדשה מקרוב\nהכיוון החדש של המשפחות שנהנות מכל היתרונות\nמערכת חינוך מעולה, פארקים, מתחמי פנאי, בילוי ומסחר\nמגוון דירות במחירי סגירה והטבות בלעדיות\nהחל מ – 2,190,000 ₪ - הבנייה בעיצומה!",
+      "bannerUrl": "project-extras/%D7%9E%D7%AA%D7%97%D7%9D_58096_%D7%A4%D7%90%D7%A8%D7%A7_%D7%9C%D7%9B%D7%99%D7%A9_%D7%90%D7%A9%D7%93%D7%95%D7%93/aqua%20park%20ashdod_madlan_index_1536x768-352ca3a7-6e59-4f5b-9a8e-29673d5ce91a.jpg",
+      "tagline": "משלמים רק בעוד 3 שנים!",
+      "__typename": "Discount"
+    },
+    "firstTimeSeen": "1990-01-01T00:00:00.000Z",
+    "id": "מתחם_58096_פארק_לכיש_אשדוד",
+    "images": [
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_58096_פארק_לכיש_אשדוד/hadmayot_3-b3aadf64-42a7-4327-ad97-7c94544bf248.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_58096_פארק_לכיש_אשדוד/hadmayot_26-44819bfb-f076-4a59-b812-c9aeb8423769.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_58096_פארק_לכיש_אשדוד/hadmayot_14-17a5e1b3-d234-4893-8efe-0fee5ad9678e.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_58096_פארק_לכיש_אשדוד/hadmayot_19-327853fb-294e-4baf-9344-f244a4498909.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_58096_פארק_לכיש_אשדוד/hadmayot_22-052c7146-0ba1-4273-97d4-cdff91b310e4.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_58096_פארק_לכיש_אשדוד/hadmayot_12-d29b5ace-6f28-44c1-a4f0-50424bbceff7.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_58096_פארק_לכיש_אשדוד/hadmayot_13-ad5f4320-6d00-4237-8989-b1c2deec2e81.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_58096_פארק_לכיש_אשדוד/hadmayot_15-8cae08f1-877c-4a96-abdc-05e44e6a615a.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_58096_פארק_לכיש_אשדוד/hadmayot_17-8b6455af-53ec-46ab-9964-60c7d3662cab.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_58096_פארק_לכיש_אשדוד/hadmayot_7-d0268b34-870c-43ca-9159-33ef48e0d431.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_58096_פארק_לכיש_אשדוד/hadmayot_5-5d117ea3-7ef1-4ea9-b1c2-a214b48eb983.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_58096_פארק_לכיש_אשדוד/hadmayot_-06f89dd4-3048-48f2-b1a9-c336a4dfc67a.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_58096_פארק_לכיש_אשדוד/hadmayot_2-d8ddc217-7fc8-4b87-80d5-16e2b58d7eac.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_58096_פארק_לכיש_אשדוד/hadmayot_4-f7119738-35fe-48f0-adc2-afe662e3e0f8.jpg",
+        "description": null,
+        "__typename": "Image"
+      }
+    ],
+    "isCommercial": false,
+    "locationPoint": {
+      "lat": 31.81445,
+      "lng": 34.65429,
+      "__typename": "Point"
+    },
+    "page": 1,
+    "phoneNumber": [
+      "0738021482"
+    ],
+    "previewImage": {
+      "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/מתחם_58096_פארק_לכיש_אשדוד/hadmayot_3-b3aadf64-42a7-4327-ad97-7c94544bf248.jpg",
+      "__typename": "Image"
+    },
+    "priceRange": {
+      "min": 2190000,
+      "max": 3150000,
+      "__typename": "Ranges"
+    },
+    "projectLogo": "project-extras/מתחם_58096_פארק_לכיש_אשדוד/logo_progect logo_400x400-28163585-8660-4e79-b6a2-8858d5eb6fd4.jpg",
+    "projectMessages": {
+      "listingDescription": "פארק וים בנשימה אחת ברובע המגורים החדש, אשדוד צפון ",
+      "__typename": "ProjectMessages"
+    },
+    "projectName": " AQUA PARK אשדוד",
+    "promoInfo": {
+      "isVisible": false,
+      "description": null,
+      "bannerUrl": null,
+      "__typename": "PromoInfo"
+    },
+    "promotionStatus": {
+      "status": "promoted",
+      "__typename": "PromotionStatus"
+    },
+    "type": "project",
+    "url": "https://www.madlan.co.il/projects/%D7%9E%D7%AA%D7%97%D7%9D_58096_%D7%A4%D7%90%D7%A8%D7%A7_%D7%9C%D7%9B%D7%99%D7%A9_%D7%90%D7%A9%D7%93%D7%95%D7%93"
+  },
+  {
+    "__typename": "Project",
+    "addressDetails": {
+      "docId": "פרויקט-שדרות_בנימין_מגרשים_1410_1411_נתניה-נתניה-ישראל",
+      "city": "נתניה",
+      "borough": null,
+      "zipcode": null,
+      "streetName": "שדרות בנימין",
+      "neighbourhood": "פארק הים, נתניה",
+      "neighbourhoodDocId": "שכונה-פארק-הים-נתניה-ישראל",
+      "cityDocId": "נתניה-ישראל",
+      "resolutionPreferences": null,
+      "streetNumber": null,
+      "unitNumber": null,
+      "district": "מחוז המרכז",
+      "parcel": null,
+      "block": null,
+      "relevantDocIds": [
+        {
+          "docId": "ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "מחוז-המרכז-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "נתניה-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "שכונה-פארק-הים-נתניה-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "שדרות-בנימין-נתניה-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "שכונה-מרכז-העיר-דרום-נתניה-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-אולפנת-אורות-590414-רמבה-אייזיק-8",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-איתמר-בן-אבי-411355-יאיר-אברהם-שטרן-8",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-אמית-עמיטל-413260-אפרים-אלנקווה-13",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-יונתן-413484-בן-אבי-34",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-ממד-עוזיאל-414177-אייזיק-רמבה-6",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-ממד-קרליבך-530337-אריק-לביא-8",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-ממד-תחכמוני-411496-יהודה-הלוי-38",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-מקיף-טשרניחובסקי-440115-הגרא-5",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-מרכז-נוער-ממד-431205-הארי-14",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-מרכז-נוער-ממלכתי-431189-חתם-סופר-25",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-נחלת-שמואל-441956-רפאל-איתן-1",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-שורשים-411421-דב-גרונר-18",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-תת-אור-לציון-414763-הגרא-13",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-החותרים-383927-האגמית-3",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-צמח-צדיק-רמבם-312538-הכלניות-15",
+          "__typename": "RelevantDocId"
+        }
+      ],
+      "__typename": "Address"
+    },
+    "apartmentType": [
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": null,
+        "type": "FLAT",
+        "price": 3490000,
+        "__typename": "ApartmentType"
+      }
+    ],
+    "bedsRange": {
+      "min": 5,
+      "max": 5,
+      "__typename": "FloatRange"
+    },
+    "blockDetails": {
+      "buildingsNum": null,
+      "floorRange": {
+        "min": 24,
+        "max": 24,
+        "__typename": "Ranges"
+      },
+      "units": null,
+      "mishtakenPrice": null,
+      "urbanRenewal": null,
+      "__typename": "BlockDetails"
+    },
+    "buildingStage": "building",
+    "dealType": "unitBuy",
+    "developers": [
+      {
+        "id": "azorim",
+        "logoPath": "/developers/azorim/לוגו 6.12.22-cdd8a2c8-2477-4b31-bba8-fec33e329ad6.png",
+        "__typename": "Developer"
+      }
+    ],
+    "discount": {
+      "showDiscount": false,
+      "description": "פרויקט אזורים חופים \"EAST\" פארק הים נתניה \nמגוון דירות בנות 4-5 חד' מעוצבות בהטבת מימון בלעדית - רק *10% בחתימה והיתרה בסמוך לאכלוס",
+      "bannerUrl": null,
+      "tagline": "",
+      "__typename": "Discount"
+    },
+    "firstTimeSeen": "1990-01-01T00:00:00.000Z",
+    "id": "שדרות_בנימין_מגרשים_1410_1411_נתניה",
+    "images": [
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/שדרות_בנימין_מגרשים_1410_1411_נתניה/Hofim_img5-1418bc61-d4f2-4eb6-aad3-c90a8b0c578e.png",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/שדרות_בנימין_מגרשים_1410_1411_נתניה/Hofim_img4-f56420d3-d9ed-4742-a9ab-4cb0dfe2ab30.png",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/שדרות_בנימין_מגרשים_1410_1411_נתניה/Hofim_img2-89d3b243-c939-4335-85da-cc76160dd007.png",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/שדרות_בנימין_מגרשים_1410_1411_נתניה/Hofim_img3-82a56ade-500d-4ce5-b027-e30a6fd3fdef.png",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/שדרות_בנימין_מגרשים_1410_1411_נתניה/Hofim_img1-14fa148c-b8f3-4c4f-a3a6-040fd18feca0.png",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/שדרות_בנימין_מגרשים_1410_1411_נתניה/Hofim_img6-e453a934-6ffa-4b31-ae3f-61fd03f5fc4e.png",
+        "description": null,
+        "__typename": "Image"
+      }
+    ],
+    "isCommercial": false,
+    "locationPoint": {
+      "lat": 32.31294,
+      "lng": 34.85355,
+      "__typename": "Point"
+    },
+    "page": 1,
+    "phoneNumber": [
+      "0738020774"
+    ],
+    "previewImage": {
+      "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/שדרות_בנימין_מגרשים_1410_1411_נתניה/Hofim_img5-1418bc61-d4f2-4eb6-aad3-c90a8b0c578e.png",
+      "__typename": "Image"
+    },
+    "priceRange": {
+      "min": 3490000,
+      "max": 3490000,
+      "__typename": "Ranges"
+    },
+    "projectLogo": "project-extras/שדרות_בנימין_מגרשים_1410_1411_נתניה/Madlan_logo_400_400-6bac3a64-fec4-4aeb-ba1b-008a0bf80790.png",
+    "projectMessages": {
+      "listingDescription": "גבוה מעל קו החוף ניצבים שני מגדלי יוקרה - יצירת מופת של אדריכלות",
+      "__typename": "ProjectMessages"
+    },
+    "projectName": "EAST חופים",
+    "promoInfo": {
+      "isVisible": true,
+      "description": "זה הזמן לעבור לגור ליד הים!\nדירות 5 חדרים מעוצבות, במרחק של 5 דקות הליכה מהחוף –\nהחל מ-₪3,490,000 בלבד!",
+      "bannerUrl": "project-extras/%D7%A9%D7%93%D7%A8%D7%95%D7%AA_%D7%91%D7%A0%D7%99%D7%9E%D7%99%D7%9F_%D7%9E%D7%92%D7%A8%D7%A9%D7%99%D7%9D_1410_1411_%D7%A0%D7%AA%D7%A0%D7%99%D7%94/1536x768-1932f0c9-4147-4407-967f-d933a67acf4f.jpg",
+      "__typename": "PromoInfo"
+    },
+    "promotionStatus": {
+      "status": "promoted",
+      "__typename": "PromotionStatus"
+    },
+    "type": "project",
+    "url": "https://www.madlan.co.il/projects/%D7%A9%D7%93%D7%A8%D7%95%D7%AA_%D7%91%D7%A0%D7%99%D7%9E%D7%99%D7%9F_%D7%9E%D7%92%D7%A8%D7%A9%D7%99%D7%9D_1410_1411_%D7%A0%D7%AA%D7%A0%D7%99%D7%94"
+  },
+  {
+    "__typename": "Project",
+    "addressDetails": {
+      "docId": "התאנה-8-קרית-מלאכי-ישראל",
+      "city": "קרית מלאכי",
+      "borough": null,
+      "zipcode": null,
+      "streetName": "התאנה",
+      "neighbourhood": "כרמי הנדיב, קרית מלאכי",
+      "neighbourhoodDocId": "שכונה-כרמי-הנדיב-קרית-מלאכי-ישראל",
+      "cityDocId": "קרית-מלאכי-ישראל",
+      "resolutionPreferences": null,
+      "streetNumber": "8",
+      "unitNumber": null,
+      "district": "מחוז הדרום",
+      "parcel": null,
+      "block": null,
+      "relevantDocIds": [
+        {
+          "docId": "ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "מחוז-הדרום-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "קרית-מלאכי-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "שכונה-כרמי-הנדיב-קרית-מלאכי-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "התאנה-3-קרית-מלאכי-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "התאנה-2-קרית-מלאכי-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "הרימון-6-קרית-מלאכי-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "דרך-יגאל-הורביץ-קרית-מלאכי-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "הרימון-1-קרית-מלאכי-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "הגפן-5-קרית-מלאכי-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "התאנה-1-קרית-מלאכי-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "התאנה-קרית-מלאכי-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "התאנה-8-קרית-מלאכי-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "אזור-דרום-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-אחוות-אחים-611053-זבוטינסקי-24",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-אלי-כהן-611798-רבקה-ומרדכי-גובר-13",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-הראל-612051-שדרות-הורדים-15",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-חבד-בנות-612234-נחלת-הר-חבד-7",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-חבד-בנים-612994-הבעל-שם-טוב-6",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-למלאכה-חבד-670562-שדרות-ירושלים-28",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-מקיף-דתי-חבד-בית-חנה-640631-שדרות-ירושלים-36",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-נצח-ישראל-611061-הנגב-6",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-עציון-614560-הרצל-4",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-תומכי-תמימים---ישיבה-725382-שדרות-ירושלים-28",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-תת-בית-יוסף-615179-שדרות-ירושלים-20",
+          "__typename": "RelevantDocId"
+        }
+      ],
+      "__typename": "Address"
+    },
+    "apartmentType": [
+      {
+        "size": 105,
+        "beds": 4,
+        "apartmentSpecification": null,
+        "type": "FLAT",
+        "price": 1890000,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": 122,
+        "beds": 5,
+        "apartmentSpecification": null,
+        "type": "FLAT",
+        "price": 2172000,
+        "__typename": "ApartmentType"
+      }
+    ],
+    "bedsRange": {
+      "min": 4,
+      "max": 5,
+      "__typename": "FloatRange"
+    },
+    "blockDetails": {
+      "buildingsNum": null,
+      "floorRange": {
+        "min": 2,
+        "max": 22,
+        "__typename": "Ranges"
+      },
+      "units": null,
+      "mishtakenPrice": null,
+      "urbanRenewal": null,
+      "__typename": "BlockDetails"
+    },
+    "buildingStage": "building",
+    "dealType": "unitBuy",
+    "developers": [
+      {
+        "id": "tzifha",
+        "logoPath": "/developers/tzifha/דישראלי  (5)-b4071de5-b3b0-4c4e-a183-6fe22b9fc4b8.png",
+        "__typename": "Developer"
+      }
+    ],
+    "discount": {
+      "showDiscount": true,
+      "description": "פרויקט כרמי הנדיב קרית מלאכי\nרוכשים היום דירה ומקבלים שכירות מהיום הראשון!\nאכלוס מיידי",
+      "bannerUrl": "project-extras/%D7%9B%D7%A8%D7%9E%D7%99_%D7%94%D7%A0%D7%93%D7%99%D7%91_%D7%A7%D7%A8%D7%99%D7%AA_%D7%9E%D7%9C%D7%90%D7%9B%D7%99/1536-768-03f2e5e7-68d4-48cf-b77a-a0f5f39f1500.jpeg",
+      "tagline": "חוזה שכירות-מהיום הראשון",
+      "__typename": "Discount"
+    },
+    "firstTimeSeen": "1990-01-01T00:00:00.000Z",
+    "id": "כרמי_הנדיב_קרית_מלאכי",
+    "images": [
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/KiryatMalakhi/KarmeiAnadiv/K_M_New_01_16.6.21.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/KiryatMalakhi/KarmeiAnadiv/3070_16_text.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/KiryatMalakhi/KarmeiAnadiv/3070_15-text.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/KiryatMalakhi/KarmeiAnadiv/K_M_New_16.6.21.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/KiryatMalakhi/KarmeiAnadiv/avir.jpg",
+        "description": null,
+        "__typename": "Image"
+      }
+    ],
+    "isCommercial": false,
+    "locationPoint": {
+      "lat": 31.726561197857457,
+      "lng": 34.738588676620985,
+      "__typename": "Point"
+    },
+    "page": 1,
+    "phoneNumber": [
+      "0738052267"
+    ],
+    "previewImage": {
+      "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/KiryatMalakhi/KarmeiAnadiv/K_M_New_01_16.6.21.jpg",
+      "__typename": "Image"
+    },
+    "priceRange": {
+      "min": 1890000,
+      "max": 2172000,
+      "__typename": "Ranges"
+    },
+    "projectLogo": "project-extras/KiryatMalakhi/KarmeiAnadiv/Capture_6.8.21.PNG",
+    "projectMessages": {
+      "listingDescription": "ההזדמנות שלכם לאיכות חיים בלב הארץ! דירות 4,5 חדרים",
+      "__typename": "ProjectMessages"
+    },
+    "projectName": "כרמי הנדיב קרית מלאכי",
+    "promoInfo": {
+      "isVisible": false,
+      "description": null,
+      "bannerUrl": null,
+      "__typename": "PromoInfo"
+    },
+    "promotionStatus": {
+      "status": "promoted",
+      "__typename": "PromotionStatus"
+    },
+    "type": "project",
+    "url": "https://www.madlan.co.il/projects/%D7%9B%D7%A8%D7%9E%D7%99_%D7%94%D7%A0%D7%93%D7%99%D7%91_%D7%A7%D7%A8%D7%99%D7%AA_%D7%9E%D7%9C%D7%90%D7%9B%D7%99"
+  },
+  {
+    "__typename": "Project",
+    "addressDetails": {
+      "docId": "פרויקט-חנה_הנביאה_23_29_קרית_גת-קרית-גת-ישראל",
+      "city": "קרית גת",
+      "borough": null,
+      "zipcode": null,
+      "streetName": "חנה הנביאה",
+      "neighbourhood": "כרמי גת, קרית גת",
+      "neighbourhoodDocId": "שכונה-כרמי-גת-קרית-גת-ישראל",
+      "cityDocId": "קרית-גת-ישראל",
+      "resolutionPreferences": null,
+      "streetNumber": "23",
+      "unitNumber": null,
+      "district": "מחוז הדרום",
+      "parcel": null,
+      "block": null,
+      "relevantDocIds": [
+        {
+          "docId": "מחוז-הדרום-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "קרית-גת-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "שכונה-כרמי-גת-קרית-גת-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "חנה-הנביאה-קרית-גת-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-אוהל-יוסף-יצחק-611046-ירמיהו-11",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-אוהלי-מנחם-חבד-611236-ירמיהו-3",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-אפרים-בן-דוד-זל-612028-שמואל-הנביא-13",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-בן-צבי-611699-הכרמל-10",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-דוד-אלעזר-614289-גולני-32",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-הרצל-613299-עתניאל-בן-קנז-8",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-יד-יצחק-611434-מבוא-קדמה-5",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-יסודי-ממד-כרמי-גת-644609-שד-כרמי-גת-40",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-כרמי-גת-630038-הנרייטה-סאלד-3",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-כרמים-616359-נופך-17",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-מנחם-בגין-614263-שדרות-גת-120",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-משואה-עש-יוסף-שלום-611038-שדרות-העצמאות-66",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-רמבם-613497-רחבת-יפתח-הגלעדי-9",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-רשבי-613182-הכרמל-8",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-שפרינצק-611020-הדקל-19",
+          "__typename": "RelevantDocId"
+        }
+      ],
+      "__typename": "Address"
+    },
+    "apartmentType": [
+      {
+        "size": null,
+        "beds": 3,
+        "apartmentSpecification": "projects/חנה_הנביאה_23_29_קרית_גת/93257-20-madlan-1536x768-06-183e5bdc-be63-4482-8103-53d773b51b19.png",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 4,
+        "apartmentSpecification": "projects/חנה_הנביאה_23_29_קרית_גת/93257-20-madlan-1536x768-09-bb01441a-40bc-4b23-9c84-9fd381b129f7.png",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": "projects/חנה_הנביאה_23_29_קרית_גת/93257-20-madlan-1536x768-05-59e53015-41ee-4c44-8167-600f67f51a59.png",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": "projects/חנה_הנביאה_23_29_קרית_גת/93257-20-madlan-1536x768-07-c3d926ab-c54c-4a68-aa27-d5bca115b328.png",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": "projects/חנה_הנביאה_23_29_קרית_גת/93257-20-madlan-1536x768-08-16ea7cac-f89f-4975-bbe9-0812613b8f01.png",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      }
+    ],
+    "bedsRange": {
+      "min": 3,
+      "max": 5,
+      "__typename": "FloatRange"
+    },
+    "blockDetails": {
+      "buildingsNum": null,
+      "floorRange": {
+        "min": 8,
+        "max": 8,
+        "__typename": "Ranges"
+      },
+      "units": null,
+      "mishtakenPrice": null,
+      "urbanRenewal": null,
+      "__typename": "BlockDetails"
+    },
+    "buildingStage": "building",
+    "dealType": "unitBuy",
+    "developers": [
+      {
+        "id": "dimri",
+        "logoPath": "/developers/dimri/92350-34-madlan-400x400-fa8b3821-187e-41fb-9679-94c89538e805.jpg",
+        "__typename": "Developer"
+      }
+    ],
+    "discount": {
+      "showDiscount": false,
+      "description": "תנאים מיוחדים לסוף השנה",
+      "bannerUrl": null,
+      "tagline": "",
+      "__typename": "Discount"
+    },
+    "firstTimeSeen": "1990-01-01T00:00:00.000Z",
+    "id": "חנה_הנביאה_23_29_קרית_גת",
+    "images": [
+      {
+        "path": "projects/חנה_הנביאה_23_29_קרית_גת/93257-20-madlan-1536x768-03-47b5d861-2b5b-4bda-a5b4-fd39dadc182e.png",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/חנה_הנביאה_23_29_קרית_גת/93257-20-madlan-1536x768-04-5f42aebd-8028-4816-9e00-65438dd58961.png",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/חנה_הנביאה_23_29_קרית_גת/93257-20-madlan-1536x768-34a26805-220d-4780-9145-3399c6aba6d6.png",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/חנה_הנביאה_23_29_קרית_גת/93257-20-madlan-1536x768-01-6fffd7e4-9d41-4cba-82ef-af3a9f2a5dfc.png",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "projects/חנה_הנביאה_23_29_קרית_גת/93257-20-madlan-1536x768-02-34b0abfd-18d3-4914-b99f-b2dc31daa3f1.png",
+        "description": null,
+        "__typename": "Image"
+      }
+    ],
+    "isCommercial": false,
+    "locationPoint": {
+      "lat": 31.6347,
+      "lng": 34.77105,
+      "__typename": "Point"
+    },
+    "page": 1,
+    "phoneNumber": [
+      "0738097997"
+    ],
+    "previewImage": {
+      "path": "projects/חנה_הנביאה_23_29_קרית_גת/93257-20-madlan-1536x768-03-47b5d861-2b5b-4bda-a5b4-fd39dadc182e.png",
+      "__typename": "Image"
+    },
+    "priceRange": {
+      "min": null,
+      "max": null,
+      "__typename": "Ranges"
+    },
+    "projectLogo": "project-extras/חנה_הנביאה_23_29_קרית_גת/93257-20-madlan-400x400-1-af2153df-0a19-42f3-bdc0-085828459296.jpg",
+    "projectMessages": {
+      "listingDescription": "דמרי גאה להציג: ״הירוקה״ – מתחם מגורים חדש ואיכותי בלב שכונת כרמי גת הירוקה",
+      "__typename": "ProjectMessages"
+    },
+    "projectName": "כרמי גת הירוקה ",
+    "promoInfo": {
+      "isVisible": true,
+      "description": null,
+      "bannerUrl": "project-extras/%D7%97%D7%A0%D7%94_%D7%94%D7%A0%D7%91%D7%99%D7%90%D7%94_23_29_%D7%A7%D7%A8%D7%99%D7%AA_%D7%92%D7%AA/93257-28_Dimri_Carmei_Gat_Madlan_Banners_1536%20%C3%97%20768-3bf86c1c-ef00-4db9-b698-3f3460543a64.jpg",
+      "__typename": "PromoInfo"
+    },
+    "promotionStatus": {
+      "status": "promoted",
+      "__typename": "PromotionStatus"
+    },
+    "type": "project",
+    "url": "https://www.madlan.co.il/projects/%D7%97%D7%A0%D7%94_%D7%94%D7%A0%D7%91%D7%99%D7%90%D7%94_23_29_%D7%A7%D7%A8%D7%99%D7%AA_%D7%92%D7%AA"
+  },
+  {
+    "__typename": "Project",
+    "addressDetails": {
+      "docId": "פרויקט-דונה_כרמי_גת_שלב_ב-קרית-גת-ישראל",
+      "city": "קרית גת",
+      "borough": null,
+      "zipcode": null,
+      "streetName": "שדרות לכיש",
+      "neighbourhood": "כרמי גת, קרית גת",
+      "neighbourhoodDocId": "שכונה-כרמי-גת-קרית-גת-ישראל",
+      "cityDocId": "קרית-גת-ישראל",
+      "resolutionPreferences": null,
+      "streetNumber": null,
+      "unitNumber": null,
+      "district": "מחוז הדרום",
+      "parcel": null,
+      "block": null,
+      "relevantDocIds": [
+        {
+          "docId": "ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "מחוז-הדרום-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "קרית-גת-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "שכונה-כרמי-גת-קרית-גת-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "שדרות-לכיש-קרית-גת-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-אוהל-יוסף-יצחק-611046-ירמיהו-11",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-אוהלי-מנחם-חבד-611236-ירמיהו-3",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-אפרים-בן-דוד-זל-612028-שמואל-הנביא-13",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-בן-צבי-611699-הכרמל-10",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-דוד-אלעזר-614289-גולני-32",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-הרצל-613299-עתניאל-בן-קנז-8",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-יד-יצחק-611434-מבוא-קדמה-5",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-יסודי-ממד-כרמי-גת-644609-שד-כרמי-גת-40",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-כרמי-גת-630038-הנרייטה-סאלד-3",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-כרמים-616359-נופך-17",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-מנחם-בגין-614263-שדרות-גת-120",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-משואה-עש-יוסף-שלום-611038-שדרות-העצמאות-66",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-רמבם-613497-רחבת-יפתח-הגלעדי-9",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-רשבי-613182-הכרמל-8",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-שפרינצק-611020-הדקל-19",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-החותרים-383927-האגמית-3",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-צמח-צדיק-רמבם-312538-הכלניות-15",
+          "__typename": "RelevantDocId"
+        }
+      ],
+      "__typename": "Address"
+    },
+    "apartmentType": [
+      {
+        "size": null,
+        "beds": 3,
+        "apartmentSpecification": "projects/דונה_כרמי_גת_שלב_ב/C3 -4142cc13-249b-4a53-8cae-128e25cdde0b.png",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 4,
+        "apartmentSpecification": "projects/דונה_כרמי_גת_שלב_ב/A4 -4963248e-d8de-464b-9bfb-875cf2a58d31.png",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 6,
+        "apartmentSpecification": "projects/דונה_כרמי_גת_שלב_ב/R'6-eccbbbed-cd9c-463b-bb86-08aced1aedd7.png",
+        "type": "PENTHOUSE_APP",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 6,
+        "apartmentSpecification": null,
+        "type": "PENTHOUSE_APP",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 6,
+        "apartmentSpecification": null,
+        "type": "PENTHOUSE_APP",
+        "price": null,
+        "__typename": "ApartmentType"
+      }
+    ],
+    "bedsRange": {
+      "min": 3,
+      "max": 6,
+      "__typename": "FloatRange"
+    },
+    "blockDetails": {
+      "buildingsNum": null,
+      "floorRange": {
+        "min": 2,
+        "max": 15,
+        "__typename": "Ranges"
+      },
+      "units": null,
+      "mishtakenPrice": null,
+      "urbanRenewal": null,
+      "__typename": "BlockDetails"
+    },
+    "buildingStage": "building",
+    "dealType": "unitBuy",
+    "developers": [
+      {
+        "id": "dona",
+        "logoPath": "/developers/dona.jpg",
+        "__typename": "Developer"
+      }
+    ],
+    "discount": {
+      "showDiscount": false,
+      "description": null,
+      "bannerUrl": null,
+      "tagline": "",
+      "__typename": "Discount"
+    },
+    "firstTimeSeen": "1990-01-01T00:00:00.000Z",
+    "id": "דונה_כרמי_גת_שלב_ב",
+    "images": [
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/דונה_כרמי_גת_שלב_ב/910373-2463499e-9c15-4bce-851b-c58810db9101.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/דונה_כרמי_גת_שלב_ב/910374-0c990db5-6c8a-410c-9755-f5354729f427.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/דונה_כרמי_גת_שלב_ב/910375-e79c5767-c7c4-4f8d-ba56-2526266e303f.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/דונה_כרמי_גת_שלב_ב/910376-7305595f-6a63-45f3-afab-8fd41e9d69a3.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/דונה_כרמי_גת_שלב_ב/910377-8d1dddda-0421-47fc-a9ca-09a5398d6b7a.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/דונה_כרמי_גת_שלב_ב/910378-63695f80-e1fb-463e-8596-340a90d7705c.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/דונה_כרמי_גת_שלב_ב/910379-1dabf7e6-92c3-4662-9769-c8e8f606f837.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/דונה_כרמי_גת_שלב_ב/9103710-1f975a5e-cf27-4cbd-bcae-cbe285c8c015.jpg",
+        "description": null,
+        "__typename": "Image"
+      }
+    ],
+    "isCommercial": false,
+    "locationPoint": {
+      "lat": 31.62572568731638,
+      "lng": 34.766676197209414,
+      "__typename": "Point"
+    },
+    "page": 1,
+    "phoneNumber": [
+      "033308786"
+    ],
+    "previewImage": {
+      "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/דונה_כרמי_גת_שלב_ב/910377-8d1dddda-0421-47fc-a9ca-09a5398d6b7a.jpg",
+      "__typename": "Image"
+    },
+    "priceRange": {
+      "min": null,
+      "max": null,
+      "__typename": "Ranges"
+    },
+    "projectLogo": "project-extras/דונה_כרמי_גת_שלב_ב/91037-dd6e7831-fc33-4ae2-b8d0-9937ba7463db.jpg",
+    "projectMessages": {
+      "listingDescription": "חברת דונה מזמינה אתכם לגלות ולהתאהב בכרמי גת – מקום בו טבע ועיר מתחברים",
+      "__typename": "ProjectMessages"
+    },
+    "projectName": "דונה בכרמי גת",
+    "promoInfo": {
+      "isVisible": true,
+      "description": null,
+      "bannerUrl": "project-extras/%D7%93%D7%95%D7%A0%D7%94_%D7%9B%D7%A8%D7%9E%D7%99_%D7%92%D7%AA_%D7%A9%D7%9C%D7%91_%D7%91/91156_%20%20yad%202_14__m-bba816db-3837-4801-bd0c-dbb9292b7148.jpg",
+      "__typename": "PromoInfo"
+    },
+    "promotionStatus": {
+      "status": "promoted",
+      "__typename": "PromotionStatus"
+    },
+    "type": "project",
+    "url": "https://www.madlan.co.il/projects/%D7%93%D7%95%D7%A0%D7%94_%D7%9B%D7%A8%D7%9E%D7%99_%D7%92%D7%AA_%D7%A9%D7%9C%D7%91_%D7%91"
+  },
+  {
+    "__typename": "Project",
+    "addressDetails": {
+      "docId": "דרך-שמשון-4-באר-שבע-ישראל",
+      "city": "באר שבע",
+      "borough": null,
+      "zipcode": null,
+      "streetName": "דרך שמשון",
+      "neighbourhood": "שכונה ג, באר שבע",
+      "neighbourhoodDocId": "שכונה-שכונה-ג-באר-שבע-ישראל",
+      "cityDocId": "באר-שבע-ישראל",
+      "resolutionPreferences": null,
+      "streetNumber": "4",
+      "unitNumber": null,
+      "district": "מחוז הדרום",
+      "parcel": null,
+      "block": null,
+      "relevantDocIds": [
+        {
+          "docId": "באר-שבע-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "מחוז-הדרום-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "שכונה-קרית-גנים-באר-שבע-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "דרך-שמשון-4-באר-שבע-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "שמשון-4-באר-שבע-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "דרך-שמשון-באר-שבע-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "שכונה-שכונה-ה-באר-שבע-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "אזור-דרום-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "אזור-נגב-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-אוריין-612978-טבנקין-7",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-דקלים-644211-בני-אור-35",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-המדרשיה-ישמח-משה-637470-דרך-מצדה-105",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-יסודות-620054-יהודה-הלוי-18",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-ישיבת-אמית-644849-דרך-שמשון-10",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-מכ-עמל-להנדסה-670836-מבצע-יואב-3",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-משכנות-אלעזר-670406-סטרומה-13",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-עירוני-ג-מקיף-640193-דרך-שמשון-1",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-רמבם-610378-קדושי-בגדד-13",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-תיכון-קורצאק--755223-דרך-המשחררים-30",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-ברנקו-וייס-641118-בזל-72",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-עתיד-אור-מרגלית-641084-ורבורג-5",
+          "__typename": "RelevantDocId"
+        }
+      ],
+      "__typename": "Address"
+    },
+    "apartmentType": [
+      {
+        "size": null,
+        "beds": 4,
+        "apartmentSpecification": null,
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": null,
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      }
+    ],
+    "bedsRange": {
+      "min": 4,
+      "max": 5,
+      "__typename": "FloatRange"
+    },
+    "blockDetails": {
+      "buildingsNum": null,
+      "floorRange": {
+        "min": 26,
+        "max": 30,
+        "__typename": "Ranges"
+      },
+      "units": null,
+      "mishtakenPrice": null,
+      "urbanRenewal": null,
+      "__typename": "BlockDetails"
+    },
+    "buildingStage": "building",
+    "dealType": "unitBuy",
+    "developers": [
+      {
+        "id": "azorim",
+        "logoPath": "/developers/azorim/לוגו 6.12.22-cdd8a2c8-2477-4b31-bba8-fec33e329ad6.png",
+        "__typename": "Developer"
+      },
+      {
+        "id": "dimri",
+        "logoPath": "/developers/dimri/92350-34-madlan-400x400-fa8b3821-187e-41fb-9679-94c89538e805.jpg",
+        "__typename": "Developer"
+      }
+    ],
+    "discount": {
+      "showDiscount": true,
+      "description": "הטבת קיץ - חבילת ריהוט מתנה\n ותנאי מימון מיוחדים",
+      "bannerUrl": "project-extras/Central_Park_17/154892_summer_sale_banners_04_1536%20%C3%97%20768-241ccb4d-6864-447b-be9b-eb5371ce4d4f.jpg",
+      "tagline": "הטבה - חבילת ריהוט מתנה!",
+      "__typename": "Discount"
+    },
+    "firstTimeSeen": "1990-01-01T00:00:00.000Z",
+    "id": "Central_Park_17",
+    "images": [
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/beerSheva/CentralPark17/116604 hadmayot_z_1536x7684.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/beerSheva/CentralPark17/120240 hadmayot_b_1536x7682.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/beerSheva/CentralPark17/120240 hadmayot_b_1536x768.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/beerSheva/CentralPark17/120240 hadmayot_b_1536x7683.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/beerSheva/CentralPark17/116604 hadmayot_z_1536x7683.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/beerSheva/CentralPark17/116604 hadmayot_z16.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/beerSheva/CentralPark17/116604 hadmayot_z_1536x7682.jpg",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/beerSheva/CentralPark17/116604 hadmayot_z_1536x7686.jpg",
+        "description": null,
+        "__typename": "Image"
+      }
+    ],
+    "isCommercial": false,
+    "locationPoint": {
+      "lat": 31.255292565628622,
+      "lng": 34.78304107415694,
+      "__typename": "Point"
+    },
+    "page": 1,
+    "phoneNumber": [
+      "0738022392"
+    ],
+    "previewImage": {
+      "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/beerSheva/CentralPark17/116604 hadmayot_z_1536x7682.jpg",
+      "__typename": "Image"
+    },
+    "priceRange": {
+      "min": null,
+      "max": null,
+      "__typename": "Ranges"
+    },
+    "projectLogo": "project-extras/Central_Park_17/126114_banners_z32_110x66-b41b7082-98d6-4a35-bbd2-2c3ddec06a83.jpg",
+    "projectMessages": {
+      "listingDescription": "סנטרל פארק 17 - פארק המגורים הגדול בישראל. אכלוס מיידי!",
+      "__typename": "ProjectMessages"
+    },
+    "projectName": "Central Park 17 באר שבע",
+    "promoInfo": {
+      "isVisible": false,
+      "description": null,
+      "bannerUrl": null,
+      "__typename": "PromoInfo"
+    },
+    "promotionStatus": {
+      "status": "promoted",
+      "__typename": "PromotionStatus"
+    },
+    "type": "project",
+    "url": "https://www.madlan.co.il/projects/Central_Park_17"
+  },
+  {
+    "__typename": "Project",
+    "addressDetails": {
+      "docId": "גילבוע-39-יבנה-ישראל",
+      "city": "יבנה",
+      "borough": null,
+      "zipcode": null,
+      "streetName": "הגלבוע",
+      "neighbourhood": "נאות שז\"ר, יבנה",
+      "neighbourhoodDocId": "שכונה-נאות-שזר-יבנה-ישראל",
+      "cityDocId": "יבנה-ישראל",
+      "resolutionPreferences": null,
+      "streetNumber": "39",
+      "unitNumber": null,
+      "district": "מחוז המרכז",
+      "parcel": null,
+      "block": null,
+      "relevantDocIds": [
+        {
+          "docId": "יבנה-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "מחוז-המרכז-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "שכונה-נאות-שזר-יבנה-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "כרמל-1-יבנה-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "כרמל-2-יבנה-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "גלבוע-35-יבנה-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "גלבוע-37-יבנה-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "גילבוע-39-יבנה-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "הגלבוע-יבנה-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "אזור-מרכז-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "אזור-שפלה-ישראל",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-אבירים-410795-שבזי-24",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-אולפנת---לבנות-ולהבנות-410076-חבלבל-1",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-אלברט-אינשטיין-482117-הדוגית-25",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-ביאליק-410779-שבזי-7",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-בית-יעקב-סיני-416552-הגלבוע-8",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-בן-גוריון-413682-הנשר-11",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-בנות-לאה-441816-חרמון-13",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-דמוקרטי-482612-הציונות-14",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-הירוק-עש-יצחק-רבין-416586-הדייגים-4",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-יסודי-ממ-לאומנויות-411751-סנפיר-6",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-יסודי-ממלכתי-אקולוגי-411595-הנחשול-2",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-כתר-תורה-440230-הכלנית-6",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-ממד-יחידני-413997-הדרור-21",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-ממד-נועם--עציון-413054-הזית-188",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-מעיין-414227-חרוב-31",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-מרחבים-482646-הציונות-14",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-נריה-470377-חבלבל-1",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-פרדס-צפוני-414813-פטל-50",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-רמות-ויצמן-410787-הנגב-1",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-תורה-ומדע-עש-הרמבם-482216-הסירה-7",
+          "__typename": "RelevantDocId"
+        },
+        {
+          "docId": "בית-ספר-תת-סיני-413120-הגלבוע-6",
+          "__typename": "RelevantDocId"
+        }
+      ],
+      "__typename": "Address"
+    },
+    "apartmentType": [
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": null,
+        "type": "FLAT",
+        "price": 2845000,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": "projects/גרופית_הכרמל_יבנה/1536x768_С2-0acbd25b-6998-4b1d-b261-8b51dcaffa18.jpg",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": "projects/גרופית_הכרמל_יבנה/1536x768_С3-40ed12b4-7615-4935-8c02-60091ae3cdfc.jpg",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": "projects/גרופית_הכרמל_יבנה/1536x768_С5-bde34493-7658-40a1-8a43-bf4212a733db.jpg",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": "projects/גרופית_הכרמל_יבנה/1563-768-1-77b41b02-9495-4cc0-b03e-0ecfce5fed68.jpg",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 5,
+        "apartmentSpecification": "projects/גרופית_הכרמל_יבנה/1563-768-2-a832ea2e-ff5f-4b94-9d54-31b1eb5e6a17.jpg",
+        "type": "FLAT",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 6,
+        "apartmentSpecification": "projects/גרופית_הכרמל_יבנה/1536x768_D3-a865688d-1344-434d-b367-28e6d01f40c2.jpg",
+        "type": "PENTHOUSE_APP",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 6,
+        "apartmentSpecification": "projects/גרופית_הכרמל_יבנה/1536x768_D2-36bf87b1-6e0a-4a69-ac26-456d0958044c.jpg",
+        "type": "PENTHOUSE_APP",
+        "price": null,
+        "__typename": "ApartmentType"
+      },
+      {
+        "size": null,
+        "beds": 6,
+        "apartmentSpecification": "projects/גרופית_הכרמל_יבנה/1536x768_D1-be23b75b-d67a-4810-a88c-a6d31e26ac7b.jpg",
+        "type": "PENTHOUSE_APP",
+        "price": null,
+        "__typename": "ApartmentType"
+      }
+    ],
+    "bedsRange": {
+      "min": 5,
+      "max": 6,
+      "__typename": "FloatRange"
+    },
+    "blockDetails": {
+      "buildingsNum": null,
+      "floorRange": {
+        "min": 16,
+        "max": 26,
+        "__typename": "Ranges"
+      },
+      "units": null,
+      "mishtakenPrice": null,
+      "urbanRenewal": null,
+      "__typename": "BlockDetails"
+    },
+    "buildingStage": "building",
+    "dealType": "unitBuy",
+    "developers": [
+      {
+        "id": "grofit",
+        "logoPath": "/developers/grofitMapIcon.jpg",
+        "__typename": "Developer"
+      }
+    ],
+    "discount": {
+      "showDiscount": true,
+      "description": "30% בחתימת החוזה\nשנה וחצי עלינו!\nנכנסים מיידית לדירה ונהנים משנה וחצי ללא תשלומים\n\n*המבצע בכפוף לאישור הבנק ולתקנון המבצע",
+      "bannerUrl": "project-extras/%D7%92%D7%A8%D7%95%D7%A4%D7%99%D7%AA_%D7%94%D7%9B%D7%A8%D7%9E%D7%9C_%D7%99%D7%91%D7%A0%D7%94/152242_banners_08_27_1536%20%C3%97%20768-81cf5b56-086a-4c4b-91a1-603cd55cd2e5.jpg",
+      "tagline": "",
+      "__typename": "Discount"
+    },
+    "firstTimeSeen": "1990-01-01T00:00:00.000Z",
+    "id": "גרופית_הכרמל_יבנה",
+    "images": [
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/גרופית_הכרמל_יבנה/הדמיה מדלן 1536-768-c8fc1b66-4d35-45ef-aee8-e85bbbf65b37.png",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/yavne/hakarmel/Madlanהדמיות-2.png",
+        "description": null,
+        "__typename": "Image"
+      },
+      {
+        "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/yavne/hakarmel/Madlanהדמיות.png",
+        "description": null,
+        "__typename": "Image"
+      }
+    ],
+    "isCommercial": false,
+    "locationPoint": {
+      "lat": 31.87687393934865,
+      "lng": 34.750848847978936,
+      "__typename": "Point"
+    },
+    "page": 1,
+    "phoneNumber": [
+      "0738024426"
+    ],
+    "previewImage": {
+      "path": "https://images2.madlan.co.il/t:nonce:v=2/projects/גרופית_הכרמל_יבנה/הדמיה מדלן 1536-768-c8fc1b66-4d35-45ef-aee8-e85bbbf65b37.png",
+      "__typename": "Image"
+    },
+    "priceRange": {
+      "min": 2845000,
+      "max": 2845000,
+      "__typename": "Ranges"
+    },
+    "projectLogo": "project-extras/גרופית_הכרמל_יבנה/152242_banners_07_100 × 78-e5006673-bb76-4be4-b6be-2ae79f51b9e6.jpg",
+    "projectMessages": {
+      "listingDescription": "מגדל יוקרה בסטנדרט פרימיום, תכנון דירתי פונקציונאלי",
+      "__typename": "ProjectMessages"
+    },
+    "projectName": "יבנה צפון החדשה שלב ב'",
+    "promoInfo": {
+      "isVisible": false,
+      "description": "הטבה בלעדית- שנה וחצי עלינו!\nנכנסים מיידית לדירה ונהנים משנה וחצי ללא תשלומים!\nמשלמים 30% בחתימת החוזה\nואת היתרה משלמים לאחר שנה וחצי בדירה החדשה שלכם ללא ריבית והצמדה*\n\n*המבצע בכפוף לאישור הבנק ולתקנון החברה",
+      "bannerUrl": "project-extras/%D7%92%D7%A8%D7%95%D7%A4%D7%99%D7%AA_%D7%94%D7%9B%D7%A8%D7%9E%D7%9C_%D7%99%D7%91%D7%A0%D7%94/152242_banners_08_27_1536%20%C3%97%20768-7046ab89-d7ce-4e52-9252-f3f8a56893e8.jpg",
+      "__typename": "PromoInfo"
+    },
+    "promotionStatus": {
+      "status": "promoted",
+      "__typename": "PromotionStatus"
+    },
+    "type": "project",
+    "url": "https://www.madlan.co.il/projects/%D7%92%D7%A8%D7%95%D7%A4%D7%99%D7%AA_%D7%94%D7%9B%D7%A8%D7%9E%D7%9C_%D7%99%D7%91%D7%A0%D7%94"
+  }
+]

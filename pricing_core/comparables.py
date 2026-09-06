@@ -7,6 +7,8 @@ from statistics import median
 from typing import Any, Iterable
 from collections import defaultdict
 
+from .geographic_scope import GeographicScopeAssessment, GeographicScopeStatus
+from .market_regime import MarketRegime, MarketRegimeAssessment
 from .models import ProjectLocation, QAResult, QualityStatus, Unit
 
 
@@ -33,6 +35,10 @@ class ComparableCandidate:
     quality_status: str = "usable"
     reasons: list[str] | None = None
     raw: dict[str, Any] | None = None
+    gush: int | None = None
+    helka: int | None = None
+    market_context: dict[str, Any] | None = None
+    geographic_context: dict[str, Any] | None = None
 
     def public_dict(self) -> dict[str, Any]:
         payload = asdict(self)
@@ -121,16 +127,32 @@ def build_comparable_set(
     madlan_projects: Iterable[dict],
     as_of: date | None = None,
     source_context: dict[str, Any] | None = None,
+    sold_market_context_by_source_index: dict[int, MarketRegimeAssessment] | None = None,
+    sold_geographic_context_by_source_index: dict[int, GeographicScopeAssessment] | None = None,
 ) -> ComparableSet:
     """Build ranked comparable candidates without inventing weighted scores.
 
     Eligibility is intentionally conservative. Ranking is lexicographic rather than
     a black-box weighted score: geography first, then recency, then area/floor similarity.
     The function ranks evidence; it does not yet calculate a price range.
+
+    ``sold_market_context_by_source_index`` is an optional, frozen government-program
+    market-regime assessment per sold record (keyed by the record's immutable
+    ``source_index``, never ``asset_id``). ``None`` (the default) reproduces prior
+    behavior exactly -- the regime gate only activates when a caller explicitly
+    supplies a classified snapshot's context (see app_api.pricing_service).
+
+    ``sold_geographic_context_by_source_index`` is the equivalent frozen, per-record
+    geographic-scope assessment (also keyed by ``source_index``). ``None`` reproduces
+    prior behavior exactly -- only a citywide source with a resolved local-parcel
+    whitelist (currently the standard 3-room family) supplies this.
     """
 
     as_of = as_of or date.today()
-    sold, sold_excluded, sold_trace = _sold_candidates(target_unit, target_location, sold_qa)
+    sold, sold_excluded, sold_trace = _sold_candidates(
+        target_unit, target_location, sold_qa,
+        sold_market_context_by_source_index, sold_geographic_context_by_source_index,
+    )
     current, current_excluded, current_trace = _madlan_listing_candidates(target_unit, target_location, madlan_listings)
     projects, project_excluded, project_trace = _project_candidates(target_unit, target_location, madlan_projects)
 
@@ -235,10 +257,11 @@ def build_sold_building_clusters(candidates: Iterable[ComparableCandidate]) -> l
 def sold_group_key(candidate: ComparableCandidate) -> str | None:
     """Return the most defensible available building/location grouping key.
 
-    GovMap-derived records sometimes omit the street address while still carrying
-    a shared geocoded building/location point. In that case exact source
-    coordinates are a better independence key than treating every transaction
-    asset id as a separate building.
+    Hierarchy: address, then coordinates, then cadastral parcel (gush/helka), then
+    unresolved. A transaction's ``source_id``/``assetId`` identifies the record, not
+    an independent building or location, and is deliberately never used here --
+    using it would let identical-looking records with distinct asset ids inflate
+    independence counts.
     """
 
     if candidate.address:
@@ -248,10 +271,33 @@ def sold_group_key(candidate: ComparableCandidate) -> str | None:
         # tested feeds. Six decimals is ~0.1 m latitude precision and is used only
         # as a grouping identifier, not as a claim about cadastral boundaries.
         return f"coord:{candidate.latitude:.6f},{candidate.longitude:.6f}"
-    return candidate.source_id
+    if candidate.gush is not None and candidate.helka is not None:
+        # Conservative fallback: where building identity is unavailable, the
+        # cadastral parcel is the narrowest defensible independently-verified
+        # location grouping. Multiple buildings sharing one parcel still count
+        # only once, so this never overstates independence.
+        return f"parcel:{candidate.gush}/{candidate.helka}"
+    return None
+
+
+def sold_group_basis(candidate: ComparableCandidate) -> str:
+    """How ``sold_group_key`` resolved this candidate's location identity --
+    surfaced separately so evidence quality is never presented as uniform."""
+
+    if candidate.address:
+        return "address"
+    if candidate.latitude is not None and candidate.longitude is not None:
+        return "coordinates"
+    if candidate.gush is not None and candidate.helka is not None:
+        return "cadastral_parcel"
+    return "unresolved"
 
 def _sold_candidates(
-    target: Unit, location: ProjectLocation, rows: Iterable[QAResult]
+    target: Unit,
+    location: ProjectLocation,
+    rows: Iterable[QAResult],
+    sold_market_context_by_source_index: dict[int, MarketRegimeAssessment] | None = None,
+    sold_geographic_context_by_source_index: dict[int, GeographicScopeAssessment] | None = None,
 ) -> tuple[list[ComparableCandidate], int, list[tuple[CandidateSelectionTrace, ComparableCandidate | None]]]:
     candidates: list[ComparableCandidate] = []
     excluded = 0
@@ -294,6 +340,28 @@ def _sold_candidates(
                 None,
             ))
             continue
+        geo_assessment: GeographicScopeAssessment | None = None
+        if sold_geographic_context_by_source_index is not None:
+            geo_assessment = sold_geographic_context_by_source_index.get(tx.source_index)
+            geo_status = geo_assessment.scope_status if geo_assessment is not None else GeographicScopeStatus.UNRESOLVED
+            if geo_status is not GeographicScopeStatus.VERIFIED_LOCAL:
+                excluded += 1
+                trace.append((
+                    CandidateSelectionTrace("sold", source, tx.asset_id, False, [f"geographic_scope:{geo_status.value}"]),
+                    None,
+                ))
+                continue
+        market_assessment: MarketRegimeAssessment | None = None
+        if sold_market_context_by_source_index is not None:
+            market_assessment = sold_market_context_by_source_index.get(tx.source_index)
+            regime = market_assessment.regime if market_assessment is not None else MarketRegime.UNRESOLVED
+            if regime is not MarketRegime.MARKET_LIKE:
+                excluded += 1
+                trace.append((
+                    CandidateSelectionTrace("sold", source, tx.asset_id, False, [f"market_regime:{regime.value}"]),
+                    None,
+                ))
+                continue
         candidate = _candidate(
             lane="sold",
             source=source,
@@ -314,6 +382,10 @@ def _sold_candidates(
             quality_status=result.status.value,
             reasons=list(result.reasons),
             raw=tx.raw,
+            gush=_parcel_int(tx.gush),
+            helka=_parcel_int(tx.helka),
+            market_context=market_assessment.public_dict() if market_assessment is not None else None,
+            geographic_context=geo_assessment.public_dict() if geo_assessment is not None else None,
         )
         candidates.append(candidate)
         trace.append((CandidateSelectionTrace("sold", source, tx.asset_id, True, ["eligible_comparable"]), candidate))
@@ -460,6 +532,9 @@ def _candidate(
     project_name: str | None = None, neighborhood: str | None = None,
     address: str | None = None, quality_status: str = "usable",
     reasons: list[str] | None = None, raw: dict[str, Any] | None = None,
+    gush: int | None = None, helka: int | None = None,
+    market_context: dict[str, Any] | None = None,
+    geographic_context: dict[str, Any] | None = None,
 ) -> ComparableCandidate:
     distance = None
     if None not in (location.latitude, location.longitude, lat, lng):
@@ -490,6 +565,10 @@ def _candidate(
         quality_status=quality_status,
         reasons=reasons or [],
         raw=raw,
+        gush=gush,
+        helka=helka,
+        market_context=market_context,
+        geographic_context=geographic_context,
     )
 
 
@@ -556,6 +635,15 @@ def _date_from_timestamp(value: Any) -> date | None:
             return date.fromisoformat(text[:10])
         except ValueError:
             return None
+
+
+def _parcel_int(value: Any) -> int | None:
+    if value is None or value == "":
+        return None
+    try:
+        return int(float(value))
+    except (TypeError, ValueError):
+        return None
 
 
 def _num(value: Any) -> float | None:

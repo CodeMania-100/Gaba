@@ -9,7 +9,7 @@ from statistics import median
 from typing import Iterable
 import calendar
 
-from .comparables import ComparableCandidate, ComparableSet, sold_group_key
+from .comparables import ComparableCandidate, ComparableSet, sold_group_basis, sold_group_key
 
 
 class EvidenceConfidence(str, Enum):
@@ -34,12 +34,16 @@ class RangeMethodology:
     premiums, discounts, or source weights.
     """
 
-    version: str = "market-range-v1"
+    version: str = "market-range-v2-program-regime"
     sold_primary_lookback_months: int = 24
     sold_fallback_lookback_months: int = 60
     min_independent_sold_buildings: int = 2
     min_independent_contributors_for_medium: int = 2
     min_independent_contributors_for_high: int = 3
+    # A completed sale must be within this fraction of the target internal area to be
+    # a primary sold-lane contributor. Applies to both the primary and fallback
+    # recency windows -- the fallback only ever widens time, never size relevance.
+    sold_primary_area_tolerance_pct: float = 0.15
 
 
 @dataclass(slots=True)
@@ -75,6 +79,30 @@ class EvidenceContribution:
 
 
 @dataclass(slots=True)
+class LaneCandidateOutcome:
+    """The sold lane's own second-stage selection decision for one already
+    comparable-eligible candidate: did it actually feed a primary contribution, and
+    if not, why (wrong size, too old, invalid price/area)? Distinct from --
+    and computed independently of -- the stage-1 eligibility trace in
+    ``comparables.CandidateSelectionTrace``. Never recomputed outside this module;
+    persisted and read back verbatim by the application layer."""
+
+    source_id: str | None
+    primary_sold_contributor: bool
+    exclusion_reasons: list[str] = field(default_factory=list)
+    # Location-identity metadata (see comparables.sold_group_key/sold_group_basis):
+    # a candidate's independent-location grouping and how confidently that grouping
+    # identifies one specific building vs. only a shared cadastral parcel.
+    group_key: str | None = None
+    group_basis: str | None = None
+    building_identity_verified: bool = False
+    location_identity_verified: bool = False
+
+    def public_dict(self) -> dict:
+        return asdict(self)
+
+
+@dataclass(slots=True)
 class LaneRange:
     lane: str
     confidence: EvidenceConfidence
@@ -86,6 +114,8 @@ class LaneRange:
     warnings: list[str]
     methodology_notes: list[str]
     can_enter_consensus: bool
+    # Populated for the sold lane only (see LaneCandidateOutcome).
+    candidate_outcomes: list[LaneCandidateOutcome] = field(default_factory=list)
 
     def public_dict(self) -> dict:
         return {
@@ -102,6 +132,7 @@ class LaneRange:
             "warnings": self.warnings,
             "methodology_notes": self.methodology_notes,
             "can_enter_consensus": self.can_enter_consensus,
+            "candidate_outcomes": [c.public_dict() for c in self.candidate_outcomes],
         }
 
 
@@ -298,8 +329,15 @@ def _sold_lane(comp: ComparableSet, target_area: float, as_of: date, method: Ran
         c for c in comp.sold
         if _normalize_neighborhood(c.neighborhood, comp.target_location.city) == target_neighborhood
     ]
+    # A citywide source with no coordinates cannot be scoped by neighborhood label or
+    # query-time geography at all -- its records were already restricted, at
+    # comparable-construction time, to a frozen official-parcel local whitelist
+    # (see comparables._sold_candidates' geographic-scope gate). That is an accepted
+    # geographic basis for a primary lane, but it is explicitly NOT an exact-target-
+    # neighborhood match, so confidence is capped below rather than treated as HIGH.
+    verified_by_official_parcel_zone = sold_scope.get("scope_type") == "verified_official_parcel_zone"
 
-    if not explicitly_scoped_to_target and not exact_labeled:
+    if not explicitly_scoped_to_target and not exact_labeled and not verified_by_official_parcel_zone:
         return LaneRange(
             lane="sold",
             confidence=EvidenceConfidence.INSUFFICIENT,
@@ -316,15 +354,28 @@ def _sold_lane(comp: ComparableSet, target_area: float, as_of: date, method: Ran
             can_enter_consensus=False,
         )
 
-    sold_pool = comp.sold if explicitly_scoped_to_target else exact_labeled
-    recent = [c for c in sold_pool if c.event_date is not None and c.event_date >= primary_cutoff and _valid_price_area(c)]
+    tolerance = method.sold_primary_area_tolerance_pct
+    sold_pool = comp.sold if (explicitly_scoped_to_target or verified_by_official_parcel_zone) else exact_labeled
+    recent = [
+        c for c in sold_pool
+        if c.event_date is not None and c.event_date >= primary_cutoff
+        and _valid_price_area(c) and _within_area_tolerance(c, target_area, tolerance)
+    ]
     grouped = _group_candidates(recent, key=lambda c: sold_group_key(c) or f"record:{id(c)}")
     used_fallback = False
+    final_pool = recent
+    final_cutoff = primary_cutoff
 
     if len(grouped) < method.min_independent_sold_buildings:
-        widened = [c for c in sold_pool if c.event_date is not None and c.event_date >= fallback_cutoff and _valid_price_area(c)]
+        widened = [
+            c for c in sold_pool
+            if c.event_date is not None and c.event_date >= fallback_cutoff
+            and _valid_price_area(c) and _within_area_tolerance(c, target_area, tolerance)
+        ]
         grouped = _group_candidates(widened, key=lambda c: sold_group_key(c) or f"record:{id(c)}")
         used_fallback = True
+        final_pool = widened
+        final_cutoff = fallback_cutoff
 
     contributions = [_contribution_from_group("sold", key, rows, target_area) for key, rows in grouped.items()]
     contributions.sort(key=lambda c: (c.distance_m if c.distance_m is not None else inf, -(c.newest_event_date.toordinal()) if c.newest_event_date else inf))
@@ -333,6 +384,7 @@ def _sold_lane(comp: ComparableSet, target_area: float, as_of: date, method: Ran
     notes = [
         f"Each building contributes once, using the median observed price-per-sqm within the selected sale window.",
         f"Primary completed-sale lookback is {method.sold_primary_lookback_months} months; fallback is {method.sold_fallback_lookback_months} months only when independent-building evidence is insufficient.",
+        f"A completed sale must be within {tolerance * 100:g}% of the target internal area to be a primary sold-lane contributor; the recency fallback widens time only, never this size-relevance requirement.",
     ]
     if used_fallback:
         warnings.append("sold_recency_window_expanded")
@@ -343,6 +395,7 @@ def _sold_lane(comp: ComparableSet, target_area: float, as_of: date, method: Ran
             warnings.append("sold_neighborhood_labels_missing_geographic_anchor_used")
 
     lane = _finish_lane("sold", contributions, [], warnings, notes, method, target_area)
+    lane.candidate_outcomes = _sold_candidate_outcomes(sold_pool, final_pool, final_cutoff, target_area, tolerance)
 
     # A query that intentionally covers the target plus adjacent neighborhoods is
     # useful local evidence, but it is not the same as verified exact-neighborhood
@@ -356,7 +409,44 @@ def _sold_lane(comp: ComparableSet, target_area: float, as_of: date, method: Ran
         if lane.confidence is EvidenceConfidence.HIGH:
             lane.confidence = EvidenceConfidence.MEDIUM
 
+    if verified_by_official_parcel_zone:
+        lane.warnings.append("sold_scope_verified_by_official_parcel_zone_not_exact_target_neighborhood")
+        if not sold_scope.get("coordinates_available", False):
+            lane.warnings.append("sold_source_coordinates_unavailable")
+        lane.methodology_notes.append(
+            "This citywide source has no coordinates and no verified exact-target-neighborhood label; "
+            "eligibility was instead restricted to a frozen official GIS/housing-program parcel whitelist "
+            "before any candidate reached this lane. That is a verified adjacent/local official zone, not "
+            "an exact neighborhood match, so this lane's confidence is capped at medium."
+        )
+        # A verified-official-parcel-zone lane never gets to claim HIGH precision --
+        # it lacks both coordinates and exact target-neighborhood record labels.
+        if lane.confidence is EvidenceConfidence.HIGH:
+            lane.confidence = EvidenceConfidence.MEDIUM
+
+        bases = [_group_basis_of_contribution(c) for c in contributions]
+        address_groups = bases.count("address")
+        parcel_groups = bases.count("cadastral_parcel")
+        coord_groups = bases.count("coordinates")
+        if parcel_groups:
+            lane.warnings.append("sold_location_grouping_includes_parcel_level_fallback")
+        lane.methodology_notes.append(
+            f"Independent location groups: {len(contributions)} total "
+            f"({address_groups} address-based, {coord_groups} coordinate-based, {parcel_groups} cadastral-parcel fallback)."
+        )
+
     return lane
+
+
+def _group_basis_of_contribution(contribution: EvidenceContribution) -> str:
+    key = contribution.group_key
+    if key.startswith("parcel:"):
+        return "cadastral_parcel"
+    if key.startswith("coord:"):
+        return "coordinates"
+    if key.startswith("record:"):
+        return "unresolved"
+    return "address"
 
 
 def _asking_lane(comp: ComparableSet, target_area: float, method: RangeMethodology) -> LaneRange:
@@ -503,6 +593,57 @@ def _group_candidates(rows: Iterable[ComparableCandidate], key) -> dict[str, lis
 
 def _valid_price_area(c: ComparableCandidate) -> bool:
     return c.price is not None and c.price > 0 and c.area is not None and c.area > 1
+
+
+def _within_area_tolerance(c: ComparableCandidate, target_area: float, tolerance_pct: float) -> bool:
+    if c.area is None or target_area is None or target_area <= 0:
+        return False
+    return abs(c.area - target_area) / target_area <= tolerance_pct
+
+
+def _sold_candidate_outcomes(
+    sold_pool: list[ComparableCandidate],
+    final_pool: list[ComparableCandidate],
+    final_cutoff: date,
+    target_area: float,
+    tolerance_pct: float,
+) -> list[LaneCandidateOutcome]:
+    """The sold lane's own second-stage selection outcome for every comparable-
+    eligible (stage-1) candidate -- independently re-evaluated against the final
+    criteria actually used, not a sequential short-circuit gate, so every applicable
+    reason is reported."""
+
+    final_ids = {id(c) for c in final_pool}
+    outcomes: list[LaneCandidateOutcome] = []
+    for c in sold_pool:
+        basis = sold_group_basis(c)
+        group_key = sold_group_key(c)
+        building_verified = basis == "address"
+        location_verified = basis in {"address", "coordinates", "cadastral_parcel"}
+        if id(c) in final_ids:
+            outcomes.append(LaneCandidateOutcome(
+                source_id=c.source_id, primary_sold_contributor=True,
+                group_key=group_key, group_basis=basis,
+                building_identity_verified=building_verified,
+                location_identity_verified=location_verified,
+            ))
+            continue
+        reasons: list[str] = []
+        if not _valid_price_area(c):
+            reasons.append("invalid_price_or_area")
+        if c.event_date is None or c.event_date < final_cutoff:
+            reasons.append("outside_recency_window")
+        if not _within_area_tolerance(c, target_area, tolerance_pct):
+            reasons.append("outside_target_area_tolerance")
+        if not reasons:
+            reasons.append("not_selected_as_independent_primary_contributor")
+        outcomes.append(LaneCandidateOutcome(
+            source_id=c.source_id, primary_sold_contributor=False, exclusion_reasons=reasons,
+            group_key=group_key, group_basis=basis,
+            building_identity_verified=building_verified,
+            location_identity_verified=location_verified,
+        ))
+    return outcomes
 
 
 def _normalize_neighborhood(value: str | None, city: str | None) -> str | None:

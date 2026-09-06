@@ -3,7 +3,7 @@
   "source_rows": 975,
   "modern_rows": 244,
   "deduped_rows": 206,
-  "unique_parcels": 41,
+  "unique_parcels": 43,
   "program_overlap_parcels": 37,
   "non_overlap_parcels": 4,
   "missing_cadastral_parcels": 0,
@@ -1482,6 +1482,75 @@
           ]
         }
       ]
+    },
+    {
+      "gush": 1200,
+      "helka": 63,
+      "program_overlap": true,
+      "projects": [
+        {
+          "ActiveProjectId": 48194,
+          "ProjectName": null,
+          "MarketingMethod": "מחיר למשתכן",
+          "Neighborhood": null,
+          "LamasName": null,
+          "ProviderName": "גשם למשתכן",
+          "PriceForMeter": 7555,
+          "LotteryIds": []
+        },
+        {
+          "ActiveProjectId": 48195,
+          "ProjectName": null,
+          "MarketingMethod": "מחיר למשתכן",
+          "Neighborhood": null,
+          "LamasName": null,
+          "ProviderName": "אסיאג חנניה / פיקה",
+          "PriceForMeter": 7965,
+          "LotteryIds": []
+        },
+        {
+          "ActiveProjectId": 48196,
+          "ProjectName": null,
+          "MarketingMethod": "מחיר למשתכן",
+          "Neighborhood": null,
+          "LamasName": null,
+          "ProviderName": "אסיאג חנניה / פיקה",
+          "PriceForMeter": 7785,
+          "LotteryIds": []
+        }
+      ],
+      "provenance": "resolved_for_five_room_investigation; merged into the 3-room parcel/regime file because cadastral parcel context is a physical fact independent of room count -- copied verbatim, not reclassified."
+    },
+    {
+      "gush": 1200,
+      "helka": 73,
+      "program_overlap": true,
+      "projects": [
+        {
+          "ActiveProjectId": 48193,
+          "ProjectName": null,
+          "MarketingMethod": "מחיר למשתכן",
+          "Neighborhood": null,
+          "LamasName": null,
+          "ProviderName": null,
+          "PriceForMeter": 7870,
+          "LotteryIds": []
+        },
+        {
+          "ActiveProjectId": 77308,
+          "ProjectName": "ג",
+          "MarketingMethod": "מחיר מטרה - ר.מ.י",
+          "Neighborhood": "ניצנים",
+          "LamasName": "אשקלון",
+          "ProviderName": "מולדת בקרית עקרון בע\"מ",
+          "PriceForMeter": 10257,
+          "LotteryIds": [
+            2529
+          ]
+        }
+      ],
+      "provenance": "resolved_for_five_room_investigation; merged into the 3-room parcel/regime file because cadastral parcel context is a physical fact independent of room count -- copied verbatim, not reclassified."
     }
-  ]
+  ],
+  "parcel_context_coverage_gap_fix": "Added (1200,63) and (1200,73): both already resolved during the five-room GIS investigation but missing from this file. Copied verbatim from five_room_program_overlap_parcels.json, no new classification performed."
 }

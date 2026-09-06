@@ -14,11 +14,14 @@ from .comparables import (
     build_comparable_set,
     build_sold_building_clusters,
     haversine_m,
+    sold_group_basis,
+    sold_group_key,
 )
 from .inventory import NormalizedInventoryUnit, normalize_inventory_rows
 from .market_range import (
     EvidenceConfidence,
     EvidenceContribution,
+    LaneCandidateOutcome,
     LaneRange,
     MarketRangeResult,
     RangeMethodology,
@@ -71,6 +74,7 @@ __all__ = [
     "SoldBuildingCluster",
     "EvidenceConfidence",
     "EvidenceContribution",
+    "LaneCandidateOutcome",
     "LaneRange",
     "MarketRangeResult",
     "RangeMethodology",
@@ -83,6 +87,8 @@ __all__ = [
     "Unit",
     "build_comparable_set",
     "build_sold_building_clusters",
+    "sold_group_basis",
+    "sold_group_key",
     "build_market_range",
     "normalize_inventory_rows",
     "haversine_m",
@@ -184,4 +190,50 @@ __all__ += [
     "FeasibilityStatus",
     "StrategyFeasibilityResult",
     "check_strategy_feasibility",
+]
+
+from .market_regime import (
+    CITY_WINE_STANDARD_3ROOM_69M2_PROGRAM_REGIME_V1,
+    CITY_WINE_STANDARD_5ROOM_111M2_PROGRAM_REGIME_V1,
+    MarketRegime,
+    MarketRegimeAssessment,
+    OfficialProgramProject,
+    ParcelProgramContext,
+    RegimePolicy,
+    assess_market_regime,
+    assessment_from_dict,
+    compute_observed_ppsm,
+    parcel_context_from_dict,
+)
+
+__all__ += [
+    "CITY_WINE_STANDARD_3ROOM_69M2_PROGRAM_REGIME_V1",
+    "CITY_WINE_STANDARD_5ROOM_111M2_PROGRAM_REGIME_V1",
+    "MarketRegime",
+    "MarketRegimeAssessment",
+    "OfficialProgramProject",
+    "ParcelProgramContext",
+    "RegimePolicy",
+    "assess_market_regime",
+    "assessment_from_dict",
+    "compute_observed_ppsm",
+    "parcel_context_from_dict",
+]
+
+from .geographic_scope import (
+    FrozenLocalScope,
+    GeographicScopeAssessment,
+    GeographicScopeStatus,
+    assess_geographic_scope,
+    geographic_assessment_from_dict,
+    local_scope_from_dict,
+)
+
+__all__ += [
+    "FrozenLocalScope",
+    "GeographicScopeAssessment",
+    "GeographicScopeStatus",
+    "assess_geographic_scope",
+    "geographic_assessment_from_dict",
+    "local_scope_from_dict",
 ]

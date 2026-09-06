@@ -189,6 +189,20 @@ class EvidenceRecordRow(Base):
     # change can never silently rewrite a historical evidence explanation.
     comparable_attributes_json: Mapped[str | None] = mapped_column(Text)
 
+    # A pricing_core.market_regime.MarketRegimeAssessment-shaped dict, computed once
+    # at snapshot-ingestion time. NULL for every non-sold record and for any sold
+    # record from a source that has no calibrated regime policy. NULL on a
+    # pre-existing snapshot must be read as "regime gate not classified for this
+    # snapshot" (deactivates the gate), never as "classified UNRESOLVED".
+    market_context_json: Mapped[str | None] = mapped_column(Text)
+
+    # A pricing_core.geographic_scope.GeographicScopeAssessment-shaped dict, computed
+    # once at snapshot-ingestion time. NULL for every record whose source has no
+    # frozen local-parcel geographic scope (currently: everything except the
+    # standard 3-room tax-enriched sold source). Independent of market_context_json
+    # and quality_status -- never overwrites either.
+    geographic_context_json: Mapped[str | None] = mapped_column(Text)
+
     market_snapshot: Mapped[MarketSnapshotRow] = relationship(back_populates="evidence_records")
 
 

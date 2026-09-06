@@ -1,0 +1,24 @@
+{
+  "version": "city_wine_demo_standard_3room_local_scope_v1",
+  "source_file": "tax_enriched_ashkelon_3room_36m.json",
+  "city": "אשקלון",
+  "assignment_location_assumption": "עיר היין",
+  "verified_official_zone": "אשקלון מזרח",
+  "scope_basis": "official_parcel_project_neighborhood",
+  "coordinates_available": false,
+  "exact_target_neighborhood_verified": false,
+  "derivation": "included_parcels are every (gush, helka) whose official GIS/housing-program project record in three_room_program_overlap_parcels.json carries Neighborhood == verified_official_zone. Derived once, independently of price, transaction count, or any desired sample size; parcels are never added or removed to make a diagnostic count match.",
+  "included_parcels": [
+    [1196, 70],
+    [1196, 75],
+    [1196, 79],
+    [1196, 100],
+    [1197, 78],
+    [1197, 81],
+    [1197, 82],
+    [1197, 86],
+    [1197, 87],
+    [1197, 90],
+    [1197, 93]
+  ]
+}

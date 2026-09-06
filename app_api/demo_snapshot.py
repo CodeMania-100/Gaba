@@ -10,6 +10,16 @@ from typing import Any
 
 from pricing_core import ProjectLocation, QAResult, QualityStatus, SoldQAOutput, SoldTransaction, haversine_m, run_sold_qa
 from pricing_core.comparison import ComparableAttributes
+from pricing_core.geographic_scope import FrozenLocalScope, assess_geographic_scope, local_scope_from_dict
+from pricing_core.market_regime import (
+    CITY_WINE_STANDARD_3ROOM_69M2_PROGRAM_REGIME_V1,
+    CITY_WINE_STANDARD_5ROOM_111M2_PROGRAM_REGIME_V1,
+    ParcelProgramContext,
+    RegimePolicy,
+    assess_market_regime,
+    compute_observed_ppsm,
+    parcel_context_from_dict,
+)
 
 from .db_models import EvidenceRecordRow, MarketSnapshotRow, ProjectRow, SourceRunRow
 from .source_manifest import DEMO_SOURCE_MANIFEST, SourceManifestEntry, default_demo_data_dir, resolve_source_path
@@ -22,19 +32,41 @@ DEMO_DISCLAIMER = (
 
 # Only these primary sources actually feed pricing_core.build_comparable_set; only their
 # own embedded collection timestamps may ever drive pricing_as_of.
-PRIMARY_SOURCE_KEYS = ("govmap_sold_3room", "govmap_sold_5room", "madlan_listings", "madlan_projects")
+PRIMARY_SOURCE_KEYS = ("tax_enriched_sold_3room", "govmap_sold_5room", "madlan_listings", "madlan_projects")
 
 # Which of the primary sources carry a real, trustworthy per-record collection
 # timestamp field. madlan_projects deliberately has none: its only "seen" field
 # (firstTimeSeen) is a known bogus sentinel (1990-01-01) that pricing_core.comparables
 # already discards -- so it never participates in pricing_as_of.
 _TIMESTAMP_FIELDS_BY_SOURCE: dict[str, tuple[str, ...]] = {
-    "govmap_sold_3room": ("scrapedAt",),
+    "tax_enriched_sold_3room": ("scrapedAt",),
     "govmap_sold_5room": ("scrapedAt",),
     "madlan_listings": ("scrapedAt", "firstSeen"),
     "yad2_listings": ("scrapedAt", "publishedAt"),
     "tax_enrichment": ("scrapedAt",),
 }
+
+_THREE_ROOM_PARCEL_FILE = "data/diagnostics/three_room_program_overlap_parcels.json"
+_FIVE_ROOM_PARCEL_FILE = "data/diagnostics/five_room_program_overlap_parcels.json"
+_THREE_ROOM_LOCAL_SCOPE_FILE = "data/diagnostics/three_room_verified_demo_scope_v1.json"
+
+
+def _pricing_core_data_dir() -> Path:
+    # app_api/demo_snapshot.py -> app_api -> gabay_pricing_core
+    return Path(__file__).resolve().parents[1]
+
+
+def _load_parcel_context_map(relative_path: str) -> dict[tuple[int, int], ParcelProgramContext]:
+    path = _pricing_core_data_dir() / relative_path
+    raw = json.loads(path.read_text(encoding="utf-8"))
+    contexts = [parcel_context_from_dict(p) for p in raw["parcels"]]
+    return {(c.gush, c.helka): c for c in contexts}
+
+
+def _load_local_scope(relative_path: str) -> FrozenLocalScope:
+    path = _pricing_core_data_dir() / relative_path
+    raw = json.loads(path.read_text(encoding="utf-8"))
+    return local_scope_from_dict(raw)
 
 
 class RequiredSourceMissingError(RuntimeError):
@@ -65,10 +97,14 @@ def build_demo_market_snapshot(db, project: ProjectRow, demo_data_dir: Path | No
         entry.source_key: _load_source(entry, demo_data_dir) for entry in DEMO_SOURCE_MANIFEST
     }
 
-    sold_3_qa = run_sold_qa(loaded["govmap_sold_3room"].records)
+    sold_3_qa = run_sold_qa(loaded["tax_enriched_sold_3room"].records)
     sold_5_qa = run_sold_qa(loaded["govmap_sold_5room"].records)
     madlan_listings = loaded["madlan_listings"].records
     madlan_projects = loaded["madlan_projects"].records
+
+    three_room_parcels = _load_parcel_context_map(_THREE_ROOM_PARCEL_FILE)
+    three_room_scope = _load_local_scope(_THREE_ROOM_LOCAL_SCOPE_FILE)
+    five_room_parcels = _load_parcel_context_map(_FIVE_ROOM_PARCEL_FILE)
 
     location = _demo_location(madlan_listings)
     pricing_as_of, pricing_as_of_basis, excluded_sources = _derive_pricing_as_of(loaded)
@@ -89,12 +125,23 @@ def build_demo_market_snapshot(db, project: ProjectRow, demo_data_dir: Path | No
     db.add(snapshot)
     db.flush()
 
-    _persist_sold_source(db, snapshot, "govmap_sold_3room", loaded["govmap_sold_3room"], sold_3_qa, location)
-    _persist_sold_source(db, snapshot, "govmap_sold_5room", loaded["govmap_sold_5room"], sold_5_qa, location)
+    _persist_sold_source(
+        db, snapshot, "tax_enriched_sold_3room", loaded["tax_enriched_sold_3room"], sold_3_qa, location,
+        regime_policy=CITY_WINE_STANDARD_3ROOM_69M2_PROGRAM_REGIME_V1,
+        parcel_context_map=three_room_parcels,
+        geographic_scope=three_room_scope,
+    )
+    _persist_sold_source(
+        db, snapshot, "govmap_sold_5room", loaded["govmap_sold_5room"], sold_5_qa, location,
+        regime_policy=CITY_WINE_STANDARD_5ROOM_111M2_PROGRAM_REGIME_V1,
+        parcel_context_map=five_room_parcels,
+        geographic_scope=None,  # 5R source is already geographically scoped and has coordinates.
+    )
     _persist_listing_source(db, snapshot, "madlan_listings", loaded["madlan_listings"], location)
     _persist_project_source(db, snapshot, "madlan_projects", loaded["madlan_projects"], location)
 
     for key in (
+        "wine_city_sold_3room_reference",
         "yad2_listings",
         "xplan_area",
         "xplan_point",
@@ -357,7 +404,13 @@ def _persist_source_run(
     return run
 
 
-def _persist_sold_source(db, snapshot: MarketSnapshotRow, key: str, loaded: _LoadedSource, qa_output: SoldQAOutput, location: ProjectLocation) -> None:
+def _persist_sold_source(
+    db, snapshot: MarketSnapshotRow, key: str, loaded: _LoadedSource, qa_output: SoldQAOutput, location: ProjectLocation,
+    *,
+    regime_policy: RegimePolicy | None = None,
+    parcel_context_map: dict[tuple[int, int], ParcelProgramContext] | None = None,
+    geographic_scope: FrozenLocalScope | None = None,
+) -> None:
     summary = qa_output.summary
     run = _persist_source_run(
         db, snapshot, key, loaded,
@@ -368,6 +421,22 @@ def _persist_sold_source(db, snapshot: MarketSnapshotRow, key: str, loaded: _Loa
     )
     for result in qa_output.records:
         tx = result.transaction
+        market_context_json = None
+        if regime_policy is not None and parcel_context_map is not None:
+            gush, helka = _parcel_int(tx.gush), _parcel_int(tx.helka)
+            parcel = parcel_context_map.get((gush, helka)) if gush is not None and helka is not None else None
+            observed = compute_observed_ppsm(tx.price_per_sqm, tx.deal_amount, tx.area)
+            assessment = assess_market_regime(parcel=parcel, observed_ppsm=observed, policy=regime_policy, source=key)
+            market_context_json = json.dumps(assessment.public_dict(), ensure_ascii=False)
+
+        geographic_context_json = None
+        if geographic_scope is not None:
+            geo_assessment = assess_geographic_scope(
+                gush=_parcel_int(tx.gush), helka=_parcel_int(tx.helka),
+                source_neighborhood=tx.neighborhood, scope=geographic_scope,
+            )
+            geographic_context_json = json.dumps(geo_assessment.public_dict(), ensure_ascii=False)
+
         db.add(EvidenceRecordRow(
             market_snapshot_id=snapshot.id,
             source_run_id=run.id,
@@ -394,6 +463,8 @@ def _persist_sold_source(db, snapshot: MarketSnapshotRow, key: str, loaded: _Loa
                 ).public_dict(),
                 ensure_ascii=False,
             ),
+            market_context_json=market_context_json,
+            geographic_context_json=geographic_context_json,
         ))
 
 
@@ -535,6 +606,15 @@ def _num(value: Any) -> float | None:
         return None
     try:
         return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def _parcel_int(value: Any) -> int | None:
+    if value is None or value == "":
+        return None
+    try:
+        return int(float(value))
     except (TypeError, ValueError):
         return None
 

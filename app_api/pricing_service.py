@@ -11,19 +11,24 @@ from pricing_core import (
     ComparableAttributes,
     FloorRule,
     FamilyStrategyDecision,
+    GeographicScopeAssessment,
+    MarketRegimeAssessment,
     OwnProjectSaleRecord,
     PricingBasis,
     ProjectDecisionPlan,
     ProjectLocation,
     StrategyProfile,
     Unit,
+    assessment_from_dict,
     build_comparable_set,
     build_comparable_price_gap,
     build_market_range,
     compare_against_own_sales,
     compare_decision_scenarios,
     family_key,
+    geographic_assessment_from_dict,
     price_project_decision,
+    sold_group_basis,
     summarize_own_project_sales,
 )
 
@@ -42,11 +47,21 @@ from .db_models import (
     UnitPriceResultRow,
     UnitRow,
 )
-from .demo_snapshot import normalized_payload_to_qa_result
+from .demo_snapshot import (
+    _THREE_ROOM_LOCAL_SCOPE_FILE,
+    _load_local_scope,
+    normalized_payload_to_qa_result,
+)
 
 # The two sold sources that pricing_core.comparables actually knows how to route by
 # room count in this demo, mirroring scripts/run_project_dry_run.py exactly.
-SOLD_SOURCE_BY_ROOMS = {3: "govmap_sold_3room", 5: "govmap_sold_5room"}
+SOLD_SOURCE_BY_ROOMS = {3: "tax_enriched_sold_3room", 5: "govmap_sold_5room"}
+
+# Sold sources whose completed sales are only eligible once restricted to a frozen,
+# official-parcel local-scope whitelist (see pricing_core.geographic_scope). The 5R
+# source is already geographically scoped at collection time and has coordinates, so
+# it deliberately is NOT in this set.
+SOLD_SOURCES_WITH_GEOGRAPHIC_SCOPE = {"tax_enriched_sold_3room"}
 
 AVAILABLE = "AVAILABLE"
 GENERIC_LIFECYCLE_STATUSES = {"AVAILABLE", "RESERVED", "ON_HOLD", "WITHDRAWN"}
@@ -320,22 +335,52 @@ def build_unit_market_results(db, session: PricingSessionRow) -> list[tuple[Unit
         source_key: _load_sold_qa_results(db, snapshot.id, source_key)
         for source_key in SOLD_SOURCE_BY_ROOMS.values()
     }
+    sold_market_context_by_source = {
+        source_key: _load_sold_market_context(db, snapshot.id, source_key)
+        for source_key in SOLD_SOURCE_BY_ROOMS.values()
+    }
+    sold_geographic_context_by_source = {
+        source_key: _load_sold_geographic_context(db, snapshot.id, source_key)
+        for source_key in SOLD_SOURCES_WITH_GEOGRAPHIC_SCOPE
+    }
     madlan_listings = _load_madlan_listings(db, snapshot.id)
     madlan_projects = _load_madlan_projects(db, snapshot.id)
+    three_room_scope = _load_local_scope(_THREE_ROOM_LOCAL_SCOPE_FILE)
 
     triples: list[tuple[Unit, Any, Any]] = []
     for unit in available_units:
         source_key = SOLD_SOURCE_BY_ROOMS.get(int(unit.rooms)) if unit.rooms is not None else None
+        sold_geo_context = None
         if unit.unit_type == "standard_apartment" and source_key is not None:
             sold_records = sold_by_source[source_key]
-            source_context = {
-                "sold_query_scope": {
-                    "city": snapshot.location_city,
-                    "neighborhoods": [snapshot.location_neighborhood] if snapshot.location_neighborhood else [],
-                    "rooms": [unit.rooms],
-                    "source_file": source_key,
+            if source_key in SOLD_SOURCES_WITH_GEOGRAPHIC_SCOPE:
+                # No coordinates and no per-record exact-target-neighborhood label exist
+                # for this citywide source -- eligibility was already restricted to a
+                # frozen official-parcel local scope at ingestion time. Do not fake
+                # ["assignment_location_assumption"] as a verified neighborhood label.
+                source_context = {
+                    "sold_query_scope": {
+                        "city": snapshot.location_city,
+                        "source_file": three_room_scope.source_file,
+                        "scope_type": "verified_official_parcel_zone",
+                        "scope_version": three_room_scope.version,
+                        "official_zone": three_room_scope.verified_official_zone,
+                        "assignment_location_assumption": three_room_scope.assignment_location_assumption,
+                        "coordinates_available": three_room_scope.coordinates_available,
+                        "exact_target_neighborhood_verified": three_room_scope.exact_target_neighborhood_verified,
+                        "rooms": [unit.rooms],
+                    }
                 }
-            }
+                sold_geo_context = sold_geographic_context_by_source.get(source_key)
+            else:
+                source_context = {
+                    "sold_query_scope": {
+                        "city": snapshot.location_city,
+                        "neighborhoods": [snapshot.location_neighborhood] if snapshot.location_neighborhood else [],
+                        "rooms": [unit.rooms],
+                        "source_file": source_key,
+                    }
+                }
         else:
             sold_records = []
             source_context = {
@@ -350,6 +395,8 @@ def build_unit_market_results(db, session: PricingSessionRow) -> list[tuple[Unit
         comps = build_comparable_set(
             unit, location, sold_records, madlan_listings, madlan_projects,
             as_of=as_of, source_context=source_context,
+            sold_market_context_by_source_index=sold_market_context_by_source.get(source_key) if source_key else None,
+            sold_geographic_context_by_source_index=sold_geo_context,
         )
         market = build_market_range(comps, as_of=as_of)
         triples.append((unit, market, comps))
@@ -539,6 +586,12 @@ def unit_evidence_payload(db, scenario: ScenarioRow, unit_number: str) -> dict:
             for sid in contrib.get("source_ids", []):
                 area_norm_by_source_id[sid] = contrib.get("area_normalized_indication_ils")
 
+    sold_outcome_by_source_id: dict[str, dict] = {
+        outcome["source_id"]: outcome
+        for outcome in market_dict.get("lanes", {}).get("sold", {}).get("candidate_outcomes", [])
+        if outcome.get("source_id") is not None
+    }
+
     price_row = db.scalar(
         select(UnitPriceResultRow).where(
             UnitPriceResultRow.scenario_id == scenario.id,
@@ -586,7 +639,18 @@ def unit_evidence_payload(db, scenario: ScenarioRow, unit_number: str) -> dict:
             "evidence": None,
             "attribute_comparison": None,
             "price_gap": None,
+            "primary_sold_contributor": None,
+            "primary_exclusion_reasons": None,
+            "group_key": None,
+            "group_basis": None,
         }
+        if t["lane"] == "sold":
+            outcome = sold_outcome_by_source_id.get(t["source_id"])
+            if outcome is not None:
+                entry["primary_sold_contributor"] = outcome.get("primary_sold_contributor")
+                entry["primary_exclusion_reasons"] = outcome.get("exclusion_reasons") or None
+                entry["group_key"] = outcome.get("group_key")
+                entry["group_basis"] = outcome.get("group_basis")
         if row is not None:
             entry["evidence"] = _evidence_display(row)
             comparable_attrs = (
@@ -830,6 +894,51 @@ def _load_sold_qa_results(db, snapshot_id: str, source_type: str) -> list:
     return results
 
 
+def _load_sold_market_context(db, snapshot_id: str, source_type: str) -> dict[int, MarketRegimeAssessment] | None:
+    """Frozen, per-record market-regime assessment for one sold source, keyed by the
+    record's immutable source_index. A pre-existing snapshot has market_context_json
+    NULL on every row -- that must deactivate the regime gate entirely (return None),
+    never be read as "every record classified UNRESOLVED"."""
+
+    rows = db.scalars(
+        select(EvidenceRecordRow).where(
+            EvidenceRecordRow.market_snapshot_id == snapshot_id,
+            EvidenceRecordRow.source_type == source_type,
+        )
+    ).all()
+    if not rows or all(r.market_context_json is None for r in rows):
+        return None
+    context: dict[int, MarketRegimeAssessment] = {}
+    for row in rows:
+        if row.market_context_json is None:
+            continue
+        source_index = json.loads(row.normalized_payload_json)["source_index"]
+        context[source_index] = assessment_from_dict(json.loads(row.market_context_json))
+    return context
+
+
+def _load_sold_geographic_context(db, snapshot_id: str, source_type: str) -> dict[int, GeographicScopeAssessment] | None:
+    """Frozen, per-record geographic-scope assessment for one sold source, keyed by
+    source_index. Same legacy-snapshot None-vs-empty-dict distinction as
+    _load_sold_market_context."""
+
+    rows = db.scalars(
+        select(EvidenceRecordRow).where(
+            EvidenceRecordRow.market_snapshot_id == snapshot_id,
+            EvidenceRecordRow.source_type == source_type,
+        )
+    ).all()
+    if not rows or all(r.geographic_context_json is None for r in rows):
+        return None
+    context: dict[int, GeographicScopeAssessment] = {}
+    for row in rows:
+        if row.geographic_context_json is None:
+            continue
+        source_index = json.loads(row.normalized_payload_json)["source_index"]
+        context[source_index] = geographic_assessment_from_dict(json.loads(row.geographic_context_json))
+    return context
+
+
 def _load_madlan_listings(db, snapshot_id: str) -> list[dict]:
     rows = db.scalars(
         select(EvidenceRecordRow).where(
@@ -871,6 +980,8 @@ def _evidence_display(row: EvidenceRecordRow) -> dict:
         "project_name": row.project_name,
         "distance_m": row.distance_m,
         "raw": json.loads(row.raw_payload_json),
+        "market_context": json.loads(row.market_context_json) if row.market_context_json else None,
+        "geographic_context": json.loads(row.geographic_context_json) if row.geographic_context_json else None,
     }
 
 

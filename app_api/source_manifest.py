@@ -21,11 +21,30 @@ class SourceManifestEntry:
 # for Yad2/XPLAN/construction/tax-enrichment sources.
 DEMO_SOURCE_MANIFEST: list[SourceManifestEntry] = [
     SourceManifestEntry(
-        source_key="govmap_sold_3room",
-        relative_path="data_source_test/wine_city_sold_raw.json",
+        source_key="tax_enriched_sold_3room",
+        relative_path="../gabay_pricing_core/tax_enriched_ashkelon_3room_36m.json",
         required=True,
         lane="sold",
-        description="GovMap completed sales, 3-room local-area query (עיר היין / רמת כרמים).",
+        description=(
+            "Tax Authority enriched completed sales, citywide Ashkelon, 3-room. Primary standard-3R "
+            "sold source: eligibility is further restricted to a frozen official GIS/housing-program "
+            "local-parcel whitelist (data/diagnostics/three_room_verified_demo_scope_v1.json) before "
+            "any record can drive the target range -- this file's full citywide population is only "
+            "provenance, never priced wholesale."
+        ),
+    ),
+    SourceManifestEntry(
+        source_key="wine_city_sold_3room_reference",
+        relative_path="data_source_test/wine_city_sold_raw.json",
+        required=True,
+        lane="reference",
+        description=(
+            "GovMap completed sales, 3-room local-area query (עיר היין / רמת כרמים). Geographically "
+            "concentrated real local evidence kept as reference/corroboration only -- superseded as "
+            "the primary standard-3R sold source by tax_enriched_sold_3room, which has enough "
+            "area-relevant, recent, MARKET_LIKE evidence in the verified local parcel scope. Never "
+            "double-counted against the enriched source."
+        ),
     ),
     SourceManifestEntry(
         source_key="govmap_sold_5room",

@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { pricingRouteOf, PtkPriceListRow } from "@/lib/api";
 import { CONFIDENCE_COLORS, CONFIDENCE_LABELS, roomsOf, outdoorKind, STATUS_LABELS, unitTypeLabel } from "@/lib/family";
-import { ils, isPointValue, num, rangeOrPoint } from "@/lib/format";
+import { ils, ilsCompact, isPointValue, num, rangeOrPoint } from "@/lib/format";
 import {
   computePriceBreakdown,
   computeRevenueSummary,
@@ -34,8 +34,9 @@ const FILTER_OPTIONS: { key: BoardFilter; label: string }[] = [
   { key: "available", label: "זמינות" },
 ];
 
-/** Phase 3B main business-facing board: project summary + one row per
- * physical apartment (exactly 39) + a compact per-row strategy effect. No
+/** The primary screen: a first-time viewer should read project status, the
+ * 39 apartments, market price, strategy effect, and proposed price within a
+ * few seconds -- everything below is either this summary or this table. No
  * new pricing logic lives here -- every number is read from the row's
  * already-computed market indication (row.proposed_list_price_ils) and the
  * already-approved marketing-strategy layer (lib/marketingStrategy). */
@@ -46,6 +47,7 @@ export default function PricingDecisionBoard({ rows, state, onSelectUnit, active
   const progress = useMemo(() => computeSalesProgress(rows, state.soldUnitNumbers), [rows, state.soldUnitNumbers]);
   const revenue = useMemo(() => computeRevenueSummary(rows, state), [rows, state]);
   const effectPct = revenue.marketIndicationRevenueIls > 0 ? (revenue.differenceIls / revenue.marketIndicationRevenueIls) * 100 : 0;
+  const salesDataSupplied = progress.unitsSold > 0;
 
   const filtered = rows.filter((r) => {
     const route = pricingRouteOf(r);
@@ -60,7 +62,7 @@ export default function PricingDecisionBoard({ rows, state, onSelectUnit, active
   });
 
   return (
-    <section className="flex flex-col gap-4 rounded-lg border border-slate-300 bg-white p-5">
+    <section className="flex flex-col gap-4 rounded-lg border border-slate-300 bg-white p-5 shadow-sm">
       <div>
         <h2 className="text-lg font-bold text-slate-900">
           לוח החלטת תמחור — 39 דירות בפרויקט
@@ -69,29 +71,32 @@ export default function PricingDecisionBoard({ rows, state, onSelectUnit, active
         <p className="text-xs text-slate-500">אינדיקציית שוק, מצב מכירות, והתאמה אסטרטגית — לפי יחידה פיזית אחת בכל שורה.</p>
       </div>
 
-      {/* 1. top project summary */}
-      <div className="grid grid-cols-2 gap-3 rounded-md bg-slate-50 p-3 sm:grid-cols-3 lg:grid-cols-6">
-        <SummaryStat label="39 דירות בפרויקט" value={String(progress.unitsTotal)} />
-        <SummaryStat label="שלב מכירות" value={PROJECT_PHASE_LABELS[state.projectPhase]} />
-        <SummaryStat label="נמכרו / נותרו" value={`${progress.unitsSold} / ${progress.unitsRemaining}`} />
-        <SummaryStat label="שווי לפי אינדיקציית שוק" value={ils(revenue.marketIndicationRevenueIls)} />
-        <SummaryStat label="הכנסה לפי מחיר שיווק מוצע" value={ils(revenue.proposedRevenueIls)} />
+      {/* project status summary -- the 4 questions the first screen must answer */}
+      <div className="grid grid-cols-2 gap-3 rounded-md bg-slate-50 p-4 sm:grid-cols-3 lg:grid-cols-6">
+        <SummaryStat label="39 דירות" value={String(progress.unitsTotal)} />
+        <SummaryStat label="שלב הפרויקט" value={PROJECT_PHASE_LABELS[state.projectPhase]} />
         <SummaryStat
-          label="השפעת האסטרטגיה"
-          value={`${effectPct >= 0 ? "+" : ""}${num(effectPct, 1)}% · ${revenue.differenceIls >= 0 ? "+" : ""}${ils(revenue.differenceIls)}`}
+          label="נמכרו / נותרו"
+          value={salesDataSupplied ? `${progress.unitsSold} / ${progress.unitsRemaining}` : "לא סופקו נתוני מכירות בפועל"}
+          small={!salesDataSupplied}
+        />
+        <SummaryStat label="שווי לפי שוק" value={ilsCompact(revenue.marketIndicationRevenueIls)} />
+        <SummaryStat label="הכנסה מוצעת" value={ilsCompact(revenue.proposedRevenueIls)} />
+        <SummaryStat
+          label="השפעת אסטרטגיה"
+          value={`${effectPct >= 0 ? "+" : ""}${num(effectPct, 1)}% · ${revenue.differenceIls >= 0 ? "+" : ""}${ilsCompact(revenue.differenceIls)}`}
           emphasize={revenue.differenceIls !== 0}
         />
       </div>
-      {progress.unitsSold === 0 && <p className="text-xs text-slate-400">נתוני מכירות בפועל לא סופקו — כל 39 היחידות מוצגות כברירת מחדל כזמינות.</p>}
 
-      {/* 3. filters */}
+      {/* filters */}
       <div className="flex flex-wrap items-center gap-2">
         <div className="flex overflow-hidden rounded-md border border-slate-300">
           {FILTER_OPTIONS.map((opt) => (
             <button
               key={opt.key}
               onClick={() => setFilter(opt.key)}
-              className={`px-3 py-1.5 text-sm font-medium transition ${
+              className={`px-3 py-1.5 text-sm font-medium transition-colors ${
                 filter === opt.key ? "bg-slate-900 text-white" : "bg-white text-slate-600 hover:bg-slate-50"
               }`}
             >
@@ -111,23 +116,23 @@ export default function PricingDecisionBoard({ rows, state, onSelectUnit, active
         </span>
       </div>
 
-      {/* 2. main table -- one row per physical apartment */}
-      <div className="overflow-x-auto rounded-lg border border-slate-300">
+      {/* main table -- one row per physical apartment */}
+      <div className="max-h-[70vh] overflow-auto rounded-lg border border-slate-300">
         <table className="min-w-full text-sm">
-          <thead className="bg-slate-50 text-slate-600">
+          <thead className="sticky top-0 z-10 bg-slate-100 text-slate-600 shadow-sm">
             <tr>
-              <Th>דירה</Th>
-              <Th>סוג</Th>
-              <Th>חדרים</Th>
-              <Th>שטח פנימי</Th>
-              <Th>שטח חוץ</Th>
-              <Th>קומה</Th>
-              <Th>כיוון</Th>
+              <Th primary>דירה</Th>
+              <Th primary>סוג</Th>
+              <Th muted>חדרים</Th>
+              <Th muted>שטח פנימי</Th>
+              <Th muted>שטח חוץ</Th>
+              <Th muted>קומה</Th>
+              <Th muted>כיוון</Th>
               <Th>סטטוס</Th>
-              <Th>אינדיקציית שוק</Th>
+              <Th primary>אינדיקציית שוק</Th>
               <Th>ביטחון</Th>
-              <Th>התאמה אסטרטגית</Th>
-              <Th>מחיר שיווק מוצע</Th>
+              <Th primary>התאמה אסטרטגית</Th>
+              <Th primary>מחיר שיווק מוצע</Th>
             </tr>
           </thead>
           <tbody>
@@ -143,6 +148,7 @@ export default function PricingDecisionBoard({ rows, state, onSelectUnit, active
 
 function BoardRow({ row, state, onSelectUnit }: { row: PtkPriceListRow; state: MarketingStrategyState; onSelectUnit: (row: PtkPriceListRow) => void }) {
   const route = pricingRouteOf(row);
+  const isSpecial = route !== "standard_family";
   const isSold = state.soldUnitNumbers.has(row.unit_number);
   const saleRecord = internalSaleForUnit(state, row.unit_number);
   const hasIndication = row.proposed_list_price_ils != null;
@@ -150,16 +156,30 @@ function BoardRow({ row, state, onSelectUnit }: { row: PtkPriceListRow; state: M
   const rooms = roomsOf(row);
 
   return (
-    <tr onClick={() => onSelectUnit(row)} className="cursor-pointer border-t border-slate-100 hover:bg-slate-50">
-      <Td className="font-medium">{row.unit_number}</Td>
-      <Td className="whitespace-nowrap text-slate-600">{unitTypeLabel(row.family)}</Td>
-      <Td>{rooms ?? "—"}</Td>
-      <Td>{num(row.internal_area_sqm)}</Td>
-      <Td>
+    <tr
+      onClick={() => onSelectUnit(row)}
+      title="לחצו לפרטי היחידה המלאים"
+      className="cursor-pointer border-t border-slate-100 transition-colors hover:bg-slate-50 active:bg-slate-100"
+    >
+      <Td className="font-semibold text-slate-900">{row.unit_number}</Td>
+      <Td className="whitespace-nowrap">
+        <span
+          className={`inline-block rounded px-2 py-0.5 text-xs font-medium ${
+            isSpecial ? "bg-violet-100 text-violet-900" : "bg-sky-100 text-sky-900"
+          }`}
+        >
+          {unitTypeLabel(row.family)}
+        </span>
+      </Td>
+      <Td muted>{rooms ?? "—"}</Td>
+      <Td muted className="tabular-nums">
+        {num(row.internal_area_sqm)}
+      </Td>
+      <Td muted className="tabular-nums">
         {num(row.balcony_area_sqm)} <span className="text-[10px] text-slate-400">({outdoorKind(row.family)})</span>
       </Td>
-      <Td>{row.floor ?? "—"}</Td>
-      <Td>{row.orientation ?? "—"}</Td>
+      <Td muted>{row.floor ?? "—"}</Td>
+      <Td muted>{row.orientation ?? "—"}</Td>
       <Td>
         {isSold ? (
           <span className="w-fit rounded bg-emerald-100 px-2 py-1 text-xs font-medium text-emerald-800">נמכרה</span>
@@ -169,10 +189,10 @@ function BoardRow({ row, state, onSelectUnit }: { row: PtkPriceListRow; state: M
           </span>
         )}
       </Td>
-      <Td className="font-semibold">
+      <Td className="font-semibold text-slate-900 tabular-nums">
         {hasIndication ? (
           <>
-            {ils(row.proposed_list_price_ils)}
+            {ilsCompact(row.proposed_list_price_ils)}
             {row.market_range?.lower != null && !isPointValue(row.market_range.lower, row.market_range.upper) && (
               <div className="text-[10px] font-normal text-slate-400">{rangeOrPoint(row.market_range.lower, row.market_range.upper)}</div>
             )}
@@ -190,13 +210,13 @@ function BoardRow({ row, state, onSelectUnit }: { row: PtkPriceListRow; state: M
             {CONFIDENCE_LABELS[row.market_range.confidence] ?? row.market_range.confidence}
           </span>
         ) : (
-          "—"
+          <span className="text-slate-300">—</span>
         )}
       </Td>
-      <Td>
+      <Td className="tabular-nums">
         {hasIndication && breakdown.totalPct !== 0 ? (
           <>
-            <div className={breakdown.totalPct > 0 ? "font-medium text-emerald-700" : "font-medium text-red-700"}>
+            <div className={breakdown.totalPct > 0 ? "font-semibold text-emerald-700" : "font-semibold text-red-700"}>
               {breakdown.totalPct > 0 ? "+" : ""}
               {num(breakdown.totalPct, 1)}%
             </div>
@@ -206,36 +226,44 @@ function BoardRow({ row, state, onSelectUnit }: { row: PtkPriceListRow; state: M
             </div>
           </>
         ) : (
-          <span className="text-slate-400">0%</span>
+          <span className="text-slate-300">0%</span>
         )}
       </Td>
-      <Td className="font-semibold">
+      <Td className="font-semibold text-slate-900 tabular-nums">
         {isSold && saleRecord ? (
           <>
-            <div className="text-emerald-700">{ils(saleRecord.sale_price_ils)}</div>
-            {hasIndication && <div className="text-[10px] font-normal text-slate-400 line-through">{ils(breakdown.proposedIls)}</div>}
+            <div className="text-emerald-700">{ilsCompact(saleRecord.sale_price_ils)}</div>
+            {hasIndication && <div className="text-[10px] font-normal text-slate-400 line-through">{ilsCompact(breakdown.proposedIls)}</div>}
           </>
         ) : (
-          ils(breakdown.proposedIls)
+          ilsCompact(breakdown.proposedIls)
         )}
       </Td>
     </tr>
   );
 }
 
-function SummaryStat({ label, value, emphasize }: { label: string; value: string; emphasize?: boolean }) {
+function SummaryStat({ label, value, emphasize, small }: { label: string; value: string; emphasize?: boolean; small?: boolean }) {
   return (
     <div>
-      <div className={`font-bold text-slate-900 ${emphasize ? "text-emerald-700" : ""}`}>{value}</div>
+      <div className={`font-bold text-slate-900 ${small ? "text-sm font-medium text-slate-500" : ""} ${emphasize ? "text-emerald-700" : ""}`}>
+        {value}
+      </div>
       <div className="text-xs text-slate-500">{label}</div>
     </div>
   );
 }
 
-function Th({ children }: { children: React.ReactNode }) {
-  return <th className="whitespace-nowrap px-3 py-2 text-start font-medium">{children}</th>;
+function Th({ children, primary, muted }: { children: React.ReactNode; primary?: boolean; muted?: boolean }) {
+  return (
+    <th
+      className={`whitespace-nowrap px-3 py-2.5 text-start font-semibold ${primary ? "text-slate-900" : muted ? "font-normal text-slate-400" : "text-slate-600"}`}
+    >
+      {children}
+    </th>
+  );
 }
 
-function Td({ children, className }: { children: React.ReactNode; className?: string }) {
-  return <td className={`whitespace-nowrap px-3 py-2 ${className ?? ""}`}>{children}</td>;
+function Td({ children, className, muted }: { children: React.ReactNode; className?: string; muted?: boolean }) {
+  return <td className={`whitespace-nowrap px-3 py-3 align-middle ${muted ? "text-slate-400" : ""} ${className ?? ""}`}>{children}</td>;
 }

@@ -13,7 +13,7 @@ import {
   SELL_THROUGH_STATUS_LABELS,
   sellThroughStatus,
 } from "@/lib/marketingStrategy";
-import { ils, num } from "@/lib/format";
+import { ils, ilsCompact, num } from "@/lib/format";
 
 interface Props {
   rows: PtkPriceListRow[];
@@ -138,11 +138,11 @@ export default function MarketingStrategyPanel({ rows, state, onChange }: Props)
       <div className="rounded-md bg-slate-50 p-3">
         <div className="mb-1 text-xs font-semibold text-slate-500">39 יחידות — סיכום הכנסות</div>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-          <MiniStat label="הכנסה לפי אינדיקציית שוק" value={ils(revenue.marketIndicationRevenueIls)} />
-          <MiniStat label="הכנסה מוצעת (לאחר כל ההתאמות)" value={ils(revenue.proposedRevenueIls)} />
+          <MiniStat label="הכנסה לפי אינדיקציית שוק" value={ilsCompact(revenue.marketIndicationRevenueIls)} />
+          <MiniStat label="הכנסה מוצעת (לאחר כל ההתאמות)" value={ilsCompact(revenue.proposedRevenueIls)} />
           <MiniStat
             label="הפרש כולל"
-            value={`${revenue.differenceIls >= 0 ? "+" : ""}${ils(revenue.differenceIls)}`}
+            value={`${revenue.differenceIls >= 0 ? "+" : ""}${ilsCompact(revenue.differenceIls)}`}
             emphasize={revenue.differenceIls !== 0}
           />
         </div>

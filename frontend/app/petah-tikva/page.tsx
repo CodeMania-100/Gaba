@@ -122,7 +122,7 @@ export default function PetahTikvaWorkspacePage() {
           <div>
             <div className="text-xs font-semibold uppercase tracking-wide text-slate-400">כלי תומך החלטה לתמחור דירות</div>
             <h1 className="mt-0.5 text-xl font-bold text-slate-900">
-              פרויקט הדגמה – {data.project.name} | {data.project.city}
+              {data.project.name} | {data.project.city}
             </h1>
             <p className="mt-0.5 text-sm text-slate-500">
               {data.project.address ?? `${data.project.commercial_area} / ${data.project.official_neighborhood}`}

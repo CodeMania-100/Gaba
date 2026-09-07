@@ -15,6 +15,7 @@ import {
 import { ils, isPointValue, num, rangeOrPoint } from "@/lib/format";
 import SpecialUnitAnalysis from "./SpecialUnitAnalysis";
 import MarketingDecisionChain from "./MarketingDecisionChain";
+import StepHeading from "./StepHeading";
 import {
   computeSalesProgress,
   familyBucketOf,
@@ -57,19 +58,6 @@ export interface SpecialReviewPayload {
   unknowns?: unknown;
   market_indication?: unknown;
   commercial_decision?: unknown;
-}
-
-/** Numbered step badge shared by all four drawer blocks (1. פרטי הדירה,
- * 2. אינדיקציית שוק, 3. מצב הפרויקט, 4. החלטת שיווק -- the fourth is
- * MarketingDecisionChain's own header, styled to match) so the four-step
- * hierarchy reads as one obvious sequence, not four unrelated cards. */
-export function StepHeading({ n, title }: { n: number; title: string }) {
-  return (
-    <div className="mb-2 flex items-center gap-2">
-      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-slate-900 text-[11px] font-bold text-white">{n}</span>
-      <h3 className="text-sm font-semibold text-slate-900">{title}</h3>
-    </div>
-  );
 }
 
 /** Phase 3B/3C row-detail panel: four compact, numbered blocks (1. פרטי
@@ -116,20 +104,21 @@ export default function UnitDrawer({ row, workspace, marketingStrategy, onChange
             </section>
           )}
 
-          {/* א. הדירה */}
+          {/* 1. פרטי הדירה */}
           <UnitFactsBlock row={row} isSold={isSold} />
 
-          {/* ב. אינדיקציית השוק */}
+          {/* 2. אינדיקציית שוק */}
           {route === "standard_family" ? (
             <MarketIndicationBlockStandard row={row} workspace={workspace} onOpenFamilyEvidence={onOpenFamilyEvidence} />
           ) : (
             <MarketIndicationBlockSpecial row={row} workspace={workspace} />
           )}
 
-          {/* ג. מצב הפרויקט */}
+          {/* 3. מצב הפרויקט */}
           <ProjectStatusBlock row={row} workspace={workspace} state={marketingStrategy} />
 
-          {/* ד. החלטת השיווק */}
+          {/* 4. החלטת שיווק -- the strongest visual element in this drawer; owns
+              its own header, styled to match StepHeading (see MarketingDecisionChain) */}
           <MarketingDecisionChain row={row} state={marketingStrategy} onChange={onChangeMarketingStrategy} />
         </div>
       </div>
@@ -146,12 +135,12 @@ function Fact({ label, value }: { label: string; value: string }) {
   );
 }
 
-// א. הדירה
+// 1. פרטי הדירה
 function UnitFactsBlock({ row, isSold }: { row: PtkPriceListRow; isSold: boolean }) {
   const rooms = roomsOf(row);
   return (
     <section>
-      <h3 className="mb-2 text-sm font-semibold text-slate-900">א. הדירה</h3>
+      <StepHeading n={1} title="פרטי הדירה" />
       <div className="grid grid-cols-2 gap-3 rounded-md bg-slate-50 p-3 text-sm">
         <Fact label="סוג" value={unitTypeLabel(row.family)} />
         <Fact label="חדרים" value={rooms != null ? String(rooms) : "—"} />
@@ -183,7 +172,7 @@ function MarketIndicationBlockStandard({
 
   return (
     <section>
-      <h3 className="mb-2 text-sm font-semibold text-slate-900">ב. אינדיקציית השוק</h3>
+      <StepHeading n={2} title="אינדיקציית שוק" />
       <div className="rounded-md border border-slate-200 p-3">
         <div className="mb-2 flex items-center gap-2">
           <span
@@ -205,7 +194,7 @@ function MarketIndicationBlockStandard({
                 <li key={lane} className="flex items-center justify-between">
                   <span className="text-slate-700">{LANE_LABELS[lane].title}</span>
                   <span className={used ? "text-emerald-700" : "text-slate-400"}>
-                    {used ? "✓ השתתף" : "לא השתתף"} · {CONFIDENCE_LABELS[laneData.confidence] ?? laneData.confidence}
+                    {used ? "משתתף בחישוב" : "לא משתתף בחישוב"} · {CONFIDENCE_LABELS[laneData.confidence] ?? laneData.confidence}
                   </span>
                 </li>
               );
@@ -236,7 +225,7 @@ function MarketIndicationBlockSpecial({ row, workspace }: { row: PtkPriceListRow
 
   return (
     <section>
-      <h3 className="mb-2 text-sm font-semibold text-slate-900">ב. אינדיקציית השוק</h3>
+      <StepHeading n={2} title="אינדיקציית שוק" />
       <div className="rounded-md border border-slate-200 p-3">
         {indication ? (
           <>
@@ -264,7 +253,7 @@ function MarketIndicationBlockSpecial({ row, workspace }: { row: PtkPriceListRow
                   <li key={lane} className="flex items-center justify-between">
                     <span className="text-slate-700">{LANE_LABELS[lane].title}</span>
                     <span className={voting ? "text-emerald-700" : laneResult ? "text-amber-700" : "text-slate-400"}>
-                      {voting ? "✓ השתתף בהצבעה" : laneResult ? "הקשר בלבד" : "אין נתונים"}
+                      {voting ? "משתתף בחישוב" : laneResult ? "הקשר בלבד" : "אין נתונים"}
                     </span>
                   </li>
                 );
@@ -291,7 +280,7 @@ function ProjectStatusBlock({ row, workspace, state }: { row: PtkPriceListRow; w
 
   return (
     <section>
-      <h3 className="mb-2 text-sm font-semibold text-slate-900">ג. מצב הפרויקט</h3>
+      <StepHeading n={3} title="מצב הפרויקט" />
       <div className="grid grid-cols-2 gap-3 rounded-md bg-slate-50 p-3 text-sm">
         <Fact label="שלב מכירות" value={PROJECT_PHASE_LABELS[state.projectPhase]} />
         <Fact label="קצב מכירה — כלל הפרויקט" value={`${num(progress.sellThroughPct, 0)}%`} />

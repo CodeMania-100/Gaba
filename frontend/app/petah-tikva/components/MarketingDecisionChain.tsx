@@ -5,13 +5,12 @@ import { ils } from "@/lib/format";
 import {
   computePriceBreakdown,
   EMPTY_ADJUSTMENT,
-  familyBucketFromString,
   familyBucketOf,
   FAMILY_BUCKET_LABELS,
   MarketingStrategyState,
-  PROJECT_PHASE_LABELS,
 } from "@/lib/marketingStrategy";
 import { AdjustmentEditor } from "./MarketingStrategyPanel";
+import StepHeading from "./StepHeading";
 
 interface Props {
   row: PtkPriceListRow;
@@ -19,45 +18,40 @@ interface Props {
   onChange: (updater: (prev: MarketingStrategyState) => MarketingStrategyState) => void;
 }
 
-/** Item 5's per-apartment chain: אינדיקציית שוק -> מצב הפרויקט ומכירות
- * שבוצעו -> החלטה אסטרטגית של השיווק -> מחיר שיווק מוצע. Shared identically
- * by standard and special units -- both already expose the same
+/** Drawer block 4 (see UnitDrawer.tsx) -- the strongest visual element in
+ * the whole drawer: אינדיקציית שוק -> התאמות -> מחיר שיווק מוצע. Project
+ * phase / sell-through / internal sales are already shown once, in block 3
+ * (מצב הפרויקט) -- this block only adds the three named ₪-effect
+ * adjustments on top, never repeats that context. Shared identically by
+ * standard and special units -- both already expose the same
  * row.proposed_list_price_ils as their "market indication" input, so this
  * component never needs to know which pricing route produced it. */
 export default function MarketingDecisionChain({ row, state, onChange }: Props) {
   const bucket = familyBucketOf(row);
-  const isSold = state.soldUnitNumbers.has(row.unit_number);
   const familyAdjustment = state.familyAdjustments[bucket] ?? EMPTY_ADJUSTMENT;
   const unitAdjustment = state.unitAdjustments[row.unit_number] ?? EMPTY_ADJUSTMENT;
   const breakdown = computePriceBreakdown(state, row);
   const { marketIndicationIls: marketIndication, proposedIls: proposed, totalPct: total } = breakdown;
 
-  const relevantSales = state.internalProjectSales.filter((s) => familyBucketFromString(s.family) === bucket);
-
   return (
-    <section className="rounded-md border border-slate-300 p-3">
-      <h3 className="mb-2 text-sm font-semibold text-slate-900">שרשרת ההחלטה השיווקית</h3>
+    <section className="rounded-lg border-2 border-slate-900 bg-gradient-to-b from-slate-50 to-white p-4">
+      <StepHeading n={4} title="החלטת שיווק" />
+      <div className="mb-3 flex flex-wrap items-center gap-1 text-xs font-medium text-slate-500">
+        <span>אינדיקציית שוק</span>
+        <span className="text-slate-300">→</span>
+        <span>התאמות</span>
+        <span className="text-slate-300">→</span>
+        <span className="font-semibold text-slate-900">מחיר שיווק מוצע</span>
+      </div>
 
-      <div className="flex flex-col gap-2 text-sm">
-        <ChainStep label="1. אינדיקציית שוק" value={ils(marketIndication)} />
-
-        <ChainStep
-          label="2. מצב הפרויקט ומכירות שבוצעו"
-          value={`${PROJECT_PHASE_LABELS[state.projectPhase]} · ${isSold ? "נמכרה" : "לא נמכרה"}`}
-        >
-          {relevantSales.length === 0 ? (
-            <p className="text-xs text-slate-400">לא סופקו נתוני מכירות שבוצעו בפרויקט במסגרת המטלה.</p>
-          ) : (
-            <p className="text-xs text-slate-500">
-              {relevantSales.length} עסקאות דומות בפרויקט · חציון{" "}
-              {ils([...relevantSales].sort((a, b) => a.sale_price_ils - b.sale_price_ils)[Math.floor(relevantSales.length / 2)].sale_price_ils)}
-              {" "}(ראייה נפרדת — לא ממוזגת באינדיקציית השוק)
-            </p>
-          )}
-        </ChainStep>
+      <div className="flex flex-col gap-3 text-sm">
+        <div>
+          <div className="text-xs text-slate-500">אינדיקציית שוק</div>
+          <div className="text-lg font-bold text-slate-900">{ils(marketIndication)}</div>
+        </div>
 
         <div>
-          <div className="mb-1 text-xs font-semibold text-slate-500">3. החלטה אסטרטגית של השיווק</div>
+          <div className="mb-1 text-xs font-semibold text-slate-500">התאמות אסטרטגיות</div>
           <div className="flex flex-col gap-1.5">
             {breakdown.phasePct !== 0 && (
               <EffectLine label={`התאמת שלב פרויקט: ${signed(breakdown.phasePct)}%`} effectIls={breakdown.phaseEffectIls} />
@@ -84,9 +78,9 @@ export default function MarketingDecisionChain({ row, state, onChange }: Props) 
           </div>
         </div>
 
-        <div className="rounded-md bg-slate-50 p-2">
-          <div className="text-xs text-slate-500">4. מחיר שיווק מוצע</div>
-          <div className="text-xl font-bold text-slate-900">{ils(proposed)}</div>
+        <div className="rounded-md bg-white p-3 shadow-sm">
+          <div className="text-xs text-slate-500">מחיר שיווק מוצע</div>
+          <div className="text-2xl font-bold text-slate-900">{ils(proposed)}</div>
           {total !== 0 && marketIndication != null && (
             <p className="mt-0.5 font-mono text-xs text-slate-500">
               {ils(marketIndication)} × (1 {total >= 0 ? "+" : "−"} {Math.abs(total)}%) = {ils(proposed)}
@@ -108,15 +102,5 @@ function EffectLine({ label, effectIls }: { label: string; effectIls: number | n
     <p className="text-xs text-slate-600">
       {label} <span className="font-medium">({effectIls > 0 ? "+" : ""}{ils(effectIls)})</span>
     </p>
-  );
-}
-
-function ChainStep({ label, value, children }: { label: string; value: string; children?: React.ReactNode }) {
-  return (
-    <div>
-      <div className="text-xs text-slate-500">{label}</div>
-      <div className="font-medium text-slate-800">{value}</div>
-      {children}
-    </div>
   );
 }

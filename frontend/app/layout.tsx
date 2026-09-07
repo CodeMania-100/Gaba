@@ -7,9 +7,14 @@ const heebo = Heebo({
   variable: "--font-heebo",
 });
 
+// Kept city-neutral on purpose: this metadata applies to every route
+// (including /petah-tikva), and a demo-specific city name here would leak
+// into the active Petah Tikva presentation path via the browser tab/meta
+// description regardless of which page is actually showing. Route-specific
+// demo context belongs in each page's own content, not shared layout metadata.
 export const metadata: Metadata = {
   title: "מרחב תמחור גבאי",
-  description: "פרויקט הדגמה — עיר היין, אשקלון",
+  description: "כלי החלטת תמחור לדירות — ראיות שוק, אסטרטגיה עסקית ומחירון פרויקט",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

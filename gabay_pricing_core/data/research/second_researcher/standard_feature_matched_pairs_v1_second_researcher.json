@@ -1,0 +1,268 @@
+{
+  "version": "standard_feature_matched_pairs_v1",
+  "retrieved_at": "2026-09-07",
+  "scope": "Matched-pair feature evidence only. No standard market-range recollection and no monetary adjustment rule.",
+  "rule": "A pair is descriptive evidence only unless same project/building, same rooms, same/similar area/model, same property type, and the feature of interest is isolated enough to be interpretable.",
+  "floor": {
+    "registered_sale_observations": [
+      {
+        "family": "standard_3r",
+        "address": "אבינועם ילין 6, פתח תקווה",
+        "quality": "STRONG_OBSERVATIONAL_PAIR",
+        "match_basis": "same address, exact rooms, exact registered area, four days apart, distinct subparcels",
+        "observations": [
+          {
+            "deal_id": "11359095666",
+            "date": "2026-03-14",
+            "rooms": 3,
+            "area_m2": 69,
+            "floor": 6,
+            "price_ils": 2255000,
+            "subparcel": 7
+          },
+          {
+            "deal_id": "11359095667",
+            "date": "2026-03-18",
+            "rooms": 3,
+            "area_m2": 69,
+            "floor": 2,
+            "price_ils": 2170000,
+            "subparcel": 8
+          }
+        ],
+        "source": "local Tax Authority / registered-deal dataset",
+        "source_url": null,
+        "premium_calculated": false,
+        "caveat": "Observational only; no apartment-plan, orientation, parking or condition equivalence is proven."
+      },
+      {
+        "family": "standard_5r",
+        "address": "פנקס 5, פתח תקווה",
+        "quality": "STRONGEST_OBSERVATIONAL_PAIR",
+        "match_basis": "same address, same day, exact rooms, exact registered area, distinct subparcels",
+        "observations": [
+          {
+            "deal_id": "3657117935",
+            "date": "2026-03-30",
+            "rooms": 5,
+            "area_m2": 120,
+            "floor": 1,
+            "price_ils": 3260000,
+            "subparcel": 1
+          },
+          {
+            "deal_id": "3657113382",
+            "date": "2026-03-30",
+            "rooms": 5,
+            "area_m2": 120,
+            "floor": 5,
+            "price_ils": 3225000,
+            "subparcel": 7
+          }
+        ],
+        "source": "Tax Authority dataset + Market2 registered-deal mirror",
+        "source_url": "https://www.market2.co.il/lp/building/petah-tikva/%D7%97%D7%99%D7%99%D7%9D-%D7%9B%D7%94%D7%9F/5?street=%D7%A4%D7%A0%D7%A7%D7%A1",
+        "premium_calculated": false,
+        "caveat": "Strong observational comparison, but plan/orientation/parking/condition equivalence is not established."
+      },
+      {
+        "family": "standard_3r",
+        "address": "בעל שם-טוב 2, פתח תקווה",
+        "quality": "MEDIUM_OBSERVATIONAL_PAIR",
+        "match_basis": "same address, exact rooms and area, different floors",
+        "observations": [
+          {
+            "deal_id": "11359094126",
+            "date": "2025-07-14",
+            "rooms": 3,
+            "area_m2": 74,
+            "floor": 4,
+            "price_ils": 1930000,
+            "subparcel": 6
+          },
+          {
+            "deal_id": "11359094128",
+            "date": "2025-10-15",
+            "rooms": 3,
+            "area_m2": 74,
+            "floor": 8,
+            "price_ils": 1950000,
+            "subparcel": 8
+          }
+        ],
+        "source": "local Tax Authority / registered-deal dataset",
+        "source_url": null,
+        "premium_calculated": false,
+        "caveat": "Approximately three months apart; market-time and other unobserved unit differences are confounders."
+      },
+      {
+        "family": "standard_5r",
+        "address": "זאב ברנדה 40, פתח תקווה",
+        "quality": "MEDIUM_OBSERVATIONAL_PAIR",
+        "match_basis": "same address, exact rooms and area, different floors",
+        "observations": [
+          {
+            "deal_id": "11359094482",
+            "date": "2025-12-29",
+            "rooms": 5,
+            "area_m2": 117,
+            "floor": 8,
+            "price_ils": 3050000,
+            "subparcel": 10
+          },
+          {
+            "deal_id": "3656501192",
+            "date": "2026-03-16",
+            "rooms": 5,
+            "area_m2": 117,
+            "floor": 1,
+            "price_ils": 2860000,
+            "subparcel": 16
+          }
+        ],
+        "source": "local Tax Authority / registered-deal dataset",
+        "source_url": null,
+        "premium_calculated": false,
+        "caveat": "About 2.5 months apart; nearby mirror/duplicate-style records and unobserved attributes prevent a causal floor rule."
+      }
+    ],
+    "new_development_priced_pairs": [],
+    "new_development_near_misses": [
+      {
+        "project": "TRIO",
+        "rooms": 5,
+        "area_m2": 110,
+        "known_floor_price": {
+          "floor": 1,
+          "price_ils": 2890000
+        },
+        "other_floor": 5,
+        "other_floor_price_ils": null,
+        "reason": "second floor-specific price not public"
+      },
+      {
+        "project": "חנקין 11",
+        "rooms": 5,
+        "area_m2": 118,
+        "floor_range": "6-8",
+        "published_price_ils": 2900000,
+        "reason": "one common price over a floor range, not per-floor prices"
+      },
+      {
+        "project": "ברנדה 49",
+        "rooms": 5,
+        "area_m2": 121,
+        "floor_range": "4-8",
+        "published_price_ils": 2900000,
+        "reason": "one common price over a floor range"
+      }
+    ],
+    "verified_monetary_rule": null
+  },
+  "orientation": {
+    "matched_attribute_observations": [
+      {
+        "project": "רוטשילד 163-165",
+        "variants": [
+          {
+            "rooms": 5,
+            "internal_area_m2": 112,
+            "balcony_area_m2": 12,
+            "parking_count": 1,
+            "orientation": [
+              "south",
+              "west"
+            ],
+            "price_ils": null
+          },
+          {
+            "rooms": 5,
+            "internal_area_m2": 112,
+            "balcony_area_m2": 12,
+            "parking_count": 1,
+            "orientation": [
+              "north",
+              "west"
+            ],
+            "price_ils": null
+          }
+        ],
+        "source_url": "https://katash.co.il/%D7%A8%D7%95%D7%98%D7%A9%D7%99%D7%9C%D7%93-163-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%95%D7%94/",
+        "price_comparison_available": false
+      }
+    ],
+    "verified_monetary_rule": null
+  },
+  "balcony": {
+    "matched_attribute_observations": [
+      {
+        "project": "השופט ברנדייס 47",
+        "variants": [
+          {
+            "rooms": 5,
+            "internal_area_m2": 118,
+            "balcony_area_m2": 12,
+            "orientation": [
+              "east",
+              "south",
+              "west"
+            ],
+            "parking_count": 1,
+            "price_ils": null
+          },
+          {
+            "rooms": 5,
+            "internal_area_m2": 118,
+            "balcony_area_m2": 11,
+            "orientation": [
+              "east",
+              "south",
+              "west"
+            ],
+            "parking_count": 1,
+            "price_ils": null
+          }
+        ],
+        "source_url": "https://katash.co.il/%D7%91%D7%A8%D7%A0%D7%93%D7%99%D7%99%D7%A1-47-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%95%D7%94/",
+        "price_comparison_available": false
+      }
+    ],
+    "verified_monetary_rule": null
+  },
+  "parking": {
+    "observations": [
+      {
+        "project": "רוטשילד 163-165",
+        "fact": "all displayed standard 5R floorplan models have one parking space",
+        "price_effect_observable": false
+      },
+      {
+        "project": "TRIO",
+        "fact": "project states private parking for every apartment",
+        "price_effect_observable": false
+      }
+    ],
+    "verified_monetary_rule": null
+  },
+  "storage": {
+    "observations": [
+      {
+        "project": "TRIO",
+        "fact": "attached storage for every apartment",
+        "price_effect_observable": false
+      },
+      {
+        "project": "חנקין 11",
+        "fact": "project marketing states attached storage for apartments",
+        "price_effect_observable": false
+      },
+      {
+        "project": "הבעל שם טוב 61",
+        "fact": "rear 5R model shows 5 m² storage while front model storage price relation is not published",
+        "price_effect_observable": false
+      }
+    ],
+    "verified_monetary_rule": null
+  },
+  "conclusion": "Useful matched observations exist, especially for floor in registered sales, but no defensible universal monetary adjustment has been established for floor, orientation, balcony, parking or storage."
+}

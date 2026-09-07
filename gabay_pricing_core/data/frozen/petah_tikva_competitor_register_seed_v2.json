@@ -1,0 +1,748 @@
+{
+  "schema_version": "competitor-register-seed-v2",
+  "market": {
+    "city": "פתח תקווה",
+    "target_submarket": "המרכז השקט / מרכז העיר",
+    "subject_address": null,
+    "subject_location_note": "Assignment did not provide an exact address; use neighborhood-level demo context."
+  },
+  "usage_rules": {
+    "market_range": "Only records that pass the existing quantitative eligibility rules may affect the numerical new-development lane.",
+    "decision_support": "Verified product/commercial attributes may be shown as considerations but must not create automatic monetary adjustments.",
+    "unknowns": "Hide unknown-heavy fields in primary UI; keep nulls/provenance for audit.",
+    "independence": "Multiple listings/variants from one project count as one independent project.",
+    "feature_pricing": "Do not assign automatic balcony/floor/parking/storage/orientation premiums without verified company rule or market-derived rule."
+  },
+  "projects": [
+    {
+      "project_name": "זאב ברנדה 22",
+      "developer": "רכסים בנייה ויזמות ש.ע בע״מ",
+      "address": "זאב ברנדה 22, פתח תקווה",
+      "neighborhood": "המרכז השקט / מרכז העיר",
+      "geography_role": "core_exact_target",
+      "room_range": [
+        3,
+        6
+      ],
+      "area_sqm_range": [
+        67,
+        192
+      ],
+      "floors_range": [
+        0,
+        10
+      ],
+      "known_unit_variants": [
+        {
+          "rooms": 3,
+          "area_sqm": 69,
+          "price_ils": 1890000,
+          "source": "Yad2 via RapidAPI",
+          "token": "p48szbly"
+        },
+        {
+          "rooms": 3,
+          "area_sqm": 79,
+          "price_ils": 2090000,
+          "source": "Yad2 via RapidAPI",
+          "token": "g1g0zyq7"
+        },
+        {
+          "rooms": 5,
+          "area_sqm": 122,
+          "price_ils": 3180000,
+          "source": "existing frozen competitor evidence"
+        }
+      ],
+      "product_types": [
+        "standard_apartment",
+        "garden_apartment",
+        "roof_duplex"
+      ],
+      "balcony": {
+        "status": "verified_project_level",
+        "value": "sun balcony for every apartment"
+      },
+      "garden": {
+        "status": "verified_project_level",
+        "value": "3.5–4 room garden units available"
+      },
+      "parking": {
+        "status": "verified_project_level",
+        "value": "regular underground parking for every apartment"
+      },
+      "storage": null,
+      "mamad": {
+        "status": "verified_project_level",
+        "value": true
+      },
+      "orientation": null,
+      "payment_terms": {
+        "status": "verified_project_level",
+        "value": "80/20; bridge financing advertised"
+      },
+      "occupancy": null,
+      "promotions": [
+        "bridge financing terms"
+      ],
+      "special_product_notes": "5–6 room roof duplexes on floors 9–10, 148–192 sqm built, excluding sun/roof terraces.",
+      "relevance": [
+        "standard_3r",
+        "standard_5r",
+        "garden",
+        "duplex",
+        "large_premium"
+      ],
+      "quantitative_eligibility": {
+        "standard_3r": {
+          "eligible": true,
+          "reason": "existing engine contributor; exact target geography and exact price/area records"
+        },
+        "standard_5r": {
+          "eligible": true,
+          "reason": "existing frozen contributor with exact area/price"
+        }
+      },
+      "source_urls": [
+        "https://www.yad2.co.il/yad1/project/16515"
+      ],
+      "warnings": [
+        "Multiple unit listings from this project count as one independent project."
+      ]
+    },
+    {
+      "project_name": "הרב ניימן 8",
+      "developer": null,
+      "marketing_agency": "הר סלול נדל״ן",
+      "address": "הרב ניימן 8, פתח תקווה",
+      "neighborhood": "המרכז השקט / מרכז העיר",
+      "geography_role": "core_exact_target",
+      "room_range": null,
+      "area_sqm_range": null,
+      "floors_range": null,
+      "known_unit_variants": [
+        {
+          "rooms": 3,
+          "area_sqm": 77,
+          "price_ils": 2150000,
+          "floor": 5,
+          "source": "Yad2 via RapidAPI",
+          "token": "y695npbl"
+        }
+      ],
+      "product_types": [
+        "standard_apartment"
+      ],
+      "balcony": null,
+      "garden": null,
+      "parking": null,
+      "storage": null,
+      "mamad": null,
+      "orientation": null,
+      "payment_terms": null,
+      "occupancy": null,
+      "promotions": [],
+      "special_product_notes": null,
+      "relevance": [
+        "standard_3r"
+      ],
+      "quantitative_eligibility": {
+        "standard_3r": {
+          "eligible": true,
+          "reason": "existing engine contributor; exact target geography with exact price/area"
+        },
+        "standard_5r": {
+          "eligible": false,
+          "reason": "no verified exact 5R unit variant in this consolidated record"
+        }
+      },
+      "source_urls": [],
+      "warnings": [
+        "Keep as a separate independent project from Ze'ev Branda based on address/coordinates."
+      ]
+    },
+    {
+      "project_name": "DeFour",
+      "developer": "בוני התיכון",
+      "address": "ברנדה פינת בלפור, פתח תקווה",
+      "neighborhood": "המרכז השקט / מרכז העיר",
+      "geography_role": "core_exact_target",
+      "room_range": [
+        3,
+        6
+      ],
+      "area_sqm_range": null,
+      "floors_range": [
+        0,
+        8
+      ],
+      "known_unit_variants": [
+        {
+          "rooms": 3,
+          "area_sqm": null,
+          "price_ils": 2200000,
+          "price_basis": "starting price",
+          "source": "Yad1/Yad2 project page"
+        }
+      ],
+      "product_types": [
+        "standard_apartment",
+        "garden_apartment",
+        "penthouse_roof"
+      ],
+      "balcony": {
+        "status": "verified_project_level",
+        "value": "balcony included in project specification"
+      },
+      "garden": {
+        "status": "verified_project_level",
+        "value": "garden apartments offered"
+      },
+      "parking": null,
+      "storage": null,
+      "mamad": {
+        "status": "verified_project_level",
+        "value": true
+      },
+      "elevator": {
+        "status": "verified_project_level",
+        "value": true
+      },
+      "orientation": null,
+      "payment_terms": {
+        "status": "verified_project_level",
+        "value": "customized payment terms advertised"
+      },
+      "occupancy": null,
+      "promotions": [],
+      "special_product_notes": "Project offers roof/penthouse and garden products in addition to 3–5 room apartments.",
+      "relevance": [
+        "standard_3r",
+        "standard_5r",
+        "garden",
+        "penthouse"
+      ],
+      "quantitative_eligibility": {
+        "standard_3r": {
+          "eligible": false,
+          "reason": "starting price is not tied to an exact published apartment area"
+        },
+        "standard_5r": {
+          "eligible": false,
+          "reason": "no exact 5R price+area pair consolidated"
+        }
+      },
+      "source_urls": [
+        "https://www.yad2.co.il/yad1/project/16523"
+      ],
+      "warnings": [
+        "Keep as competitive/context evidence where exact unit area is missing."
+      ]
+    },
+    {
+      "project_name": "חפץ חיים 25",
+      "developer": "שיא עינב בע״מ",
+      "address": "חפץ חיים 25, פתח תקווה",
+      "neighborhood": "המרכז השקט / מרכז העיר",
+      "geography_role": "core_exact_target",
+      "room_range": [
+        3,
+        6
+      ],
+      "area_sqm_range": [
+        75,
+        132
+      ],
+      "floors_range": [
+        0,
+        8
+      ],
+      "known_unit_variants": [],
+      "product_types": [
+        "standard_apartment",
+        "garden_apartment",
+        "penthouse_roof"
+      ],
+      "balcony": {
+        "status": "verified_project_level",
+        "value": "balcony included"
+      },
+      "garden": {
+        "status": "verified_project_level",
+        "value": "garden apartments offered"
+      },
+      "parking": null,
+      "storage": null,
+      "mamad": {
+        "status": "verified_project_level",
+        "value": true
+      },
+      "elevator": {
+        "status": "verified_project_level",
+        "value": true
+      },
+      "orientation": null,
+      "payment_terms": {
+        "status": "verified_project_level",
+        "value": "10/90 without index linkage"
+      },
+      "occupancy": {
+        "status": "verified_project_level",
+        "value": "immediate/near-term occupancy advertised"
+      },
+      "promotions": [
+        "last apartments / immediate occupancy campaign"
+      ],
+      "special_product_notes": "21-family demolition-and-rebuild project; rooftop/penthouse and garden inventory.",
+      "relevance": [
+        "standard_3r",
+        "standard_5r",
+        "garden",
+        "penthouse"
+      ],
+      "quantitative_eligibility": {
+        "standard_3r": {
+          "eligible": false,
+          "reason": "project-level area range is not an exact price+area pair"
+        },
+        "standard_5r": {
+          "eligible": false,
+          "reason": "project-level area range is not an exact price+area pair"
+        }
+      },
+      "source_urls": [
+        "https://www.yad2.co.il/yad1/project/16084"
+      ],
+      "warnings": [
+        "This is a real competitor and must not be used as the fictional subject-project address."
+      ]
+    },
+    {
+      "project_name": "רוטשילד 163–165",
+      "developer": "יוסי קטש בניה ויזמות בע״מ",
+      "address": "רוטשילד 163–165, פתח תקווה",
+      "neighborhood": "המרכז השקט / מרכז העיר",
+      "geography_role": "core_exact_target",
+      "room_range": [
+        4,
+        5
+      ],
+      "area_sqm_range": [
+        97,
+        159
+      ],
+      "floors_range": [
+        1,
+        10
+      ],
+      "known_unit_variants": [
+        {
+          "rooms": 5,
+          "area_sqm": 112,
+          "balcony_sqm": 12,
+          "price_ils": 2590000,
+          "source": "price from Diraly; area/balcony from developer floorplan",
+          "provenance_warning": "Price and exact 112 sqm variant were not independently proven to be the same unit variant."
+        }
+      ],
+      "product_types": [
+        "standard_apartment",
+        "duplex",
+        "penthouse"
+      ],
+      "balcony": {
+        "status": "verified_project_level",
+        "value": "large sun balconies on duplex/penthouse products; 12 sqm on known 5R plan"
+      },
+      "garden": null,
+      "parking": {
+        "status": "verified_project_level",
+        "value": "attached parking; known 5R frozen record has 1 parking"
+      },
+      "storage": null,
+      "mamad": null,
+      "elevator": {
+        "status": "verified_project_level",
+        "value": "2 elevators"
+      },
+      "orientation": {
+        "status": "variant_level",
+        "value": "west component on known 5R floorplan"
+      },
+      "payment_terms": {
+        "status": "verified_project_level",
+        "value": "20% signing / 80% occupancy"
+      },
+      "occupancy": null,
+      "promotions": [],
+      "special_product_notes": "Duplexes and penthouses offered; useful for Apt 39/premium context.",
+      "relevance": [
+        "standard_5r",
+        "duplex",
+        "penthouse"
+      ],
+      "quantitative_eligibility": {
+        "standard_3r": {
+          "eligible": false,
+          "reason": "no 3R product"
+        },
+        "standard_5r": {
+          "eligible": true,
+          "reason": "existing engine contributor, with explicit provenance warning on price/variant join"
+        }
+      },
+      "source_urls": [
+        "https://www.yad2.co.il/yad1/project/12038",
+        "https://katash.co.il/"
+      ],
+      "warnings": [
+        "Preserve cross-source price/area provenance warning in UI."
+      ]
+    },
+    {
+      "project_name": "ברנדה 49",
+      "developer": "א.פ. נחום חברה לבנין והשקעות",
+      "address": "זאב ברנדה 49, פתח תקווה",
+      "neighborhood": "המרכז השקט / מרכז העיר",
+      "geography_role": "core_exact_target",
+      "room_range": [
+        5,
+        6
+      ],
+      "area_sqm_range": [
+        121,
+        301
+      ],
+      "floors_range": [
+        0,
+        9
+      ],
+      "known_unit_variants": [],
+      "project_price_from_ils": 2900000,
+      "product_types": [
+        "standard_apartment",
+        "garden_apartment",
+        "penthouse"
+      ],
+      "balcony": null,
+      "garden": {
+        "status": "verified_project_level",
+        "value": "garden unit offered"
+      },
+      "parking": {
+        "status": "verified_project_level",
+        "value": "parking registered to every apartment"
+      },
+      "storage": {
+        "status": "verified_project_level",
+        "value": "private storage registered to every apartment"
+      },
+      "mamad": null,
+      "orientation": null,
+      "payment_terms": null,
+      "occupancy": null,
+      "promotions": [],
+      "special_product_notes": "Very large 5–6 room range up to 301 sqm; valuable context for large special units.",
+      "relevance": [
+        "standard_5r",
+        "garden",
+        "large_premium",
+        "penthouse"
+      ],
+      "quantitative_eligibility": {
+        "standard_3r": {
+          "eligible": false,
+          "reason": "no 3R product"
+        },
+        "standard_5r": {
+          "eligible": false,
+          "reason": "project starting price not tied to an exact 5R area variant"
+        }
+      },
+      "source_urls": [
+        "https://www.yad2.co.il/yad1/project/15063"
+      ],
+      "warnings": [
+        "Strong special-product context; do not treat 121–301 sqm range as one unit area."
+      ]
+    },
+    {
+      "project_name": "מתחם סוף רוטשילד",
+      "developer": "גיל קטה בניה והשקעות בע״מ",
+      "address": "רוטשילד 170–172, פתח תקווה",
+      "neighborhood": "המרכז השקט / מרכז העיר",
+      "geography_role": "core_exact_target",
+      "room_range": [
+        3,
+        6
+      ],
+      "area_sqm_range": null,
+      "floors_range": [
+        1,
+        8
+      ],
+      "known_unit_variants": [
+        {
+          "rooms": 4,
+          "area_sqm": null,
+          "price_ils": 2365000,
+          "price_basis": "starting price"
+        }
+      ],
+      "product_types": [
+        "standard_apartment",
+        "duplex",
+        "garden_apartment"
+      ],
+      "balcony": null,
+      "garden": {
+        "status": "verified_project_level",
+        "value": "garden apartments offered"
+      },
+      "parking": null,
+      "storage": null,
+      "mamad": null,
+      "orientation": null,
+      "payment_terms": {
+        "status": "verified_project_level",
+        "value": "10% now / balance at occupancy, without index linkage"
+      },
+      "occupancy": null,
+      "promotions": [],
+      "special_product_notes": "3–6 room apartments, duplexes and garden apartments.",
+      "relevance": [
+        "standard_3r",
+        "standard_5r",
+        "garden",
+        "duplex"
+      ],
+      "quantitative_eligibility": {
+        "standard_3r": {
+          "eligible": false,
+          "reason": "no exact 3R price+area pair consolidated"
+        },
+        "standard_5r": {
+          "eligible": false,
+          "reason": "no exact 5R price+area pair consolidated"
+        }
+      },
+      "source_urls": [
+        "https://www.yad2.co.il/yad1/project/11726"
+      ],
+      "warnings": [
+        "Useful direct-area competitive context, but project-level offers should not be normalized as exact units."
+      ]
+    },
+    {
+      "project_name": "THE SPOT",
+      "developer": "שיא עינב בע״מ",
+      "address": "יהושע שטמפפר 83–87, פתח תקווה",
+      "neighborhood": "שיפר",
+      "geography_role": "adjacent_submarket",
+      "room_range": [
+        3,
+        5
+      ],
+      "area_sqm_range": [
+        70,
+        146
+      ],
+      "floors_range": [
+        1,
+        10
+      ],
+      "known_unit_variants": [
+        {
+          "rooms": 3,
+          "area_sqm": 70,
+          "price_ils": 2250000,
+          "floor": 1,
+          "source": "existing frozen competitor evidence"
+        }
+      ],
+      "product_types": [
+        "standard_apartment",
+        "penthouse"
+      ],
+      "balcony": null,
+      "garden": null,
+      "parking": null,
+      "storage": null,
+      "mamad": null,
+      "orientation": null,
+      "payment_terms": null,
+      "occupancy": null,
+      "promotions": [],
+      "special_product_notes": "Adjacent Shifer geography; close 3R area match but not exact target neighborhood.",
+      "relevance": [
+        "standard_3r",
+        "standard_5r",
+        "penthouse"
+      ],
+      "quantitative_eligibility": {
+        "standard_3r": {
+          "eligible": false,
+          "reason": "adjacent geography; retained as relevant/context evidence"
+        },
+        "standard_5r": {
+          "eligible": false,
+          "reason": "adjacent geography and no exact 5R unit pair consolidated"
+        }
+      },
+      "source_urls": [
+        "https://www.yad2.co.il/yad1/project/19459"
+      ],
+      "warnings": [
+        "Do not relabel Shifer as exact target geography."
+      ]
+    },
+    {
+      "project_name": "מגדלי ספיר",
+      "developer": "האחים מאיה בע״מ",
+      "address": "יוסף ספיר 25–29, פתח תקווה",
+      "neighborhood": "שיפר",
+      "geography_role": "adjacent_submarket",
+      "room_range": [
+        4,
+        6
+      ],
+      "area_sqm_range": [
+        105,
+        221
+      ],
+      "floors_range": [
+        1,
+        10
+      ],
+      "known_unit_variants": [
+        {
+          "rooms": 4,
+          "area_sqm": 106,
+          "price_ils": 2490000,
+          "price_basis": "starting price"
+        }
+      ],
+      "product_types": [
+        "standard_apartment",
+        "duplex"
+      ],
+      "balcony": null,
+      "garden": null,
+      "parking": {
+        "status": "verified_project_level",
+        "value": "parking for every apartment; EV charging preparation"
+      },
+      "storage": {
+        "status": "verified_project_level",
+        "value": "storage rooms offered/project feature"
+      },
+      "mamad": null,
+      "elevator": {
+        "status": "verified_project_level",
+        "value": "2 elevators"
+      },
+      "orientation": null,
+      "view": {
+        "status": "variant_level",
+        "value": "urban/Yarkon views depending on apartment"
+      },
+      "payment_terms": {
+        "status": "verified_project_level",
+        "value": "special/pre-sale payment terms advertised; exact ratio not consolidated"
+      },
+      "occupancy": null,
+      "promotions": [
+        "pre-sale campaign"
+      ],
+      "special_product_notes": "Large 4–6 room range up to 221 sqm and luxury duplexes; useful for large special-unit context.",
+      "relevance": [
+        "standard_5r",
+        "duplex",
+        "large_premium"
+      ],
+      "quantitative_eligibility": {
+        "standard_3r": {
+          "eligible": false,
+          "reason": "no 3R product"
+        },
+        "standard_5r": {
+          "eligible": false,
+          "reason": "adjacent geography and no exact 5R unit pair consolidated"
+        }
+      },
+      "source_urls": [
+        "https://www.yad2.co.il/yad1/project/16845"
+      ],
+      "warnings": [
+        "Use as relevant/premium context, not exact-target quantitative evidence."
+      ]
+    },
+    {
+      "project_name": "הבעל שם טוב 61",
+      "developer": "יוסי קטש בניה ויזמות בע״מ",
+      "address": "בעל שם טוב 61, פתח תקווה",
+      "neighborhood": "מחנה יהודה",
+      "geography_role": "broader_petah_tikva",
+      "room_range": [
+        5,
+        5
+      ],
+      "area_sqm_range": [
+        113,
+        121
+      ],
+      "floors_range": [
+        1,
+        7
+      ],
+      "known_unit_variants": [
+        {
+          "rooms": 5,
+          "area_sqm": null,
+          "price_ils": 2690000,
+          "price_basis": "starting price"
+        }
+      ],
+      "product_types": [
+        "standard_apartment"
+      ],
+      "balcony": null,
+      "garden": null,
+      "parking": null,
+      "storage": null,
+      "mamad": null,
+      "orientation": {
+        "status": "verified_project_level",
+        "value": "3 air directions per apartment"
+      },
+      "payment_terms": {
+        "status": "verified_project_level",
+        "value": "15% signing / 85% delivery, without index linkage"
+      },
+      "occupancy": null,
+      "promotions": [
+        "pre-sale"
+      ],
+      "special_product_notes": "Very close 5R size match to the 111.1 sqm subject family, but broader geography.",
+      "relevance": [
+        "standard_5r"
+      ],
+      "quantitative_eligibility": {
+        "standard_3r": {
+          "eligible": false,
+          "reason": "no 3R product"
+        },
+        "standard_5r": {
+          "eligible": false,
+          "reason": "broader geography and starting price not tied to exact area variant"
+        }
+      },
+      "source_urls": [
+        "https://www.yad2.co.il/yad1/project/16599"
+      ],
+      "warnings": [
+        "Strong product-size comparator; geography keeps it out of strict exact-target lane."
+      ]
+    }
+  ]
+}

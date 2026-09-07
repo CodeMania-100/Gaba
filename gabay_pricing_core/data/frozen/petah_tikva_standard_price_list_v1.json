@@ -1,0 +1,1923 @@
+{
+  "version": "petah_tikva_standard_price_list_v1",
+  "generated_at": "2026-09-07T00:28:39.501923",
+  "disclaimer": "Standard-unit pricing only (24 standard 3-room + 8 standard 5-room units). The 7 special units (garden/duplex/triplex) are out of scope for this list and remain on the individual-review path. The 50% range-position baseline is an engineering control, not a Gabay commercial decision. No floor, orientation, balcony, parking or storage premium is applied because no verified company rule for Petah Tikva was supplied.",
+  "market_basis_file": "petah_tikva_standard_market_ranges_v1.json",
+  "plan": {
+    "name": "petah_tikva_standard_baseline",
+    "note": "50% range positions are an engineering baseline consistent with the existing family-decision convention; they are not Gabay commercial strategy or a pricing recommendation.",
+    "family_decisions": [
+      {
+        "family_key": "standard_apartment|3r|69sqm",
+        "rationale": "No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "strategy": {
+          "name": "3-room @ 50% of supported range",
+          "basis": "market_range_position",
+          "range_position_pct": 50.0
+        }
+      },
+      {
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "rationale": "No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "strategy": {
+          "name": "5-room @ 50% of supported range",
+          "basis": "market_range_position",
+          "range_position_pct": 50.0
+        }
+      }
+    ]
+  },
+  "unit_count": 32,
+  "total_standard_unit_revenue_ils": 67280000.0,
+  "project_metrics": {
+    "unit_count": 32,
+    "priced_unit_count": 32,
+    "manual_review_count": 0,
+    "strategy_required_count": 0,
+    "requires_review_count": 0,
+    "units_outside_supported_range": 0,
+    "total_proposed_list_value_ils": 67280000.0,
+    "family_count": 2,
+    "families_with_explicit_strategy": 2
+  },
+  "family_summaries": [
+    {
+      "family_key": "standard_apartment|3r|69sqm",
+      "unit_numbers": [
+        "4",
+        "5",
+        "6",
+        "8",
+        "9",
+        "10",
+        "12",
+        "13",
+        "14",
+        "16",
+        "17",
+        "18",
+        "20",
+        "21",
+        "22",
+        "24",
+        "25",
+        "26",
+        "28",
+        "29",
+        "30",
+        "32",
+        "33",
+        "34"
+      ],
+      "strategy_name": "3-room @ 50% of supported range",
+      "strategy_basis": "market_range_position",
+      "rationale": "No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+      "unit_count": 24,
+      "priced_unit_count": 24,
+      "review_unit_count": 0,
+      "strategy_required_count": 0,
+      "market_confidence_counts": {
+        "high": 24
+      },
+      "supported_range_envelope_ils": {
+        "lower_min": 1858000.0,
+        "lower_max": 1858000.0,
+        "upper_min": 1927000.0,
+        "upper_max": 1927000.0
+      },
+      "average_proposed_price_ils": 1892500.0,
+      "total_proposed_list_value_ils": 45420000.0,
+      "competitor_reference": null
+    },
+    {
+      "family_key": "standard_apartment|5r|111.1sqm",
+      "unit_numbers": [
+        "7",
+        "11",
+        "15",
+        "19",
+        "23",
+        "27",
+        "31",
+        "35"
+      ],
+      "strategy_name": "5-room @ 50% of supported range",
+      "strategy_basis": "market_range_position",
+      "rationale": "No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+      "unit_count": 8,
+      "priced_unit_count": 8,
+      "review_unit_count": 0,
+      "strategy_required_count": 0,
+      "market_confidence_counts": {
+        "high": 8
+      },
+      "supported_range_envelope_ils": {
+        "lower_min": 2569000.0,
+        "lower_max": 2569000.0,
+        "upper_min": 2896000.0,
+        "upper_max": 2896000.0
+      },
+      "average_proposed_price_ils": 2732500.0,
+      "total_proposed_list_value_ils": 21860000.0,
+      "competitor_reference": null
+    }
+  ],
+  "price_list": [
+    {
+      "unit_number": "10",
+      "family": "3R",
+      "family_key": "standard_apartment|3r|69sqm",
+      "floor": 2,
+      "internal_area_sqm": 69.0,
+      "balcony_area_sqm": 12.0,
+      "orientation": "מערב",
+      "market_range": {
+        "lower": 1858000.0,
+        "upper": 1927000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 1892500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 1892500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "12",
+      "family": "3R",
+      "family_key": "standard_apartment|3r|69sqm",
+      "floor": 3,
+      "internal_area_sqm": 69.0,
+      "balcony_area_sqm": 12.0,
+      "orientation": null,
+      "market_range": {
+        "lower": 1858000.0,
+        "upper": 1927000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 1892500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 1892500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "13",
+      "family": "3R",
+      "family_key": "standard_apartment|3r|69sqm",
+      "floor": 3,
+      "internal_area_sqm": 69.0,
+      "balcony_area_sqm": 12.0,
+      "orientation": null,
+      "market_range": {
+        "lower": 1858000.0,
+        "upper": 1927000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 1892500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 1892500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "14",
+      "family": "3R",
+      "family_key": "standard_apartment|3r|69sqm",
+      "floor": 3,
+      "internal_area_sqm": 69.0,
+      "balcony_area_sqm": 12.0,
+      "orientation": null,
+      "market_range": {
+        "lower": 1858000.0,
+        "upper": 1927000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 1892500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 1892500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "16",
+      "family": "3R",
+      "family_key": "standard_apartment|3r|69sqm",
+      "floor": 4,
+      "internal_area_sqm": 69.0,
+      "balcony_area_sqm": 12.0,
+      "orientation": null,
+      "market_range": {
+        "lower": 1858000.0,
+        "upper": 1927000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 1892500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 1892500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "17",
+      "family": "3R",
+      "family_key": "standard_apartment|3r|69sqm",
+      "floor": 4,
+      "internal_area_sqm": 69.0,
+      "balcony_area_sqm": 12.0,
+      "orientation": "מזרח",
+      "market_range": {
+        "lower": 1858000.0,
+        "upper": 1927000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 1892500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 1892500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "18",
+      "family": "3R",
+      "family_key": "standard_apartment|3r|69sqm",
+      "floor": 4,
+      "internal_area_sqm": 69.0,
+      "balcony_area_sqm": 12.0,
+      "orientation": "מערב",
+      "market_range": {
+        "lower": 1858000.0,
+        "upper": 1927000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 1892500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 1892500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "20",
+      "family": "3R",
+      "family_key": "standard_apartment|3r|69sqm",
+      "floor": 5,
+      "internal_area_sqm": 69.0,
+      "balcony_area_sqm": 12.0,
+      "orientation": "מזרח",
+      "market_range": {
+        "lower": 1858000.0,
+        "upper": 1927000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 1892500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 1892500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "21",
+      "family": "3R",
+      "family_key": "standard_apartment|3r|69sqm",
+      "floor": 5,
+      "internal_area_sqm": 69.0,
+      "balcony_area_sqm": 12.0,
+      "orientation": null,
+      "market_range": {
+        "lower": 1858000.0,
+        "upper": 1927000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 1892500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 1892500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "22",
+      "family": "3R",
+      "family_key": "standard_apartment|3r|69sqm",
+      "floor": 5,
+      "internal_area_sqm": 69.0,
+      "balcony_area_sqm": 12.0,
+      "orientation": "מערב",
+      "market_range": {
+        "lower": 1858000.0,
+        "upper": 1927000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 1892500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 1892500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "24",
+      "family": "3R",
+      "family_key": "standard_apartment|3r|69sqm",
+      "floor": 6,
+      "internal_area_sqm": 69.0,
+      "balcony_area_sqm": 12.0,
+      "orientation": "מזרח",
+      "market_range": {
+        "lower": 1858000.0,
+        "upper": 1927000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 1892500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 1892500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "25",
+      "family": "3R",
+      "family_key": "standard_apartment|3r|69sqm",
+      "floor": 6,
+      "internal_area_sqm": 69.0,
+      "balcony_area_sqm": 12.0,
+      "orientation": null,
+      "market_range": {
+        "lower": 1858000.0,
+        "upper": 1927000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 1892500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 1892500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "26",
+      "family": "3R",
+      "family_key": "standard_apartment|3r|69sqm",
+      "floor": 6,
+      "internal_area_sqm": 69.0,
+      "balcony_area_sqm": 12.0,
+      "orientation": "מערב",
+      "market_range": {
+        "lower": 1858000.0,
+        "upper": 1927000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 1892500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 1892500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "28",
+      "family": "3R",
+      "family_key": "standard_apartment|3r|69sqm",
+      "floor": 7,
+      "internal_area_sqm": 69.0,
+      "balcony_area_sqm": 12.0,
+      "orientation": null,
+      "market_range": {
+        "lower": 1858000.0,
+        "upper": 1927000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 1892500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 1892500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "29",
+      "family": "3R",
+      "family_key": "standard_apartment|3r|69sqm",
+      "floor": 7,
+      "internal_area_sqm": 69.0,
+      "balcony_area_sqm": 12.0,
+      "orientation": null,
+      "market_range": {
+        "lower": 1858000.0,
+        "upper": 1927000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 1892500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 1892500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "30",
+      "family": "3R",
+      "family_key": "standard_apartment|3r|69sqm",
+      "floor": 7,
+      "internal_area_sqm": 69.0,
+      "balcony_area_sqm": 12.0,
+      "orientation": "מערב",
+      "market_range": {
+        "lower": 1858000.0,
+        "upper": 1927000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 1892500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 1892500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "32",
+      "family": "3R",
+      "family_key": "standard_apartment|3r|69sqm",
+      "floor": 8,
+      "internal_area_sqm": 69.0,
+      "balcony_area_sqm": 12.0,
+      "orientation": null,
+      "market_range": {
+        "lower": 1858000.0,
+        "upper": 1927000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 1892500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 1892500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "33",
+      "family": "3R",
+      "family_key": "standard_apartment|3r|69sqm",
+      "floor": 8,
+      "internal_area_sqm": 69.0,
+      "balcony_area_sqm": 12.0,
+      "orientation": null,
+      "market_range": {
+        "lower": 1858000.0,
+        "upper": 1927000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 1892500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 1892500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "34",
+      "family": "3R",
+      "family_key": "standard_apartment|3r|69sqm",
+      "floor": 8,
+      "internal_area_sqm": 69.0,
+      "balcony_area_sqm": 12.0,
+      "orientation": null,
+      "market_range": {
+        "lower": 1858000.0,
+        "upper": 1927000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 1892500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 1892500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "4",
+      "family": "3R",
+      "family_key": "standard_apartment|3r|69sqm",
+      "floor": 1,
+      "internal_area_sqm": 69.0,
+      "balcony_area_sqm": 12.0,
+      "orientation": null,
+      "market_range": {
+        "lower": 1858000.0,
+        "upper": 1927000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 1892500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 1892500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "5",
+      "family": "3R",
+      "family_key": "standard_apartment|3r|69sqm",
+      "floor": 1,
+      "internal_area_sqm": 69.0,
+      "balcony_area_sqm": 12.0,
+      "orientation": "מזרח",
+      "market_range": {
+        "lower": 1858000.0,
+        "upper": 1927000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 1892500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 1892500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "6",
+      "family": "3R",
+      "family_key": "standard_apartment|3r|69sqm",
+      "floor": 1,
+      "internal_area_sqm": 69.0,
+      "balcony_area_sqm": 12.0,
+      "orientation": "מערב",
+      "market_range": {
+        "lower": 1858000.0,
+        "upper": 1927000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 1892500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 1892500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "8",
+      "family": "3R",
+      "family_key": "standard_apartment|3r|69sqm",
+      "floor": 2,
+      "internal_area_sqm": 69.0,
+      "balcony_area_sqm": 12.0,
+      "orientation": "מזרח",
+      "market_range": {
+        "lower": 1858000.0,
+        "upper": 1927000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 1892500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 1892500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "9",
+      "family": "3R",
+      "family_key": "standard_apartment|3r|69sqm",
+      "floor": 2,
+      "internal_area_sqm": 69.0,
+      "balcony_area_sqm": 12.0,
+      "orientation": null,
+      "market_range": {
+        "lower": 1858000.0,
+        "upper": 1927000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 1892500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 1892500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "11",
+      "family": "5R",
+      "family_key": "standard_apartment|5r|111.1sqm",
+      "floor": 2,
+      "internal_area_sqm": 111.1,
+      "balcony_area_sqm": 12.0,
+      "orientation": "מערב",
+      "market_range": {
+        "lower": 2569000.0,
+        "upper": 2896000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 2732500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 2732500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '5-room @ 50% of supported range' selected for standard_apartment|5r|111.1sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "15",
+      "family": "5R",
+      "family_key": "standard_apartment|5r|111.1sqm",
+      "floor": 3,
+      "internal_area_sqm": 111.1,
+      "balcony_area_sqm": 12.0,
+      "orientation": "מערב",
+      "market_range": {
+        "lower": 2569000.0,
+        "upper": 2896000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 2732500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 2732500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '5-room @ 50% of supported range' selected for standard_apartment|5r|111.1sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "19",
+      "family": "5R",
+      "family_key": "standard_apartment|5r|111.1sqm",
+      "floor": 4,
+      "internal_area_sqm": 111.1,
+      "balcony_area_sqm": 12.0,
+      "orientation": "מערב",
+      "market_range": {
+        "lower": 2569000.0,
+        "upper": 2896000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 2732500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 2732500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '5-room @ 50% of supported range' selected for standard_apartment|5r|111.1sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "23",
+      "family": "5R",
+      "family_key": "standard_apartment|5r|111.1sqm",
+      "floor": 5,
+      "internal_area_sqm": 111.1,
+      "balcony_area_sqm": 12.0,
+      "orientation": "מערב",
+      "market_range": {
+        "lower": 2569000.0,
+        "upper": 2896000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 2732500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 2732500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '5-room @ 50% of supported range' selected for standard_apartment|5r|111.1sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "27",
+      "family": "5R",
+      "family_key": "standard_apartment|5r|111.1sqm",
+      "floor": 6,
+      "internal_area_sqm": 111.1,
+      "balcony_area_sqm": 12.0,
+      "orientation": "מערב",
+      "market_range": {
+        "lower": 2569000.0,
+        "upper": 2896000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 2732500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 2732500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '5-room @ 50% of supported range' selected for standard_apartment|5r|111.1sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "31",
+      "family": "5R",
+      "family_key": "standard_apartment|5r|111.1sqm",
+      "floor": 7,
+      "internal_area_sqm": 111.1,
+      "balcony_area_sqm": 12.0,
+      "orientation": "מערב",
+      "market_range": {
+        "lower": 2569000.0,
+        "upper": 2896000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 2732500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 2732500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '5-room @ 50% of supported range' selected for standard_apartment|5r|111.1sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "35",
+      "family": "5R",
+      "family_key": "standard_apartment|5r|111.1sqm",
+      "floor": 8,
+      "internal_area_sqm": 111.1,
+      "balcony_area_sqm": 12.0,
+      "orientation": "מערב",
+      "market_range": {
+        "lower": 2569000.0,
+        "upper": 2896000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 2732500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 2732500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '5-room @ 50% of supported range' selected for standard_apartment|5r|111.1sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    },
+    {
+      "unit_number": "7",
+      "family": "5R",
+      "family_key": "standard_apartment|5r|111.1sqm",
+      "floor": 1,
+      "internal_area_sqm": 111.1,
+      "balcony_area_sqm": 12.0,
+      "orientation": "מערב",
+      "market_range": {
+        "lower": 2569000.0,
+        "upper": 2896000.0,
+        "confidence": "high"
+      },
+      "strategy_basis": "market_range_position",
+      "commercial_base_price_ils": 2732500.0,
+      "adjustments": [],
+      "proposed_list_price_ils": 2732500.0,
+      "status": "priced",
+      "requires_review": false,
+      "warnings": [
+        "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "explanation": [
+        "Family strategy '5-room @ 50% of supported range' selected for standard_apartment|5r|111.1sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+        "Proposed list price remains inside the supported market interval."
+      ]
+    }
+  ],
+  "full_decision_result": {
+    "plan": {
+      "name": "petah_tikva_standard_baseline",
+      "source": "candidate_engineering_test_input",
+      "note": "50% range positions are an engineering baseline consistent with the existing family-decision convention; they are not Gabay commercial strategy or a pricing recommendation.",
+      "family_decisions": [
+        {
+          "family_key": "standard_apartment|3r|69sqm",
+          "rationale": "No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "source": "candidate_engineering_test_input",
+          "strategy": {
+            "name": "3-room @ 50% of supported range",
+            "basis": "market_range_position",
+            "range_position_pct": 50.0,
+            "competitor_reference_ils": null,
+            "competitor_reference_source_id": null,
+            "competitor_reference_name": null,
+            "competitor_delta_ils": 0.0,
+            "negotiation_buffer_ils": 0.0,
+            "floor_rule": null,
+            "minimum_price_ils": null,
+            "maximum_price_ils": null,
+            "internal_sale_plus_amount_ils": 0.0,
+            "minimum_not_below_last_realized_sale": false,
+            "source": "candidate_engineering_test_input",
+            "note": null
+          }
+        },
+        {
+          "family_key": "standard_apartment|5r|111.1sqm",
+          "rationale": "No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "source": "candidate_engineering_test_input",
+          "strategy": {
+            "name": "5-room @ 50% of supported range",
+            "basis": "market_range_position",
+            "range_position_pct": 50.0,
+            "competitor_reference_ils": null,
+            "competitor_reference_source_id": null,
+            "competitor_reference_name": null,
+            "competitor_delta_ils": 0.0,
+            "negotiation_buffer_ils": 0.0,
+            "floor_rule": null,
+            "minimum_price_ils": null,
+            "maximum_price_ils": null,
+            "internal_sale_plus_amount_ils": 0.0,
+            "minimum_not_below_last_realized_sale": false,
+            "source": "candidate_engineering_test_input",
+            "note": null
+          }
+        }
+      ]
+    },
+    "project_metrics": {
+      "unit_count": 32,
+      "priced_unit_count": 32,
+      "manual_review_count": 0,
+      "strategy_required_count": 0,
+      "requires_review_count": 0,
+      "units_outside_supported_range": 0,
+      "total_proposed_list_value_ils": 67280000.0,
+      "family_count": 2,
+      "families_with_explicit_strategy": 2
+    },
+    "family_summaries": [
+      {
+        "family_key": "standard_apartment|3r|69sqm",
+        "unit_numbers": [
+          "4",
+          "5",
+          "6",
+          "8",
+          "9",
+          "10",
+          "12",
+          "13",
+          "14",
+          "16",
+          "17",
+          "18",
+          "20",
+          "21",
+          "22",
+          "24",
+          "25",
+          "26",
+          "28",
+          "29",
+          "30",
+          "32",
+          "33",
+          "34"
+        ],
+        "strategy_name": "3-room @ 50% of supported range",
+        "strategy_basis": "market_range_position",
+        "rationale": "No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "unit_count": 24,
+        "priced_unit_count": 24,
+        "review_unit_count": 0,
+        "strategy_required_count": 0,
+        "market_confidence_counts": {
+          "high": 24
+        },
+        "supported_range_envelope_ils": {
+          "lower_min": 1858000.0,
+          "lower_max": 1858000.0,
+          "upper_min": 1927000.0,
+          "upper_max": 1927000.0
+        },
+        "average_proposed_price_ils": 1892500.0,
+        "total_proposed_list_value_ils": 45420000.0,
+        "competitor_reference": null
+      },
+      {
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "unit_numbers": [
+          "7",
+          "11",
+          "15",
+          "19",
+          "23",
+          "27",
+          "31",
+          "35"
+        ],
+        "strategy_name": "5-room @ 50% of supported range",
+        "strategy_basis": "market_range_position",
+        "rationale": "No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+        "unit_count": 8,
+        "priced_unit_count": 8,
+        "review_unit_count": 0,
+        "strategy_required_count": 0,
+        "market_confidence_counts": {
+          "high": 8
+        },
+        "supported_range_envelope_ils": {
+          "lower_min": 2569000.0,
+          "lower_max": 2569000.0,
+          "upper_min": 2896000.0,
+          "upper_max": 2896000.0
+        },
+        "average_proposed_price_ils": 2732500.0,
+        "total_proposed_list_value_ils": 21860000.0,
+        "competitor_reference": null
+      }
+    ],
+    "units": [
+      {
+        "unit_number": "4",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 1858000.0,
+          "upper": 1927000.0
+        },
+        "commercial_base_price_ils": 1892500.0,
+        "proposed_list_price_ils": 1892500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "5",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 1858000.0,
+          "upper": 1927000.0
+        },
+        "commercial_base_price_ils": 1892500.0,
+        "proposed_list_price_ils": 1892500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "6",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 1858000.0,
+          "upper": 1927000.0
+        },
+        "commercial_base_price_ils": 1892500.0,
+        "proposed_list_price_ils": 1892500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "7",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 2569000.0,
+          "upper": 2896000.0
+        },
+        "commercial_base_price_ils": 2732500.0,
+        "proposed_list_price_ils": 2732500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '5-room @ 50% of supported range' selected for standard_apartment|5r|111.1sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "8",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 1858000.0,
+          "upper": 1927000.0
+        },
+        "commercial_base_price_ils": 1892500.0,
+        "proposed_list_price_ils": 1892500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "9",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 1858000.0,
+          "upper": 1927000.0
+        },
+        "commercial_base_price_ils": 1892500.0,
+        "proposed_list_price_ils": 1892500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "10",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 1858000.0,
+          "upper": 1927000.0
+        },
+        "commercial_base_price_ils": 1892500.0,
+        "proposed_list_price_ils": 1892500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "11",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 2569000.0,
+          "upper": 2896000.0
+        },
+        "commercial_base_price_ils": 2732500.0,
+        "proposed_list_price_ils": 2732500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '5-room @ 50% of supported range' selected for standard_apartment|5r|111.1sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "12",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 1858000.0,
+          "upper": 1927000.0
+        },
+        "commercial_base_price_ils": 1892500.0,
+        "proposed_list_price_ils": 1892500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "13",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 1858000.0,
+          "upper": 1927000.0
+        },
+        "commercial_base_price_ils": 1892500.0,
+        "proposed_list_price_ils": 1892500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "14",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 1858000.0,
+          "upper": 1927000.0
+        },
+        "commercial_base_price_ils": 1892500.0,
+        "proposed_list_price_ils": 1892500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "15",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 2569000.0,
+          "upper": 2896000.0
+        },
+        "commercial_base_price_ils": 2732500.0,
+        "proposed_list_price_ils": 2732500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '5-room @ 50% of supported range' selected for standard_apartment|5r|111.1sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "16",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 1858000.0,
+          "upper": 1927000.0
+        },
+        "commercial_base_price_ils": 1892500.0,
+        "proposed_list_price_ils": 1892500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "17",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 1858000.0,
+          "upper": 1927000.0
+        },
+        "commercial_base_price_ils": 1892500.0,
+        "proposed_list_price_ils": 1892500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "18",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 1858000.0,
+          "upper": 1927000.0
+        },
+        "commercial_base_price_ils": 1892500.0,
+        "proposed_list_price_ils": 1892500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "19",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 2569000.0,
+          "upper": 2896000.0
+        },
+        "commercial_base_price_ils": 2732500.0,
+        "proposed_list_price_ils": 2732500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '5-room @ 50% of supported range' selected for standard_apartment|5r|111.1sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "20",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 1858000.0,
+          "upper": 1927000.0
+        },
+        "commercial_base_price_ils": 1892500.0,
+        "proposed_list_price_ils": 1892500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "21",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 1858000.0,
+          "upper": 1927000.0
+        },
+        "commercial_base_price_ils": 1892500.0,
+        "proposed_list_price_ils": 1892500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "22",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 1858000.0,
+          "upper": 1927000.0
+        },
+        "commercial_base_price_ils": 1892500.0,
+        "proposed_list_price_ils": 1892500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "23",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 2569000.0,
+          "upper": 2896000.0
+        },
+        "commercial_base_price_ils": 2732500.0,
+        "proposed_list_price_ils": 2732500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '5-room @ 50% of supported range' selected for standard_apartment|5r|111.1sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "24",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 1858000.0,
+          "upper": 1927000.0
+        },
+        "commercial_base_price_ils": 1892500.0,
+        "proposed_list_price_ils": 1892500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "25",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 1858000.0,
+          "upper": 1927000.0
+        },
+        "commercial_base_price_ils": 1892500.0,
+        "proposed_list_price_ils": 1892500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "26",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 1858000.0,
+          "upper": 1927000.0
+        },
+        "commercial_base_price_ils": 1892500.0,
+        "proposed_list_price_ils": 1892500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "27",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 2569000.0,
+          "upper": 2896000.0
+        },
+        "commercial_base_price_ils": 2732500.0,
+        "proposed_list_price_ils": 2732500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '5-room @ 50% of supported range' selected for standard_apartment|5r|111.1sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "28",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 1858000.0,
+          "upper": 1927000.0
+        },
+        "commercial_base_price_ils": 1892500.0,
+        "proposed_list_price_ils": 1892500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "29",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 1858000.0,
+          "upper": 1927000.0
+        },
+        "commercial_base_price_ils": 1892500.0,
+        "proposed_list_price_ils": 1892500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "30",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 1858000.0,
+          "upper": 1927000.0
+        },
+        "commercial_base_price_ils": 1892500.0,
+        "proposed_list_price_ils": 1892500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "31",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 2569000.0,
+          "upper": 2896000.0
+        },
+        "commercial_base_price_ils": 2732500.0,
+        "proposed_list_price_ils": 2732500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '5-room @ 50% of supported range' selected for standard_apartment|5r|111.1sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "32",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 1858000.0,
+          "upper": 1927000.0
+        },
+        "commercial_base_price_ils": 1892500.0,
+        "proposed_list_price_ils": 1892500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "33",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 1858000.0,
+          "upper": 1927000.0
+        },
+        "commercial_base_price_ils": 1892500.0,
+        "proposed_list_price_ils": 1892500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "34",
+        "family_key": "standard_apartment|3r|69sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 1858000.0,
+          "upper": 1927000.0
+        },
+        "commercial_base_price_ils": 1892500.0,
+        "proposed_list_price_ils": 1892500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '3-room @ 50% of supported range' selected for standard_apartment|3r|69sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      },
+      {
+        "unit_number": "35",
+        "family_key": "standard_apartment|5r|111.1sqm",
+        "status": "priced",
+        "market_confidence": "high",
+        "supported_range": {
+          "lower": 2569000.0,
+          "upper": 2896000.0
+        },
+        "commercial_base_price_ils": 2732500.0,
+        "proposed_list_price_ils": 2732500.0,
+        "adjustments": [],
+        "warnings": [
+          "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+          "target_balcony_present_without_verified_monetary_adjustment"
+        ],
+        "decision_trace": [
+          "Family strategy '5-room @ 50% of supported range' selected for standard_apartment|5r|111.1sqm. Rationale: No explicit Gabay commercial strategy exists yet for Petah Tikva; the midpoint of the supported market range is used as a neutral engineering baseline so the price list is reproducible.",
+          "Commercial base selected at 50% of the supported market interval (0%=lower bound, 100%=upper bound).",
+          "Proposed list price remains inside the supported market interval."
+        ],
+        "requires_review": false,
+        "feasibility": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,777 @@
+{
+  "metadata": {
+    "generated_date": "2026-09-07",
+    "version": "v2_corrected",
+    "researcher": "Perplexity AI",
+    "scope": "Petah Tikva special units - CORRECTED per project truth",
+    "corrections_applied": [
+      "Exact subject dimensions verified",
+      "Shabazi 3-5 reclassified as CONTEXT_STARTING_FROM",
+      "Israel Harel 6 marked as SOURCE_ADDRESS_MISMATCH_UNRESOLVED",
+      "Tereza Kugelman 4 6R conflict kept separate from 5R finding",
+      "HaTishim VeShalosh 3 searched for Tax linkage"
+    ]
+  },
+  "exact_subject_truth": {
+    "Apt1": {
+      "type": "3R garden",
+      "internal_sqm": 70.8,
+      "yard_sqm": 100,
+      "floor": "ground",
+      "orientation": "east"
+    },
+    "Apt2": {
+      "type": "3R garden",
+      "internal_sqm": 65.6,
+      "yard_sqm": 69,
+      "floor": "ground",
+      "orientation": "east"
+    },
+    "Apt3": {
+      "type": "2R garden",
+      "internal_sqm": 57,
+      "yard_sqm": 18,
+      "floor": "ground",
+      "orientation": "east"
+    },
+    "Apt36": {
+      "type": "6R triplex",
+      "internal_sqm": 255.2,
+      "outdoor_sqm": 94.6,
+      "floors": "9-11",
+      "orientation": "east"
+    },
+    "Apt37": {
+      "type": "6R triplex",
+      "internal_sqm": 260.1,
+      "outdoor_sqm": 97.4,
+      "floors": "9-11",
+      "orientation": "west"
+    },
+    "Apt38": {
+      "type": "7R duplex",
+      "internal_sqm": 170.1,
+      "balcony_sqm": 39.6,
+      "floors": "9-10",
+      "orientation": "west"
+    },
+    "Apt39": {
+      "type": "5R duplex",
+      "internal_sqm": 158.6,
+      "balcony_sqm": 39.6,
+      "floors": "9-10",
+      "orientation": "unknown"
+    }
+  },
+  "subject_geography": {
+    "demo_commercial_submarket": "המרכז השקט / מרכז העיר, פתח תקווה",
+    "exact_subject_address": "NOT_SUPPLIED_BY_ASSIGNMENT",
+    "note": "Do not imply competitor's street is subject address"
+  },
+  "track_a_garden_apartments": {
+    "subjects": {
+      "Apt1": {
+        "type": "3R garden",
+        "internal": 70.8,
+        "yard": 100
+      },
+      "Apt2": {
+        "type": "3R garden",
+        "internal": 65.6,
+        "yard": 69
+      },
+      "Apt3": {
+        "type": "2R garden",
+        "internal": 57,
+        "yard": 18
+      }
+    },
+    "new_evidence": [
+      {
+        "id": "GARDEN_001",
+        "source": "Yad2",
+        "url": "https://www.yad2.co.il/realestate/forsale?topArea=2&area=4&city=7900&property=3",
+        "retrieved_date": "2026-09-07",
+        "original_wording": "דירת גן, המרכז השקט / מרכז העיר, פתח תקווה, 3 חדרים, קומה קרקע, 95 מ״ר, ₪1,950,000",
+        "normalized_fields": {
+          "property_type": "דירת גן",
+          "rooms": 3,
+          "floor": "קרקע",
+          "internal_area_sqm": 95,
+          "garden_area_sqm": null,
+          "asking_price_ils": 1950000,
+          "submarket": "המרכז השקט / מרכז העיר",
+          "parking": null,
+          "elevator": null,
+          "storage": null,
+          "orientation": null,
+          "date_listed": "2026"
+        },
+        "evidence_class": "CONTEXT_SAME_SUBMARKET",
+        "helps_subject": "Apt1, Apt2 - confirms 3R garden asking in target submarket",
+        "does_not_qualify_because": "No explicit garden area, internal area larger than subjects (95 vs 65.6-70.8m2)"
+      },
+      {
+        "id": "GARDEN_002",
+        "source": "Madlan",
+        "url": "https://www.madlan.co.il/listings/bmZGiMrLGig",
+        "retrieved_date": "2026-09-07",
+        "original_wording": "שי עגנון 6, רמת ורבר, פתח תקווה - דירת גן 3 חד׳ 74 מ״ר, גינה 29 מ״ר, ₪2,680,000",
+        "normalized_fields": {
+          "property_type": "דירת גן",
+          "rooms": 3,
+          "floor": "קרקע",
+          "internal_area_sqm": 74,
+          "garden_area_sqm": 29,
+          "asking_price_ils": 2680000,
+          "submarket": "רמת ורבר",
+          "parking": "חניה",
+          "elevator": null,
+          "storage": "מחסן",
+          "orientation": null,
+          "date_listed": "2025-09-16"
+        },
+        "evidence_class": "CONTEXT_NEAR_SIZE",
+        "helps_subject": "Apt1 - near-size 3R garden with explicit garden area",
+        "does_not_qualify_because": "Outside target submarket (Ramat Verver vs center/shaket), garden much smaller (29 vs 69-100m2)"
+      },
+      {
+        "id": "GARDEN_003",
+        "source": "Zipika",
+        "url": "https://zipika.com/features/property-details?propId=3289429&lng=he",
+        "retrieved_date": "2026-09-07",
+        "original_wording": "הנביאים 24, פתח תקווה - דירת גן 2 חדרים, 47 מ״ר בנוי + 23 מ״ר גינה, ₪1,700,000",
+        "normalized_fields": {
+          "property_type": "דירת גן",
+          "rooms": 2,
+          "floor": 0,
+          "internal_area_sqm": 47,
+          "garden_area_sqm": 23,
+          "asking_price_ils": 1700000,
+          "submarket": "מרכז העיר",
+          "parking": "חניה",
+          "elevator": "מעלית",
+          "storage": null,
+          "orientation": null,
+          "date_listed": "2024-09-21"
+        },
+        "evidence_class": "CONTEXT_2R_GARDEN",
+        "helps_subject": "Apt3 - rare 2R garden with explicit split areas",
+        "does_not_qualify_because": "Internal area smaller (47 vs 57m2), garden larger (23 vs 18m2), different submarket"
+      },
+      {
+        "id": "GARDEN_004",
+        "source": "Komo",
+        "url": "https://www.komo.co.il/code/nadlan/apartments-for-sale.asp?nehes=4&cityName=פתח+תקווה",
+        "retrieved_date": "2026-09-07",
+        "original_wording": "דירת גן 3.5 חדרים, ברנט זרח 14, תקומה, 175 מ״ר, ₪2,790,000",
+        "normalized_fields": {
+          "property_type": "דירת גן",
+          "rooms": 3.5,
+          "floor": null,
+          "internal_area_sqm": 175,
+          "garden_area_sqm": null,
+          "asking_price_ils": 2790000,
+          "submarket": "תקומה",
+          "parking": null,
+          "elevator": null,
+          "storage": null,
+          "orientation": null,
+          "date_listed": "2025"
+        },
+        "evidence_class": "CONTEXT_ONLY",
+        "helps_subject": "General garden price signal",
+        "does_not_qualify_because": "Room mismatch (3.5 vs 2-3), area far too large (175 vs 57-71m2), outside submarket"
+      },
+      {
+        "id": "GARDEN_005",
+        "source": "Homeless",
+        "url": "https://m.homeless.co.il/sale/viewad,241137.aspx",
+        "retrieved_date": "2026-09-07",
+        "original_wording": "הרב קטרוני 3, המרכז השקט - דירת גן 4.5 חדרים, בנוי 119 מ״ר, גינה 69 מ״ר, ₪3,189,000",
+        "normalized_fields": {
+          "property_type": "דירת גן",
+          "rooms": 4.5,
+          "floor": "קרקע",
+          "internal_area_sqm": 119,
+          "garden_area_sqm": 69,
+          "asking_price_ils": 3189000,
+          "submarket": "המרכז השקט",
+          "parking": "חניה עוקפת 2 רכבים",
+          "elevator": null,
+          "storage": null,
+          "orientation": "3 כיווני אוויר",
+          "date_listed": "2025-03-25"
+        },
+        "evidence_class": "CONTEXT_SAME_SUBMARKET_EXPLICIT_GARDEN",
+        "helps_subject": "Apt2 - exact garden area match (69m2), same submarket",
+        "does_not_qualify_because": "Room mismatch (4.5 vs 3), internal area larger (119 vs 65.6m2)"
+      }
+    ],
+    "verified_sold_garden_linkage": {
+      "status": "NOT_FOUND",
+      "searched_sources": [
+        "Dirobot",
+        "Madlan",
+        "Gov.il nadlan",
+        "Tabugo"
+      ],
+      "gap_analysis": "No exact-address garden listing could be definitively linked to Tax transaction with matching rooms/area/date. Garden listings typically lack unit/subparcel identifiers needed for exact linkage."
+    }
+  },
+  "track_b_triplex": {
+    "subjects": {
+      "Apt36": {
+        "type": "6R triplex",
+        "internal": 255.2,
+        "outdoor": 94.6,
+        "floors": "9-11",
+        "orientation": "east"
+      },
+      "Apt37": {
+        "type": "6R triplex",
+        "internal": 260.1,
+        "outdoor": 97.4,
+        "floors": "9-11",
+        "orientation": "west"
+      }
+    },
+    "new_evidence": [
+      {
+        "id": "TRIPLEX_001",
+        "source": "GP Realty",
+        "url": "https://www.gprealty.co.il/montefiore",
+        "retrieved_date": "2026-09-07",
+        "original_wording": "טריפלקס למכירה ברחוב מונטיפיורי בפתח תקווה, 6 חדרים, מחיר שיווק ₪2,280,000",
+        "normalized_fields": {
+          "property_type": "טריפלקס",
+          "rooms": 6,
+          "floor": null,
+          "internal_area_sqm": null,
+          "outdoor_area_sqm": null,
+          "asking_price_ils": 2280000,
+          "submarket": "מונטיפיורי",
+          "parking": null,
+          "elevator": null,
+          "storage": null,
+          "orientation": null,
+          "date_listed": "2020-06-13"
+        },
+        "evidence_class": "DIRECT_6R_TRIPLEX",
+        "helps_subject": "Apt36, Apt37 - direct 6R triplex in known triplex building",
+        "does_not_qualify_because": "No area breakdown, outdated listing (2020), cannot verify size match (220-300m2 range)"
+      },
+      {
+        "id": "TRIPLEX_002",
+        "source": "Anglo Saxon",
+        "url": "https://www.anglo-saxon.co.il/properties/single/?id=418210",
+        "retrieved_date": "2026-09-07",
+        "original_wording": "התשעים ושלוש, ביהח השרון - דירת טריפלקס 5 חדרים, 210 מ״ר, גג גדול, ₪לא צוין",
+        "normalized_fields": {
+          "property_type": "טריפלקס",
+          "rooms": 5,
+          "floor": null,
+          "internal_area_sqm": 210,
+          "outdoor_area_sqm": null,
+          "asking_price_ils": null,
+          "submarket": "התשעים ושלוש",
+          "parking": "חניה מקורה בטאבו",
+          "elevator": "מעלית שבת",
+          "storage": null,
+          "orientation": null,
+          "date_listed": "2025-04-01"
+        },
+        "evidence_class": "CONTEXT_TRIPLEX_NEAR_SIZE",
+        "helps_subject": "Apt36, Apt37 - triplex in near-size range (210 vs 255.2-260.1m2)",
+        "does_not_qualify_because": "Room mismatch (5 vs 6), no price, outdoor area not separated"
+      },
+      {
+        "id": "TRIPLEX_003",
+        "source": "Yad2",
+        "url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&property=7&minRooms=6",
+        "retrieved_date": "2026-09-07",
+        "original_wording": "זאב ברנדה 22, דופלקס, 6 חדרים, קומה 9-10, 192 מ״ר",
+        "normalized_fields": {
+          "property_type": "דופלקס",
+          "rooms": 6,
+          "floor": "9-10",
+          "internal_area_sqm": 192,
+          "outdoor_area_sqm": null,
+          "asking_price_ils": null,
+          "submarket": "המרכז השקט / מרכז העיר",
+          "parking": "חניה",
+          "elevator": "מעלית",
+          "storage": null,
+          "orientation": null,
+          "date_listed": "2026"
+        },
+        "evidence_class": "CONTEXT_UPPER_FLOOR_DUPLEX",
+        "helps_subject": "General upper-floor special unit signal",
+        "does_not_qualify_because": "Duplex not triplex, area smaller (192 vs 255.2-260.1m2), no price"
+      }
+    ],
+    "verified_sold_triplex_linkage": {
+      "status": "NOT_FOUND",
+      "searched_sources": [
+        "Dirobot Rupin street",
+        "Madlan",
+        "Gov.il nadlan"
+      ],
+      "gap_analysis": "No exact-address triplex listing linked to Tax transaction. Dirobot shows Rupin street average ₪2,000,000 (12 transactions) but no triplex-specific breakdown. Triplex transactions likely buried in general 6R+ category."
+    }
+  },
+  "track_c_7R_duplex_Apt38": {
+    "subject": {
+      "Apt38": {
+        "type": "7R duplex",
+        "internal": 170.1,
+        "balcony": 39.6,
+        "floors": "9-10",
+        "orientation": "west"
+      }
+    },
+    "new_evidence": [
+      {
+        "id": "DUPLEX7R_001",
+        "source": "Yad2",
+        "url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&property=7&minRooms=7",
+        "retrieved_date": "2026-09-07",
+        "original_wording": "רוטשילד 122, דופלקס, המרכז השקט / מרכז העיר, 7 חדרים, קומה 7, 380 מ״ר, ₪4,950,000",
+        "normalized_fields": {
+          "property_type": "דופלקס",
+          "rooms": 7,
+          "floor": 7,
+          "internal_area_sqm": 380,
+          "outdoor_area_sqm": null,
+          "asking_price_ils": 4950000,
+          "submarket": "המרכז השקט / מרכז העיר",
+          "parking": null,
+          "elevator": null,
+          "storage": null,
+          "orientation": null,
+          "date_listed": "2026"
+        },
+        "evidence_class": "DIRECT_7R_DUPLEX_SAME_SUBMARKET",
+        "helps_subject": "Apt38 - direct 7R duplex in target submarket with explicit price",
+        "does_not_qualify_because": "Area far too large (380 vs 170.1m2), floor lower (7 vs 9-10)"
+      },
+      {
+        "id": "DUPLEX7R_002",
+        "source": "Yad2",
+        "url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&property=7&minRooms=7&maxRooms=7",
+        "retrieved_date": "2026-09-07",
+        "original_wording": "מנחם רצון 30, דופלקס, מחנה יהודה, 7 חדרים, קומה 6",
+        "normalized_fields": {
+          "property_type": "דופלקס",
+          "rooms": 7,
+          "floor": 6,
+          "internal_area_sqm": null,
+          "outdoor_area_sqm": null,
+          "asking_price_ils": null,
+          "submarket": "מחנה יהודה",
+          "parking": null,
+          "elevator": null,
+          "storage": null,
+          "orientation": null,
+          "date_listed": "2026"
+        },
+        "evidence_class": "CONTEXT_7R_DUPLEX",
+        "helps_subject": "Apt38 - confirms 7R duplex exists in nearby submarket",
+        "does_not_qualify_because": "No price, no area, floor lower (6 vs 9-10), different submarket"
+      }
+    ],
+    "verified_sold_duplex_linkage": {
+      "status": "NOT_FOUND",
+      "gap_analysis": "No exact 7R duplex listing linked to Tax transaction. Multi-level transactions exist but cannot be definitively classified as duplex vs penthouse vs split-level without unit-level documentation."
+    }
+  },
+  "track_d_5R_duplex_Apt39": {
+    "subject": {
+      "Apt39": {
+        "type": "5R duplex",
+        "internal": 158.6,
+        "balcony": 39.6,
+        "floors": "9-10",
+        "orientation": "unknown"
+      }
+    },
+    "new_evidence": [
+      {
+        "id": "DUPLEX5R_001",
+        "source": "Lev Hamercaz",
+        "url": "https://lev-hamercaz.co.il/נכסים/למכירה-דירת-דופלקס-5-חד-ברח-אחד-העם-שכו/",
+        "retrieved_date": "2026-09-07",
+        "original_wording": "אחד העם, עין גנים - דופלקס 5 חדרים, 115 מ״ר, קומה 1+2, ₪2,280,000",
+        "normalized_fields": {
+          "property_type": "דופלקס",
+          "rooms": 5,
+          "floor": "1+2",
+          "internal_area_sqm": 115,
+          "outdoor_area_sqm": null,
+          "asking_price_ils": 2280000,
+          "submarket": "עין גנים",
+          "parking": "חניה בטאבו",
+          "elevator": "מעלית",
+          "storage": null,
+          "orientation": null,
+          "date_listed": "2026"
+        },
+        "evidence_class": "DIRECT_5R_DUPLEX_EXACT_PRICE",
+        "helps_subject": "Apt39 - direct 5R duplex with explicit price and floor config",
+        "does_not_qualify_because": "Area smaller (115 vs 158.6m2), floors lower (1-2 vs 9-10), different submarket"
+      },
+      {
+        "id": "DUPLEX5R_002",
+        "source": "Dirobot",
+        "url": "https://www.dirobot.co.il/building-prices/פתח%20תקווה,%20איסר%20הראל,%206",
+        "retrieved_date": "2026-09-07",
+        "original_wording": "איסר הראל 6 - עסקה אחרונה 24.11.2025, ₪3,015,000, 98 מ״ר, קומה רביעית",
+        "normalized_fields": {
+          "property_type": "דירה בבית קומות",
+          "rooms": 4,
+          "floor": 4,
+          "internal_area_sqm": 98,
+          "outdoor_area_sqm": null,
+          "transaction_price_ils": 3015000,
+          "submarket": "אם המושבות החדשה",
+          "transaction_date": "2025-11-24"
+        },
+        "evidence_class": "SOURCE_CONFLICT",
+        "helps_subject": "Apt39 - source address mismatch unresolved",
+        "does_not_qualify_because": "Lev Hamercaz URL references אחד העם, not איסר הראל. Cannot use to resolve Apt39 evidence until addresses proven same."
+      },
+      {
+        "id": "DUPLEX5R_003",
+        "source": "Komo",
+        "url": "https://www.komo.co.il/code/nadlan/apartments-for-sale.asp?nehes=6&cityName=פתח+תקווה",
+        "retrieved_date": "2026-09-07",
+        "original_wording": "דופלקס 5 חדרים, בעל שם טוב, מחנה יהודה, 165 מ״ר, ₪3,630,000",
+        "normalized_fields": {
+          "property_type": "דופלקס",
+          "rooms": 5,
+          "floor": null,
+          "internal_area_sqm": 165,
+          "outdoor_area_sqm": null,
+          "asking_price_ils": 3630000,
+          "submarket": "מחנה יהודה",
+          "parking": null,
+          "elevator": null,
+          "storage": null,
+          "orientation": null,
+          "date_listed": "2025"
+        },
+        "evidence_class": "DIRECT_5R_DUPLEX_NEAR_SIZE",
+        "helps_subject": "Apt39 - near-size match (165 vs 158.6m2), explicit price",
+        "does_not_qualify_because": "Different submarket (Machane Yehuda vs center/shaket), no outdoor area breakdown"
+      }
+    ],
+    "israel_harel_conflict_resolution": {
+      "status": "SOURCE_ADDRESS_MISMATCH_UNRESOLVED",
+      "findings": "Lev Hamercaz URL references אחד העם (Ein Ganim), not איסר הראל 6. Cannot use Tax data from איסר הראל 6 to invalidate or resolve existing Apt39 evidence until addresses proven identical.",
+      "recommendation": "Keep existing Apt39 evidence unchanged. Do not use this source until address mismatch resolved."
+    }
+  },
+  "track_e_standard_feature_matched_pairs": {
+    "search_results": {
+      "floor_effect_pairs": {
+        "status": "NOT_FOUND",
+        "searched": "Same project, same rooms, same area, different floor, both prices explicit",
+        "closest_candidate": {
+          "source": "Nadlanist",
+          "url": "https://www.nadlanist.ai/petah-tikva",
+          "findings": "מנחם אוסישקין 3: 2.5R, 75m2, floor 3, ₪1,750,000 (04/2025) vs other floors not matched on area/rooms"
+        },
+        "conclusion": "אין כלל כספי מאומת - no defensible matched pairs found",
+        "display_guidance": "קומה עשויה להשפיע על התמחור, אך לא נמצא כלל כספי מקומי מאומת."
+      },
+      "balcony_effect_pairs": {
+        "status": "NOT_FOUND",
+        "searched": "Same project, same rooms, same area, with/without balcony, both prices explicit",
+        "conclusion": "אין כלל כספי מאומת - balcony typically not separated in area/price reporting",
+        "display_guidance": "מרפסת עשויה להשפיע על התמחור, אך לא נמצא כלל כספי מקומי מאומת."
+      },
+      "parking_effect_pairs": {
+        "status": "NOT_FOUND",
+        "searched": "Same project, same rooms, same area, with/without parking, both prices explicit",
+        "closest_candidate": {
+          "source": "Wallah Nadlan",
+          "url": "https://nadlan.walla.co.il/item/3069107",
+          "findings": "Tel Aviv study shows parking premium ₪200,000 (2017 data)"
+        },
+        "conclusion": "אין כלל כספי מאומת - no Petah Tikva matched pairs",
+        "display_guidance": "חניה עשויה להשפיע על התמחור, אך לא נמצא כלל כספי מקומי מאומת."
+      },
+      "orientation_effect_pairs": {
+        "status": "NOT_FOUND",
+        "conclusion": "אין כלל כספי מאומת - orientation rarely disclosed in listings",
+        "display_guidance": "כיוון עשוי להשפיע על התמחור, אך לא נמצא כלל כספי מקומי מאומת."
+      },
+      "storage_effect_pairs": {
+        "status": "NOT_FOUND",
+        "conclusion": "אין כלל כספי מאומת - storage rarely disclosed in listings",
+        "display_guidance": "מחסן עשוי להשפיע על התמחור, אך לא נמצא כלל כספי מקומי מאומת."
+      }
+    }
+  },
+  "track_f_new_development_exact_models": {
+    "projects": {
+      "zeev_branda_22": {
+        "address": "זאב ברנדה 22, המרכז השקט",
+        "developer": "רכסים בנייה ויזמות",
+        "status": "צפי אכלוס נובמבר 2026",
+        "special_units": {
+          "garden_3.5-4R": {
+            "rooms": "3.5-4",
+            "type": "דירת גן עם גינה",
+            "internal_area": null,
+            "garden_area": null,
+            "price": "לא צוין מחיר",
+            "evidence_class": "CONTEXT_ONLY"
+          },
+          "duplex_penthouse_5-6R": {
+            "rooms": "5-6",
+            "type": "דופלקס גג",
+            "internal_area": "148-192 מ״ר (לא כולל מרפסות)",
+            "outdoor_area": null,
+            "floors": "9-10",
+            "price": "לפרטים פנו לקבלן",
+            "evidence_class": "CONTEXT_ONLY"
+          }
+        },
+        "sources": [
+          "Diraly",
+          "Yad2 project page",
+          "Rehasimbuild.co.il"
+        ]
+      },
+      "branda_49": {
+        "address": "זאב ברנדה 49, המרכז השקט",
+        "developer": "א.פ. נחום",
+        "status": "תמ״א 38 הריסה ובניה",
+        "special_units": {
+          "garden_5R": {
+            "rooms": 5,
+            "type": "דירת גן עם גינה פרטית",
+            "internal_area": null,
+            "garden_area": null,
+            "price": "דירת 5 חדרים מתחילה מ-₪2,900,000",
+            "evidence_class": "CONTEXT_STARTING_FROM"
+          },
+          "penthouse_5-6R": {
+            "rooms": "5-6",
+            "type": "דירות פנטהאוז",
+            "internal_area": null,
+            "outdoor_area": null,
+            "price": "לא פורסם",
+            "evidence_class": "CONTEXT_ONLY"
+          }
+        },
+        "sources": [
+          "Diraly",
+          "Madlan",
+          "Yad2 project page"
+        ]
+      },
+      "shabazi_3-5": {
+        "address": "שבזי 3-5, מחנה יהודה",
+        "developer": "שמי בנייה ייזום",
+        "status": "פרויקט חדש",
+        "special_units": {
+          "duplex_6R": {
+            "rooms": 6,
+            "type": "דופלקס",
+            "internal_area": "181 מ״ר",
+            "outdoor_area": null,
+            "floor": 9,
+            "price": "החל מ-₪2,400,000 (project starting price, NOT tied to 6R duplex)",
+            "evidence_class": "CONTEXT_STARTING_FROM",
+            "numeric_eligibility": false,
+            "reasoning": "Yad2 project page shows 'דירות 4 חדרים גדולות ומרווחות החל מ-₪2,400,000' - starting price refers to 4R units, not 6R duplex. 6R duplex 181m2 floor 9 exists but price not explicitly tied."
+          }
+        },
+        "sources": [
+          "Yad2 project page https://www.yad2.co.il/yad1/project/14639",
+          "Diraly"
+        ],
+        "correction_note": "CORRECTED from MEDIUM+ to CONTEXT_STARTING_FROM. Source does not explicitly tie ₪2.4M to 6R duplex 181m2 floor 9."
+      },
+      "THE_SPOT": {
+        "address": "שטמפפר, שיפר",
+        "developer": "שיא עינב",
+        "status": "פרויקט חדש",
+        "special_units": {
+          "duplex_5R": {
+            "rooms": 5,
+            "type": "דופלקס",
+            "internal_area": "146 מ״ר",
+            "outdoor_area": null,
+            "floors": "9-10",
+            "price": "לא צוין מחיר",
+            "evidence_class": "CONTEXT_ONLY"
+          }
+        },
+        "sources": [
+          "Yad2",
+          "Diraly"
+        ]
+      },
+      "NAVE_PARK": {
+        "address": "דוד טבצ'ניק, נווה גן",
+        "developer": "דמרי",
+        "status": "אכלוס בניין 1-9.27, בניין 2-9.29",
+        "special_units": {
+          "penthouse_5-6R": {
+            "rooms": "5-6",
+            "type": "פנטהאוז",
+            "internal_area": null,
+            "outdoor_area": null,
+            "price": "5 חדרים החל מ-₪3,150,000, 6 חדרים החל מ-₪3,850,000",
+            "evidence_class": "CONTEXT_STARTING_FROM"
+          }
+        },
+        "sources": [
+          "Dimri.co.il",
+          "Yad2 project page",
+          "NadlanShark"
+        ]
+      },
+      "DeFour": {
+        "address": "ברנדה ובלפור, המרכז השקט",
+        "developer": "בוני התיכון",
+        "status": "פרויקט במבצע",
+        "special_units": {
+          "penthouse_5-6R": {
+            "rooms": "5-6",
+            "type": "פנטהאוז",
+            "internal_area": null,
+            "outdoor_area": null,
+            "price": "לפרטים פנו לקבלן",
+            "evidence_class": "CONTEXT_ONLY"
+          },
+          "patio_3R": {
+            "rooms": 3,
+            "type": "patio",
+            "internal_area": null,
+            "outdoor_area": null,
+            "price": "לפרטים פנו לקבלן",
+            "evidence_class": "CONTEXT_ONLY"
+          }
+        },
+        "sources": [
+          "Diraly"
+        ]
+      }
+    }
+  },
+  "track_g_historical_listing_tax_linkage": {
+    "methodology": "Cross-reference exact-address archived listings against Tax (Rasham HaMekarka'im) transaction data using: address, rooms, registered area, floor, transaction date, listing date, property type, unit/subparcel",
+    "results": {
+      "israel_harel_6": {
+        "listing_evidence": "Duplex 5R, 115m2, floors 1+2, ₪2,280,000 (Lev Hamercaz, address: אחד העם)",
+        "tax_evidence": "4 transactions 2021-2025, latest 24.11.2025: 4R, 98m2, floor 4, ₪3,015,000 (Dirobot, address: איסר הראל 6)",
+        "linkage_status": "SOURCE_ADDRESS_MISMATCH_UNRESOLVED",
+        "reasoning": "Lev Hamercaz URL references אחד העם (Ein Ganim), not איסר הראל 6. Cannot link without proven address match."
+      },
+      "michal_leib_katz_80": {
+        "listing_evidence": "5R, 110m2 (Zipika)",
+        "tax_evidence": "3 transactions, latest 27.03.2025: 4R, 113m2, floor 4+gag, ₪2,850,000 (Dirobot)",
+        "linkage_status": "SAME_ADDRESS_AMBIGUOUS",
+        "reasoning": "Room count mismatch (5 vs 4), area semantics inconsistent (110 vs 113m2). Likely different units or reporting inconsistency."
+      },
+      "tereza_kugelman_4_5R": {
+        "listing_evidence": "5R, 122m2, floor 11, ₪3,350,000 (Madlan)",
+        "tax_evidence": "Transaction 06.04.2026: 5R, 136m2, ₪3,700,000 (NadlanShark)",
+        "linkage_status": "SAME_ADDRESS_AMBIGUOUS",
+        "reasoning": "Area mismatch (122 vs 136m2), price mismatch (₪3.35M vs ₪3.7M), different dates. Likely different units.",
+        "note": "This is separate from existing 6R conflict. Do not merge."
+      },
+      "tereza_kugelman_4_6R_existing_conflict": {
+        "listing_evidence": "6R, 180m2, 2025-11-23, local Tax value ~₪5.25M",
+        "tax_evidence": "Public Tax-derived mirror ~₪242K (conflict)",
+        "linkage_status": "QUARANTINED",
+        "reasoning": "Existing unresolved record. Keep quarantined until exact transaction rechecked.",
+        "note": "Separate from 5R finding above. Do not merge."
+      },
+      "hatishim_93_street_3": {
+        "listing_evidence": "TRIPLEX_002: 5R triplex, 210m2, התשעים ושלוש (street only), no price (Anglo Saxon)",
+        "tax_evidence": "Dirobot street data: 18 transactions, avg ₪2.7M, median ₪2.625M, avg 4.2 rooms (https://www.dirobot.co.il/street-prices/פתח%20תקווה,%20התשעים%20ושלוש)",
+        "linkage_status": "STREET_LEVEL_ONLY",
+        "reasoning": "Exact address התשעים ושלוש 3 searched via Nadlanist (failed fetch), Dirobot, Gushim.co.il. Street has 18 transactions but no unit-level data available without exact address match. Triplex typology not confirmed in Tax."
+      }
+    },
+    "verified_linkages": []
+  },
+  "track_h_data_quality_contradictions": {
+    "quarantined_records": [
+      {
+        "id": "QUARANTINE_001",
+        "address": "איסר הראל 6 / אחד העם",
+        "issue": "SOURCE_ADDRESS_MISMATCH_UNRESOLVED - Lev Hamercaz URL references אחד העם, Tax data is איסר הראל 6",
+        "listing_source": "Lev Hamercaz - duplex 5R 115m2 ₪2.28M (address: אחד העם)",
+        "tax_source": "Dirobot - 4R 98m2 floor 4 ₪3.015M (address: איסר הראל 6)",
+        "resolution": "SOURCE_ADDRESS_MISMATCH_UNRESOLVED",
+        "action": "Do not use to invalidate or resolve existing Apt39 evidence"
+      },
+      {
+        "id": "QUARANTINE_002",
+        "address": "מיכל לייב כץ 80",
+        "issue": "Inconsistent area semantics (110 vs 113m2), room mismatch (5 vs 4)",
+        "listing_source": "Zipika - 5R 110m2",
+        "tax_source": "Dirobot - 4R 113m2 floor 4+gag ₪2.85M",
+        "resolution": "QUARANTINE until area semantics clarified",
+        "action": "Do not use for size-based comparisons"
+      },
+      {
+        "id": "QUARANTINE_003",
+        "address": "תרזה קוגלמן 4 (5R)",
+        "issue": "Conflicting transaction prices (₪3.35M vs ₪3.7M), area mismatch (122 vs 136m2)",
+        "listing_source": "Madlan - 5R 122m2 floor 11 ₪3.35M",
+        "tax_source": "NadlanShark - 5R 136m2 ₪3.7M (04/2026)",
+        "resolution": "LIKELY_DIFFERENT_UNITS",
+        "action": "Do not merge as same unit. Keep separate from 6R conflict."
+      },
+      {
+        "id": "QUARANTINE_004",
+        "address": "תרזה קוגלמן 4 (6R existing)",
+        "issue": "Existing unresolved conflict: 6R 180m2 2025-11-23, local Tax ~₪5.25M vs public Tax-derived mirror ~₪242K",
+        "listing_source": "Existing project record",
+        "tax_source": "Conflicting Tax values",
+        "resolution": "QUARANTINED",
+        "action": "Keep quarantined until exact transaction rechecked. Do not merge with 5R finding."
+      },
+      {
+        "id": "QUARANTINE_005",
+        "address": "REMAX 233m2",
+        "issue": "Outside Petah Tikva",
+        "resolution": "EXCLUDE",
+        "action": "Remove from Petah Tikva dataset"
+      }
+    ]
+  },
+  "summary_statistics": {
+    "total_new_records": 15,
+    "by_evidence_class": {
+      "VERIFIED": 0,
+      "CANDIDATE": 0,
+      "CONTEXT": 12,
+      "QUARANTINED": 5,
+      "SOURCE_CONFLICT": 1
+    },
+    "by_track": {
+      "A_garden": 5,
+      "B_triplex": 3,
+      "C_7R_duplex": 2,
+      "D_5R_duplex": 3,
+      "E_feature_pairs": 0,
+      "F_new_dev": 6,
+      "G_tax_linkage": 5,
+      "H_quality": 5
+    },
+    "corrections_summary": {
+      "shabazi_3_5": "CORRECTED: MEDIUM+ → CONTEXT_STARTING_FROM (price not tied to 6R duplex)",
+      "israel_harel_6": "CORRECTED: SAME_ADDRESS_AMBIGUOUS → SOURCE_ADDRESS_MISMATCH_UNRESOLVED",
+      "tereza_kugelman_4": "SPLIT: 5R finding kept separate from existing 6R conflict",
+      "hatishim_93_3": "COMPLETED: searched, result STREET_LEVEL_ONLY"
+    }
+  }
+}

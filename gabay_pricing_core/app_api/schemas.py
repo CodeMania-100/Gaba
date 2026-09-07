@@ -28,6 +28,31 @@ class InventoryImport(BaseModel):
     matrix: list[list[Any]]
 
 
+class ProjectStartRequest(BaseModel):
+    """Generic (city, address) project-start request. Today only Petah Tikva /
+    חפץ חיים 25 resolves to a snapshot -- see app_api.project_launcher.
+
+    inventory_fingerprint is the deterministic fingerprint returned by
+    POST /api/v1/inventory/preview for the workbook the user just uploaded.
+    It is optional (older clients simply skip the inventory-binding check)
+    but when present it must match the fingerprint the matched snapshot was
+    frozen from, or the request is reported unsupported rather than silently
+    served against an unrelated inventory."""
+
+    city: str = Field(min_length=1, max_length=255)
+    address: str = Field(min_length=1, max_length=255)
+    inventory_fingerprint: str | None = None
+
+
+class PetahTikvaScenarioRequest(BaseModel):
+    """0=lower bound, 50=midpoint (the frozen baseline), 100=upper bound -- a
+    position inside the already-supported market interval, not a statistical
+    percentile. See pricing_core.strategy.StrategyProfile.range_position_pct."""
+
+    range_position_pct: float = Field(ge=0, le=100)
+    name: str | None = None
+
+
 class UnitRead(BaseModel):
     unit_number: str
     floor: str | None

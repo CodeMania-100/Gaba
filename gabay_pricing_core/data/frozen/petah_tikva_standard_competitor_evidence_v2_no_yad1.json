@@ -1,0 +1,275 @@
+{
+  "version": "petah_tikva_standard_competitor_evidence_v2_no_yad1",
+  "frozen_at": "2026-09-06T22:28:59.477758",
+  "checked_at": "2026-09-06",
+  "evidence_lane": "current_new_development_competitors",
+  "demo_location": {
+    "address": "חפץ חיים 25",
+    "city": "פתח תקווה",
+    "commercial_area": "המרכז השקט / מרכז העיר",
+    "is_assumption": true
+  },
+  "methodology": {
+    "one_project_one_independent_contribution": true,
+    "tier1": "target commercial submarket",
+    "tier2": "adjacent competitive submarket with warning",
+    "context_only": "visible to user but excluded from quantitative competitor range",
+    "missing_area_not_inferred": true,
+    "fixed_subject_area_bands_not_widened": true
+  },
+  "summary": {
+    "3R": {
+      "gate_status": "INSUFFICIENT_FOR_CONSENSUS_BUT_CONTEXT_AVAILABLE",
+      "project_records": 2,
+      "quantitative_independent_projects": 1,
+      "tier1_quantitative_projects": 1,
+      "tier2_quantitative_projects": 0,
+      "context_only_projects": 1,
+      "quantitative_starting_price_min": 2058000,
+      "quantitative_starting_price_median": 2058000,
+      "quantitative_starting_price_max": 2058000,
+      "quantitative_ppsm_min": null,
+      "quantitative_ppsm_median": null,
+      "quantitative_ppsm_max": null
+    },
+    "5R": {
+      "gate_status": "PASS",
+      "project_records": 3,
+      "quantitative_independent_projects": 2,
+      "tier1_quantitative_projects": 2,
+      "tier2_quantitative_projects": 0,
+      "context_only_projects": 1,
+      "quantitative_starting_price_min": 2590000,
+      "quantitative_starting_price_median": 2885000.0,
+      "quantitative_starting_price_max": 3180000,
+      "quantitative_ppsm_min": 23125.0,
+      "quantitative_ppsm_median": 24595.285,
+      "quantitative_ppsm_max": 26065.57
+    }
+  },
+  "records": [
+    {
+      "family": "3R",
+      "project_id": "zeev_branda_22",
+      "project_name": "זאב ברנדה 22",
+      "developer": "רכסים בניה ויזמות",
+      "address": "זאב ברנדה 22, פתח תקווה",
+      "commercial_area": "המרכז השקט / מרכז העיר",
+      "geo_tier": 1,
+      "rooms": 3,
+      "unit_type": "standard_flat",
+      "area_sqm": null,
+      "area_min_sqm": 67,
+      "area_max_sqm": 77,
+      "price_ils": 2058000,
+      "price_type": "starting_price",
+      "ppsm": null,
+      "floor": null,
+      "parking": null,
+      "storage": null,
+      "evidence_status": "PRIMARY_QUANTITATIVE",
+      "warnings": [
+        "starting_price_is_room_specific_but_not_tied_to_one_exact_area_variant"
+      ],
+      "sources": [
+        {
+          "source": "developer",
+          "url": "https://www.rehasimbuild.co.il/project/%D7%96%D7%90%D7%91-%D7%91%D7%A8%D7%A0%D7%93%D7%94-22/",
+          "supports": [
+            "developer",
+            "rooms",
+            "area_range",
+            "price"
+          ],
+          "checked_at": "2026-09-06"
+        }
+      ]
+    },
+    {
+      "family": "3R",
+      "project_id": "hankin_11",
+      "project_name": "חנקין 11",
+      "developer": "אורבנולוגיה",
+      "address": "יהושע חנקין 11, פתח תקווה",
+      "commercial_area": "כפר אברהם",
+      "geo_tier": 2,
+      "rooms": 3,
+      "unit_type": "standard_flat",
+      "area_sqm": null,
+      "area_min_sqm": null,
+      "area_max_sqm": null,
+      "price_ils": 2250000,
+      "price_type": "starting_price",
+      "ppsm": null,
+      "floor": null,
+      "parking": true,
+      "storage": true,
+      "evidence_status": "CONTEXT_ONLY",
+      "warnings": [
+        "room_specific_current_price_verified_via_allowed_source",
+        "exact_unit_area_not_verified_without_yad1",
+        "excluded_from_area_normalized_competitor_range",
+        "adjacent_submarket_kfar_avraham"
+      ],
+      "sources": [
+        {
+          "source": "Diraly",
+          "url": "https://www.diraly.co.il/projects/%D7%97%D7%A0%D7%A7%D7%99%D7%9F-11-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%95%D7%94",
+          "supports": [
+            "current_price_confirmation",
+            "payment_terms",
+            "developer"
+          ],
+          "price_synced": "2026-09-02",
+          "checked_at": "2026-09-06"
+        }
+      ]
+    },
+    {
+      "family": "5R",
+      "project_id": "zeev_branda_22",
+      "project_name": "זאב ברנדה 22",
+      "developer": "רכסים בניה ויזמות",
+      "address": "זאב ברנדה 22, פתח תקווה",
+      "commercial_area": "המרכז השקט / מרכז העיר",
+      "geo_tier": 1,
+      "rooms": 5,
+      "unit_type": "standard_flat",
+      "area_sqm": 122,
+      "area_min_sqm": null,
+      "area_max_sqm": null,
+      "price_ils": 3180000,
+      "price_type": "starting_price",
+      "ppsm": 26065.57,
+      "floor": 7,
+      "parking": null,
+      "storage": null,
+      "evidence_status": "PRIMARY_QUANTITATIVE",
+      "warnings": [],
+      "sources": [
+        {
+          "source": "developer",
+          "url": "https://www.rehasimbuild.co.il/project/%D7%96%D7%90%D7%91-%D7%91%D7%A8%D7%A0%D7%93%D7%94-22/",
+          "supports": [
+            "developer",
+            "rooms",
+            "area",
+            "floor",
+            "price"
+          ],
+          "checked_at": "2026-09-06"
+        }
+      ]
+    },
+    {
+      "family": "5R",
+      "project_id": "rothschild_163_165",
+      "project_name": "רוטשילד 163-165",
+      "developer": "יוסי קטש בניה ויזמות",
+      "address": "רוטשילד 163-165, פתח תקווה",
+      "commercial_area": "המרכז השקט / מרכז העיר",
+      "geo_tier": 1,
+      "rooms": 5,
+      "unit_type": "standard_flat",
+      "area_sqm": 112,
+      "area_min_sqm": null,
+      "area_max_sqm": null,
+      "balcony_sqm": 12,
+      "price_ils": 2590000,
+      "price_type": "starting_price",
+      "ppsm": 23125.0,
+      "floor": null,
+      "parking": 1,
+      "storage": null,
+      "payment_terms": "20% signing / 80% occupancy",
+      "evidence_status": "PRIMARY_QUANTITATIVE_WITH_SOURCE_JOIN",
+      "warnings": [
+        "current_5R_price_is_room_level_price",
+        "112sqm_area_is_developer_floorplan",
+        "price_not_explicitly_tied_to_one_specific_112sqm_variant"
+      ],
+      "sources": [
+        {
+          "source": "Diraly",
+          "url": "https://www.diraly.co.il/projects/%D7%A8%D7%95%D7%98%D7%A9%D7%99%D7%9C%D7%93-163-165-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%95%D7%94",
+          "supports": [
+            "current_5R_price",
+            "location",
+            "developer"
+          ],
+          "price_synced": "2026-09-02",
+          "checked_at": "2026-09-06"
+        },
+        {
+          "source": "developer",
+          "url": "https://katash.co.il/%D7%A8%D7%95%D7%98%D7%A9%D7%99%D7%9C%D7%93-163-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%95%D7%94/",
+          "supports": [
+            "5R_floorplan",
+            "112sqm_area",
+            "12sqm_balcony",
+            "parking"
+          ],
+          "checked_at": "2026-09-06"
+        }
+      ]
+    },
+    {
+      "family": "5R",
+      "project_id": "hankin_11",
+      "project_name": "חנקין 11",
+      "developer": "אורבנולוגיה",
+      "address": "יהושע חנקין 11, פתח תקווה",
+      "commercial_area": "כפר אברהם",
+      "geo_tier": 2,
+      "rooms": 5,
+      "unit_type": "standard_flat",
+      "area_sqm": null,
+      "area_min_sqm": null,
+      "area_max_sqm": null,
+      "price_ils": 2900000,
+      "price_type": "starting_price",
+      "ppsm": null,
+      "floor": null,
+      "parking": true,
+      "storage": true,
+      "payment_terms": "7% at contract; remainder in installments",
+      "evidence_status": "CONTEXT_ONLY",
+      "warnings": [
+        "room_specific_current_price_verified_via_allowed_source",
+        "exact_unit_area_not_verified_without_yad1",
+        "excluded_from_area_normalized_competitor_range",
+        "adjacent_submarket_kfar_avraham"
+      ],
+      "sources": [
+        {
+          "source": "Diraly",
+          "url": "https://www.diraly.co.il/projects/%D7%97%D7%A0%D7%A7%D7%99%D7%9F-11-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%95%D7%94",
+          "supports": [
+            "current_price_confirmation",
+            "payment_terms",
+            "developer"
+          ],
+          "price_synced": "2026-09-02",
+          "checked_at": "2026-09-06"
+        }
+      ]
+    }
+  ],
+  "source_policy": {
+    "yad1_allowed": false,
+    "regular_yad2_resale_allowed": true,
+    "forbidden_yad1_records_removed_or_downgraded": true
+  },
+  "excluded_by_source_policy": [
+    {
+      "family": "3R",
+      "project_id": "the_spot",
+      "reason": "excluded_source_policy_yad1"
+    },
+    {
+      "family": "3R",
+      "project_id": "defour",
+      "reason": "excluded_source_policy_yad1"
+    }
+  ]
+}

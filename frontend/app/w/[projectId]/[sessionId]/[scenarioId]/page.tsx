@@ -52,7 +52,7 @@ export default function WorkspacePage() {
         if (cancelled) return;
         setSession(s);
         const [inv, snap, scenarioList, pl] = await Promise.all([
-          fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/inventory/${s.inventory_version_id}`).then((r) => r.json()),
+          api.getInventory(s.inventory_version_id),
           api.getMarketSnapshot(s.market_snapshot_id),
           api.listScenarios(sessionId),
           api.getPriceList(scenarioId),

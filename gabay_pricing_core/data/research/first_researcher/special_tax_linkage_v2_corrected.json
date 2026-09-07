@@ -1,0 +1,248 @@
+{
+  "metadata": {
+    "generated_date": "2026-09-07",
+    "version": "v2_corrected",
+    "methodology": "Cross-reference exact-address listings against Rasham HaMekarka'im (Tax) transactions",
+    "matching_criteria": [
+      "address",
+      "rooms",
+      "registered_area",
+      "floor",
+      "transaction_date",
+      "listing_date",
+      "property_type",
+      "unit_subparcel"
+    ],
+    "corrections_applied": [
+      "Israel Harel 6: SOURCE_ADDRESS_MISMATCH_UNRESOLVED",
+      "Tereza Kugelman 4: Split 5R finding from existing 6R conflict",
+      "HaTishim VeShalosh 3: searched, result STREET_LEVEL_ONLY"
+    ]
+  },
+  "linkage_attempts": [
+    {
+      "id": "LINKAGE_001",
+      "address": "איסר הראל 6 / אחד העם (ADDRESS MISMATCH)",
+      "listing_data": {
+        "source": "Lev Hamercaz",
+        "url": "https://lev-hamercaz.co.il/נכסים/למכירה-דירת-דופלקס-5-חד-ברח-אחד-העם-שכו/",
+        "property_type": "דופלקס",
+        "rooms": 5,
+        "internal_area_sqm": 115,
+        "floor_config": "1+2",
+        "asking_price_ils": 2280000,
+        "date_listed": "2026",
+        "literal_address": "אחד העם, עין גנים"
+      },
+      "tax_data": {
+        "source": "Dirobot",
+        "url": "https://www.dirobot.co.il/building-prices/פתח%20תקווה,%20איסר%20הראל,%206",
+        "transactions": [
+          {
+            "date": "2025-11-24",
+            "rooms": 4,
+            "area_sqm": 98,
+            "floor": "רביעית",
+            "price_ils": 3015000
+          },
+          {
+            "date": "2022-10",
+            "rooms": 5.5,
+            "area_sqm": 125,
+            "floor": "שש עשרה",
+            "price_ils": 3500000
+          },
+          {
+            "date": "2022-05",
+            "rooms": 3,
+            "area_sqm": 77,
+            "floor": "חמישית",
+            "price_ils": 2350000
+          },
+          {
+            "date": "2022-03",
+            "rooms": 4,
+            "area_sqm": 95,
+            "floor": "עשירית",
+            "price_ils": 2800000
+          }
+        ],
+        "median_price_ils": 3207500,
+        "transaction_count": 4,
+        "literal_address": "איסר הראל 6, אם המושבות החדשה"
+      },
+      "linkage_result": "SOURCE_ADDRESS_MISMATCH_UNRESOLVED",
+      "confidence": "NONE",
+      "reasoning": "Lev Hamercaz URL explicitly references אחד העם (Ein Ganim), while Tax data is for איסר הראל 6 (Em HaMoshavot). These are different streets in different submarkets. Cannot link without proven address identity.",
+      "action": "Do not use to invalidate or resolve existing Apt39 evidence. Keep SOURCE_CONFLICT."
+    },
+    {
+      "id": "LINKAGE_002",
+      "address": "מיכל לייב כץ 80, כפר גנים ב'",
+      "listing_data": {
+        "source": "Zipika",
+        "url": "https://zipika.com/features/property-details?propId=3080617&lng=he",
+        "property_type": "דירה",
+        "rooms": 5,
+        "internal_area_sqm": 110,
+        "floor_config": null,
+        "asking_price_ils": null,
+        "date_listed": "2026"
+      },
+      "tax_data": {
+        "source": "Dirobot",
+        "url": "https://www.dirobot.co.il/building-prices/פתח%20תקווה,%20מיכל%20לייב%20כץ,%2080",
+        "transactions": [
+          {
+            "date": "2025-03-27",
+            "rooms": 4,
+            "area_sqm": 113,
+            "floor": "רביעית+גג",
+            "price_ils": 2850000
+          }
+        ],
+        "median_price_ils": 1345000,
+        "transaction_count": 3
+      },
+      "linkage_result": "SAME_ADDRESS_AMBIGUOUS",
+      "confidence": "LOW",
+      "reasoning": "Room mismatch (5 vs 4), area inconsistency (110 vs 113m2). Floor config 'רביעית+גג' suggests penthouse, not standard unit. Likely different units or area semantics differ (built vs usable).",
+      "action": "QUARANTINE - do not use for size-based comparisons"
+    },
+    {
+      "id": "LINKAGE_003",
+      "address": "תרזה קוגלמן 4, נווה גן (5R finding)",
+      "listing_data": {
+        "source": "Madlan",
+        "url": "https://www.madlan.co.il/for-sale/קוגלמן-תרזה-פתח-תקווה-ישראל/secure-room",
+        "property_type": "דירה",
+        "rooms": 5,
+        "internal_area_sqm": 122,
+        "floor_config": "11",
+        "asking_price_ils": 3350000,
+        "date_listed": "2026"
+      },
+      "tax_data": {
+        "source": "NadlanShark",
+        "url": "https://nadlan-shark.co.il/neighborhood/פתח%20תקווה/נווה%20גן",
+        "transactions": [
+          {
+            "date": "2026-04-06",
+            "rooms": 5,
+            "area_sqm": 136,
+            "floor": null,
+            "price_ils": 3700000
+          }
+        ],
+        "median_price_ils": null,
+        "transaction_count": 1
+      },
+      "linkage_result": "SAME_ADDRESS_AMBIGUOUS",
+      "confidence": "LOW",
+      "reasoning": "Area mismatch (122 vs 136m2 = 14m2 difference), price mismatch (₪3.35M vs ₪3.7M = ₪350K difference). Different dates. Likely different units in same building.",
+      "action": "Do not merge as same unit. Keep separate from existing 6R conflict.",
+      "note": "This is the 5R finding. Existing 6R conflict (180m2, 2025-11-23, ~₪5.25M vs ~₪242K) is tracked separately as LINKAGE_004."
+    },
+    {
+      "id": "LINKAGE_004",
+      "address": "תרזה קוגלמן 4, נווה גן (6R existing conflict)",
+      "listing_data": {
+        "source": "Existing project record",
+        "property_type": "דירה",
+        "rooms": 6,
+        "internal_area_sqm": 180,
+        "floor_config": null,
+        "asking_price_ils": null,
+        "date_listed": "2025-11-23"
+      },
+      "tax_data": {
+        "source": "Project Tax data",
+        "local_tax_value_ils": 5250000,
+        "public_tax_mirror_ils": 242000,
+        "conflict_note": "Local Tax value ~₪5.25M vs public Tax-derived mirror ~₪242K"
+      },
+      "linkage_result": "QUARANTINED",
+      "confidence": "NONE",
+      "reasoning": "Existing unresolved conflict. Local Tax value ~₪5.25M conflicts with public Tax-derived mirror ~₪242K. Requires manual recheck of exact transaction.",
+      "action": "Keep quarantined until exact transaction rechecked. Do not merge with 5R finding (LINKAGE_003).",
+      "note": "This is the existing 6R conflict. 5R finding is tracked separately as LINKAGE_003."
+    },
+    {
+      "id": "LINKAGE_005",
+      "address": "מונטיפיורי, פתח תקווה (street only)",
+      "listing_data": {
+        "source": "GP Realty",
+        "url": "https://www.gprealty.co.il/montefiore",
+        "property_type": "טריפלקס",
+        "rooms": 6,
+        "internal_area_sqm": null,
+        "floor_config": null,
+        "asking_price_ils": 2280000,
+        "date_listed": "2020-06-13"
+      },
+      "tax_data": {
+        "source": "Dirobot Rupin Street",
+        "url": "https://www.dirobot.co.il/street-prices/פתח%20תקווה,%20רופין",
+        "transactions": "12 transactions, avg ₪2,000,000, median ₪2,115,000, avg 3.5 rooms",
+        "median_price_ils": 2115000,
+        "transaction_count": 12
+      },
+      "linkage_result": "NO_MATCH",
+      "confidence": "NONE",
+      "reasoning": "Listing lacks exact address (only street name), no area data, outdated (2020). Tax data is street-level aggregate, not unit-specific. Cannot link.",
+      "action": "Keep as context-only triplex evidence"
+    },
+    {
+      "id": "LINKAGE_006",
+      "address": "התשעים ושלוש 3, המרכז השקט",
+      "listing_data": {
+        "source": "Anglo Saxon",
+        "url": "https://www.anglo-saxon.co.il/properties/single/?id=418210",
+        "property_type": "טריפלקס",
+        "rooms": 5,
+        "internal_area_sqm": 210,
+        "floor_config": null,
+        "asking_price_ils": null,
+        "date_listed": "2025-04-01",
+        "address_note": "Listing shows only street name (התשעים ושלוש), not number 3"
+      },
+      "tax_data": {
+        "source": "Dirobot HaTishim VeShalosh Street",
+        "url": "https://www.dirobot.co.il/street-prices/פתח%20תקווה,%20התשעים%20ושלוש",
+        "transactions": "18 transactions, avg ₪2,700,000, median ₪2,625,000, avg 4.2 rooms",
+        "median_price_ils": 2625000,
+        "transaction_count": 18,
+        "address_note": "Street-level data only, no unit 3 specific data"
+      },
+      "linkage_result": "STREET_LEVEL_ONLY",
+      "confidence": "NONE",
+      "reasoning": "Searched exact address התשעים ושלוש 3 via Nadlanist (fetch failed), Dirobot (street-level only), Gushim.co.il (plot lookup available but no transaction data). Street has 18 transactions but no unit-level data available. Triplex typology not confirmed in Tax.",
+      "action": "Keep as context-only triplex evidence. Exact address searched but only street-level Tax data available."
+    }
+  ],
+  "summary": {
+    "total_linkage_attempts": 6,
+    "exact_unit_link": 0,
+    "high_confidence_unit_link": 0,
+    "same_building_only": 0,
+    "same_address_ambiguous": 2,
+    "no_match": 1,
+    "street_level_only": 1,
+    "source_address_mismatch_unresolved": 1,
+    "quarantined": 1,
+    "verified_sold_garden": 0,
+    "verified_sold_triplex": 0,
+    "verified_sold_duplex": 0,
+    "quarantined_due_to_conflict": 2,
+    "source_conflict": 1
+  },
+  "recommendations": [
+    "Priority gap: No verified sold garden/triplex/duplex linkages achieved",
+    "Main blocker: Listings lack unit/subparcel identifiers needed for exact Tax matching",
+    "Secondary blocker: Area semantics inconsistent between listings (built vs usable vs registered)",
+    "Israel Harel 6 / אחד העם: Cannot resolve until addresses proven identical",
+    "Tereza Kugelman 4: Keep 5R and 6R findings separate",
+    "Recommendation: Focus future research on new developments with published floor plans + unit numbers",
+    "Until verified linkages found, maintain current pricing approach using context evidence with appropriate discounts"
+  ]
+}

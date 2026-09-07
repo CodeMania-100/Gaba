@@ -1,0 +1,349 @@
+{
+  "metadata": {
+    "generated_date": "2026-09-07",
+    "version": "v1_corrected",
+    "report_type": "Before/After Evidence Quality Matrix - CORRECTED",
+    "scope": "Petah Tikva special units pricing tool evidence strengthening",
+    "tracks_covered": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H"
+    ],
+    "corrections_applied": [
+      "Exact subject dimensions verified per project truth",
+      "Shabazi 3-5: MEDIUM+ → CONTEXT_STARTING_FROM (price not tied to 6R duplex)",
+      "Israel Harel 6: SAME_ADDRESS_AMBIGUOUS → SOURCE_ADDRESS_MISMATCH_UNRESOLVED",
+      "Tereza Kugelman 4: Split 5R finding from existing 6R conflict",
+      "HaTishim VeShalosh 3: NOT_SEARCHED → STREET_LEVEL_ONLY (completed search)",
+      "Standard features: Added display guidance text (no numeric rules)"
+    ]
+  },
+  "exact_subject_truth_verified": {
+    "Apt1": {
+      "type": "3R garden",
+      "internal": 70.8,
+      "yard": 100,
+      "floor": "ground",
+      "orientation": "east"
+    },
+    "Apt2": {
+      "type": "3R garden",
+      "internal": 65.6,
+      "yard": 69,
+      "floor": "ground",
+      "orientation": "east"
+    },
+    "Apt3": {
+      "type": "2R garden",
+      "internal": 57,
+      "yard": 18,
+      "floor": "ground",
+      "orientation": "east"
+    },
+    "Apt36": {
+      "type": "6R triplex",
+      "internal": 255.2,
+      "outdoor": 94.6,
+      "floors": "9-11",
+      "orientation": "east"
+    },
+    "Apt37": {
+      "type": "6R triplex",
+      "internal": 260.1,
+      "outdoor": 97.4,
+      "floors": "9-11",
+      "orientation": "west"
+    },
+    "Apt38": {
+      "type": "7R duplex",
+      "internal": 170.1,
+      "balcony": 39.6,
+      "floors": "9-10",
+      "orientation": "west"
+    },
+    "Apt39": {
+      "type": "5R duplex",
+      "internal": 158.6,
+      "balcony": 39.6,
+      "floors": "9-10",
+      "orientation": "unknown"
+    }
+  },
+  "subject_geography_verified": {
+    "demo_commercial_submarket": "המרכז השקט / מרכז העיר, פתח תקווה",
+    "exact_subject_address": "NOT_SUPPLIED_BY_ASSIGNMENT",
+    "note": "Do not imply competitor's street is subject address"
+  },
+  "before_after_matrix": {
+    "Apt1_3R_garden_70.8m2_100m2_yard": {
+      "dimension": "current_asking",
+      "previous_evidence_quality": "MEDIUM - some garden asking but weak",
+      "new_evidence": "GARDEN_001 (₪1.95M, 95m2, center/shaket), GARDEN_002 (₪2.68M, 74m2+29m2 garden)",
+      "new_classification": "MEDIUM+ (slight upgrade)",
+      "changes_numeric_eligibility": "no",
+      "reasoning": "More same-submarket asking evidence, but still no exact-type match (70.8m2+100m2). Range broadens slightly."
+    },
+    "Apt2_3R_garden_65.6m2_69m2_yard": {
+      "dimension": "current_asking",
+      "previous_evidence_quality": "MEDIUM - some garden asking but weak",
+      "new_evidence": "GARDEN_005 (₪3.189M, 119m2+69m2 garden, center/shaket) - exact garden area match",
+      "new_classification": "MEDIUM+ (slight upgrade)",
+      "changes_numeric_eligibility": "no",
+      "reasoning": "Exact garden area match (69m2) strengthens confidence, but room mismatch (4.5 vs 3) and larger internal area (119 vs 65.6m2) prevent direct comparison."
+    },
+    "Apt3_2R_garden_57m2_18m2_yard": {
+      "dimension": "current_asking",
+      "previous_evidence_quality": "LOW - very limited 2R garden evidence",
+      "new_evidence": "GARDEN_003 (₪1.7M, 47m2+23m2 garden, 2R, center)",
+      "new_classification": "LOW+ (slight upgrade)",
+      "changes_numeric_eligibility": "no",
+      "reasoning": "Rare 2R garden with explicit area split, but internal area smaller (47 vs 57m2) and garden larger (23 vs 18m2). Different submarket."
+    },
+    "Apt36_6R_triplex_255.2m2_94.6m2_outdoor": {
+      "dimension": "current_asking",
+      "previous_evidence_quality": "MEDIUM - some triplex evidence",
+      "new_evidence": "TRIPLEX_001 (₪2.28M, 6R triplex, Montefiore)",
+      "new_classification": "MEDIUM (unchanged)",
+      "changes_numeric_eligibility": "no",
+      "reasoning": "Direct 6R triplex with explicit price strengthens evidence, but no area breakdown prevents size-based adjustment. Outdated listing (2020)."
+    },
+    "Apt37_6R_triplex_260.1m2_97.4m2_outdoor": {
+      "dimension": "completed_sold",
+      "previous_evidence_quality": "LOW - no verified sold triplex",
+      "new_evidence": "Same as Apt36",
+      "new_classification": "LOW (unchanged)",
+      "changes_numeric_eligibility": "no",
+      "reasoning": "Same as Apt36"
+    },
+    "Apt38_7R_duplex_170.1m2_39.6m2_balcony": {
+      "dimension": "current_asking",
+      "previous_evidence_quality": "HIGH - good direct evidence",
+      "new_evidence": "DUPLEX7R_001 (₪4.95M, 7R duplex, 380m2, floor 7, center/shaket)",
+      "new_classification": "HIGH (unchanged)",
+      "changes_numeric_eligibility": "no",
+      "reasoning": "Direct 7R duplex in target submarket with explicit price, but area far too large (380 vs 170.1m2). Confirms upper-floor duplex premium exists but not size-calibrated."
+    },
+    "Apt39_5R_duplex_158.6m2_39.6m2_balcony": {
+      "dimension": "current_asking",
+      "previous_evidence_quality": "HIGH - strongest special unit",
+      "new_evidence": "DUPLEX5R_001 (₪2.28M, 5R duplex, 115m2, floors 1-2, Ein Ganim), DUPLEX5R_003 (₪3.63M, 5R duplex, 165m2, Machane Yehuda)",
+      "new_classification": "HIGH (unchanged)",
+      "changes_numeric_eligibility": "no",
+      "reasoning": "DUPLEX5R_003 is near-size match (165 vs 158.6m2) with explicit price, but different submarket. DUPLEX5R_001 has explicit price but wrong floors (1-2 vs 9-10). Strengthens range but not direct comparables."
+    },
+    "Standard_3R_floor_effect": {
+      "dimension": "monetizable_feature",
+      "previous_evidence_quality": "LOW - no matched pairs",
+      "new_evidence": "None found (FLOOR_CANDIDATE_001, FLOOR_CANDIDATE_002)",
+      "new_classification": "LOW (unchanged)",
+      "changes_numeric_eligibility": "no",
+      "reasoning": "No defensible matched pairs found. Closest candidates fail on same-project or same-area criteria.",
+      "display_guidance": "קומה עשויה להשפיע על התמחור, אך לא נמצא כלל כספי מקומי מאומת."
+    },
+    "Standard_3R_balcony_effect": {
+      "dimension": "monetizable_feature",
+      "previous_evidence_quality": "LOW - no matched pairs",
+      "new_evidence": "None found",
+      "new_classification": "LOW (unchanged)",
+      "changes_numeric_eligibility": "no",
+      "reasoning": "Balcony area rarely separated in listings. No with/without balcony matched pairs.",
+      "display_guidance": "מרפסת עשויה להשפיע על התמחור, אך לא נמצא כלל כספי מקומי מאומת."
+    },
+    "Standard_3R_parking_effect": {
+      "dimension": "monetizable_feature",
+      "previous_evidence_quality": "LOW - no matched pairs",
+      "new_evidence": "PARKING_CANDIDATE_001 (Tel Aviv study, ₪200K premium, 2017)",
+      "new_classification": "LOW (unchanged)",
+      "changes_numeric_eligibility": "no",
+      "reasoning": "Not Petah Tikva, not matched-pair, outdated. No local evidence.",
+      "display_guidance": "חניה עשויה להשפיע על התמחור, אך לא נמצא כלל כספי מקומי מאומת."
+    },
+    "Standard_5R_floor_effect": {
+      "dimension": "monetizable_feature",
+      "previous_evidence_quality": "LOW - no matched pairs",
+      "new_evidence": "None found",
+      "new_classification": "LOW (unchanged)",
+      "changes_numeric_eligibility": "no",
+      "reasoning": "Same as 3R floor effect",
+      "display_guidance": "קומה עשויה להשפיע על התמחור, אך לא נמצא כלל כספי מקומי מאומת."
+    },
+    "New_dev_Zeev_Branda_22_special_units": {
+      "dimension": "exact_special_model_price",
+      "previous_evidence_quality": "LOW - exact numeric model missing",
+      "new_evidence": "Diraly/Yad2: garden 3.5-4R (price not disclosed), duplex penthouse 5-6R 148-192m2 floors 9-10 (price: contact developer)",
+      "new_classification": "LOW+ (slight upgrade)",
+      "changes_numeric_eligibility": "no",
+      "reasoning": "Exact room counts and floor configs confirmed, but prices still 'contact developer' or 'not disclosed'. Area range (148-192m2) helpful for Apt38/Apt39 sizing."
+    },
+    "New_dev_Branda_49_special_units": {
+      "dimension": "exact_special_model_price",
+      "previous_evidence_quality": "LOW - exact numeric model missing",
+      "new_evidence": "Diraly: 5R garden from ₪2.9M, penthouse 5-6R (price not disclosed)",
+      "new_classification": "LOW+ (slight upgrade)",
+      "changes_numeric_eligibility": "no",
+      "reasoning": "Starting-from price (₪2.9M) for 5R is context-only, not exact model. Penthouse prices still undisclosed."
+    },
+    "New_dev_Shabazi_3-5_special_units": {
+      "dimension": "exact_special_model_price",
+      "previous_evidence_quality": "LOW - exact numeric model missing",
+      "new_evidence": "Yad2 project page: duplex 6R, 181m2, floor 9, project starting from ₪2.4M",
+      "new_classification": "CONTEXT_STARTING_FROM (CORRECTED from MEDIUM+)",
+      "changes_numeric_eligibility": "no (CORRECTED from yes)",
+      "reasoning": "CORRECTION: Yad2 source shows 'דירות 4 חדרים גדולות ומרווחות החל מ-₪2,400,000' - starting price refers to 4R units, NOT 6R duplex. 6R duplex 181m2 floor 9 exists but price not explicitly tied. Evidence class = CONTEXT_STARTING_FROM, numeric_eligibility = false."
+    },
+    "New_dev_THE_SPOT_special_units": {
+      "dimension": "exact_special_model_price",
+      "previous_evidence_quality": "LOW - exact numeric model missing",
+      "new_evidence": "Yad2/Diraly: duplex 5R, 146m2, floors 9-10 (price not disclosed)",
+      "new_classification": "LOW+ (slight upgrade)",
+      "changes_numeric_eligibility": "no",
+      "reasoning": "Exact rooms/area/floors confirmed, but price still undisclosed. Useful for Apt39 typology validation."
+    },
+    "New_dev_NAVE_PARK_special_units": {
+      "dimension": "exact_special_model_price",
+      "previous_evidence_quality": "MEDIUM - some new-dev prices",
+      "new_evidence": "Dimri/Yad2: penthouse 5R from ₪3.15M, 6R from ₪3.85M",
+      "new_classification": "MEDIUM+ (slight upgrade)",
+      "changes_numeric_eligibility": "no",
+      "reasoning": "Starting-from prices confirmed, but not exact model-specific. Different submarket (Neve Gan vs center). Useful for upper-bound calibration."
+    },
+    "Data_quality_Israel_Harel_6": {
+      "dimension": "contradictory_record",
+      "previous_evidence_quality": "CONFLICT - duplex vs regular classification",
+      "new_evidence": "Dirobot: 4 transactions, latest 24.11.2025: 4R, 98m2, floor 4, ₪3.015M",
+      "new_classification": "SOURCE_ADDRESS_MISMATCH_UNRESOLVED (CORRECTED from QUARANTINED)",
+      "changes_numeric_eligibility": "no (CORRECTED from yes)",
+      "reasoning": "CORRECTION: Lev Hamercaz URL references אחד העם (Ein Ganim), Tax data is איסר הראל 6 (Em HaMoshavot). Different streets, different submarkets. Cannot use to invalidate or resolve existing Apt39 evidence until addresses proven identical."
+    },
+    "Data_quality_Michal_Leib_Katz_80": {
+      "dimension": "contradictory_record",
+      "previous_evidence_quality": "CONFLICT - inconsistent area semantics",
+      "new_evidence": "Dirobot: 3 transactions, latest 27.03.2025: 4R, 113m2, floor 4+gag, ₪2.85M",
+      "new_classification": "QUARANTINED",
+      "changes_numeric_eligibility": "yes - removes from size-based comparisons",
+      "reasoning": "Area semantics unclear (110 vs 113m2), room mismatch (5 vs 4). Quarantined until clarified."
+    },
+    "Data_quality_Tereza_Kugelman_4_5R": {
+      "dimension": "contradictory_record",
+      "previous_evidence_quality": "NEW FINDING",
+      "new_evidence": "Madlan: 5R 122m2 floor 11 ₪3.35M vs NadlanShark: 5R 136m2 ₪3.7M (04/2026)",
+      "new_classification": "LIKELY_DIFFERENT_UNITS",
+      "changes_numeric_eligibility": "yes - prevents merging as same unit",
+      "reasoning": "14m2 area difference, ₪350K price difference. Likely different units in same building. Do not merge.",
+      "note": "This is the 5R finding. Keep separate from existing 6R conflict."
+    },
+    "Data_quality_Tereza_Kugelman_4_6R_existing": {
+      "dimension": "contradictory_record",
+      "previous_evidence_quality": "CONFLICT - existing unresolved",
+      "new_evidence": "6R 180m2 2025-11-23, local Tax ~₪5.25M vs public Tax-derived mirror ~₪242K",
+      "new_classification": "QUARANTINED",
+      "changes_numeric_eligibility": "yes - keeps quarantined",
+      "reasoning": "Existing unresolved conflict. Local Tax value ~₪5.25M conflicts with public Tax-derived mirror ~₪242K. Requires manual recheck of exact transaction.",
+      "note": "This is the existing 6R conflict. Keep separate from 5R finding above."
+    },
+    "Data_quality_HaTishim_VeShalosh_3": {
+      "dimension": "incomplete_linkage",
+      "previous_evidence_quality": "NOT_SEARCHED",
+      "new_evidence": "Searched via Nadlanist (fetch failed), Dirobot (street-level), Gushim.co.il (plot lookup)",
+      "new_classification": "STREET_LEVEL_ONLY (CORRECTED from NOT_SEARCHED)",
+      "changes_numeric_eligibility": "no",
+      "reasoning": "CORRECTION: Exact address התשעים ושלוש 3 searched. Street has 18 transactions (avg ₪2.7M, median ₪2.625M, avg 4.2 rooms) but no unit-level data available. Triplex typology not confirmed in Tax. Search completed but only street-level data available."
+    }
+  },
+  "evidence_quality_summary": {
+    "upgrades_achieved": [
+      "Apt2 current_asking: MEDIUM → MEDIUM+ (exact 69m2 garden match)",
+      "NAVE_PARK: MEDIUM → MEDIUM+ (penthouse 5R/6R prices confirmed)",
+      "Apt3 current_asking: LOW → LOW+ (rare 2R garden evidence)",
+      "HaTishim VeShalosh 3: NOT_SEARCHED → STREET_LEVEL_ONLY (search completed)"
+    ],
+    "downgrades_applied": [
+      "Shabazi 3-5: MEDIUM+ → CONTEXT_STARTING_FROM (price not tied to 6R duplex)",
+      "Israel Harel 6: QUARANTINED → SOURCE_ADDRESS_MISMATCH_UNRESOLVED (address mismatch)",
+      "Michal Leib Katz 80: CONFLICT → QUARANTINED (area semantics unclear)",
+      "Tereza Kugelman 4 5R: NEW → LIKELY_DIFFERENT_UNITS (do not merge)",
+      "Tereza Kugelman 4 6R: CONFLICT → QUARANTINED (keep separate)"
+    ],
+    "unchanged_critical_gaps": [
+      "VERIFIED_SOLD_GARDEN: still 0 linkages",
+      "VERIFIED_SOLD_TRIPLEX: still 0 linkages",
+      "VERIFIED_SOLD_DUPLEX: still 0 linkages",
+      "Standard feature monetization: still אין כלל כספי מאומת (with display guidance added)"
+    ]
+  },
+  "numeric_eligibility_impact": {
+    "units_with_changed_eligibility": [
+      "Shabazi_3-5",
+      "Israel_Harel_6",
+      "Michal_Leib_Katz_80",
+      "Tereza_Kugelman_4_5R",
+      "Tereza_Kugelman_4_6R",
+      "HaTishim_VeShalosh_3"
+    ],
+    "nature_of_change": "Mostly downgrades/corrections from initial research. Shabazi 3-5 no longer qualifies. Israel Harel 6 cannot be used. Tereza Kugelman split into separate 5R/6R records.",
+    "net_effect_on_pricing_ranges": "Slight narrowing due to Shabazi 3-5 downgrade and Israel Harel 6 exclusion. No new qualifying evidence added.",
+    "recommendation": "Do not update pricing engine yet. All corrections are conservative - removing or downgrading evidence, not adding new qualifying records. Maintain current pricing ranges."
+  },
+  "priority_next_steps": [
+    {
+      "priority": 1,
+      "action": "Manual review of Israel Harel 6 / אחד העם address mismatch",
+      "rationale": "Determine if these are truly different addresses or data error",
+      "owner": "Research team",
+      "timeline": "Before pricing engine update"
+    },
+    {
+      "priority": 2,
+      "action": "Manual review of quarantined records (Michal Leib Katz 80, Tereza Kugelman 4 6R)",
+      "rationale": "Ensure no valid evidence incorrectly removed",
+      "owner": "Research team",
+      "timeline": "Before pricing engine update"
+    },
+    {
+      "priority": 3,
+      "action": "Keep Tereza Kugelman 4 5R and 6R findings separate",
+      "rationale": "Different room counts, different transactions, do not merge",
+      "owner": "Data team",
+      "timeline": "Immediate"
+    },
+    {
+      "priority": 4,
+      "action": "Targeted search for VERIFIED_SOLD_GARDEN using new-development floor plans + unit numbers",
+      "rationale": "Highest-impact gap - would enable direct sold-garden lane",
+      "owner": "Research team",
+      "timeline": "Next research cycle"
+    },
+    {
+      "priority": 5,
+      "action": "Targeted search for VERIFIED_SOLD_TRIPLEX using exact-address Tax queries",
+      "rationale": "Second-highest gap - triplex evidence remains weakest",
+      "owner": "Research team",
+      "timeline": "Next research cycle"
+    },
+    {
+      "priority": 6,
+      "action": "Monitor new developments (Zeev Branda 22, Branda 49, THE SPOT) for price disclosures",
+      "rationale": "Exact special-unit prices may be disclosed closer to completion",
+      "owner": "Automated monitoring",
+      "timeline": "Ongoing"
+    },
+    {
+      "priority": 7,
+      "action": "Implement display guidance text for standard features",
+      "rationale": "Use 'קומה עשויה להשפיע על התמחור, אך לא נמצא כלל כספי מקומי מאומת' instead of numeric rules",
+      "owner": "Product team",
+      "timeline": "Immediate"
+    }
+  ],
+  "files_generated": [
+    "special_gap_research_v2_corrected.json (15 records, all corrections applied)",
+    "special_tax_linkage_v2_corrected.json (6 linkage attempts, 0 verified)",
+    "standard_feature_matched_pairs_v1_corrected.json (0 monetizable features, display guidance added)",
+    "research_gap_closure_report_v1_corrected.json (this file, all corrections applied)"
+  ]
+}

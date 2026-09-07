@@ -1,0 +1,2114 @@
+{
+  "version": "standard_unit_attribute_enrichment_v1",
+  "retrieved_at": "2026-09-07",
+  "scope": "Focused enrichment of the existing standard Petah Tikva 3-room and 5-room comparable evidence. No pricing methodology changes and no valuation calculation.",
+  "methodology_guards": [
+    "Enrichment only: no new valuation or recommendation.",
+    "Do not modify the accepted standard 3R/5R comparable selection or market-range methodology.",
+    "No opaque similarity score.",
+    "No price adjustment or premium is calculated from floor, orientation, balcony, parking or storage observations.",
+    "built_area, advertised_area, balcony_area and garden_area are stored separately and are never derived from one another.",
+    "If a field is not verified, it is null.",
+    "Project starting price is not assigned to an exact unit model unless the source explicitly ties it to that model.",
+    "Field/group provenance is retained.",
+    "Registered-deal mirrors share the same underlying government-transaction independence group and are not counted as independent sold lanes."
+  ],
+  "subjects": {
+    "standard_3r": {
+      "rooms": 3,
+      "property_type": "standard_apartment",
+      "internal_area": 69.0,
+      "balcony_area": 12.0,
+      "floor_range": "1-8",
+      "orientation": "east/west/unknown depending on unit"
+    },
+    "standard_5r": {
+      "rooms": 5,
+      "property_type": "standard_apartment",
+      "internal_area": 111.1,
+      "balcony_area": 12.0,
+      "floor_range": "1-8",
+      "orientation": "west"
+    }
+  },
+  "existing_standard_universe_context": {
+    "madlan_3r": {
+      "source_file": "madlan_petah_tikva_3r_screen.json",
+      "raw_actor_pool": 994,
+      "matching_standard_flat_records_saved": 161,
+      "target_size_records": 94,
+      "selected_neighborhood_summary": {
+        "המרכז השקט": {
+          "records": 18,
+          "independent": 16,
+          "area_min": 60,
+          "area_max": 79,
+          "median_area": 71,
+          "median_asking_price": 1982500
+        },
+        "מחנה יהודה": {
+          "records": 14,
+          "independent": 14,
+          "area_min": 65,
+          "area_max": 79,
+          "median_area": 73,
+          "median_asking_price": 1770000
+        },
+        "מרכז העיר": {
+          "records": 12,
+          "independent": 12,
+          "area_min": 59,
+          "area_max": 75,
+          "median_area": 70,
+          "median_asking_price": 1750000
+        },
+        "שיפר": {
+          "records": 5,
+          "independent": 5,
+          "area_min": 65,
+          "area_max": 78,
+          "median_area": 69,
+          "median_asking_price": 2190000
+        }
+      },
+      "note": "Existing universe reused as context; this enrichment deliberately does not collect hundreds of additional listings."
+    },
+    "madlan_5r": {
+      "source_file": "madlan_petah_tikva_5r_screen.json",
+      "raw_actor_pool": 994,
+      "matching_standard_flat_records_saved": 124,
+      "target_size_records": 70,
+      "selected_neighborhood_summary": {
+        "המרכז השקט": {
+          "records": 20,
+          "independent": 19,
+          "area_min": 95,
+          "area_max": 125,
+          "median_area": 117,
+          "median_asking_price": 2780000
+        },
+        "מרכז העיר": {
+          "records": 4,
+          "independent": 3,
+          "area_min": 100,
+          "area_max": 116,
+          "median_area": 108,
+          "median_asking_price": 2525000
+        },
+        "הדר גנים": {
+          "records": 7,
+          "independent": 7,
+          "area_min": 110,
+          "area_max": 126,
+          "median_area": 118,
+          "median_asking_price": 3100000
+        },
+        "נווה גן": {
+          "records": 10,
+          "independent": 8,
+          "area_min": 114,
+          "area_max": 127,
+          "median_area": 124.5,
+          "median_asking_price": 3620000
+        }
+      },
+      "note": "Existing universe reused as context; focused enrichment selects a small number of strong current records."
+    },
+    "registered_sales_source": {
+      "source_file": "Pasted text(20260906-172653).txt",
+      "underlying_source": "Tax Authority / registered government transactions",
+      "candidate_pool_notes": {
+        "neighborhood_deals": 251,
+        "target_3r": 19,
+        "target_5r": 41
+      },
+      "purpose_here": "Only matched observational floor groups were extracted; no standard sold-lane methodology was changed."
+    }
+  },
+  "current_asking": {
+    "standard_3r": [
+      {
+        "family": "standard_3r",
+        "role": "strong_current_asking_comparable",
+        "source": "yad2_public_current",
+        "source_token": null,
+        "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&neighborhood=777&property=1&sort=price-asc",
+        "retrieved_at": "2026-09-07",
+        "address": "יוסף ספיר 26, פתח תקווה",
+        "neighborhood": "שיפר",
+        "rooms": 3,
+        "property_type": "apartment",
+        "asking_price": 1910000,
+        "built_area": null,
+        "advertised_area": 69,
+        "balcony_area": null,
+        "garden_area": null,
+        "floor": 3,
+        "total_building_floors": null,
+        "orientation": null,
+        "parking_count": 1,
+        "storage": null,
+        "elevator": null,
+        "mamad": null,
+        "condition": null,
+        "view": "open_city_view",
+        "listing_date": null,
+        "raw_features": {
+          "orientation_count": 3
+        },
+        "field_provenance": [
+          {
+            "source": "Yad2 current listing card",
+            "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&neighborhood=777&property=1&sort=price-asc",
+            "source_record_id": null,
+            "retrieved_at": "2026-09-07",
+            "scope": "unit_specific_fact",
+            "fields": [
+              "address",
+              "neighborhood",
+              "rooms",
+              "property_type",
+              "asking_price",
+              "advertised_area",
+              "floor",
+              "parking_count",
+              "view",
+              "orientation_count"
+            ]
+          }
+        ],
+        "qa_notes": [
+          "69 m² is the area displayed on the listing card and is stored as advertised_area, not built_area.",
+          "The listing exposes three orientations but does not expose the cardinal directions; orientation remains null."
+        ]
+      },
+      {
+        "family": "standard_3r",
+        "role": "strong_current_asking_comparable",
+        "source": "zipika_listing_mirror",
+        "source_token": "4225175",
+        "source_url": "https://zipika.com/features/property-details?lng=he&propId=4225175",
+        "retrieved_at": "2026-09-07",
+        "address": "המגיד 4, פתח תקווה",
+        "neighborhood": null,
+        "rooms": 3,
+        "property_type": "apartment",
+        "asking_price": 1760000,
+        "built_area": null,
+        "advertised_area": 75,
+        "balcony_area": null,
+        "garden_area": null,
+        "floor": 1,
+        "total_building_floors": 3,
+        "orientation": null,
+        "parking_count": null,
+        "storage": null,
+        "elevator": null,
+        "mamad": null,
+        "condition": null,
+        "view": null,
+        "listing_date": "2026-08-28",
+        "raw_features": {},
+        "field_provenance": [
+          {
+            "source": "Zipika exact listing page",
+            "source_url": "https://zipika.com/features/property-details?lng=he&propId=4225175",
+            "source_record_id": "4225175",
+            "retrieved_at": "2026-09-07",
+            "scope": "unit_specific_fact",
+            "fields": [
+              "address",
+              "rooms",
+              "asking_price",
+              "advertised_area",
+              "floor",
+              "total_building_floors",
+              "listing_date"
+            ]
+          }
+        ],
+        "qa_notes": [
+          "75 m² is advertised/generic area; the source does not explicitly call it built area."
+        ]
+      },
+      {
+        "family": "standard_3r",
+        "role": "strong_current_asking_comparable",
+        "source": "yad2_public_current",
+        "source_token": null,
+        "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&maxRooms=3&minRooms=3&property=1",
+        "retrieved_at": "2026-09-07",
+        "address": "דוד וולפסון 34, פתח תקווה",
+        "neighborhood": "המרכז השקט / מרכז העיר",
+        "rooms": 3,
+        "property_type": "apartment",
+        "asking_price": 1920000,
+        "built_area": null,
+        "advertised_area": 70,
+        "balcony_area": null,
+        "garden_area": null,
+        "floor": 1,
+        "total_building_floors": null,
+        "orientation": null,
+        "parking_count": null,
+        "storage": null,
+        "elevator": null,
+        "mamad": null,
+        "condition": null,
+        "view": null,
+        "listing_date": null,
+        "raw_features": {},
+        "field_provenance": [
+          {
+            "source": "Yad2 current listing card",
+            "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&maxRooms=3&minRooms=3&property=1",
+            "source_record_id": null,
+            "retrieved_at": "2026-09-07",
+            "scope": "unit_specific_fact",
+            "fields": [
+              "address",
+              "neighborhood",
+              "rooms",
+              "property_type",
+              "asking_price",
+              "advertised_area",
+              "floor"
+            ]
+          }
+        ],
+        "qa_notes": []
+      },
+      {
+        "family": "standard_3r",
+        "role": "strong_current_asking_comparable",
+        "source": "yad2_public_current",
+        "source_token": null,
+        "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&maxRooms=3&minRooms=3&property=1",
+        "retrieved_at": "2026-09-07",
+        "address": "אברהם טביב 18, פתח תקווה",
+        "neighborhood": "מחנה יהודה",
+        "rooms": 3,
+        "property_type": "apartment",
+        "asking_price": 1920000,
+        "built_area": null,
+        "advertised_area": 70,
+        "balcony_area": null,
+        "garden_area": null,
+        "floor": 2,
+        "total_building_floors": null,
+        "orientation": null,
+        "parking_count": null,
+        "storage": null,
+        "elevator": null,
+        "mamad": null,
+        "condition": null,
+        "view": null,
+        "listing_date": null,
+        "raw_features": {
+          "recent_price_change": "reduced_by_50000_ils"
+        },
+        "field_provenance": [
+          {
+            "source": "Yad2 current listing card",
+            "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&maxRooms=3&minRooms=3&property=1",
+            "source_record_id": null,
+            "retrieved_at": "2026-09-07",
+            "scope": "unit_specific_fact",
+            "fields": [
+              "address",
+              "neighborhood",
+              "rooms",
+              "property_type",
+              "asking_price",
+              "advertised_area",
+              "floor",
+              "recent_price_change"
+            ]
+          }
+        ],
+        "qa_notes": []
+      },
+      {
+        "family": "standard_3r",
+        "role": "strong_current_asking_comparable",
+        "source": "yad2_public_current",
+        "source_token": null,
+        "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&neighborhood=777&property=1&sort=price-asc",
+        "retrieved_at": "2026-09-07",
+        "address": "אליהו גולומב 11, פתח תקווה",
+        "neighborhood": "שיפר",
+        "rooms": 3,
+        "property_type": "apartment",
+        "asking_price": 1980000,
+        "built_area": null,
+        "advertised_area": 70,
+        "balcony_area": null,
+        "garden_area": null,
+        "floor": 1,
+        "total_building_floors": null,
+        "orientation": null,
+        "parking_count": 1,
+        "storage": null,
+        "elevator": null,
+        "mamad": true,
+        "condition": null,
+        "view": null,
+        "listing_date": null,
+        "raw_features": {},
+        "field_provenance": [
+          {
+            "source": "Yad2 current listing card",
+            "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&neighborhood=777&property=1&sort=price-asc",
+            "source_record_id": null,
+            "retrieved_at": "2026-09-07",
+            "scope": "unit_specific_fact",
+            "fields": [
+              "address",
+              "neighborhood",
+              "rooms",
+              "property_type",
+              "asking_price",
+              "advertised_area",
+              "floor",
+              "parking_count",
+              "mamad"
+            ]
+          }
+        ],
+        "qa_notes": []
+      },
+      {
+        "family": "standard_3r",
+        "role": "strong_current_asking_comparable",
+        "source": "yad2_public_current",
+        "source_token": null,
+        "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&maxRooms=3&minRooms=3",
+        "retrieved_at": "2026-09-07",
+        "address": "בעל שם טוב 51, פתח תקווה",
+        "neighborhood": "מחנה יהודה",
+        "rooms": 3,
+        "property_type": "apartment",
+        "asking_price": 1780000,
+        "built_area": null,
+        "advertised_area": 68,
+        "balcony_area": null,
+        "garden_area": null,
+        "floor": 1,
+        "total_building_floors": null,
+        "orientation": null,
+        "parking_count": null,
+        "storage": null,
+        "elevator": null,
+        "mamad": null,
+        "condition": null,
+        "view": null,
+        "listing_date": null,
+        "raw_features": {},
+        "field_provenance": [
+          {
+            "source": "Yad2 current listing card",
+            "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&maxRooms=3&minRooms=3",
+            "source_record_id": null,
+            "retrieved_at": "2026-09-07",
+            "scope": "unit_specific_fact",
+            "fields": [
+              "address",
+              "neighborhood",
+              "rooms",
+              "property_type",
+              "asking_price",
+              "advertised_area",
+              "floor"
+            ]
+          }
+        ],
+        "qa_notes": [
+          "Included because its 68 m² advertised area is very close to the 69 m² standard subject."
+        ]
+      }
+    ],
+    "standard_5r": [
+      {
+        "family": "standard_5r",
+        "role": "strong_current_asking_comparable",
+        "source": "yad2_public_current",
+        "source_token": null,
+        "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&maxRooms=5&minRooms=5&neighborhood=2001001",
+        "retrieved_at": "2026-09-07",
+        "address": "חפץ חיים 25, פתח תקווה",
+        "neighborhood": "המרכז השקט / מרכז העיר",
+        "rooms": 5,
+        "property_type": "apartment",
+        "asking_price": 2800000,
+        "built_area": null,
+        "advertised_area": 111,
+        "balcony_area": null,
+        "garden_area": null,
+        "floor": 3,
+        "total_building_floors": null,
+        "orientation": null,
+        "parking_count": null,
+        "storage": null,
+        "elevator": null,
+        "mamad": null,
+        "condition": null,
+        "view": null,
+        "listing_date": null,
+        "raw_features": {},
+        "field_provenance": [
+          {
+            "source": "Yad2 current listing card",
+            "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&maxRooms=5&minRooms=5&neighborhood=2001001",
+            "source_record_id": null,
+            "retrieved_at": "2026-09-07",
+            "scope": "unit_specific_fact",
+            "fields": [
+              "address",
+              "neighborhood",
+              "rooms",
+              "property_type",
+              "asking_price",
+              "advertised_area",
+              "floor"
+            ]
+          }
+        ],
+        "qa_notes": [
+          "111 m² is the displayed listing area; built_area is unverified and remains null."
+        ]
+      },
+      {
+        "family": "standard_5r",
+        "role": "strong_current_asking_comparable",
+        "source": "yad2_public_current",
+        "source_token": null,
+        "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&maxRooms=5&minRooms=5&neighborhood=2001001",
+        "retrieved_at": "2026-09-07",
+        "address": "חפץ חיים 20, פתח תקווה",
+        "neighborhood": "המרכז השקט / מרכז העיר",
+        "rooms": 5,
+        "property_type": "apartment",
+        "asking_price": 1980000,
+        "built_area": null,
+        "advertised_area": 110,
+        "balcony_area": null,
+        "garden_area": null,
+        "floor": 1,
+        "total_building_floors": null,
+        "orientation": null,
+        "parking_count": null,
+        "storage": null,
+        "elevator": null,
+        "mamad": null,
+        "condition": null,
+        "view": null,
+        "listing_date": null,
+        "raw_features": {},
+        "field_provenance": [
+          {
+            "source": "Yad2 current listing card",
+            "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&maxRooms=5&minRooms=5&neighborhood=2001001",
+            "source_record_id": null,
+            "retrieved_at": "2026-09-07",
+            "scope": "unit_specific_fact",
+            "fields": [
+              "address",
+              "neighborhood",
+              "rooms",
+              "property_type",
+              "asking_price",
+              "advertised_area",
+              "floor"
+            ]
+          }
+        ],
+        "qa_notes": [
+          "A separate exact-address public mirror exists for a 4.5R/110 m² listing; its elevator/condition data are not transferred to this 5R listing."
+        ]
+      },
+      {
+        "family": "standard_5r",
+        "role": "strong_current_asking_comparable",
+        "source": "yad2_plus_komo_exact_mirror",
+        "source_token": null,
+        "source_url": "https://www.komo.co.il/code/nadlan/apartments-for-sale.asp?cityName=%D7%A4%D7%AA%D7%97+%D7%AA%D7%A7%D7%95%D7%95%D7%94&nehes=1&streetNum=29447",
+        "retrieved_at": "2026-09-07",
+        "address": "רוטשילד 111, פתח תקווה",
+        "neighborhood": "המרכז השקט / מרכז העיר",
+        "rooms": 5,
+        "property_type": "apartment",
+        "asking_price": 2700000,
+        "built_area": null,
+        "advertised_area": 110,
+        "balcony_area": null,
+        "garden_area": null,
+        "floor": 1,
+        "total_building_floors": 8,
+        "orientation": null,
+        "parking_count": null,
+        "storage": null,
+        "elevator": null,
+        "mamad": null,
+        "condition": null,
+        "view": null,
+        "listing_date": null,
+        "raw_features": {},
+        "field_provenance": [
+          {
+            "source": "Yad2 current listing card",
+            "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&maxRooms=5&minRooms=5&property=1&propertyGroup=apartments&sort=price-asc",
+            "source_record_id": null,
+            "retrieved_at": "2026-09-07",
+            "scope": "unit_specific_fact",
+            "fields": [
+              "address",
+              "neighborhood",
+              "rooms",
+              "property_type",
+              "asking_price",
+              "advertised_area",
+              "floor"
+            ]
+          },
+          {
+            "source": "Komo exact matching listing mirror",
+            "source_url": "https://www.komo.co.il/code/nadlan/apartments-for-sale.asp?cityName=%D7%A4%D7%AA%D7%97+%D7%AA%D7%A7%D7%95%D7%95%D7%94&nehes=1&streetNum=29447",
+            "source_record_id": null,
+            "retrieved_at": "2026-09-07",
+            "scope": "unit_specific_fact",
+            "fields": [
+              "address",
+              "rooms",
+              "asking_price",
+              "advertised_area",
+              "floor",
+              "total_building_floors"
+            ]
+          }
+        ],
+        "qa_notes": [
+          "Yad2 and Komo agree on address, rooms, area, floor and asking price."
+        ]
+      },
+      {
+        "family": "standard_5r",
+        "role": "strong_current_asking_comparable",
+        "source": "yad2_plus_doortodoor_exact_mirror",
+        "source_token": "60842",
+        "source_url": "https://doortodoor.ltd/property-page/60842",
+        "retrieved_at": "2026-09-07",
+        "address": "אליהו גולומב 18, פתח תקווה",
+        "neighborhood": "שיפר",
+        "rooms": 5,
+        "property_type": "apartment",
+        "asking_price": 2720000,
+        "built_area": null,
+        "advertised_area": 120,
+        "balcony_area": null,
+        "garden_area": null,
+        "floor": 3,
+        "total_building_floors": null,
+        "orientation": null,
+        "parking_count": 1,
+        "storage": false,
+        "elevator": true,
+        "mamad": false,
+        "condition": "new_property",
+        "view": null,
+        "listing_date": "2026-08-13",
+        "raw_features": {
+          "balcony_present": false,
+          "orientation_count": 3,
+          "yad2_condition_label": "new_from_contractor"
+        },
+        "field_provenance": [
+          {
+            "source": "Yad2 current listing card",
+            "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&maxRooms=5&minRooms=5&property=1&propertyGroup=apartments&sort=price-asc",
+            "source_record_id": null,
+            "retrieved_at": "2026-09-07",
+            "scope": "unit_specific_fact",
+            "fields": [
+              "address",
+              "neighborhood",
+              "rooms",
+              "property_type",
+              "asking_price",
+              "advertised_area",
+              "floor",
+              "parking_count",
+              "orientation_count",
+              "yad2_condition_label"
+            ]
+          },
+          {
+            "source": "DoorToDoor exact matching listing mirror",
+            "source_url": "https://doortodoor.ltd/property-page/60842",
+            "source_record_id": "60842",
+            "retrieved_at": "2026-09-07",
+            "scope": "unit_specific_fact",
+            "fields": [
+              "address",
+              "rooms",
+              "asking_price",
+              "advertised_area",
+              "floor",
+              "parking_count",
+              "storage",
+              "elevator",
+              "mamad",
+              "condition",
+              "listing_date",
+              "balcony_present"
+            ]
+          }
+        ],
+        "qa_notes": [
+          "The exact mirror agrees on address, 5 rooms, 120 m², floor 3 and ₪2.72M.",
+          "balcony_present=false is preserved in raw_features; balcony_area remains null because no balcony area exists to report.",
+          "The source area is generic/advertised; built_area remains null."
+        ]
+      },
+      {
+        "family": "standard_5r",
+        "role": "strong_current_asking_comparable",
+        "source": "yad2_public_current",
+        "source_token": null,
+        "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&maxRooms=5&minRooms=5&neighborhood=2001001",
+        "retrieved_at": "2026-09-07",
+        "address": "התשעים ושלוש 32, פתח תקווה",
+        "neighborhood": "המרכז השקט / מרכז העיר",
+        "rooms": 5,
+        "property_type": "apartment",
+        "asking_price": 2650000,
+        "built_area": null,
+        "advertised_area": 120,
+        "balcony_area": null,
+        "garden_area": null,
+        "floor": 4,
+        "total_building_floors": null,
+        "orientation": null,
+        "parking_count": null,
+        "storage": null,
+        "elevator": null,
+        "mamad": true,
+        "condition": "new_property",
+        "view": null,
+        "listing_date": null,
+        "raw_features": {
+          "orientation_count": 3,
+          "recent_price_change": "reduced_by_50000_ils"
+        },
+        "field_provenance": [
+          {
+            "source": "Yad2 current listing card",
+            "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&maxRooms=5&minRooms=5&neighborhood=2001001",
+            "source_record_id": null,
+            "retrieved_at": "2026-09-07",
+            "scope": "unit_specific_fact",
+            "fields": [
+              "address",
+              "neighborhood",
+              "rooms",
+              "property_type",
+              "asking_price",
+              "advertised_area",
+              "floor",
+              "mamad",
+              "condition",
+              "orientation_count",
+              "recent_price_change"
+            ]
+          }
+        ],
+        "qa_notes": [
+          "Recent crawls also showed ₪2.70M; the freshest observed card is ₪2.65M. The change is retained rather than reconciled.",
+          "An older exact-address archive describes a different listing state; its renovation/elevator attributes are not copied to this current card."
+        ]
+      },
+      {
+        "family": "standard_5r",
+        "role": "strong_current_asking_comparable",
+        "source": "yad2_public_current",
+        "source_token": null,
+        "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&maxRooms=5&minRooms=5&property=1&propertyGroup=apartments&sort=price-asc",
+        "retrieved_at": "2026-09-07",
+        "address": "הרב משה בלוי 28, פתח תקווה",
+        "neighborhood": "שיפר",
+        "rooms": 5,
+        "property_type": "apartment",
+        "asking_price": 2750000,
+        "built_area": null,
+        "advertised_area": 118,
+        "balcony_area": null,
+        "garden_area": null,
+        "floor": 7,
+        "total_building_floors": null,
+        "orientation": null,
+        "parking_count": null,
+        "storage": null,
+        "elevator": null,
+        "mamad": null,
+        "condition": null,
+        "view": null,
+        "listing_date": null,
+        "raw_features": {},
+        "field_provenance": [
+          {
+            "source": "Yad2 current listing card",
+            "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&maxRooms=5&minRooms=5&property=1&propertyGroup=apartments&sort=price-asc",
+            "source_record_id": null,
+            "retrieved_at": "2026-09-07",
+            "scope": "unit_specific_fact",
+            "fields": [
+              "address",
+              "neighborhood",
+              "rooms",
+              "property_type",
+              "asking_price",
+              "advertised_area",
+              "floor"
+            ]
+          }
+        ],
+        "qa_notes": []
+      },
+      {
+        "family": "standard_5r",
+        "role": "strong_current_asking_comparable",
+        "source": "yad2_public_current",
+        "source_token": null,
+        "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&maxRooms=5&minRooms=5&neighborhood=2001001",
+        "retrieved_at": "2026-09-07",
+        "address": "התשעים ושלוש 10, פתח תקווה",
+        "neighborhood": "המרכז השקט / מרכז העיר",
+        "rooms": 5,
+        "property_type": "apartment",
+        "asking_price": 3050000,
+        "built_area": null,
+        "advertised_area": 115,
+        "balcony_area": null,
+        "garden_area": null,
+        "floor": 3,
+        "total_building_floors": null,
+        "orientation": null,
+        "parking_count": 1,
+        "storage": null,
+        "elevator": null,
+        "mamad": true,
+        "condition": null,
+        "view": null,
+        "listing_date": null,
+        "raw_features": {
+          "orientation_count": 3,
+          "recent_price_change": "reduced_by_150000_ils"
+        },
+        "field_provenance": [
+          {
+            "source": "Yad2 current listing card",
+            "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&maxRooms=5&minRooms=5&neighborhood=2001001",
+            "source_record_id": null,
+            "retrieved_at": "2026-09-07",
+            "scope": "unit_specific_fact",
+            "fields": [
+              "address",
+              "neighborhood",
+              "rooms",
+              "property_type",
+              "asking_price",
+              "advertised_area",
+              "floor",
+              "parking_count",
+              "mamad",
+              "orientation_count",
+              "recent_price_change"
+            ]
+          }
+        ],
+        "qa_notes": []
+      }
+    ]
+  },
+  "new_development_competitors": [
+    {
+      "project": "THE SPOT",
+      "developer": "שיא עינב",
+      "address": "יהושע שטמפפר 83-87, פתח תקווה",
+      "submarket": "שיפר",
+      "role": [
+        "strict_quantitative_3r_contributor",
+        "context_competitor"
+      ],
+      "unit_variants": [
+        {
+          "variant_id": "3r_70_floor1",
+          "rooms": 3,
+          "property_type": "apartment",
+          "price": 2250000,
+          "price_scope": "published_starting_price_for_3r_variant",
+          "internal_area": null,
+          "advertised_area": 70,
+          "balcony_area": null,
+          "floor": 1,
+          "orientation": null,
+          "parking": null,
+          "storage": null,
+          "provenance": [
+            {
+              "source": "Yad1/Yad2 project listing",
+              "source_url": "https://www.yad2.co.il/yad1/project/19459",
+              "source_record_id": null,
+              "retrieved_at": "2026-09-07",
+              "scope": "unit_variant_marketing_fact",
+              "fields": [
+                "rooms",
+                "property_type",
+                "price",
+                "advertised_area",
+                "floor"
+              ]
+            }
+          ]
+        }
+      ],
+      "project_level": {
+        "status": "active_marketing",
+        "delivery": null,
+        "payment_terms": null,
+        "promotions": null,
+        "specification_features": [
+          "3-5 room mix",
+          "penthouses",
+          "project area range 70-146 m²",
+          "project floor range 1-10",
+          "light-rail proximity positioning"
+        ],
+        "provenance": [
+          {
+            "source": "Yad1 project page",
+            "source_url": "https://www.yad2.co.il/yad1/project/19459",
+            "source_record_id": null,
+            "retrieved_at": "2026-09-07",
+            "scope": "project_level_fact"
+          }
+        ]
+      },
+      "starting_price_context": {
+        "value": 2250000,
+        "applies_to": "3-room marketing line",
+        "provenance": {
+          "source": "Yad1 project page",
+          "source_url": "https://www.yad2.co.il/yad1/project/19459",
+          "source_record_id": null,
+          "retrieved_at": "2026-09-07",
+          "scope": "starting_price_context"
+        }
+      },
+      "qa_notes": [
+        "70 m² is the area shown on Yad1; it is not relabeled as internal area."
+      ]
+    },
+    {
+      "project": "חנקין 11",
+      "developer": "אורבנולוגיה בע\"מ",
+      "address": "יהושע חנקין 11, פתח תקווה",
+      "submarket": "כפר אברהם",
+      "role": [
+        "strict_quantitative_3r_contributor",
+        "strict_quantitative_5r_contributor",
+        "context_competitor"
+      ],
+      "unit_variants": [
+        {
+          "variant_id": "3r_80_floors6_8",
+          "rooms": 3,
+          "property_type": "apartment",
+          "price": 2250000,
+          "price_scope": "common_starting_price_for_floor_range",
+          "internal_area": null,
+          "advertised_area": 80,
+          "balcony_area": null,
+          "floor": "6-8",
+          "orientation": null,
+          "parking": null,
+          "storage": true,
+          "provenance": [
+            {
+              "source": "Yad1 project unit table",
+              "source_url": "https://www.yad2.co.il/yad1/project/14561",
+              "source_record_id": null,
+              "retrieved_at": "2026-09-07",
+              "scope": "unit_variant_marketing_fact",
+              "fields": [
+                "rooms",
+                "property_type",
+                "price",
+                "advertised_area",
+                "floor"
+              ]
+            },
+            {
+              "source": "Diraly project page",
+              "source_url": "https://www.diraly.co.il/projects/%D7%97%D7%A0%D7%A7%D7%99%D7%9F-11-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%95%D7%94",
+              "source_record_id": null,
+              "retrieved_at": "2026-09-07",
+              "scope": "project_product_fact",
+              "fields": [
+                "storage"
+              ]
+            }
+          ]
+        },
+        {
+          "variant_id": "5r_118_floors6_8",
+          "rooms": 5,
+          "property_type": "apartment",
+          "price": 2900000,
+          "price_scope": "common_starting_price_for_floor_range",
+          "internal_area": null,
+          "advertised_area": 118,
+          "balcony_area": null,
+          "floor": "6-8",
+          "orientation": null,
+          "parking": null,
+          "storage": true,
+          "provenance": [
+            {
+              "source": "Yad1 project unit table",
+              "source_url": "https://www.yad2.co.il/yad1/project/14561",
+              "source_record_id": null,
+              "retrieved_at": "2026-09-07",
+              "scope": "unit_variant_marketing_fact",
+              "fields": [
+                "rooms",
+                "property_type",
+                "price",
+                "advertised_area",
+                "floor"
+              ]
+            },
+            {
+              "source": "Diraly project page",
+              "source_url": "https://www.diraly.co.il/projects/%D7%97%D7%A0%D7%A7%D7%99%D7%9F-11-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%95%D7%94",
+              "source_record_id": null,
+              "retrieved_at": "2026-09-07",
+              "scope": "project_product_fact",
+              "fields": [
+                "storage"
+              ]
+            }
+          ]
+        }
+      ],
+      "project_level": {
+        "status": "marketed_project; public permit status not clearly official",
+        "delivery": "2026-12",
+        "payment_terms": "7% at contract; balance spread",
+        "promotions": null,
+        "specification_features": [
+          "attached storage for all apartments"
+        ],
+        "provenance": [
+          {
+            "source": "Diraly project page",
+            "source_url": "https://www.diraly.co.il/projects/%D7%97%D7%A0%D7%A7%D7%99%D7%9F-11-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%95%D7%94",
+            "source_record_id": null,
+            "retrieved_at": "2026-09-07",
+            "scope": "project_level_fact"
+          }
+        ]
+      },
+      "starting_price_context": null,
+      "qa_notes": [
+        "The 3R and 5R prices apply to floor ranges, not to individually priced floors. They cannot form a matched floor-price ladder."
+      ]
+    },
+    {
+      "project": "טריו – TRIO",
+      "developer": "קטה יזמות ובניה",
+      "address": "עין גנים 78-82, פתח תקווה",
+      "submarket": "עין גנים",
+      "role": [
+        "strict_quantitative_5r_contributor",
+        "context_competitor"
+      ],
+      "unit_variants": [
+        {
+          "variant_id": "5r_110_floor1",
+          "rooms": 5,
+          "property_type": "apartment",
+          "price": 2890000,
+          "price_scope": "published_starting_price",
+          "internal_area": null,
+          "advertised_area": 110,
+          "balcony_area": null,
+          "floor": 1,
+          "orientation": null,
+          "parking": 1,
+          "storage": true,
+          "provenance": [
+            {
+              "source": "Yad1 project page",
+              "source_url": "https://www.yad2.co.il/yad1/project/16844",
+              "source_record_id": null,
+              "retrieved_at": "2026-09-07",
+              "scope": "unit_variant_marketing_fact",
+              "fields": [
+                "rooms",
+                "property_type",
+                "price",
+                "advertised_area",
+                "floor"
+              ]
+            },
+            {
+              "source": "Yad1 project description",
+              "source_url": "https://www.yad2.co.il/yad1/project/16844",
+              "source_record_id": null,
+              "retrieved_at": "2026-09-07",
+              "scope": "project_product_fact",
+              "fields": [
+                "parking",
+                "storage"
+              ]
+            }
+          ]
+        }
+      ],
+      "project_level": {
+        "status": "construction_started",
+        "delivery": null,
+        "payment_terms": null,
+        "promotions": "3 years management fees free",
+        "specification_features": [
+          "wide sun balcony for every apartment",
+          "attached storage for every apartment",
+          "private parking for every apartment",
+          "underground parking",
+          "fast elevators",
+          "private gym",
+          "children's playroom",
+          "resident club"
+        ],
+        "provenance": [
+          {
+            "source": "Yad1 project page",
+            "source_url": "https://www.yad2.co.il/yad1/project/16844",
+            "source_record_id": null,
+            "retrieved_at": "2026-09-07",
+            "scope": "project_level_fact"
+          }
+        ]
+      },
+      "starting_price_context": {
+        "value": 2890000,
+        "applies_to": "5-room product",
+        "provenance": {
+          "source": "Yad1 project page",
+          "source_url": "https://www.yad2.co.il/yad1/project/16844",
+          "source_record_id": null,
+          "retrieved_at": "2026-09-07",
+          "scope": "starting_price_context"
+        }
+      },
+      "qa_notes": [
+        "A 5R 110 m² floor-5 variant has appeared in project inventory, but no second public floor-specific price was found; it is therefore a ladder near-miss, not a matched pair."
+      ]
+    },
+    {
+      "project": "רוטשילד 163-165",
+      "developer": "יוסי קטש בניה ויזמות בע\"מ",
+      "address": "רוטשילד 163-165, פתח תקווה",
+      "submarket": "המרכז השקט / מרכז העיר",
+      "role": [
+        "high_fidelity_5r_product_competitor"
+      ],
+      "unit_variants": [
+        {
+          "variant_id": "5r_model1_fierberg",
+          "rooms": 5,
+          "property_type": "apartment",
+          "price": null,
+          "price_scope": null,
+          "internal_area": 114,
+          "advertised_area": null,
+          "balcony_area": 12,
+          "floor": null,
+          "orientation": [
+            "north",
+            "east"
+          ],
+          "parking": 1,
+          "storage": null,
+          "provenance": [
+            {
+              "source": "Developer floorplan/product page",
+              "source_url": "https://katash.co.il/%D7%A8%D7%95%D7%98%D7%A9%D7%99%D7%9C%D7%93-163-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%95%D7%94/",
+              "source_record_id": null,
+              "retrieved_at": "2026-09-07",
+              "scope": "unit_specific_product_fact"
+            }
+          ]
+        },
+        {
+          "variant_id": "5r_model2",
+          "rooms": 5,
+          "property_type": "apartment",
+          "price": null,
+          "price_scope": null,
+          "internal_area": 112,
+          "advertised_area": null,
+          "balcony_area": 12,
+          "floor": null,
+          "orientation": [
+            "south",
+            "west"
+          ],
+          "parking": 1,
+          "storage": null,
+          "provenance": [
+            {
+              "source": "Developer floorplan/product page",
+              "source_url": "https://katash.co.il/%D7%A8%D7%95%D7%98%D7%A9%D7%99%D7%9C%D7%93-163-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%95%D7%94/",
+              "source_record_id": null,
+              "retrieved_at": "2026-09-07",
+              "scope": "unit_specific_product_fact"
+            }
+          ]
+        },
+        {
+          "variant_id": "5r_model3",
+          "rooms": 5,
+          "property_type": "apartment",
+          "price": null,
+          "price_scope": null,
+          "internal_area": 112,
+          "advertised_area": null,
+          "balcony_area": 12,
+          "floor": null,
+          "orientation": [
+            "north",
+            "west"
+          ],
+          "parking": 1,
+          "storage": null,
+          "provenance": [
+            {
+              "source": "Developer floorplan/product page",
+              "source_url": "https://katash.co.il/%D7%A8%D7%95%D7%98%D7%A9%D7%99%D7%9C%D7%93-163-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%95%D7%94/",
+              "source_record_id": null,
+              "retrieved_at": "2026-09-07",
+              "scope": "unit_specific_product_fact"
+            }
+          ]
+        }
+      ],
+      "project_level": {
+        "status": "developer_page_says_approaching_building_permit",
+        "delivery": null,
+        "payment_terms": "20% at signing; 80% at occupancy",
+        "promotions": "limited-time special offers mentioned, exact benefit not published",
+        "specification_features": [
+          "attached parking",
+          "2 elevators",
+          "37 planned units"
+        ],
+        "provenance": [
+          {
+            "source": "Developer project page",
+            "source_url": "https://katash.co.il/%D7%A8%D7%95%D7%98%D7%A9%D7%99%D7%9C%D7%93-163-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%95%D7%94/",
+            "source_record_id": null,
+            "retrieved_at": "2026-09-07",
+            "scope": "project_level_fact"
+          },
+          {
+            "source": "Yad1 project page",
+            "source_url": "https://www.yad2.co.il/yad1/project/12038",
+            "source_record_id": null,
+            "retrieved_at": "2026-09-07",
+            "scope": "project_level_fact"
+          }
+        ]
+      },
+      "starting_price_context": {
+        "value": 2590000,
+        "applies_to": "5-room apartments generally; not tied to a specific 112/114 m² model or floor",
+        "provenance": {
+          "source": "Yad1 project page",
+          "source_url": "https://www.yad2.co.il/yad1/project/12038",
+          "source_record_id": null,
+          "retrieved_at": "2026-09-07",
+          "scope": "starting_price_context"
+        }
+      },
+      "qa_notes": [
+        "This project is especially valuable for product-attribute comparison because the 112-114 m² 5R models expose exact 12 m² balconies and cardinal orientations.",
+        "No model-specific price was found; the common 5R starting price must not be assigned to an individual orientation/model."
+      ]
+    },
+    {
+      "project": "הבעל שם טוב 61",
+      "developer": "יוסי קטש בניה ויזמות בע\"מ",
+      "address": "בעל שם טוב 61, פתח תקווה",
+      "submarket": "מחנה יהודה / שעריה",
+      "role": [
+        "strict_quantitative_5r_contributor",
+        "high_fidelity_5r_product_competitor"
+      ],
+      "unit_variants": [
+        {
+          "variant_id": "5r_front_floor6",
+          "rooms": 5,
+          "property_type": "apartment",
+          "price": null,
+          "price_scope": null,
+          "internal_area": 110,
+          "advertised_area": null,
+          "balcony_area": 12,
+          "floor": 6,
+          "orientation": [
+            "west",
+            "north",
+            "south"
+          ],
+          "parking": 1,
+          "storage": null,
+          "provenance": [
+            {
+              "source": "Developer floorplan/product page",
+              "source_url": "https://katash.co.il/%D7%94%D7%91%D7%A2%D7%9C-%D7%A9%D7%9D-%D7%98%D7%95%D7%91-61/",
+              "source_record_id": null,
+              "retrieved_at": "2026-09-07",
+              "scope": "unit_specific_product_fact"
+            }
+          ]
+        },
+        {
+          "variant_id": "5r_rear_floors1_5",
+          "rooms": 5,
+          "property_type": "apartment",
+          "price": null,
+          "price_scope": null,
+          "internal_area": 113,
+          "advertised_area": null,
+          "balcony_area": 12,
+          "floor": "1-5",
+          "orientation": [
+            "east",
+            "north",
+            "south"
+          ],
+          "parking": 1,
+          "storage": {
+            "present": true,
+            "area": 5
+          },
+          "provenance": [
+            {
+              "source": "Developer floorplan/product page",
+              "source_url": "https://katash.co.il/%D7%94%D7%91%D7%A2%D7%9C-%D7%A9%D7%9D-%D7%98%D7%95%D7%91-61/",
+              "source_record_id": null,
+              "retrieved_at": "2026-09-07",
+              "scope": "unit_specific_product_fact"
+            }
+          ]
+        }
+      ],
+      "project_level": {
+        "status": "permit granted / marketed; Diraly describes project in construction",
+        "delivery": null,
+        "payment_terms": "15% at signing, 85% at delivery, without indexation",
+        "promotions": "PRESALE",
+        "specification_features": [
+          "13-unit boutique building",
+          "two apartments per typical floor",
+          "three orientations on the 5R models"
+        ],
+        "provenance": [
+          {
+            "source": "Yad1 project page",
+            "source_url": "https://www.yad2.co.il/yad1/project/16599",
+            "source_record_id": null,
+            "retrieved_at": "2026-09-07",
+            "scope": "project_level_fact"
+          },
+          {
+            "source": "Diraly project page",
+            "source_url": "https://www.diraly.co.il/projects/%D7%94%D7%91%D7%A2%D7%9C-%D7%A9%D7%9D-%D7%98%D7%95%D7%91-61-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%95%D7%94",
+            "source_record_id": null,
+            "retrieved_at": "2026-09-07",
+            "scope": "project_level_fact"
+          }
+        ]
+      },
+      "starting_price_context": {
+        "value": 2690000,
+        "applies_to": "5-room project marketing line; not tied to the 110 m² front or 113 m² rear model",
+        "provenance": {
+          "source": "Yad1 project page",
+          "source_url": "https://www.yad2.co.il/yad1/project/16599",
+          "source_record_id": null,
+          "retrieved_at": "2026-09-07",
+          "scope": "starting_price_context"
+        }
+      },
+      "qa_notes": [
+        "Exact model attributes are available, but model-specific prices are not."
+      ]
+    },
+    {
+      "project": "השופט ברנדייס 47",
+      "developer": "יוסי קטש בניה ויזמות בע\"מ",
+      "address": "השופט ברנדייס 47, פתח תקווה",
+      "submarket": "שיפר",
+      "role": [
+        "high_fidelity_5r_product_competitor"
+      ],
+      "unit_variants": [
+        {
+          "variant_id": "5r_model1_front",
+          "rooms": 5,
+          "property_type": "apartment",
+          "price": null,
+          "price_scope": null,
+          "internal_area": 118,
+          "advertised_area": null,
+          "balcony_area": 12,
+          "floor": "1-8",
+          "orientation": [
+            "east",
+            "south",
+            "west"
+          ],
+          "parking": 1,
+          "storage": {
+            "present": true,
+            "area": 5.5
+          },
+          "provenance": [
+            {
+              "source": "Developer floorplan/product page",
+              "source_url": "https://katash.co.il/%D7%91%D7%A8%D7%A0%D7%93%D7%99%D7%99%D7%A1-47-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%95%D7%94/",
+              "source_record_id": null,
+              "retrieved_at": "2026-09-07",
+              "scope": "unit_specific_product_fact"
+            }
+          ]
+        },
+        {
+          "variant_id": "5r_model2_rear",
+          "rooms": 5,
+          "property_type": "apartment",
+          "price": null,
+          "price_scope": null,
+          "internal_area": 113,
+          "advertised_area": null,
+          "balcony_area": 12,
+          "floor": "1-8",
+          "orientation": [
+            "west",
+            "north",
+            "east"
+          ],
+          "parking": 1,
+          "storage": {
+            "present": true,
+            "area": 5.5
+          },
+          "provenance": [
+            {
+              "source": "Developer floorplan/product page",
+              "source_url": "https://katash.co.il/%D7%91%D7%A8%D7%A0%D7%93%D7%99%D7%99%D7%A1-47-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%95%D7%94/",
+              "source_record_id": null,
+              "retrieved_at": "2026-09-07",
+              "scope": "unit_specific_product_fact"
+            }
+          ]
+        },
+        {
+          "variant_id": "5r_model3_front",
+          "rooms": 5,
+          "property_type": "apartment",
+          "price": null,
+          "price_scope": null,
+          "internal_area": 118,
+          "advertised_area": null,
+          "balcony_area": 11,
+          "floor": "1-8",
+          "orientation": [
+            "east",
+            "south",
+            "west"
+          ],
+          "parking": 1,
+          "storage": {
+            "present": true,
+            "area": null
+          },
+          "provenance": [
+            {
+              "source": "Developer floorplan/product page",
+              "source_url": "https://katash.co.il/%D7%91%D7%A8%D7%A0%D7%93%D7%99%D7%99%D7%A1-47-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%95%D7%94/",
+              "source_record_id": null,
+              "retrieved_at": "2026-09-07",
+              "scope": "unit_specific_product_fact",
+              "note": "Storage presence follows the developer statement that every standard 5R apartment has a storage room; exact model-3 storage area was not exposed."
+            }
+          ]
+        }
+      ],
+      "project_level": {
+        "status": "marketed project",
+        "delivery": null,
+        "payment_terms": null,
+        "promotions": null,
+        "specification_features": [
+          "16 standard 5R apartments in three models",
+          "standard 5R floors 1-8",
+          "3 orientations"
+        ],
+        "provenance": [
+          {
+            "source": "Developer project page",
+            "source_url": "https://katash.co.il/%D7%91%D7%A8%D7%A0%D7%93%D7%99%D7%99%D7%A1-47-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%95%D7%94/",
+            "source_record_id": null,
+            "retrieved_at": "2026-09-07",
+            "scope": "project_level_fact"
+          }
+        ]
+      },
+      "starting_price_context": {
+        "value": 2890000,
+        "applies_to": "latest observed Yad1 project starting price; not a model-specific 5R price",
+        "provenance": {
+          "source": "Yad1 project page",
+          "source_url": "https://www.yad2.co.il/yad1/project/14557",
+          "source_record_id": null,
+          "retrieved_at": "2026-09-07",
+          "scope": "starting_price_context"
+        }
+      },
+      "qa_notes": [
+        "Recent Yad1 crawls have shown both ₪2.69M and ₪2.89M project starting prices. The freshest observed result used here is ₪2.89M; this is project-level marketing context only."
+      ]
+    },
+    {
+      "project": "ברנדה 49",
+      "developer": "א.פ. נחום חברה לבניין והשקעות בע\"מ",
+      "address": "זאב ברנדה 49, פתח תקווה",
+      "submarket": "המרכז השקט / מרכז העיר",
+      "role": [
+        "strict_quantitative_5r_context",
+        "context_competitor"
+      ],
+      "unit_variants": [
+        {
+          "variant_id": "5r_121_floors4_8",
+          "rooms": 5,
+          "property_type": "apartment",
+          "price": 2900000,
+          "price_scope": "published_starting_price_for_floor_range",
+          "internal_area": null,
+          "advertised_area": 121,
+          "balcony_area": null,
+          "floor": "4-8",
+          "orientation": null,
+          "parking": 1,
+          "storage": {
+            "present": true,
+            "area": null
+          },
+          "provenance": [
+            {
+              "source": "Yad1/Yad2 current project listing",
+              "source_url": "https://www.yad2.co.il/yad1/project/15063",
+              "source_record_id": null,
+              "retrieved_at": "2026-09-07",
+              "scope": "unit_variant_marketing_fact",
+              "fields": [
+                "rooms",
+                "property_type",
+                "price",
+                "advertised_area",
+                "floor"
+              ]
+            },
+            {
+              "source": "Yad1 project page",
+              "source_url": "https://www.yad2.co.il/yad1/project/15063",
+              "source_record_id": null,
+              "retrieved_at": "2026-09-07",
+              "scope": "project_product_fact",
+              "fields": [
+                "parking",
+                "storage"
+              ]
+            }
+          ]
+        }
+      ],
+      "project_level": {
+        "status": "marketed project",
+        "delivery": null,
+        "payment_terms": null,
+        "promotions": null,
+        "specification_features": [
+          "121-301 m² project range",
+          "5-6 room mix",
+          "garden and penthouse products",
+          "parking and private storage in Tabu for every apartment"
+        ],
+        "provenance": [
+          {
+            "source": "Yad1 project page",
+            "source_url": "https://www.yad2.co.il/yad1/project/15063",
+            "source_record_id": null,
+            "retrieved_at": "2026-09-07",
+            "scope": "project_level_fact"
+          }
+        ]
+      },
+      "starting_price_context": {
+        "value": 2900000,
+        "applies_to": "project / 5R marketing line",
+        "provenance": {
+          "source": "Yad1 project page",
+          "source_url": "https://www.yad2.co.il/yad1/project/15063",
+          "source_record_id": null,
+          "retrieved_at": "2026-09-07",
+          "scope": "starting_price_context"
+        }
+      },
+      "qa_notes": [
+        "The ₪2.9M figure applies across a 4-8 floor range, not to individually priced floors."
+      ]
+    },
+    {
+      "project": "זאב ברנדה 22",
+      "developer": "רכסים בנייה ויזמות",
+      "address": "זאב ברנדה 22, פתח תקווה",
+      "submarket": "המרכז השקט / מרכז העיר",
+      "role": [
+        "high_relevance_3r_context",
+        "5r_context_competitor"
+      ],
+      "unit_variants": [
+        {
+          "variant_id": "3r_67_floors1_8",
+          "rooms": 3,
+          "property_type": "apartment",
+          "price": null,
+          "price_scope": null,
+          "internal_area": null,
+          "advertised_area": 67,
+          "balcony_area": null,
+          "floor": "1-8",
+          "orientation": null,
+          "parking": null,
+          "storage": null,
+          "provenance": [
+            {
+              "source": "Yad1/Yad2 current project listing",
+              "source_url": "https://www.yad2.co.il/yad1/project/16515",
+              "source_record_id": null,
+              "retrieved_at": "2026-09-07",
+              "scope": "unit_variant_marketing_fact"
+            }
+          ]
+        },
+        {
+          "variant_id": "5r_122_floors7_8",
+          "rooms": 5,
+          "property_type": "apartment",
+          "price": null,
+          "price_scope": null,
+          "internal_area": null,
+          "advertised_area": 122,
+          "balcony_area": null,
+          "floor": "7-8",
+          "orientation": null,
+          "parking": null,
+          "storage": null,
+          "provenance": [
+            {
+              "source": "Yad1/Yad2 current project listing",
+              "source_url": "https://www.yad2.co.il/yad1/project/16515",
+              "source_record_id": null,
+              "retrieved_at": "2026-09-07",
+              "scope": "unit_variant_marketing_fact"
+            }
+          ]
+        }
+      ],
+      "project_level": {
+        "status": "active marketed / construction context",
+        "delivery": "2026-11 reported in public project context",
+        "payment_terms": "80/20 option with bridge-loan marketing",
+        "promotions": null,
+        "specification_features": [
+          "67-192 m²",
+          "3-6 rooms",
+          "0-10 floors"
+        ],
+        "provenance": [
+          {
+            "source": "Yad1 current project page",
+            "source_url": "https://www.yad2.co.il/yad1/project/16515",
+            "source_record_id": null,
+            "retrieved_at": "2026-09-07",
+            "scope": "project_level_fact"
+          },
+          {
+            "source": "Diraly project page",
+            "source_url": "https://www.diraly.co.il/projects/%D7%96%D7%90%D7%91-%D7%91%D7%A8%D7%A0%D7%93%D7%94-22",
+            "source_record_id": null,
+            "retrieved_at": "2026-09-07",
+            "scope": "project_level_fact"
+          }
+        ]
+      },
+      "starting_price_context": null,
+      "qa_notes": [
+        "Excellent 3R size context at 67 m², but no reliable current unit-specific public price was found."
+      ]
+    },
+    {
+      "project": "שבזי 3-5",
+      "developer": "שמי בנייה ייזום והתחדשות עירונית",
+      "address": "שלום שבזי 3-5, פתח תקווה",
+      "submarket": "מחנה יהודה",
+      "role": [
+        "3r_context_competitor"
+      ],
+      "unit_variants": [
+        {
+          "variant_id": "3r_83_8_floors1_8",
+          "rooms": 3,
+          "property_type": "apartment",
+          "price": 2400000,
+          "price_scope": "published_starting_price_for_floor_range",
+          "internal_area": null,
+          "advertised_area": 83.8,
+          "balcony_area": null,
+          "floor": "1-8",
+          "orientation": null,
+          "parking": null,
+          "storage": null,
+          "provenance": [
+            {
+              "source": "Yad1/Yad2 project listing",
+              "source_url": "https://www.yad2.co.il/yad1/project/14639",
+              "source_record_id": null,
+              "retrieved_at": "2026-09-07",
+              "scope": "unit_variant_marketing_fact"
+            }
+          ]
+        }
+      ],
+      "project_level": {
+        "status": "PRESALE / marketed project",
+        "delivery": null,
+        "payment_terms": null,
+        "promotions": "PRESALE",
+        "specification_features": [
+          "3-6 room mix",
+          "83.8-181 m²",
+          "1-9 floors"
+        ],
+        "provenance": [
+          {
+            "source": "Yad1 project page",
+            "source_url": "https://www.yad2.co.il/yad1/project/14639",
+            "source_record_id": null,
+            "retrieved_at": "2026-09-07",
+            "scope": "project_level_fact"
+          }
+        ]
+      },
+      "starting_price_context": {
+        "value": 2400000,
+        "applies_to": "3R floor-range marketing line",
+        "provenance": {
+          "source": "Yad1 project page",
+          "source_url": "https://www.yad2.co.il/yad1/project/14639",
+          "source_record_id": null,
+          "retrieved_at": "2026-09-07",
+          "scope": "starting_price_context"
+        }
+      },
+      "qa_notes": [
+        "83.8 m² is materially larger than the 69 m² subject; keep as context, not a near-area match."
+      ]
+    }
+  ],
+  "matched_unit_pairs": {
+    "new_development_published_price_pairs": [],
+    "new_development_search_result": {
+      "status": "no_defensible_pair_found",
+      "definition_used": "same project + same rooms + same/similar area + same property type + different floor + both unit/floor prices publicly published",
+      "note": "Public project pages often publish one 'from' price across a floor range, not a per-floor price ladder. Such floor-range marketing lines were not converted into matched price pairs."
+    },
+    "new_development_near_misses": [
+      {
+        "project": "TRIO",
+        "rooms": 5,
+        "area": 110,
+        "property_type": "apartment",
+        "known_variant": {
+          "floor": 1,
+          "published_price": 2890000
+        },
+        "other_variant": {
+          "floor": 5,
+          "published_price": null
+        },
+        "reason_not_pair": "second floor-specific price not public",
+        "source_url": "https://www.yad2.co.il/yad1/project/16844"
+      },
+      {
+        "project": "חנקין 11",
+        "rooms": 3,
+        "area": 80,
+        "property_type": "apartment",
+        "floor_range": "6-8",
+        "published_price": 2250000,
+        "reason_not_pair": "one common starting price for floor range, not separate prices by floor",
+        "source_url": "https://www.yad2.co.il/yad1/project/14561"
+      },
+      {
+        "project": "חנקין 11",
+        "rooms": 5,
+        "area": 118,
+        "property_type": "apartment",
+        "floor_range": "6-8",
+        "published_price": 2900000,
+        "reason_not_pair": "one common starting price for floor range, not separate prices by floor",
+        "source_url": "https://www.yad2.co.il/yad1/project/14561"
+      },
+      {
+        "project": "ברנדה 49",
+        "rooms": 5,
+        "area": 121,
+        "property_type": "apartment",
+        "floor_range": "4-8",
+        "published_price": 2900000,
+        "reason_not_pair": "one common starting price for floor range, not separate prices by floor",
+        "source_url": "https://www.yad2.co.il/yad1/project/15063"
+      },
+      {
+        "project": "רוטשילד 163-165",
+        "rooms": 5,
+        "area_variants": [
+          112,
+          112,
+          114
+        ],
+        "property_type": "apartment",
+        "published_5r_starting_price": 2590000,
+        "reason_not_pair": "model-level dimensions/orientations are public but model/floor-specific prices are not",
+        "source_url": "https://www.yad2.co.il/yad1/project/12038"
+      },
+      {
+        "project": "הבעל שם טוב 61",
+        "rooms": 5,
+        "area_variants": [
+          110,
+          113
+        ],
+        "property_type": "apartment",
+        "published_5r_starting_price": 2690000,
+        "reason_not_pair": "single project/product starting price; no separate front/rear or floor-specific prices",
+        "source_url": "https://www.yad2.co.il/yad1/project/16599"
+      }
+    ],
+    "registered_sale_floor_pairs_observational_only": [
+      {
+        "family": "standard_3r",
+        "address": "אבינועם ילין 6, פתח תקווה",
+        "match_basis": "same address, rooms and registered area; transactions four days apart; distinct subparcels",
+        "observations": [
+          {
+            "deal_id": "11359095666",
+            "date": "2026-03-14",
+            "rooms": 3,
+            "area": 69,
+            "floor": 6,
+            "price": 2255000,
+            "subparcel": 7
+          },
+          {
+            "deal_id": "11359095667",
+            "date": "2026-03-18",
+            "rooms": 3,
+            "area": 69,
+            "floor": 2,
+            "price": 2170000,
+            "subparcel": 8
+          }
+        ],
+        "source_group": [
+          {
+            "source": "local Tax Authority / registered-deal dataset",
+            "source_file": "Pasted text(20260906-172653).txt",
+            "underlying_source": "registered_government_transactions"
+          },
+          {
+            "source": "WizBid public registered-deal mirror",
+            "source_url": "https://wizbid.co.il/nadlan/%D7%A4%D7%AA%D7%97%20%D7%AA%D7%A7%D7%95%D7%95%D7%94/rechov/%D7%90%D7%91%D7%99%D7%A0%D7%95%D7%A2%D7%9D%20%D7%99%D7%9C%D7%99%D7%9F",
+            "underlying_source": "registered_government_transactions"
+          }
+        ],
+        "caveat": "Observational floor pair only. No floor premium is calculated."
+      },
+      {
+        "family": "standard_5r",
+        "address": "פנקס 5, פתח תקווה",
+        "match_basis": "same address, same day, same rooms and registered area; distinct subparcels",
+        "observations": [
+          {
+            "deal_id": "3657117935",
+            "date": "2026-03-30",
+            "rooms": 5,
+            "area": 120,
+            "floor": 1,
+            "price": 3260000,
+            "subparcel": 1
+          },
+          {
+            "deal_id": "3657113382",
+            "date": "2026-03-30",
+            "rooms": 5,
+            "area": 120,
+            "floor": 5,
+            "price": 3225000,
+            "subparcel": 7
+          }
+        ],
+        "source_group": [
+          {
+            "source": "local Tax Authority / registered-deal dataset",
+            "source_file": "Pasted text(20260906-172653).txt",
+            "underlying_source": "registered_government_transactions"
+          },
+          {
+            "source": "Market2 public registered-deal mirror",
+            "source_url": "https://www.market2.co.il/lp/building/petah-tikva/%D7%97%D7%99%D7%99%D7%9D-%D7%9B%D7%94%D7%9F/5?street=%D7%A4%D7%A0%D7%A7%D7%A1",
+            "underlying_source": "registered_government_transactions"
+          }
+        ],
+        "caveat": "Strong observational floor comparison, but not an experimental control and no premium is calculated."
+      },
+      {
+        "family": "standard_3r",
+        "address": "בעל שם-טוב 2, פתח תקווה",
+        "match_basis": "same address, rooms and area; different floors",
+        "observations": [
+          {
+            "deal_id": "11359094126",
+            "date": "2025-07-14",
+            "rooms": 3,
+            "area": 74,
+            "floor": 4,
+            "price": 1930000,
+            "subparcel": 6
+          },
+          {
+            "deal_id": "11359094128",
+            "date": "2025-10-15",
+            "rooms": 3,
+            "area": 74,
+            "floor": 8,
+            "price": 1950000,
+            "subparcel": 8
+          }
+        ],
+        "source_group": [
+          {
+            "source": "local Tax Authority / registered-deal dataset",
+            "source_file": "Pasted text(20260906-172653).txt"
+          }
+        ],
+        "caveat": "Approximately three months apart; market-time effects are confounded with floor."
+      },
+      {
+        "family": "standard_5r",
+        "address": "זאב ברנדה 40, פתח תקווה",
+        "match_basis": "same address, rooms and area; different floors",
+        "observations": [
+          {
+            "deal_id": "11359094482",
+            "date": "2025-12-29",
+            "rooms": 5,
+            "area": 117,
+            "floor": 8,
+            "price": 3050000,
+            "subparcel": 10
+          },
+          {
+            "deal_id": "3656501192",
+            "date": "2026-03-16",
+            "rooms": 5,
+            "area": 117,
+            "floor": 1,
+            "price": 2860000,
+            "subparcel": 16
+          }
+        ],
+        "source_group": [
+          {
+            "source": "local Tax Authority / registered-deal dataset",
+            "source_file": "Pasted text(20260906-172653).txt"
+          }
+        ],
+        "caveat": "About 2.5 months apart and the source universe contains nearby mirror/duplicate-style records. Keep as lower-confidence observational evidence only."
+      }
+    ],
+    "quarantined_or_non_clean_floor_groups": [
+      {
+        "family": "standard_3r",
+        "address": "חפץ חיים 25, פתח תקווה",
+        "reason": "85 m² / floor-3 transaction has same-day/same-subparcel conflicting prices in the saved registered-deal universe; not a clean floor pair.",
+        "status": "quarantine"
+      }
+    ]
+  },
+  "matched_attribute_observations": {
+    "orientation": [
+      {
+        "project": "רוטשילד 163-165",
+        "comparison": [
+          {
+            "variant": "5r_model2",
+            "rooms": 5,
+            "internal_area": 112,
+            "balcony_area": 12,
+            "parking": 1,
+            "orientation": [
+              "south",
+              "west"
+            ],
+            "price": null
+          },
+          {
+            "variant": "5r_model3",
+            "rooms": 5,
+            "internal_area": 112,
+            "balcony_area": 12,
+            "parking": 1,
+            "orientation": [
+              "north",
+              "west"
+            ],
+            "price": null
+          }
+        ],
+        "price_comparison_available": false,
+        "source_url": "https://katash.co.il/%D7%A8%D7%95%D7%98%D7%A9%D7%99%D7%9C%D7%93-163-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%95%D7%94/",
+        "note": "Excellent matched attribute observation, but no model-specific prices; no orientation effect can be inferred."
+      },
+      {
+        "project": "הבעל שם טוב 61",
+        "comparison": [
+          {
+            "variant": "5r_front_floor6",
+            "internal_area": 110,
+            "balcony_area": 12,
+            "orientation": [
+              "west",
+              "north",
+              "south"
+            ],
+            "parking": 1,
+            "price": null
+          },
+          {
+            "variant": "5r_rear_floors1_5",
+            "internal_area": 113,
+            "balcony_area": 12,
+            "orientation": [
+              "east",
+              "north",
+              "south"
+            ],
+            "parking": 1,
+            "price": null
+          }
+        ],
+        "price_comparison_available": false,
+        "source_url": "https://katash.co.il/%D7%94%D7%91%D7%A2%D7%9C-%D7%A9%D7%9D-%D7%98%D7%95%D7%91-61/",
+        "note": "Near-size front/rear orientation observation; dimensions and storage also differ, and model-specific prices are unavailable."
+      }
+    ],
+    "balcony_size": [
+      {
+        "project": "השופט ברנדייס 47",
+        "comparison": [
+          {
+            "variant": "5r_model1_front",
+            "internal_area": 118,
+            "balcony_area": 12,
+            "orientation": [
+              "east",
+              "south",
+              "west"
+            ],
+            "parking": 1,
+            "price": null
+          },
+          {
+            "variant": "5r_model3_front",
+            "internal_area": 118,
+            "balcony_area": 11,
+            "orientation": [
+              "east",
+              "south",
+              "west"
+            ],
+            "parking": 1,
+            "price": null
+          }
+        ],
+        "price_comparison_available": false,
+        "source_url": "https://katash.co.il/%D7%91%D7%A8%D7%A0%D7%93%D7%99%D7%99%D7%A1-47-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%95%D7%94/",
+        "note": "Same rooms, same internal area and same orientation set; balcony differs by about 1 m², but prices by model are not public."
+      }
+    ],
+    "parking": [
+      {
+        "project": "רוטשילד 163-165",
+        "observation": "All three standard 5R floorplan models shown by the developer have one underground parking space.",
+        "price_effect_observable": false,
+        "source_url": "https://katash.co.il/%D7%A8%D7%95%D7%98%D7%A9%D7%99%D7%9C%D7%93-163-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%95%D7%94/"
+      },
+      {
+        "project": "TRIO",
+        "observation": "Project page states private parking for every apartment.",
+        "price_effect_observable": false,
+        "source_url": "https://www.yad2.co.il/yad1/project/16844"
+      }
+    ],
+    "storage": [
+      {
+        "project": "TRIO",
+        "observation": "Project page states attached storage for every apartment.",
+        "price_effect_observable": false,
+        "source_url": "https://www.yad2.co.il/yad1/project/16844"
+      },
+      {
+        "project": "חנקין 11",
+        "observation": "Project marketing states attached storage for all apartments.",
+        "price_effect_observable": false,
+        "source_url": "https://www.diraly.co.il/projects/%D7%97%D7%A0%D7%A7%D7%99%D7%9F-11-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%95%D7%94"
+      }
+    ]
+  },
+  "research_gaps": [
+    "No defensible current public new-development pair was found with same project + same rooms + same/similar area + same property type + different floors + both floor-specific prices published.",
+    "Most public Yad1 project tables expose one 'from' price across a floor range, which is not enough to infer a floor relationship.",
+    "Many current Yad2 listing cards do not expose balcony size, storage, elevator or exact cardinal orientation; those fields remain null unless an exact matching mirror/detail page verified them.",
+    "The standard 3R subject's 12 m² balcony has especially strong product-attribute analogues in developer floorplans, but no matched model-specific price pair was found.",
+    "The standard 5R subject has excellent 112-114 m² + 12 m² balcony + orientation floorplan evidence at Rothschild 163-165, but prices are only published as a general 5R starting price."
+  ],
+  "paid_api_needed_now": false,
+  "optional_paid_api_use": "Only if a later pass specifically attempts to uncover hidden unit-level/per-floor Yad1 inventory or Yad2 detail tokens for a small number of already-selected comparables. Not required for this enrichment file."
+}

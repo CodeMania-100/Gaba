@@ -1,0 +1,3812 @@
+{
+  "version": "special_unit_master_data_v1",
+  "prepared_at": "2026-09-07",
+  "purpose": "Frozen implementation package for the Gabay special-unit pricing decision-support flow.",
+  "subjects": {
+    "APT1": {
+      "rooms": 3,
+      "type": "garden",
+      "internal_area": 70.8,
+      "outdoor_area": 100.0,
+      "floor": "ground",
+      "orientation": "east",
+      "parking": null,
+      "storage": null
+    },
+    "APT2": {
+      "rooms": 3,
+      "type": "garden",
+      "internal_area": 65.6,
+      "outdoor_area": 69.0,
+      "floor": "ground",
+      "orientation": "east",
+      "parking": null,
+      "storage": null
+    },
+    "APT3": {
+      "rooms": 2,
+      "type": "garden",
+      "internal_area": 57.0,
+      "outdoor_area": 18.0,
+      "floor": "ground",
+      "orientation": "east",
+      "parking": null,
+      "storage": null
+    },
+    "APT36": {
+      "rooms": 6,
+      "type": "triplex",
+      "internal_area": 255.2,
+      "outdoor_area": 94.6,
+      "floors": "9-11",
+      "orientation": "east",
+      "parking": null,
+      "storage": null
+    },
+    "APT37": {
+      "rooms": 6,
+      "type": "triplex",
+      "internal_area": 260.1,
+      "outdoor_area": 97.4,
+      "floors": "9-11",
+      "orientation": "west",
+      "parking": null,
+      "storage": null
+    },
+    "APT38": {
+      "rooms": 7,
+      "type": "duplex",
+      "internal_area": 170.1,
+      "outdoor_area": 39.6,
+      "floors": "9-10",
+      "orientation": "west",
+      "parking": null,
+      "storage": null
+    },
+    "APT39": {
+      "rooms": 5,
+      "type": "duplex",
+      "internal_area": 158.6,
+      "outdoor_area": 39.6,
+      "floors": "9-10",
+      "orientation": null,
+      "parking": null,
+      "storage": null
+    }
+  },
+  "curated_special_review": {
+    "version": "special_review_evidence_v1",
+    "source_version": "special_attribute_evidence_v2",
+    "methodology": {
+      "purpose": "Decision-support evidence package; not an automated appraisal.",
+      "rules": [
+        "Keep completed sales, current asking, and competing/new-development evidence as separate lanes.",
+        "Do not transfer parking, storage, balcony, orientation, view, condition, or elevator from another unit in the same building to a sold unit.",
+        "Unknown remains Unknown.",
+        "Public listing/archive evidence at the same building is building/product context unless the exact sold unit is independently linked.",
+        "Conflicting transaction mirrors are flagged and excluded from automatic numeric summaries until resolved."
+      ]
+    },
+    "subjects": {
+      "APT1": {
+        "rooms": 3,
+        "type": "garden",
+        "internal_area": 70.8,
+        "outdoor_area": 100.0,
+        "floor": "ground",
+        "orientation": "east",
+        "parking": null,
+        "storage": null
+      },
+      "APT2": {
+        "rooms": 3,
+        "type": "garden",
+        "internal_area": 65.6,
+        "outdoor_area": 69.0,
+        "floor": "ground",
+        "orientation": "east",
+        "parking": null,
+        "storage": null
+      },
+      "APT3": {
+        "rooms": 2,
+        "type": "garden",
+        "internal_area": 57.0,
+        "outdoor_area": 18.0,
+        "floor": "ground",
+        "orientation": "east",
+        "parking": null,
+        "storage": null
+      },
+      "APT36": {
+        "rooms": 6,
+        "type": "triplex",
+        "internal_area": 255.2,
+        "outdoor_area": 94.6,
+        "floors": "9-11",
+        "orientation": "east",
+        "parking": null,
+        "storage": null
+      },
+      "APT37": {
+        "rooms": 6,
+        "type": "triplex",
+        "internal_area": 260.1,
+        "outdoor_area": 97.4,
+        "floors": "9-11",
+        "orientation": "west",
+        "parking": null,
+        "storage": null
+      },
+      "APT38": {
+        "rooms": 7,
+        "type": "duplex",
+        "internal_area": 170.1,
+        "outdoor_area": 39.6,
+        "floors": "9-10",
+        "orientation": "west",
+        "parking": null,
+        "storage": null
+      },
+      "APT39": {
+        "rooms": 5,
+        "type": "duplex",
+        "internal_area": 158.6,
+        "outdoor_area": 39.6,
+        "floors": "9-10",
+        "orientation": null,
+        "parking": null,
+        "storage": null
+      }
+    },
+    "baskets": {
+      "APT36_37": {
+        "subjects": [
+          "APT36",
+          "APT37"
+        ],
+        "direct_sold_triplex_count": 0,
+        "selected_broadened_sold": [
+          {
+            "address": "היבנר 38",
+            "deal_id": "3629954505",
+            "rooms": 5.0,
+            "internal_area": 230.0,
+            "price": 3635000.0,
+            "date": "2025-04-30",
+            "floor_configuration": "שלישית+גג",
+            "tax_property_type": "דירה בבית קומות",
+            "role": "broadened_sold_context",
+            "unit_features_known": {
+              "balcony_area": null,
+              "parking_count": null,
+              "storage": null,
+              "elevator": null,
+              "orientation": null,
+              "view": null,
+              "condition": null
+            },
+            "building_product_context": {
+              "scope": "same_building_recent_listing",
+              "product_type": "duplex_roof",
+              "confidence": "medium",
+              "facts": {
+                "listing_rooms": 7,
+                "listing_total_area_text": "300 m²",
+                "listing_floor_pattern": "3 + roof",
+                "parking_count": 2,
+                "roof_terrace_area": 130,
+                "condition": "needs_renovation"
+              },
+              "transfer_to_sold_unit": false,
+              "source_url": "https://zipika.com/features/property-details?lng=he&propId=3451165"
+            },
+            "numeric_status": "usable"
+          },
+          {
+            "address": "נקאש 15",
+            "deal_id": "3603100099",
+            "rooms": 6.0,
+            "internal_area": 268.0,
+            "price": 7000000.0,
+            "date": "2024-07-25",
+            "floor_configuration": "שלוש עשרה",
+            "tax_property_type": "דירה בבית קומות",
+            "role": "broadened_sold_context",
+            "unit_features_known": {
+              "balcony_area": null,
+              "parking_count": null,
+              "storage": null,
+              "elevator": null,
+              "orientation": null,
+              "view": null,
+              "condition": null
+            },
+            "building_product_context": {
+              "scope": "same_building_listing",
+              "product_type": "penthouse",
+              "confidence": "medium",
+              "facts": {
+                "listing_rooms": 6,
+                "listing_area": 170,
+                "balcony_area": 70,
+                "parking": true,
+                "storage": true,
+                "elevator": true,
+                "renovated": true
+              },
+              "transfer_to_sold_unit": false,
+              "source_url": "https://www.ad.co.il/archive/nadlansale?pageindex=2&sp1=103&sp2=2&sp3=3&sp4=1353&view=list&withimage=1"
+            },
+            "numeric_status": "usable"
+          },
+          {
+            "address": "תרזה קוגלמן 4",
+            "deal_id": "3635365586",
+            "rooms": 6.0,
+            "internal_area": 180.0,
+            "price": 5250000.0,
+            "date": "2025-11-23",
+            "floor_configuration": "תשיעית +עשירית",
+            "tax_property_type": "דירה בבית קומות",
+            "role": "broadened_sold_context",
+            "unit_features_known": {
+              "balcony_area": null,
+              "parking_count": null,
+              "storage": null,
+              "elevator": null,
+              "orientation": null,
+              "view": null,
+              "condition": null
+            },
+            "building_product_context": {
+              "scope": "same_building_transaction_history",
+              "product_type": "multi_level_apartment_pattern",
+              "confidence": "high_for_structure",
+              "facts": {
+                "historic_6r_units_on_floors_9_10": true,
+                "examples": [
+                  {
+                    "year": 2019,
+                    "area": 170,
+                    "floors": "9-10"
+                  },
+                  {
+                    "year": 2019,
+                    "area": 182,
+                    "floors": "9-10"
+                  }
+                ]
+              },
+              "transfer_to_sold_unit": false,
+              "price_conflict": {
+                "local_tax_value": 5250000,
+                "public_mirror_value": 242000,
+                "status": "quarantine_numeric_price_until_rechecked"
+              },
+              "source_url": "https://www.nadlanist.co.il/address/%D7%A7%D7%95%D7%92%D7%9C%D7%9E%D7%9F-%D7%AA%D7%A8%D7%96%D7%94-4-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%95%D7%94"
+            },
+            "numeric_status": "quarantined_price_conflict"
+          },
+          {
+            "address": "החרוב 25",
+            "deal_id": "3635637403",
+            "rooms": 6.0,
+            "internal_area": 244.0,
+            "price": 6200000.0,
+            "date": "2025-11-03",
+            "floor_configuration": null,
+            "tax_property_type": "דירה בבית קומות",
+            "role": "broadened_sold_context",
+            "unit_features_known": {
+              "balcony_area": null,
+              "parking_count": null,
+              "storage": null,
+              "elevator": null,
+              "orientation": null,
+              "view": null,
+              "condition": null
+            },
+            "building_product_context": null,
+            "numeric_status": "usable"
+          },
+          {
+            "address": "מסקין 26",
+            "deal_id": "3625659199",
+            "rooms": 6.0,
+            "internal_area": 278.0,
+            "price": 4500000.0,
+            "date": "2025-01-16",
+            "floor_configuration": null,
+            "tax_property_type": "דירה בבית קומות",
+            "role": "broadened_sold_context",
+            "unit_features_known": {
+              "balcony_area": null,
+              "parking_count": null,
+              "storage": null,
+              "elevator": null,
+              "orientation": null,
+              "view": null,
+              "condition": null
+            },
+            "building_product_context": null,
+            "numeric_status": "usable"
+          },
+          {
+            "address": "עין גדי 38",
+            "deal_id": "3626929892",
+            "rooms": 6.0,
+            "internal_area": 288.0,
+            "price": 6180000.0,
+            "date": "2025-01-23",
+            "floor_configuration": null,
+            "tax_property_type": "דירה בבית קומות",
+            "role": "broadened_sold_context",
+            "unit_features_known": {
+              "balcony_area": null,
+              "parking_count": null,
+              "storage": null,
+              "elevator": null,
+              "orientation": null,
+              "view": null,
+              "condition": null
+            },
+            "building_product_context": null,
+            "numeric_status": "usable"
+          }
+        ],
+        "evidence_gap": "No verified near-size completed triplex sale.",
+        "route": "broadened_premium_unit_review"
+      },
+      "APT38": {
+        "subjects": [
+          "APT38"
+        ],
+        "selected_sold": [
+          {
+            "address": "כנסת ישראל 17",
+            "deal_id": "3606035885",
+            "rooms": 7.0,
+            "internal_area": 170.0,
+            "price": 3700000.0,
+            "date": "2024-10-27",
+            "floor_configuration": "מרתף+קרקע+ראשונה",
+            "tax_property_type": "דירה בבית קומות",
+            "resolution": "UNIQUE_NUMERIC_TAX_MATCH",
+            "role": "multi_level_sold_candidate",
+            "typology_status": "multi_level_signal_not_unit-level_duplex_proof",
+            "unit_features_known": {
+              "balcony_area": null,
+              "parking_count": null,
+              "storage": null,
+              "elevator": null,
+              "orientation": null,
+              "view": null,
+              "condition": null
+            },
+            "building_product_context": null,
+            "numeric_status": "excluded_property_form_conflict",
+            "property_form_conflict": true,
+            "cannot_upgrade_to_verified_duplex": true,
+            "typology_link_source": "second_researcher_context_v1:qa_and_linkage (כנסת ישראל 17 multi-level candidate)",
+            "exclusion_reason": "Verified property_form_conflict: same-address archive evidence shows a private-house/cottage product form, not an apartment duplex -- excluded from the numeric sold median. Kept visible as context/QA."
+          },
+          {
+            "address": "י\"ד הבנים 3",
+            "deal_id": "3605884041",
+            "rooms": 7.0,
+            "internal_area": 148.0,
+            "price": 2900000.0,
+            "date": "2024-10-01",
+            "floor_configuration": "רביעית + גג",
+            "tax_property_type": "דירה בבית קומות",
+            "resolution": "UNIQUE_NUMERIC_TAX_MATCH",
+            "role": "multi_level_sold_candidate",
+            "typology_status": "multi_level_signal_not_unit-level_duplex_proof",
+            "unit_features_known": {
+              "balcony_area": null,
+              "parking_count": null,
+              "storage": null,
+              "elevator": null,
+              "orientation": null,
+              "view": null,
+              "condition": null
+            },
+            "building_product_context": null,
+            "numeric_status": "usable"
+          },
+          {
+            "address": "ישראל ישעיהו 6",
+            "deal_id": "3626587054",
+            "rooms": 6.0,
+            "internal_area": 166.0,
+            "price": 3700000.0,
+            "date": "2025-02-06",
+            "floor_configuration": "חמישית+שישית",
+            "tax_property_type": "דירה בבית קומות",
+            "resolution": "UNIQUE_NUMERIC_TAX_MATCH",
+            "role": "multi_level_sold_candidate",
+            "typology_status": "multi_level_signal_not_unit-level_duplex_proof",
+            "unit_features_known": {
+              "balcony_area": null,
+              "parking_count": null,
+              "storage": null,
+              "elevator": null,
+              "orientation": null,
+              "view": null,
+              "condition": null
+            },
+            "building_product_context": null,
+            "numeric_status": "usable"
+          },
+          {
+            "address": "פנחס חגין 1",
+            "deal_id": "3602707207",
+            "rooms": 6.0,
+            "internal_area": 168.0,
+            "price": 5900000.0,
+            "date": "2024-07-02",
+            "floor_configuration": "שישית+שביעית",
+            "tax_property_type": "דירה בבית קומות",
+            "resolution": "resolved_from_original_curated_address; cottage_collision_excluded",
+            "role": "multi_level_sold_candidate",
+            "typology_status": "multi_level_signal_not_unit-level_duplex_proof",
+            "unit_features_known": {
+              "balcony_area": null,
+              "parking_count": null,
+              "storage": null,
+              "elevator": null,
+              "orientation": null,
+              "view": null,
+              "condition": null
+            },
+            "building_product_context": null,
+            "numeric_status": "usable"
+          },
+          {
+            "address": "הפרדס 8",
+            "deal_id": "3602250022",
+            "rooms": 6.0,
+            "internal_area": 177.0,
+            "price": 5550000.0,
+            "date": "2024-06-26",
+            "floor_configuration": "שביעית+שמינית",
+            "tax_property_type": "דירה בבית קומות",
+            "resolution": "UNIQUE_NUMERIC_TAX_MATCH",
+            "role": "multi_level_sold_candidate",
+            "typology_status": "multi_level_signal_not_unit-level_duplex_proof",
+            "unit_features_known": {
+              "balcony_area": null,
+              "parking_count": null,
+              "storage": null,
+              "elevator": null,
+              "orientation": null,
+              "view": null,
+              "condition": null
+            },
+            "building_product_context": null,
+            "numeric_status": "usable"
+          },
+          {
+            "address": "תרזה קוגלמן 4",
+            "deal_id": "3635365586",
+            "rooms": 6.0,
+            "internal_area": 180.0,
+            "price": 5250000.0,
+            "date": "2025-11-23",
+            "floor_configuration": "תשיעית +עשירית",
+            "tax_property_type": "דירה בבית קומות",
+            "resolution": "UNIQUE_NUMERIC_TAX_MATCH",
+            "role": "multi_level_sold_candidate",
+            "typology_status": "multi_level_signal_not_unit-level_duplex_proof",
+            "unit_features_known": {
+              "balcony_area": null,
+              "parking_count": null,
+              "storage": null,
+              "elevator": null,
+              "orientation": null,
+              "view": null,
+              "condition": null
+            },
+            "building_product_context": {
+              "scope": "same_building_transaction_history",
+              "product_type": "multi_level_apartment_pattern",
+              "confidence": "high_for_structure",
+              "facts": {
+                "historic_6r_units_on_floors_9_10": true,
+                "examples": [
+                  {
+                    "year": 2019,
+                    "area": 170,
+                    "floors": "9-10"
+                  },
+                  {
+                    "year": 2019,
+                    "area": 182,
+                    "floors": "9-10"
+                  }
+                ]
+              },
+              "transfer_to_sold_unit": false,
+              "price_conflict": {
+                "local_tax_value": 5250000,
+                "public_mirror_value": 242000,
+                "status": "quarantine_numeric_price_until_rechecked"
+              },
+              "source_url": "https://www.nadlanist.co.il/address/%D7%A7%D7%95%D7%92%D7%9C%D7%9E%D7%9F-%D7%AA%D7%A8%D7%96%D7%94-4-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%95%D7%94"
+            },
+            "numeric_status": "quarantined_price_conflict"
+          }
+        ],
+        "direct_current_asking_token": "5i4tr2xo",
+        "route": "duplex_special_review"
+      },
+      "APT39": {
+        "subjects": [
+          "APT39"
+        ],
+        "selected_sold": [
+          {
+            "address": "מבצע דקל 14",
+            "deal_id": "3633131484",
+            "rooms": 5.0,
+            "internal_area": 157.0,
+            "price": 5900000.0,
+            "date": "2025-08-04",
+            "floor_configuration": "עשרים ושבע+ עשרים ושמונה",
+            "tax_property_type": "דירה בבית קומות",
+            "role": "multi_level_sold_candidate",
+            "typology_status": "high_confidence_duplex_penthouse_link",
+            "unit_features_known": {
+              "balcony_area": null,
+              "parking_count": null,
+              "storage": null,
+              "elevator": null,
+              "orientation": null,
+              "view": null,
+              "condition": null
+            },
+            "building_product_context": {
+              "scope": "same_address_same_floor_pattern_listing",
+              "product_type": "penthouse_duplex",
+              "confidence": "high_for_product_context",
+              "facts": {
+                "listing_rooms": "5 (originally 6)",
+                "listing_floor_pattern": "27+28",
+                "balcony_area": 50,
+                "storage_area": 10,
+                "parking": true,
+                "elevator": true,
+                "renovated": true
+              },
+              "transfer_to_sold_unit": false,
+              "source_url": "https://www.ad.co.il/archive/nadlansale?props=10-10&sp1=103&sp3=3&sp4=1849&view=list"
+            },
+            "numeric_status": "usable",
+            "typology_link_class": "HIGH_CONFIDENCE_UNIT_LINK",
+            "typology_link_source": "second_researcher_context_v1:APT39_MIVTZA_DEKEL_14_TAX_ARCHIVE_LINK"
+          },
+          {
+            "address": "איסר הראל 6",
+            "deal_id": "3601967910",
+            "rooms": 5.0,
+            "internal_area": 163.0,
+            "price": 5400000.0,
+            "date": "2024-06-07",
+            "floor_configuration": "תשע עשרה+עשרים",
+            "tax_property_type": "דירה בבית קומות",
+            "role": "multi_level_sold_candidate",
+            "typology_status": "multi_level_signal_with_building/product context where available",
+            "unit_features_known": {
+              "balcony_area": null,
+              "parking_count": null,
+              "storage": null,
+              "elevator": null,
+              "orientation": null,
+              "view": null,
+              "condition": null
+            },
+            "building_product_context": {
+              "scope": "transaction_mirror_crosscheck",
+              "confidence": "mixed",
+              "price_conflict": {
+                "local_tax_value": 5400000,
+                "wizbid_value": 5400000,
+                "market2_value": 4900000,
+                "status": "keep_official_local_value_but_flag_public_mirror_conflict",
+                "market2_floor": 9,
+                "market2_subparcel": "6360-188-74",
+                "floor_conflict_note": "local Tax floor 19+20 vs Market2 floor 9 -- unresolved, kept visible per second-researcher QA"
+              },
+              "source_urls": [
+                "https://wizbid.co.il/nadlan/%D7%A4%D7%AA%D7%97%20%D7%AA%D7%A7%D7%95%D7%95%D7%94/rechov/%D7%90%D7%99%D7%A1%D7%A8%20%D7%94%D7%A8%D7%90%D7%9C",
+                "https://www.market2.co.il/lp/building/petah-tikva/%D7%9E%D7%90%D7%99%D7%A8-%D7%A9%D7%A4%D7%99%D7%94/6?street=%D7%90%D7%99%D7%A1%D7%A8+%D7%94%D7%A8%D7%90%D7%9C"
+              ]
+            },
+            "numeric_status": "usable_with_public_mirror_conflict_flag"
+          },
+          {
+            "address": "כנסת ישראל 17",
+            "deal_id": "3605029846",
+            "rooms": 5.0,
+            "internal_area": 166.0,
+            "price": 4694000.0,
+            "date": "2024-09-26",
+            "floor_configuration": "מרתף+קרקע+ראשונה",
+            "tax_property_type": "דירה בבית קומות",
+            "role": "multi_level_sold_candidate",
+            "typology_status": "multi_level_signal_with_building/product context where available",
+            "unit_features_known": {
+              "balcony_area": null,
+              "parking_count": null,
+              "storage": null,
+              "elevator": null,
+              "orientation": null,
+              "view": null,
+              "condition": null
+            },
+            "building_product_context": null,
+            "numeric_status": "excluded_property_form_conflict",
+            "property_form_conflict": true,
+            "cannot_upgrade_to_verified_duplex": true,
+            "typology_link_source": "second_researcher_context_v1:qa_and_linkage (כנסת ישראל 17 multi-level candidate)",
+            "exclusion_reason": "Verified property_form_conflict: same-address archive evidence shows a private-house/cottage product form, not an apartment duplex -- excluded from the numeric sold median. Kept visible as context/QA."
+          },
+          {
+            "address": "התשעים ושלוש 3",
+            "deal_id": "3655065895",
+            "rooms": 5.0,
+            "internal_area": 145.0,
+            "price": 3200000.0,
+            "date": "2026-01-24",
+            "floor_configuration": "שלישית+רביעית+גג",
+            "tax_property_type": "דירה בבית קומות",
+            "role": "multi_level_sold_candidate",
+            "typology_status": "multi_level_signal_with_building/product context where available",
+            "unit_features_known": {
+              "balcony_area": null,
+              "parking_count": null,
+              "storage": null,
+              "elevator": null,
+              "orientation": null,
+              "view": null,
+              "condition": null
+            },
+            "building_product_context": null,
+            "numeric_status": "excluded_triplex_type_mismatch",
+            "known_typology_context": "triplex",
+            "typology_link_confidence": "high",
+            "relationship_to_Apt39": "type-relaxed multi-level transaction",
+            "typology_link_source": "second_researcher_context_v1:TRIPLEX_93_3_ARCHIVE_TAX_CROSSMATCH",
+            "exclusion_reason": "High-confidence second-researcher typology evidence (TRIPLEX_93_3_ARCHIVE_TAX_CROSSMATCH) identifies this transaction as triplex; the APT39 subject is duplex -- excluded from the numeric sold median. Kept visible as high-confidence triplex typology context (relevant to APT36/APT37 research, not as an APT39 sold comparable)."
+          },
+          {
+            "address": "יעל רום 17",
+            "deal_id": "3603812310",
+            "rooms": 5.0,
+            "internal_area": 144.0,
+            "price": 4200000.0,
+            "date": "2024-08-26",
+            "floor_configuration": "תשע עשרה + עשרים",
+            "tax_property_type": "דירה בבית קומות",
+            "role": "multi_level_sold_candidate",
+            "typology_status": "multi_level_signal_with_building/product context where available",
+            "unit_features_known": {
+              "balcony_area": null,
+              "parking_count": null,
+              "storage": null,
+              "elevator": null,
+              "orientation": null,
+              "view": null,
+              "condition": null
+            },
+            "building_product_context": {
+              "scope": "same_building_listing",
+              "product_type": "penthouse_duplex",
+              "confidence": "high_for_product_context",
+              "facts": {
+                "listing_rooms": 5,
+                "listing_area": 150,
+                "parking": true,
+                "storage": true,
+                "elevator": true,
+                "renovated": true,
+                "view": "park"
+              },
+              "transfer_to_sold_unit": false,
+              "source_url": "https://www.ad.co.il/archive/nadlansale?props=18-18&sp1=28&sp2=2&view=list&withprice=1"
+            },
+            "numeric_status": "usable"
+          },
+          {
+            "address": "שלומציון המלכה 6",
+            "deal_id": "3633966655",
+            "rooms": 5.5,
+            "internal_area": 157.0,
+            "price": 2920000.0,
+            "date": "2025-09-21",
+            "floor_configuration": "שמינית+גג",
+            "tax_property_type": "דירה בבית קומות",
+            "role": "multi_level_sold_candidate",
+            "typology_status": "multi_level_signal_with_building/product context where available",
+            "unit_features_known": {
+              "balcony_area": null,
+              "parking_count": null,
+              "storage": null,
+              "elevator": null,
+              "orientation": null,
+              "view": null,
+              "condition": null
+            },
+            "building_product_context": {
+              "scope": "transaction_mirror_crosscheck",
+              "confidence": "high_for_price_and_area",
+              "facts": {
+                "rooms": 5.5,
+                "area": 157,
+                "price": 2920000,
+                "date": "2025-09-21"
+              },
+              "source_url": "https://www.market2.co.il/lp/building/petah-tikva/%D7%A9%D7%9C%D7%95%D7%9E%D7%A6%D7%99%D7%95%D7%9F-%D7%94%D7%9E%D7%9C%D7%9B%D7%94/6"
+            },
+            "numeric_status": "usable"
+          }
+        ],
+        "rejected_sold": [
+          {
+            "address": "מסקין 11",
+            "deal_id": "3602001898",
+            "reason": "Tax Authority classifies as cottage/single-family; not an apartment duplex comparable."
+          }
+        ],
+        "direct_current_asking_token": "au7ykbzg",
+        "route": "duplex_special_review"
+      }
+    },
+    "asking_evidence": {
+      "0xkpq9l7": [
+        {
+          "token": "0xkpq9l7",
+          "address": "עגנון",
+          "attributes": {
+            "property_type": "דירת גן",
+            "rooms": 3.0,
+            "built_area": 74.0,
+            "advertised_area": 74.0,
+            "balcony_area_explicit": null,
+            "balcony_components": null,
+            "garden_area_explicit": 29.0,
+            "garden_components": null,
+            "parking_count": 1.0,
+            "storage": null,
+            "elevator": true,
+            "floor_configuration": "0",
+            "orientation": null,
+            "view": null,
+            "condition": null,
+            "build_year": null,
+            "attribute_source": "listing_unit_fact",
+            "description_excerpt": "חולמים על דירת גן ברמת ורבר פתח תקווה ?  אחוזת עגנון מבית יד ליטל - חווית מגורים אחרת . גאים להציג מבחר נדיר של דירות גן בנות 3-4 חדרים,  עם גינות גדולות ברחוב שקט ללא מוצא. זה המקום שבו הילדים יוצאים לשחק בגינה, מארחים בלי לחשוב פעמיים, ונהנים מהשקט של הבית - בלי לוותר על הנוחות של העיר. פארקים, הקניון הגדול והרכבת הקלה נמצאים במרחק הליכה. יש הרבה דירות. יש מעט מאוד דירות גן. בואו נדבר ."
+          },
+          "source": "C:\\Users\\AVIV\\gaba\\gov_source_tests\\data_source_test\\yad2_petah_special\\yad2_asking_normalized.csv",
+          "qa_notes": []
+        }
+      ],
+      "5i4tr2xo": [
+        {
+          "token": "5i4tr2xo",
+          "address": null,
+          "attributes": {
+            "property_type": "duplex",
+            "rooms": 7.0,
+            "built_area": 145.0,
+            "advertised_area": 145.0,
+            "balcony_area_explicit": null,
+            "balcony_components": null,
+            "garden_area_explicit": null,
+            "garden_components": null,
+            "parking_count": 1.0,
+            "storage": true,
+            "elevator": true,
+            "floor_configuration": "4+5",
+            "orientation": [
+              "east",
+              "west"
+            ],
+            "view": null,
+            "condition": [
+              "renovated"
+            ],
+            "build_year": null,
+            "attribute_source": "listing_unit_fact",
+            "description_excerpt": "מחפשים את הנכס הבא שלכם?? את ההזדמנות הזו לא תרצו לפספס!! דופלקס 5.5 חדרים שהוגדלה ל-7 145 מ\"ר + יחידת הורים הדירה שופצה מהיסוד קומה 4 + 5 2 כיווני אוויר מזרח - מערב ממ\"ד, מעלית, חניה יח\"ד מושכרת ב-3,500 חניה שהוסבה למחסן מושכר ב-650 קומת תחתונה: 4 חדרים, 2 שירותים, 2 מקלחות קומה עליונה: יחידה מושכרת של 2 חדרים עם שירותים ומקלחת + חדר מתבגר. הזדרזו ליצור קשר!",
+            "parking_status": "parking_space_converted_to_storage_in_description"
+          },
+          "source": "C:\\Users\\AVIV\\gaba\\gov_source_tests\\data_source_test\\yad2_petah_special\\yad2_asking_normalized.csv",
+          "qa_notes": [
+            "Description says the parking space was converted to a rented storage room; do not treat 'parking_count=1' as a normal usable parking space without clarification."
+          ]
+        }
+      ],
+      "7a8ynci1": [
+        {
+          "token": "7a8ynci1",
+          "address": null,
+          "attributes": {
+            "property_type": "duplex",
+            "rooms": 6.0,
+            "built_area": 177.0,
+            "advertised_area": 256.0,
+            "balcony_area_explicit": 80.0,
+            "balcony_components": [
+              80.0
+            ],
+            "garden_area_explicit": null,
+            "garden_components": null,
+            "parking_count": 2.0,
+            "storage": true,
+            "elevator": true,
+            "floor_configuration": "6",
+            "orientation": null,
+            "view": null,
+            "condition": null,
+            "build_year": null,
+            "attribute_source": "listing_unit_fact",
+            "description_excerpt": "למכירה בכפר גנים ג' במרכז השכונה ברחוב שקט.  דופלקס 6 חדרים ( הוסב ל 5)  177 מר + כ 80 מר מרפסות + מחסן + 2 חניות נפרדות"
+          },
+          "source": "C:\\Users\\AVIV\\gaba\\gov_source_tests\\data_source_test\\yad2_petah_special\\yad2_asking_normalized.csv",
+          "qa_notes": []
+        }
+      ],
+      "81py2t5u": [
+        {
+          "token": "81py2t5u",
+          "address": "הנביאים",
+          "attributes": {
+            "property_type": "דירת גן",
+            "rooms": 2.0,
+            "built_area": 47.0,
+            "advertised_area": 72.0,
+            "balcony_area_explicit": null,
+            "balcony_components": null,
+            "garden_area_explicit": 23.0,
+            "garden_components": [
+              23.0
+            ],
+            "parking_count": 1.0,
+            "storage": null,
+            "elevator": true,
+            "floor_configuration": "0",
+            "orientation": null,
+            "view": null,
+            "condition": [
+              "new_property"
+            ],
+            "build_year": null,
+            "attribute_source": "listing_unit_fact",
+            "description_excerpt": "דירת גן חדשה 47 מ\"ר בנוי + 23 מ\"ר גינה (ללא מרפסות מעל)  , הכוללת חניה , בבניין בוטיק בן 7 קומות בלבד , ליווי בנקאי.  כניסה מיידית  עסקה !!!!!"
+          },
+          "source": "C:\\Users\\AVIV\\gaba\\gov_source_tests\\data_source_test\\yad2_petah_special\\yad2_asking_normalized.csv",
+          "qa_notes": []
+        }
+      ],
+      "9bsyydsn": [
+        {
+          "token": "9bsyydsn",
+          "address": "העצמאות",
+          "attributes": {
+            "property_type": "penthouse",
+            "rooms": 6.0,
+            "built_area": 220.0,
+            "advertised_area": 220.0,
+            "balcony_area_explicit": null,
+            "balcony_components": null,
+            "garden_area_explicit": null,
+            "garden_components": null,
+            "parking_count": 2.0,
+            "storage": true,
+            "elevator": true,
+            "floor_configuration": "5+6",
+            "orientation": null,
+            "view": [
+              "open_view"
+            ],
+            "condition": null,
+            "build_year": null,
+            "attribute_source": "listing_unit_fact",
+            "description_excerpt": "למכירה דירת פנטהאוז -גג הכי יפה בכפר גנים ג' !! ברחוב העצמאות במיקום הכי מבוקש בשכונה, דירה עורפית ושקטה עם נוף פתוח שלא ייחסם מעולם,עם פרטיות חלומית!! סלון מרווח ופינת משפחה גדולה. דירה בקומה 5+6. יש מחסן. יש סורגים. 2 חניות נפרדות ענקיות בטאבו יש כניסה מ2 הקומות. במיקום הכי טוב בשכונה,בקרבה לבתי כנסת-בתי ספר וקניון גנים. לפרטים ותאום סיור התקשרו עכשיו- דניאל בן דוד נכסים"
+          },
+          "source": "C:\\Users\\AVIV\\gaba\\gov_source_tests\\data_source_test\\yad2_petah_special\\yad2_asking_normalized.csv",
+          "qa_notes": []
+        }
+      ],
+      "am2daomo": [
+        {
+          "token": "am2daomo",
+          "address": null,
+          "attributes": {
+            "property_type": "garden",
+            "rooms": 3.0,
+            "built_area": 76.0,
+            "advertised_area": 76.0,
+            "garden_area_explicit": 90.0,
+            "price": 2490000.0,
+            "parking_count": null,
+            "storage": null,
+            "elevator": null,
+            "floor_configuration": "ground",
+            "orientation": null,
+            "view": null,
+            "condition": null,
+            "attribute_source": "previous_local_audit"
+          },
+          "source": "previous_local_audit",
+          "qa_notes": []
+        }
+      ],
+      "au7ykbzg": [
+        {
+          "token": "au7ykbzg",
+          "address": "זאב ברנדה",
+          "attributes": {
+            "property_type": "duplex",
+            "rooms": 5.0,
+            "built_area": 160.0,
+            "advertised_area": 160.0,
+            "balcony_area_explicit": 50.0,
+            "balcony_components": [
+              50.0
+            ],
+            "garden_area_explicit": null,
+            "garden_components": null,
+            "parking_count": 1.0,
+            "storage": null,
+            "elevator": true,
+            "floor_configuration": "6",
+            "orientation": null,
+            "view": null,
+            "condition": [
+              "renovated"
+            ],
+            "build_year": null,
+            "attribute_source": "listing_unit_fact",
+            "description_excerpt": "למכירה דולפקס 5 חדרים  כולל מרפסת  50 מ  מטבח משופץ , יחידת הורים נעימה מרווחת   3 חדרי שרותים ומקלחות  חניה מקורה מקלט מסודר בבנין"
+          },
+          "source": "C:\\Users\\AVIV\\gaba\\gov_source_tests\\data_source_test\\yad2_petah_special\\yad2_asking_normalized.csv",
+          "qa_notes": [
+            "Balcony 50 m² recovered from explicit description text.",
+            "Parking is described as covered."
+          ]
+        }
+      ],
+      "kihl5wee": [
+        {
+          "token": "kihl5wee",
+          "address": null,
+          "attributes": {
+            "property_type": "garden",
+            "rooms": 3.0,
+            "built_area": 85.0,
+            "advertised_area": 85.0,
+            "garden_area_explicit": 89.0,
+            "price": 2900000.0,
+            "parking_count": null,
+            "storage": null,
+            "elevator": null,
+            "floor_configuration": "ground",
+            "orientation": null,
+            "view": null,
+            "condition": null,
+            "attribute_source": "previous_local_audit"
+          },
+          "source": "previous_local_audit",
+          "qa_notes": []
+        }
+      ],
+      "tkgbr5hx": [
+        {
+          "token": "tkgbr5hx",
+          "address": "עין גנים",
+          "attributes": {
+            "property_type": "duplex",
+            "rooms": 6.0,
+            "built_area": 220.0,
+            "advertised_area": 220.0,
+            "balcony_area_explicit": 130.0,
+            "balcony_components": [
+              130.0
+            ],
+            "garden_area_explicit": null,
+            "garden_components": null,
+            "parking_count": 3.0,
+            "storage": null,
+            "elevator": true,
+            "floor_configuration": "6-7",
+            "orientation": null,
+            "view": null,
+            "condition": null,
+            "build_year": null,
+            "attribute_source": "listing_unit_fact",
+            "description_excerpt": "למכירה בעין גנים 83 פתח תקווה נדיר! פנטהאוז דופלקס ענק עם 3 חניות בטאבו! נכס ייחודי ביותר בשוק הנדל\"ן מושלם למשפחות גדולות או כאלה שרוצים לייצר דירה נוספת ומניבה לנכס יש שתי כניסות , אופטימלי לחלוקה. שטח בנוי: 220 מ\"ר נטו! מרפסת שמש: 130 מ\"ר. 6 חדרים (אופציה ליותר) סלון ענק מעל 100 מטר מיקום: קומה 6-7. 3 חניות פרטיות רשומות בטאבו."
+          },
+          "source": "C:\\Users\\AVIV\\gaba\\gov_source_tests\\data_source_test\\yad2_petah_special\\yad2_asking_normalized.csv",
+          "qa_notes": [
+            "Floor configuration corrected from description 'קומה 6-7'."
+          ]
+        }
+      ],
+      "ub2tzaqh": [
+        {
+          "token": "ub2tzaqh",
+          "address": null,
+          "attributes": {
+            "property_type": "duplex",
+            "rooms": 6.0,
+            "built_area": 165.0,
+            "advertised_area": 255.0,
+            "balcony_area_explicit": 92.0,
+            "balcony_components": [
+              72.0,
+              20.0
+            ],
+            "garden_area_explicit": null,
+            "garden_components": null,
+            "parking_count": 2.0,
+            "storage": true,
+            "elevator": true,
+            "floor_configuration": "7+8",
+            "orientation": null,
+            "view": null,
+            "condition": [
+              "renovated",
+              "upgraded"
+            ],
+            "build_year": null,
+            "attribute_source": "listing_unit_fact",
+            "description_excerpt": "נכס כזה בשכונה לא יוצא לשוק בכל יום! *דופלקס מפנק בנווה גן המבוקשת*  - דופלקס 6 חד' כ165 מ\"ר בנוי!  -מרפסת 72 מ\"ר + מרפסת 20 מ\"ר  -סוויטת הורים ענקית! מפנקת במיוחד -בקומות 7+8 -2 חניות בטאבו -הנכס משודרג ומשופץ -מחסן מסודר וגדול  מחפשים איכות חיים? זה הנכס בשבילכם! אל תפספסו את ההזדמנות   לפרטים נוספים התקשרו עכשיו!"
+          },
+          "source": "C:\\Users\\AVIV\\gaba\\gov_source_tests\\data_source_test\\yad2_petah_special\\yad2_asking_normalized.csv",
+          "qa_notes": []
+        }
+      ],
+      "wbvl4w9m": [
+        {
+          "token": "wbvl4w9m",
+          "address": "יוסף נקר",
+          "attributes": {
+            "property_type": "duplex",
+            "rooms": 6.0,
+            "built_area": 168.0,
+            "advertised_area": 285.0,
+            "balcony_area_explicit": 117.0,
+            "balcony_components": [
+              117.0
+            ],
+            "garden_area_explicit": null,
+            "garden_components": null,
+            "parking_count": 2.0,
+            "storage": true,
+            "elevator": true,
+            "floor_configuration": "7",
+            "orientation": null,
+            "view": null,
+            "condition": null,
+            "build_year": null,
+            "attribute_source": "listing_unit_fact",
+            "description_excerpt": "נכס מספר: 51215, חדש בשוק! בכפר גנים ג', במיקום הכי טוב הכי גבוה בשכונה, דופלקס פנטהאוז מרווח, 2 דירות בקומה, מרפסות ענקיות 117 מ\"ר, מחסן צמוד, 2 חניות נפרדות, מעלית שבת! קרוב למרכזים המסחריים ולמוסדות לימוד! מומלץ במיוחד."
+          },
+          "source": "C:\\Users\\AVIV\\gaba\\gov_source_tests\\data_source_test\\yad2_petah_special\\yad2_asking_normalized.csv",
+          "qa_notes": [
+            "117 m² terraces recovered from explicit description text.",
+            "Description explicitly states storage, two parking spaces, and Sabbath elevator."
+          ]
+        }
+      ]
+    },
+    "qa_flags": [
+      {
+        "severity": "high",
+        "subject": "APT36_37/APT38",
+        "record": "תרזה קוגלמן 4 | 6R | 180 m² | 2025-11-23",
+        "issue": "Local Tax dataset shows ₪5.25M, while a public Tax-derived mirror shows ₪242k. Exclude this price from numeric summaries until rechecked against the direct official source."
+      },
+      {
+        "severity": "medium",
+        "subject": "APT39",
+        "record": "איסר הראל 6 | 5R | 163 m² | 2024-06-07",
+        "issue": "Local Tax dataset and WizBid show ₪5.4M; Market2 shows ₪4.9M. Keep local official value but display mirror-conflict warning."
+      },
+      {
+        "severity": "resolved",
+        "subject": "APT38",
+        "record": "6R | 168 m² | ₪5.9M",
+        "issue": "Numeric match hit both מרטין בובר 11 (cottage) and פנחס חגין 1 (apartment). Original curated address resolves the intended comp to פנחס חגין 1; cottage is excluded."
+      },
+      {
+        "severity": "resolved",
+        "subject": "APT39",
+        "record": "מסקין 11",
+        "issue": "Removed from apartment-duplex basket because Tax Authority classifies it as a single-family cottage."
+      }
+    ]
+  },
+  "expanded_market_evidence": {
+    "version": "special_evidence_bundle_v4",
+    "retrieved_at": "2026-09-07",
+    "methodology": {
+      "lanes": [
+        "registered_sold",
+        "current_asking",
+        "new_development_competitors"
+      ],
+      "sold_attribute_rule": "Do not copy listing/project attributes onto historical sold transactions without a defensible exact-unit link.",
+      "current_listing_rule": "Unit-level attributes are usable when explicit in that listing.",
+      "competitor_rule": "Project marketing prices are asking/positioning evidence, not achieved-sale evidence unless explicitly reported as a sale and kept outside the Tax lane.",
+      "conflict_rule": "Preserve conflicts and stale/changed asking prices rather than silently reconciling."
+    },
+    "competitors": [
+      {
+        "tier": "core",
+        "project_name": "חנקין 11",
+        "address": "יהושע חנקין 11, פתח תקווה",
+        "submarket": "כפר אברהם",
+        "developer": "אורבנולוגיה",
+        "rooms": "3-6",
+        "area_range_m2": "80-160",
+        "floors": "up to 10",
+        "special_products": "5R duplex 150m² floors 9-10; 6R duplex 160m² floors 9-10",
+        "unit_specific_prices": "5R duplex ₪3.85M; 6R duplex ₪4.00M",
+        "project_start_price": "₪2.25M",
+        "features": "parking, storage, elevator, balcony; attached storage described for apartments",
+        "payment_terms": "7% at contract; balance spread without indexation",
+        "status": "current marketed project",
+        "relevance": "very high for APT38/APT39; broadened for APT36/37",
+        "source_urls": [
+          "https://www.yad2.co.il/yad1/project/14561",
+          "https://www.diraly.co.il/projects/%D7%97%D7%A0%D7%A7%D7%99%D7%9F-11-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%95%D7%94"
+        ],
+        "qa_notes": "Strongest transparent new-development duplex pricing found."
+      },
+      {
+        "tier": "core",
+        "project_name": "מגדלי ספיר",
+        "address": "יוסף ספיר 25, פתח תקווה",
+        "submarket": "שיפר",
+        "developer": "האחים מאיה",
+        "rooms": "4-6",
+        "area_range_m2": "105-221",
+        "floors": "1-10",
+        "special_products": "5R duplex 203m² floors 9-10; 6R duplex 190m² floors 9-10",
+        "unit_specific_prices": "5R duplex ₪3.90M; 6R duplex ₪3.70M; additional 6R duplex ₪4.10M",
+        "project_start_price": "₪2.49M",
+        "features": "2 elevators; hotel-style lobby; special-unit amenity detail incomplete",
+        "payment_terms": "PRE-SALE / convenient payment terms",
+        "status": "active marketed project",
+        "relevance": "very high for APT36-39",
+        "source_urls": [
+          "https://www.diraly.co.il/projects/%D7%9E%D7%92%D7%93%D7%9C%D7%99-%D7%A1%D7%A4%D7%99%D7%A8-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%95%D7%94"
+        ],
+        "qa_notes": "Useful explicit duplex price ladder."
+      },
+      {
+        "tier": "core",
+        "project_name": "זאב ברנדה 22",
+        "address": "זאב ברנדה 22, פתח תקווה",
+        "submarket": "המרכז השקט / מרכז העיר",
+        "developer": "רכסים בנייה ויזמות",
+        "rooms": "2-6",
+        "area_range_m2": "60-192",
+        "floors": "1-10",
+        "special_products": "5R roof duplex 148m² floors 9-10; 6R roof duplex up to 192m² floors 9-10; 3.5-4R garden units",
+        "unit_specific_prices": null,
+        "project_start_price": null,
+        "features": "all apartments: mamad, sun balcony, regular underground parking; 4 elevators; roof duplexes have open view; duplex areas exclude balconies/roof terraces",
+        "payment_terms": "80/20 with bridge-loan options reported",
+        "status": "active construction; expected completion Nov 2026",
+        "relevance": "very high same-submarket premium-product context",
+        "source_urls": [
+          "https://www.yad2.co.il/yad1/project/16515",
+          "https://www.diraly.co.il/projects/%D7%96%D7%90%D7%91-%D7%91%D7%A8%D7%A0%D7%93%D7%94-22"
+        ],
+        "qa_notes": "Price remains non-public; product definition is strong."
+      },
+      {
+        "tier": "core",
+        "project_name": "ברנדה 49",
+        "address": "זאב ברנדה 49, פתח תקווה",
+        "submarket": "המרכז השקט / מרכז העיר",
+        "developer": "א.פ. נחום חברה לבניין והשקעות",
+        "rooms": "5-6",
+        "area_range_m2": "121-301",
+        "floors": "0-9",
+        "special_products": "garden apartments and penthouses; project area range extends to 301m²",
+        "unit_specific_prices": null,
+        "project_start_price": "₪2.90M",
+        "features": "parking + private storage in Tabu for every apartment; premium boutique specification",
+        "payment_terms": null,
+        "status": "new project / construction process",
+        "relevance": "very high large-premium context, especially APT36/37",
+        "source_urls": [
+          "https://www.yad2.co.il/yad1/project/15063",
+          "https://www.yad2.co.il/yad1/newprojects/center-and-sharon?area=4&category=1&city=7900&neighborhood=2001001"
+        ],
+        "qa_notes": "Blueprint gallery exists publicly, but text crawl does not expose special-unit floorplan dimensions."
+      },
+      {
+        "tier": "core",
+        "project_name": "שבזי 3-5",
+        "address": "שלום שבזי 3-5, פתח תקווה",
+        "submarket": "מחנה יהודה / מרכז העיר",
+        "developer": "שמי בנייה ייזום והתחדשות עירונית",
+        "rooms": "3-6",
+        "area_range_m2": "83.8-181",
+        "floors": "1-9",
+        "special_products": "luxury duplexes; Yad2 search exposes 6R duplex 181m² on floor 9",
+        "unit_specific_prices": null,
+        "project_start_price": "₪2.40M",
+        "features": "large sun balconies; private parking; premium technical specification",
+        "payment_terms": "PRE-SALE",
+        "status": "active presale",
+        "relevance": "high 6R product/size benchmark",
+        "source_urls": [
+          "https://www.yad2.co.il/yad1/project/14639"
+        ],
+        "qa_notes": "Exact 181m² duplex price still not public."
+      },
+      {
+        "tier": "core",
+        "project_name": "DeFour",
+        "address": "ברנדה פינת בלפור, פתח תקווה",
+        "submarket": "המרכז השקט / מרכז העיר",
+        "developer": "בוני התיכון",
+        "rooms": "3-6",
+        "area_range_m2": null,
+        "floors": "9",
+        "special_products": "3R garden; 6R roof/penthouse; additional premium upper-floor products",
+        "unit_specific_prices": null,
+        "project_start_price": "~₪2.20M-₪2.325M depending current crawl",
+        "features": "sun balconies; elevator; mamad; air conditioning; energy-efficiency/green-building positioning",
+        "payment_terms": "customized payment terms",
+        "status": "marketed project",
+        "relevance": "very high for APT1-3 garden positioning and APT36-39 premium roof context",
+        "source_urls": [
+          "https://www.diraly.co.il/projects/defour/cost",
+          "https://www.yad2.co.il/realestate/forsale?area=4&city=7900&minRooms=6&neighborhood=2001001&property=6&topArea=2"
+        ],
+        "qa_notes": "Special-unit price remains undisclosed."
+      },
+      {
+        "tier": "core",
+        "project_name": "THE SPOT",
+        "address": "יהושע שטמפפר 83-87, פתח תקווה",
+        "submarket": "שיפר",
+        "developer": "שיא עינב",
+        "rooms": "3-5",
+        "area_range_m2": "70-146",
+        "floors": "1-10",
+        "special_products": "5R duplex 146m² floors 9-10; penthouse products",
+        "unit_specific_prices": null,
+        "project_start_price": "₪2.25M",
+        "features": "light-rail proximity; premium urban positioning",
+        "payment_terms": null,
+        "status": "active marketed project",
+        "relevance": "high for APT39 by typology/size",
+        "source_urls": [
+          "https://www.yad2.co.il/yad1/project/19459",
+          "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&property=7&propertyGroup=apartments"
+        ],
+        "qa_notes": "Exact 5R duplex price/outdoor area still missing."
+      },
+      {
+        "tier": "core",
+        "project_name": "Y PREMIUM",
+        "address": "יעל רום 8, פתח תקווה",
+        "submarket": "הדר המושבות החדשה / אם המושבות החדשה",
+        "developer": "יעקבי יוניברסל",
+        "rooms": "5-6",
+        "area_range_m2": null,
+        "floors": "high-rise",
+        "special_products": "duplexes, mini-penthouses, penthouses; reported duplex-penthouse 192m² + 83m² terraces",
+        "unit_specific_prices": "reported developer sale: 192m² + 83m² terraces at ₪6.95M (Jan 2026)",
+        "project_start_price": "marketing from ₪3.60M",
+        "features": "premium high-rise; storage/terrace product context",
+        "payment_terms": "marketing discount reported on some crawls",
+        "status": "immediate-occupancy marketing",
+        "relevance": "high premium upper-bound context",
+        "source_urls": [
+          "https://www.yad2.co.il/yad1/project/3768",
+          "https://www.ptnews.co.il/49208"
+        ],
+        "qa_notes": "Press/developer-reported sale is not Tax Authority lane. Public unit-count sources conflict."
+      },
+      {
+        "tier": "core",
+        "project_name": "ביאליק 8",
+        "address": "ביאליק 8, פתח תקווה",
+        "submarket": "מחנה יהודה / המרכז השקט",
+        "developer": "אברן תמ\"א 38",
+        "rooms": "4-6",
+        "area_range_m2": "101-184",
+        "floors": "0-6/7",
+        "special_products": "6R penthouse 132m² + 52m² terraces; 4R garden 115m² + 66m² garden; 6R garden 154m²",
+        "unit_specific_prices": "6R penthouse ₪3.749M; 4R garden ₪2.89M; 6R garden ₪3.69M",
+        "project_start_price": "₪2.25M-₪2.59M depending unit/crawl",
+        "features": "boutique project, premium specification",
+        "payment_terms": "attractive financing terms",
+        "status": "expected occupancy Aug 2026",
+        "relevance": "high — explicit premium-unit outdoor area + price",
+        "source_urls": [
+          "https://www.yad2.co.il/yad1/project/13120"
+        ],
+        "qa_notes": "One of the best explicit project-level garden/penthouse examples."
+      },
+      {
+        "tier": "core",
+        "project_name": "NAVE PARK נווה פארק",
+        "address": "דוד טבצ'ניק, נווה גן, פתח תקווה",
+        "submarket": "נווה גן",
+        "developer": "י.ח. דמרי / קבוצת אופיר",
+        "rooms": "3-6",
+        "area_range_m2": "83-280",
+        "floors": "8-31",
+        "special_products": "6R units floors 8-9; 5R penthouse 195m² floor 31",
+        "unit_specific_prices": "6R from ₪3.85M; 5R penthouse 195m² from ₪7.50M",
+        "project_start_price": "₪2.75M",
+        "features": "private parking; 4 elevators; resident lounge; gym; optional paid storage; mamad",
+        "payment_terms": null,
+        "status": "building 1 occupancy Sep 2027; building 2 Sep 2029",
+        "relevance": "high premium/high-rise comparator for APT36-39",
+        "source_urls": [
+          "https://www.yad2.co.il/yad1/project/15615"
+        ],
+        "qa_notes": "6R area not exposed in current text crawl; penthouse price is explicit."
+      },
+      {
+        "tier": "secondary",
+        "project_name": "RENEW פסגת הדר",
+        "address": "שאול חרנם 2, פתח תקווה",
+        "submarket": "פסגת הדר / נווה עוז הירוקה",
+        "developer": "קבוצת שבירו",
+        "rooms": "6",
+        "area_range_m2": "159",
+        "floors": "9",
+        "special_products": "large 6R upper-floor apartments; not explicitly duplex",
+        "unit_specific_prices": "6R 159m² from ₪3.69M",
+        "project_start_price": "₪3.69M",
+        "features": "2 parking spaces per apartment; attached storage; mamad; open view",
+        "payment_terms": null,
+        "status": "last units / immediate occupancy",
+        "relevance": "secondary high-quality 6R new-build baseline",
+        "source_urls": [
+          "https://www.yad2.co.il/yad1/project/18243"
+        ],
+        "qa_notes": "Useful new-build baseline but not a direct special typology."
+      },
+      {
+        "tier": "secondary",
+        "project_name": "אתוס ETOS",
+        "address": "פרופ' ישראל ייבין 6, פתח תקווה",
+        "submarket": "פסגת הדר / נווה עוז הירוקה",
+        "developer": "רוטשטיין נדל\"ן",
+        "rooms": "3-6",
+        "area_range_m2": null,
+        "floors": null,
+        "special_products": "5.5-6R, mini-penthouses, luxury penthouses",
+        "unit_specific_prices": "5.5R from ₪4.099M; 6R price not public",
+        "project_start_price": "₪4.099M",
+        "features": "parking, air-conditioning, elevator, mamad, balcony",
+        "payment_terms": "multiple marketing tracks",
+        "status": "marketed premium project",
+        "relevance": "secondary premium positioning",
+        "source_urls": [
+          "https://www.yad2.co.il/yad1/project/16202"
+        ],
+        "qa_notes": "Useful for premium positioning; less direct without size/price on penthouses."
+      },
+      {
+        "tier": "secondary",
+        "project_name": "MALA",
+        "address": "יוספסברג 7-9, פתח תקווה",
+        "submarket": "כפר גנים ב",
+        "developer": "קבוצת אלמוג",
+        "rooms": "3-6",
+        "area_range_m2": null,
+        "floors": "1-24",
+        "special_products": "luxury penthouses",
+        "unit_specific_prices": null,
+        "project_start_price": "₪2.345M",
+        "features": "premium complex; pool; rich technical specification",
+        "payment_terms": null,
+        "status": "expected occupancy Jun 2030",
+        "relevance": "secondary future premium competitor",
+        "source_urls": [
+          "https://www.yad2.co.il/yad1/project/16603"
+        ],
+        "qa_notes": "Long delivery horizon; use for strategy/positioning, not near-term pricing parity."
+      },
+      {
+        "tier": "secondary",
+        "project_name": "אחד העם 61",
+        "address": "אחד העם 61, פתח תקווה",
+        "submarket": "המרכז השקט / מרכז העיר",
+        "developer": "בראשית עיר מתחדשת",
+        "rooms": "4-6",
+        "area_range_m2": null,
+        "floors": "5-6 / building 8 floors",
+        "special_products": "standard 5R/6R upper-floor units; not special typology",
+        "unit_specific_prices": "5R ₪2.49M; 6R ₪2.69M",
+        "project_start_price": "₪2.49M",
+        "features": "central quiet neighborhood; high-standard renewal project",
+        "payment_terms": "campaign pricing",
+        "status": "active marketed project",
+        "relevance": "same-submarket family ladder / sanity check",
+        "source_urls": [
+          "https://www.yad2.co.il/yad1/project/14719"
+        ],
+        "qa_notes": "Do not use as direct duplex/triplex comp; useful project ladder."
+      },
+      {
+        "tier": "secondary",
+        "project_name": "NEARO TOWERS",
+        "address": "יצחק ויטנברג 4, פתח תקווה",
+        "submarket": "פסגת הדר / נווה עוז הירוקה",
+        "developer": "קבוצת שבירו / דוראל",
+        "rooms": "3-5",
+        "area_range_m2": "81-124",
+        "floors": "25",
+        "special_products": "not direct special-unit comp",
+        "unit_specific_prices": "3R ₪2.89M; 5R from ₪3.69M",
+        "project_start_price": "₪2.89M",
+        "features": "parking, storage, A/C, elevator, mamad, balcony; resident club and gym",
+        "payment_terms": "discount campaigns",
+        "status": "completed",
+        "relevance": "secondary current new-build market benchmark",
+        "source_urls": [
+          "https://www.diraly.co.il/projects/nearo-towers"
+        ],
+        "qa_notes": "Useful benchmark for new-build premium, not special typology."
+      },
+      {
+        "tier": "secondary",
+        "project_name": "KROL LIVING",
+        "address": "קרול / קק\"ל, פתח תקווה",
+        "submarket": "קרול / לב המושבה",
+        "developer": "קטה יזמות",
+        "rooms": "3-4",
+        "area_range_m2": "70-117",
+        "floors": null,
+        "special_products": "4R duplex 117m² + 54m² terraces; other 4R upper products 114m² + 32m² terraces",
+        "unit_specific_prices": null,
+        "project_start_price": "~₪2.39M on recent Yad2 crawl",
+        "features": "duplex plans expose terrace and storage sizes; e.g. storage 5.5m² on duplex plan",
+        "payment_terms": null,
+        "status": "marketed project",
+        "relevance": "secondary typology/spec benchmark, especially outdoor-area treatment",
+        "source_urls": [
+          "https://katayazamut.com/%D7%91%D7%A9%D7%99%D7%95%D7%95%D7%A7/%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98-%D7%A7%D7%A8%D7%95%D7%9C/"
+        ],
+        "qa_notes": "Rooms/size smaller than subjects; use only structural/spec context."
+      },
+      {
+        "tier": "secondary",
+        "project_name": "מתחם סלנט",
+        "address": "שמואל סלנט 70, פתח תקווה",
+        "submarket": "המרכז השקט / מרכז העיר",
+        "developer": "קטה גרופ",
+        "rooms": "3-5",
+        "area_range_m2": null,
+        "floors": "10",
+        "special_products": "roof duplexes",
+        "unit_specific_prices": null,
+        "project_start_price": "₪2.35M",
+        "features": "underground parking; resident club; bicycle/stroller room",
+        "payment_terms": "convenient payment terms",
+        "status": "permit/application stage in public sources",
+        "relevance": "secondary same-submarket product context",
+        "source_urls": [
+          "https://www.yad2.co.il/yad1/project/16200"
+        ],
+        "qa_notes": "No unit-specific roof-duplex price."
+      }
+    ],
+    "current_asking_evidence": [
+      {
+        "segment": "APT36/37 direct typology",
+        "type": "triplex",
+        "address": "הרב וולף, כפר גנים א, פתח תקווה",
+        "rooms": 6.5,
+        "area_m2": 153,
+        "floor": "4",
+        "price_ils": 3950000,
+        "known_features": "Only city-wide triplex result in latest crawl; materially undersized vs 255-260m² subjects",
+        "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&property=51",
+        "evidence_class": "direct_typology_size_relaxed"
+      },
+      {
+        "segment": "APT36/37",
+        "type": "duplex",
+        "address": "כפר גנים ג, פתח תקווה",
+        "rooms": 6,
+        "area_m2": 225,
+        "floor": "6",
+        "price_ils": 5390000,
+        "known_features": "current asking",
+        "source_url": "https://www.yad2.co.il/realestate/forsale?area=4&city=7900&minRooms=6&property=7&topArea=2",
+        "evidence_class": "broadened_current"
+      },
+      {
+        "segment": "APT36/37",
+        "type": "duplex",
+        "address": "הנשיאים, כפר גנים ב, פתח תקווה",
+        "rooms": 6,
+        "area_m2": 244,
+        "floor": "9",
+        "price_ils": 4950000,
+        "known_features": "current asking",
+        "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&maxRooms=6&minRooms=6&property=7&propertyGroup=apartments",
+        "evidence_class": "broadened_current"
+      },
+      {
+        "segment": "APT36/37",
+        "type": "duplex",
+        "address": "עין גנים 83, פתח תקווה",
+        "rooms": 6,
+        "area_m2": 220,
+        "floor": "6",
+        "price_ils": 4490000,
+        "known_features": "saved detail: 130m² sun terrace, 3 parking, floors 6-7",
+        "source_url": "https://www.yad2.co.il/realestate/forsale?area=4&city=7900&minRooms=6&property=7&topArea=2",
+        "evidence_class": "broadened_current_rich"
+      },
+      {
+        "segment": "APT36/37",
+        "type": "duplex",
+        "address": "דב גרונר 2, עין גנים, פתח תקווה",
+        "rooms": 6,
+        "area_m2": 205,
+        "floor": "9",
+        "price_ils": 5000000,
+        "known_features": "2 balconies; 3 shower rooms shown in Yad2 result",
+        "source_url": "https://www.yad2.co.il/realestate/forsale?area=4&city=7900&minRooms=6&property=7&topArea=2",
+        "evidence_class": "broadened_current"
+      },
+      {
+        "segment": "APT36/37",
+        "type": "duplex",
+        "address": "גד מכנס, המרכז השקט, פתח תקווה",
+        "rooms": 6,
+        "area_m2": 160,
+        "floor": "9",
+        "price_ils": 3950000,
+        "known_features": "new contractor listing",
+        "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&maxRooms=6&minRooms=6&property=7&propertyGroup=apartments",
+        "evidence_class": "size_relaxed_current"
+      },
+      {
+        "segment": "APT36/37",
+        "type": "duplex",
+        "address": "רוטשילד, המרכז השקט, פתח תקווה",
+        "rooms": 6,
+        "area_m2": 233,
+        "floor": "9",
+        "price_ils": 3800000,
+        "known_features": "current asking, recent price-desc crawl",
+        "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&maxRooms=6&minRooms=6&property=7&sort=price-desc",
+        "evidence_class": "broadened_current"
+      },
+      {
+        "segment": "APT36/37",
+        "type": "duplex",
+        "address": "חפץ מרדכי, המרכז השקט, פתח תקווה",
+        "rooms": 6,
+        "area_m2": 221,
+        "floor": "7",
+        "price_ils": 4500000,
+        "known_features": "parking; 3 balconies in Yad2 result",
+        "source_url": "https://www.yad2.co.il/realestate/forsale?area=4&property=7&rooms=4.5--1&topArea=2",
+        "evidence_class": "broadened_current"
+      },
+      {
+        "segment": "APT36/37",
+        "type": "duplex",
+        "address": "אחד העם 57, המרכז השקט, פתח תקווה",
+        "rooms": 6,
+        "area_m2": 202,
+        "floor": "4",
+        "price_ils": 2590000,
+        "known_features": "current/older crawl; verify active status before final use",
+        "source_url": "https://www.yad2.co.il/realestate/forsale?area=4&city=7900&maxRooms=6&minRooms=6&page=1&property=7&topArea=2",
+        "evidence_class": "broadened_current_low_confidence_activity"
+      },
+      {
+        "segment": "APT36/37",
+        "type": "duplex",
+        "address": "זכריה הלל 19, מחנה יהודה, פתח תקווה",
+        "rooms": 6,
+        "area_m2": 200,
+        "floor": "3",
+        "price_ils": 3100000,
+        "known_features": "current/older crawl",
+        "source_url": "https://www.yad2.co.il/realestate/forsale?area=4&city=7900&maxRooms=6&minRooms=6&page=1&property=7&topArea=2",
+        "evidence_class": "broadened_current"
+      },
+      {
+        "segment": "APT38",
+        "type": "duplex",
+        "address": "סוקולוב, עין גנים, פתח תקווה",
+        "rooms": 7,
+        "area_m2": 180,
+        "floor": "5",
+        "price_ils": 2390000,
+        "known_features": "very close size to 170.1m² subject; current/recent Yad2 crawl",
+        "source_url": "https://www.yad2.co.il/realestate/forsale?area=4&city=7900&maxRooms=7&minRooms=7&property=7",
+        "evidence_class": "direct_current"
+      },
+      {
+        "segment": "APT38",
+        "type": "duplex",
+        "address": "א.ד. גורדון, עין גנים, פתח תקווה",
+        "rooms": 7,
+        "area_m2": 190,
+        "floor": "5",
+        "price_ils": 2599000,
+        "known_features": "current/recent Yad2 crawl",
+        "source_url": "https://www.yad2.co.il/realestate/forsale?area=4&maxRooms=7&minRooms=7&property=7&propertyGroup=apartments&topArea=2",
+        "evidence_class": "direct_current"
+      },
+      {
+        "segment": "APT38",
+        "type": "duplex",
+        "address": "הרב גולד 7, פתח תקווה",
+        "rooms": 7,
+        "area_m2": 230,
+        "floor": "3",
+        "price_ils": 2600000,
+        "known_features": "size-broadened",
+        "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&maxRooms=7&property=7",
+        "evidence_class": "size_relaxed_current"
+      },
+      {
+        "segment": "APT38",
+        "type": "duplex",
+        "address": "הנשיאים 57, כפר גנים ב, פתח תקווה",
+        "rooms": 7,
+        "area_m2": 288,
+        "floor": "9",
+        "price_ils": 5290000,
+        "known_features": "premium upper-size context",
+        "source_url": "https://www.yad2.co.il/realestate/forsale?area=4&maxRooms=7&minRooms=7&property=7&propertyGroup=apartments&topArea=2",
+        "evidence_class": "premium_context"
+      },
+      {
+        "segment": "APT38",
+        "type": "duplex",
+        "address": "כפר גנים א, פתח תקווה",
+        "rooms": 7,
+        "area_m2": 220,
+        "floor": "4",
+        "price_ils": 3950000,
+        "known_features": "current/recent Yad2 crawl",
+        "source_url": "https://www.yad2.co.il/realestate/forsale?area=4&maxRooms=7&minRooms=7&property=7&propertyGroup=apartments&topArea=2",
+        "evidence_class": "size_relaxed_current"
+      },
+      {
+        "segment": "APT39",
+        "type": "duplex",
+        "address": "זאב ברנדה 30, פתח תקווה",
+        "rooms": 5,
+        "area_m2": 160,
+        "floor": "6",
+        "price_ils": 2630000,
+        "known_features": "saved detail: explicit 50m² balcony, covered parking, renovated kitchen",
+        "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&property=7&propertyGroup=apartments",
+        "evidence_class": "near_exact_current_rich"
+      },
+      {
+        "segment": "APT39",
+        "type": "duplex",
+        "address": "יהוד 1, המרכז השקט, פתח תקווה",
+        "rooms": 5,
+        "area_m2": 171,
+        "floor": "9",
+        "price_ils": 3340000,
+        "known_features": "current Yad2",
+        "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&property=7&propertyGroup=apartments",
+        "evidence_class": "direct_current"
+      },
+      {
+        "segment": "APT39",
+        "type": "duplex",
+        "address": "יוסף בצרי 8, רמת ורבר, פתח תקווה",
+        "rooms": 5,
+        "area_m2": 127,
+        "floor": "9",
+        "price_ils": 3640000,
+        "known_features": "smaller direct typology",
+        "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&property=7&propertyGroup=apartments",
+        "evidence_class": "size_relaxed_current"
+      },
+      {
+        "segment": "APT39",
+        "type": "duplex",
+        "address": "הכרם 8, המרכז השקט, פתח תקווה",
+        "rooms": 5,
+        "area_m2": 140,
+        "floor": "4",
+        "price_ils": 4200000,
+        "known_features": "same central submarket",
+        "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&property=7&propertyGroup=apartments&sort=price-desc",
+        "evidence_class": "direct_current"
+      },
+      {
+        "segment": "APT39",
+        "type": "duplex",
+        "address": "המיתר 4, הדר גנים, פתח תקווה",
+        "rooms": 5,
+        "area_m2": 210,
+        "floor": "1",
+        "price_ils": 3850000,
+        "known_features": "larger direct typology",
+        "source_url": "https://www.yad2.co.il/realestate/forsale?area=4&page=1&property=7&topArea=2",
+        "evidence_class": "size_relaxed_current"
+      },
+      {
+        "segment": "APT39",
+        "type": "duplex",
+        "address": "גדרה, אם המושבות הותיקה, פתח תקווה",
+        "rooms": 5,
+        "area_m2": 135,
+        "floor": "4",
+        "price_ils": 3490000,
+        "known_features": "direct typology",
+        "source_url": "https://www.yad2.co.il/realestate/forsale?area=4&page=1&property=7&topArea=2",
+        "evidence_class": "size_relaxed_current"
+      },
+      {
+        "segment": "APT1/2",
+        "type": "garden",
+        "address": "עגנון, רמת ורבר, פתח תקווה",
+        "rooms": 3,
+        "area_m2": 74,
+        "floor": "ground",
+        "price_ils": 2680000,
+        "known_features": "new contractor; parking; saved local detail has 29m² garden and elevator",
+        "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&maxRooms=3&minRooms=3&property=3",
+        "evidence_class": "direct_current_rich"
+      },
+      {
+        "segment": "APT1/2",
+        "type": "garden",
+        "address": "רוטשילד, קרול, פתח תקווה",
+        "rooms": 3,
+        "area_m2": 76,
+        "floor": "ground",
+        "price_ils": 2490000,
+        "known_features": "saved local detail has ~90m² garden",
+        "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&maxRooms=3&minRooms=3&property=3&propertyGroup=apartments",
+        "evidence_class": "direct_current_rich"
+      },
+      {
+        "segment": "APT1/2",
+        "type": "garden",
+        "address": "צה\"ל 72, בר יהודה, פתח תקווה",
+        "rooms": 3,
+        "area_m2": 85,
+        "floor": "ground",
+        "price_ils": 2430000,
+        "known_features": "current/recent Yad2 result; compare with saved 85m² garden record at ₪2.90M carefully (may be different listing)",
+        "source_url": "https://www.yad2.co.il/realestate/forsale?area=4&city=7900&neighborhood=746&property=3&propertyGroup=apartments&topArea=2",
+        "evidence_class": "direct_current"
+      },
+      {
+        "segment": "APT1/2",
+        "type": "garden",
+        "address": "המרכז השקט / מרכז העיר, פתח תקווה",
+        "rooms": 3,
+        "area_m2": 95,
+        "floor": "ground",
+        "price_ils": 1975000,
+        "known_features": "address hidden; area semantics need inspection",
+        "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&maxRooms=3&minRooms=3&property=3&propertyGroup=apartments",
+        "evidence_class": "direct_current_lower_confidence"
+      },
+      {
+        "segment": "APT1/2",
+        "type": "garden",
+        "address": "יעקב אחווה 58, פתח תקווה",
+        "rooms": 3,
+        "area_m2": 100,
+        "floor": "1",
+        "price_ils": 2290000,
+        "known_features": "garden listing; floor shown 1 in Yad2",
+        "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&maxRooms=3&minRooms=3&property=3&propertyGroup=apartments",
+        "evidence_class": "broadened_current"
+      },
+      {
+        "segment": "APT3",
+        "type": "garden",
+        "address": "הנביאים, פתח תקווה",
+        "rooms": 2,
+        "area_m2": 47,
+        "floor": "ground",
+        "price_ils": 1700000,
+        "known_features": "saved exact listing: 23m² garden, parking, elevator, new property",
+        "source_url": "local_saved_yad2_token:81py2t5u",
+        "evidence_class": "direct_current_rich"
+      }
+    ],
+    "sold_context_additions": [
+      {
+        "address": "פנחס חגין (house number not exposed in archive result)",
+        "target_deal_id": "3602707207",
+        "scope": "same_street_special_product_context",
+        "confidence": "medium",
+        "facts": "Archived 6R duplex-penthouse listings around 170m² show 2 large balconies, 2 parking, storage, elevator, renovation and open view; another archive gives 170m² + ~90m² terraces + 2 parking + 2 storage.",
+        "transfer_to_sold_unit": false,
+        "source_urls": [
+          "https://www.ad.co.il/archive/nadlansale?props=20-27&sp1=103&sp2=2&sp3=3&sp4=1374&view=list",
+          "https://www.ad.co.il/archive/nadlansale?pageindex=10&props=11-11&rp5=6%2C6&sp1=103&sp3=3&view=list"
+        ],
+        "qa_notes": "Street-level result does not prove house number 1 or exact sold unit."
+      },
+      {
+        "address": "הפרדס 8",
+        "target_deal_id": "3602250022",
+        "scope": "same_building_context",
+        "confidence": "medium",
+        "facts": "Archived rental at exact address: 5R (originally 6), ~140m², renovated, 2 parking, sun balcony, storage attached to apartment.",
+        "transfer_to_sold_unit": false,
+        "source_urls": [
+          "https://www.ad.co.il/archive/nadlanrent?pageindex=7&props=291-17182&rp278=5%2C5.5&sp275=17499&view=list"
+        ],
+        "qa_notes": "Different unit/area from 177m² sold comp."
+      },
+      {
+        "address": "ישראל ישעיהו 6",
+        "target_deal_id": "3626587054",
+        "scope": "same_address_listing_context",
+        "confidence": "low-medium",
+        "facts": "Archive at exact address exposes elevator, parking, storage, mamad, renovation, sun balcony, balcony, accessibility; however listing is categorized studio/loft and shows implausible 28m² for 6 rooms, so unit linkage/area is not defensible.",
+        "transfer_to_sold_unit": false,
+        "source_urls": [
+          "https://www.ad.co.il/archive/nadlansale?props=10-10&sp1=104&sp3=3&sp4=1783&view=list&withprice=1"
+        ],
+        "qa_notes": "Useful only as building amenity context; do not use size or exact-unit attributes."
+      },
+      {
+        "address": "שלומציון המלכה 6",
+        "target_deal_id": "3633966655",
+        "scope": "registered_subparcel_history",
+        "confidence": "high",
+        "facts": "2025-09-21 sale 5.5R 157m² ₪2.92M and 2023-12-04 sale 5.5R 122m² ₪2.60M share subparcel 6399-290-129.",
+        "transfer_to_sold_unit": false,
+        "source_urls": [
+          "https://www.market2.co.il/lp/building/petah-tikva/%D7%A9%D7%9C%D7%95%D7%9E%D7%A6%D7%99%D7%95%D7%9F-%D7%94%D7%9E%D7%9C%D7%9B%D7%94/6"
+        ],
+        "qa_notes": "Strong exact registered-unit identifier history, but no public balcony/parking/storage attributes linked to this subparcel yet."
+      },
+      {
+        "address": "מסקין 26",
+        "target_deal_id": "3625659199",
+        "scope": "registered_deal_mirror_only",
+        "confidence": "high",
+        "facts": "Public transaction mirror confirms 6R, 278m², ₪4.50M, 2025-01-16; no defensible rich attributes found.",
+        "transfer_to_sold_unit": false,
+        "source_urls": [
+          "https://www.market2.co.il/lp/building/petah-tikva/%D7%94%D7%90%D7%97%D7%99%D7%9D-%D7%99%D7%98%D7%A7%D7%95%D7%91%D7%A1%D7%A7%D7%99/27?street=%D7%9E%D7%A1%D7%A7%D7%99%D7%9F"
+        ],
+        "qa_notes": "Still feature-unresolved."
+      },
+      {
+        "address": "עין גדי 38",
+        "target_deal_id": "3626929892",
+        "scope": "registered_deal_mirror_only",
+        "confidence": "high",
+        "facts": "Public neighborhood transaction page confirms 6R, 288m², ₪6.18M, 2025-01-23.",
+        "transfer_to_sold_unit": false,
+        "source_urls": [
+          "https://www.market2.co.il/NadlanNeighborhood?city=petah-tikva&neighborhood=%D7%A7%D7%A8%D7%99%D7%99%D7%AA+%D7%9E%D7%98%D7%9C%D7%95%D7%9F"
+        ],
+        "qa_notes": "Still feature-unresolved."
+      }
+    ],
+    "direct_triplex_status": {
+      "latest_observed": "הרב וולף, 6.5R, 153m², floor 4, ₪3.95M",
+      "older_observed_price": "₪4.15M",
+      "interpretation": "Direct typology evidence exists, but it remains materially smaller than APT36/37 (255-260m²). Exact/near-size triplex evidence remains absent."
+    },
+    "counts": {
+      "competitor_projects": 17,
+      "current_asking_records": 27,
+      "sold_context_additions": 6
+    },
+    "paid_api_needed_now": false,
+    "next_gaps": [
+      "Exact unit-specific price/outdoor area for זאב ברנדה 22 roof duplexes.",
+      "Exact penthouse/garden floorplan dimensions and unit-specific prices for ברנדה 49.",
+      "Exact 181m² 6R duplex price for שבזי 3-5.",
+      "Exact 146m² 5R duplex price/outdoor area for THE SPOT.",
+      "Exact special-unit price/floorplan for DeFour 6R roof/penthouse and 3R garden.",
+      "Exact 6R area for NAVE PARK floor 8-9 unit.",
+      "Exact-unit sold attribute links remain unresolved for ישראל ישעיהו 6, פנחס חגין 1, הפרדס 8, שלומציון המלכה 6, איסר הראל 6, החרוב 25, מסקין 26, עין גדי 38."
+    ],
+    "v4_updates": {
+      "competitor_updates": [
+        {
+          "project_name": "זאב ברנדה 22",
+          "facts": {
+            "status": "active construction",
+            "permit_status": "building permit reported granted",
+            "reported_completion": "2026-11",
+            "reported_units": "52 on Diraly summary; narrative also mentions 54",
+            "floors": 10,
+            "roof_duplex_built_area_range_m2": "148-192",
+            "roof_duplex_floors": "9-10",
+            "roof_duplex_rooms": "5-6",
+            "garden_product": "3.5-4R garden apartments",
+            "all_unit_features": [
+              "mamad",
+              "sun balcony",
+              "regular underground parking"
+            ],
+            "building_features": [
+              "4 elevators"
+            ],
+            "roof_duplex_context": "open view; published built area excludes balconies/roof terraces"
+          },
+          "source_urls": [
+            "https://www.diraly.co.il/projects/%D7%96%D7%90%D7%91-%D7%91%D7%A8%D7%A0%D7%93%D7%94-22"
+          ],
+          "pricing_gap": "No reliable unit-specific public roof-duplex price found."
+        },
+        {
+          "project_name": "ברנדה 49",
+          "facts": {
+            "units": 27,
+            "buildings": 1,
+            "floors": 9,
+            "area_range_m2": "121-301",
+            "rooms": "5-6",
+            "products": [
+              "5R",
+              "garden",
+              "roof/penthouse"
+            ],
+            "project_start_price_ils": 2900000,
+            "every_apartment": [
+              "registered parking",
+              "private storage"
+            ],
+            "building_spec": [
+              "green building standard 5281",
+              "2 MRL elevators",
+              "one elevator with Sabbath control",
+              "designed lobby",
+              "solar water heating"
+            ],
+            "developer_bank": "Bank Hapoalim"
+          },
+          "source_urls": [
+            "https://www.yad2.co.il/yad1/project/15063"
+          ],
+          "pricing_gap": "Penthouse/garden unit-specific public prices still not exposed."
+        },
+        {
+          "project_name": "שבזי 3-5",
+          "facts": {
+            "area_range_m2": "83.8-181",
+            "rooms": "3-6",
+            "floors": "1-9",
+            "project_start_price_ils": 2400000,
+            "special_product": "6R duplex 181m² on floor 9",
+            "features": [
+              "large sun balconies",
+              "private parking",
+              "premium technical specification"
+            ]
+          },
+          "source_urls": [
+            "https://www.yad2.co.il/yad1/newprojects/center-and-sharon?area=4&city=7900&maxRooms=3&minRooms=3"
+          ],
+          "pricing_gap": "Exact 181m² duplex price still not public."
+        },
+        {
+          "project_name": "THE SPOT",
+          "facts": {
+            "address": "יהושע שטמפפר 83-87, פתח תקווה",
+            "area_range_m2": "70-146",
+            "rooms": "3-5",
+            "floors": "1-10",
+            "project_start_price_ils": 2250000,
+            "product_mix": "3R, 4R, 5R and penthouses",
+            "developer": "שיא עינב"
+          },
+          "source_urls": [
+            "https://www.yad2.co.il/yad1/project/19459"
+          ],
+          "pricing_gap": "Exact 5R duplex/penthouse unit price and outdoor area still missing."
+        },
+        {
+          "project_name": "DeFour",
+          "facts": {
+            "address": "ברנדה פינת בלפור, פתח תקווה",
+            "rooms": "3-6",
+            "buildings": 4,
+            "floors_each": 9,
+            "project_start_price_ils": 2200000,
+            "payment_terms": "customized",
+            "positioning": [
+              "green building",
+              "energy efficiency",
+              "central quiet neighborhood"
+            ]
+          },
+          "source_urls": [
+            "https://www.yad2.co.il/yad1/project/16523"
+          ],
+          "pricing_gap": "Special-unit prices/floorplan dimensions remain undisclosed."
+        }
+      ],
+      "sold_context_updates": [
+        {
+          "address": "ישראל ישעיהו 6",
+          "deal_id": "3626587054",
+          "registered_sale": {
+            "rooms": 6,
+            "area_m2": 166,
+            "price_ils": 3700000,
+            "date": "2025-02-06",
+            "subparcel": "6401-72-11"
+          },
+          "building_context": {
+            "same_address_other_listing": {
+              "rooms": 5,
+              "built_area_m2": 138,
+              "floor": "1/5",
+              "features": [
+                "elevator",
+                "parking",
+                "storage",
+                "mamad",
+                "accessible",
+                "renovated",
+                "two sun balconies"
+              ],
+              "source_url": "https://zipika.com/features/property-details?lng=he&propId=3348376"
+            }
+          },
+          "scope": "same_building_context_only",
+          "transfer_to_sold_unit": false
+        },
+        {
+          "address": "פנחס חגין 1",
+          "deal_id": "3602707207",
+          "registered_sale": {
+            "rooms": 6,
+            "area_m2": 168,
+            "price_ils": 5900000,
+            "date": "2024-07-02",
+            "subparcel": "6716-292-18"
+          },
+          "scope": "registered_sale_confirmed; rich exact-unit attributes unresolved"
+        },
+        {
+          "address": "הפרדס 8",
+          "deal_id": "3602250022",
+          "registered_sale": {
+            "rooms": 6,
+            "area_m2": 177,
+            "price_ils": 5550000,
+            "date": "2024-06-26",
+            "subparcel": "6712-466-13"
+          },
+          "scope": "registered_sale_confirmed; exact-unit rich attributes unresolved"
+        },
+        {
+          "address": "שלומציון המלכה 6",
+          "deal_id": "3633966655",
+          "registered_sale": {
+            "rooms": 5.5,
+            "area_m2": 157,
+            "price_ils": 2920000,
+            "date": "2025-09-21",
+            "subparcel": "6399-290-129"
+          },
+          "same_subparcel_history": [
+            {
+              "date": "2023-12-04",
+              "rooms": 5.5,
+              "area_m2": 122,
+              "price_ils": 2600000,
+              "subparcel": "6399-290-129"
+            }
+          ],
+          "building_context": {
+            "other_unit_listing": {
+              "rooms": 4.5,
+              "area_m2": 98,
+              "features": [
+                "elevator",
+                "mamad",
+                "sun balcony",
+                "service balcony",
+                "3 orientations: east/north/west"
+              ]
+            }
+          },
+          "scope": "same subparcel history is strong exact-unit identifier context; listing features remain other-unit context"
+        },
+        {
+          "address": "איסר הראל 6",
+          "deal_id": "3601967910",
+          "registered_sale_local": {
+            "rooms": 5,
+            "area_m2": 163,
+            "price_ils": 5400000,
+            "date": "2024-06-07"
+          },
+          "public_mirror": {
+            "rooms": 5,
+            "area_m2": 163,
+            "price_ils": 4900000,
+            "date": "2024-06-07",
+            "subparcel": "6360-188-74"
+          },
+          "status": "price_conflict_preserved",
+          "rule": "Do not reconcile automatically; use direct official source before numeric use."
+        },
+        {
+          "address": "החרוב 25",
+          "deal_id": "3635637403",
+          "registered_sale": {
+            "rooms": 6,
+            "area_m2": 244,
+            "price_ils": 6200000,
+            "date": "2025-11-03",
+            "subparcel": "6319-338-4"
+          },
+          "same_address_history": [
+            {
+              "date": "2022-02-09",
+              "rooms": 8,
+              "area_m2": 227,
+              "price_ils": 2910000,
+              "subparcel": "6319-338-3"
+            }
+          ],
+          "scope": "large-unit address context; rich attributes unresolved"
+        },
+        {
+          "address": "מסקין 26",
+          "deal_id": "3625659199",
+          "registered_sale": {
+            "rooms": 6,
+            "area_m2": 278,
+            "price_ils": 4500000,
+            "date": "2025-01-16",
+            "subparcel": "6712-662-1"
+          },
+          "scope": "registered sale confirmed; rich attributes unresolved"
+        },
+        {
+          "address": "עין גדי 38",
+          "deal_id": "3626929892",
+          "registered_sale": {
+            "rooms": 6,
+            "area_m2": 288,
+            "price_ils": 6180000,
+            "date": "2025-01-23"
+          },
+          "same_address_listing": {
+            "title_form": "house",
+            "rooms": 5,
+            "area_m2": 310,
+            "floor": 3,
+            "price_ils": 7500000,
+            "features": [
+              "parking",
+              "sun balcony",
+              "mamad",
+              "4 orientations: north/east/west/south",
+              "no elevator"
+            ],
+            "source_url": "https://atlas-nadlan.com/property/%D7%91%D7%99%D7%AA-%D7%A8%D7%97%D7%95%D7%91-%D7%A2%D7%99%D7%9F-%D7%92%D7%93%D7%99-38-%D7%A7%D7%A8%D7%99%D7%AA-%D7%9E%D7%98%D7%9C%D7%95%D7%9F-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%94/"
+          },
+          "status": "property_form_warning",
+          "rule": "Do not infer these features onto the sold transaction. Same address may represent house-like product; keep as context and review form before using as apartment analogue."
+        }
+      ]
+    }
+  },
+  "implementation_invariants": [
+    "Do not modify standard 3R/5R methodology.",
+    "Keep sold, current asking, and new-development evidence in separate lanes.",
+    "Never transfer unit-specific listing attributes to a historical sold transaction without exact-unit linkage.",
+    "Unknown is not false.",
+    "No unsupported monetary premium/discount.",
+    "No hidden weighted similarity score.",
+    "Preserve failed searches, access failures, conflicts and quarantines.",
+    "HappyEndpoint registered deals share the government-registered-transactions independence group."
+  ],
+  "recommended_routes": {
+    "existing_standard_evidence": "GET /api/v1/scenarios/{scenario_id}/units/{unit_number}/evidence",
+    "special_review_if_missing": "GET /api/v1/scenarios/{scenario_id}/units/{unit_number}/special-review"
+  },
+  "data_files": [
+    "special_review_evidence_v1.json",
+    "special_evidence_bundle_v4.json",
+    "competitor_register_v3.csv",
+    "current_special_asking_v3.csv",
+    "sold_context_additions_v2.json",
+    "special_attribute_evidence_v2.json",
+    "special_sold_shortlist.txt",
+    "special_source_inventory_v3.csv",
+    "petah_tikva_special_evidence_seed.xlsx"
+  ],
+  "first_researcher_context_v2": {
+    "source_bundle": "first_researcher_corrected_2026-09-07",
+    "source_files": [
+      "data/research/first_researcher/special_gap_research_v2_corrected.json",
+      "data/research/first_researcher/special_tax_linkage_v2_corrected.json"
+    ],
+    "excluded_source_files": {
+      "research_gap_closure_report_v1_corrected.json": "reference only -- never ingested as pricing data",
+      "standard_feature_matched_pairs_v1_corrected.json": "not integrated -- superseded by this project's own floor_observations, which already contains valid observational floor comparisons (אבינועם ילין 6, פנקס 5); the matched-pair file incorrectly reports zero floor pairs",
+      "executive_summary_corrected.pdf": "not integrated"
+    },
+    "numeric_eligibility_default": false,
+    "usage_rule": "Context/provenance only. No record in this section may be read by pricing_core.special_market_indication or app_api.special_market_indication_data's voting-lane builders. Every record's numeric_eligibility is hard-coded false regardless of source evidence_class.",
+    "garden_context": [
+      {
+        "id": "GARDEN_001",
+        "context_type": "garden_context",
+        "relevant_units": [
+          "1",
+          "2"
+        ],
+        "numeric_eligibility": false,
+        "source": "Yad2",
+        "source_url": "https://www.yad2.co.il/realestate/forsale?topArea=2&area=4&city=7900&property=3",
+        "retrieved_date": "2026-09-07",
+        "listing_date": "2026",
+        "property_type": "דירת גן",
+        "rooms": 3,
+        "internal_area_sqm": 95,
+        "outdoor_area_sqm": null,
+        "price_ils": 1950000,
+        "price_basis": "asking_price",
+        "submarket": "המרכז השקט / מרכז העיר",
+        "evidence_class": "CONTEXT_SAME_SUBMARKET",
+        "why_relevant": "Apt1, Apt2 - confirms 3R garden asking in target submarket",
+        "why_not_numeric": "No explicit garden area, internal area larger than subjects (95 vs 65.6-70.8m2)"
+      },
+      {
+        "id": "GARDEN_002",
+        "context_type": "garden_context",
+        "relevant_units": [
+          "1"
+        ],
+        "numeric_eligibility": false,
+        "source": "Madlan",
+        "source_url": "https://www.madlan.co.il/listings/bmZGiMrLGig",
+        "retrieved_date": "2026-09-07",
+        "listing_date": "2025-09-16",
+        "property_type": "דירת גן",
+        "rooms": 3,
+        "internal_area_sqm": 74,
+        "outdoor_area_sqm": 29,
+        "price_ils": 2680000,
+        "price_basis": "asking_price",
+        "submarket": "רמת ורבר",
+        "evidence_class": "CONTEXT_NEAR_SIZE",
+        "why_relevant": "Apt1 - near-size 3R garden with explicit garden area",
+        "why_not_numeric": "Outside target submarket (Ramat Verver vs center/shaket), garden much smaller (29 vs 69-100m2)"
+      },
+      {
+        "id": "GARDEN_003",
+        "context_type": "garden_context",
+        "relevant_units": [
+          "3"
+        ],
+        "numeric_eligibility": false,
+        "source": "Zipika",
+        "source_url": "https://zipika.com/features/property-details?propId=3289429&lng=he",
+        "retrieved_date": "2026-09-07",
+        "listing_date": "2024-09-21",
+        "property_type": "דירת גן",
+        "rooms": 2,
+        "internal_area_sqm": 47,
+        "outdoor_area_sqm": 23,
+        "price_ils": 1700000,
+        "price_basis": "asking_price",
+        "submarket": "מרכז העיר",
+        "evidence_class": "CONTEXT_2R_GARDEN",
+        "why_relevant": "Apt3 - rare 2R garden with explicit split areas",
+        "why_not_numeric": "Internal area smaller (47 vs 57m2), garden larger (23 vs 18m2), different submarket"
+      },
+      {
+        "id": "GARDEN_004",
+        "context_type": "garden_context",
+        "relevant_units": [
+          "1",
+          "2",
+          "3"
+        ],
+        "numeric_eligibility": false,
+        "source": "Komo",
+        "source_url": "https://www.komo.co.il/code/nadlan/apartments-for-sale.asp?nehes=4&cityName=פתח+תקווה",
+        "retrieved_date": "2026-09-07",
+        "listing_date": "2025",
+        "property_type": "דירת גן",
+        "rooms": 3.5,
+        "internal_area_sqm": 175,
+        "outdoor_area_sqm": null,
+        "price_ils": 2790000,
+        "price_basis": "asking_price",
+        "submarket": "תקומה",
+        "evidence_class": "CONTEXT_ONLY",
+        "why_relevant": "General garden price signal",
+        "why_not_numeric": "Room mismatch (3.5 vs 2-3), area far too large (175 vs 57-71m2), outside submarket"
+      },
+      {
+        "id": "GARDEN_005",
+        "context_type": "garden_context",
+        "relevant_units": [
+          "2"
+        ],
+        "numeric_eligibility": false,
+        "source": "Homeless",
+        "source_url": "https://m.homeless.co.il/sale/viewad,241137.aspx",
+        "retrieved_date": "2026-09-07",
+        "listing_date": "2025-03-25",
+        "property_type": "דירת גן",
+        "rooms": 4.5,
+        "internal_area_sqm": 119,
+        "outdoor_area_sqm": 69,
+        "price_ils": 3189000,
+        "price_basis": "asking_price",
+        "submarket": "המרכז השקט",
+        "evidence_class": "CONTEXT_SAME_SUBMARKET_EXPLICIT_GARDEN",
+        "why_relevant": "Apt2 - exact garden area match (69m2), same submarket",
+        "why_not_numeric": "Room mismatch (4.5 vs 3), internal area larger (119 vs 65.6m2)"
+      },
+      {
+        "id": "GARDEN_VERIFIED_SOLD_LINKAGE",
+        "context_type": "garden_context",
+        "relevant_units": [
+          "1",
+          "2",
+          "3"
+        ],
+        "numeric_eligibility": false,
+        "source": "gap_analysis",
+        "note": "No exact-address garden listing could be definitively linked to Tax transaction with matching rooms/area/date. Garden listings typically lack unit/subparcel identifiers needed for exact linkage.",
+        "status": "NOT_FOUND",
+        "why_not_numeric": "No verified sold-garden Tax linkage found; does not create a new sold-garden lane."
+      }
+    ],
+    "triplex_context": [
+      {
+        "id": "TRIPLEX_001",
+        "context_type": "triplex_context",
+        "relevant_units": [
+          "36",
+          "37"
+        ],
+        "numeric_eligibility": false,
+        "source": "GP Realty",
+        "source_url": "https://www.gprealty.co.il/montefiore",
+        "retrieved_date": "2026-09-07",
+        "listing_date": "2020-06-13",
+        "property_type": "טריפלקס",
+        "rooms": 6,
+        "internal_area_sqm": null,
+        "outdoor_area_sqm": null,
+        "price_ils": 2280000,
+        "price_basis": "asking_price",
+        "submarket": "מונטיפיורי",
+        "evidence_class": "DIRECT_6R_TRIPLEX",
+        "why_relevant": "Apt36, Apt37 - direct 6R triplex in known triplex building",
+        "why_not_numeric": "No area breakdown, outdated listing (2020), cannot verify size match (220-300m2 range)",
+        "note": "Source (GP Realty listing + Dirobot Rupin-street Tax cross-check, see LINKAGE_005) provides no internal/outdoor area breakdown for this Montefiore triplex in any of the three corrected first-researcher files -- both fields are genuinely null at the source, not merely omitted here.",
+        "superseded_by": "TRIPLEX_MONTEFIORE_14_ARCHIVE"
+      },
+      {
+        "id": "TRIPLEX_002",
+        "context_type": "triplex_context",
+        "relevant_units": [
+          "36",
+          "37"
+        ],
+        "numeric_eligibility": false,
+        "source": "Anglo Saxon",
+        "source_url": "https://www.anglo-saxon.co.il/properties/single/?id=418210",
+        "retrieved_date": "2026-09-07",
+        "listing_date": "2025-04-01",
+        "property_type": "טריפלקס",
+        "rooms": 5,
+        "internal_area_sqm": 210,
+        "outdoor_area_sqm": null,
+        "price_ils": null,
+        "price_basis": "asking_price",
+        "submarket": "התשעים ושלוש",
+        "evidence_class": "CONTEXT_TRIPLEX_NEAR_SIZE",
+        "why_relevant": "Apt36, Apt37 - triplex in near-size range (210 vs 255.2-260.1m2)",
+        "why_not_numeric": "Room mismatch (5 vs 6), no price, outdoor area not separated"
+      },
+      {
+        "id": "TRIPLEX_003",
+        "context_type": "triplex_context",
+        "relevant_units": [
+          "36",
+          "37"
+        ],
+        "numeric_eligibility": false,
+        "source": "Yad2",
+        "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&property=7&minRooms=6",
+        "retrieved_date": "2026-09-07",
+        "listing_date": "2026",
+        "property_type": "דופלקס",
+        "rooms": 6,
+        "internal_area_sqm": 192,
+        "outdoor_area_sqm": null,
+        "price_ils": null,
+        "price_basis": "asking_price",
+        "submarket": "המרכז השקט / מרכז העיר",
+        "evidence_class": "CONTEXT_UPPER_FLOOR_DUPLEX",
+        "why_relevant": "General upper-floor special unit signal",
+        "why_not_numeric": "Duplex not triplex, area smaller (192 vs 255.2-260.1m2), no price"
+      },
+      {
+        "id": "TRIPLEX_VERIFIED_SOLD_LINKAGE",
+        "context_type": "triplex_context",
+        "relevant_units": [
+          "36",
+          "37"
+        ],
+        "numeric_eligibility": false,
+        "source": "gap_analysis",
+        "note": "No exact-address triplex listing linked to Tax transaction. Dirobot shows Rupin street average ₪2,000,000 (12 transactions) but no triplex-specific breakdown. Triplex transactions likely buried in general 6R+ category.",
+        "status": "NOT_FOUND",
+        "why_not_numeric": "No verified sold-triplex Tax linkage found."
+      }
+    ],
+    "duplex_context": [
+      {
+        "id": "DUPLEX7R_001",
+        "context_type": "duplex_context",
+        "relevant_units": [
+          "38"
+        ],
+        "numeric_eligibility": false,
+        "source": "Yad2",
+        "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&property=7&minRooms=7",
+        "retrieved_date": "2026-09-07",
+        "listing_date": "2026",
+        "property_type": "דופלקס",
+        "rooms": 7,
+        "internal_area_sqm": 380,
+        "outdoor_area_sqm": null,
+        "price_ils": 4950000,
+        "price_basis": "asking_price",
+        "submarket": "המרכז השקט / מרכז העיר",
+        "evidence_class": "DIRECT_7R_DUPLEX_SAME_SUBMARKET",
+        "why_relevant": "Apt38 - direct 7R duplex in target submarket with explicit price",
+        "why_not_numeric": "Area far too large (380 vs 170.1m2), floor lower (7 vs 9-10)"
+      },
+      {
+        "id": "DUPLEX7R_002",
+        "context_type": "duplex_context",
+        "relevant_units": [
+          "38"
+        ],
+        "numeric_eligibility": false,
+        "source": "Yad2",
+        "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&property=7&minRooms=7&maxRooms=7",
+        "retrieved_date": "2026-09-07",
+        "listing_date": "2026",
+        "property_type": "דופלקס",
+        "rooms": 7,
+        "internal_area_sqm": null,
+        "outdoor_area_sqm": null,
+        "price_ils": null,
+        "price_basis": "asking_price",
+        "submarket": "מחנה יהודה",
+        "evidence_class": "CONTEXT_7R_DUPLEX",
+        "why_relevant": "Apt38 - confirms 7R duplex exists in nearby submarket",
+        "why_not_numeric": "No price, no area, floor lower (6 vs 9-10), different submarket"
+      },
+      {
+        "id": "TRACK_C_7R_DUPLEX_APT38_VERIFIED_SOLD_LINKAGE",
+        "context_type": "duplex_context",
+        "relevant_units": [
+          "38"
+        ],
+        "numeric_eligibility": false,
+        "source": "gap_analysis",
+        "note": "No exact 7R duplex listing linked to Tax transaction. Multi-level transactions exist but cannot be definitively classified as duplex vs penthouse vs split-level without unit-level documentation.",
+        "status": "NOT_FOUND",
+        "why_not_numeric": "No verified sold-duplex Tax linkage found."
+      },
+      {
+        "id": "DUPLEX5R_001",
+        "context_type": "duplex_context",
+        "relevant_units": [
+          "39"
+        ],
+        "numeric_eligibility": false,
+        "source": "Lev Hamercaz",
+        "source_url": "https://lev-hamercaz.co.il/נכסים/למכירה-דירת-דופלקס-5-חד-ברח-אחד-העם-שכו/",
+        "retrieved_date": "2026-09-07",
+        "listing_date": "2026",
+        "property_type": "דופלקס",
+        "rooms": 5,
+        "internal_area_sqm": 115,
+        "outdoor_area_sqm": null,
+        "price_ils": 2280000,
+        "price_basis": "asking_price",
+        "submarket": "עין גנים",
+        "evidence_class": "DIRECT_5R_DUPLEX_EXACT_PRICE",
+        "why_relevant": "Apt39 - direct 5R duplex with explicit price and floor config",
+        "why_not_numeric": "Area smaller (115 vs 158.6m2), floors lower (1-2 vs 9-10), different submarket"
+      },
+      {
+        "id": "DUPLEX5R_003",
+        "context_type": "duplex_context",
+        "relevant_units": [
+          "39"
+        ],
+        "numeric_eligibility": false,
+        "source": "Komo",
+        "source_url": "https://www.komo.co.il/code/nadlan/apartments-for-sale.asp?nehes=6&cityName=פתח+תקווה",
+        "retrieved_date": "2026-09-07",
+        "listing_date": "2025",
+        "property_type": "דופלקס",
+        "rooms": 5,
+        "internal_area_sqm": 165,
+        "outdoor_area_sqm": null,
+        "price_ils": 3630000,
+        "price_basis": "asking_price",
+        "submarket": "מחנה יהודה",
+        "evidence_class": "DIRECT_5R_DUPLEX_NEAR_SIZE",
+        "why_relevant": "Apt39 - near-size match (165 vs 158.6m2), explicit price",
+        "why_not_numeric": "Different submarket (Machane Yehuda vs center/shaket), no outdoor area breakdown"
+      }
+    ],
+    "new_development_updates": [
+      {
+        "id": "zeev_branda_22__garden_3.5-4R",
+        "context_type": "new_development_updates",
+        "relevant_units": [
+          "1",
+          "2",
+          "3",
+          "36",
+          "37",
+          "38",
+          "39"
+        ],
+        "numeric_eligibility": false,
+        "project": "זאב ברנדה 22, המרכז השקט",
+        "developer": "רכסים בנייה ויזמות",
+        "status": "צפי אכלוס נובמבר 2026",
+        "product": "garden_3.5-4R",
+        "rooms": "3.5-4",
+        "property_type": "דירת גן עם גינה",
+        "internal_area_note": null,
+        "outdoor_area_note": null,
+        "price_note": "לא צוין מחיר",
+        "evidence_class": "CONTEXT_ONLY",
+        "reasoning": null,
+        "sources": [
+          "Diraly",
+          "Yad2 project page",
+          "Rehasimbuild.co.il"
+        ],
+        "why_not_numeric": "Range/starting-price or unpublished product-level context only -- never an exact unit-specific price tied to a verified model."
+      },
+      {
+        "id": "zeev_branda_22__duplex_penthouse_5-6R",
+        "context_type": "new_development_updates",
+        "relevant_units": [
+          "1",
+          "2",
+          "3",
+          "36",
+          "37",
+          "38",
+          "39"
+        ],
+        "numeric_eligibility": false,
+        "project": "זאב ברנדה 22, המרכז השקט",
+        "developer": "רכסים בנייה ויזמות",
+        "status": "צפי אכלוס נובמבר 2026",
+        "product": "duplex_penthouse_5-6R",
+        "rooms": "5-6",
+        "property_type": "דופלקס גג",
+        "internal_area_note": "148-192 מ״ר (לא כולל מרפסות)",
+        "outdoor_area_note": null,
+        "price_note": "לפרטים פנו לקבלן",
+        "evidence_class": "CONTEXT_ONLY",
+        "reasoning": null,
+        "sources": [
+          "Diraly",
+          "Yad2 project page",
+          "Rehasimbuild.co.il"
+        ],
+        "why_not_numeric": "Range/starting-price or unpublished product-level context only -- never an exact unit-specific price tied to a verified model.",
+        "superseded_by": "NEWDEV_ZEEV_BRANDA_22_DIRECT_DEVELOPER"
+      },
+      {
+        "id": "branda_49__garden_5R",
+        "context_type": "new_development_updates",
+        "relevant_units": [
+          "1",
+          "2",
+          "3",
+          "36",
+          "37",
+          "38",
+          "39"
+        ],
+        "numeric_eligibility": false,
+        "project": "זאב ברנדה 49, המרכז השקט",
+        "developer": "א.פ. נחום",
+        "status": "תמ״א 38 הריסה ובניה",
+        "product": "garden_5R",
+        "rooms": 5,
+        "property_type": "דירת גן עם גינה פרטית",
+        "internal_area_note": null,
+        "outdoor_area_note": null,
+        "price_note": "דירת 5 חדרים מתחילה מ-₪2,900,000",
+        "evidence_class": "CONTEXT_STARTING_FROM",
+        "reasoning": null,
+        "sources": [
+          "Diraly",
+          "Madlan",
+          "Yad2 project page"
+        ],
+        "why_not_numeric": "Range/starting-price or unpublished product-level context only -- never an exact unit-specific price tied to a verified model.",
+        "superseded_by": "NEWDEV_BRANDA_49"
+      },
+      {
+        "id": "branda_49__penthouse_5-6R",
+        "context_type": "new_development_updates",
+        "relevant_units": [
+          "1",
+          "2",
+          "3",
+          "36",
+          "37",
+          "38",
+          "39"
+        ],
+        "numeric_eligibility": false,
+        "project": "זאב ברנדה 49, המרכז השקט",
+        "developer": "א.פ. נחום",
+        "status": "תמ״א 38 הריסה ובניה",
+        "product": "penthouse_5-6R",
+        "rooms": "5-6",
+        "property_type": "דירות פנטהאוז",
+        "internal_area_note": null,
+        "outdoor_area_note": null,
+        "price_note": "לא פורסם",
+        "evidence_class": "CONTEXT_ONLY",
+        "reasoning": null,
+        "sources": [
+          "Diraly",
+          "Madlan",
+          "Yad2 project page"
+        ],
+        "why_not_numeric": "Range/starting-price or unpublished product-level context only -- never an exact unit-specific price tied to a verified model."
+      },
+      {
+        "id": "shabazi_3-5__duplex_6R",
+        "context_type": "new_development_updates",
+        "relevant_units": [
+          "38"
+        ],
+        "numeric_eligibility": false,
+        "project": "שבזי 3-5, מחנה יהודה",
+        "developer": "שמי בנייה ייזום",
+        "status": "פרויקט חדש",
+        "product": "duplex_6R",
+        "rooms": 6,
+        "property_type": "דופלקס",
+        "internal_area_note": "181 מ״ר",
+        "outdoor_area_note": null,
+        "price_note": "החל מ-₪2,400,000 (project starting price, NOT tied to 6R duplex)",
+        "evidence_class": "CONTEXT_STARTING_FROM",
+        "reasoning": "Yad2 project page shows 'דירות 4 חדרים גדולות ומרווחות החל מ-₪2,400,000' - starting price refers to 4R units, not 6R duplex. 6R duplex 181m2 floor 9 exists but price not explicitly tied.",
+        "sources": [
+          "Yad2 project page https://www.yad2.co.il/yad1/project/14639",
+          "Diraly"
+        ],
+        "why_not_numeric": "Range/starting-price or unpublished product-level context only -- never an exact unit-specific price tied to a verified model."
+      },
+      {
+        "id": "THE_SPOT__duplex_5R",
+        "context_type": "new_development_updates",
+        "relevant_units": [
+          "39"
+        ],
+        "numeric_eligibility": false,
+        "project": "שטמפפר, שיפר",
+        "developer": "שיא עינב",
+        "status": "פרויקט חדש",
+        "product": "duplex_5R",
+        "rooms": 5,
+        "property_type": "דופלקס",
+        "internal_area_note": "146 מ״ר",
+        "outdoor_area_note": null,
+        "price_note": "לא צוין מחיר",
+        "evidence_class": "CONTEXT_ONLY",
+        "reasoning": null,
+        "sources": [
+          "Yad2",
+          "Diraly"
+        ],
+        "why_not_numeric": "Range/starting-price or unpublished product-level context only -- never an exact unit-specific price tied to a verified model.",
+        "superseded_by": "NEWDEV_THE_SPOT_5R_UPPER_PRODUCT"
+      },
+      {
+        "id": "NAVE_PARK__penthouse_5-6R",
+        "context_type": "new_development_updates",
+        "relevant_units": [
+          "36",
+          "37",
+          "38",
+          "39"
+        ],
+        "numeric_eligibility": false,
+        "project": "דוד טבצ'ניק, נווה גן",
+        "developer": "דמרי",
+        "status": "אכלוס בניין 1-9.27, בניין 2-9.29",
+        "product": "penthouse_5-6R",
+        "rooms": "5-6",
+        "property_type": "פנטהאוז",
+        "internal_area_note": null,
+        "outdoor_area_note": null,
+        "price_note": "5 חדרים החל מ-₪3,150,000, 6 חדרים החל מ-₪3,850,000",
+        "evidence_class": "CONTEXT_STARTING_FROM",
+        "reasoning": null,
+        "sources": [
+          "Dimri.co.il",
+          "Yad2 project page",
+          "NadlanShark"
+        ],
+        "why_not_numeric": "Range/starting-price or unpublished product-level context only -- never an exact unit-specific price tied to a verified model.",
+        "superseded_by": "NEWDEV_NAVE_PARK"
+      },
+      {
+        "id": "DeFour__penthouse_5-6R",
+        "context_type": "new_development_updates",
+        "relevant_units": [
+          "1",
+          "2",
+          "3",
+          "36",
+          "37",
+          "38",
+          "39"
+        ],
+        "numeric_eligibility": false,
+        "project": "ברנדה ובלפור, המרכז השקט",
+        "developer": "בוני התיכון",
+        "status": "פרויקט במבצע",
+        "product": "penthouse_5-6R",
+        "rooms": "5-6",
+        "property_type": "פנטהאוז",
+        "internal_area_note": null,
+        "outdoor_area_note": null,
+        "price_note": "לפרטים פנו לקבלן",
+        "evidence_class": "CONTEXT_ONLY",
+        "reasoning": null,
+        "sources": [
+          "Diraly"
+        ],
+        "why_not_numeric": "Range/starting-price or unpublished product-level context only -- never an exact unit-specific price tied to a verified model.",
+        "superseded_by": "NEWDEV_DEFOUR_SPECIAL_PRODUCTS"
+      },
+      {
+        "id": "DeFour__patio_3R",
+        "context_type": "new_development_updates",
+        "relevant_units": [
+          "1",
+          "2",
+          "3",
+          "36",
+          "37",
+          "38",
+          "39"
+        ],
+        "numeric_eligibility": false,
+        "project": "ברנדה ובלפור, המרכז השקט",
+        "developer": "בוני התיכון",
+        "status": "פרויקט במבצע",
+        "product": "patio_3R",
+        "rooms": 3,
+        "property_type": "patio",
+        "internal_area_note": null,
+        "outdoor_area_note": null,
+        "price_note": "לפרטים פנו לקבלן",
+        "evidence_class": "CONTEXT_ONLY",
+        "reasoning": null,
+        "sources": [
+          "Diraly"
+        ],
+        "why_not_numeric": "Range/starting-price or unpublished product-level context only -- never an exact unit-specific price tied to a verified model."
+      }
+    ],
+    "qa_and_linkage": [
+      {
+        "id": "LINKAGE_001",
+        "context_type": "qa_and_linkage",
+        "relevant_units": [
+          "39"
+        ],
+        "numeric_eligibility": false,
+        "address": "איסר הראל 6 / אחד העם (ADDRESS MISMATCH)",
+        "listing_data": {
+          "source": "Lev Hamercaz",
+          "url": "https://lev-hamercaz.co.il/נכסים/למכירה-דירת-דופלקס-5-חד-ברח-אחד-העם-שכו/",
+          "property_type": "דופלקס",
+          "rooms": 5,
+          "internal_area_sqm": 115,
+          "floor_config": "1+2",
+          "asking_price_ils": 2280000,
+          "date_listed": "2026",
+          "literal_address": "אחד העם, עין גנים"
+        },
+        "tax_data": {
+          "source": "Dirobot",
+          "url": "https://www.dirobot.co.il/building-prices/פתח%20תקווה,%20איסר%20הראל,%206",
+          "transactions": [
+            {
+              "date": "2025-11-24",
+              "rooms": 4,
+              "area_sqm": 98,
+              "floor": "רביעית",
+              "price_ils": 3015000
+            },
+            {
+              "date": "2022-10",
+              "rooms": 5.5,
+              "area_sqm": 125,
+              "floor": "שש עשרה",
+              "price_ils": 3500000
+            },
+            {
+              "date": "2022-05",
+              "rooms": 3,
+              "area_sqm": 77,
+              "floor": "חמישית",
+              "price_ils": 2350000
+            },
+            {
+              "date": "2022-03",
+              "rooms": 4,
+              "area_sqm": 95,
+              "floor": "עשירית",
+              "price_ils": 2800000
+            }
+          ],
+          "median_price_ils": 3207500,
+          "transaction_count": 4,
+          "literal_address": "איסר הראל 6, אם המושבות החדשה"
+        },
+        "linkage_result": "SOURCE_ADDRESS_MISMATCH_UNRESOLVED",
+        "confidence": "NONE",
+        "reasoning": "Lev Hamercaz URL explicitly references אחד העם (Ein Ganim), while Tax data is for איסר הראל 6 (Em HaMoshavot). These are different streets in different submarkets. Cannot link without proven address identity.",
+        "action": "Do not use to invalidate or resolve existing Apt39 evidence. Keep SOURCE_CONFLICT."
+      },
+      {
+        "id": "LINKAGE_002",
+        "context_type": "qa_and_linkage",
+        "relevant_units": [],
+        "numeric_eligibility": false,
+        "address": "מיכל לייב כץ 80, כפר גנים ב'",
+        "listing_data": {
+          "source": "Zipika",
+          "url": "https://zipika.com/features/property-details?propId=3080617&lng=he",
+          "property_type": "דירה",
+          "rooms": 5,
+          "internal_area_sqm": 110,
+          "floor_config": null,
+          "asking_price_ils": null,
+          "date_listed": "2026"
+        },
+        "tax_data": {
+          "source": "Dirobot",
+          "url": "https://www.dirobot.co.il/building-prices/פתח%20תקווה,%20מיכל%20לייב%20כץ,%2080",
+          "transactions": [
+            {
+              "date": "2025-03-27",
+              "rooms": 4,
+              "area_sqm": 113,
+              "floor": "רביעית+גג",
+              "price_ils": 2850000
+            }
+          ],
+          "median_price_ils": 1345000,
+          "transaction_count": 3
+        },
+        "linkage_result": "SAME_ADDRESS_AMBIGUOUS",
+        "confidence": "LOW",
+        "reasoning": "Room mismatch (5 vs 4), area inconsistency (110 vs 113m2). Floor config 'רביעית+גג' suggests penthouse, not standard unit. Likely different units or area semantics differ (built vs usable).",
+        "action": "QUARANTINE - do not use for size-based comparisons"
+      },
+      {
+        "id": "LINKAGE_003",
+        "context_type": "qa_and_linkage",
+        "relevant_units": [
+          "36",
+          "37"
+        ],
+        "numeric_eligibility": false,
+        "address": "תרזה קוגלמן 4, נווה גן (5R finding)",
+        "listing_data": {
+          "source": "Madlan",
+          "url": "https://www.madlan.co.il/for-sale/קוגלמן-תרזה-פתח-תקווה-ישראל/secure-room",
+          "property_type": "דירה",
+          "rooms": 5,
+          "internal_area_sqm": 122,
+          "floor_config": "11",
+          "asking_price_ils": 3350000,
+          "date_listed": "2026"
+        },
+        "tax_data": {
+          "source": "NadlanShark",
+          "url": "https://nadlan-shark.co.il/neighborhood/פתח%20תקווה/נווה%20גן",
+          "transactions": [
+            {
+              "date": "2026-04-06",
+              "rooms": 5,
+              "area_sqm": 136,
+              "floor": null,
+              "price_ils": 3700000
+            }
+          ],
+          "median_price_ils": null,
+          "transaction_count": 1
+        },
+        "linkage_result": "SAME_ADDRESS_AMBIGUOUS",
+        "confidence": "LOW",
+        "reasoning": "Area mismatch (122 vs 136m2 = 14m2 difference), price mismatch (₪3.35M vs ₪3.7M = ₪350K difference). Different dates. Likely different units in same building.",
+        "action": "Do not merge as same unit. Keep separate from existing 6R conflict."
+      },
+      {
+        "id": "LINKAGE_004",
+        "context_type": "qa_and_linkage",
+        "relevant_units": [
+          "36",
+          "37"
+        ],
+        "numeric_eligibility": false,
+        "address": "תרזה קוגלמן 4, נווה גן (6R existing conflict)",
+        "listing_data": {
+          "source": "Existing project record",
+          "property_type": "דירה",
+          "rooms": 6,
+          "internal_area_sqm": 180,
+          "floor_config": null,
+          "asking_price_ils": null,
+          "date_listed": "2025-11-23"
+        },
+        "tax_data": {
+          "source": "Project Tax data",
+          "local_tax_value_ils": 5250000,
+          "public_tax_mirror_ils": 242000,
+          "conflict_note": "Local Tax value ~₪5.25M vs public Tax-derived mirror ~₪242K"
+        },
+        "linkage_result": "QUARANTINED",
+        "confidence": "NONE",
+        "reasoning": "Existing unresolved conflict. Local Tax value ~₪5.25M conflicts with public Tax-derived mirror ~₪242K. Requires manual recheck of exact transaction.",
+        "action": "Keep quarantined until exact transaction rechecked. Do not merge with 5R finding (LINKAGE_003)."
+      },
+      {
+        "id": "LINKAGE_005",
+        "context_type": "qa_and_linkage",
+        "relevant_units": [
+          "36",
+          "37"
+        ],
+        "numeric_eligibility": false,
+        "address": "מונטיפיורי, פתח תקווה (street only)",
+        "listing_data": {
+          "source": "GP Realty",
+          "url": "https://www.gprealty.co.il/montefiore",
+          "property_type": "טריפלקס",
+          "rooms": 6,
+          "internal_area_sqm": null,
+          "floor_config": null,
+          "asking_price_ils": 2280000,
+          "date_listed": "2020-06-13"
+        },
+        "tax_data": {
+          "source": "Dirobot Rupin Street",
+          "url": "https://www.dirobot.co.il/street-prices/פתח%20תקווה,%20רופין",
+          "transactions": "12 transactions, avg ₪2,000,000, median ₪2,115,000, avg 3.5 rooms",
+          "median_price_ils": 2115000,
+          "transaction_count": 12
+        },
+        "linkage_result": "NO_MATCH",
+        "confidence": "NONE",
+        "reasoning": "Listing lacks exact address (only street name), no area data, outdated (2020). Tax data is street-level aggregate, not unit-specific. Cannot link.",
+        "action": "Keep as context-only triplex evidence"
+      },
+      {
+        "id": "LINKAGE_006",
+        "context_type": "qa_and_linkage",
+        "relevant_units": [
+          "36",
+          "37"
+        ],
+        "numeric_eligibility": false,
+        "address": "התשעים ושלוש 3, המרכז השקט",
+        "listing_data": {
+          "source": "Anglo Saxon",
+          "url": "https://www.anglo-saxon.co.il/properties/single/?id=418210",
+          "property_type": "טריפלקס",
+          "rooms": 5,
+          "internal_area_sqm": 210,
+          "floor_config": null,
+          "asking_price_ils": null,
+          "date_listed": "2025-04-01",
+          "address_note": "Listing shows only street name (התשעים ושלוש), not number 3"
+        },
+        "tax_data": {
+          "source": "Dirobot HaTishim VeShalosh Street",
+          "url": "https://www.dirobot.co.il/street-prices/פתח%20תקווה,%20התשעים%20ושלוש",
+          "transactions": "18 transactions, avg ₪2,700,000, median ₪2,625,000, avg 4.2 rooms",
+          "median_price_ils": 2625000,
+          "transaction_count": 18,
+          "address_note": "Street-level data only, no unit 3 specific data"
+        },
+        "linkage_result": "STREET_LEVEL_ONLY",
+        "confidence": "NONE",
+        "reasoning": "Searched exact address התשעים ושלוש 3 via Nadlanist (fetch failed), Dirobot (street-level only), Gushim.co.il (plot lookup available but no transaction data). Street has 18 transactions but no unit-level data available. Triplex typology not confirmed in Tax.",
+        "action": "Keep as context-only triplex evidence. Exact address searched but only street-level Tax data available.",
+        "superseded_by": "TRIPLEX_93_3_ARCHIVE_TAX_CROSSMATCH"
+      },
+      {
+        "id": "QUARANTINE_001",
+        "context_type": "qa_and_linkage",
+        "relevant_units": [
+          "39"
+        ],
+        "numeric_eligibility": false,
+        "address": "איסר הראל 6 / אחד העם",
+        "issue": "SOURCE_ADDRESS_MISMATCH_UNRESOLVED - Lev Hamercaz URL references אחד העם, Tax data is איסר הראל 6",
+        "listing_source": "Lev Hamercaz - duplex 5R 115m2 ₪2.28M (address: אחד העם)",
+        "tax_source": "Dirobot - 4R 98m2 floor 4 ₪3.015M (address: איסר הראל 6)",
+        "resolution": "SOURCE_ADDRESS_MISMATCH_UNRESOLVED",
+        "action": "Do not use to invalidate or resolve existing Apt39 evidence"
+      },
+      {
+        "id": "QUARANTINE_002",
+        "context_type": "qa_and_linkage",
+        "relevant_units": [],
+        "numeric_eligibility": false,
+        "address": "מיכל לייב כץ 80",
+        "issue": "Inconsistent area semantics (110 vs 113m2), room mismatch (5 vs 4)",
+        "listing_source": "Zipika - 5R 110m2",
+        "tax_source": "Dirobot - 4R 113m2 floor 4+gag ₪2.85M",
+        "resolution": "QUARANTINE until area semantics clarified",
+        "action": "Do not use for size-based comparisons"
+      },
+      {
+        "id": "QUARANTINE_003",
+        "context_type": "qa_and_linkage",
+        "relevant_units": [
+          "36",
+          "37"
+        ],
+        "numeric_eligibility": false,
+        "address": "תרזה קוגלמן 4 (5R)",
+        "issue": "Conflicting transaction prices (₪3.35M vs ₪3.7M), area mismatch (122 vs 136m2)",
+        "listing_source": "Madlan - 5R 122m2 floor 11 ₪3.35M",
+        "tax_source": "NadlanShark - 5R 136m2 ₪3.7M (04/2026)",
+        "resolution": "LIKELY_DIFFERENT_UNITS",
+        "action": "Do not merge as same unit. Keep separate from 6R conflict."
+      },
+      {
+        "id": "QUARANTINE_004",
+        "context_type": "qa_and_linkage",
+        "relevant_units": [
+          "36",
+          "37"
+        ],
+        "numeric_eligibility": false,
+        "address": "תרזה קוגלמן 4 (6R existing)",
+        "issue": "Existing unresolved conflict: 6R 180m2 2025-11-23, local Tax ~₪5.25M vs public Tax-derived mirror ~₪242K",
+        "listing_source": "Existing project record",
+        "tax_source": "Conflicting Tax values",
+        "resolution": "QUARANTINED",
+        "action": "Keep quarantined until exact transaction rechecked. Do not merge with 5R finding."
+      },
+      {
+        "id": "DUPLEX5R_002",
+        "context_type": "qa_and_linkage",
+        "relevant_units": [
+          "39"
+        ],
+        "numeric_eligibility": false,
+        "address": "אם המושבות החדשה",
+        "issue": "אחד העם (Lev Hamercaz duplex listing) is NOT the same address as איסר הראל 6 (Dirobot Tax lookup).",
+        "listing_source": "Lev Hamercaz -- אחד העם, duplex 5R 115m² ₪2.28M",
+        "tax_source": "Dirobot -- איסר הראל 6, 4R 98m² floor 4 ₪3.015M (2025-11-24)",
+        "resolution": "SOURCE_CONFLICT",
+        "action": "Do not use this to invalidate, resolve, or replace the existing canonical איסר הראל 6 transaction (5R, 163m², ₪5.4M, 2024-06-07) -- that record is preserved unchanged in curated_special_review."
+      }
+    ]
+  },
+  "second_researcher_context_v1": {
+    "source_bundle": "second_researcher_2026-09-07",
+    "source_files": [
+      "data/research/second_researcher/special_gap_research_v2.json",
+      "data/research/second_researcher/special_tax_linkage_v2.json"
+    ],
+    "excluded_source_files": {
+      "research_gap_closure_report_v1.json": "reference only -- never ingested as pricing data"
+    },
+    "standard_feature_provenance": {
+      "source_file": "data/research/second_researcher/standard_feature_matched_pairs_v1_second_researcher.json",
+      "role": "corroboration only -- canonical data/frozen/standard_unit_attribute_enrichment_v1.json remains the runtime/UI source; these records are not duplicated as separate display cards",
+      "corroborated_addresses": [
+        "אבינועם ילין 6, פתח תקווה",
+        "פנקס 5, פתח תקווה",
+        "בעל שם-טוב 2, פתח תקווה",
+        "זאב ברנדה 40, פתח תקווה"
+      ],
+      "verified_monetary_rule": null,
+      "verification": "every deal_id/date/floor/price/subparcel matches the canonical enrichment file exactly (asserted at merge time)"
+    },
+    "numeric_eligibility_default": false,
+    "usage_rule": "Context/provenance only, same as first_researcher_context_v2. No record here is read by pricing_core.special_market_indication or any voting-lane builder. pricing_engine_updated=false, new_records_allowed_to_vote=false, review_required_before_numeric_use=true per the source package's own scope statement.",
+    "supersession_note": "Records with a 'supersedes' field replace a weaker first_researcher_context_v2 record for the same underlying property in the UI; the superseded record is kept (tagged superseded_by) and never deleted.",
+    "garden_context": [],
+    "triplex_context": [
+      {
+        "id": "TRIPLEX_USSISHKIN_22_ARCHIVE",
+        "context_type": "triplex_context",
+        "relevant_units": [
+          "36",
+          "37"
+        ],
+        "numeric_eligibility": false,
+        "source": "ad.co.il archived listing",
+        "source_type": "archived_asking",
+        "source_url": "https://www.ad.co.il/archive/nadlansale",
+        "retrieved_date": "2026-09-07",
+        "normalized": {
+          "address": "אוסישקין 22, פתח תקווה",
+          "submarket": "מרכז/צפון פתח תקווה",
+          "property_type": "triplex",
+          "rooms": 6,
+          "advertised_area_m2": 150,
+          "built_internal_area_m2": null,
+          "balcony_area_m2": null,
+          "roof_terrace_area_m2": null,
+          "floors": "5-7/roof",
+          "asking_price_ils": 2300000,
+          "parking_count": 1,
+          "storage": null,
+          "elevator": true,
+          "mamad": true,
+          "orientation": null
+        },
+        "evidence_class": "DIRECT_TYPE_EXACT_ROOMS_SIZE_RELAXED_ARCHIVED_ASKING",
+        "why_relevant": "Direct 6R triplex in Petah Tikva with explicit multi-level configuration and asking price.",
+        "why_not_numeric": "150 m² is materially below the 255-260 m² subjects; public building transaction history did not surface a matching 6R/150 m² sale."
+      },
+      {
+        "id": "TRIPLEX_MONTEFIORE_14_ARCHIVE",
+        "context_type": "triplex_context",
+        "relevant_units": [
+          "36",
+          "37"
+        ],
+        "numeric_eligibility": false,
+        "source": "ad.co.il archive + local broker/archive evidence",
+        "source_type": "archived_asking",
+        "source_url": "https://www.ad.co.il/archive/nadlansale",
+        "retrieved_date": "2026-09-07",
+        "normalized": {
+          "address": "מונטיפיורי 14, פתח תקווה",
+          "property_type": "triplex",
+          "rooms": 6,
+          "advertised_area_m2": 160,
+          "built_internal_area_m2": 145,
+          "roof_area_m2": 75,
+          "balcony_area_m2": null,
+          "asking_price_observations_ils": [
+            1850000,
+            1900000,
+            2280000
+          ],
+          "parking_count": 1,
+          "elevator": true,
+          "orientation": [
+            "north",
+            "west",
+            "east"
+          ],
+          "condition": "renovated"
+        },
+        "evidence_class": "DIRECT_TYPE_EXACT_ROOMS_SIZE_RELAXED_ARCHIVED_ASKING",
+        "why_relevant": "Adds another direct 6R triplex product with separated built and roof components.",
+        "why_not_numeric": "Still materially smaller than subjects; archive states have area/price variation and no exact Tax linkage was established.",
+        "supersedes": "TRIPLEX_001"
+      },
+      {
+        "id": "TRIPLEX_ARTHUR_RUPPIN_8_ARCHIVE",
+        "context_type": "triplex_context",
+        "relevant_units": [
+          "36",
+          "37"
+        ],
+        "numeric_eligibility": false,
+        "source": "ad.co.il archived listing",
+        "source_type": "archived_asking",
+        "source_url": "https://www.ad.co.il/archive/nadlansale",
+        "retrieved_date": "2026-09-07",
+        "normalized": {
+          "address": "ארתור רופין 8, פתח תקווה",
+          "property_type": "triplex / three-level roof apartment",
+          "archive_states": [
+            {
+              "rooms": 6,
+              "advertised_area_m2": 150,
+              "asking_price_ils": 2100000,
+              "source_context": "6R triplex filtered archive result"
+            },
+            {
+              "rooms": 7,
+              "advertised_total_area_m2": 210,
+              "built_internal_area_m2": 140,
+              "roof_area_m2": 70,
+              "asking_price_ils": 2000000,
+              "orientation": [
+                "north",
+                "south",
+                "east"
+              ],
+              "parking": true,
+              "elevator": true,
+              "source_context": "detailed archived listing state"
+            }
+          ]
+        },
+        "evidence_class": "DIRECT_TRIPLEX_ARCHIVE_WITH_METADATA_CONFLICT",
+        "why_relevant": "Confirms a real three-level/roof triplex product at the exact Petah Tikva address.",
+        "why_not_numeric": "Archive states conflict on rooms/area/price (6R/150/₪2.1M versus 7R/210 total with 140 built +70 roof/₪2.0M); do not treat as a clean exact-room or near-size numeric comp."
+      },
+      {
+        "id": "TRIPLEX_MINTZ_15_ARCHIVE",
+        "context_type": "triplex_context",
+        "relevant_units": [
+          "36",
+          "37"
+        ],
+        "numeric_eligibility": false,
+        "source": "ad.co.il/AdTiny archived listing",
+        "source_type": "archived_asking",
+        "source_url": "https://www.adtiny.com/",
+        "retrieved_date": "2026-09-07",
+        "normalized": {
+          "address": "מינץ בנימין 15, פתח תקווה",
+          "submarket": "אחדות",
+          "property_type": "triplex",
+          "rooms": 5,
+          "structured_area_m2": 135,
+          "description_area_m2": 160,
+          "balcony_area_m2": 6,
+          "roof_terrace_area_m2": 25,
+          "asking_price_ils": 2250000,
+          "parking_count": 1,
+          "parking_note": "listing describes Tabu parking and capacity for two cars",
+          "storage": true,
+          "elevator": true,
+          "mamad": true,
+          "orientation": [
+            "north",
+            "west"
+          ],
+          "condition": "renovated"
+        },
+        "evidence_class": "DIRECT_TYPE_ROOM_RELAXED_SIZE_RELAXED_ARCHIVED_ASKING",
+        "why_relevant": "Rich direct triplex attributes, including explicit balcony and roof-terrace components.",
+        "why_not_numeric": "5 rooms, smaller scale, different submarket, and source contains conflicting area semantics."
+      },
+      {
+        "id": "TRIPLEX_93_3_ARCHIVE_TAX_CROSSMATCH",
+        "context_type": "triplex_context",
+        "relevant_units": [
+          "36",
+          "37"
+        ],
+        "numeric_eligibility": false,
+        "source": "Tax Authority dataset + ad.co.il archive",
+        "source_type": "sold_linkage_plus_archived_asking",
+        "source_url": "https://www.ad.co.il/archive/nadlansale",
+        "retrieved_date": "2026-09-07",
+        "normalized": {
+          "address": "התשעים ושלוש 3, פתח תקווה",
+          "tax_deal_id": "3655065895",
+          "tax_rooms": 5,
+          "tax_registered_area_m2": 145,
+          "tax_price_ils": 3200000,
+          "tax_date": "2026-01-24",
+          "tax_floor_configuration": "3+4+roof",
+          "archive_property_type": "triplex",
+          "archive_rooms": 5.5,
+          "archive_advertised_area_m2": 200,
+          "archive_levels": 3,
+          "archive_roof_terrace": true,
+          "archive_parking": true,
+          "archive_elevator": true,
+          "archive_condition": "renovated"
+        },
+        "evidence_class": "HIGH_CONFIDENCE_UNIT_LINK",
+        "why_relevant": "Exact address plus highly distinctive three-level/roof floor pattern provides the strongest sold-triplex typology linkage found.",
+        "why_not_numeric": "No stable listing unit/subparcel identifier; archive advertised area differs from registered area, so listing attributes must not be copied automatically to the Tax unit.",
+        "supersedes": "LINKAGE_006"
+      }
+    ],
+    "duplex_context": [
+      {
+        "id": "APT38_BEN_GURION_45_ARCHIVE",
+        "context_type": "duplex_context",
+        "relevant_units": [
+          "38"
+        ],
+        "numeric_eligibility": false,
+        "source": "ad.co.il archived listing",
+        "source_type": "archived_asking",
+        "source_url": "https://www.ad.co.il/archive/nadlansale",
+        "retrieved_date": "2026-09-07",
+        "normalized": {
+          "address": "בן גוריון 45, כפר גנים ג, פתח תקווה",
+          "property_type": "duplex",
+          "rooms": 7,
+          "built_internal_area_m2": 160,
+          "balcony_components_m2": [
+            80,
+            20
+          ],
+          "asking_price_ils": 3650000,
+          "parking": true,
+          "storage": true,
+          "elevator": true,
+          "mamad": true,
+          "condition": "renovated"
+        },
+        "evidence_class": "DIRECT_TYPE_EXACT_ROOMS_NEAR_SIZE_ARCHIVED_ASKING",
+        "why_relevant": "7R duplex only ~6% smaller than Apt38 with explicit outdoor components and rich attributes.",
+        "why_not_numeric": "Different submarket and outdoor area is much larger than Apt38."
+      },
+      {
+        "id": "APT38_DANIEL_LIFSHITZ_ARCHIVE",
+        "context_type": "duplex_context",
+        "relevant_units": [
+          "38"
+        ],
+        "numeric_eligibility": false,
+        "source": "ad.co.il archived listing",
+        "source_type": "archived_asking",
+        "source_url": "https://www.ad.co.il/archive/nadlansale",
+        "retrieved_date": "2026-09-07",
+        "normalized": {
+          "address": "דניאל ליפשיץ, כפר גנים ג, פתח תקווה",
+          "property_type": "duplex/penthouse",
+          "rooms": 7,
+          "built_internal_area_m2": 167,
+          "terrace_components_m2": [
+            87,
+            32
+          ],
+          "asking_price_ils": 3900000,
+          "parking_count": 2,
+          "storage": true,
+          "elevator": true,
+          "mamad": true,
+          "condition": "renovated"
+        },
+        "evidence_class": "DIRECT_TYPE_EXACT_ROOMS_NEAR_SIZE_ARCHIVED_ASKING",
+        "why_relevant": "Very close internal scale to Apt38 and rich special-unit attributes.",
+        "why_not_numeric": "Terrace wording is ambiguous; components are retained separately rather than summed. Different submarket."
+      },
+      {
+        "id": "APT38_KATZENELSON_19_TAX_ARCHIVE_LINK",
+        "context_type": "duplex_context",
+        "relevant_units": [
+          "38"
+        ],
+        "numeric_eligibility": false,
+        "source": "Tax-derived building history + ad.co.il archive",
+        "source_type": "sold_linkage_plus_archived_asking",
+        "source_url": "https://www.ad.co.il/archive/nadlansale",
+        "retrieved_date": "2026-09-07",
+        "normalized": {
+          "address": "אהרון כצנלסון 19, פתח תקווה",
+          "tax_date": "2018-12-09",
+          "tax_rooms": 7,
+          "tax_registered_area_m2": 165,
+          "tax_floor_configuration": "7-8",
+          "tax_price_ils": 2720000,
+          "archive_property_type": "duplex/penthouse",
+          "archive_rooms": 7,
+          "archive_area_state_1_m2": 167,
+          "archive_area_state_2_m2": 280,
+          "archive_balcony_area_m2": 76,
+          "archive_other_balcony_present": true,
+          "archive_asking_price_observations_ils": [
+            2790000,
+            2900000
+          ],
+          "archive_parking": true,
+          "archive_storage": true,
+          "archive_elevator": true,
+          "archive_mamad": true,
+          "archive_condition": "renovated"
+        },
+        "evidence_class": "HIGH_CONFIDENCE_UNIT_LINK",
+        "why_relevant": "Exact address, exact rooms, near-identical registered/advertised size and exact 7-8 floor pattern strongly support sold duplex typology.",
+        "why_not_numeric": "No listing subparcel/unit identifier; archive area states conflict, so rich listing attributes remain candidates rather than sold-unit facts."
+      },
+      {
+        "id": "APT39_MIVTZA_DEKEL_14_TAX_ARCHIVE_LINK",
+        "context_type": "duplex_context",
+        "relevant_units": [
+          "39"
+        ],
+        "numeric_eligibility": false,
+        "source": "Tax Authority dataset + ad.co.il archive",
+        "source_type": "sold_linkage_plus_archived_asking",
+        "source_url": "https://www.ad.co.il/archive/nadlansale?props=10-10&sp1=103&sp3=3&sp4=1849&view=list",
+        "retrieved_date": "2026-09-07",
+        "normalized": {
+          "address": "מבצע דקל 14, פתח תקווה",
+          "tax_deal_id": "3633131484",
+          "tax_rooms": 5,
+          "tax_registered_area_m2": 157,
+          "tax_price_ils": 5900000,
+          "tax_date": "2025-08-04",
+          "tax_floor_configuration": "27+28",
+          "archive_property_type": "penthouse_duplex",
+          "archive_rooms": "5 (originally 6)",
+          "archive_floor_configuration": "27+28",
+          "archive_balcony_area_m2": 50,
+          "archive_storage_area_m2": 10,
+          "archive_parking_count": 2,
+          "archive_elevator": true,
+          "archive_condition": "renovated/upgraded",
+          "archive_asking_price_observations_ils": [
+            4490000,
+            4950000
+          ]
+        },
+        "evidence_class": "HIGH_CONFIDENCE_UNIT_LINK",
+        "why_relevant": "Exact address, exact 5-room state and distinctive 27+28 floor configuration strongly support duplex/penthouse typology for the sale.",
+        "why_not_numeric": "No listing unit/subparcel identifier; listing balcony/parking/storage cannot be promoted automatically to exact Tax-unit facts."
+      }
+    ],
+    "new_development_updates": [
+      {
+        "id": "NEWDEV_ZEEV_BRANDA_22_DIRECT_DEVELOPER",
+        "context_type": "new_development_updates",
+        "relevant_units": [
+          "36",
+          "37",
+          "38",
+          "39"
+        ],
+        "numeric_eligibility": false,
+        "source": "developer site + Yad1",
+        "source_type": "new_development",
+        "source_url": "https://www.rakasim.co.il/",
+        "retrieved_date": "2026-09-07",
+        "normalized": {
+          "project": "זאב ברנדה 22",
+          "developer": "רכסים בנייה ויזמות",
+          "address": "זאב ברנדה 22, פתח תקווה",
+          "submarket": "המרכז השקט / מרכז העיר",
+          "special_variant": {
+            "property_type": "roof_duplex",
+            "rooms": "5-6",
+            "internal_area_range_m2": [
+              148,
+              192
+            ],
+            "outdoor_area_range_m2": [
+              44,
+              110
+            ],
+            "floors": "9-10",
+            "starting_price_ils": 4490000
+          },
+          "standard_variants": {
+            "3r_area_range_m2": [
+              67,
+              77
+            ],
+            "3r_starting_price_ils": 2058000,
+            "5r_area_m2": 122,
+            "5r_floor": 7,
+            "5r_starting_price_ils": 3180000
+          },
+          "project_features": {
+            "underground_parking": true,
+            "elevators": 4,
+            "mamad": true,
+            "sun_balcony": true
+          }
+        },
+        "evidence_class": "DIRECT_DEVELOPER_PRODUCT_AND_STARTING_PRICE",
+        "why_relevant": "Upgrades a previously price-missing core competitor with developer-published special-product size/outdoor ranges and starting price.",
+        "why_not_numeric": "Starting price is for a product range, not an individually identified 255-260 m² triplex or a floor-specific matched model.",
+        "supersedes": "zeev_branda_22__duplex_penthouse_5-6R"
+      },
+      {
+        "id": "NEWDEV_NAVE_PARK",
+        "context_type": "new_development_updates",
+        "relevant_units": [
+          "36",
+          "37",
+          "38",
+          "39"
+        ],
+        "numeric_eligibility": false,
+        "source": "developer site + Yad1",
+        "source_type": "new_development",
+        "source_url": "https://www.yad2.co.il/yad1/project/15615",
+        "retrieved_date": "2026-09-07",
+        "normalized": {
+          "project": "NAVE PARK",
+          "submarket": "נווה גן",
+          "6r_variant": {
+            "rooms": 6,
+            "floor_range": "8-9",
+            "starting_price_ils": 3850000,
+            "internal_area_m2": null,
+            "outdoor_area_m2": null
+          },
+          "5r_penthouse_variant": {
+            "rooms": 5,
+            "property_type": "penthouse",
+            "internal_area_m2": 195,
+            "floor": 31,
+            "starting_price_ils": 7500000
+          },
+          "project_features": {
+            "private_parking": true,
+            "storage": "paid option"
+          }
+        },
+        "evidence_class": "DIRECT_NEW_DEVELOPMENT_ROOM_FLOOR_PRICE_CONTEXT",
+        "why_relevant": "Adds exact room/floor pricing and a large premium penthouse benchmark.",
+        "why_not_numeric": "The 6R variant still lacks exact internal/outdoor area and is not a triplex.",
+        "supersedes": "NAVE_PARK__penthouse_5-6R"
+      },
+      {
+        "id": "NEWDEV_THE_SPOT_5R_UPPER_PRODUCT",
+        "context_type": "new_development_updates",
+        "relevant_units": [
+          "39"
+        ],
+        "numeric_eligibility": false,
+        "source": "Yad2/Yad1 current project listing",
+        "source_type": "new_development",
+        "source_url": "https://www.yad2.co.il/yad1/project/19459",
+        "retrieved_date": "2026-09-07",
+        "normalized": {
+          "project": "THE SPOT",
+          "developer": "שיא עינב",
+          "address": "יהושע שטמפפר 83-87, פתח תקווה",
+          "rooms": 5,
+          "property_type": "upper_floor_duplex/penthouse_product",
+          "advertised_area_m2": 146,
+          "floors": "9-10",
+          "unit_specific_price_ils": null,
+          "project_starting_price_ils": 2250000
+        },
+        "evidence_class": "DIRECT_PRODUCT_SIZE_FLOOR_PRICE_MISSING",
+        "why_relevant": "Very relevant 5R upper-floor product near Apt39's size and floor pattern.",
+        "why_not_numeric": "The ₪2.25M figure is the project/3R starting line, not the 5R special-unit price.",
+        "supersedes": "THE_SPOT__duplex_5R"
+      },
+      {
+        "id": "NEWDEV_DEFOUR_SPECIAL_PRODUCTS",
+        "context_type": "new_development_updates",
+        "relevant_units": [
+          "1",
+          "2",
+          "3",
+          "36",
+          "37",
+          "38",
+          "39"
+        ],
+        "numeric_eligibility": false,
+        "source": "Yad1",
+        "source_type": "new_development",
+        "source_url": "https://www.yad2.co.il/yad1/project/16523",
+        "retrieved_date": "2026-09-07",
+        "normalized": {
+          "project": "DeFour",
+          "address": "ברנדה פינת בלפור, פתח תקווה",
+          "submarket": "המרכז השקט / מרכז העיר",
+          "product_mix": [
+            "3R garden",
+            "5R penthouse/roof",
+            "6R penthouse/roof"
+          ],
+          "project_starting_price_ils": 2200000,
+          "special_unit_specific_prices": null,
+          "special_unit_dimensions": null,
+          "buildings": 4,
+          "floors_per_building": 9
+        },
+        "evidence_class": "SAME_SUBMARKET_NEW_DEVELOPMENT_PRODUCT_CONTEXT",
+        "why_relevant": "Exact relevant garden and premium-product types in the same central submarket.",
+        "why_not_numeric": "No exact special-unit dimensions or unit-specific prices found.",
+        "supersedes": "DeFour__penthouse_5-6R"
+      },
+      {
+        "id": "NEWDEV_BRANDA_49",
+        "context_type": "new_development_updates",
+        "relevant_units": [
+          "36",
+          "37",
+          "38",
+          "39"
+        ],
+        "numeric_eligibility": false,
+        "source": "Yad1",
+        "source_type": "new_development",
+        "source_url": "https://www.yad2.co.il/yad1/project/15063",
+        "retrieved_date": "2026-09-07",
+        "normalized": {
+          "project": "ברנדה 49",
+          "address": "זאב ברנדה 49, פתח תקווה",
+          "submarket": "המרכז השקט / מרכז העיר",
+          "project_area_range_m2": [
+            121,
+            301
+          ],
+          "rooms": "5-6",
+          "products": [
+            "standard 5R",
+            "garden",
+            "penthouse"
+          ],
+          "standard_5r_variant": {
+            "advertised_area_m2": 121,
+            "floors": "4-8",
+            "starting_price_ils": 2900000
+          },
+          "parking_per_apartment": true,
+          "private_storage_per_apartment": true
+        },
+        "evidence_class": "SAME_SUBMARKET_NEW_DEVELOPMENT_CONTEXT",
+        "why_relevant": "Same-submarket large premium project with project-wide parking/storage and 301 m² maximum scale.",
+        "why_not_numeric": "No public unit-specific penthouse/garden price or exact special floorplan was found.",
+        "supersedes": "branda_49__garden_5R"
+      }
+    ],
+    "qa_and_linkage": [
+      {
+        "id": "יחיאל מיכל פינס 19 garden archive candidate",
+        "context_type": "qa_and_linkage",
+        "relevant_units": [
+          "1",
+          "2",
+          "3"
+        ],
+        "numeric_eligibility": false,
+        "classification": "NO_MATCH",
+        "tax_record": {
+          "address": "יחיאל מיכל פינס 19",
+          "example_sale": {
+            "rooms": 2,
+            "registered_area_m2": 52,
+            "floor": "ground",
+            "price_ils": 1160000,
+            "date": "2021-05-21",
+            "subparcel": "6396-183-3"
+          }
+        },
+        "listing_record": {
+          "address": "יחיאל מיכל פינס 19",
+          "garden_listing_rooms": 3,
+          "garden_listing_area_m2": 65,
+          "yard": "large/explicit in archive context"
+        },
+        "matching_basis": [
+          "exact address"
+        ],
+        "data_quality_conflict": null,
+        "reason": "Rooms/area do not match the building's relevant Tax transactions closely enough; same building is insufficient."
+      },
+      {
+        "id": "שלומציון המלכה 6 5.5R roof/multi-level",
+        "context_type": "qa_and_linkage",
+        "relevant_units": [
+          "39"
+        ],
+        "numeric_eligibility": false,
+        "classification": "SAME_ADDRESS_AMBIGUOUS",
+        "tax_record": {
+          "deal_id": "3633966655",
+          "address": "שלומציון המלכה 6",
+          "rooms": 5.5,
+          "registered_area_m2": 157,
+          "price_ils": 2920000,
+          "date": "2025-09-21",
+          "floor": "8+roof",
+          "subparcel": "6399-290-129"
+        },
+        "listing_record": null,
+        "matching_basis": [
+          "registered floor configuration",
+          "same subparcel appears in a 2023 transaction"
+        ],
+        "data_quality_conflict": null,
+        "reason": "Strong registered-unit identifier history, but no archived listing with the same subparcel/unit identifier was found."
+      },
+      {
+        "id": "איסר הראל 6 5R multi-level",
+        "context_type": "qa_and_linkage",
+        "relevant_units": [
+          "39"
+        ],
+        "numeric_eligibility": false,
+        "classification": "SAME_ADDRESS_AMBIGUOUS",
+        "tax_record": {
+          "deal_id": "3601967910",
+          "address": "איסר הראל 6",
+          "rooms": 5,
+          "registered_area_m2": 163,
+          "local_price_ils": 5400000,
+          "date": "2024-06-07",
+          "local_floor": "19+20"
+        },
+        "listing_record": null,
+        "matching_basis": [
+          "local government record + public mirrors"
+        ],
+        "data_quality_conflict": {
+          "local_tax_price_ils": 5400000,
+          "wizbid_price_ils": 5400000,
+          "market2_price_ils": 4900000,
+          "market2_floor": 9,
+          "market2_subparcel": "6360-188-74"
+        },
+        "reason": "Public mirrors conflict in both price/floor. Keep the local government value visible but flag/quarantine unresolved mirror conflict."
+      },
+      {
+        "id": "כנסת ישראל 17 multi-level candidate",
+        "context_type": "qa_and_linkage",
+        "relevant_units": [
+          "38",
+          "39"
+        ],
+        "numeric_eligibility": false,
+        "classification": "SAME_ADDRESS_AMBIGUOUS",
+        "tax_record": {
+          "address": "כנסת ישראל 17",
+          "multi_level_sales": true
+        },
+        "listing_record": {
+          "same_address_product_form": "private house/cottage context"
+        },
+        "matching_basis": [
+          "exact address"
+        ],
+        "data_quality_conflict": null,
+        "reason": "Property-form conflict prevents upgrading the Tax records to apartment duplex evidence."
+      }
+    ]
+  }
+}

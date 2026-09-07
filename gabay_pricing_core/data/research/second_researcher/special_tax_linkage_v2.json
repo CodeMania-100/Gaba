@@ -1,0 +1,315 @@
+{
+  "version": "special_tax_linkage_v2",
+  "retrieved_at": "2026-09-07",
+  "classification_definitions": {
+    "EXACT_UNIT_LINK": "Stable unit/subparcel or other exact identifier plus matching property facts.",
+    "HIGH_CONFIDENCE_UNIT_LINK": "Multiple strong matching facts, but no stable exact unit identifier.",
+    "SAME_BUILDING_ONLY": "Only building-level relation; unit attributes cannot transfer.",
+    "SAME_ADDRESS_AMBIGUOUS": "Exact address but unit/property-form/record conflict remains.",
+    "NO_MATCH": "Targeted cross-match did not produce a defensible transaction link."
+  },
+  "records": [
+    {
+      "listing_or_product": "התשעים ושלוש 3 triplex archive",
+      "subject_targets": [
+        "Apt36",
+        "Apt37"
+      ],
+      "classification": "HIGH_CONFIDENCE_UNIT_LINK",
+      "tax_record": {
+        "deal_id": "3655065895",
+        "address": "התשעים ושלוש 3",
+        "rooms": 5,
+        "registered_area_m2": 145,
+        "price_ils": 3200000,
+        "date": "2026-01-24",
+        "floor": "3+4+roof"
+      },
+      "listing_record": {
+        "address": "התשעים ושלוש 3",
+        "rooms": 5.5,
+        "property_type": "triplex",
+        "advertised_area_m2": 200,
+        "levels": 3,
+        "roof_terrace": true
+      },
+      "matching_basis": [
+        "exact address",
+        "near rooms",
+        "distinctive three-level/roof configuration"
+      ],
+      "missing_for_exact": [
+        "listing unit number or subparcel",
+        "stable listing-to-Tax identifier"
+      ],
+      "attribute_transfer_rule": "Do not automatically transfer parking/elevator/renovation/outdoor dimensions to the Tax record."
+    },
+    {
+      "listing_or_product": "אהרון כצנלסון 19 7R duplex/penthouse archive",
+      "subject_targets": [
+        "Apt38"
+      ],
+      "classification": "HIGH_CONFIDENCE_UNIT_LINK",
+      "tax_record": {
+        "address": "אהרון כצנלסון 19",
+        "rooms": 7,
+        "registered_area_m2": 165,
+        "price_ils": 2720000,
+        "date": "2018-12-09",
+        "floor": "7-8"
+      },
+      "listing_record": {
+        "address": "אהרון כצנלסון 19",
+        "rooms": 7,
+        "property_type": "duplex/penthouse",
+        "advertised_area_state_m2": 167,
+        "floor": "7-8",
+        "asking_price_ils": 2790000
+      },
+      "matching_basis": [
+        "exact address",
+        "exact rooms",
+        "near-identical area",
+        "exact multi-floor pattern"
+      ],
+      "missing_for_exact": [
+        "listing subparcel/unit id"
+      ],
+      "attribute_transfer_rule": "Typology can be treated as high-confidence evidence; richer listing features remain linked-candidate attributes pending stable unit ID."
+    },
+    {
+      "listing_or_product": "מבצע דקל 14 penthouse-duplex archive",
+      "subject_targets": [
+        "Apt39"
+      ],
+      "classification": "HIGH_CONFIDENCE_UNIT_LINK",
+      "tax_record": {
+        "deal_id": "3633131484",
+        "address": "מבצע דקל 14",
+        "rooms": 5,
+        "registered_area_m2": 157,
+        "price_ils": 5900000,
+        "date": "2025-08-04",
+        "floor": "27+28"
+      },
+      "listing_record": {
+        "address": "מבצע דקל 14",
+        "rooms": "5 originally 6",
+        "property_type": "penthouse_duplex",
+        "floor": "27+28",
+        "balcony_area_m2": 50,
+        "storage_area_m2": 10,
+        "parking_count": 2
+      },
+      "matching_basis": [
+        "exact address",
+        "same 5-room state",
+        "distinctive 27+28 floor pattern"
+      ],
+      "missing_for_exact": [
+        "listing subparcel/unit id"
+      ],
+      "attribute_transfer_rule": "Use typology as high-confidence; do not automatically copy balcony/storage/parking to Tax facts."
+    },
+    {
+      "listing_or_product": "אוסישקין 22 6R triplex archive",
+      "subject_targets": [
+        "Apt36",
+        "Apt37"
+      ],
+      "classification": "NO_MATCH",
+      "tax_record": null,
+      "listing_record": {
+        "address": "אוסישקין 22",
+        "rooms": 6,
+        "property_type": "triplex",
+        "advertised_area_m2": 150
+      },
+      "matching_basis": [
+        "exact-address public transaction history reviewed"
+      ],
+      "reason": "Public building history did not surface a matching 6R/150 m² registered sale."
+    },
+    {
+      "listing_or_product": "מונטיפיורי 14 6R triplex archive",
+      "subject_targets": [
+        "Apt36",
+        "Apt37"
+      ],
+      "classification": "NO_MATCH",
+      "tax_record": null,
+      "listing_record": {
+        "address": "מונטיפיורי 14",
+        "rooms": 6,
+        "property_type": "triplex",
+        "advertised_area_m2": 160
+      },
+      "matching_basis": [
+        "targeted exact-address search"
+      ],
+      "reason": "No defensible Petah Tikva registered-sale match was established; a similarly named result from another city was rejected."
+    },
+    {
+      "listing_or_product": "ארתור רופין 8 6R triplex archive",
+      "subject_targets": [
+        "Apt36",
+        "Apt37"
+      ],
+      "classification": "NO_MATCH",
+      "tax_record": null,
+      "listing_record": {
+        "address": "ארתור רופין 8",
+        "property_type": "triplex/three-level roof product",
+        "archive_states": [
+          {
+            "rooms": 6,
+            "advertised_area_m2": 150,
+            "asking_price_ils": 2100000
+          },
+          {
+            "rooms": 7,
+            "advertised_total_area_m2": 210,
+            "built_internal_area_m2": 140,
+            "roof_area_m2": 70,
+            "asking_price_ils": 2000000
+          }
+        ]
+      },
+      "matching_basis": [
+        "targeted exact-address search"
+      ],
+      "reason": "No exact registered-sale match was established, and the archive itself has conflicting room/area states."
+    },
+    {
+      "listing_or_product": "מינץ בנימין 15 triplex archive",
+      "subject_targets": [
+        "Apt36",
+        "Apt37"
+      ],
+      "classification": "NO_MATCH",
+      "tax_record": null,
+      "listing_record": {
+        "address": "מינץ בנימין 15",
+        "rooms": 5,
+        "property_type": "triplex",
+        "structured_area_m2": 135,
+        "description_area_m2": 160
+      },
+      "matching_basis": [
+        "targeted exact-address search"
+      ],
+      "reason": "No exact registered-sale match established; listing itself has conflicting area semantics."
+    },
+    {
+      "listing_or_product": "יחיאל מיכל פינס 19 garden archive candidate",
+      "subject_targets": [
+        "Apt1",
+        "Apt2",
+        "Apt3"
+      ],
+      "classification": "NO_MATCH",
+      "tax_record": {
+        "address": "יחיאל מיכל פינס 19",
+        "example_sale": {
+          "rooms": 2,
+          "registered_area_m2": 52,
+          "floor": "ground",
+          "price_ils": 1160000,
+          "date": "2021-05-21",
+          "subparcel": "6396-183-3"
+        }
+      },
+      "listing_record": {
+        "address": "יחיאל מיכל פינס 19",
+        "garden_listing_rooms": 3,
+        "garden_listing_area_m2": 65,
+        "yard": "large/explicit in archive context"
+      },
+      "matching_basis": [
+        "exact address"
+      ],
+      "reason": "Rooms/area do not match the building's relevant Tax transactions closely enough; same building is insufficient."
+    },
+    {
+      "listing_or_product": "שלומציון המלכה 6 5.5R roof/multi-level",
+      "subject_targets": [
+        "Apt39"
+      ],
+      "classification": "SAME_ADDRESS_AMBIGUOUS",
+      "tax_record": {
+        "deal_id": "3633966655",
+        "address": "שלומציון המלכה 6",
+        "rooms": 5.5,
+        "registered_area_m2": 157,
+        "price_ils": 2920000,
+        "date": "2025-09-21",
+        "floor": "8+roof",
+        "subparcel": "6399-290-129"
+      },
+      "listing_record": null,
+      "matching_basis": [
+        "registered floor configuration",
+        "same subparcel appears in a 2023 transaction"
+      ],
+      "reason": "Strong registered-unit identifier history, but no archived listing with the same subparcel/unit identifier was found."
+    },
+    {
+      "listing_or_product": "איסר הראל 6 5R multi-level",
+      "subject_targets": [
+        "Apt39"
+      ],
+      "classification": "SAME_ADDRESS_AMBIGUOUS",
+      "tax_record": {
+        "deal_id": "3601967910",
+        "address": "איסר הראל 6",
+        "rooms": 5,
+        "registered_area_m2": 163,
+        "local_price_ils": 5400000,
+        "date": "2024-06-07",
+        "local_floor": "19+20"
+      },
+      "listing_record": null,
+      "matching_basis": [
+        "local government record + public mirrors"
+      ],
+      "data_quality_conflict": {
+        "local_tax_price_ils": 5400000,
+        "wizbid_price_ils": 5400000,
+        "market2_price_ils": 4900000,
+        "market2_floor": 9,
+        "market2_subparcel": "6360-188-74"
+      },
+      "reason": "Public mirrors conflict in both price/floor. Keep the local government value visible but flag/quarantine unresolved mirror conflict."
+    },
+    {
+      "listing_or_product": "כנסת ישראל 17 multi-level candidate",
+      "subject_targets": [
+        "Apt38",
+        "Apt39"
+      ],
+      "classification": "SAME_ADDRESS_AMBIGUOUS",
+      "tax_record": {
+        "address": "כנסת ישראל 17",
+        "multi_level_sales": true
+      },
+      "listing_record": {
+        "same_address_product_form": "private house/cottage context"
+      },
+      "matching_basis": [
+        "exact address"
+      ],
+      "reason": "Property-form conflict prevents upgrading the Tax records to apartment duplex evidence."
+    }
+  ],
+  "summary": {
+    "exact_unit_links": 0,
+    "high_confidence_unit_links": 3,
+    "verified_sold_garden_links": 0,
+    "high_confidence_sold_triplex_typology_links": 1,
+    "high_confidence_sold_duplex_typology_links": 2,
+    "open_conflicts": [
+      "איסר הראל 6",
+      "כנסת ישראל 17 property form"
+    ]
+  }
+}

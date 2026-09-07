@@ -30,18 +30,23 @@ from .db_models import (
     UnitRow,
 )
 from .demo_snapshot import RequiredSourceMissingError, build_demo_market_snapshot
+from .inventory_preview import build_inventory_preview
 from .migrations import apply_schema_migrations
+from .petah_tikva_workspace import build_petah_tikva_scenario_payload, build_petah_tikva_workspace_payload
+from .project_launcher import resolve_project_start
 from .schemas import (
     FamilyDecisionUpdate,
     InventoryImport,
     InventoryVersionRead,
     LifecycleEventCreate,
+    PetahTikvaScenarioRequest,
     PricingSessionCreate,
     PricingSessionRead,
     ProjectCreate,
     ProjectRead,
     ProjectSaleCreate,
     ProjectSaleRead,
+    ProjectStartRequest,
     ScenarioCreate,
     ScenarioRead,
     StateSnapshotCreate,
@@ -147,6 +152,69 @@ def create_app(database_url: str | None = None) -> FastAPI:
             if row is None:
                 raise HTTPException(status_code=404, detail="inventory_version_not_found")
             return _inventory_read(row, reused_existing=False)
+
+    # --- Generic project-start launcher --------------------------------------
+    # City-agnostic entry point. Today it only resolves the one registered
+    # Petah Tikva / חפץ חיים 25 frozen snapshot (see app_api.project_launcher);
+    # unsupported (city, address) pairs are reported explicitly rather than
+    # silently falling back to Petah Tikva. No live collection happens here.
+
+    @app.post("/api/v1/inventory/preview")
+    async def inventory_preview(file: UploadFile = File(...)):
+        """Stateless read of an uploaded workbook: parses/normalizes it (same
+        pricing_core.normalize_inventory_rows the persisted import path uses)
+        and returns unit counts/routes only. Writes nothing to the database --
+        this never creates a ProjectRow or InventoryVersionRow, so it cannot
+        attach the legacy Ashkelon demo project (see get_or_create_demo_project)
+        the way the old upload flow on the homepage does."""
+        content = await file.read()
+        try:
+            import io
+            workbook = openpyxl.load_workbook(io.BytesIO(content), data_only=True)
+        except Exception as exc:  # noqa: BLE001
+            raise HTTPException(status_code=422, detail=f"could_not_read_xlsx: {exc}") from exc
+        worksheet = workbook[workbook.sheetnames[0]]
+        matrix = [list(row) for row in worksheet.iter_rows(values_only=True)]
+        try:
+            return build_inventory_preview(matrix)
+        except ValueError as exc:
+            raise HTTPException(status_code=422, detail=str(exc)) from exc
+
+    @app.post("/api/v1/demo/project-start")
+    def project_start(payload: ProjectStartRequest):
+        try:
+            return resolve_project_start(
+                payload.city, payload.address, inventory_fingerprint=payload.inventory_fingerprint
+            )
+        except FileNotFoundError as exc:
+            raise HTTPException(status_code=503, detail=f"snapshot_artifact_missing: {exc}") from exc
+
+    # --- Petah Tikva standard-unit demo workspace (frozen artifacts only) --------
+
+    @app.get("/api/v1/demo/petah-tikva/workspace")
+    def petah_tikva_workspace():
+        """Single-payload read for the Petah Tikva standard-unit workspace screen.
+
+        Reads only the frozen data/frozen/petah_tikva_*_v1.json artifacts already
+        produced by the dedicated run_petah_tikva_*_v1.py scripts -- no live
+        source fetch, no DB write, so it keeps working even if external services
+        are unavailable. Does not recompute any pricing_core methodology.
+        """
+        try:
+            return build_petah_tikva_workspace_payload()
+        except FileNotFoundError as exc:
+            raise HTTPException(status_code=503, detail=f"petah_tikva_frozen_artifact_missing: {exc}") from exc
+
+    @app.post("/api/v1/demo/petah-tikva/scenario")
+    def petah_tikva_scenario(payload: PetahTikvaScenarioRequest):
+        """On-demand company-strategy scenario for the 32 standard units, priced
+        via the same pricing_core engine as the frozen baseline. Purely
+        computed in memory and returned -- never written to data/frozen/*.json,
+        so the frozen baseline is never overwritten by this endpoint."""
+        try:
+            return build_petah_tikva_scenario_payload(payload.range_position_pct, payload.name)
+        except FileNotFoundError as exc:
+            raise HTTPException(status_code=503, detail=f"petah_tikva_frozen_artifact_missing: {exc}") from exc
 
     # --- market snapshots --------------------------------------------------------
 

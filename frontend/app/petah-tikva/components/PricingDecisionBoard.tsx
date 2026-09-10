@@ -1,17 +1,10 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { pricingRouteOf, PtkPriceListRow } from "@/lib/api";
 import { CONFIDENCE_COLORS, CONFIDENCE_LABELS, roomsOf, outdoorKind, STATUS_LABELS, unitTypeLabel } from "@/lib/family";
 import { ils, ilsCompact, isPointValue, num, rangeOrPoint } from "@/lib/format";
-import {
-  computePriceBreakdown,
-  computeRevenueSummary,
-  computeSalesProgress,
-  internalSaleForUnit,
-  MarketingStrategyState,
-  PROJECT_PHASE_LABELS,
-} from "@/lib/marketingStrategy";
+import { computePriceBreakdown, internalSaleForUnit, MarketingStrategyState } from "@/lib/marketingStrategy";
 
 interface Props {
   rows: PtkPriceListRow[];
@@ -44,11 +37,6 @@ export default function PricingDecisionBoard({ rows, state, onSelectUnit, active
   const [filter, setFilter] = useState<BoardFilter>("all");
   const [search, setSearch] = useState("");
 
-  const progress = useMemo(() => computeSalesProgress(rows, state.soldUnitNumbers), [rows, state.soldUnitNumbers]);
-  const revenue = useMemo(() => computeRevenueSummary(rows, state), [rows, state]);
-  const effectPct = revenue.marketIndicationRevenueIls > 0 ? (revenue.differenceIls / revenue.marketIndicationRevenueIls) * 100 : 0;
-  const salesDataSupplied = progress.unitsSold > 0;
-
   const filtered = rows.filter((r) => {
     const route = pricingRouteOf(r);
     const isSold = state.soldUnitNumbers.has(r.unit_number);
@@ -65,28 +53,12 @@ export default function PricingDecisionBoard({ rows, state, onSelectUnit, active
     <section className="flex flex-col gap-4 rounded-lg border border-slate-300 bg-white p-5 shadow-sm">
       <div>
         <h2 className="text-lg font-bold text-slate-900">
-          לוח החלטת תמחור — 39 דירות בפרויקט
+          מחירון תפעולי — 39 דירות בפרויקט
           {activeScenarioPct != null && <span className="ms-2 text-sm font-normal text-amber-700">(מציג תרחיש: {activeScenarioPct}%)</span>}
         </h2>
-        <p className="text-xs text-slate-500">אינדיקציית שוק, מצב מכירות, והתאמה אסטרטגית — לפי יחידה פיזית אחת בכל שורה.</p>
-      </div>
-
-      {/* project status summary -- the 4 questions the first screen must answer */}
-      <div className="grid grid-cols-2 gap-3 rounded-md bg-slate-50 p-4 sm:grid-cols-3 lg:grid-cols-6">
-        <SummaryStat label="39 דירות" value={String(progress.unitsTotal)} />
-        <SummaryStat label="שלב הפרויקט" value={PROJECT_PHASE_LABELS[state.projectPhase]} />
-        <SummaryStat
-          label="נמכרו / נותרו"
-          value={salesDataSupplied ? `${progress.unitsSold} / ${progress.unitsRemaining}` : "לא סופקו נתוני מכירות בפועל"}
-          small={!salesDataSupplied}
-        />
-        <SummaryStat label="שווי לפי שוק" value={ilsCompact(revenue.marketIndicationRevenueIls)} />
-        <SummaryStat label="הכנסה מוצעת" value={ilsCompact(revenue.proposedRevenueIls)} />
-        <SummaryStat
-          label="השפעת אסטרטגיה"
-          value={`${effectPct >= 0 ? "+" : ""}${num(effectPct, 1)}% · ${revenue.differenceIls >= 0 ? "+" : ""}${ilsCompact(revenue.differenceIls)}`}
-          emphasize={revenue.differenceIls !== 0}
-        />
+        <p className="text-xs text-slate-500">
+          לוח מלא לצורך השוואה וסינון מדויק — לפי יחידה פיזית אחת בכל שורה. לניווט חזותי, ראו את מפת הדירות לפי קומה למעלה.
+        </p>
       </div>
 
       {/* filters */}
@@ -194,7 +166,7 @@ function BoardRow({ row, state, onSelectUnit }: { row: PtkPriceListRow; state: M
           <>
             {ilsCompact(row.proposed_list_price_ils)}
             {row.market_range?.lower != null && !isPointValue(row.market_range.lower, row.market_range.upper) && (
-              <div className="text-[10px] font-normal text-slate-400">{rangeOrPoint(row.market_range.lower, row.market_range.upper)}</div>
+              <div className="text-[11px] font-normal text-slate-500">{rangeOrPoint(row.market_range.lower, row.market_range.upper)}</div>
             )}
             {row.market_range?.lower != null && isPointValue(row.market_range.lower, row.market_range.upper) && route !== "standard_family" && (
               <div className="text-[10px] font-normal text-slate-400">מקור נומרי בודד</div>
@@ -240,17 +212,6 @@ function BoardRow({ row, state, onSelectUnit }: { row: PtkPriceListRow; state: M
         )}
       </Td>
     </tr>
-  );
-}
-
-function SummaryStat({ label, value, emphasize, small }: { label: string; value: string; emphasize?: boolean; small?: boolean }) {
-  return (
-    <div>
-      <div className={`font-bold text-slate-900 ${small ? "text-sm font-medium text-slate-500" : ""} ${emphasize ? "text-emerald-700" : ""}`}>
-        {value}
-      </div>
-      <div className="text-xs text-slate-500">{label}</div>
-    </div>
   );
 }
 

@@ -1,0 +1,76 @@
+==================================================================================================================================
+PETAH TIKVA SPECIAL PRODUCT LOCAL-DATA AUDIT V2
+FILES CHECKED: 58
+UNIQUE SPECIAL RECORDS: 14
+==================================================================================================================================
+
+==================================================================================================================================
+GARDEN COUNT: 0
+==================================================================================================================================
+
+==================================================================================================================================
+DUPLEX COUNT: 12
+==================================================================================================================================
+001. rooms=7.0 | built=145.0 | adv=145.0 | garden=None | price=2,899,000 | address=? | token=5i4tr2xo
+     SRC: C:\Users\AVIV\gaba\gov_source_tests\data_source_test\yad2_petah_special\yad2_asking_normalized.csv
+002. rooms=6.0 | built=220.0 | adv=220.0 | garden=None | price=4,490,000 | address=עין גנים | token=tkgbr5hx
+     SRC: C:\Users\AVIV\gaba\gov_source_tests\data_source_test\yad2_petah_special\yad2_asking_normalized.csv
+003. rooms=6.0 | built=177.0 | adv=256.0 | garden=None | price=5,650,000 | address=? | token=7a8ynci1
+     SRC: C:\Users\AVIV\gaba\gov_source_tests\data_source_test\yad2_petah_special\yad2_asking_normalized.csv
+004. rooms=6.0 | built=168.0 | adv=285.0 | garden=None | price=5,950,000 | address=יוסף נקר | token=wbvl4w9m
+     SRC: C:\Users\AVIV\gaba\gov_source_tests\data_source_test\yad2_petah_special\yad2_asking_normalized.csv
+005. rooms=6.0 | built=165.0 | adv=255.0 | garden=None | price=4,790,000 | address=? | token=ub2tzaqh
+     SRC: C:\Users\AVIV\gaba\gov_source_tests\data_source_test\yad2_petah_special\yad2_asking_normalized.csv
+006. rooms=5.0 | built=160.0 | adv=160.0 | garden=None | price=2,630,000 | address=זאב ברנדה | token=au7ykbzg
+     SRC: C:\Users\AVIV\gaba\gov_source_tests\data_source_test\yad2_petah_special\yad2_asking_normalized.csv
+007. rooms=None | built=220.0 | adv=220.0 | garden=None | price=? | address=? | token=?
+     SRC: C:\Users\AVIV\gaba\gov_source_tests\data_source_test\yad2_petah_special\details\apt36_37_220_duplex.json
+008. rooms=None | built=177.0 | adv=256.0 | garden=None | price=? | address=? | token=?
+     SRC: C:\Users\AVIV\gaba\gov_source_tests\data_source_test\yad2_petah_special\details\apt36_37_256_duplex.json
+009. rooms=None | built=168.0 | adv=285.0 | garden=None | price=? | address=? | token=?
+     SRC: C:\Users\AVIV\gaba\gov_source_tests\data_source_test\yad2_petah_special\details\apt36_37_285_adv_duplex.json
+010. rooms=None | built=165.0 | adv=255.0 | garden=None | price=? | address=? | token=?
+     SRC: C:\Users\AVIV\gaba\gov_source_tests\data_source_test\yad2_petah_special\details\apt36_37_255_adv_duplex.json
+011. rooms=None | built=160.0 | adv=160.0 | garden=None | price=? | address=? | token=?
+     SRC: C:\Users\AVIV\gaba\gov_source_tests\data_source_test\yad2_petah_special\details\apt39_160_duplex.json
+012. rooms=None | built=145.0 | adv=145.0 | garden=None | price=? | address=? | token=?
+     SRC: C:\Users\AVIV\gaba\gov_source_tests\data_source_test\yad2_petah_special\details\apt38_145_7r_duplex.json
+
+==================================================================================================================================
+TRIPLEX COUNT: 0
+==================================================================================================================================
+
+==================================================================================================================================
+PENTHOUSE COUNT: 2
+==================================================================================================================================
+001. rooms=6.0 | built=220.0 | adv=220.0 | garden=None | price=5,600,000 | address=העצמאות | token=9bsyydsn
+     SRC: C:\Users\AVIV\gaba\gov_source_tests\data_source_test\yad2_petah_special\yad2_asking_normalized.csv
+002. rooms=None | built=220.0 | adv=220.0 | garden=None | price=? | address=? | token=?
+     SRC: C:\Users\AVIV\gaba\gov_source_tests\data_source_test\yad2_petah_special\details\apt36_37_220_premium.json
+
+==================================================================================================================================
+SUBJECT-SPECIFIC EXISTING COMPS
+==================================================================================================================================
+
+APT1_2_3R_GARDEN: 0
+
+APT3_2R_GARDEN: 0
+
+APT36_37_TRIPLEX_5_7R: 0
+
+APT36_37_6R_DUPLEX_PENTHOUSE: 5
+  DUPLEX | 6.0R | built=220.0 | adv=220.0 | garden=None | price=4490000.0 | address=עין גנים | token=tkgbr5hx
+  PENTHOUSE | 6.0R | built=220.0 | adv=220.0 | garden=None | price=5600000.0 | address=העצמאות | token=9bsyydsn
+  DUPLEX | 6.0R | built=165.0 | adv=255.0 | garden=None | price=4790000.0 | address=? | token=ub2tzaqh
+  DUPLEX | 6.0R | built=177.0 | adv=256.0 | garden=None | price=5650000.0 | address=? | token=7a8ynci1
+  DUPLEX | 6.0R | built=168.0 | adv=285.0 | garden=None | price=5950000.0 | address=יוסף נקר | token=wbvl4w9m
+
+APT38_7R_DUPLEX: 1
+  DUPLEX | 7.0R | built=145.0 | adv=145.0 | garden=None | price=2899000.0 | address=? | token=5i4tr2xo
+
+APT39_5R_DUPLEX: 1
+  DUPLEX | 5.0R | built=160.0 | adv=160.0 | garden=None | price=2630000.0 | address=זאב ברנדה | token=au7ykbzg
+
+==================================================================================================================================
+NO API CALLS WERE MADE.
+==================================================================================================================================

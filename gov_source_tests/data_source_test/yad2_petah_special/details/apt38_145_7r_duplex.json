@@ -1,0 +1,135 @@
+{
+  "success": true,
+  "data": {
+    "token": "5i4tr2xo",
+    "orderId": 56921331,
+    "adNumber": 53589296,
+    "adType": "commercial",
+    "categoryId": 2,
+    "subcategoryId": 5,
+    "priority": 1,
+    "statusId": 1,
+    "price": 2899000,
+    "additionalDetails": {
+      "entranceDate": "2026-05-10T00:00:00",
+      "squareMeter": 145,
+      "roomsCount": 7,
+      "propertyGroup": {
+        "id": 1,
+        "text": "דירות",
+        "textEng": "apartments"
+      },
+      "property": {
+        "id": 7,
+        "text": "דופלקס",
+        "textEng": "duplex"
+      },
+      "parkingSpacesCount": 1,
+      "propertyCondition": {
+        "id": 2,
+        "text": "משופץ"
+      },
+      "squareMeterBuild": 145,
+      "buildingTopFloor": 4,
+      "isEnterDateFlexible": true
+    },
+    "inProperty": {
+      "includeAirconditioner": true,
+      "includeBoiler": true,
+      "includeBars": true,
+      "includeElevator": true,
+      "includeParking": true,
+      "includeSecurityRoom": true,
+      "includeWarehouse": true,
+      "isAssetExclusive": true,
+      "isRenovated": true
+    },
+    "searchText": "שם מוכר IM nadlan נתנאל בירנבאום נכס למכירה מסוג דופלקס עם מספר חדרים 7 בקומה 4 בכתובת עמישב פתח תקווה אזור פתח תקווה והסביבה מרכז הנכס כולל ממ\"ד מעלית חניה מחסן סורגים מיזוג משופצת מצב הנכס משופץ תאור לקוח מחפשים את הנכס הבא שלכם??\nאת ההזדמנות הזו לא תרצו לפספס!!\nדופלקס 5.5 חדרים שהוגדלה ל-7\n145 מ\"ר + יחידת הורים\nהדירה שופצה מהיסוד\nקומה 4 + 5\n2 כיווני אוויר מזרח - מערב\nממ\"ד, מעלית, חניה\nיח\"ד מושכרת ב-3,500\nחניה שהוסבה למחסן מושכר ב-650\nקומת תחתונה: 4 חדרים, 2 שירותים, 2 מקלחות\nקומה עליונה: יחידה מושכרת של 2 חדרים עם שירותים ומקלחת + חדר מתבגר.\nהזדרזו ליצור קשר! משרד IM נדל\"ן הוא משרד מוביל המתמחה בליווי מקצועי ואישי לאורך כל תהליך העסקה.\nאנו מאמינים בשירות ללא פשרות, שקיפות מלאה ויחס אישי לכל לקוח,צוות המשרד מורכב מאנשי מקצוע מנוסים ואיכותיים, המבצעים כיום חלק משמעותי מהעסקאות בעיר,ברשותנו מאגר נכסים רחב ומגוון, הכולל דירות להשקעה, דירות מגורים ודירות יוקרה ? כך שכל לקוח יכול למצוא את הפתרון המדויק עבורו במקום אחד. סוכנות IM nadlan",
+    "customer": {
+      "name": "נתנאל בירנבאום",
+      "id": 8167653,
+      "isVirtualPhoneNumber": true,
+      "agencyName": "IM nadlan",
+      "agencyLogo": "//images.yad2.co.il/Pic/TivMiniSite/918eaddb-86e5-469a-bfd8-b0c931f15eea.png?t=1788722838444",
+      "brokerAvatar": "https://img.yad2.co.il/Pic/TradeMiniSite/0503f599-774f-460a-ba4b-413051cda5d8.jpeg?t=1788722838444",
+      "agencyAbout": "משרד IM נדל\"ן הוא משרד מוביל המתמחה בליווי מקצועי ואישי לאורך כל תהליך העסקה.\nאנו מאמינים בשירות ללא פשרות, שקיפות מלאה ויחס אישי לכל לקוח,צוות המשרד מורכב מאנשי מקצוע מנוסים ואיכותיים, המבצעים כיום חלק משמעותי מהעסקאות בעיר,ברשותנו מאגר נכסים רחב ומגוון, הכולל דירות להשקעה, דירות מגורים ודירות יוקרה ? כך שכל לקוח יכול למצוא את הפתרון המדויק עבורו במקום אחד.",
+      "brokers": [
+        {
+          "name": "נתנאל בירנבאום",
+          "avatar": "https://img.yad2.co.il/Pic/TradeMiniSite/0503f599-774f-460a-ba4b-413051cda5d8.jpeg?t=1788722838444",
+          "id": 767335,
+          "licenseNumber": "324866"
+        }
+      ],
+      "licenseNumber": "3184143"
+    },
+    "packages": {
+      "hasBrokerOfficeLeftPromotion": true,
+      "hasMiniSite": true,
+      "hasPersonalAreaLeads": true,
+      "isPlatinum": true,
+      "isNeighborhoodKing": true,
+      "isPlatinumMobile": true,
+      "isTrio": true
+    },
+    "address": {
+      "topArea": {
+        "id": 2,
+        "text": "מרכז",
+        "textEng": "hamerkaz_area"
+      },
+      "region": {
+        "id": 1,
+        "text": "מרכז והשרון",
+        "textEng": "Center"
+      },
+      "area": {
+        "id": 4,
+        "text": "פתח תקווה והסביבה",
+        "textEng": "petah_tikva_area"
+      },
+      "city": {
+        "id": "7900",
+        "text": "פתח תקווה"
+      },
+      "neighborhood": {
+        "id": 764,
+        "text": "עמישב"
+      },
+      "street": {
+        "id": "0502"
+      },
+      "coords": {
+        "lat": 32.074038,
+        "lon": 34.913273
+      },
+      "house": {
+        "floor": 4
+      },
+      "addressMasterId": 6215335
+    },
+    "metaData": {
+      "coverImage": "https://img.yad2.co.il/Pic/202605/10/2_5/o/y2_1pa_010092_20260510154928.jpeg",
+      "images": [
+        "https://img.yad2.co.il/Pic/202605/10/2_5/o/y2_1pa_010092_20260510154928.jpeg",
+        "https://img.yad2.co.il/Pic/202605/10/2_5/o/y2_1pa_010416_20260510155150.jpeg",
+        "https://img.yad2.co.il/Pic/202605/10/2_5/o/y2_1pa_010201_20260510155219.jpeg",
+        "https://img.yad2.co.il/Pic/202605/10/2_5/o/y2_1pa_010221_20260510155219.jpeg",
+        "https://img.yad2.co.il/Pic/202605/10/2_5/o/y2_1pa_010694_20260510155244.jpeg",
+        "https://img.yad2.co.il/Pic/202605/10/2_5/o/y2_1pa_010606_20260510155300.jpeg",
+        "https://img.yad2.co.il/Pic/202605/10/2_5/o/y2_1pa_010617_20260510155322.jpeg",
+        "https://img.yad2.co.il/Pic/202605/10/2_5/o/y2_1pa_010579_20260510155334.jpeg",
+        "https://img.yad2.co.il/Pic/202605/10/2_5/o/y2_1pa_010239_20260510155357.jpeg"
+      ],
+      "description": "מחפשים את הנכס הבא שלכם??\nאת ההזדמנות הזו לא תרצו לפספס!!\nדופלקס 5.5 חדרים שהוגדלה ל-7\n145 מ\"ר + יחידת הורים\nהדירה שופצה מהיסוד\nקומה 4 + 5\n2 כיווני אוויר מזרח - מערב\nממ\"ד, מעלית, חניה\nיח\"ד מושכרת ב-3,500\nחניה שהוסבה למחסן מושכר ב-650\nקומת תחתונה: 4 חדרים, 2 שירותים, 2 מקלחות\nקומה עליונה: יחידה מושכרת של 2 חדרים עם שירותים ומקלחת + חדר מתבגר.\nהזדרזו ליצור קשר!",
+      "shelterDistance": 206
+    },
+    "dates": {
+      "updatedAt": "2026-09-06T22:27:17",
+      "createdAt": "2026-05-10T15:54:07",
+      "endsAt": "2026-12-02T00:00:00",
+      "rebouncedAt": "2026-09-06T22:27:17"
+    },
+    "abovePrice": "2500000"
+  }
+}

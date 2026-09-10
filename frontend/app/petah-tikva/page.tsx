@@ -9,9 +9,14 @@ import DecisionBoard from "./components/DecisionBoard";
 import StrategyPanel from "./components/StrategyPanel";
 import DataQualitySection, { CaseStudyCard3R } from "./components/DataQualitySection";
 import PricingDecisionBoard from "./components/PricingDecisionBoard";
+import ProjectKpiSummary from "./components/ProjectKpiSummary";
+import ExecutiveOverview from "./components/ExecutiveOverview";
+import BuildingExplorer from "./components/BuildingExplorer";
 import UnitDrawer from "./components/UnitDrawer";
 import EvidenceDetailModal from "./components/EvidenceDetailModal";
 import CompetitorMap from "./components/CompetitorMap";
+import CompetitiveIntelligence from "./components/CompetitiveIntelligence";
+import MarketGeoMap from "./components/MarketGeoMap";
 import MarketingStrategyPanel from "./components/MarketingStrategyPanel";
 import ResearchSection from "./components/ResearchSection";
 import { defaultMarketingStrategyState, MarketingStrategyState } from "@/lib/marketingStrategy";
@@ -48,6 +53,9 @@ export default function PetahTikvaWorkspacePage() {
         setData(d);
       })
       .catch((err) => {
+        // Logged for developer debugging only -- never rendered to the user
+        // (see the error branch below).
+        console.error("Failed to load Petah Tikva workspace:", err);
         if (!cancelled) setError(err instanceof Error ? err.message : String(err));
       })
       .finally(() => {
@@ -79,7 +87,8 @@ export default function PetahTikvaWorkspacePage() {
       const result = await api.getPetahTikvaScenario(pct);
       setScenario(result);
     } catch (err) {
-      setScenarioError(err instanceof Error ? err.message : String(err));
+      console.error("Failed to compute scenario:", err);
+      setScenarioError("לא ניתן לטעון כרגע את נתוני הפרויקט. נסה לרענן בעוד מספר שניות.");
     } finally {
       setScenarioLoading(false);
     }
@@ -99,7 +108,17 @@ export default function PetahTikvaWorkspacePage() {
     );
   }
   if (error || !data) {
-    return <div className="p-10 text-red-700">שגיאה בטעינת מרחב התמחור: {error}</div>;
+    // User-facing only -- never the raw fetch error (which can include a
+    // stack trace or a bare hostname/URL); the actual error is still
+    // available in the browser console for debugging.
+    return (
+      <div className="mx-auto max-w-lg p-10">
+        <div className="rounded-lg border border-red-300 bg-red-50 p-5 text-center text-sm text-red-800">
+          <p className="font-medium">לא ניתן לטעון כרגע את נתוני הפרויקט.</p>
+          <p className="mt-1">נסה לרענן בעוד מספר שניות.</p>
+        </div>
+      </div>
+    );
   }
 
   const currentFamily = data.families.find((f) => f.family === family) ?? data.families[0];
@@ -141,6 +160,16 @@ export default function PetahTikvaWorkspacePage() {
       </header>
 
       <main className="flex flex-col gap-6 px-6 py-5">
+        {/* KPI summary */}
+        <ProjectKpiSummary rows={displayRows} state={marketingStrategy} />
+
+        {/* Executive overview: apartment mix, market trend, insights */}
+        <ExecutiveOverview workspace={data} rows={displayRows} />
+
+        {/* Visual building/floor explorer */}
+        <BuildingExplorer rows={displayRows} marketingStrategy={marketingStrategy} onSelectUnit={setSelectedUnit} />
+
+        {/* Full 39-unit operational table */}
         <PricingDecisionBoard
           rows={displayRows}
           state={marketingStrategy}
@@ -148,8 +177,27 @@ export default function PetahTikvaWorkspacePage() {
           activeScenarioPct={scenario && !scenario.is_baseline_position ? scenario.range_position_pct : null}
         />
 
+        {/* Marketing strategy: phase, sales state, explicit strategy effects */}
         <MarketingStrategyPanel rows={displayRows} state={marketingStrategy} onChange={setMarketingStrategy} />
 
+        {/* Market & competition -- visible, not collapsed */}
+        <section className="flex flex-col gap-6">
+          <div>
+            <h2 className="text-lg font-bold text-slate-900">שוק ותחרות</h2>
+            <p className="text-xs text-slate-500">מיקום גאוגרפי, מודיעין תחרותי, ומיקום אינדיקציית השוק שלנו מול החלופות.</p>
+          </div>
+          <MarketGeoMap workspace={data} family={family} onFamilyChange={setFamily} />
+          <CompetitiveIntelligence
+            workspace={data}
+            rows={displayRows}
+            marketingStrategy={marketingStrategy}
+            family={family}
+            onFamilyChange={setFamily}
+          />
+          <CompetitorMap workspace={data} />
+        </section>
+
+        {/* Data / methodology -- collapsed by default */}
         <ResearchSection open={researchOpen} onToggle={() => setResearchOpen((v) => !v)}>
           <section id="evidence-section">
             <div className="mb-3 flex overflow-hidden rounded-md border border-slate-300 w-fit">
@@ -167,8 +215,6 @@ export default function PetahTikvaWorkspacePage() {
             </div>
             {currentFamily && <FamilyPanel family={currentFamily} workspace={data} onOpenEvidence={setEvidenceLane} />}
           </section>
-
-          <CompetitorMap workspace={data} />
 
           {currentFamily && <DecisionBoard workspace={data} family={currentFamily} scenario={scenario} />}
 
@@ -188,9 +234,12 @@ export default function PetahTikvaWorkspacePage() {
           <CaseStudyCard3R caseStudy={data.data_quality.case_study_3r_new_development} />
 
           {currentFamily && <DataQualitySection workspace={data} family={currentFamily} />}
-        </ResearchSection>
 
-        <p className="text-xs text-slate-400">{data.project.disclaimer}</p>
+          <details className="rounded-md border border-slate-200 p-3 text-sm">
+            <summary className="cursor-pointer text-xs font-semibold text-slate-500">הערות מתודולוגיות והנחות</summary>
+            <p className="mt-2 text-xs text-slate-400">{data.project.disclaimer}</p>
+          </details>
+        </ResearchSection>
       </main>
 
       {selectedUnit && (

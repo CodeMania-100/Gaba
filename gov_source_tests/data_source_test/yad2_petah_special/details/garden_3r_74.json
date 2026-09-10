@@ -1,0 +1,130 @@
+{
+  "success": true,
+  "data": {
+    "token": "0xkpq9l7",
+    "orderId": 57348764,
+    "adNumber": 86017840,
+    "adType": "commercial",
+    "categoryId": 2,
+    "subcategoryId": 5,
+    "priority": 1,
+    "statusId": 1,
+    "price": 2650000,
+    "additionalDetails": {
+      "balconiesCount": 1,
+      "entranceDate": "2029-08-09T00:00:00",
+      "squareMeter": 74,
+      "roomsCount": 3,
+      "propertyGroup": {
+        "id": 1,
+        "text": "דירות",
+        "textEng": "apartments"
+      },
+      "property": {
+        "id": 3,
+        "text": "דירת גן",
+        "textEng": "patio"
+      },
+      "parkingSpacesCount": 1,
+      "propertyCondition": {
+        "id": 1,
+        "text": "חדש מקבלן (לא גרו בנכס)"
+      },
+      "squareMeterBuild": 74,
+      "squareMeterGarden": 29,
+      "buildingTopFloor": 9
+    },
+    "inProperty": {
+      "includeBalcony": true,
+      "includeBoiler": true,
+      "includeElevator": true,
+      "includeParking": true,
+      "includeSecurityRoom": true,
+      "includeWarehouse": true,
+      "isHandicapped": true
+    },
+    "searchText": "שם מוכר קלאס נכסים משרד נכס למכירה מסוג דירת גן עם מספר חדרים 3 בכתובת עגנון רמת ורבר פתח תקווה אזור פתח תקווה והסביבה מרכז הנכס כולל ממ\"ד מעלית חניה מחסן גישה לנכים מרפסת מצב הנכס חדש מקבלן (לא גרו בנכס) תאור לקוח חולמים על דירת גן ברמת ורבר פתח תקווה ? \nאחוזת עגנון מבית יד ליטל - חווית מגורים אחרת .\nגאים להציג מבחר נדיר של דירות גן בנות 3-4 חדרים, \nעם גינות גדולות ברחוב שקט ללא מוצא.\nזה המקום שבו הילדים יוצאים לשחק בגינה, מארחים בלי לחשוב פעמיים, ונהנים מהשקט של הבית - בלי לוותר על הנוחות של העיר.\nפארקים, הקניון הגדול והרכבת הקלה נמצאים במרחק הליכה.\nיש הרבה דירות. יש מעט מאוד דירות גן.\nבואו נדבר . ברמת ורבר - מגוון דירות גן 3-4 חדרים בשיווק ישיר סוכנות קלאס נכסים",
+    "customer": {
+      "name": "משרד",
+      "id": 1247174,
+      "isVirtualPhoneNumber": true,
+      "agencyName": "קלאס נכסים",
+      "agencyLogo": "//images.yad2.co.il/Pic/TivMiniSite/0d2ebcbf-ecb3-4522-955d-a9d0bdd17dba.png?t=1788722145078",
+      "brokerAvatar": "https://img.yad2.co.il/Pic/TradeMiniSite/367335af-b6ba-4093-99b1-5522126f328f.jpeg?t=1788722145078",
+      "brokers": [
+        {
+          "name": "משרד",
+          "avatar": "https://img.yad2.co.il/Pic/TradeMiniSite/367335af-b6ba-4093-99b1-5522126f328f.jpeg?t=1788722145078",
+          "id": 2787,
+          "licenseNumber": "3202861"
+        }
+      ],
+      "licenseNumber": "3202861"
+    },
+    "packages": {
+      "hasBrokerOfficeLeftPromotion": true,
+      "hasMiniSite": true,
+      "isPlatinum": true,
+      "isNeighborhoodKing": true,
+      "isPlatinumMobile": true,
+      "isTrio": true,
+      "isBoostPlatinum": true
+    },
+    "address": {
+      "topArea": {
+        "id": 2,
+        "text": "מרכז",
+        "textEng": "hamerkaz_area"
+      },
+      "region": {
+        "id": 1,
+        "text": "מרכז והשרון",
+        "textEng": "Center"
+      },
+      "area": {
+        "id": 4,
+        "text": "פתח תקווה והסביבה",
+        "textEng": "petah_tikva_area"
+      },
+      "city": {
+        "id": "7900",
+        "text": "פתח תקווה"
+      },
+      "neighborhood": {
+        "id": 773,
+        "text": "רמת ורבר"
+      },
+      "street": {
+        "id": "0975",
+        "text": "עגנון"
+      },
+      "coords": {
+        "lat": 32.0879128888889,
+        "lon": 34.8700177777778
+      },
+      "house": {
+        "floor": 0
+      },
+      "addressMasterId": 6082435
+    },
+    "metaData": {
+      "video": "//yad2.cdnwiz.com/p/102/sp/10200/playManifest/entryId/0_r16zhqd2/format/url/protocol/http",
+      "coverImage": "https://img.yad2.co.il/Pic/202608/10/2_5/o/y2_1pa_010628_20260810000130.jpeg",
+      "images": [
+        "https://img.yad2.co.il/Pic/202608/10/2_5/o/y2_1pa_010628_20260810000130.jpeg",
+        "https://img.yad2.co.il/Pic/202608/10/2_5/o/y2_1pa_010870_20260810000140.jpeg",
+        "https://img.yad2.co.il/Pic/202608/10/2_5/o/y2_1pa_010648_20260810000154.jpeg",
+        "https://img.yad2.co.il/Pic/202608/10/2_5/o/y2_1pa_010434_20260810000205.jpeg"
+      ],
+      "description": "חולמים על דירת גן ברמת ורבר פתח תקווה ? \nאחוזת עגנון מבית יד ליטל - חווית מגורים אחרת .\nגאים להציג מבחר נדיר של דירות גן בנות 3-4 חדרים, \nעם גינות גדולות ברחוב שקט ללא מוצא.\nזה המקום שבו הילדים יוצאים לשחק בגינה, מארחים בלי לחשוב פעמיים, ונהנים מהשקט של הבית - בלי לוותר על הנוחות של העיר.\nפארקים, הקניון הגדול והרכבת הקלה נמצאים במרחק הליכה.\nיש הרבה דירות. יש מעט מאוד דירות גן.\nבואו נדבר .",
+      "shelterDistance": 432
+    },
+    "dates": {
+      "updatedAt": "2026-09-06T22:15:44",
+      "createdAt": "2026-08-10T00:23:11",
+      "endsAt": "2026-10-02T00:00:00",
+      "rebouncedAt": "2026-09-06T22:15:44"
+    },
+    "abovePrice": "2500000"
+  }
+}

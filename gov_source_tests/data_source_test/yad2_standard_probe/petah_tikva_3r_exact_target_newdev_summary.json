@@ -1,0 +1,84 @@
+{
+  "target": {
+    "city": "פתח תקווה",
+    "neighborhood": "המרכז השקט / מרכז העיר",
+    "rooms": 3,
+    "sqm_min": 58,
+    "sqm_max": 80
+  },
+  "unique_ads": 3,
+  "likely_independent_project_count": 2,
+  "projects": [
+    {
+      "project_key": "זאב ברנדה||32.0803,34.8854",
+      "records": [
+        {
+          "page": 1,
+          "bucket": "agency",
+          "token": "p48szbly",
+          "orderId": 57368461,
+          "neighborhood": "המרכז השקט / מרכז העיר",
+          "street": "זאב ברנדה",
+          "house": null,
+          "floor": 1,
+          "lat": 32.0803272318841,
+          "lon": 34.8853622463768,
+          "property": "דירה",
+          "rooms": 3,
+          "sqm": 69,
+          "price": 1890000,
+          "agency": "קלאס נכסים",
+          "isNewFromContractor": true,
+          "tags": [
+            "חדש מקבלן",
+            "ממ\"ד",
+            "בהזדמנות"
+          ]
+        },
+        {
+          "page": 1,
+          "bucket": "booster",
+          "token": "g1g0zyq7",
+          "orderId": 57368490,
+          "neighborhood": "המרכז השקט / מרכז העיר",
+          "street": "זאב ברנדה",
+          "house": null,
+          "floor": 1,
+          "lat": 32.0803272318841,
+          "lon": 34.8853622463768,
+          "property": "דירה",
+          "rooms": 3,
+          "sqm": 79,
+          "price": 2090000,
+          "agency": "קלאס נכסים",
+          "isNewFromContractor": true,
+          "tags": []
+        }
+      ]
+    },
+    {
+      "project_key": "הרב ניימן|8|32.0840,34.8791",
+      "records": [
+        {
+          "page": 4,
+          "bucket": "platinum",
+          "token": "y695npbl",
+          "orderId": 57239717,
+          "neighborhood": "המרכז השקט / מרכז העיר",
+          "street": "הרב ניימן",
+          "house": 8,
+          "floor": 5,
+          "lat": 32.084046,
+          "lon": 34.879103,
+          "property": "דירה",
+          "rooms": 3,
+          "sqm": 77,
+          "price": 2150000,
+          "agency": "הר סלול נדל'ן",
+          "isNewFromContractor": true,
+          "tags": []
+        }
+      ]
+    }
+  ]
+}

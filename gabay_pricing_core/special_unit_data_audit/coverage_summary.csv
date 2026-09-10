@@ -1,0 +1,15 @@
+﻿target,total,sold,asking,new_project,government_program,unknown,with_price,with_area,with_outdoor_area,with_floor,with_property_type
+2_room,1,0,0,1,0,0,0,1,1,0,0
+2_room_garden,1,0,0,1,0,0,0,1,1,0,0
+6_room,8,0,0,8,0,0,0,8,8,8,0
+6_room_triplex,8,0,0,8,0,0,0,8,8,8,0
+6_room_penthouse,0,0,0,0,0,0,0,0,0,0,0
+6_room_duplex,0,0,0,0,0,0,0,0,0,0,0
+7_plus_room,3,0,0,3,0,0,0,3,3,3,0
+7_plus_duplex,3,0,0,3,0,0,0,3,3,3,0
+7_plus_penthouse,0,0,0,0,0,0,0,0,0,0,0
+7_plus_triplex,0,0,0,0,0,0,0,0,0,0,0
+small_area_45_80,732,604,0,9,0,119,41,732,10,133,602
+large_area_140_195,21,2,0,2,0,17,0,21,2,11,14
+very_large_area_210_310,2,0,0,2,0,0,0,2,2,2,0
+special_property_type,36,2,0,17,0,17,0,36,17,31,19

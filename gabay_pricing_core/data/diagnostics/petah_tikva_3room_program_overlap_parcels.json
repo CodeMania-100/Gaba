@@ -1,0 +1,62 @@
+{
+  "version": "petah_tikva_program_overlap_v1",
+  "generated_at": "2026-09-06T21:47:23.334890",
+  "city": "פתח תקווה",
+  "official_neighborhood": "מרכז העיר",
+  "family": "3R",
+  "source": {
+    "cadastral_source": "PARCEL_ALL",
+    "cadastral_crs": "EPSG:2039",
+    "gis_layer": "https://services6.arcgis.com/I08Ekaykft5ELucH/arcgis/rest/services/GIS_Dira/FeatureServer/2",
+    "method": "exact gush/helka cadastral polygon intersected with official GIS_Dira layer"
+  },
+  "summary": {
+    "requested_parcels": 3,
+    "resolved_parcels": 0,
+    "unresolved_parcels": 3,
+    "program_overlap_parcels": 0,
+    "confirmed_no_program_overlap": 0,
+    "official_projects": 0
+  },
+  "parcels": [
+    {
+      "gush": 6361,
+      "helka": 21,
+      "families": [
+        "3R"
+      ],
+      "cadastral_record_count": 0,
+      "cadastral_records": [],
+      "resolved": false,
+      "program_overlap": null,
+      "projects": [],
+      "reason": "cadastral_parcel_not_found"
+    },
+    {
+      "gush": 6361,
+      "helka": 25,
+      "families": [
+        "3R"
+      ],
+      "cadastral_record_count": 0,
+      "cadastral_records": [],
+      "resolved": false,
+      "program_overlap": null,
+      "projects": [],
+      "reason": "cadastral_parcel_not_found"
+    },
+    {
+      "gush": 6361,
+      "helka": 50,
+      "families": [
+        "3R"
+      ],
+      "cadastral_record_count": 0,
+      "cadastral_records": [],
+      "resolved": false,
+      "program_overlap": null,
+      "projects": [],
+      "reason": "cadastral_parcel_not_found"
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "success": true,
+  "data": {
+    "token": "am2daomo",
+    "orderId": 57423578,
+    "adNumber": 69072392,
+    "adType": "commercial",
+    "categoryId": 2,
+    "subcategoryId": 5,
+    "priority": 1,
+    "statusId": 1,
+    "price": 2490000,
+    "additionalDetails": {
+      "entranceDate": "2026-08-26T00:00:00",
+      "squareMeter": 76,
+      "roomsCount": 3,
+      "propertyGroup": {
+        "id": 1,
+        "text": "דירות",
+        "textEng": "apartments"
+      },
+      "property": {
+        "id": 3,
+        "text": "דירת גן",
+        "textEng": "patio"
+      },
+      "propertyCondition": {
+        "id": 2,
+        "text": "משופץ"
+      },
+      "squareMeterBuild": 76,
+      "squareMeterGarden": 90,
+      "buildingTopFloor": 1,
+      "isEnterDateFlexible": true
+    },
+    "inProperty": {
+      "includeAirconditioner": true,
+      "includeBoiler": true,
+      "includeBars": true,
+      "includeSecurityRoom": false,
+      "isAssetExclusive": true,
+      "isHandicapped": true,
+      "isRenovated": true
+    },
+    "searchText": "שם מוכר נכסים בפתח תקווה Buy House צחי רזאל נכס למכירה מסוג דירת גן עם מספר חדרים 3 בכתובת רוטשילד קרול פתח תקווה אזור פתח תקווה והסביבה מרכז הנכס כולל סורגים מיזוג גישה לנכים משופצת מצב הנכס משופץ תאור לקוח למכירה במיקום מנצח צמוד לרכבת הקלה , בשכונת קרול המבוקשת . \nדירת גן משופצת ויפה , בעלת\nפוטנציאל השבחה נהדר !! \nכרגע מושכרת , מעולה להשקעה או מגורים \nלפרטים נוספים צרו קשר ... דירת גן במיקום מנצח , בהליכי פינוי בינוי משרד נדלן בוטיק עם וותק של כ 19 שנה בעיסקאות נדלן בפ\"ת והסביבה . מאות לקוחות מרוצים , ידע רב בניהול משא ומתן . דירות חדשות בפ\"ת במגוון פרויקטים , דירות יד 2 למכירה בפ\"ת והסביבה . ליווי משקיעים לרכישה מוצלחת , ליווי אישי וצמוד של זוגות צעירים ומשפרי דיור למכירה מוצלחת וקניה רגועה ...  סוכנות נכסים בפתח תקווה",
+    "customer": {
+      "name": "Buy House צחי רזאל",
+      "id": 999406,
+      "isVirtualPhoneNumber": true,
+      "agencyName": "נכסים בפתח תקווה",
+      "brokerAvatar": "https://img.yad2.co.il/Pic/TradeMiniSite/724b0fa8-4f68-4244-929c-649468f75176.jpeg?t=1788723567843",
+      "agencyAbout": "משרד נדלן בוטיק עם וותק של כ 19 שנה בעיסקאות נדלן בפ\"ת והסביבה . מאות לקוחות מרוצים , ידע רב בניהול משא ומתן . דירות חדשות בפ\"ת במגוון פרויקטים , דירות יד 2 למכירה בפ\"ת והסביבה . ליווי משקיעים לרכישה מוצלחת , ליווי אישי וצמוד של זוגות צעירים ומשפרי דיור למכירה מוצלחת וקניה רגועה ... ",
+      "brokers": [
+        {
+          "name": "Buy House צחי רזאל",
+          "avatar": "https://img.yad2.co.il/Pic/TradeMiniSite/724b0fa8-4f68-4244-929c-649468f75176.jpeg?t=1788723567843",
+          "id": 758095,
+          "licenseNumber": "30621115"
+        }
+      ],
+      "licenseNumber": "30621115"
+    },
+    "packages": {
+      "hasMiniSite": true,
+      "isPlatinum": true,
+      "isNeighborhoodKing": true
+    },
+    "address": {
+      "topArea": {
+        "id": 2,
+        "text": "מרכז",
+        "textEng": "hamerkaz_area"
+      },
+      "region": {
+        "id": 1,
+        "text": "מרכז והשרון",
+        "textEng": "Center"
+      },
+      "area": {
+        "id": 4,
+        "text": "פתח תקווה והסביבה",
+        "textEng": "petah_tikva_area"
+      },
+      "city": {
+        "id": "7900",
+        "text": "פתח תקווה"
+      },
+      "neighborhood": {
+        "id": 766,
+        "text": "קרול"
+      },
+      "street": {
+        "id": "0129",
+        "text": "רוטשילד"
+      },
+      "coords": {
+        "lat": 32.0856017378641,
+        "lon": 34.8823594805825
+      },
+      "house": {
+        "floor": 0
+      },
+      "addressMasterId": 5763946
+    },
+    "metaData": {
+      "coverImage": "https://img.yad2.co.il/Pic/202608/26/2_5/o/y2_1pa_010186_20260826110247.jpeg",
+      "images": [
+        "https://img.yad2.co.il/Pic/202608/26/2_5/o/y2_1pa_010186_20260826110247.jpeg",
+        "https://img.yad2.co.il/Pic/202608/26/2_5/o/y2_1pa_010026_20260826110247.jpeg",
+        "https://img.yad2.co.il/Pic/202608/26/2_5/o/y2_1pa_010948_20260826110247.jpeg",
+        "https://img.yad2.co.il/Pic/202608/26/2_5/o/y2_1pa_010102_20260826110247.jpeg",
+        "https://img.yad2.co.il/Pic/202608/26/2_5/o/y2_1pa_010329_20260826110247.jpeg",
+        "https://img.yad2.co.il/Pic/202608/26/2_5/o/y2_1pa_010852_20260826110247.jpeg",
+        "https://img.yad2.co.il/Pic/202608/26/2_5/o/y2_1pa_010712_20260826110247.jpeg",
+        "https://img.yad2.co.il/Pic/202608/26/2_5/o/y2_1pa_010025_20260826110247.jpeg",
+        "https://img.yad2.co.il/Pic/202608/26/2_5/o/y2_1pa_010872_20260826110248.jpeg",
+        "https://img.yad2.co.il/Pic/202608/26/2_5/o/y2_1pa_010041_20260826110256.jpeg"
+      ],
+      "description": "למכירה במיקום מנצח צמוד לרכבת הקלה , בשכונת קרול המבוקשת . \nדירת גן משופצת ויפה , בעלת\nפוטנציאל השבחה נהדר !! \nכרגע מושכרת , מעולה להשקעה או מגורים \nלפרטים נוספים צרו קשר ...",
+      "shelterDistance": 299
+    },
+    "dates": {
+      "updatedAt": "2026-09-06T22:39:27",
+      "createdAt": "2026-08-26T11:03:06",
+      "endsAt": "2027-06-29T00:00:00",
+      "rebouncedAt": "2026-09-06T22:39:27"
+    },
+    "abovePrice": "2300000"
+  }
+}

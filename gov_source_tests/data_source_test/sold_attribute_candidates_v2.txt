@@ -1,0 +1,72 @@
+======================================================================================================================================================
+SOLD ATTRIBUTE CANDIDATES V2 — LOCAL DATA ONLY
+======================================================================================================================================================
+TARGET TRANSACTIONS: 18
+FILES SCANNED: 85
+STRUCTURED RECORDS CHECKED: 24742
+
+######################################################################################################################################################
+APT36_37
+######################################################################################################################################################
+
+DEAL 3629954505 | היבנר 38 | 5.0R | 230.0m² | ₪3,635,000 | floor=שלישית+גג | candidates=0
+  NO LOCAL SAME-BUILDING ENRICHMENT FOUND
+
+DEAL 3603100099 | נקאש 15 | 6.0R | 268.0m² | ₪7,000,000 | floor=שלוש עשרה | candidates=0
+  NO LOCAL SAME-BUILDING ENRICHMENT FOUND
+
+DEAL 3635365586 | תרזה קוגלמן 4 | 6.0R | 180.0m² | ₪5,250,000 | floor=תשיעית +עשירית | candidates=0
+  NO LOCAL SAME-BUILDING ENRICHMENT FOUND
+
+DEAL 3635637403 | החרוב 25 | 6.0R | 244.0m² | ₪6,200,000 | floor=None | candidates=0
+  NO LOCAL SAME-BUILDING ENRICHMENT FOUND
+
+DEAL 3625659199 | מסקין 26 | 6.0R | 278.0m² | ₪4,500,000 | floor=None | candidates=0
+  NO LOCAL SAME-BUILDING ENRICHMENT FOUND
+
+DEAL 3626929892 | עין גדי 38 | 6.0R | 288.0m² | ₪6,180,000 | floor=None | candidates=0
+  NO LOCAL SAME-BUILDING ENRICHMENT FOUND
+
+######################################################################################################################################################
+APT38
+######################################################################################################################################################
+
+DEAL 3606035885 | כנסת ישראל 17 | 7.0R | 170.0m² | ₪3,700,000 | floor=מרתף+קרקע+ראשונה | candidates=0
+  NO LOCAL SAME-BUILDING ENRICHMENT FOUND
+
+DEAL 3605884041 | י"ד הבנים 3 | 7.0R | 148.0m² | ₪2,900,000 | floor=רביעית + גג | candidates=0
+  NO LOCAL SAME-BUILDING ENRICHMENT FOUND
+
+DEAL 3626587054 | ישראל ישעיהו 6 | 6.0R | 166.0m² | ₪3,700,000 | floor=חמישית+שישית | candidates=0
+  NO LOCAL SAME-BUILDING ENRICHMENT FOUND
+
+DEAL 3602707207 | פנחס חגין 1 | 6.0R | 168.0m² | ₪5,900,000 | floor=שישית+שביעית | candidates=0
+  NO LOCAL SAME-BUILDING ENRICHMENT FOUND
+
+DEAL 3602250022 | הפרדס 8 | 6.0R | 177.0m² | ₪5,550,000 | floor=שביעית+שמינית | candidates=0
+  NO LOCAL SAME-BUILDING ENRICHMENT FOUND
+
+DEAL 3635365586 | תרזה קוגלמן 4 | 6.0R | 180.0m² | ₪5,250,000 | floor=תשיעית +עשירית | candidates=0
+  NO LOCAL SAME-BUILDING ENRICHMENT FOUND
+
+######################################################################################################################################################
+APT39
+######################################################################################################################################################
+
+DEAL 3633131484 | מבצע דקל 14 | 5.0R | 157.0m² | ₪5,900,000 | floor=עשרים ושבע+ עשרים ושמונה | candidates=0
+  NO LOCAL SAME-BUILDING ENRICHMENT FOUND
+
+DEAL 3601967910 | איסר הראל 6 | 5.0R | 163.0m² | ₪5,400,000 | floor=תשע עשרה+עשרים | candidates=0
+  NO LOCAL SAME-BUILDING ENRICHMENT FOUND
+
+DEAL 3605029846 | כנסת ישראל 17 | 5.0R | 166.0m² | ₪4,694,000 | floor=מרתף+קרקע+ראשונה | candidates=0
+  NO LOCAL SAME-BUILDING ENRICHMENT FOUND
+
+DEAL 3655065895 | התשעים ושלוש 3 | 5.0R | 145.0m² | ₪3,200,000 | floor=שלישית+רביעית+גג | candidates=0
+  NO LOCAL SAME-BUILDING ENRICHMENT FOUND
+
+DEAL 3603812310 | יעל רום 17 | 5.0R | 144.0m² | ₪4,200,000 | floor=תשע עשרה + עשרים | candidates=0
+  NO LOCAL SAME-BUILDING ENRICHMENT FOUND
+
+DEAL 3633966655 | שלומציון המלכה 6 | 5.5R | 157.0m² | ₪2,920,000 | floor=שמינית+גג | candidates=0
+  NO LOCAL SAME-BUILDING ENRICHMENT FOUND

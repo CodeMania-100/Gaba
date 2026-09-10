@@ -1,0 +1,86 @@
+=======================================================================================================================================
+SPECIAL ATTRIBUTE EVIDENCE V2
+=======================================================================================================================================
+
+SOLD MATCH RESOLUTION
+---------------------------------------------------------------------------------------------------------------------------------------
+
+APT36_37
+  5R | 230m2 | 3,635,000 | UNIQUE_NUMERIC_TAX_MATCH | address=היבנר 38 | matches=1
+      date=2025-04-30 | floor=שלישית+גג | tax_type=דירה בבית קומות | deal_id=3629954505
+  6R | 268m2 | 7,000,000 | UNIQUE_NUMERIC_TAX_MATCH | address=נקאש 15 | matches=1
+      date=2024-07-25 | floor=שלוש עשרה | tax_type=דירה בבית קומות | deal_id=3603100099
+  6R | 180m2 | 5,250,000 | UNIQUE_NUMERIC_TAX_MATCH | address=תרזה קוגלמן 4 | matches=1
+      date=2025-11-23 | floor=תשיעית +עשירית | tax_type=דירה בבית קומות | deal_id=3635365586
+  6R | 244m2 | 6,200,000 | UNIQUE_NUMERIC_TAX_MATCH | address=החרוב 25 | matches=1
+      date=2025-11-03 | floor=None | tax_type=דירה בבית קומות | deal_id=3635637403
+  6R | 278m2 | 4,500,000 | UNIQUE_NUMERIC_TAX_MATCH | address=מסקין 26 | matches=1
+      date=2025-01-16 | floor=None | tax_type=דירה בבית קומות | deal_id=3625659199
+  6R | 288m2 | 6,180,000 | UNIQUE_NUMERIC_TAX_MATCH | address=עין גדי 38 | matches=1
+      date=2025-01-23 | floor=None | tax_type=דירה בבית קומות | deal_id=3626929892
+
+APT38
+  7R | 170m2 | 3,700,000 | UNIQUE_NUMERIC_TAX_MATCH | address=כנסת ישראל 17 | matches=1
+      date=2024-10-27 | floor=מרתף+קרקע+ראשונה | tax_type=דירה בבית קומות | deal_id=3606035885
+  7R | 148m2 | 2,900,000 | UNIQUE_NUMERIC_TAX_MATCH | address=י"ד הבנים 3 | matches=1
+      date=2024-10-01 | floor=רביעית + גג | tax_type=דירה בבית קומות | deal_id=3605884041
+  6R | 166m2 | 3,700,000 | UNIQUE_NUMERIC_TAX_MATCH | address=ישראל ישעיהו 6 | matches=1
+      date=2025-02-06 | floor=חמישית+שישית | tax_type=דירה בבית קומות | deal_id=3626587054
+  6R | 168m2 | 5,900,000 | MULTIPLE_TAX_MATCHES | address=None | matches=2
+  6R | 177m2 | 5,550,000 | UNIQUE_NUMERIC_TAX_MATCH | address=הפרדס 8 | matches=1
+      date=2024-06-26 | floor=שביעית+שמינית | tax_type=דירה בבית קומות | deal_id=3602250022
+  6R | 180m2 | 5,250,000 | UNIQUE_NUMERIC_TAX_MATCH | address=תרזה קוגלמן 4 | matches=1
+      date=2025-11-23 | floor=תשיעית +עשירית | tax_type=דירה בבית קומות | deal_id=3635365586
+
+APT39
+  5R | 157m2 | 5,900,000 | UNIQUE_NUMERIC_TAX_MATCH | address=מבצע דקל 14 | matches=1
+      date=2025-08-04 | floor=עשרים ושבע+ עשרים ושמונה | tax_type=דירה בבית קומות | deal_id=3633131484
+  5R | 163m2 | 5,400,000 | UNIQUE_NUMERIC_TAX_MATCH | address=איסר הראל 6 | matches=1
+      date=2024-06-07 | floor=תשע עשרה+עשרים | tax_type=דירה בבית קומות | deal_id=3601967910
+  5R | 166m2 | 4,694,000 | UNIQUE_NUMERIC_TAX_MATCH | address=כנסת ישראל 17 | matches=1
+      date=2024-09-26 | floor=מרתף+קרקע+ראשונה | tax_type=דירה בבית קומות | deal_id=3605029846
+  5R | 145m2 | 3,200,000 | UNIQUE_NUMERIC_TAX_MATCH | address=התשעים ושלוש 3 | matches=1
+      date=2026-01-24 | floor=שלישית+רביעית+גג | tax_type=דירה בבית קומות | deal_id=3655065895
+  5R | 173m2 | 5,175,000 | UNIQUE_NUMERIC_TAX_MATCH | address=מסקין 11 | matches=1
+      date=2024-07-03 | floor=חמישית+ שישית | tax_type=קוטג' חד משפחתי | deal_id=3602001898
+  5R | 144m2 | 4,200,000 | UNIQUE_NUMERIC_TAX_MATCH | address=יעל רום 17 | matches=1
+      date=2024-08-26 | floor=תשע עשרה + עשרים | tax_type=דירה בבית קומות | deal_id=3603812310
+  5.5R | 157m2 | 2,920,000 | UNIQUE_NUMERIC_TAX_MATCH | address=שלומציון המלכה 6 | matches=1
+      date=2025-09-21 | floor=שמינית+גג | tax_type=דירה בבית קומות | deal_id=3633966655
+
+=======================================================================================================================================
+ASKING ATTRIBUTE QA
+=======================================================================================================================================
+
+TOKEN 0xkpq9l7
+  type=דירת גן | rooms=3.0 | built=74.0 | balcony=None | garden=29.0 | parking=1.0 | storage=None | elevator=True | floors=0 | orientation=None | view=None | condition=None
+
+TOKEN 5i4tr2xo
+  type=duplex | rooms=7.0 | built=145.0 | balcony=None | garden=None | parking=1.0 | storage=True | elevator=True | floors=4+5 | orientation=['east', 'west'] | view=None | condition=['renovated']
+
+TOKEN 7a8ynci1
+  type=duplex | rooms=6.0 | built=177.0 | balcony=80.0 | garden=None | parking=2.0 | storage=True | elevator=True | floors=6 | orientation=None | view=None | condition=None
+
+TOKEN 81py2t5u
+  type=דירת גן | rooms=2.0 | built=47.0 | balcony=None | garden=23.0 | parking=1.0 | storage=None | elevator=True | floors=0 | orientation=None | view=None | condition=['new_property']
+
+TOKEN 9bsyydsn
+  type=penthouse | rooms=6.0 | built=220.0 | balcony=None | garden=None | parking=2.0 | storage=True | elevator=True | floors=5+6 | orientation=None | view=['open_view'] | condition=None
+
+TOKEN am2daomo
+  type=garden | rooms=3.0 | built=76.0 | balcony=None | garden=90.0 | parking=None | storage=None | elevator=None | floors=ground | orientation=None | view=None | condition=None
+
+TOKEN au7ykbzg
+  type=duplex | rooms=5.0 | built=160.0 | balcony=None | garden=None | parking=1.0 | storage=None | elevator=True | floors=6 | orientation=None | view=None | condition=['renovated']
+
+TOKEN kihl5wee
+  type=garden | rooms=3.0 | built=85.0 | balcony=None | garden=89.0 | parking=None | storage=None | elevator=None | floors=ground | orientation=None | view=None | condition=None
+
+TOKEN tkgbr5hx
+  type=duplex | rooms=6.0 | built=220.0 | balcony=130.0 | garden=None | parking=3.0 | storage=None | elevator=True | floors=6 | orientation=None | view=None | condition=None
+
+TOKEN ub2tzaqh
+  type=duplex | rooms=6.0 | built=165.0 | balcony=92.0 | garden=None | parking=2.0 | storage=True | elevator=True | floors=7+8 | orientation=None | view=None | condition=['renovated', 'upgraded']
+
+TOKEN wbvl4w9m
+  type=duplex | rooms=6.0 | built=168.0 | balcony=None | garden=None | parking=2.0 | storage=True | elevator=True | floors=7 | orientation=None | view=None | condition=None

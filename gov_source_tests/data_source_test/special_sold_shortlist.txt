@@ -1,0 +1,267 @@
+============================================================================================================================================
+SPECIAL SOLD SHORTLIST ? PETAH TIKVA
+NO API / NETWORK CALLS
+============================================================================================================================================
+Tax unique records after dedupe: 1753
+Local special-product records available for cross-reference: 14
+
+============================================================================================================================================
+APT36_37_TRIPLEX
+SUBJECT TARGET: 6R / 258m?
+ELIGIBLE SOLD POOL AFTER DEDUPE: 101
+SHOWING TOP 12 FOR VERIFICATION
+============================================================================================================================================
+01. SCORE=21 | 6R | 265m? | ?8,000,000 | ?30,189/m? | floor=מרתף+קרקע+ראשונה+שניה | חיים גלעד 35 | 2024-11-20
+    STRUCTURE: 4_LEVEL_SIGNAL
+    REASONS: exact_rooms, area_within_5pct, 4_LEVEL_SIGNAL, 2024, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+02. SCORE=16 | 6R | 196m? | ?5,500,000 | ?28,061/m? | floor=קרקע+ראשונה | דגל ראובן 59 | 2025-02-10
+    STRUCTURE: 2_LEVEL_SIGNAL
+    REASONS: exact_rooms, 2_LEVEL_SIGNAL, 2025, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+03. SCORE=16 | 6R | 180m? | ?5,250,000 | ?29,167/m? | floor=תשיעית +עשירית | תרזה קוגלמן 4 | 2025-11-23
+    STRUCTURE: 2_LEVEL_SIGNAL
+    REASONS: exact_rooms, 2_LEVEL_SIGNAL, 2025, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+04. SCORE=15 | 6R | 180m? | ?3,520,000 | ?19,556/m? | floor=שלישית+רביעית | יוסף שכטר 1 | 2024-11-13
+    STRUCTURE: 2_LEVEL_SIGNAL
+    REASONS: exact_rooms, 2_LEVEL_SIGNAL, 2024, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+05. SCORE=14 | 6R | 268m? | ?7,000,000 | ?26,119/m? | floor=שלוש עשרה | נקאש 15 | 2024-07-25
+    STRUCTURE: SINGLE_OR_UNKNOWN
+    REASONS: exact_rooms, area_within_5pct, 2024, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+06. SCORE=14 | 5R | 230m? | ?3,635,000 | ?15,804/m? | floor=שלישית+גג | היבנר 38 | 2025-04-30
+    STRUCTURE: 2_LEVEL_SIGNAL
+    REASONS: room_relaxed, area_within_20pct, 2_LEVEL_SIGNAL, 2025, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+07. SCORE=13 | 6R | 244m? | ?6,200,000 | ?25,410/m? | floor=? | החרוב 25 | 2025-11-03
+    STRUCTURE: UNKNOWN_FLOOR
+    REASONS: exact_rooms, area_within_10pct, 2025, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+08. SCORE=13 | 6R | 242m? | ?5,500,000 | ?22,727/m? | floor=מרתף, קרקע | החליל 12 | 2025-09-02
+    STRUCTURE: SINGLE_OR_UNKNOWN
+    REASONS: exact_rooms, area_within_10pct, 2025, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+09. SCORE=13 | 6R | 278m? | ?4,500,000 | ?16,187/m? | floor=? | מסקין 26 | 2025-01-16
+    STRUCTURE: UNKNOWN_FLOOR
+    REASONS: exact_rooms, area_within_10pct, 2025, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+10. SCORE=11 | 6R | 230m? | ?7,000,000 | ?30,435/m? | floor=? | החרוב 18 | 2025-09-09
+    STRUCTURE: UNKNOWN_FLOOR
+    REASONS: exact_rooms, area_within_20pct, 2025, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+11. SCORE=11 | 6R | 288m? | ?6,180,000 | ?21,458/m? | floor=? | עין גדי 38 | 2025-01-23
+    STRUCTURE: UNKNOWN_FLOOR
+    REASONS: exact_rooms, area_within_20pct, 2025, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+12. SCORE=11 | 6R | 222m? | ?4,100,000 | ?18,468/m? | floor=? | ברנר 46 | 2025-10-30
+    STRUCTURE: UNKNOWN_FLOOR
+    REASONS: exact_rooms, area_within_20pct, 2025, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+
+============================================================================================================================================
+APT38_DUPLEX
+SUBJECT TARGET: 7R / 170.1m?
+ELIGIBLE SOLD POOL AFTER DEDUPE: 282
+SHOWING TOP 12 FOR VERIFICATION
+============================================================================================================================================
+01. SCORE=21 | 7R | 170m? | ?3,700,000 | ?21,765/m? | floor=מרתף+קרקע+ראשונה | כנסת ישראל 17 | 2024-10-27
+    STRUCTURE: 3_LEVEL_SIGNAL
+    REASONS: exact_rooms, area_within_5pct, 3_LEVEL_SIGNAL, 2024, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+02. SCORE=18 | 6R | 172m? | ?6,425,000 | ?37,355/m? | floor=מרתף+קרקע+ראשונה | מרים ילן-שטקליס 10 | 2025-09-11
+    STRUCTURE: 3_LEVEL_SIGNAL
+    REASONS: room_relaxed, area_within_5pct, 3_LEVEL_SIGNAL, 2025, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+03. SCORE=18 | 6R | 167m? | ?5,100,000 | ?30,539/m? | floor=קרקע+ראשונה | הרב עוזיאל 27 | 2025-04-10
+    STRUCTURE: 2_LEVEL_SIGNAL
+    REASONS: room_relaxed, area_within_5pct, 2_LEVEL_SIGNAL, 2025, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+04. SCORE=18 | 6R | 166m? | ?3,700,000 | ?22,289/m? | floor=חמישית+שישית | ישראל ישעיהו 6 | 2025-02-06
+    STRUCTURE: 2_LEVEL_SIGNAL
+    REASONS: room_relaxed, area_within_5pct, 2_LEVEL_SIGNAL, 2025, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+05. SCORE=17 | 7R | 148m? | ?2,900,000 | ?19,595/m? | floor=רביעית + גג | י"ד הבנים 3 | 2024-10-01
+    STRUCTURE: 2_LEVEL_SIGNAL
+    REASONS: exact_rooms, area_within_20pct, 2_LEVEL_SIGNAL, 2024, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+06. SCORE=17 | 6R | 168m? | ?5,900,000 | ?35,119/m? | floor=שישית+שביעית | פנחס חגין 1 | 2024-07-02
+    STRUCTURE: 2_LEVEL_SIGNAL
+    REASONS: room_relaxed, area_within_5pct, 2_LEVEL_SIGNAL, 2024, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+07. SCORE=17 | 6R | 177m? | ?5,550,000 | ?31,356/m? | floor=שביעית+שמינית | הפרדס 8 | 2024-06-26
+    STRUCTURE: 2_LEVEL_SIGNAL
+    REASONS: room_relaxed, area_within_5pct, 2_LEVEL_SIGNAL, 2024, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+08. SCORE=16 | 6R | 180m? | ?5,250,000 | ?29,167/m? | floor=תשיעית +עשירית | תרזה קוגלמן 4 | 2025-11-23
+    STRUCTURE: 2_LEVEL_SIGNAL
+    REASONS: room_relaxed, area_within_10pct, 2_LEVEL_SIGNAL, 2025, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+09. SCORE=16 | 6R | 155m? | ?3,600,000 | ?23,226/m? | floor=שניה+גג | נתן צבי פינקל 12 | 2025-07-03
+    STRUCTURE: 2_LEVEL_SIGNAL
+    REASONS: room_relaxed, area_within_10pct, 2_LEVEL_SIGNAL, 2025, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+10. SCORE=15 | 7R | 163m? | ?4,300,000 | ?26,380/m? | floor=תשיעית | הנשיאים 47 | 2025-12-15
+    STRUCTURE: SINGLE_OR_UNKNOWN
+    REASONS: exact_rooms, area_within_5pct, 2025, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+11. SCORE=15 | 7R | 163m? | ?4,300,000 | ?26,380/m? | floor=תשיעית | לוין 5 | 2025-12-14
+    STRUCTURE: SINGLE_OR_UNKNOWN
+    REASONS: exact_rooms, area_within_5pct, 2025, address_available
+    FLAGS: TYPE_NOT_DECLARED_BY_TAX
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+12. SCORE=15 | 6R | 175m? | ?6,600,000 | ?37,714/m? | floor=שמינית | יוסף נקר 5 | 2025-01-15
+    STRUCTURE: SINGLE_OR_UNKNOWN
+    REASONS: room_relaxed, area_within_5pct, 2025, address_available, SAME_STREET_DUPLEX
+    FLAGS: none
+    LOCAL SAME-STREET TYPOLOGY HINTS:
+      - DUPLEX | rooms=6.0 | built=168.0 | area=285.0 | יוסף נקר
+
+============================================================================================================================================
+APT39_DUPLEX
+SUBJECT TARGET: 5R / 158.6m?
+ELIGIBLE SOLD POOL AFTER DEDUPE: 629
+SHOWING TOP 12 FOR VERIFICATION
+============================================================================================================================================
+01. SCORE=22 | 5R | 157m? | ?5,900,000 | ?37,580/m? | floor=עשרים ושבע+ עשרים ושמונה | מבצע דקל 14 | 2025-08-04
+    STRUCTURE: 2_LEVEL_SIGNAL
+    REASONS: exact_rooms, area_within_5pct, 2_LEVEL_SIGNAL, 2025, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+02. SCORE=21 | 5R | 163m? | ?5,400,000 | ?33,129/m? | floor=תשע עשרה+עשרים | איסר הראל 6 | 2024-06-07
+    STRUCTURE: 2_LEVEL_SIGNAL
+    REASONS: exact_rooms, area_within_5pct, 2_LEVEL_SIGNAL, 2024, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+03. SCORE=21 | 5R | 166m? | ?4,694,000 | ?28,277/m? | floor=מרתף+קרקע+ראשונה | כנסת ישראל 17 | 2024-09-26
+    STRUCTURE: 3_LEVEL_SIGNAL
+    REASONS: exact_rooms, area_within_5pct, 3_LEVEL_SIGNAL, 2024, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+04. SCORE=21 | 5R | 145m? | ?3,200,000 | ?22,069/m? | floor=שלישית+רביעית+גג | התשעים ושלוש 3 | 2026-01-24
+    STRUCTURE: 3_LEVEL_SIGNAL
+    REASONS: exact_rooms, area_within_10pct, 3_LEVEL_SIGNAL, 2026, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+05. SCORE=19 | 5R | 173m? | ?5,175,000 | ?29,913/m? | floor=חמישית+ שישית | מסקין 11 | 2024-07-03
+    STRUCTURE: 2_LEVEL_SIGNAL
+    REASONS: exact_rooms, area_within_10pct, 2_LEVEL_SIGNAL, 2024, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+06. SCORE=19 | 5R | 144m? | ?4,200,000 | ?29,167/m? | floor=תשע עשרה + עשרים | יעל רום 17 | 2024-08-26
+    STRUCTURE: 2_LEVEL_SIGNAL
+    REASONS: exact_rooms, area_within_10pct, 2_LEVEL_SIGNAL, 2024, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+07. SCORE=18 | 5R | 136m? | ?2,675,000 | ?19,669/m? | floor=שלישית+ רביעית+גג | שפירא הרמן צבי 75 | 2025-12-28
+    STRUCTURE: 3_LEVEL_SIGNAL
+    REASONS: exact_rooms, area_within_20pct, 3_LEVEL_SIGNAL, 2025, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+08. SCORE=18 | 5.5R | 157m? | ?2,920,000 | ?18,599/m? | floor=שמינית+גג | שלומציון המלכה 6 | 2025-09-21
+    STRUCTURE: 2_LEVEL_SIGNAL
+    REASONS: room_relaxed, area_within_5pct, 2_LEVEL_SIGNAL, 2025, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+09. SCORE=18 | 6R | 155m? | ?3,600,000 | ?23,226/m? | floor=שניה+גג | נתן צבי פינקל 12 | 2025-07-03
+    STRUCTURE: 2_LEVEL_SIGNAL
+    REASONS: room_relaxed, area_within_5pct, 2_LEVEL_SIGNAL, 2025, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+10. SCORE=18 | 6R | 166m? | ?3,700,000 | ?22,289/m? | floor=חמישית+שישית | ישראל ישעיהו 6 | 2025-02-06
+    STRUCTURE: 2_LEVEL_SIGNAL
+    REASONS: room_relaxed, area_within_5pct, 2_LEVEL_SIGNAL, 2025, address_available
+    FLAGS: none
+    LOCAL TYPOLOGY MATCH: NONE
+    NEXT: public typology verification for this exact address/building
+11. SCORE=17 | 5R | 147m? | ?3,850,000 | ?26,190/m? | floor=קומה ‎2‏ | יוסף נקר 33 | 2025-02-11
+    STRUCTURE: SINGLE_OR_UNKNOWN
+    REASONS: exact_rooms, area_within_10pct, 2025, address_available, SAME_STREET_DUPLEX
+    FLAGS: none
+    LOCAL SAME-STREET TYPOLOGY HINTS:
+      - DUPLEX | rooms=6.0 | built=168.0 | area=285.0 | יוסף נקר
+12. SCORE=17 | 5R | 145m? | ?3,820,000 | ?26,345/m? | floor=קומה ‎2‏ | יוסף נקר 33 | 2025-03-09
+    STRUCTURE: SINGLE_OR_UNKNOWN
+    REASONS: exact_rooms, area_within_10pct, 2025, address_available, SAME_STREET_DUPLEX
+    FLAGS: none
+    LOCAL SAME-STREET TYPOLOGY HINTS:
+      - DUPLEX | rooms=6.0 | built=168.0 | area=285.0 | יוסף נקר
+
+============================================================================================================================================
+LOCAL TYPOLOGY INVENTORY USED FOR CROSS-REFERENCE
+============================================================================================================================================
+
+TRIPLEX: 0
+
+DUPLEX: 12
+  6.0R | built=220.0 | area=220.0 | price=4490000.0 | address=עין גנים | token=tkgbr5hx
+  6.0R | built=165.0 | area=255.0 | price=4790000.0 | address=? | token=ub2tzaqh
+  6.0R | built=177.0 | area=256.0 | price=5650000.0 | address=? | token=7a8ynci1
+  6.0R | built=168.0 | area=285.0 | price=5950000.0 | address=יוסף נקר | token=wbvl4w9m
+  7.0R | built=145.0 | area=145.0 | price=2899000.0 | address=? | token=5i4tr2xo
+  5.0R | built=160.0 | area=160.0 | price=2630000.0 | address=זאב ברנדה | token=au7ykbzg
+  NoneR | built=220.0 | area=220.0 | price=None | address=? | token=?
+  NoneR | built=165.0 | area=255.0 | price=None | address=? | token=?
+  NoneR | built=177.0 | area=256.0 | price=None | address=? | token=?
+  NoneR | built=168.0 | area=285.0 | price=None | address=? | token=?
+  NoneR | built=145.0 | area=145.0 | price=None | address=? | token=?
+  NoneR | built=160.0 | area=160.0 | price=None | address=? | token=?
+
+PENTHOUSE: 2
+  6.0R | built=220.0 | area=220.0 | price=5600000.0 | address=העצמאות | token=9bsyydsn
+  NoneR | built=220.0 | area=220.0 | price=None | address=? | token=?

@@ -23,7 +23,7 @@ export default function ResearchSection({ open, onToggle, children }: Props) {
           <p className="text-xs text-slate-500">ראיות שוק מפורטות, השוואות מתחרים, ומתודולוגיית החישוב שמאחורי לוח ההחלטה.</p>
         </div>
         <span className="shrink-0 rounded-md border border-slate-300 bg-white px-3 py-1.5 text-xs font-medium text-slate-600">
-          {open ? "הסתרה" : "הצגת הנתונים"}
+          {open ? "הסתרה" : "פתח נתוני שוק ומתודולוגיה"}
         </span>
       </button>
       <div hidden={!open} className="flex flex-col gap-6 border-t border-slate-200 px-5 py-5">

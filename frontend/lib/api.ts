@@ -384,6 +384,36 @@ export interface SpecialUnitMarketContext {
   units: Record<string, SpecialUnitContext>;
 }
 
+// One record from the frozen, one-time geocoding pass (see
+// gabay_pricing_core/build_map_geocodes_v1.py) -- never geocoded live.
+// precision reflects what the geocoder itself could resolve: "address" (house
+// number matched), "street" (road-level only), or "approximate". Never treat
+// a "street"/"approximate" point as an exact building location.
+export interface MapGeocodeRecord {
+  record_id: string;
+  address: string;
+  lat: number;
+  lng: number;
+  coordinate_source: "geocoded_address";
+  precision: "address" | "street" | "approximate";
+  resolved_label: string | null;
+  verified: boolean;
+}
+
+export interface MapGeocodeFile {
+  version: string;
+  generated_at: string;
+  geocoder: string;
+  validation: JsonRecord;
+  sold_evidence_coverage: {
+    usable_transactions_total: number;
+    unique_addresses_total: number;
+    unique_addresses_resolved: number;
+  };
+  competitors: { resolved: MapGeocodeRecord[]; unresolved: JsonRecord[] };
+  sold: { resolved: MapGeocodeRecord[]; unresolved: JsonRecord[] };
+}
+
 export interface PetahTikvaWorkspace {
   version: string;
   project: {
@@ -428,6 +458,8 @@ export interface PetahTikvaWorkspace {
     case_study_3r_new_development: JsonRecord;
   };
   price_list: PtkPriceListRow[];
+  // null until build_map_geocodes_v1.py has been run at least once.
+  market_map_geocodes: MapGeocodeFile | null;
   strategy: {
     note: string;
     disclaimer: string;
@@ -543,11 +575,11 @@ export interface InventoryPreview {
   fingerprint: string;
 }
 
-// Generic (city, address) project-start contract. Today only Petah Tikva /
-// חפץ חיים 25 resolves to "snapshot"; "live" is reserved for a future
-// production collector flow that is not implemented yet. "unsupported" means
-// no live collection was attempted -- the request is simply not prepared as a
-// demo snapshot yet.
+// Generic (city, address) project-start contract. Today only Petah Tikva
+// (with no exact address -- the assignment never supplied one) resolves to
+// "snapshot"; "live" is reserved for a future production collector flow that
+// is not implemented yet. "unsupported" means no live collection was
+// attempted -- the request is simply not prepared as a demo snapshot yet.
 export type ProjectStartDataMode = "snapshot" | "live" | "unsupported";
 
 export interface ProjectStartResponse {

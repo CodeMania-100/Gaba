@@ -1,0 +1,906 @@
+{
+  "version": "special_attribute_evidence_v1",
+  "methodology": {
+    "principle": "Attributes are not assumed merely because another apartment in the same building has them.",
+    "scopes": {
+      "sold_unit_fact": "Direct transaction record.",
+      "listing_unit_fact": "Direct current listing record.",
+      "exact_building_context": "Same building; useful for building/product context only.",
+      "same_street_context": "Same street; directional context only."
+    },
+    "unknown_policy": "Unknown remains Unknown. No numerical premium or discount is invented for missing attributes."
+  },
+  "subjects": {
+    "APT1": {
+      "rooms": 3,
+      "type": "garden",
+      "internal_area": 70.8,
+      "outdoor_area": 100.0,
+      "floor": "ground",
+      "orientation": "east",
+      "parking": null,
+      "storage": null
+    },
+    "APT2": {
+      "rooms": 3,
+      "type": "garden",
+      "internal_area": 65.6,
+      "outdoor_area": 69.0,
+      "floor": "ground",
+      "orientation": "east",
+      "parking": null,
+      "storage": null
+    },
+    "APT3": {
+      "rooms": 2,
+      "type": "garden",
+      "internal_area": 57.0,
+      "outdoor_area": 18.0,
+      "floor": "ground",
+      "orientation": "east",
+      "parking": null,
+      "storage": null
+    },
+    "APT36": {
+      "rooms": 6,
+      "type": "triplex",
+      "internal_area": 255.2,
+      "outdoor_area": 94.6,
+      "floors": "9-11",
+      "orientation": "east",
+      "parking": null,
+      "storage": null
+    },
+    "APT37": {
+      "rooms": 6,
+      "type": "triplex",
+      "internal_area": 260.1,
+      "outdoor_area": 97.4,
+      "floors": "9-11",
+      "orientation": "west",
+      "parking": null,
+      "storage": null
+    },
+    "APT38": {
+      "rooms": 7,
+      "type": "duplex",
+      "internal_area": 170.1,
+      "outdoor_area": 39.6,
+      "floors": "9-10",
+      "orientation": "west",
+      "parking": null,
+      "storage": null
+    },
+    "APT39": {
+      "rooms": 5,
+      "type": "duplex",
+      "internal_area": 158.6,
+      "outdoor_area": 39.6,
+      "floors": "9-10",
+      "orientation": null,
+      "parking": null,
+      "storage": null
+    }
+  },
+  "sold_evidence": {
+    "APT36_37": [
+      {
+        "selection": {
+          "address": "????? 38",
+          "rooms": 5,
+          "area": 230,
+          "price": 3635000
+        },
+        "tax_matches": [],
+        "exact_building_context": [],
+        "same_street_context": [],
+        "attribute_policy": {
+          "sold_unit_fact": "Can be used directly for the sold comparable.",
+          "exact_building_context": "May support building-level or product-type context. Unit-specific attributes are not assumed.",
+          "same_street_context": "Directional context only; not a fact about the sold unit."
+        }
+      },
+      {
+        "selection": {
+          "address": "???? 15",
+          "rooms": 6,
+          "area": 268,
+          "price": 7000000
+        },
+        "tax_matches": [],
+        "exact_building_context": [],
+        "same_street_context": [],
+        "attribute_policy": {
+          "sold_unit_fact": "Can be used directly for the sold comparable.",
+          "exact_building_context": "May support building-level or product-type context. Unit-specific attributes are not assumed.",
+          "same_street_context": "Directional context only; not a fact about the sold unit."
+        }
+      },
+      {
+        "selection": {
+          "address": "???? ?????? 4",
+          "rooms": 6,
+          "area": 180,
+          "price": 5250000
+        },
+        "tax_matches": [],
+        "exact_building_context": [],
+        "same_street_context": [],
+        "attribute_policy": {
+          "sold_unit_fact": "Can be used directly for the sold comparable.",
+          "exact_building_context": "May support building-level or product-type context. Unit-specific attributes are not assumed.",
+          "same_street_context": "Directional context only; not a fact about the sold unit."
+        }
+      },
+      {
+        "selection": {
+          "address": "????? 25",
+          "rooms": 6,
+          "area": 244,
+          "price": 6200000
+        },
+        "tax_matches": [],
+        "exact_building_context": [],
+        "same_street_context": [],
+        "attribute_policy": {
+          "sold_unit_fact": "Can be used directly for the sold comparable.",
+          "exact_building_context": "May support building-level or product-type context. Unit-specific attributes are not assumed.",
+          "same_street_context": "Directional context only; not a fact about the sold unit."
+        }
+      },
+      {
+        "selection": {
+          "address": "????? 26",
+          "rooms": 6,
+          "area": 278,
+          "price": 4500000
+        },
+        "tax_matches": [],
+        "exact_building_context": [],
+        "same_street_context": [],
+        "attribute_policy": {
+          "sold_unit_fact": "Can be used directly for the sold comparable.",
+          "exact_building_context": "May support building-level or product-type context. Unit-specific attributes are not assumed.",
+          "same_street_context": "Directional context only; not a fact about the sold unit."
+        }
+      },
+      {
+        "selection": {
+          "address": "??? ??? 38",
+          "rooms": 6,
+          "area": 288,
+          "price": 6180000
+        },
+        "tax_matches": [],
+        "exact_building_context": [],
+        "same_street_context": [],
+        "attribute_policy": {
+          "sold_unit_fact": "Can be used directly for the sold comparable.",
+          "exact_building_context": "May support building-level or product-type context. Unit-specific attributes are not assumed.",
+          "same_street_context": "Directional context only; not a fact about the sold unit."
+        }
+      }
+    ],
+    "APT38": [
+      {
+        "selection": {
+          "address": "???? ????? 17",
+          "rooms": 7,
+          "area": 170,
+          "price": 3700000
+        },
+        "tax_matches": [],
+        "exact_building_context": [],
+        "same_street_context": [],
+        "attribute_policy": {
+          "sold_unit_fact": "Can be used directly for the sold comparable.",
+          "exact_building_context": "May support building-level or product-type context. Unit-specific attributes are not assumed.",
+          "same_street_context": "Directional context only; not a fact about the sold unit."
+        }
+      },
+      {
+        "selection": {
+          "address": "?\"? ????? 3",
+          "rooms": 7,
+          "area": 148,
+          "price": 2900000
+        },
+        "tax_matches": [],
+        "exact_building_context": [],
+        "same_street_context": [],
+        "attribute_policy": {
+          "sold_unit_fact": "Can be used directly for the sold comparable.",
+          "exact_building_context": "May support building-level or product-type context. Unit-specific attributes are not assumed.",
+          "same_street_context": "Directional context only; not a fact about the sold unit."
+        }
+      },
+      {
+        "selection": {
+          "address": "????? ?????? 6",
+          "rooms": 6,
+          "area": 166,
+          "price": 3700000
+        },
+        "tax_matches": [],
+        "exact_building_context": [],
+        "same_street_context": [],
+        "attribute_policy": {
+          "sold_unit_fact": "Can be used directly for the sold comparable.",
+          "exact_building_context": "May support building-level or product-type context. Unit-specific attributes are not assumed.",
+          "same_street_context": "Directional context only; not a fact about the sold unit."
+        }
+      },
+      {
+        "selection": {
+          "address": "???? ???? 1",
+          "rooms": 6,
+          "area": 168,
+          "price": 5900000
+        },
+        "tax_matches": [],
+        "exact_building_context": [],
+        "same_street_context": [],
+        "attribute_policy": {
+          "sold_unit_fact": "Can be used directly for the sold comparable.",
+          "exact_building_context": "May support building-level or product-type context. Unit-specific attributes are not assumed.",
+          "same_street_context": "Directional context only; not a fact about the sold unit."
+        }
+      },
+      {
+        "selection": {
+          "address": "????? 8",
+          "rooms": 6,
+          "area": 177,
+          "price": 5550000
+        },
+        "tax_matches": [],
+        "exact_building_context": [],
+        "same_street_context": [],
+        "attribute_policy": {
+          "sold_unit_fact": "Can be used directly for the sold comparable.",
+          "exact_building_context": "May support building-level or product-type context. Unit-specific attributes are not assumed.",
+          "same_street_context": "Directional context only; not a fact about the sold unit."
+        }
+      },
+      {
+        "selection": {
+          "address": "???? ?????? 4",
+          "rooms": 6,
+          "area": 180,
+          "price": 5250000
+        },
+        "tax_matches": [],
+        "exact_building_context": [],
+        "same_street_context": [],
+        "attribute_policy": {
+          "sold_unit_fact": "Can be used directly for the sold comparable.",
+          "exact_building_context": "May support building-level or product-type context. Unit-specific attributes are not assumed.",
+          "same_street_context": "Directional context only; not a fact about the sold unit."
+        }
+      }
+    ],
+    "APT39": [
+      {
+        "selection": {
+          "address": "???? ??? 14",
+          "rooms": 5,
+          "area": 157,
+          "price": 5900000
+        },
+        "tax_matches": [],
+        "exact_building_context": [],
+        "same_street_context": [],
+        "attribute_policy": {
+          "sold_unit_fact": "Can be used directly for the sold comparable.",
+          "exact_building_context": "May support building-level or product-type context. Unit-specific attributes are not assumed.",
+          "same_street_context": "Directional context only; not a fact about the sold unit."
+        }
+      },
+      {
+        "selection": {
+          "address": "???? ???? 6",
+          "rooms": 5,
+          "area": 163,
+          "price": 5400000
+        },
+        "tax_matches": [],
+        "exact_building_context": [],
+        "same_street_context": [],
+        "attribute_policy": {
+          "sold_unit_fact": "Can be used directly for the sold comparable.",
+          "exact_building_context": "May support building-level or product-type context. Unit-specific attributes are not assumed.",
+          "same_street_context": "Directional context only; not a fact about the sold unit."
+        }
+      },
+      {
+        "selection": {
+          "address": "???? ????? 17",
+          "rooms": 5,
+          "area": 166,
+          "price": 4694000
+        },
+        "tax_matches": [],
+        "exact_building_context": [],
+        "same_street_context": [],
+        "attribute_policy": {
+          "sold_unit_fact": "Can be used directly for the sold comparable.",
+          "exact_building_context": "May support building-level or product-type context. Unit-specific attributes are not assumed.",
+          "same_street_context": "Directional context only; not a fact about the sold unit."
+        }
+      },
+      {
+        "selection": {
+          "address": "?????? ????? 3",
+          "rooms": 5,
+          "area": 145,
+          "price": 3200000
+        },
+        "tax_matches": [],
+        "exact_building_context": [],
+        "same_street_context": [],
+        "attribute_policy": {
+          "sold_unit_fact": "Can be used directly for the sold comparable.",
+          "exact_building_context": "May support building-level or product-type context. Unit-specific attributes are not assumed.",
+          "same_street_context": "Directional context only; not a fact about the sold unit."
+        }
+      },
+      {
+        "selection": {
+          "address": "????? 11",
+          "rooms": 5,
+          "area": 173,
+          "price": 5175000
+        },
+        "tax_matches": [],
+        "exact_building_context": [],
+        "same_street_context": [],
+        "attribute_policy": {
+          "sold_unit_fact": "Can be used directly for the sold comparable.",
+          "exact_building_context": "May support building-level or product-type context. Unit-specific attributes are not assumed.",
+          "same_street_context": "Directional context only; not a fact about the sold unit."
+        }
+      },
+      {
+        "selection": {
+          "address": "??? ??? 17",
+          "rooms": 5,
+          "area": 144,
+          "price": 4200000
+        },
+        "tax_matches": [],
+        "exact_building_context": [],
+        "same_street_context": [],
+        "attribute_policy": {
+          "sold_unit_fact": "Can be used directly for the sold comparable.",
+          "exact_building_context": "May support building-level or product-type context. Unit-specific attributes are not assumed.",
+          "same_street_context": "Directional context only; not a fact about the sold unit."
+        }
+      },
+      {
+        "selection": {
+          "address": "???????? ????? 6",
+          "rooms": 5.5,
+          "area": 157,
+          "price": 2920000
+        },
+        "tax_matches": [],
+        "exact_building_context": [],
+        "same_street_context": [],
+        "attribute_policy": {
+          "sold_unit_fact": "Can be used directly for the sold comparable.",
+          "exact_building_context": "May support building-level or product-type context. Unit-specific attributes are not assumed.",
+          "same_street_context": "Directional context only; not a fact about the sold unit."
+        }
+      }
+    ]
+  },
+  "asking_evidence": {
+    "0xkpq9l7": {
+      "source_scope": "listing_unit_fact",
+      "records": [
+        {
+          "address": "עגנון",
+          "attributes": {
+            "property_type": "דירת גן",
+            "rooms": 3.0,
+            "built_area": 74.0,
+            "advertised_area": 74.0,
+            "balcony_area": null,
+            "garden_area": 29.0,
+            "parking_count": 1.0,
+            "has_parking": true,
+            "storage": null,
+            "elevator": true,
+            "build_year": null,
+            "floor": "0",
+            "total_floors": null,
+            "orientation": null,
+            "view_terms": null,
+            "condition": [
+              "new",
+              "renovated"
+            ]
+          },
+          "source": "C:\\Users\\AVIV\\gaba\\gov_source_tests\\data_source_test\\yad2_petah_special\\yad2_asking_normalized.csv",
+          "description_excerpt": "חולמים על דירת גן ברמת ורבר פתח תקווה ?  אחוזת עגנון מבית יד ליטל - חווית מגורים אחרת . גאים להציג מבחר נדיר של דירות גן בנות 3-4 חדרים,  עם גינות גדולות ברחוב שקט ללא מוצא. זה המקום שבו הילדים יוצאים לשחק בגינה, מארחים בלי לחשוב פעמיים, ונהנים מהשקט של הבית - בלי לוותר על הנוחות של העיר. פארקים, הקניון הגדול והרכבת הקלה נמצאים במרחק הליכה. יש הרבה דירות. יש מעט מאוד דירות גן. בואו נדבר ."
+        }
+      ]
+    },
+    "5i4tr2xo": {
+      "source_scope": "listing_unit_fact",
+      "records": [
+        {
+          "address": null,
+          "attributes": {
+            "property_type": "duplex",
+            "rooms": 7.0,
+            "built_area": 145.0,
+            "advertised_area": 145.0,
+            "balcony_area": 34.913273,
+            "garden_area": 145.0,
+            "parking_count": 1.0,
+            "has_parking": true,
+            "storage": null,
+            "elevator": true,
+            "build_year": null,
+            "floor": "4",
+            "total_floors": null,
+            "orientation": null,
+            "view_terms": [
+              "??"
+            ],
+            "condition": [
+              "new",
+              "renovated"
+            ]
+          },
+          "source": "C:\\Users\\AVIV\\gaba\\gov_source_tests\\data_source_test\\yad2_petah_special\\yad2_asking_normalized.csv",
+          "description_excerpt": "מחפשים את הנכס הבא שלכם?? את ההזדמנות הזו לא תרצו לפספס!! דופלקס 5.5 חדרים שהוגדלה ל-7 145 מ\"ר + יחידת הורים הדירה שופצה מהיסוד קומה 4 + 5 2 כיווני אוויר מזרח - מערב ממ\"ד, מעלית, חניה יח\"ד מושכרת ב-3,500 חניה שהוסבה למחסן מושכר ב-650 קומת תחתונה: 4 חדרים, 2 שירותים, 2 מקלחות קומה עליונה: יחידה מושכרת של 2 חדרים עם שירותים ומקלחת + חדר מתבגר. הזדרזו ליצור קשר!"
+        }
+      ]
+    },
+    "7a8ynci1": {
+      "source_scope": "listing_unit_fact",
+      "records": [
+        {
+          "address": null,
+          "attributes": {
+            "property_type": "duplex",
+            "rooms": 6.0,
+            "built_area": 177.0,
+            "advertised_area": 256.0,
+            "balcony_area": 34.869138,
+            "garden_area": 256.0,
+            "parking_count": 2.0,
+            "has_parking": true,
+            "storage": null,
+            "elevator": true,
+            "build_year": null,
+            "floor": "6",
+            "total_floors": null,
+            "orientation": null,
+            "view_terms": null,
+            "condition": [
+              "new",
+              "renovated"
+            ]
+          },
+          "source": "C:\\Users\\AVIV\\gaba\\gov_source_tests\\data_source_test\\yad2_petah_special\\yad2_asking_normalized.csv",
+          "description_excerpt": "למכירה בכפר גנים ג' במרכז השכונה ברחוב שקט.  דופלקס 6 חדרים ( הוסב ל 5)  177 מר + כ 80 מר מרפסות + מחסן + 2 חניות נפרדות"
+        }
+      ]
+    },
+    "81py2t5u": {
+      "source_scope": "listing_unit_fact",
+      "records": [
+        {
+          "address": "הנביאים",
+          "attributes": {
+            "property_type": "דירת גן",
+            "rooms": 2.0,
+            "built_area": 47.0,
+            "advertised_area": 72.0,
+            "balcony_area": 34.89821,
+            "garden_area": 23.0,
+            "parking_count": 1.0,
+            "has_parking": true,
+            "storage": null,
+            "elevator": true,
+            "build_year": null,
+            "floor": "0",
+            "total_floors": null,
+            "orientation": null,
+            "view_terms": null,
+            "condition": [
+              "new",
+              "renovated"
+            ]
+          },
+          "source": "C:\\Users\\AVIV\\gaba\\gov_source_tests\\data_source_test\\yad2_petah_special\\yad2_asking_normalized.csv",
+          "description_excerpt": "דירת גן חדשה 47 מ\"ר בנוי + 23 מ\"ר גינה (ללא מרפסות מעל)  , הכוללת חניה , בבניין בוטיק בן 7 קומות בלבד , ליווי בנקאי.  כניסה מיידית  עסקה !!!!!"
+        }
+      ]
+    },
+    "9bsyydsn": {
+      "source_scope": "listing_unit_fact",
+      "records": [
+        {
+          "address": "העצמאות",
+          "attributes": {
+            "property_type": "penthouse",
+            "rooms": 6.0,
+            "built_area": 220.0,
+            "advertised_area": 220.0,
+            "balcony_area": null,
+            "garden_area": 220.0,
+            "parking_count": 2.0,
+            "has_parking": true,
+            "storage": null,
+            "elevator": true,
+            "build_year": null,
+            "floor": "5",
+            "total_floors": null,
+            "orientation": null,
+            "view_terms": null,
+            "condition": [
+              "new",
+              "renovated"
+            ]
+          },
+          "source": "C:\\Users\\AVIV\\gaba\\gov_source_tests\\data_source_test\\yad2_petah_special\\yad2_asking_normalized.csv",
+          "description_excerpt": "למכירה דירת פנטהאוז -גג הכי יפה בכפר גנים ג' !! ברחוב העצמאות במיקום הכי מבוקש בשכונה, דירה עורפית ושקטה עם נוף פתוח שלא ייחסם מעולם,עם פרטיות חלומית!! סלון מרווח ופינת משפחה גדולה. דירה בקומה 5+6. יש מחסן. יש סורגים. 2 חניות נפרדות ענקיות בטאבו יש כניסה מ2 הקומות. במיקום הכי טוב בשכונה,בקרבה לבתי כנסת-בתי ספר וקניון גנים. לפרטים ותאום סיור התקשרו עכשיו- דניאל בן דוד נכסים"
+        }
+      ]
+    },
+    "am2daomo": {
+      "source_scope": "listing_unit_fact",
+      "records": []
+    },
+    "au7ykbzg": {
+      "source_scope": "listing_unit_fact",
+      "records": [
+        {
+          "address": "זאב ברנדה",
+          "attributes": {
+            "property_type": "duplex",
+            "rooms": 5.0,
+            "built_area": 160.0,
+            "advertised_area": 160.0,
+            "balcony_area": 34.885161,
+            "garden_area": 160.0,
+            "parking_count": 1.0,
+            "has_parking": true,
+            "storage": null,
+            "elevator": true,
+            "build_year": null,
+            "floor": "6",
+            "total_floors": null,
+            "orientation": null,
+            "view_terms": null,
+            "condition": [
+              "new",
+              "renovated"
+            ]
+          },
+          "source": "C:\\Users\\AVIV\\gaba\\gov_source_tests\\data_source_test\\yad2_petah_special\\yad2_asking_normalized.csv",
+          "description_excerpt": "למכירה דולפקס 5 חדרים  כולל מרפסת  50 מ  מטבח משופץ , יחידת הורים נעימה מרווחת   3 חדרי שרותים ומקלחות  חניה מקורה מקלט מסודר בבנין"
+        }
+      ]
+    },
+    "kihl5wee": {
+      "source_scope": "listing_unit_fact",
+      "records": []
+    },
+    "tkgbr5hx": {
+      "source_scope": "listing_unit_fact",
+      "records": [
+        {
+          "address": "עין גנים",
+          "attributes": {
+            "property_type": "duplex",
+            "rooms": 6.0,
+            "built_area": 220.0,
+            "advertised_area": 220.0,
+            "balcony_area": 34.898999,
+            "garden_area": 220.0,
+            "parking_count": 3.0,
+            "has_parking": true,
+            "storage": null,
+            "elevator": true,
+            "build_year": null,
+            "floor": "6",
+            "total_floors": null,
+            "orientation": null,
+            "view_terms": null,
+            "condition": [
+              "new",
+              "renovated"
+            ]
+          },
+          "source": "C:\\Users\\AVIV\\gaba\\gov_source_tests\\data_source_test\\yad2_petah_special\\yad2_asking_normalized.csv",
+          "description_excerpt": "למכירה בעין גנים 83 פתח תקווה נדיר! פנטהאוז דופלקס ענק עם 3 חניות בטאבו! נכס ייחודי ביותר בשוק הנדל\"ן מושלם למשפחות גדולות או כאלה שרוצים לייצר דירה נוספת ומניבה לנכס יש שתי כניסות , אופטימלי לחלוקה. שטח בנוי: 220 מ\"ר נטו! מרפסת שמש: 130 מ\"ר. 6 חדרים (אופציה ליותר) סלון ענק מעל 100 מטר מיקום: קומה 6-7. 3 חניות פרטיות רשומות בטאבו."
+        }
+      ]
+    },
+    "ub2tzaqh": {
+      "source_scope": "listing_unit_fact",
+      "records": [
+        {
+          "address": null,
+          "attributes": {
+            "property_type": "duplex",
+            "rooms": 6.0,
+            "built_area": 165.0,
+            "advertised_area": 255.0,
+            "balcony_area": 34.872787,
+            "garden_area": 255.0,
+            "parking_count": 2.0,
+            "has_parking": true,
+            "storage": null,
+            "elevator": true,
+            "build_year": null,
+            "floor": "8",
+            "total_floors": null,
+            "orientation": null,
+            "view_terms": null,
+            "condition": [
+              "new",
+              "renovated"
+            ]
+          },
+          "source": "C:\\Users\\AVIV\\gaba\\gov_source_tests\\data_source_test\\yad2_petah_special\\yad2_asking_normalized.csv",
+          "description_excerpt": "נכס כזה בשכונה לא יוצא לשוק בכל יום! *דופלקס מפנק בנווה גן המבוקשת*  - דופלקס 6 חד' כ165 מ\"ר בנוי!  -מרפסת 72 מ\"ר + מרפסת 20 מ\"ר  -סוויטת הורים ענקית! מפנקת במיוחד -בקומות 7+8 -2 חניות בטאבו -הנכס משודרג ומשופץ -מחסן מסודר וגדול  מחפשים איכות חיים? זה הנכס בשבילכם! אל תפספסו את ההזדמנות   לפרטים נוספים התקשרו עכשיו!"
+        }
+      ]
+    },
+    "wbvl4w9m": {
+      "source_scope": "listing_unit_fact",
+      "records": [
+        {
+          "address": "יוסף נקר",
+          "attributes": {
+            "property_type": "duplex",
+            "rooms": 6.0,
+            "built_area": 168.0,
+            "advertised_area": 285.0,
+            "balcony_area": null,
+            "garden_area": 285.0,
+            "parking_count": 2.0,
+            "has_parking": true,
+            "storage": null,
+            "elevator": true,
+            "build_year": null,
+            "floor": "7",
+            "total_floors": null,
+            "orientation": null,
+            "view_terms": null,
+            "condition": [
+              "new",
+              "renovated"
+            ]
+          },
+          "source": "C:\\Users\\AVIV\\gaba\\gov_source_tests\\data_source_test\\yad2_petah_special\\yad2_asking_normalized.csv",
+          "description_excerpt": "נכס מספר: 51215, חדש בשוק! בכפר גנים ג', במיקום הכי טוב הכי גבוה בשכונה, דופלקס פנטהאוז מרווח, 2 דירות בקומה, מרפסות ענקיות 117 מ\"ר, מחסן צמוד, 2 חניות נפרדות, מעלית שבת! קרוב למרכזים המסחריים ולמוסדות לימוד! מומלץ במיוחד."
+        }
+      ]
+    }
+  },
+  "asking_attribute_coverage": {
+    "0xkpq9l7": {
+      "property_type": "דירת גן",
+      "rooms": 3.0,
+      "built_area": 74.0,
+      "advertised_area": 74.0,
+      "balcony_area": null,
+      "garden_area": 29.0,
+      "parking_count": 1.0,
+      "storage": null,
+      "elevator": true,
+      "build_year": null,
+      "floor": "0",
+      "total_floors": null,
+      "orientation": null,
+      "view_terms": null,
+      "condition": [
+        "new",
+        "renovated"
+      ]
+    },
+    "5i4tr2xo": {
+      "property_type": "duplex",
+      "rooms": 7.0,
+      "built_area": 145.0,
+      "advertised_area": 145.0,
+      "balcony_area": 34.913273,
+      "garden_area": 145.0,
+      "parking_count": 1.0,
+      "storage": null,
+      "elevator": true,
+      "build_year": null,
+      "floor": "4",
+      "total_floors": null,
+      "orientation": null,
+      "view_terms": [
+        "??"
+      ],
+      "condition": [
+        "new",
+        "renovated"
+      ]
+    },
+    "7a8ynci1": {
+      "property_type": "duplex",
+      "rooms": 6.0,
+      "built_area": 177.0,
+      "advertised_area": 256.0,
+      "balcony_area": 34.869138,
+      "garden_area": 256.0,
+      "parking_count": 2.0,
+      "storage": null,
+      "elevator": true,
+      "build_year": null,
+      "floor": "6",
+      "total_floors": null,
+      "orientation": null,
+      "view_terms": null,
+      "condition": [
+        "new",
+        "renovated"
+      ]
+    },
+    "81py2t5u": {
+      "property_type": "דירת גן",
+      "rooms": 2.0,
+      "built_area": 47.0,
+      "advertised_area": 72.0,
+      "balcony_area": 34.89821,
+      "garden_area": 23.0,
+      "parking_count": 1.0,
+      "storage": null,
+      "elevator": true,
+      "build_year": null,
+      "floor": "0",
+      "total_floors": null,
+      "orientation": null,
+      "view_terms": null,
+      "condition": [
+        "new",
+        "renovated"
+      ]
+    },
+    "9bsyydsn": {
+      "property_type": "penthouse",
+      "rooms": 6.0,
+      "built_area": 220.0,
+      "advertised_area": 220.0,
+      "balcony_area": null,
+      "garden_area": 220.0,
+      "parking_count": 2.0,
+      "storage": null,
+      "elevator": true,
+      "build_year": null,
+      "floor": "5",
+      "total_floors": null,
+      "orientation": null,
+      "view_terms": null,
+      "condition": [
+        "new",
+        "renovated"
+      ]
+    },
+    "am2daomo": {
+      "property_type": null,
+      "rooms": null,
+      "built_area": null,
+      "advertised_area": null,
+      "balcony_area": null,
+      "garden_area": null,
+      "parking_count": null,
+      "storage": null,
+      "elevator": null,
+      "build_year": null,
+      "floor": null,
+      "total_floors": null,
+      "orientation": null,
+      "view_terms": null,
+      "condition": null
+    },
+    "au7ykbzg": {
+      "property_type": "duplex",
+      "rooms": 5.0,
+      "built_area": 160.0,
+      "advertised_area": 160.0,
+      "balcony_area": 34.885161,
+      "garden_area": 160.0,
+      "parking_count": 1.0,
+      "storage": null,
+      "elevator": true,
+      "build_year": null,
+      "floor": "6",
+      "total_floors": null,
+      "orientation": null,
+      "view_terms": null,
+      "condition": [
+        "new",
+        "renovated"
+      ]
+    },
+    "kihl5wee": {
+      "property_type": null,
+      "rooms": null,
+      "built_area": null,
+      "advertised_area": null,
+      "balcony_area": null,
+      "garden_area": null,
+      "parking_count": null,
+      "storage": null,
+      "elevator": null,
+      "build_year": null,
+      "floor": null,
+      "total_floors": null,
+      "orientation": null,
+      "view_terms": null,
+      "condition": null
+    },
+    "tkgbr5hx": {
+      "property_type": "duplex",
+      "rooms": 6.0,
+      "built_area": 220.0,
+      "advertised_area": 220.0,
+      "balcony_area": 34.898999,
+      "garden_area": 220.0,
+      "parking_count": 3.0,
+      "storage": null,
+      "elevator": true,
+      "build_year": null,
+      "floor": "6",
+      "total_floors": null,
+      "orientation": null,
+      "view_terms": null,
+      "condition": [
+        "new",
+        "renovated"
+      ]
+    },
+    "ub2tzaqh": {
+      "property_type": "duplex",
+      "rooms": 6.0,
+      "built_area": 165.0,
+      "advertised_area": 255.0,
+      "balcony_area": 34.872787,
+      "garden_area": 255.0,
+      "parking_count": 2.0,
+      "storage": null,
+      "elevator": true,
+      "build_year": null,
+      "floor": "8",
+      "total_floors": null,
+      "orientation": null,
+      "view_terms": null,
+      "condition": [
+        "new",
+        "renovated"
+      ]
+    },
+    "wbvl4w9m": {
+      "property_type": "duplex",
+      "rooms": 6.0,
+      "built_area": 168.0,
+      "advertised_area": 285.0,
+      "balcony_area": null,
+      "garden_area": 285.0,
+      "parking_count": 2.0,
+      "storage": null,
+      "elevator": true,
+      "build_year": null,
+      "floor": "7",
+      "total_floors": null,
+      "orientation": null,
+      "view_terms": null,
+      "condition": [
+        "new",
+        "renovated"
+      ]
+    }
+  }
+}

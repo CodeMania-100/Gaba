@@ -63,13 +63,17 @@ export default function ProductComparisonSection({ family, familyKey, enrichment
             const visibleRows = expanded ? rows : rows.slice(0, PRIMARY_ROW_COUNT);
             const classification =
               item.kind === "new_development" ? (item.competitor.register_classification as string | null) : null;
+            const developer = item.kind === "new_development" ? ((item.competitor.developer as string | null) ?? null) : null;
             const status =
               item.kind === "new_development" ? projectStatusLabel((item.competitor.project_level as JsonRecord)?.status as string) : null;
 
             return (
               <div key={i} className="flex flex-col gap-2 rounded-lg border border-slate-200 p-3">
                 <div className="flex items-start justify-between gap-2">
-                  <div className="font-semibold text-slate-900">{comparableName(item)}</div>
+                  <div>
+                    <div className="font-semibold text-slate-900">{comparableName(item)}</div>
+                    {item.kind === "new_development" && <div className="text-xs text-slate-500">יזם: {developer ?? "לא פורסם"}</div>}
+                  </div>
                   {classification && (
                     <span className={`shrink-0 rounded px-1.5 py-0.5 text-xs font-medium ${CLASSIFICATION_COLORS[classification as "direct" | "relevant" | "context"]}`}>
                       {CLASSIFICATION_LABELS[classification as "direct" | "relevant" | "context"]}
@@ -85,13 +89,20 @@ export default function ProductComparisonSection({ family, familyKey, enrichment
                 {rows.length === 0 ? (
                   <p className="text-sm text-slate-400">אין נתוני מוצר ידועים להשוואה.</p>
                 ) : (
-                  <table className="w-full text-sm">
+                  <table className="w-full table-fixed text-sm">
+                    <thead>
+                      <tr className="text-[11px] font-normal text-slate-400">
+                        <th className="w-[34%] text-start font-normal"></th>
+                        <th className="w-[33%] text-end font-normal">שלנו</th>
+                        <th className="w-[33%] text-end font-normal">המתחרה</th>
+                      </tr>
+                    </thead>
                     <tbody>
                       {visibleRows.map((row) => (
                         <tr key={row.label} className="border-t border-slate-100">
                           <td className="py-1 text-slate-500">{row.label}</td>
-                          <td className="py-1 font-medium text-slate-900">{row.subjectValue}</td>
-                          <td className="py-1 font-medium text-slate-900">
+                          <td className="py-1 text-end font-medium text-slate-900">{row.subjectValue}</td>
+                          <td className="py-1 text-end font-medium text-slate-900">
                             {row.competitorValue}
                             {row.scope && <span className="ms-1 text-[10px] font-normal text-slate-400">({factScopeLabel(row.scope)})</span>}
                           </td>
@@ -205,7 +216,10 @@ function SourcesPanel({ item }: { item: ComparableItem }) {
 
 /** Items 13/14/27: floor/orientation/balcony/parking/storage have rich
  * observed evidence but no defensible price effect was found -- shown as
- * honest research-gap messages, never as an invented coefficient. */
+ * honest research-gap messages, never as an invented coefficient. A concise
+ * one-line summary is always visible; the underlying bullets/bullet-level
+ * detail (never deleted) sit behind a "הצג פירוט מתודולוגי" toggle so the
+ * presentation flow isn't research-heavy by default. */
 function NoAutomaticRuleNotes({
   familyKey,
   enrichment,
@@ -213,30 +227,43 @@ function NoAutomaticRuleNotes({
   familyKey: "standard_3r" | "standard_5r";
   enrichment: StandardAttributeEnrichment;
 }) {
+  const [open, setOpen] = useState(false);
   const fam = enrichment.families[familyKey];
   const hasMatchedObservations = Object.keys(fam.matched_observations).length > 0;
 
   return (
-    <div className="mt-4 rounded-md bg-slate-50 p-3 text-xs text-slate-600">
-      <div className="mb-1 font-semibold text-slate-700">{NO_FLOOR_RULE_MESSAGE}</div>
-      <p>{enrichment.new_development_floor_pair_search?.note ?? INSUFFICIENT_FLOOR_DATA_MESSAGE}</p>
+    <div className="mt-4 rounded-md bg-slate-50 p-3 text-sm text-slate-600">
+      <p>
+        לא נמצא כלל כספי מקומי מאומת להשפעת קומה או מאפייני מוצר, ולכן מאפיינים אלה מוצגים כתמיכה בהחלטה ואינם
+        משנים מחיר אוטומטית.
+      </p>
+      <button onClick={() => setOpen((v) => !v)} className="mt-2 text-xs text-slate-400 underline hover:text-slate-600">
+        {open ? "הסתרת פירוט מתודולוגי" : "הצג פירוט מתודולוגי"}
+      </button>
 
-      {hasMatchedObservations && (
-        <div className="mt-2">
-          {Object.entries(fam.matched_observations).map(([category, entries]) => (
-            <p key={category} className="mt-1">
-              {noVerifiedRuleMessage(MATCHED_OBSERVATION_LABELS[category] ?? category)} ({entries.length} תצפיות מוצר תואמות)
-            </p>
-          ))}
+      {open && (
+        <div className="mt-2 text-xs text-slate-600">
+          <div className="mb-1 font-semibold text-slate-700">{NO_FLOOR_RULE_MESSAGE}</div>
+          <p>{enrichment.new_development_floor_pair_search?.note ?? INSUFFICIENT_FLOOR_DATA_MESSAGE}</p>
+
+          {hasMatchedObservations && (
+            <div className="mt-2">
+              {Object.entries(fam.matched_observations).map(([category, entries]) => (
+                <p key={category} className="mt-1">
+                  {noVerifiedRuleMessage(MATCHED_OBSERVATION_LABELS[category] ?? category)} ({entries.length} תצפיות מוצר תואמות)
+                </p>
+              ))}
+            </div>
+          )}
+
+          {fam.research_gaps.length > 0 && (
+            <ul className="mt-2 list-inside list-disc">
+              {fam.research_gaps.map((g, i) => (
+                <li key={i}>{g}</li>
+              ))}
+            </ul>
+          )}
         </div>
-      )}
-
-      {fam.research_gaps.length > 0 && (
-        <ul className="mt-2 list-inside list-disc">
-          {fam.research_gaps.map((g, i) => (
-            <li key={i}>{g}</li>
-          ))}
-        </ul>
       )}
     </div>
   );

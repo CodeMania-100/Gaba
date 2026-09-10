@@ -278,18 +278,26 @@ function ProjectStatusBlock({ row, workspace, state }: { row: PtkPriceListRow; w
   const familyProgress = progress.byFamily[bucket];
   const relevantSales = internalSalesForBucket(state, bucket);
 
+  const salesDataSupplied = progress.unitsSold > 0;
+
   return (
     <section>
       <StepHeading n={3} title="מצב הפרויקט" />
       <div className="grid grid-cols-2 gap-3 rounded-md bg-slate-50 p-3 text-sm">
-        <Fact label="שלב מכירות" value={PROJECT_PHASE_LABELS[state.projectPhase]} />
-        <Fact label="קצב מכירה — כלל הפרויקט" value={`${num(progress.sellThroughPct, 0)}%`} />
-        <Fact label={`קצב מכירה — ${FAMILY_BUCKET_LABELS[bucket]}`} value={`${num(familyProgress.sellThroughPct, 0)}%`} />
+        <Fact label="שלב הפרויקט" value={PROJECT_PHASE_LABELS[state.projectPhase]} />
+        {salesDataSupplied ? (
+          <>
+            <Fact label="שיעור מכירה — כלל הפרויקט" value={`${num(progress.sellThroughPct, 0)}%`} />
+            <Fact label={`שיעור מכירה — ${FAMILY_BUCKET_LABELS[bucket]}`} value={`${num(familyProgress.sellThroughPct, 0)}%`} />
+          </>
+        ) : (
+          <div className="col-span-2 text-xs text-slate-400">לא סופקו נתוני מכירות בפועל במטלה.</div>
+        )}
       </div>
       <div className="mt-2">
         <div className="mb-1 text-xs font-semibold text-slate-500">עסקאות שבוצעו בפרויקט (משפחה זו)</div>
         {relevantSales.length === 0 ? (
-          <p className="rounded bg-slate-50 px-2 py-1.5 text-sm text-slate-500">לא סופקו נתוני מכירות שבוצעו בפרויקט במסגרת המטלה.</p>
+          <p className="rounded bg-slate-50 px-2 py-1.5 text-sm text-slate-500">לא סופקו עסקאות מכירה שבוצעו בפרויקט במסגרת המטלה.</p>
         ) : (
           <ul className="flex flex-col gap-1 text-sm text-slate-700">
             {relevantSales.map((s, i) => (

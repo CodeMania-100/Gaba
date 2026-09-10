@@ -1,0 +1,122 @@
+{
+  "success": true,
+  "data": {
+    "token": "kihl5wee",
+    "orderId": 57232028,
+    "adNumber": 61801891,
+    "adType": "commercial",
+    "categoryId": 2,
+    "subcategoryId": 5,
+    "priority": 1,
+    "statusId": 1,
+    "price": 2900000,
+    "additionalDetails": {
+      "balconiesCount": 1,
+      "entranceDate": "2026-12-01T00:00:00",
+      "squareMeter": 85,
+      "roomsCount": 3,
+      "propertyGroup": {
+        "id": 1,
+        "text": "דירות",
+        "textEng": "apartments"
+      },
+      "property": {
+        "id": 3,
+        "text": "דירת גן",
+        "textEng": "patio"
+      },
+      "parkingSpacesCount": 1,
+      "propertyCondition": {
+        "id": 6,
+        "text": "חדש (גרו בנכס)"
+      },
+      "squareMeterBuild": 85,
+      "squareMeterGarden": 89,
+      "buildingTopFloor": 7
+    },
+    "inProperty": {
+      "includeBalcony": true,
+      "includeBoiler": true,
+      "includeBars": true,
+      "includeElevator": true,
+      "includeParking": true,
+      "includeSecurityRoom": true,
+      "includeWarehouse": true,
+      "isHandicapped": true,
+      "isRenovated": true,
+      "isKitchenKosher": true
+    },
+    "searchText": "שם מוכר sunset נכסים ושיווק פרויקטים יוסי נכס למכירה מסוג דירת גן עם מספר חדרים 3 בכתובת צה\"ל 76 בר יהודה פתח תקווה אזור פתח תקווה והסביבה מרכז הנכס כולל ממ\"ד מעלית חניה מחסן סורגים גישה לנכים מרפסת משופצת מצב הנכס חדש (גרו בנכס) תאור לקוח נותרה דירת גן אחרונה בפרויקט בשלבי גמר, כוללת 89 מ\"ר גינה פרטית ללא שכנים, \nסמוך לשכונת נווה עוז , צפי כ-5 חודשים למסירה\nללא עמלת תיווך דירת גן חדשה 85 מ\"ר + 89 גינה פרטית חניה ומחסן סוכנות sunset נכסים ושיווק פרויקטים",
+    "customer": {
+      "name": "יוסי",
+      "id": 7394725,
+      "isVirtualPhoneNumber": true,
+      "agencyName": "sunset נכסים ושיווק פרויקטים",
+      "brokers": [
+        {
+          "name": "יוסי",
+          "id": 755280,
+          "licenseNumber": "3131909"
+        }
+      ],
+      "licenseNumber": "3131909"
+    },
+    "packages": {
+      "hasMiniSite": true
+    },
+    "address": {
+      "topArea": {
+        "id": 2,
+        "text": "מרכז",
+        "textEng": "hamerkaz_area"
+      },
+      "region": {
+        "id": 1,
+        "text": "מרכז והשרון",
+        "textEng": "Center"
+      },
+      "area": {
+        "id": 4,
+        "text": "פתח תקווה והסביבה",
+        "textEng": "petah_tikva_area"
+      },
+      "city": {
+        "id": "7900",
+        "text": "פתח תקווה"
+      },
+      "neighborhood": {
+        "id": 746,
+        "text": "בר יהודה"
+      },
+      "street": {
+        "id": "0927",
+        "text": "צה\"ל"
+      },
+      "coords": {
+        "lat": 32.082011,
+        "lon": 34.869641
+      },
+      "house": {
+        "number": 76,
+        "floor": 0
+      },
+      "addressMasterId": 5929394
+    },
+    "metaData": {
+      "coverImage": "https://img.yad2.co.il/Pic/202607/15/2_5/o/y2_1pa_010805_20260715083334.jpeg",
+      "images": [
+        "https://img.yad2.co.il/Pic/202607/15/2_5/o/y2_1pa_010805_20260715083334.jpeg",
+        "https://img.yad2.co.il/Pic/202607/15/2_5/o/y2_2_jzLQRWWYrc_20260715.jpg"
+      ],
+      "description": "נותרה דירת גן אחרונה בפרויקט בשלבי גמר, כוללת 89 מ\"ר גינה פרטית ללא שכנים, \nסמוך לשכונת נווה עוז , צפי כ-5 חודשים למסירה\nללא עמלת תיווך",
+      "shelterDistance": 118
+    },
+    "dates": {
+      "updatedAt": "2026-09-06T23:21:49",
+      "createdAt": "2026-07-15T08:33:43",
+      "endsAt": "2027-07-13T00:00:00",
+      "rebouncedAt": "2026-09-06T23:21:49"
+    },
+    "abovePrice": "2500000"
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "success": true,
+  "data": {
+    "token": "81py2t5u",
+    "orderId": 54387985,
+    "adNumber": 42588894,
+    "adType": "commercial",
+    "categoryId": 2,
+    "subcategoryId": 5,
+    "priority": 1,
+    "statusId": 1,
+    "price": 1700000,
+    "additionalDetails": {
+      "balconiesCount": 1,
+      "entranceDate": "2026-09-06T00:00:00",
+      "squareMeter": 72,
+      "roomsCount": 2,
+      "propertyGroup": {
+        "id": 1,
+        "text": "דירות",
+        "textEng": "apartments"
+      },
+      "property": {
+        "id": 3,
+        "text": "דירת גן",
+        "textEng": "patio"
+      },
+      "parkingSpacesCount": 1,
+      "propertyCondition": {
+        "id": 6,
+        "text": "חדש (גרו בנכס)"
+      },
+      "squareMeterBuild": 47,
+      "squareMeterGarden": 23,
+      "buildingTopFloor": 7,
+      "isEnterDateFlexible": true
+    },
+    "inProperty": {
+      "includeBalcony": true,
+      "includeBoiler": true,
+      "includeElevator": true,
+      "includeParking": true,
+      "includeSecurityRoom": true,
+      "isHandicapped": true,
+      "isRenovated": true
+    },
+    "searchText": "שם מוכר תיווך פנורמה נתי עמר נכס למכירה מסוג דירת גן עם מספר חדרים 2 בכתובת הנביאים 24 פתח תקווה אזור פתח תקווה והסביבה מרכז הנכס כולל ממ\"ד מעלית חניה גישה לנכים מרפסת משופצת מצב הנכס חדש (גרו בנכס) תאור לקוח דירת גן חדשה 47 מ\"ר בנוי + 23 מ\"ר גינה (ללא מרפסות מעל)  , הכוללת חניה , בבניין בוטיק בן 7 קומות בלבד , ליווי בנקאי.  כניסה מיידית \nעסקה !!!!! בהזדמנות שלא תחזור! . משרדנו עוסק בקניה , מכירה , שיווק פרויקטים ונכסי יוקרה , השכרה ובניהול נכסים בהתמחות ייחודית ובלעדית הקיימת בארץ.ההישגים של המשרד מדברים בעד עצמם מול מספר רב של לקוחות מרוצים,\r\nמשרד תיווך טוב נמדד כשלקוחות חוזרים אליו לביצוע עסקאות נוספות וכן כשממליצים עליו למשפחה ולחברים.\r\nבואו גם אתם להתרשם ממגוון רחב של נכסים ולהיות חלק ממשפחת הנדל\"ן של תיווך פנורמה סוכנות תיווך פנורמה",
+    "customer": {
+      "name": "נתי עמר",
+      "id": 4299239,
+      "isVirtualPhoneNumber": true,
+      "agencyName": "תיווך פנורמה",
+      "agencyLogo": "//images.yad2.co.il/Pic/TivMiniSite/logo2_1_174225_20150715130713.jpg?t=1788722174536",
+      "brokerAvatar": "https://img.yad2.co.il/Pic/TradeMiniSite/57b124b9-d77a-4295-8ec7-bb7645df512d.jpeg?t=1788722174536",
+      "agencyAbout": ". משרדנו עוסק בקניה , מכירה , שיווק פרויקטים ונכסי יוקרה , השכרה ובניהול נכסים בהתמחות ייחודית ובלעדית הקיימת בארץ.ההישגים של המשרד מדברים בעד עצמם מול מספר רב של לקוחות מרוצים,\r\nמשרד תיווך טוב נמדד כשלקוחות חוזרים אליו לביצוע עסקאות נוספות וכן כשממליצים עליו למשפחה ולחברים.\r\nבואו גם אתם להתרשם ממגוון רחב של נכסים ולהיות חלק ממשפחת הנדל\"ן של תיווך פנורמה",
+      "brokers": [
+        {
+          "name": "נתי עמר",
+          "avatar": "https://img.yad2.co.il/Pic/TradeMiniSite/57b124b9-d77a-4295-8ec7-bb7645df512d.jpeg?t=1788722174536",
+          "id": 751034,
+          "licenseNumber": "3132437"
+        }
+      ],
+      "licenseNumber": "30723057"
+    },
+    "packages": {
+      "hasMiniSite": true
+    },
+    "address": {
+      "topArea": {
+        "id": 2,
+        "text": "מרכז",
+        "textEng": "hamerkaz_area"
+      },
+      "region": {
+        "id": 1,
+        "text": "מרכז והשרון",
+        "textEng": "Center"
+      },
+      "area": {
+        "id": 4,
+        "text": "פתח תקווה והסביבה",
+        "textEng": "petah_tikva_area"
+      },
+      "city": {
+        "id": "7900",
+        "text": "פתח תקווה"
+      },
+      "neighborhood": {
+        "id": 778
+      },
+      "street": {
+        "id": "0603",
+        "text": "הנביאים"
+      },
+      "coords": {
+        "lat": 32.074256,
+        "lon": 34.89821
+      },
+      "house": {
+        "number": 24,
+        "floor": 0
+      },
+      "addressMasterId": 5860947
+    },
+    "metaData": {
+      "coverImage": "https://img.yad2.co.il/Pic/202409/18/2_5/o/y2_1pa_010717_20240918134637.jpeg",
+      "images": [
+        "https://img.yad2.co.il/Pic/202409/18/2_5/o/y2_1pa_010717_20240918134637.jpeg"
+      ],
+      "description": "דירת גן חדשה 47 מ\"ר בנוי + 23 מ\"ר גינה (ללא מרפסות מעל)  , הכוללת חניה , בבניין בוטיק בן 7 קומות בלבד , ליווי בנקאי.  כניסה מיידית \nעסקה !!!!!",
+      "shelterDistance": 217
+    },
+    "dates": {
+      "updatedAt": "2026-09-06T22:16:11",
+      "createdAt": "2024-09-18T10:46:53",
+      "endsAt": "2027-08-10T00:00:00",
+      "rebouncedAt": "2026-09-06T22:16:11"
+    },
+    "abovePrice": "1500000"
+  }
+}

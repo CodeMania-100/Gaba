@@ -1,0 +1,7 @@
+﻿file,source_class,candidate_rows,with_rooms,with_area,with_price,with_outdoor_area,special_type_rows
+C:\Users\AVIV\gaba\gabay_pricing_core\tax_enriched_ashkelon_3room_36m.json,sold,604,604,604,0,0,2
+C:\Users\AVIV\gaba\gabay_pricing_core\qa_output_ashkelon\sold_primary_usable.json,unknown,85,85,85,0,0,16
+C:\Users\AVIV\gaba\gabay_pricing_core\comparable_demo_unit17.json,unknown,42,42,42,41,1,0
+C:\Users\AVIV\gaba\gabay_pricing_core\qa_output_ashkelon\sold_review.json,unknown,22,22,22,0,0,1
+C:\Users\AVIV\gaba\gabay_pricing_core\project_dry_run.json,new_project,18,18,18,0,18,17
+C:\Users\AVIV\gaba\gabay_pricing_core\tax_enrichment_diagnostics.json,sold,2,2,2,0,0,0

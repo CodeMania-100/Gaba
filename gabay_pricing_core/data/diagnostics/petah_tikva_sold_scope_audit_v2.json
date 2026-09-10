@@ -1,0 +1,2959 @@
+{
+  "audit_version": "petah_tikva_sold_scope_audit_v2",
+  "generated_at": "2026-09-06T21:50:11.174304",
+  "important_note": "Audit flags are candidates only. No transaction is rejected automatically.",
+  "families": {
+    "3R": {
+      "family": "3R",
+      "scope": {
+        "city": "פתח תקווה",
+        "official_neighborhood": "מרכז העיר",
+        "cutoff": "2024-09-06",
+        "rooms": 3.0,
+        "area_min": 58.65,
+        "area_max": 79.35
+      },
+      "selected_transactions": 268,
+      "independent_locations": 180,
+      "unique_parcels": 179,
+      "first_hand_values": {
+        "None": 170,
+        "False": 97,
+        "True": 1
+      },
+      "transaction_distribution": {
+        "ppsm_min": 5357.0,
+        "ppsm_q1": 24933.5,
+        "ppsm_median": 27739.5,
+        "ppsm_q3": 30670.0,
+        "ppsm_max": 37910.0
+      },
+      "independent_group_distribution": {
+        "group_ppsm_min": 5357.0,
+        "group_ppsm_q1": 24015.0,
+        "group_ppsm_median": 26918.0,
+        "group_ppsm_q3": 28935.625,
+        "group_ppsm_max": 37823.0
+      },
+      "outlier_candidates": [
+        {
+          "deal_id": null,
+          "object_id": null,
+          "date": "2026-05-13",
+          "rooms": 3.0,
+          "area": 69.37,
+          "amount": 450000.0,
+          "ppsm": 6487.0,
+          "neighborhood": "מרכז העיר",
+          "street": null,
+          "house": null,
+          "address": "ביל\"ו 18",
+          "gush": "6374",
+          "parcel": "24",
+          "subparcel": "18",
+          "first_hand": null,
+          "audit_flags": [
+            "extreme_low_absolute",
+            "extreme_low_iqr"
+          ]
+        },
+        {
+          "deal_id": null,
+          "object_id": null,
+          "date": "2025-11-04",
+          "rooms": 3.0,
+          "area": 63.0,
+          "amount": 600000.0,
+          "ppsm": 9524.0,
+          "neighborhood": "מרכז העיר",
+          "street": null,
+          "house": null,
+          "address": "הרצל 77",
+          "gush": "6383",
+          "parcel": "295",
+          "subparcel": "3",
+          "first_hand": null,
+          "audit_flags": [
+            "extreme_low_absolute"
+          ]
+        },
+        {
+          "deal_id": null,
+          "object_id": null,
+          "date": "2025-06-09",
+          "rooms": 3.0,
+          "area": 70.0,
+          "amount": 375000.0,
+          "ppsm": 5357.0,
+          "neighborhood": "מרכז העיר",
+          "street": null,
+          "house": null,
+          "address": null,
+          "gush": "6374",
+          "parcel": "138",
+          "subparcel": "9",
+          "first_hand": null,
+          "audit_flags": [
+            "extreme_low_absolute",
+            "extreme_low_iqr"
+          ]
+        },
+        {
+          "deal_id": null,
+          "object_id": null,
+          "date": "2025-01-20",
+          "rooms": 3.0,
+          "area": 79.0,
+          "amount": 700000.0,
+          "ppsm": 8861.0,
+          "neighborhood": "מרכז העיר",
+          "street": null,
+          "house": null,
+          "address": "זאב ברנדה 21",
+          "gush": "6387",
+          "parcel": "68",
+          "subparcel": "15",
+          "first_hand": null,
+          "audit_flags": [
+            "extreme_low_absolute"
+          ]
+        },
+        {
+          "deal_id": null,
+          "object_id": null,
+          "date": "2025-01-08",
+          "rooms": 3.0,
+          "area": 74.0,
+          "amount": 540000.0,
+          "ppsm": 7297.0,
+          "neighborhood": "מרכז העיר",
+          "street": null,
+          "house": null,
+          "address": "יהושע שטמפפר 43",
+          "gush": "6377",
+          "parcel": "239",
+          "subparcel": "2",
+          "first_hand": false,
+          "audit_flags": [
+            "extreme_low_absolute",
+            "extreme_low_iqr"
+          ]
+        }
+      ],
+      "outlier_candidate_count": 5,
+      "near_duplicate_candidates": [],
+      "near_duplicate_candidate_count": 0,
+      "top_independent_locations": [
+        {
+          "location_key": "address:בלפור 8",
+          "transactions": 18,
+          "median_ppsm": 31772.5,
+          "addresses": [
+            "בלפור 8"
+          ],
+          "parcels": [
+            "6387/22"
+          ]
+        },
+        {
+          "location_key": "address:אלתר מיהוד 10",
+          "transactions": 8,
+          "median_ppsm": 29670.0,
+          "addresses": [
+            "אלתר מיהוד 10"
+          ],
+          "parcels": [
+            "6381/135"
+          ]
+        },
+        {
+          "location_key": "address:בעל שם-טוב 2",
+          "transactions": 8,
+          "median_ppsm": 27598.5,
+          "addresses": [
+            "בעל שם-טוב 2"
+          ],
+          "parcels": [
+            "6384/6"
+          ]
+        },
+        {
+          "location_key": "address:זאב ברנדה 2",
+          "transactions": 7,
+          "median_ppsm": 31493.0,
+          "addresses": [
+            "זאב ברנדה 2"
+          ],
+          "parcels": [
+            "6387/22"
+          ]
+        },
+        {
+          "location_key": "address:יהושע שטמפפר 73",
+          "transactions": 5,
+          "median_ppsm": 27536.0,
+          "addresses": [
+            "יהושע שטמפפר 73"
+          ],
+          "parcels": [
+            "6361/444"
+          ]
+        },
+        {
+          "location_key": "address:אבינועם ילין 6",
+          "transactions": 4,
+          "median_ppsm": 32065.0,
+          "addresses": [
+            "אבינועם ילין 6"
+          ],
+          "parcels": [
+            "6396/112"
+          ]
+        },
+        {
+          "location_key": "address:ז'בוטינסקי 16",
+          "transactions": 4,
+          "median_ppsm": 33229.0,
+          "addresses": [
+            "ז'בוטינסקי 16"
+          ],
+          "parcels": [
+            "6362/89"
+          ]
+        },
+        {
+          "location_key": "address:יואל אנגל 2",
+          "transactions": 4,
+          "median_ppsm": 31804.0,
+          "addresses": [
+            "יואל אנגל 2"
+          ],
+          "parcels": [
+            "6386/105"
+          ]
+        },
+        {
+          "location_key": "address:שמואל סלנט 1",
+          "transactions": 3,
+          "median_ppsm": 25286.0,
+          "addresses": [
+            "שמואל סלנט 1"
+          ],
+          "parcels": [
+            "6383/89"
+          ]
+        },
+        {
+          "location_key": "address:רוטשילד 97",
+          "transactions": 3,
+          "median_ppsm": 27966.0,
+          "addresses": [
+            "רוטשילד 97"
+          ],
+          "parcels": [
+            "6382/4"
+          ]
+        },
+        {
+          "location_key": "address:זאב ברנדה 22",
+          "transactions": 3,
+          "median_ppsm": 27844.0,
+          "addresses": [
+            "זאב ברנדה 22"
+          ],
+          "parcels": [
+            "6387/23"
+          ]
+        },
+        {
+          "location_key": "address:זאב אורלוב 4",
+          "transactions": 2,
+          "median_ppsm": 30076.5,
+          "addresses": [
+            "זאב אורלוב 4"
+          ],
+          "parcels": [
+            "6362/278"
+          ]
+        },
+        {
+          "location_key": "address:ההסתדרות 2",
+          "transactions": 2,
+          "median_ppsm": 22756.0,
+          "addresses": [
+            "ההסתדרות 2"
+          ],
+          "parcels": [
+            "6374/250"
+          ]
+        },
+        {
+          "location_key": "address:צבי הרמן שפירא 15",
+          "transactions": 2,
+          "median_ppsm": 25899.5,
+          "addresses": [
+            "צבי הרמן שפירא 15"
+          ],
+          "parcels": [
+            "6382/253"
+          ]
+        },
+        {
+          "location_key": "address:הרב קטרוני 37",
+          "transactions": 2,
+          "median_ppsm": 29135.5,
+          "addresses": [
+            "הרב קטרוני 37"
+          ],
+          "parcels": [
+            "6397/52"
+          ]
+        },
+        {
+          "location_key": "address:ביל\"ו 18",
+          "transactions": 2,
+          "median_ppsm": 17921.0,
+          "addresses": [
+            "ביל\"ו 18"
+          ],
+          "parcels": [
+            "6374/24"
+          ]
+        },
+        {
+          "location_key": "address:יהושע שטמפפר 67",
+          "transactions": 2,
+          "median_ppsm": 27803.0,
+          "addresses": [
+            "יהושע שטמפפר 67"
+          ],
+          "parcels": [
+            "6361/25"
+          ]
+        },
+        {
+          "location_key": "address:הרצל 5",
+          "transactions": 2,
+          "median_ppsm": 28903.5,
+          "addresses": [
+            "הרצל 5"
+          ],
+          "parcels": [
+            "6374/137"
+          ]
+        },
+        {
+          "location_key": "address:רוטשילד 79",
+          "transactions": 2,
+          "median_ppsm": 24020.0,
+          "addresses": [
+            "רוטשילד 79"
+          ],
+          "parcels": [
+            "6374/83"
+          ]
+        },
+        {
+          "location_key": "address:אבינועם ילין 5",
+          "transactions": 2,
+          "median_ppsm": 27222.0,
+          "addresses": [
+            "אבינועם ילין 5"
+          ],
+          "parcels": [
+            "6396/108"
+          ]
+        },
+        {
+          "location_key": "address:הרצל 51",
+          "transactions": 2,
+          "median_ppsm": 26364.0,
+          "addresses": [
+            "הרצל 51"
+          ],
+          "parcels": [
+            "6383/117"
+          ]
+        },
+        {
+          "location_key": "address:חפץ חיים 22",
+          "transactions": 2,
+          "median_ppsm": 27590.0,
+          "addresses": [
+            "חפץ חיים 22"
+          ],
+          "parcels": [
+            "6382/117"
+          ]
+        },
+        {
+          "location_key": "address:הרב קטרוני 44",
+          "transactions": 2,
+          "median_ppsm": 25871.0,
+          "addresses": [
+            "הרב קטרוני 44"
+          ],
+          "parcels": [
+            "6397/173"
+          ]
+        },
+        {
+          "location_key": "address:פרופ' שור 1",
+          "transactions": 2,
+          "median_ppsm": 21239.5,
+          "addresses": [
+            "פרופ' שור 1"
+          ],
+          "parcels": [
+            "6361/412"
+          ]
+        },
+        {
+          "location_key": "address:ההגנה 17",
+          "transactions": 2,
+          "median_ppsm": 23399.5,
+          "addresses": [
+            "ההגנה 17"
+          ],
+          "parcels": [
+            "6380/157"
+          ]
+        },
+        {
+          "location_key": "address:חפץ חיים 25",
+          "transactions": 2,
+          "median_ppsm": 30867.0,
+          "addresses": [
+            "חפץ חיים 25"
+          ],
+          "parcels": [
+            "6385/107"
+          ]
+        },
+        {
+          "location_key": "address:הרב קלישר 10",
+          "transactions": 2,
+          "median_ppsm": 32592.0,
+          "addresses": [
+            "הרב קלישר 10"
+          ],
+          "parcels": [
+            "6385/164"
+          ]
+        },
+        {
+          "location_key": "address:יהודה הלוי 21",
+          "transactions": 2,
+          "median_ppsm": 27846.5,
+          "addresses": [
+            "יהודה הלוי 21"
+          ],
+          "parcels": [
+            "6379/62"
+          ]
+        },
+        {
+          "location_key": "address:רופין 11",
+          "transactions": 2,
+          "median_ppsm": 30887.5,
+          "addresses": [
+            "רופין 11"
+          ],
+          "parcels": [
+            "6362/75"
+          ]
+        },
+        {
+          "location_key": "address:צבי הרמן שפירא 20",
+          "transactions": 2,
+          "median_ppsm": 22933.5,
+          "addresses": [
+            "צבי הרמן שפירא 20"
+          ],
+          "parcels": [
+            "6382/49"
+          ]
+        }
+      ],
+      "parcels": [
+        {
+          "gush": "6387",
+          "parcel": "22",
+          "transactions": 25,
+          "median_ppsm": 31739.0,
+          "addresses": [
+            "בלפור 8",
+            "זאב ברנדה 2"
+          ]
+        },
+        {
+          "gush": "6381",
+          "parcel": "135",
+          "transactions": 8,
+          "median_ppsm": 29670.0,
+          "addresses": [
+            "אלתר מיהוד 10"
+          ]
+        },
+        {
+          "gush": "6384",
+          "parcel": "6",
+          "transactions": 8,
+          "median_ppsm": 27598.5,
+          "addresses": [
+            "בעל שם-טוב 2"
+          ]
+        },
+        {
+          "gush": "6361",
+          "parcel": "444",
+          "transactions": 5,
+          "median_ppsm": 27536.0,
+          "addresses": [
+            "יהושע שטמפפר 73"
+          ]
+        },
+        {
+          "gush": "6396",
+          "parcel": "112",
+          "transactions": 4,
+          "median_ppsm": 32065.0,
+          "addresses": [
+            "אבינועם ילין 6"
+          ]
+        },
+        {
+          "gush": "6362",
+          "parcel": "89",
+          "transactions": 4,
+          "median_ppsm": 33229.0,
+          "addresses": [
+            "ז'בוטינסקי 16"
+          ]
+        },
+        {
+          "gush": "6386",
+          "parcel": "105",
+          "transactions": 4,
+          "median_ppsm": 31804.0,
+          "addresses": [
+            "יואל אנגל 2"
+          ]
+        },
+        {
+          "gush": "6383",
+          "parcel": "89",
+          "transactions": 3,
+          "median_ppsm": 25286.0,
+          "addresses": [
+            "שמואל סלנט 1"
+          ]
+        },
+        {
+          "gush": "6382",
+          "parcel": "4",
+          "transactions": 3,
+          "median_ppsm": 27966.0,
+          "addresses": [
+            "רוטשילד 97"
+          ]
+        },
+        {
+          "gush": "6387",
+          "parcel": "23",
+          "transactions": 3,
+          "median_ppsm": 27844.0,
+          "addresses": [
+            "זאב ברנדה 22"
+          ]
+        },
+        {
+          "gush": "6362",
+          "parcel": "278",
+          "transactions": 2,
+          "median_ppsm": 30076.5,
+          "addresses": [
+            "זאב אורלוב 4"
+          ]
+        },
+        {
+          "gush": "6374",
+          "parcel": "250",
+          "transactions": 2,
+          "median_ppsm": 22756.0,
+          "addresses": [
+            "ההסתדרות 2"
+          ]
+        },
+        {
+          "gush": "6382",
+          "parcel": "253",
+          "transactions": 2,
+          "median_ppsm": 25899.5,
+          "addresses": [
+            "צבי הרמן שפירא 15"
+          ]
+        },
+        {
+          "gush": "6397",
+          "parcel": "52",
+          "transactions": 2,
+          "median_ppsm": 29135.5,
+          "addresses": [
+            "הרב קטרוני 37"
+          ]
+        },
+        {
+          "gush": "6374",
+          "parcel": "24",
+          "transactions": 2,
+          "median_ppsm": 17921.0,
+          "addresses": [
+            "ביל\"ו 18"
+          ]
+        },
+        {
+          "gush": "6361",
+          "parcel": "25",
+          "transactions": 2,
+          "median_ppsm": 27803.0,
+          "addresses": [
+            "יהושע שטמפפר 67"
+          ]
+        },
+        {
+          "gush": "6374",
+          "parcel": "137",
+          "transactions": 2,
+          "median_ppsm": 28903.5,
+          "addresses": [
+            "הרצל 5"
+          ]
+        },
+        {
+          "gush": "6374",
+          "parcel": "83",
+          "transactions": 2,
+          "median_ppsm": 24020.0,
+          "addresses": [
+            "רוטשילד 79"
+          ]
+        },
+        {
+          "gush": "6396",
+          "parcel": "108",
+          "transactions": 2,
+          "median_ppsm": 27222.0,
+          "addresses": [
+            "אבינועם ילין 5"
+          ]
+        },
+        {
+          "gush": "6383",
+          "parcel": "117",
+          "transactions": 2,
+          "median_ppsm": 26364.0,
+          "addresses": [
+            "הרצל 51"
+          ]
+        },
+        {
+          "gush": "6382",
+          "parcel": "117",
+          "transactions": 2,
+          "median_ppsm": 27590.0,
+          "addresses": [
+            "חפץ חיים 22"
+          ]
+        },
+        {
+          "gush": "6397",
+          "parcel": "173",
+          "transactions": 2,
+          "median_ppsm": 25871.0,
+          "addresses": [
+            "הרב קטרוני 44"
+          ]
+        },
+        {
+          "gush": "6361",
+          "parcel": "412",
+          "transactions": 2,
+          "median_ppsm": 21239.5,
+          "addresses": [
+            "פרופ' שור 1"
+          ]
+        },
+        {
+          "gush": "6380",
+          "parcel": "157",
+          "transactions": 2,
+          "median_ppsm": 23399.5,
+          "addresses": [
+            "ההגנה 17"
+          ]
+        },
+        {
+          "gush": "6385",
+          "parcel": "107",
+          "transactions": 2,
+          "median_ppsm": 30867.0,
+          "addresses": [
+            "חפץ חיים 25"
+          ]
+        },
+        {
+          "gush": "6385",
+          "parcel": "164",
+          "transactions": 2,
+          "median_ppsm": 32592.0,
+          "addresses": [
+            "הרב קלישר 10"
+          ]
+        },
+        {
+          "gush": "6379",
+          "parcel": "62",
+          "transactions": 2,
+          "median_ppsm": 27846.5,
+          "addresses": [
+            "יהודה הלוי 21"
+          ]
+        },
+        {
+          "gush": "6362",
+          "parcel": "75",
+          "transactions": 2,
+          "median_ppsm": 30887.5,
+          "addresses": [
+            "רופין 11"
+          ]
+        },
+        {
+          "gush": "6382",
+          "parcel": "49",
+          "transactions": 2,
+          "median_ppsm": 22933.5,
+          "addresses": [
+            "צבי הרמן שפירא 20"
+          ]
+        },
+        {
+          "gush": "6377",
+          "parcel": "243",
+          "transactions": 2,
+          "median_ppsm": 20861.0,
+          "addresses": [
+            "בר כוכבא 30"
+          ]
+        },
+        {
+          "gush": "6374",
+          "parcel": "229",
+          "transactions": 2,
+          "median_ppsm": 27254.5,
+          "addresses": [
+            "הרב אילויצקי 6"
+          ]
+        },
+        {
+          "gush": "6397",
+          "parcel": "119",
+          "transactions": 2,
+          "median_ppsm": 32364.0,
+          "addresses": [
+            "שמואל סלנט 74"
+          ]
+        },
+        {
+          "gush": "6374",
+          "parcel": "343",
+          "transactions": 2,
+          "median_ppsm": 25774.5,
+          "addresses": [
+            "ההסתדרות 3"
+          ]
+        },
+        {
+          "gush": "6379",
+          "parcel": "27",
+          "transactions": 2,
+          "median_ppsm": 23233.5,
+          "addresses": [
+            "משה הס 19"
+          ]
+        },
+        {
+          "gush": "6383",
+          "parcel": "42",
+          "transactions": 2,
+          "median_ppsm": 27580.5,
+          "addresses": [
+            "דוד וולפסון 30"
+          ]
+        },
+        {
+          "gush": "6379",
+          "parcel": "51",
+          "transactions": 2,
+          "median_ppsm": 25795.0,
+          "addresses": [
+            "יהודה הלוי 32"
+          ]
+        },
+        {
+          "gush": "6383",
+          "parcel": "286",
+          "transactions": 2,
+          "median_ppsm": 28247.0,
+          "addresses": [
+            "אחד העם 59"
+          ]
+        },
+        {
+          "gush": "6377",
+          "parcel": "239",
+          "transactions": 2,
+          "median_ppsm": 10258.5,
+          "addresses": [
+            "יהושע שטמפפר 43"
+          ]
+        },
+        {
+          "gush": "6374",
+          "parcel": "286",
+          "transactions": 2,
+          "median_ppsm": 26392.5,
+          "addresses": [
+            "פיק\"א 26"
+          ]
+        },
+        {
+          "gush": "6387",
+          "parcel": "25",
+          "transactions": 2,
+          "median_ppsm": 28205.0,
+          "addresses": [
+            "זאב ברנדה 26"
+          ]
+        },
+        {
+          "gush": "6381",
+          "parcel": "190",
+          "transactions": 2,
+          "median_ppsm": 31200.0,
+          "addresses": [
+            "מיכל לייב כץ 3"
+          ]
+        },
+        {
+          "gush": "6397",
+          "parcel": "190",
+          "transactions": 2,
+          "median_ppsm": 22957.0,
+          "addresses": [
+            "שלום שבזי 1"
+          ]
+        },
+        {
+          "gush": "6387",
+          "parcel": "152",
+          "transactions": 1,
+          "median_ppsm": 32917.0,
+          "addresses": [
+            "זאב ברנדה 43"
+          ]
+        },
+        {
+          "gush": "6379",
+          "parcel": "194",
+          "transactions": 1,
+          "median_ppsm": 25667.0,
+          "addresses": [
+            "העלייה השנייה 6"
+          ]
+        },
+        {
+          "gush": "6381",
+          "parcel": "241",
+          "transactions": 1,
+          "median_ppsm": 28378.0,
+          "addresses": [
+            "פנקס 3"
+          ]
+        },
+        {
+          "gush": "6386",
+          "parcel": "232",
+          "transactions": 1,
+          "median_ppsm": 29870.0,
+          "addresses": [
+            "מרדכי אנילביץ 7"
+          ]
+        },
+        {
+          "gush": "6381",
+          "parcel": "144",
+          "transactions": 1,
+          "median_ppsm": 28472.0,
+          "addresses": [
+            "פנקס 1"
+          ]
+        },
+        {
+          "gush": "6377",
+          "parcel": "90",
+          "transactions": 1,
+          "median_ppsm": 25424.0,
+          "addresses": [
+            "בר כוכבא 27"
+          ]
+        },
+        {
+          "gush": "6394",
+          "parcel": "177",
+          "transactions": 1,
+          "median_ppsm": 23077.0,
+          "addresses": [
+            "רוטשילד 92"
+          ]
+        },
+        {
+          "gush": "6379",
+          "parcel": "17",
+          "transactions": 1,
+          "median_ppsm": 26000.0,
+          "addresses": [
+            "מנחם אוסישקין 6"
+          ]
+        },
+        {
+          "gush": "6383",
+          "parcel": "36",
+          "transactions": 1,
+          "median_ppsm": 25422.0,
+          "addresses": [
+            "דוד וולפסון 24"
+          ]
+        },
+        {
+          "gush": "6394",
+          "parcel": "198",
+          "transactions": 1,
+          "median_ppsm": 37823.0,
+          "addresses": [
+            "הרב יעקב ניימן 8"
+          ]
+        },
+        {
+          "gush": "6375",
+          "parcel": "207",
+          "transactions": 1,
+          "median_ppsm": 27705.0,
+          "addresses": [
+            "רוטשילד 31"
+          ]
+        },
+        {
+          "gush": "6386",
+          "parcel": "74",
+          "transactions": 1,
+          "median_ppsm": 34615.0,
+          "addresses": [
+            "רוטשילד 166"
+          ]
+        },
+        {
+          "gush": "6382",
+          "parcel": "232",
+          "transactions": 1,
+          "median_ppsm": 13864.0,
+          "addresses": [
+            "הרצל 14"
+          ]
+        },
+        {
+          "gush": "6374",
+          "parcel": "235",
+          "transactions": 1,
+          "median_ppsm": 27688.0,
+          "addresses": [
+            "ביל\"ו 23"
+          ]
+        },
+        {
+          "gush": "6380",
+          "parcel": "239",
+          "transactions": 1,
+          "median_ppsm": 23243.0,
+          "addresses": [
+            "ההסתדרות 15"
+          ]
+        },
+        {
+          "gush": "6380",
+          "parcel": "47",
+          "transactions": 1,
+          "median_ppsm": 34028.0,
+          "addresses": [
+            "חיים עוזר 18"
+          ]
+        },
+        {
+          "gush": "6397",
+          "parcel": "59",
+          "transactions": 1,
+          "median_ppsm": 29296.0,
+          "addresses": [
+            "אורלנסקי 28"
+          ]
+        },
+        {
+          "gush": "6378",
+          "parcel": "68",
+          "transactions": 1,
+          "median_ppsm": 22581.0,
+          "addresses": [
+            "נחלת צבי 18"
+          ]
+        },
+        {
+          "gush": "6375",
+          "parcel": "327",
+          "transactions": 1,
+          "median_ppsm": 27692.0,
+          "addresses": [
+            "פינסקר 55"
+          ]
+        },
+        {
+          "gush": "6374",
+          "parcel": "269",
+          "transactions": 1,
+          "median_ppsm": 26883.0,
+          "addresses": [
+            "פיק\"א 20"
+          ]
+        },
+        {
+          "gush": "6380",
+          "parcel": "235",
+          "transactions": 1,
+          "median_ppsm": 25758.0,
+          "addresses": [
+            "הרצל 23"
+          ]
+        },
+        {
+          "gush": "6378",
+          "parcel": "177",
+          "transactions": 1,
+          "median_ppsm": 29032.0,
+          "addresses": [
+            "מנחם אוסישקין 13"
+          ]
+        },
+        {
+          "gush": "6405",
+          "parcel": "136",
+          "transactions": 1,
+          "median_ppsm": 26761.0,
+          "addresses": [
+            "דוד וולפסון 48"
+          ]
+        },
+        {
+          "gush": "6379",
+          "parcel": "198",
+          "transactions": 1,
+          "median_ppsm": 27143.0,
+          "addresses": [
+            "הראשונים 7"
+          ]
+        },
+        {
+          "gush": "6396",
+          "parcel": "293",
+          "transactions": 1,
+          "median_ppsm": 36857.0,
+          "addresses": [
+            "גד מכנס 32"
+          ]
+        },
+        {
+          "gush": "6397",
+          "parcel": "121",
+          "transactions": 1,
+          "median_ppsm": 29688.0,
+          "addresses": [
+            "חפץ חיים 75"
+          ]
+        },
+        {
+          "gush": "6385",
+          "parcel": "28",
+          "transactions": 1,
+          "median_ppsm": 30769.0,
+          "addresses": [
+            "הרב קטרוני 12"
+          ]
+        },
+        {
+          "gush": "6385",
+          "parcel": "110",
+          "transactions": 1,
+          "median_ppsm": 29286.0,
+          "addresses": [
+            "חפץ חיים 31"
+          ]
+        },
+        {
+          "gush": "6375",
+          "parcel": "192",
+          "transactions": 1,
+          "median_ppsm": 30072.0,
+          "addresses": []
+        },
+        {
+          "gush": "6387",
+          "parcel": "155",
+          "transactions": 1,
+          "median_ppsm": 13412.0,
+          "addresses": [
+            "רוטשילד 143"
+          ]
+        },
+        {
+          "gush": "6382",
+          "parcel": "176",
+          "transactions": 1,
+          "median_ppsm": 23846.0,
+          "addresses": [
+            "זאב ברנדה 11"
+          ]
+        },
+        {
+          "gush": "6383",
+          "parcel": "158",
+          "transactions": 1,
+          "median_ppsm": 25000.0,
+          "addresses": [
+            "הרצל 80"
+          ]
+        },
+        {
+          "gush": "6381",
+          "parcel": "32",
+          "transactions": 1,
+          "median_ppsm": 27778.0,
+          "addresses": [
+            "כהן חיים 10"
+          ]
+        },
+        {
+          "gush": "6375",
+          "parcel": "385",
+          "transactions": 1,
+          "median_ppsm": 23377.0,
+          "addresses": [
+            "רופין 8"
+          ]
+        },
+        {
+          "gush": "6379",
+          "parcel": "77",
+          "transactions": 1,
+          "median_ppsm": 22308.0,
+          "addresses": [
+            "רמב\"ם 32"
+          ]
+        },
+        {
+          "gush": "6362",
+          "parcel": "90",
+          "transactions": 1,
+          "median_ppsm": 36286.0,
+          "addresses": [
+            "יעקב קרול 5"
+          ]
+        },
+        {
+          "gush": "6381",
+          "parcel": "48",
+          "transactions": 1,
+          "median_ppsm": 27071.0,
+          "addresses": [
+            "אלתר מיהוד 3"
+          ]
+        },
+        {
+          "gush": "6386",
+          "parcel": "15",
+          "transactions": 1,
+          "median_ppsm": 27143.0,
+          "addresses": [
+            "בן יהודה 28"
+          ]
+        },
+        {
+          "gush": "6394",
+          "parcel": "242",
+          "transactions": 1,
+          "median_ppsm": 29365.0,
+          "addresses": [
+            "טרומפלדור 31"
+          ]
+        },
+        {
+          "gush": "6385",
+          "parcel": "12",
+          "transactions": 1,
+          "median_ppsm": 32500.0,
+          "addresses": [
+            "חפץ חיים 21"
+          ]
+        },
+        {
+          "gush": "6394",
+          "parcel": "99",
+          "transactions": 1,
+          "median_ppsm": 13077.0,
+          "addresses": [
+            "פיק\"א 21"
+          ]
+        },
+        {
+          "gush": "6397",
+          "parcel": "79",
+          "transactions": 1,
+          "median_ppsm": 22466.0,
+          "addresses": [
+            "אורלנסקי 29"
+          ]
+        },
+        {
+          "gush": "6375",
+          "parcel": "304",
+          "transactions": 1,
+          "median_ppsm": 25159.0,
+          "addresses": [
+            "משה מרכוס 3"
+          ]
+        },
+        {
+          "gush": "6375",
+          "parcel": "508",
+          "transactions": 1,
+          "median_ppsm": 26776.0,
+          "addresses": []
+        },
+        {
+          "gush": "6379",
+          "parcel": "57",
+          "transactions": 1,
+          "median_ppsm": 22821.0,
+          "addresses": [
+            "יהודה הלוי 31"
+          ]
+        },
+        {
+          "gush": "6385",
+          "parcel": "157",
+          "transactions": 1,
+          "median_ppsm": 26154.0,
+          "addresses": [
+            "אורלנסקי 2"
+          ]
+        },
+        {
+          "gush": "6361",
+          "parcel": "259",
+          "transactions": 1,
+          "median_ppsm": 28633.0,
+          "addresses": [
+            "זאב אורלוב 90"
+          ]
+        },
+        {
+          "gush": "6383",
+          "parcel": "295",
+          "transactions": 1,
+          "median_ppsm": 9524.0,
+          "addresses": [
+            "הרצל 77"
+          ]
+        },
+        {
+          "gush": "6387",
+          "parcel": "204",
+          "transactions": 1,
+          "median_ppsm": 26159.0,
+          "addresses": [
+            "מכנס גד 10"
+          ]
+        },
+        {
+          "gush": "6374",
+          "parcel": "22",
+          "transactions": 1,
+          "median_ppsm": 26027.0,
+          "addresses": [
+            "סעדיה גאון 5"
+          ]
+        },
+        {
+          "gush": "6385",
+          "parcel": "111",
+          "transactions": 1,
+          "median_ppsm": 33968.0,
+          "addresses": [
+            "חפץ חיים 33"
+          ]
+        },
+        {
+          "gush": "6375",
+          "parcel": "338",
+          "transactions": 1,
+          "median_ppsm": 29508.0,
+          "addresses": [
+            "ברוידה 4"
+          ]
+        },
+        {
+          "gush": "6386",
+          "parcel": "227",
+          "transactions": 1,
+          "median_ppsm": 17400.0,
+          "addresses": [
+            "רוטשילד 170"
+          ]
+        },
+        {
+          "gush": "6382",
+          "parcel": "219",
+          "transactions": 1,
+          "median_ppsm": 26154.0,
+          "addresses": [
+            "רוטשילד 95"
+          ]
+        },
+        {
+          "gush": "6374",
+          "parcel": "267",
+          "transactions": 1,
+          "median_ppsm": 23803.0,
+          "addresses": [
+            "רוטשילד 66"
+          ]
+        },
+        {
+          "gush": "6361",
+          "parcel": "284",
+          "transactions": 1,
+          "median_ppsm": 33898.0,
+          "addresses": [
+            "פרופ' שור 2"
+          ]
+        },
+        {
+          "gush": "6385",
+          "parcel": "74",
+          "transactions": 1,
+          "median_ppsm": 22532.0,
+          "addresses": [
+            "הרב קטרוני 5"
+          ]
+        },
+        {
+          "gush": "6375",
+          "parcel": "356",
+          "transactions": 1,
+          "median_ppsm": 28125.0,
+          "addresses": [
+            "חכם יוסף חיים 8"
+          ]
+        },
+        {
+          "gush": "6374",
+          "parcel": "219",
+          "transactions": 1,
+          "median_ppsm": 27869.0,
+          "addresses": [
+            "זבוטינסקי 7"
+          ]
+        },
+        {
+          "gush": "6377",
+          "parcel": "29",
+          "transactions": 1,
+          "median_ppsm": 29322.0,
+          "addresses": [
+            "וינגייט 15"
+          ]
+        },
+        {
+          "gush": "6380",
+          "parcel": "214",
+          "transactions": 1,
+          "median_ppsm": 21410.0,
+          "addresses": [
+            "חובבי ציון 10"
+          ]
+        },
+        {
+          "gush": "6385",
+          "parcel": "162",
+          "transactions": 1,
+          "median_ppsm": 25000.0,
+          "addresses": [
+            "ביאליק 18"
+          ]
+        },
+        {
+          "gush": "6383",
+          "parcel": "41",
+          "transactions": 1,
+          "median_ppsm": 26100.0,
+          "addresses": [
+            "דוד וולפסון 28"
+          ]
+        },
+        {
+          "gush": "6387",
+          "parcel": "144",
+          "transactions": 1,
+          "median_ppsm": 27500.0,
+          "addresses": [
+            "קרן קיימת לישראל 38"
+          ]
+        },
+        {
+          "gush": "6377",
+          "parcel": "94",
+          "transactions": 1,
+          "median_ppsm": 23857.0,
+          "addresses": [
+            "בר כוכבא 29"
+          ]
+        },
+        {
+          "gush": "6377",
+          "parcel": "237",
+          "transactions": 1,
+          "median_ppsm": 24683.0,
+          "addresses": [
+            "בר כוכבא 28"
+          ]
+        },
+        {
+          "gush": "6374",
+          "parcel": "29",
+          "transactions": 1,
+          "median_ppsm": 27273.0,
+          "addresses": [
+            "רוטשילד 70"
+          ]
+        },
+        {
+          "gush": "6386",
+          "parcel": "160",
+          "transactions": 1,
+          "median_ppsm": 28400.0,
+          "addresses": [
+            "בן יהודה 40"
+          ]
+        },
+        {
+          "gush": "6382",
+          "parcel": "181",
+          "transactions": 1,
+          "median_ppsm": 25385.0,
+          "addresses": [
+            "פרץ פסקל 7"
+          ]
+        },
+        {
+          "gush": "6381",
+          "parcel": "248",
+          "transactions": 1,
+          "median_ppsm": 27808.0,
+          "addresses": [
+            "אלתר מיהוד 4"
+          ]
+        },
+        {
+          "gush": "6381",
+          "parcel": "90",
+          "transactions": 1,
+          "median_ppsm": 29054.0,
+          "addresses": [
+            "פנקס 16"
+          ]
+        },
+        {
+          "gush": "6385",
+          "parcel": "97",
+          "transactions": 1,
+          "median_ppsm": 12152.0,
+          "addresses": [
+            "אחד העם 30"
+          ]
+        },
+        {
+          "gush": "6394",
+          "parcel": "69",
+          "transactions": 1,
+          "median_ppsm": 24000.0,
+          "addresses": [
+            "טרומפלדור 39"
+          ]
+        },
+        {
+          "gush": "6383",
+          "parcel": "13",
+          "transactions": 1,
+          "median_ppsm": 30758.0,
+          "addresses": [
+            "חיים עוזר 33"
+          ]
+        },
+        {
+          "gush": "6375",
+          "parcel": "444",
+          "transactions": 1,
+          "median_ppsm": 24103.0,
+          "addresses": [
+            "גוטמן 11"
+          ]
+        },
+        {
+          "gush": "6383",
+          "parcel": "337",
+          "transactions": 1,
+          "median_ppsm": 13559.0,
+          "addresses": [
+            "שרה אהרונסון 8"
+          ]
+        },
+        {
+          "gush": "6374",
+          "parcel": "138",
+          "transactions": 1,
+          "median_ppsm": 5357.0,
+          "addresses": []
+        },
+        {
+          "gush": "6379",
+          "parcel": "221",
+          "transactions": 1,
+          "median_ppsm": 28387.0,
+          "addresses": [
+            "דוד וולפסון 1"
+          ]
+        },
+        {
+          "gush": "6378",
+          "parcel": "46",
+          "transactions": 1,
+          "median_ppsm": 25484.0,
+          "addresses": []
+        },
+        {
+          "gush": "6374",
+          "parcel": "133",
+          "transactions": 1,
+          "median_ppsm": 25352.0,
+          "addresses": [
+            "מקס נורדאו 9"
+          ]
+        },
+        {
+          "gush": "6382",
+          "parcel": "146",
+          "transactions": 1,
+          "median_ppsm": 28361.0,
+          "addresses": [
+            "חפץ חיים 18"
+          ]
+        },
+        {
+          "gush": "6379",
+          "parcel": "32",
+          "transactions": 1,
+          "median_ppsm": 28676.0,
+          "addresses": [
+            "משה הס 9"
+          ]
+        },
+        {
+          "gush": "6394",
+          "parcel": "227",
+          "transactions": 1,
+          "median_ppsm": 25949.0,
+          "addresses": [
+            "סלומון 8"
+          ]
+        },
+        {
+          "gush": "6361",
+          "parcel": "249",
+          "transactions": 1,
+          "median_ppsm": 26953.0,
+          "addresses": [
+            "בר כוכבא 54"
+          ]
+        },
+        {
+          "gush": "6386",
+          "parcel": "229",
+          "transactions": 1,
+          "median_ppsm": 28462.0,
+          "addresses": [
+            "רוטשילד 168"
+          ]
+        },
+        {
+          "gush": "6385",
+          "parcel": "188",
+          "transactions": 1,
+          "median_ppsm": 24051.0,
+          "addresses": [
+            "חפץ חיים 35"
+          ]
+        },
+        {
+          "gush": "6386",
+          "parcel": "153",
+          "transactions": 1,
+          "median_ppsm": 28425.0,
+          "addresses": [
+            "קרן קיימת לישראל 16"
+          ]
+        },
+        {
+          "gush": "6375",
+          "parcel": "292",
+          "transactions": 1,
+          "median_ppsm": 23553.0,
+          "addresses": [
+            "גוטמן 32"
+          ]
+        },
+        {
+          "gush": "6395",
+          "parcel": "2",
+          "transactions": 1,
+          "median_ppsm": 21127.0,
+          "addresses": [
+            "מונטיפיורי 13"
+          ]
+        },
+        {
+          "gush": "6397",
+          "parcel": "94",
+          "transactions": 1,
+          "median_ppsm": 23924.0,
+          "addresses": [
+            "שלום שבזי 11"
+          ]
+        },
+        {
+          "gush": "6397",
+          "parcel": "129",
+          "transactions": 1,
+          "median_ppsm": 28243.0,
+          "addresses": []
+        },
+        {
+          "gush": "6382",
+          "parcel": "53",
+          "transactions": 1,
+          "median_ppsm": 22785.0,
+          "addresses": [
+            "צבי הרמן שפירא 28"
+          ]
+        },
+        {
+          "gush": "6379",
+          "parcel": "226",
+          "transactions": 1,
+          "median_ppsm": 22152.0,
+          "addresses": [
+            "הראשונים 8"
+          ]
+        },
+        {
+          "gush": "6383",
+          "parcel": "103",
+          "transactions": 1,
+          "median_ppsm": 28873.0,
+          "addresses": [
+            "שרה אהרונסון 13"
+          ]
+        },
+        {
+          "gush": "6378",
+          "parcel": "24",
+          "transactions": 1,
+          "median_ppsm": 26210.0,
+          "addresses": [
+            "נחלת צבי 25"
+          ]
+        },
+        {
+          "gush": "6387",
+          "parcel": "14",
+          "transactions": 1,
+          "median_ppsm": 31069.0,
+          "addresses": [
+            "רוטשילד 133"
+          ]
+        },
+        {
+          "gush": "6396",
+          "parcel": "69",
+          "transactions": 1,
+          "median_ppsm": 29500.0,
+          "addresses": [
+            "חפץ חיים 34"
+          ]
+        },
+        {
+          "gush": "6378",
+          "parcel": "75",
+          "transactions": 1,
+          "median_ppsm": 21987.0,
+          "addresses": [
+            "נחלת צבי 2"
+          ]
+        },
+        {
+          "gush": "6382",
+          "parcel": "243",
+          "transactions": 1,
+          "median_ppsm": 33333.0,
+          "addresses": []
+        },
+        {
+          "gush": "6381",
+          "parcel": "208",
+          "transactions": 1,
+          "median_ppsm": 22817.0,
+          "addresses": [
+            "הרב קוק 32"
+          ]
+        },
+        {
+          "gush": "6361",
+          "parcel": "21",
+          "transactions": 1,
+          "median_ppsm": 28169.0,
+          "addresses": [
+            "יהושע שטמפפר 55"
+          ]
+        },
+        {
+          "gush": "6397",
+          "parcel": "58",
+          "transactions": 1,
+          "median_ppsm": 13562.0,
+          "addresses": [
+            "אורלנסקי 24"
+          ]
+        },
+        {
+          "gush": "6396",
+          "parcel": "166",
+          "transactions": 1,
+          "median_ppsm": 19792.0,
+          "addresses": [
+            "גד מכנס 24"
+          ]
+        },
+        {
+          "gush": "6380",
+          "parcel": "17",
+          "transactions": 1,
+          "median_ppsm": 25079.0,
+          "addresses": []
+        },
+        {
+          "gush": "6397",
+          "parcel": "90",
+          "transactions": 1,
+          "median_ppsm": 29348.0,
+          "addresses": [
+            "שלום שבזי 3"
+          ]
+        },
+        {
+          "gush": "6397",
+          "parcel": "18",
+          "transactions": 1,
+          "median_ppsm": 25974.0,
+          "addresses": [
+            "חפץ חיים 47"
+          ]
+        },
+        {
+          "gush": "6382",
+          "parcel": "70",
+          "transactions": 1,
+          "median_ppsm": 27757.0,
+          "addresses": [
+            "חפץ חיים 20"
+          ]
+        },
+        {
+          "gush": "6387",
+          "parcel": "68",
+          "transactions": 1,
+          "median_ppsm": 8861.0,
+          "addresses": [
+            "זאב ברנדה 21"
+          ]
+        },
+        {
+          "gush": "6378",
+          "parcel": "36",
+          "transactions": 1,
+          "median_ppsm": 15625.0,
+          "addresses": [
+            "נחלת צבי 7"
+          ]
+        },
+        {
+          "gush": "6383",
+          "parcel": "78",
+          "transactions": 1,
+          "median_ppsm": 26056.0,
+          "addresses": [
+            "הרצל 52"
+          ]
+        },
+        {
+          "gush": "6396",
+          "parcel": "64",
+          "transactions": 1,
+          "median_ppsm": 26623.0,
+          "addresses": [
+            "בלפור 26"
+          ]
+        },
+        {
+          "gush": "6380",
+          "parcel": "65",
+          "transactions": 1,
+          "median_ppsm": 21831.0,
+          "addresses": []
+        },
+        {
+          "gush": "6383",
+          "parcel": "235",
+          "transactions": 1,
+          "median_ppsm": 25556.0,
+          "addresses": [
+            "הרב הלר 3"
+          ]
+        },
+        {
+          "gush": "6377",
+          "parcel": "179",
+          "transactions": 1,
+          "median_ppsm": 25316.0,
+          "addresses": [
+            "עקיבא ליברכט 7"
+          ]
+        },
+        {
+          "gush": "6374",
+          "parcel": "127",
+          "transactions": 1,
+          "median_ppsm": 28750.0,
+          "addresses": [
+            "מונטיפיורי 6"
+          ]
+        },
+        {
+          "gush": "6361",
+          "parcel": "274",
+          "transactions": 1,
+          "median_ppsm": 24595.0,
+          "addresses": [
+            "פרופ' שור 15"
+          ]
+        },
+        {
+          "gush": "6375",
+          "parcel": "411",
+          "transactions": 1,
+          "median_ppsm": 22535.0,
+          "addresses": [
+            "יהודה בורלא 4"
+          ]
+        },
+        {
+          "gush": "6396",
+          "parcel": "75",
+          "transactions": 1,
+          "median_ppsm": 25473.0,
+          "addresses": [
+            "חפץ חיים 36"
+          ]
+        },
+        {
+          "gush": "6387",
+          "parcel": "109",
+          "transactions": 1,
+          "median_ppsm": 31944.0,
+          "addresses": [
+            "ברנדה זאב 63"
+          ]
+        },
+        {
+          "gush": "6383",
+          "parcel": "146",
+          "transactions": 1,
+          "median_ppsm": 29571.0,
+          "addresses": [
+            "הרצל 78"
+          ]
+        },
+        {
+          "gush": "6397",
+          "parcel": "65",
+          "transactions": 1,
+          "median_ppsm": 28387.0,
+          "addresses": [
+            "אורלנסקי 25"
+          ]
+        },
+        {
+          "gush": "6379",
+          "parcel": "48",
+          "transactions": 1,
+          "median_ppsm": 32500.0,
+          "addresses": [
+            "יהודה הלוי 26"
+          ]
+        },
+        {
+          "gush": "6396",
+          "parcel": "234",
+          "transactions": 1,
+          "median_ppsm": 26329.0,
+          "addresses": [
+            "צבי הרמן שפירא 55"
+          ]
+        },
+        {
+          "gush": "6374",
+          "parcel": "272",
+          "transactions": 1,
+          "median_ppsm": 23425.0,
+          "addresses": [
+            "ז'בוטינסקי 9"
+          ]
+        },
+        {
+          "gush": "6397",
+          "parcel": "112",
+          "transactions": 1,
+          "median_ppsm": 27722.0,
+          "addresses": [
+            "הרב קטרוני 58"
+          ]
+        },
+        {
+          "gush": "6379",
+          "parcel": "155",
+          "transactions": 1,
+          "median_ppsm": 24590.0,
+          "addresses": [
+            "חיים עוזר 17"
+          ]
+        },
+        {
+          "gush": "6387",
+          "parcel": "107",
+          "transactions": 1,
+          "median_ppsm": 28188.0,
+          "addresses": [
+            "גד מכנס 9"
+          ]
+        },
+        {
+          "gush": "6379",
+          "parcel": "111",
+          "transactions": 1,
+          "median_ppsm": 28000.0,
+          "addresses": [
+            "יהודה הלוי 9"
+          ]
+        },
+        {
+          "gush": "6374",
+          "parcel": "298",
+          "transactions": 1,
+          "median_ppsm": 27297.0,
+          "addresses": [
+            "ביל\"ו 19"
+          ]
+        },
+        {
+          "gush": "6375",
+          "parcel": "354",
+          "transactions": 1,
+          "median_ppsm": 24621.0,
+          "addresses": [
+            "פינסקר 51"
+          ]
+        },
+        {
+          "gush": "6361",
+          "parcel": "50",
+          "transactions": 1,
+          "median_ppsm": 31129.0,
+          "addresses": [
+            "האחים שטרייט 3"
+          ]
+        },
+        {
+          "gush": "6383",
+          "parcel": "383",
+          "transactions": 1,
+          "median_ppsm": 33684.0,
+          "addresses": [
+            "אחד העם 51"
+          ]
+        },
+        {
+          "gush": "6386",
+          "parcel": "196",
+          "transactions": 1,
+          "median_ppsm": 29836.0,
+          "addresses": [
+            "רוטשילד 136"
+          ]
+        },
+        {
+          "gush": "6362",
+          "parcel": "88",
+          "transactions": 1,
+          "median_ppsm": 33400.0,
+          "addresses": [
+            "זבוטינסקי 18"
+          ]
+        },
+        {
+          "gush": "6377",
+          "parcel": "254",
+          "transactions": 1,
+          "median_ppsm": 24778.0,
+          "addresses": [
+            "בר כוכבא 26"
+          ]
+        },
+        {
+          "gush": "6375",
+          "parcel": "161",
+          "transactions": 1,
+          "median_ppsm": 23694.0,
+          "addresses": [
+            "פינסקר 29"
+          ]
+        },
+        {
+          "gush": "6378",
+          "parcel": "145",
+          "transactions": 1,
+          "median_ppsm": 24615.0,
+          "addresses": [
+            "רמב\"ם 6"
+          ]
+        }
+      ]
+    },
+    "5R": {
+      "family": "5R",
+      "scope": {
+        "city": "פתח תקווה",
+        "official_neighborhood": "מרכז העיר",
+        "cutoff": "2024-09-06",
+        "rooms": 5.0,
+        "area_min": 94.435,
+        "area_max": 127.765
+      },
+      "selected_transactions": 113,
+      "independent_locations": 52,
+      "unique_parcels": 50,
+      "first_hand_values": {
+        "None": 87,
+        "True": 9,
+        "False": 17
+      },
+      "transaction_distribution": {
+        "ppsm_min": 10484.0,
+        "ppsm_q1": 22500.0,
+        "ppsm_median": 24330.0,
+        "ppsm_q3": 25446.0,
+        "ppsm_max": 36898.0
+      },
+      "independent_group_distribution": {
+        "group_ppsm_min": 10484.0,
+        "group_ppsm_q1": 20685.5,
+        "group_ppsm_median": 23519.5,
+        "group_ppsm_q3": 25305.125,
+        "group_ppsm_max": 32338.0
+      },
+      "outlier_candidates": [
+        {
+          "deal_id": null,
+          "object_id": null,
+          "date": "2026-03-18",
+          "rooms": 5.0,
+          "area": 126.0,
+          "amount": 1321000.0,
+          "ppsm": 10484.0,
+          "neighborhood": "מרכז העיר",
+          "street": null,
+          "house": null,
+          "address": "מוצקין 12",
+          "gush": "6375",
+          "parcel": "219",
+          "subparcel": "17",
+          "first_hand": null,
+          "audit_flags": [
+            "extreme_low_absolute",
+            "extreme_low_iqr"
+          ]
+        },
+        {
+          "deal_id": null,
+          "object_id": null,
+          "date": "2026-02-25",
+          "rooms": 5.0,
+          "area": 118.0,
+          "amount": 4354000.0,
+          "ppsm": 36898.0,
+          "neighborhood": "מרכז העיר",
+          "street": null,
+          "house": null,
+          "address": "הכרם 4",
+          "gush": "6381",
+          "parcel": "203",
+          "subparcel": "5",
+          "first_hand": null,
+          "audit_flags": [
+            "extreme_high_iqr"
+          ]
+        },
+        {
+          "deal_id": null,
+          "object_id": null,
+          "date": "2026-02-24",
+          "rooms": 5.0,
+          "area": 118.0,
+          "amount": 4354000.0,
+          "ppsm": 36898.0,
+          "neighborhood": "מרכז העיר",
+          "street": null,
+          "house": null,
+          "address": "הכרם 4",
+          "gush": "6381",
+          "parcel": "203",
+          "subparcel": "2",
+          "first_hand": null,
+          "audit_flags": [
+            "extreme_high_iqr"
+          ]
+        }
+      ],
+      "outlier_candidate_count": 3,
+      "near_duplicate_candidates": [],
+      "near_duplicate_candidate_count": 0,
+      "top_independent_locations": [
+        {
+          "location_key": "address:זאב ברנדה 40",
+          "transactions": 17,
+          "median_ppsm": 24017.0,
+          "addresses": [
+            "זאב ברנדה 40"
+          ],
+          "parcels": [
+            "6387/33"
+          ]
+        },
+        {
+          "location_key": "parcel:6386/270",
+          "transactions": 11,
+          "median_ppsm": 24833.0,
+          "addresses": [],
+          "parcels": [
+            "6386/270"
+          ]
+        },
+        {
+          "location_key": "address:פנקס 5",
+          "transactions": 5,
+          "median_ppsm": 27167.0,
+          "addresses": [
+            "פנקס 5"
+          ],
+          "parcels": [
+            "6381/244"
+          ]
+        },
+        {
+          "location_key": "address:הכרם 4",
+          "transactions": 4,
+          "median_ppsm": 32338.0,
+          "addresses": [
+            "הכרם 4"
+          ],
+          "parcels": [
+            "6381/203"
+          ]
+        },
+        {
+          "location_key": "address:זאב ברנדה 26",
+          "transactions": 4,
+          "median_ppsm": 25877.5,
+          "addresses": [
+            "זאב ברנדה 26"
+          ],
+          "parcels": [
+            "6387/25"
+          ]
+        },
+        {
+          "location_key": "address:רוטשילד 160",
+          "transactions": 4,
+          "median_ppsm": 25431.5,
+          "addresses": [
+            "רוטשילד 160"
+          ],
+          "parcels": [
+            "6386/169"
+          ]
+        },
+        {
+          "location_key": "address:יהוד 2",
+          "transactions": 4,
+          "median_ppsm": 25431.5,
+          "addresses": [
+            "יהוד 2"
+          ],
+          "parcels": [
+            "6386/169"
+          ]
+        },
+        {
+          "location_key": "address:רוטשילד 170",
+          "transactions": 4,
+          "median_ppsm": 23925.5,
+          "addresses": [
+            "רוטשילד 170"
+          ],
+          "parcels": [
+            "6386/227"
+          ]
+        },
+        {
+          "location_key": "address:אחד העם 12",
+          "transactions": 3,
+          "median_ppsm": 22135.0,
+          "addresses": [
+            "אחד העם 12"
+          ],
+          "parcels": [
+            "6382/213"
+          ]
+        },
+        {
+          "location_key": "address:גד מכנס 27",
+          "transactions": 3,
+          "median_ppsm": 30159.0,
+          "addresses": [
+            "גד מכנס 27"
+          ],
+          "parcels": [
+            "6396/150"
+          ]
+        },
+        {
+          "location_key": "address:זאב ברנדה 3",
+          "transactions": 2,
+          "median_ppsm": 19281.0,
+          "addresses": [
+            "זאב ברנדה 3"
+          ],
+          "parcels": [
+            "6382/39"
+          ]
+        },
+        {
+          "location_key": "address:שמואל סלנט 41",
+          "transactions": 2,
+          "median_ppsm": 28000.0,
+          "addresses": [
+            "שמואל סלנט 41"
+          ],
+          "parcels": [
+            "6397/210"
+          ]
+        },
+        {
+          "location_key": "address:התשעים ושלוש 5",
+          "transactions": 2,
+          "median_ppsm": 22174.0,
+          "addresses": [
+            "התשעים ושלוש 5"
+          ],
+          "parcels": [
+            "6394/79"
+          ]
+        },
+        {
+          "location_key": "address:חפץ חיים 80",
+          "transactions": 2,
+          "median_ppsm": 22161.0,
+          "addresses": [
+            "חפץ חיים 80"
+          ],
+          "parcels": [
+            "6396/220"
+          ]
+        },
+        {
+          "location_key": "address:יחיאל מיכל פינס 33",
+          "transactions": 2,
+          "median_ppsm": 22161.0,
+          "addresses": [
+            "יחיאל מיכל פינס 33"
+          ],
+          "parcels": [
+            "6396/220"
+          ]
+        },
+        {
+          "location_key": "address:רמב\"ם 4",
+          "transactions": 2,
+          "median_ppsm": 21961.0,
+          "addresses": [
+            "רמב\"ם 4"
+          ],
+          "parcels": [
+            "6378/135"
+          ]
+        },
+        {
+          "location_key": "address:בן יהודה 23",
+          "transactions": 2,
+          "median_ppsm": 22961.0,
+          "addresses": [
+            "בן יהודה 23"
+          ],
+          "parcels": [
+            "6386/180"
+          ]
+        },
+        {
+          "location_key": "address:רחל המשוררת 10",
+          "transactions": 2,
+          "median_ppsm": 20702.0,
+          "addresses": [
+            "רחל המשוררת 10"
+          ],
+          "parcels": [
+            "6405/181"
+          ]
+        },
+        {
+          "location_key": "address:אורלנסקי 13",
+          "transactions": 2,
+          "median_ppsm": 23717.0,
+          "addresses": [
+            "אורלנסקי 13"
+          ],
+          "parcels": [
+            "6385/146"
+          ]
+        },
+        {
+          "location_key": "address:מרדכי חפץ 7",
+          "transactions": 2,
+          "median_ppsm": 32193.0,
+          "addresses": [
+            "מרדכי חפץ 7"
+          ],
+          "parcels": [
+            "6381/61"
+          ]
+        },
+        {
+          "location_key": "address:שמואל סלנט 59",
+          "transactions": 2,
+          "median_ppsm": 25263.0,
+          "addresses": [
+            "שמואל סלנט 59"
+          ],
+          "parcels": [
+            "6397/108"
+          ]
+        },
+        {
+          "location_key": "address:סלומון 11",
+          "transactions": 2,
+          "median_ppsm": 26250.0,
+          "addresses": [
+            "סלומון 11"
+          ],
+          "parcels": [
+            "6394/95"
+          ]
+        },
+        {
+          "location_key": "address:בן יהודה 10",
+          "transactions": 1,
+          "median_ppsm": 24569.0,
+          "addresses": [
+            "בן יהודה 10"
+          ],
+          "parcels": [
+            "6381/296"
+          ]
+        },
+        {
+          "location_key": "address:פרץ פסקל 7",
+          "transactions": 1,
+          "median_ppsm": 20893.0,
+          "addresses": [
+            "פרץ פסקל 7"
+          ],
+          "parcels": [
+            "6382/181"
+          ]
+        },
+        {
+          "location_key": "address:מוצקין 12",
+          "transactions": 1,
+          "median_ppsm": 10484.0,
+          "addresses": [
+            "מוצקין 12"
+          ],
+          "parcels": [
+            "6375/219"
+          ]
+        },
+        {
+          "location_key": "address:הרב קטרוני 5",
+          "transactions": 1,
+          "median_ppsm": 20250.0,
+          "addresses": [
+            "הרב קטרוני 5"
+          ],
+          "parcels": [
+            "6385/74"
+          ]
+        },
+        {
+          "location_key": "address:נחלת צבי 15",
+          "transactions": 1,
+          "median_ppsm": 23451.0,
+          "addresses": [
+            "נחלת צבי 15"
+          ],
+          "parcels": [
+            "6378/31"
+          ]
+        },
+        {
+          "location_key": "address:מונטיפיורי 2",
+          "transactions": 1,
+          "median_ppsm": 24330.0,
+          "addresses": [
+            "מונטיפיורי 2"
+          ],
+          "parcels": [
+            "6374/378"
+          ]
+        },
+        {
+          "location_key": "address:הרב קוק 10",
+          "transactions": 1,
+          "median_ppsm": 18584.0,
+          "addresses": [
+            "הרב קוק 10"
+          ],
+          "parcels": [
+            "6381/127"
+          ]
+        },
+        {
+          "location_key": "address:בלפור 40",
+          "transactions": 1,
+          "median_ppsm": 23016.0,
+          "addresses": [
+            "בלפור 40"
+          ],
+          "parcels": [
+            "6385/191"
+          ]
+        }
+      ],
+      "parcels": [
+        {
+          "gush": "6387",
+          "parcel": "33",
+          "transactions": 17,
+          "median_ppsm": 24017.0,
+          "addresses": [
+            "זאב ברנדה 40"
+          ]
+        },
+        {
+          "gush": "6386",
+          "parcel": "270",
+          "transactions": 11,
+          "median_ppsm": 24833.0,
+          "addresses": []
+        },
+        {
+          "gush": "6386",
+          "parcel": "169",
+          "transactions": 8,
+          "median_ppsm": 25431.5,
+          "addresses": [
+            "יהוד 2",
+            "רוטשילד 160"
+          ]
+        },
+        {
+          "gush": "6381",
+          "parcel": "244",
+          "transactions": 5,
+          "median_ppsm": 27167.0,
+          "addresses": [
+            "פנקס 5"
+          ]
+        },
+        {
+          "gush": "6381",
+          "parcel": "203",
+          "transactions": 4,
+          "median_ppsm": 32338.0,
+          "addresses": [
+            "הכרם 4"
+          ]
+        },
+        {
+          "gush": "6387",
+          "parcel": "25",
+          "transactions": 4,
+          "median_ppsm": 25877.5,
+          "addresses": [
+            "זאב ברנדה 26"
+          ]
+        },
+        {
+          "gush": "6396",
+          "parcel": "220",
+          "transactions": 4,
+          "median_ppsm": 22161.0,
+          "addresses": [
+            "חפץ חיים 80",
+            "יחיאל מיכל פינס 33"
+          ]
+        },
+        {
+          "gush": "6386",
+          "parcel": "227",
+          "transactions": 4,
+          "median_ppsm": 23925.5,
+          "addresses": [
+            "רוטשילד 170"
+          ]
+        },
+        {
+          "gush": "6382",
+          "parcel": "213",
+          "transactions": 3,
+          "median_ppsm": 22135.0,
+          "addresses": [
+            "אחד העם 12"
+          ]
+        },
+        {
+          "gush": "6396",
+          "parcel": "150",
+          "transactions": 3,
+          "median_ppsm": 30159.0,
+          "addresses": [
+            "גד מכנס 27"
+          ]
+        },
+        {
+          "gush": "6382",
+          "parcel": "39",
+          "transactions": 2,
+          "median_ppsm": 19281.0,
+          "addresses": [
+            "זאב ברנדה 3"
+          ]
+        },
+        {
+          "gush": "6397",
+          "parcel": "210",
+          "transactions": 2,
+          "median_ppsm": 28000.0,
+          "addresses": [
+            "שמואל סלנט 41"
+          ]
+        },
+        {
+          "gush": "6394",
+          "parcel": "79",
+          "transactions": 2,
+          "median_ppsm": 22174.0,
+          "addresses": [
+            "התשעים ושלוש 5"
+          ]
+        },
+        {
+          "gush": "6378",
+          "parcel": "135",
+          "transactions": 2,
+          "median_ppsm": 21961.0,
+          "addresses": [
+            "רמב\"ם 4"
+          ]
+        },
+        {
+          "gush": "6386",
+          "parcel": "180",
+          "transactions": 2,
+          "median_ppsm": 22961.0,
+          "addresses": [
+            "בן יהודה 23"
+          ]
+        },
+        {
+          "gush": "6405",
+          "parcel": "181",
+          "transactions": 2,
+          "median_ppsm": 20702.0,
+          "addresses": [
+            "רחל המשוררת 10"
+          ]
+        },
+        {
+          "gush": "6385",
+          "parcel": "146",
+          "transactions": 2,
+          "median_ppsm": 23717.0,
+          "addresses": [
+            "אורלנסקי 13"
+          ]
+        },
+        {
+          "gush": "6381",
+          "parcel": "61",
+          "transactions": 2,
+          "median_ppsm": 32193.0,
+          "addresses": [
+            "מרדכי חפץ 7"
+          ]
+        },
+        {
+          "gush": "6397",
+          "parcel": "108",
+          "transactions": 2,
+          "median_ppsm": 25263.0,
+          "addresses": [
+            "שמואל סלנט 59"
+          ]
+        },
+        {
+          "gush": "6394",
+          "parcel": "95",
+          "transactions": 2,
+          "median_ppsm": 26250.0,
+          "addresses": [
+            "סלומון 11"
+          ]
+        },
+        {
+          "gush": "6381",
+          "parcel": "296",
+          "transactions": 1,
+          "median_ppsm": 24569.0,
+          "addresses": [
+            "בן יהודה 10"
+          ]
+        },
+        {
+          "gush": "6382",
+          "parcel": "181",
+          "transactions": 1,
+          "median_ppsm": 20893.0,
+          "addresses": [
+            "פרץ פסקל 7"
+          ]
+        },
+        {
+          "gush": "6375",
+          "parcel": "219",
+          "transactions": 1,
+          "median_ppsm": 10484.0,
+          "addresses": [
+            "מוצקין 12"
+          ]
+        },
+        {
+          "gush": "6385",
+          "parcel": "74",
+          "transactions": 1,
+          "median_ppsm": 20250.0,
+          "addresses": [
+            "הרב קטרוני 5"
+          ]
+        },
+        {
+          "gush": "6378",
+          "parcel": "31",
+          "transactions": 1,
+          "median_ppsm": 23451.0,
+          "addresses": [
+            "נחלת צבי 15"
+          ]
+        },
+        {
+          "gush": "6374",
+          "parcel": "378",
+          "transactions": 1,
+          "median_ppsm": 24330.0,
+          "addresses": [
+            "מונטיפיורי 2"
+          ]
+        },
+        {
+          "gush": "6381",
+          "parcel": "127",
+          "transactions": 1,
+          "median_ppsm": 18584.0,
+          "addresses": [
+            "הרב קוק 10"
+          ]
+        },
+        {
+          "gush": "6385",
+          "parcel": "191",
+          "transactions": 1,
+          "median_ppsm": 23016.0,
+          "addresses": [
+            "בלפור 40"
+          ]
+        },
+        {
+          "gush": "6386",
+          "parcel": "79",
+          "transactions": 1,
+          "median_ppsm": 22500.0,
+          "addresses": [
+            "בן יהודה 41"
+          ]
+        },
+        {
+          "gush": "6381",
+          "parcel": "180",
+          "transactions": 1,
+          "median_ppsm": 27232.0,
+          "addresses": [
+            "מרדכי חפץ 25"
+          ]
+        },
+        {
+          "gush": "6361",
+          "parcel": "535",
+          "transactions": 1,
+          "median_ppsm": 20614.0,
+          "addresses": [
+            "וינגייט 10"
+          ]
+        },
+        {
+          "gush": "6381",
+          "parcel": "134",
+          "transactions": 1,
+          "median_ppsm": 23584.0,
+          "addresses": [
+            "אלתר מיהוד 12"
+          ]
+        },
+        {
+          "gush": "6396",
+          "parcel": "71",
+          "transactions": 1,
+          "median_ppsm": 17362.0,
+          "addresses": [
+            "שפירא הרמן צבי 37"
+          ]
+        },
+        {
+          "gush": "6385",
+          "parcel": "81",
+          "transactions": 1,
+          "median_ppsm": 26271.0,
+          "addresses": [
+            "הרב קטרוני 19"
+          ]
+        },
+        {
+          "gush": "6383",
+          "parcel": "355",
+          "transactions": 1,
+          "median_ppsm": 18182.0,
+          "addresses": [
+            "דוד וולפסון 6"
+          ]
+        },
+        {
+          "gush": "6382",
+          "parcel": "166",
+          "transactions": 1,
+          "median_ppsm": 20357.0,
+          "addresses": [
+            "חפץ חיים 24"
+          ]
+        },
+        {
+          "gush": "6382",
+          "parcel": "116",
+          "transactions": 1,
+          "median_ppsm": 23795.0,
+          "addresses": [
+            "חפץ חיים 22"
+          ]
+        },
+        {
+          "gush": "6385",
+          "parcel": "43",
+          "transactions": 1,
+          "median_ppsm": 20636.0,
+          "addresses": [
+            "ביאליק 12"
+          ]
+        },
+        {
+          "gush": "6382",
+          "parcel": "93",
+          "transactions": 1,
+          "median_ppsm": 17563.0,
+          "addresses": [
+            "חפץ חיים 26"
+          ]
+        },
+        {
+          "gush": "6397",
+          "parcel": "10",
+          "transactions": 1,
+          "median_ppsm": 25203.0,
+          "addresses": [
+            "חפץ חיים 63"
+          ]
+        },
+        {
+          "gush": "6378",
+          "parcel": "146",
+          "transactions": 1,
+          "median_ppsm": 16557.0,
+          "addresses": [
+            "רמב\"ם 8"
+          ]
+        },
+        {
+          "gush": "6394",
+          "parcel": "40",
+          "transactions": 1,
+          "median_ppsm": 24550.0,
+          "addresses": [
+            "חדד סנדר 8"
+          ]
+        },
+        {
+          "gush": "6381",
+          "parcel": "257",
+          "transactions": 1,
+          "median_ppsm": 25000.0,
+          "addresses": [
+            "הרב קוק 31"
+          ]
+        },
+        {
+          "gush": "6386",
+          "parcel": "127",
+          "transactions": 1,
+          "median_ppsm": 25521.0,
+          "addresses": [
+            "אחים יפה 6"
+          ]
+        },
+        {
+          "gush": "6382",
+          "parcel": "19",
+          "transactions": 1,
+          "median_ppsm": 23455.0,
+          "addresses": [
+            "צבי הרמן שפירא 10"
+          ]
+        },
+        {
+          "gush": "6396",
+          "parcel": "157",
+          "transactions": 1,
+          "median_ppsm": 20133.0,
+          "addresses": [
+            "אבינועם ילין 19"
+          ]
+        },
+        {
+          "gush": "6385",
+          "parcel": "106",
+          "transactions": 1,
+          "median_ppsm": 24168.0,
+          "addresses": [
+            "שמואל סלנט 26"
+          ]
+        },
+        {
+          "gush": "6396",
+          "parcel": "285",
+          "transactions": 1,
+          "median_ppsm": 26415.0,
+          "addresses": [
+            "חפץ חיים 64"
+          ]
+        },
+        {
+          "gush": "6381",
+          "parcel": "49",
+          "transactions": 1,
+          "median_ppsm": 23196.0,
+          "addresses": [
+            "אלתר מיהוד 5"
+          ]
+        },
+        {
+          "gush": "6385",
+          "parcel": "47",
+          "transactions": 1,
+          "median_ppsm": 20000.0,
+          "addresses": [
+            "אורלנסקי 8"
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,16 @@
+﻿path,name,extension,size_mb,filename_signals,content_terms,contains_special_type,contains_2_room,contains_6_room,contains_7_room,contains_8plus_room
+C:\Users\AVIV\gaba\gabay_pricing_core\inventory_source_rows.json,inventory_source_rows.json,.json,0.004,,"דירת גן, דופלקס, טריפלקס, חדרים",True,False,False,False,False
+C:\Users\AVIV\gaba\gabay_pricing_core\modern_3room_parcel_regime_scan.json,modern_3room_parcel_regime_scan.json,.json,0.008,,,False,False,False,False,False
+C:\Users\AVIV\gaba\gabay_pricing_core\tax_enriched_ashkelon_3room_36m.json,tax_enriched_ashkelon_3room_36m.json,.json,0.629,tax,"דירת גן, rooms",True,False,False,False,False
+C:\Users\AVIV\gaba\gabay_pricing_core\tax_enrichment_diagnostics.json,tax_enrichment_diagnostics.json,.json,0.051,tax,rooms,False,False,False,False,False
+C:\Users\AVIV\gaba\gabay_pricing_core\tax_enrichment_match_demo.json,tax_enrichment_match_demo.json,.json,0.006,tax,,False,False,False,False,False
+C:\Users\AVIV\gaba\gabay_pricing_core\qa_output_ashkelon\sold_primary_usable.json,sold_primary_usable.json,.json,0.228,sold,"דירת גן, דירת גג, garden, rooms",True,False,False,False,False
+C:\Users\AVIV\gaba\gabay_pricing_core\qa_output_ashkelon\sold_qa_summary.json,sold_qa_summary.json,.json,0.001,sold,,False,False,False,False,False
+C:\Users\AVIV\gaba\gabay_pricing_core\qa_output_ashkelon\sold_rejected.json,sold_rejected.json,.json,0.0,sold,,False,False,False,False,False
+C:\Users\AVIV\gaba\gabay_pricing_core\qa_output_ashkelon\sold_review.json,sold_review.json,.json,0.077,sold,"דירת גג, rooms",True,False,False,False,False
+C:\Users\AVIV\gaba\gabay_pricing_core\data\diagnostics\five_room_program_overlap_parcels.json,five_room_program_overlap_parcels.json,.json,0.01,,,False,False,False,False,False
+C:\Users\AVIV\gaba\gabay_pricing_core\data\diagnostics\petah_tikva_center_program_parcels_v1.json,petah_tikva_center_program_parcels_v1.json,.json,0.072,,,False,False,False,False,False
+C:\Users\AVIV\gaba\gabay_pricing_core\data\diagnostics\petah_tikva_sold_audit_v1.json,petah_tikva_sold_audit_v1.json,.json,0.022,sold,rooms,False,True,False,False,False
+C:\Users\AVIV\gaba\gabay_pricing_core\data\diagnostics\petah_tikva_sold_scope_audit_v2.json,petah_tikva_sold_scope_audit_v2.json,.json,0.144,sold,rooms,False,False,False,False,False
+C:\Users\AVIV\gaba\gabay_pricing_core\data\diagnostics\three_room_program_overlap_parcels.json,three_room_program_overlap_parcels.json,.json,0.045,,,False,False,False,False,False
+C:\Users\AVIV\gaba\gabay_pricing_core\data\diagnostics\three_room_verified_demo_scope_v1.json,three_room_verified_demo_scope_v1.json,.json,0.001,,,False,False,False,False,False

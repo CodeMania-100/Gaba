@@ -1,0 +1,16 @@
+{
+  "version": "sold_attribute_candidates_v1",
+  "rules": {
+    "EXACT_UNIT_LINKED": "Stable deal/subparcel link. Potentially usable as exact-unit enrichment after review.",
+    "HIGH_MATCH_CANDIDATE": "Exact building plus very strong rooms/area/floor match. NOT automatically treated as the same sold unit.",
+    "SAME_BUILDING_PRODUCT_CONTEXT": "Building/project context only.",
+    "SAME_STREET_ONLY": "Directional context only; never copied to sold unit."
+  },
+  "files_scanned": 85,
+  "records_checked": 24742,
+  "baskets": {
+    "APT36_37": [],
+    "APT38": [],
+    "APT39": []
+  }
+}

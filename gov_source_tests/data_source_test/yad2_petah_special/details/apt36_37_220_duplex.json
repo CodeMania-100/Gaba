@@ -1,0 +1,142 @@
+{
+  "success": true,
+  "data": {
+    "token": "tkgbr5hx",
+    "orderId": 56332392,
+    "adNumber": 59944002,
+    "adType": "commercial",
+    "categoryId": 2,
+    "subcategoryId": 5,
+    "priority": 1,
+    "statusId": 1,
+    "price": 4490000,
+    "additionalDetails": {
+      "balconiesCount": 1,
+      "entranceDate": "2026-06-15T00:00:00",
+      "squareMeter": 220,
+      "roomsCount": 6,
+      "propertyGroup": {
+        "id": 1,
+        "text": "דירות",
+        "textEng": "apartments"
+      },
+      "property": {
+        "id": 7,
+        "text": "דופלקס",
+        "textEng": "duplex"
+      },
+      "promotions": [
+        "remaxHome"
+      ],
+      "parkingSpacesCount": 3,
+      "propertyCondition": {
+        "id": 5,
+        "text": "דרוש שיפוץ"
+      },
+      "squareMeterBuild": 220,
+      "buildingTopFloor": 7,
+      "isEnterDateFlexible": true
+    },
+    "inProperty": {
+      "includeAirconditioner": true,
+      "includeBalcony": true,
+      "includeBoiler": true,
+      "includeElevator": true,
+      "includeParking": true,
+      "includeSecurityRoom": false,
+      "isHandicapped": true
+    },
+    "searchText": "שם מוכר RE/MAX רימקס SOLD אופיר אדרי נכס למכירה מסוג דופלקס עם מספר חדרים 6 בקומה 6 בכתובת עין גנים 83 קרית אליעזר פרי פתח תקווה אזור פתח תקווה והסביבה מרכז הנכס כולל מעלית חניה מיזוג גישה לנכים מרפסת מצב הנכס דרוש שיפוץ תאור לקוח למכירה בעין גנים 83 פתח תקווה\nנדיר! פנטהאוז דופלקס ענק עם 3 חניות בטאבו!\nנכס ייחודי ביותר בשוק הנדל\"ן מושלם למשפחות גדולות או כאלה שרוצים לייצר דירה נוספת ומניבה\nלנכס יש שתי כניסות , אופטימלי לחלוקה.\nשטח בנוי: 220 מ\"ר נטו!\nמרפסת שמש: 130 מ\"ר.\n6 חדרים (אופציה ליותר)\nסלון ענק מעל 100 מטר\nמיקום: קומה 6-7.\n3 חניות פרטיות רשומות בטאבו. רימקס sold - תתרגלו להגיד נמכר!\nבקעת אונו - פתח תקווה - בני ברק \n\nברוכים הבאים לצוות הנדל\"ן המוביל שלנו! \nצוות הסוכנים שלנו מנוסה, מקצועי ומחויב, שילווה אתכם לאורך כל הדרך ? מקניית או מכירת נכס ועד למציאת ההשקעה המושלמת. \nעם ניסיון עשיר, ידע מעמיק בשוק ויחס אישי.\nבתחום שיש בו הרבה שטח אפור אנו כאן כדי להפוך את התהליך לחוויה שקופה, בטוחה ומשתלמת עבורכם.\n\n סוכנות RE/MAX רימקס SOLD",
+    "customer": {
+      "name": "אופיר אדרי",
+      "id": 6658338,
+      "isVirtualPhoneNumber": true,
+      "agencyName": "RE/MAX רימקס SOLD",
+      "agencyLogo": "//images.yad2.co.il/Pic/TivMiniSite/f1bb26f5-d498-4cd9-8b35-6d1fc3e77cf3.png?t=1788720703545",
+      "brokerAvatar": "https://img.yad2.co.il/Pic/TradeMiniSite/353e97f8-9157-4dd9-94f0-f911d22d1d8d.jpeg?t=1788720703545",
+      "agencyAbout": "רימקס sold - תתרגלו להגיד נמכר!\nבקעת אונו - פתח תקווה - בני ברק \n\nברוכים הבאים לצוות הנדל\"ן המוביל שלנו! \nצוות הסוכנים שלנו מנוסה, מקצועי ומחויב, שילווה אתכם לאורך כל הדרך ? מקניית או מכירת נכס ועד למציאת ההשקעה המושלמת. \nעם ניסיון עשיר, ידע מעמיק בשוק ויחס אישי.\nבתחום שיש בו הרבה שטח אפור אנו כאן כדי להפוך את התהליך לחוויה שקופה, בטוחה ומשתלמת עבורכם.\n\n",
+      "brokers": [
+        {
+          "name": "אופיר אדרי",
+          "avatar": "https://img.yad2.co.il/Pic/TradeMiniSite/353e97f8-9157-4dd9-94f0-f911d22d1d8d.jpeg?t=1788720703545",
+          "id": 756219,
+          "licenseNumber": "5136430"
+        }
+      ],
+      "licenseNumber": "3225081"
+    },
+    "packages": {
+      "hasMiniSite": true,
+      "hasPersonalAreaLeads": true,
+      "isPlatinum": true,
+      "isNeighborhoodKing": true
+    },
+    "address": {
+      "topArea": {
+        "id": 2,
+        "text": "מרכז",
+        "textEng": "hamerkaz_area"
+      },
+      "region": {
+        "id": 1,
+        "text": "מרכז והשרון",
+        "textEng": "Center"
+      },
+      "area": {
+        "id": 4,
+        "text": "פתח תקווה והסביבה",
+        "textEng": "petah_tikva_area"
+      },
+      "city": {
+        "id": "7900",
+        "text": "פתח תקווה"
+      },
+      "neighborhood": {
+        "id": 768,
+        "text": "קרית אליעזר פרי"
+      },
+      "street": {
+        "id": "0304",
+        "text": "עין גנים"
+      },
+      "coords": {
+        "lat": 32.082034,
+        "lon": 34.898999
+      },
+      "house": {
+        "number": 83,
+        "floor": 6
+      },
+      "addressMasterId": 5763866
+    },
+    "metaData": {
+      "coverImage": "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010908_20251217134249.jpeg",
+      "images": [
+        "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010908_20251217134249.jpeg",
+        "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010826_20251217134249.jpeg",
+        "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010650_20251217134249.jpeg",
+        "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010214_20251217134249.jpeg",
+        "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010528_20251217134250.jpeg",
+        "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010008_20251217134249.jpeg",
+        "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010013_20251217134250.jpeg",
+        "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010431_20251217134250.jpeg",
+        "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010449_20251217134250.jpeg",
+        "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010824_20251217134250.jpeg",
+        "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010237_20251217134250.jpeg",
+        "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010996_20251217134250.jpeg",
+        "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010917_20251217134250.jpeg",
+        "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010502_20251217134250.jpeg",
+        "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010788_20251217134249.jpeg"
+      ],
+      "description": "למכירה בעין גנים 83 פתח תקווה\nנדיר! פנטהאוז דופלקס ענק עם 3 חניות בטאבו!\nנכס ייחודי ביותר בשוק הנדל\"ן מושלם למשפחות גדולות או כאלה שרוצים לייצר דירה נוספת ומניבה\nלנכס יש שתי כניסות , אופטימלי לחלוקה.\nשטח בנוי: 220 מ\"ר נטו!\nמרפסת שמש: 130 מ\"ר.\n6 חדרים (אופציה ליותר)\nסלון ענק מעל 100 מטר\nמיקום: קומה 6-7.\n3 חניות פרטיות רשומות בטאבו.",
+      "shelterDistance": 116
+    },
+    "dates": {
+      "updatedAt": "2026-09-06T21:51:42",
+      "createdAt": "2025-12-17T13:43:03",
+      "endsAt": "2027-06-22T00:00:00",
+      "rebouncedAt": "2026-09-06T21:51:42"
+    },
+    "abovePrice": "4000000"
+  }
+}

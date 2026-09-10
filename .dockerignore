@@ -1,0 +1,43 @@
+# Root .dockerignore -- applies when the backend image is built with the
+# repo root as build context (needed so gabay_pricing_core/Dockerfile can
+# also reach the one small cross-directory file under gov_source_tests/,
+# see app_api/petah_tikva_workspace.py's NEARBY_DEALS_EXAMPLE_FILE). The
+# Dockerfile only COPYs specific paths in anyway, so this mainly keeps the
+# build context small and never sends secrets/huge unrelated data to the
+# Docker daemon.
+
+.git
+.venv
+.venv-market
+.venv-yad2
+node_modules
+**/node_modules
+**/.next
+**/__pycache__
+**/.pytest_cache
+*.log
+.env
+.env.*
+!.env.example
+
+# Unrelated nested tool checkout
+nadlan-mcp
+
+# Large/regenerable, never needed at runtime (see gabay_pricing_core/.gitignore
+# reasoning) -- 1.7GB of raw GIS parcel source data and a 27MB local dev
+# SQLite file are the two that matter most for build-context size.
+gabay_pricing_core/data/raw
+gabay_pricing_core/gabay_pricing.db
+gabay_pricing_core/current_workspace.json
+gabay_pricing_core/current_special_master.json
+gabay_pricing_core/current_special_engine.txt
+gabay_pricing_core/qa_output_wine_city
+gabay_pricing_core/qa_output_wine_city_5room
+gabay_pricing_core/special_unit_data_audit
+gabay_pricing_core/special_unit_data_audit_v2
+
+# Frontend test/dev artifacts (irrelevant to the backend image; the frontend
+# image is built with frontend/ as its own context + its own .dockerignore)
+frontend/shots
+frontend/.next
+frontend/node_modules

@@ -8,9 +8,21 @@ __pycache__/
 gabay_pricing_core/.venv/
 gabay_pricing_core/uvicorn.log
 gabay_pricing_core/data/raw/parcel_all.zip
+gabay_pricing_core/data/raw/parcel_all/
 gabay_pricing_core/gabay_pricing.db
 gabay_pricing_core/qa_output_wine_city/
 gabay_pricing_core/qa_output_wine_city_5room/
+
+# Local dev dumps/logs -- large, regenerable, not source
+gabay_pricing_core/current_workspace.json
+gabay_pricing_core/current_special_master.json
+gabay_pricing_core/current_special_engine.txt
+gabay_pricing_core/geocode_run.log
+gabay_pricing_core/uvicorn_err*.log
+uvicorn_err*.log
+
+# Unrelated nested tool checkout (its own .git repo, not part of this project)
+nadlan-mcp/
 
 # Secrets
 .env
@@ -22,3 +34,4 @@ frontend/node_modules/
 frontend/.next/
 frontend/*.tsbuildinfo
 frontend/*.log
+frontend/shots/

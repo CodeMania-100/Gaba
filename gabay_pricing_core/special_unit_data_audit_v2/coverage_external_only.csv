@@ -1,0 +1,16 @@
+﻿target,external_total,sold,asking,new_project,unknown,with_price,with_area,with_outdoor_area,with_property_type
+2_room,2,0,0,0,2,0,2,2,1
+2_room_garden,2,0,0,0,2,0,2,2,1
+6_room,10,0,0,0,10,0,10,8,2
+6_room_triplex,10,0,0,0,10,0,10,8,2
+6_room_duplex,0,0,0,0,0,0,0,0,0
+6_room_penthouse,0,0,0,0,0,0,0,0,0
+6_room_roof,0,0,0,0,0,0,0,0,0
+7_plus_room,5,1,0,0,4,1,5,3,2
+7_plus_duplex,4,0,0,0,4,0,4,3,1
+7_plus_triplex,0,0,0,0,0,0,0,0,0
+7_plus_penthouse,0,0,0,0,0,0,0,0,0
+7_plus_roof,0,0,0,0,0,0,0,0,0
+large_area_140_195,44,21,0,0,23,19,44,2,31
+very_large_area_210_310,4,0,0,0,4,0,4,2,2
+special_property_type,64,21,0,0,43,19,64,20,47

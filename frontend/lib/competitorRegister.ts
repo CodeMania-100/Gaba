@@ -7,6 +7,7 @@
 
 import { CompetitorRegisterProject } from "./api";
 import { ils, num } from "./format";
+import { paymentTermsLabel as translatePaymentTerms } from "./standardEnrichment";
 
 export type CompetitorFilterGroup = "all" | "direct" | "relevant" | "context";
 export type CompetitorFamilyFilter = "all" | "standard_3r" | "standard_5r" | "garden" | "duplex_penthouse" | "large_premium";
@@ -53,6 +54,13 @@ export function areaRangeLabel(project: CompetitorRegisterProject): string | nul
   return `${num(lo)}–${num(hi)} מ״ר`;
 }
 
+export function floorRangeLabel(project: CompetitorRegisterProject): string | null {
+  const range = project.floors_range as [number, number] | null | undefined;
+  if (!range) return null;
+  const [lo, hi] = range;
+  return lo === hi ? `קומה ${num(lo)}` : `קומות ${num(lo)}–${num(hi)}`;
+}
+
 /** Price display only from fields that already exist: exact known-unit-variant
  * prices (as a range if they differ), or a project-level starting price.
  * Never averages/estimates -- if nothing priced is known, returns null and
@@ -94,7 +102,14 @@ export function standoutFeatureLabel(project: CompetitorRegisterProject): string
 
 export function paymentTermsLabel(project: CompetitorRegisterProject): string | null {
   const pt = project.payment_terms as { value?: string } | null | undefined;
-  return pt?.value ?? null;
+  return translatePaymentTerms(pt?.value ?? null);
+}
+
+/** Verified developer/company name for this competing project, or null when
+ * the register genuinely has none -- the card must show "לא פורסם" rather
+ * than omit the row silently or invent a name (see task item 11). */
+export function developerLabel(project: CompetitorRegisterProject): string | null {
+  return (project.developer as string | null | undefined) ?? null;
 }
 
 export function matchesFamilyFilter(project: CompetitorRegisterProject, filter: CompetitorFamilyFilter): boolean {

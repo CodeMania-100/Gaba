@@ -8,6 +8,7 @@ import {
   CLASSIFICATION_LABELS,
   CompetitorFamilyFilter,
   CompetitorFilterGroup,
+  developerLabel,
   matchesFamilyFilter,
   paymentTermsLabel,
   priceDisplayLabel,
@@ -108,6 +109,7 @@ function CompetitorRegisterCard({ project }: { project: CompetitorRegisterProjec
   const [showSource, setShowSource] = useState(false);
 
   const location = (project.address as string | null) ?? (project.neighborhood as string | null) ?? "—";
+  const developer = developerLabel(project);
   const rooms = roomRangeLabel(project);
   const area = areaRangeLabel(project);
   const price = priceDisplayLabel(project);
@@ -119,7 +121,10 @@ function CompetitorRegisterCard({ project }: { project: CompetitorRegisterProjec
   return (
     <div className="flex flex-col gap-2 rounded-lg border border-slate-200 p-4">
       <div className="flex items-start justify-between gap-2">
-        <div className="font-semibold text-slate-900">{project.project_name}</div>
+        <div>
+          <div className="font-semibold text-slate-900">{project.project_name}</div>
+          <div className="text-xs text-slate-500">יזם: {developer ?? "לא פורסם"}</div>
+        </div>
         <span className={`shrink-0 rounded px-1.5 py-0.5 text-xs font-medium ${CLASSIFICATION_COLORS[classification]}`}>
           {CLASSIFICATION_LABELS[classification]}
         </span>

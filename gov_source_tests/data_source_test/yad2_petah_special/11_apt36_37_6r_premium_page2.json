@@ -1,0 +1,962 @@
+{
+  "success": true,
+  "data": {
+    "private": [],
+    "agency": [
+      {
+        "address": {
+          "region": {
+            "text": "מרכז והשרון",
+            "id": 1
+          },
+          "city": {
+            "text": "פתח תקווה"
+          },
+          "area": {
+            "text": "פתח תקווה והסביבה"
+          },
+          "neighborhood": {
+            "text": "נווה גן"
+          },
+          "house": {
+            "floor": 7
+          },
+          "coords": {
+            "lon": 34.872787,
+            "lat": 32.095045
+          }
+        },
+        "subcategoryId": 5,
+        "categoryId": 2,
+        "adType": "commercial",
+        "price": 3999999,
+        "token": "pgz8xzq9",
+        "additionalDetails": {
+          "property": {
+            "text": "גג/ פנטהאוז"
+          },
+          "roomsCount": 6,
+          "squareMeter": 310,
+          "propertyCondition": {
+            "id": 6
+          },
+          "promotions": []
+        },
+        "metaData": {
+          "coverImage": "https://img.yad2.co.il/Pic/202503/19/2_5/o/y2_1_tk_999194_20250319.jpg",
+          "images": [
+            "https://img.yad2.co.il/Pic/202503/19/2_5/o/y2_1_tk_999194_20250319.jpg",
+            "https://img.yad2.co.il/Pic/202503/19/2_5/o/y2_2_992347_20250319.jpg",
+            "https://img.yad2.co.il/Pic/202503/19/2_5/o/y2_3_993076_20250319.jpg",
+            "https://img.yad2.co.il/Pic/202503/19/2_5/o/y2_4_994680_20250319.jpg",
+            "https://img.yad2.co.il/Pic/202504/01/2_5/o/y2_5_KJoJFN_PtO_20250401.jpg",
+            "https://img.yad2.co.il/Pic/202504/01/2_5/o/y2_6_OUzEGMZ17S_20250401.jpg",
+            "https://img.yad2.co.il/Pic/202504/01/2_5/o/y2_7_mpv8HydDRY_20250401.jpg",
+            "https://img.yad2.co.il/Pic/202504/01/2_5/o/y2_8_jnhsWoSPnU_20250401.jpg",
+            "https://img.yad2.co.il/Pic/202504/01/2_5/o/y2_9_QjIOvZ3XzM_20250401.jpg",
+            "https://img.yad2.co.il/Pic/202504/01/2_5/o/y2_10_KvqpFbgdDS_20250401.jpg"
+          ],
+          "squareMeterBuild": 150
+        },
+        "customer": {
+          "agencyName": "נדלן נטו - שטיגליץ",
+          "agencyLogo": "//images.yad2.co.il/Pic/TivMiniSite/y2_1_03666_20210113120115.jpeg?t=1788722689928"
+        },
+        "tags": [],
+        "orderId": 55209760,
+        "priority": 1,
+        "packages": {}
+      },
+      {
+        "address": {
+          "region": {
+            "text": "מרכז והשרון",
+            "id": 1
+          },
+          "city": {
+            "text": "פתח תקווה"
+          },
+          "area": {
+            "text": "פתח תקווה והסביבה"
+          },
+          "neighborhood": {
+            "text": "המרכז השקט / מרכז העיר"
+          },
+          "street": {
+            "text": "יהוד"
+          },
+          "house": {
+            "floor": 9
+          },
+          "coords": {
+            "lat": 32.0781403125,
+            "lon": 34.883451375
+          }
+        },
+        "subcategoryId": 5,
+        "categoryId": 2,
+        "adType": "commercial",
+        "price": 3800000,
+        "token": "uqreq539",
+        "additionalDetails": {
+          "property": {
+            "text": "גג/ פנטהאוז"
+          },
+          "roomsCount": 6,
+          "squareMeter": 230,
+          "propertyCondition": {
+            "id": 6
+          },
+          "promotions": []
+        },
+        "metaData": {
+          "coverImage": "https://img.yad2.co.il/Pic/202604/29/2_5/o/y2_1_8IxE_i8kQI_20260429.jpg",
+          "images": [
+            "https://img.yad2.co.il/Pic/202604/29/2_5/o/y2_1_8IxE_i8kQI_20260429.jpg",
+            "https://img.yad2.co.il/Pic/202604/29/2_5/o/y2_2_bDhTQ75oA6_20260429.jpg"
+          ],
+          "squareMeterBuild": 140
+        },
+        "customer": {
+          "agencyName": "סקורפיון נכסים",
+          "agencyLogo": null
+        },
+        "tags": [],
+        "orderId": 56873658,
+        "priority": 1,
+        "packages": {}
+      },
+      {
+        "address": {
+          "region": {
+            "text": "מרכז והשרון",
+            "id": 1
+          },
+          "city": {
+            "text": "פתח תקווה"
+          },
+          "area": {
+            "text": "פתח תקווה והסביבה"
+          },
+          "neighborhood": {
+            "text": "המרכז השקט / מרכז העיר"
+          },
+          "street": {
+            "text": "שמואל סלנט"
+          },
+          "house": {
+            "floor": 7
+          },
+          "coords": {
+            "lon": 34.8889460864198,
+            "lat": 32.0815308518519
+          }
+        },
+        "subcategoryId": 5,
+        "categoryId": 2,
+        "adType": "commercial",
+        "price": 5690000,
+        "token": "f1l5q92o",
+        "additionalDetails": {
+          "property": {
+            "text": "גג/ פנטהאוז"
+          },
+          "roomsCount": 6,
+          "squareMeter": 230,
+          "propertyCondition": {
+            "id": 6
+          },
+          "promotions": []
+        },
+        "metaData": {
+          "coverImage": "https://img.yad2.co.il/Pic/202607/30/2_5/o/y2_1pa_010502_20260730123219.jpeg",
+          "images": [
+            "https://img.yad2.co.il/Pic/202607/30/2_5/o/y2_1pa_010502_20260730123219.jpeg",
+            "https://img.yad2.co.il/Pic/202607/30/2_5/o/y2_1pa_010466_20260730123219.jpeg",
+            "https://img.yad2.co.il/Pic/202607/30/2_5/o/y2_1pa_010996_20260730123220.jpeg",
+            "https://img.yad2.co.il/Pic/202607/30/2_5/o/y2_1pa_010354_20260730123219.jpeg",
+            "https://img.yad2.co.il/Pic/202607/30/2_5/o/y2_1pa_010287_20260730123219.jpeg",
+            "https://img.yad2.co.il/Pic/202607/30/2_5/o/y2_1pa_010440_20260730123219.jpeg",
+            "https://img.yad2.co.il/Pic/202607/30/2_5/o/y2_1pa_010394_20260730123219.jpeg",
+            "https://img.yad2.co.il/Pic/202607/30/2_5/o/y2_1pa_010529_20260730123220.jpeg",
+            "https://img.yad2.co.il/Pic/202607/30/2_5/o/y2_1pa_010490_20260730123220.jpeg"
+          ],
+          "squareMeterBuild": 167
+        },
+        "customer": {
+          "agencyName": "דירות גואטה-משנת 1964 הכי ותיקים, הכי חזקים!",
+          "agencyLogo": "//images.yad2.co.il/Pic/TivMiniSite/y2_1_07803_20211214092924.jpeg?t=1788721407831"
+        },
+        "tags": [],
+        "orderId": 57301474,
+        "priority": 1,
+        "packages": {}
+      },
+      {
+        "address": {
+          "region": {
+            "text": "מרכז והשרון",
+            "id": 1
+          },
+          "city": {
+            "text": "פתח תקווה"
+          },
+          "area": {
+            "text": "פתח תקווה והסביבה"
+          },
+          "neighborhood": {
+            "text": "קרית אליעזר פרי"
+          },
+          "street": {
+            "text": "עין גנים"
+          },
+          "house": {
+            "number": 83,
+            "floor": 6
+          },
+          "coords": {
+            "lon": 34.898999,
+            "lat": 32.082034
+          }
+        },
+        "subcategoryId": 5,
+        "categoryId": 2,
+        "adType": "commercial",
+        "price": 4490000,
+        "token": "tkgbr5hx",
+        "additionalDetails": {
+          "property": {
+            "text": "דופלקס"
+          },
+          "roomsCount": 6,
+          "squareMeter": 220,
+          "propertyCondition": {
+            "id": 5
+          },
+          "promotions": [
+            "remaxHome"
+          ]
+        },
+        "metaData": {
+          "coverImage": "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010908_20251217134249.jpeg",
+          "images": [
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010908_20251217134249.jpeg",
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010826_20251217134249.jpeg",
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010650_20251217134249.jpeg",
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010214_20251217134249.jpeg",
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010528_20251217134250.jpeg",
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010008_20251217134249.jpeg",
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010013_20251217134250.jpeg",
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010431_20251217134250.jpeg",
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010449_20251217134250.jpeg",
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010824_20251217134250.jpeg",
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010237_20251217134250.jpeg",
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010996_20251217134250.jpeg",
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010917_20251217134250.jpeg",
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010502_20251217134250.jpeg",
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010788_20251217134249.jpeg"
+          ],
+          "squareMeterBuild": 220
+        },
+        "customer": {
+          "agencyName": "RE/MAX רימקס SOLD",
+          "agencyLogo": "//images.yad2.co.il/Pic/TivMiniSite/f1bb26f5-d498-4cd9-8b35-6d1fc3e77cf3.png?t=1788720703545"
+        },
+        "tags": [],
+        "orderId": 56332392,
+        "priority": 1,
+        "packages": {}
+      },
+      {
+        "address": {
+          "region": {
+            "text": "מרכז והשרון",
+            "id": 1
+          },
+          "city": {
+            "text": "פתח תקווה"
+          },
+          "area": {
+            "text": "פתח תקווה והסביבה"
+          },
+          "neighborhood": {
+            "text": "נווה עוז"
+          },
+          "house": {
+            "floor": 6
+          },
+          "coords": {
+            "lon": 34.865201,
+            "lat": 32.080344
+          }
+        },
+        "subcategoryId": 5,
+        "categoryId": 2,
+        "adType": "commercial",
+        "price": 0,
+        "token": "edl4k5k7",
+        "additionalDetails": {
+          "property": {
+            "text": "גג/ פנטהאוז"
+          },
+          "roomsCount": 6,
+          "squareMeter": 200,
+          "propertyCondition": {
+            "id": 6
+          },
+          "promotions": []
+        },
+        "metaData": {
+          "coverImage": "https://img.yad2.co.il/Pic/202606/01/2_5/o/y2_1pa_010024_20260601051014.jpeg",
+          "images": [
+            "https://img.yad2.co.il/Pic/202606/01/2_5/o/y2_1pa_010024_20260601051014.jpeg",
+            "https://img.yad2.co.il/Pic/202606/01/2_5/o/y2_1pa_010355_20260601051014.jpeg",
+            "https://img.yad2.co.il/Pic/202606/01/2_5/o/y2_1pa_010069_20260601051014.jpeg",
+            "https://img.yad2.co.il/Pic/202606/01/2_5/o/y2_1pa_010491_20260601051014.jpeg"
+          ],
+          "squareMeterBuild": 167
+        },
+        "customer": {
+          "agencyName": "אימפריית הנדל\"ן - שגיא ברזילי",
+          "agencyLogo": "//images.yad2.co.il/Pic/TivMiniSite/logo100_2_7_189511_20180221000202-l.jpg?t=1788720686237"
+        },
+        "tags": [],
+        "orderId": 57019269,
+        "priority": 1,
+        "packages": {}
+      },
+      {
+        "address": {
+          "region": {
+            "text": "מרכז והשרון",
+            "id": 1
+          },
+          "city": {
+            "text": "פתח תקווה"
+          },
+          "area": {
+            "text": "פתח תקווה והסביבה"
+          },
+          "neighborhood": {
+            "text": "הדר המושבות החדשה / אם המושבות החדשה"
+          },
+          "house": {
+            "floor": 20
+          },
+          "coords": {
+            "lat": 32.103534,
+            "lon": 34.879304
+          }
+        },
+        "subcategoryId": 5,
+        "categoryId": 2,
+        "adType": "commercial",
+        "price": 0,
+        "token": "4lm98g1c",
+        "additionalDetails": {
+          "property": {
+            "text": "גג/ פנטהאוז"
+          },
+          "roomsCount": 6,
+          "squareMeter": 270,
+          "propertyCondition": {
+            "id": 6
+          },
+          "promotions": []
+        },
+        "metaData": {
+          "coverImage": "https://img.yad2.co.il/Pic/202608/06/2_5/o/y2_1_gIDI050I0q_20260806.jpeg",
+          "images": [
+            "https://img.yad2.co.il/Pic/202608/06/2_5/o/y2_1_gIDI050I0q_20260806.jpeg"
+          ],
+          "squareMeterBuild": 200
+        },
+        "customer": {
+          "agencyName": "Vhouse שיווק נדל'ן",
+          "agencyLogo": "//images.yad2.co.il/Pic/TivMiniSite/6cd2487a-5c6e-4d91-b865-1822d87ee925.JPG?t=1788719476231"
+        },
+        "tags": [],
+        "orderId": 57295739,
+        "priority": 1,
+        "packages": {}
+      },
+      {
+        "address": {
+          "region": {
+            "text": "מרכז והשרון",
+            "id": 1
+          },
+          "city": {
+            "text": "פתח תקווה"
+          },
+          "area": {
+            "text": "פתח תקווה והסביבה"
+          },
+          "house": {
+            "floor": 5
+          },
+          "coords": {
+            "lon": 34.883125,
+            "lat": 32.095493
+          }
+        },
+        "subcategoryId": 5,
+        "categoryId": 2,
+        "adType": "commercial",
+        "price": 3950000,
+        "token": "9kcow559",
+        "additionalDetails": {
+          "property": {
+            "text": "דופלקס"
+          },
+          "roomsCount": 6,
+          "squareMeter": 200,
+          "propertyCondition": {
+            "id": 6
+          },
+          "promotions": []
+        },
+        "metaData": {
+          "coverImage": "https://img.yad2.co.il/Pic/202603/12/2_5/o/y2_1_RRRwfqmDyv_20260312.jpeg",
+          "images": [
+            "https://img.yad2.co.il/Pic/202603/12/2_5/o/y2_1_RRRwfqmDyv_20260312.jpeg"
+          ],
+          "squareMeterBuild": 160
+        },
+        "customer": {
+          "agencyName": "ארנון תיווך",
+          "agencyLogo": "//images.yad2.co.il/Pic/TivMiniSite/56973b1e-07cf-4666-b362-64f8828183aa.jpeg?t=1788719107946"
+        },
+        "tags": [],
+        "orderId": 56686848,
+        "priority": 1,
+        "packages": {}
+      },
+      {
+        "address": {
+          "region": {
+            "text": "מרכז והשרון",
+            "id": 1
+          },
+          "city": {
+            "text": "פתח תקווה"
+          },
+          "area": {
+            "text": "פתח תקווה והסביבה"
+          },
+          "neighborhood": {
+            "text": "הדר המושבות החדשה / אם המושבות החדשה"
+          },
+          "house": {
+            "floor": 18
+          },
+          "coords": {
+            "lon": 34.879304,
+            "lat": 32.103534
+          }
+        },
+        "subcategoryId": 5,
+        "categoryId": 2,
+        "adType": "commercial",
+        "price": 6600000,
+        "token": "7miqmvzy",
+        "additionalDetails": {
+          "property": {
+            "text": "דופלקס"
+          },
+          "roomsCount": 6,
+          "squareMeter": 180,
+          "propertyCondition": {
+            "id": 2
+          },
+          "promotions": []
+        },
+        "metaData": {
+          "images": [],
+          "squareMeterBuild": 180
+        },
+        "customer": {
+          "agencyName": "RS נדל'ן",
+          "agencyLogo": "//images.yad2.co.il/Pic/TivMiniSite/4d481ed4-6449-4d13-b48e-e69521b9421c.png?t=1788715292534"
+        },
+        "tags": [],
+        "orderId": 57161807,
+        "priority": 1,
+        "packages": {}
+      },
+      {
+        "address": {
+          "region": {
+            "text": "מרכז והשרון",
+            "id": 1
+          },
+          "city": {
+            "text": "פתח תקווה"
+          },
+          "area": {
+            "text": "פתח תקווה והסביבה"
+          },
+          "neighborhood": {
+            "text": "כפר גנים ג"
+          },
+          "street": {
+            "text": "יוסף נקר"
+          },
+          "house": {
+            "floor": 7
+          },
+          "coords": {
+            "lon": 34.8707023333333,
+            "lat": 32.0727523333333
+          }
+        },
+        "subcategoryId": 5,
+        "categoryId": 2,
+        "adType": "commercial",
+        "price": 5950000,
+        "token": "wbvl4w9m",
+        "additionalDetails": {
+          "property": {
+            "text": "דופלקס"
+          },
+          "roomsCount": 6,
+          "squareMeter": 285,
+          "propertyCondition": {
+            "id": 3
+          },
+          "promotions": []
+        },
+        "metaData": {
+          "coverImage": "https://img.yad2.co.il/Pic/202604/20/2_5/o/o2_5_1_08402_20260420082732.jpg",
+          "images": [
+            "https://img.yad2.co.il/Pic/202604/20/2_5/o/o2_5_1_08402_20260420082732.jpg",
+            "https://img.yad2.co.il/Pic/202604/20/2_5/o/o2_5_2_03176_20260420082733.jpg",
+            "https://img.yad2.co.il/Pic/202604/20/2_5/o/o2_5_3_06063_20260420082733.jpg",
+            "https://img.yad2.co.il/Pic/202604/20/2_5/o/o2_5_4_02616_20260420082734.jpg",
+            "https://img.yad2.co.il/Pic/202604/20/2_5/o/o2_5_5_03197_20260420082734.jpg",
+            "https://img.yad2.co.il/Pic/202604/20/2_5/o/o2_5_6_04769_20260420082735.jpg",
+            "https://img.yad2.co.il/Pic/202604/20/2_5/o/o2_5_7_09294_20260420082735.jpg",
+            "https://img.yad2.co.il/Pic/202604/20/2_5/o/o2_5_8_07738_20260420082736.jpg"
+          ],
+          "squareMeterBuild": 168
+        },
+        "customer": {
+          "agencyName": "תיווך הMושבה",
+          "agencyLogo": "//images.yad2.co.il/Pic/TivMiniSite/logo100_5_1_726161_20190924090959-l.jpg?t=1788714386421"
+        },
+        "tags": [],
+        "orderId": 56829240,
+        "priority": 1,
+        "packages": {}
+      },
+      {
+        "address": {
+          "region": {
+            "text": "מרכז והשרון",
+            "id": 1
+          },
+          "city": {
+            "text": "פתח תקווה"
+          },
+          "area": {
+            "text": "פתח תקווה והסביבה"
+          },
+          "street": {
+            "text": "הירקונים"
+          },
+          "house": {
+            "floor": 5
+          },
+          "coords": {
+            "lon": 34.896682372093,
+            "lat": 32.0993558372093
+          }
+        },
+        "subcategoryId": 5,
+        "categoryId": 2,
+        "adType": "commercial",
+        "price": 4100000,
+        "token": "6wopyh5f",
+        "additionalDetails": {
+          "property": {
+            "text": "גג/ פנטהאוז"
+          },
+          "roomsCount": 6,
+          "squareMeter": 200,
+          "propertyCondition": {
+            "id": 2
+          },
+          "promotions": []
+        },
+        "inProperty": {
+          "isAssetExclusive": true
+        },
+        "metaData": {
+          "coverImage": "https://img.yad2.co.il/Pic/202609/03/2_5/o/y2_1_nZCGHXkSvf_20260903.jpeg",
+          "images": [
+            "https://img.yad2.co.il/Pic/202609/03/2_5/o/y2_1_nZCGHXkSvf_20260903.jpeg",
+            "https://img.yad2.co.il/Pic/202609/03/2_5/o/y2_2_kFHl7ISFeS_20260903.jpeg",
+            "https://img.yad2.co.il/Pic/202609/03/2_5/o/y2_3_FQezLA0_Bg_20260903.jpeg",
+            "https://img.yad2.co.il/Pic/202609/03/2_5/o/y2_4_yjBbtcwJVO_20260903.jpeg",
+            "https://img.yad2.co.il/Pic/202609/03/2_5/o/y2_5_9izplp7QRQ_20260903.jpeg",
+            "https://img.yad2.co.il/Pic/202609/03/2_5/o/y2_6_InImM1e7ki_20260903.jpeg",
+            "https://img.yad2.co.il/Pic/202609/03/2_5/o/y2_7_o7Lkrg2xla_20260903.jpeg"
+          ],
+          "squareMeterBuild": 137
+        },
+        "customer": {
+          "agencyName": "Remax Partners",
+          "agencyLogo": "//images.yad2.co.il/Pic/TivMiniSite/2d0747e3-f184-4ee2-885f-b1a71eec3769.jpg?t=1788714379785"
+        },
+        "tags": [],
+        "orderId": 57444100,
+        "priority": 1,
+        "packages": {}
+      },
+      {
+        "address": {
+          "region": {
+            "text": "מרכז והשרון",
+            "id": 1
+          },
+          "city": {
+            "text": "פתח תקווה"
+          },
+          "area": {
+            "text": "פתח תקווה והסביבה"
+          },
+          "neighborhood": {
+            "text": "נווה גן"
+          },
+          "house": {
+            "floor": 8
+          },
+          "coords": {
+            "lat": 32.095045,
+            "lon": 34.872787
+          }
+        },
+        "subcategoryId": 5,
+        "categoryId": 2,
+        "adType": "commercial",
+        "price": 4790000,
+        "token": "ub2tzaqh",
+        "additionalDetails": {
+          "property": {
+            "text": "דופלקס"
+          },
+          "roomsCount": 6,
+          "squareMeter": 255,
+          "propertyCondition": {
+            "id": 2
+          },
+          "promotions": []
+        },
+        "inProperty": {
+          "isAssetExclusive": true
+        },
+        "metaData": {
+          "coverImage": "https://img.yad2.co.il/Pic/202609/01/2_5/o/y2_1_p4qS8SY8uG_20260901.jpg",
+          "images": [
+            "https://img.yad2.co.il/Pic/202609/01/2_5/o/y2_1_p4qS8SY8uG_20260901.jpg",
+            "https://img.yad2.co.il/Pic/202609/01/2_5/o/y2_2_QNSl98ax6L_20260901.jpg",
+            "https://img.yad2.co.il/Pic/202609/01/2_5/o/y2_3_hZxIxgXFg__20260901.jpg",
+            "https://img.yad2.co.il/Pic/202609/01/2_5/o/y2_4_GuJZVqaOsL_20260901.jpg",
+            "https://img.yad2.co.il/Pic/202609/01/2_5/o/y2_5_c6pQdY8Svi_20260901.jpg",
+            "https://img.yad2.co.il/Pic/202609/01/2_5/o/y2_6_HZuaE951qk_20260901.jpg",
+            "https://img.yad2.co.il/Pic/202609/01/2_5/o/y2_7_rZQK32ai9X_20260901.jpg",
+            "https://img.yad2.co.il/Pic/202609/01/2_5/o/y2_8_RS8kKrPq6r_20260901.jpg",
+            "https://img.yad2.co.il/Pic/202609/01/2_5/o/y2_9_PmBELTqKlp_20260901.jpg",
+            "https://img.yad2.co.il/Pic/202609/01/2_5/o/y2_10_tsU8LMRCkr_20260901.jpg",
+            "https://img.yad2.co.il/Pic/202609/01/2_5/o/y2_11_2PITcKf2EV_20260901.jpg"
+          ],
+          "squareMeterBuild": 165
+        },
+        "customer": {
+          "agencyName": "פלס תיווך שיווק ויזמות נדל\"ן",
+          "agencyLogo": "//images.yad2.co.il/Pic/TivMiniSite/5e7e760a-a111-4313-801c-d1583da77dfc.png?t=1788714231054"
+        },
+        "tags": [],
+        "orderId": 57428488,
+        "priority": 1,
+        "packages": {}
+      }
+    ],
+    "platinum": [
+      {
+        "address": {
+          "region": {
+            "text": "מרכז והשרון",
+            "id": 1
+          },
+          "city": {
+            "text": "פתח תקווה"
+          },
+          "area": {
+            "text": "פתח תקווה והסביבה"
+          },
+          "neighborhood": {
+            "text": "הדר המושבות החדשה / אם המושבות החדשה"
+          },
+          "street": {
+            "text": "משה פלד"
+          },
+          "house": {
+            "floor": 9
+          },
+          "coords": {
+            "lon": 34.8783166666667,
+            "lat": 32.1004653333333
+          }
+        },
+        "subcategoryId": 5,
+        "categoryId": 2,
+        "adType": "commercial",
+        "price": 5390000,
+        "token": "jef26ypi",
+        "additionalDetails": {
+          "property": {
+            "text": "גג/ פנטהאוז"
+          },
+          "roomsCount": 6,
+          "squareMeter": 223,
+          "propertyCondition": {
+            "id": 2
+          },
+          "promotions": []
+        },
+        "metaData": {
+          "coverImage": "https://img.yad2.co.il/Pic/202602/11/2_5/o/y2_5_P1WLFYwlk3_20260211.png",
+          "images": [
+            "https://img.yad2.co.il/Pic/202602/11/2_5/o/y2_5_P1WLFYwlk3_20260211.png",
+            "https://img.yad2.co.il/Pic/202602/11/2_5/o/y2_3_EzblgV74vb_20260211.png",
+            "https://img.yad2.co.il/Pic/202602/11/2_5/o/y2_1_NI6mkUTCQ5_20260211.jpg",
+            "https://img.yad2.co.il/Pic/202602/11/2_5/o/y2_2_oMmpyLmRSL_20260211.png",
+            "https://img.yad2.co.il/Pic/202602/11/2_5/o/y2_4_0KyVC0mBMT_20260211.png",
+            "https://img.yad2.co.il/Pic/202602/11/2_5/o/y2_6_33YW1ogkGl_20260211.png"
+          ],
+          "squareMeterBuild": 160
+        },
+        "customer": {
+          "agencyName": "שחף נכסים",
+          "agencyLogo": "//images.yad2.co.il/Pic/TivMiniSite/y2_1_06432_20200503010504.jpeg?t=1788726083024"
+        },
+        "tags": [],
+        "orderId": 56577894,
+        "priority": 1,
+        "packages": {}
+      },
+      {
+        "address": {
+          "region": {
+            "text": "מרכז והשרון",
+            "id": 1
+          },
+          "city": {
+            "text": "פתח תקווה"
+          },
+          "area": {
+            "text": "פתח תקווה והסביבה"
+          },
+          "neighborhood": {
+            "text": "כפר גנים ג"
+          },
+          "house": {
+            "floor": 6
+          },
+          "coords": {
+            "lon": 34.869138,
+            "lat": 32.07409
+          }
+        },
+        "subcategoryId": 5,
+        "categoryId": 2,
+        "adType": "commercial",
+        "price": 5650000,
+        "token": "7a8ynci1",
+        "additionalDetails": {
+          "property": {
+            "text": "דופלקס"
+          },
+          "roomsCount": 6,
+          "squareMeter": 256,
+          "propertyCondition": {
+            "id": 3
+          },
+          "promotions": []
+        },
+        "metaData": {
+          "coverImage": "https://img.yad2.co.il/Pic/202602/08/2_5/o/y2_6_QRq7Ei3FHk_20260208.jpg",
+          "images": [
+            "https://img.yad2.co.il/Pic/202602/08/2_5/o/y2_6_QRq7Ei3FHk_20260208.jpg",
+            "https://img.yad2.co.il/Pic/202602/08/2_5/o/y2_4_cUwqeGsXoT_20260208.jpg",
+            "https://img.yad2.co.il/Pic/202511/23/2_5/o/y2_1_kD2h2xaZNV_20251123.jpg",
+            "https://img.yad2.co.il/Pic/202602/08/2_5/o/y2_3_HEfEPU9e3k_20260208.jpg"
+          ],
+          "squareMeterBuild": 177
+        },
+        "customer": {
+          "agencyName": "דירות גואטה-משנת 1964 הכי ותיקים, הכי חזקים!",
+          "agencyLogo": "//images.yad2.co.il/Pic/TivMiniSite/y2_1_07803_20211214092924.jpeg?t=1788723377423"
+        },
+        "tags": [],
+        "orderId": 56210152,
+        "priority": 1,
+        "packages": {}
+      },
+      {
+        "address": {
+          "region": {
+            "text": "מרכז והשרון",
+            "id": 1
+          },
+          "city": {
+            "text": "פתח תקווה"
+          },
+          "area": {
+            "text": "פתח תקווה והסביבה"
+          },
+          "neighborhood": {
+            "text": "קרית אליעזר פרי"
+          },
+          "street": {
+            "text": "עין גנים"
+          },
+          "house": {
+            "number": 83,
+            "floor": 6
+          },
+          "coords": {
+            "lon": 34.898999,
+            "lat": 32.082034
+          }
+        },
+        "subcategoryId": 5,
+        "categoryId": 2,
+        "adType": "commercial",
+        "price": 4490000,
+        "token": "tkgbr5hx",
+        "additionalDetails": {
+          "property": {
+            "text": "דופלקס"
+          },
+          "roomsCount": 6,
+          "squareMeter": 220,
+          "propertyCondition": {
+            "id": 5
+          },
+          "promotions": [
+            "remaxHome"
+          ]
+        },
+        "metaData": {
+          "coverImage": "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010908_20251217134249.jpeg",
+          "images": [
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010908_20251217134249.jpeg",
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010826_20251217134249.jpeg",
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010650_20251217134249.jpeg",
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010214_20251217134249.jpeg",
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010528_20251217134250.jpeg",
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010008_20251217134249.jpeg",
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010013_20251217134250.jpeg",
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010431_20251217134250.jpeg",
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010449_20251217134250.jpeg",
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010824_20251217134250.jpeg",
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010237_20251217134250.jpeg",
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010996_20251217134250.jpeg",
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010917_20251217134250.jpeg",
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010502_20251217134250.jpeg",
+            "https://img.yad2.co.il/Pic/202512/17/2_5/o/y2_1pa_010788_20251217134249.jpeg"
+          ],
+          "squareMeterBuild": 220
+        },
+        "customer": {
+          "agencyName": "RE/MAX רימקס SOLD",
+          "agencyLogo": "//images.yad2.co.il/Pic/TivMiniSite/f1bb26f5-d498-4cd9-8b35-6d1fc3e77cf3.png?t=1788720703545"
+        },
+        "tags": [],
+        "orderId": 56332392,
+        "priority": 1,
+        "packages": {}
+      }
+    ],
+    "booster": [
+      {
+        "address": {
+          "region": {
+            "text": "מרכז והשרון",
+            "id": 1
+          },
+          "city": {
+            "text": "פתח תקווה"
+          },
+          "area": {
+            "text": "פתח תקווה והסביבה"
+          },
+          "neighborhood": {
+            "text": "המרכז השקט / מרכז העיר"
+          },
+          "street": {
+            "text": "אחד העם"
+          },
+          "house": {
+            "floor": 4
+          },
+          "coords": {
+            "lon": 34.8900143796296,
+            "lat": 32.0844554259259
+          }
+        },
+        "subcategoryId": 5,
+        "categoryId": 2,
+        "adType": "commercial",
+        "price": 2480000,
+        "token": "wt6rq0i8",
+        "additionalDetails": {
+          "property": {
+            "text": "גג/ פנטהאוז"
+          },
+          "roomsCount": 6,
+          "squareMeter": 202,
+          "propertyCondition": {
+            "id": 2
+          },
+          "promotions": []
+        },
+        "metaData": {
+          "coverImage": "https://img.yad2.co.il/Pic/202608/03/2_5/o/y2_1pa_996306_20260803133750.jpeg",
+          "images": [
+            "https://img.yad2.co.il/Pic/202608/03/2_5/o/y2_1pa_996306_20260803133750.jpeg",
+            "https://img.yad2.co.il/Pic/202608/03/2_5/o/y2_1pa_998725_20260803133756.jpeg",
+            "https://img.yad2.co.il/Pic/202608/03/2_5/o/y2_1pa_994799_20260803133759.jpeg",
+            "https://img.yad2.co.il/Pic/202608/03/2_5/o/y2_1pa_993234_20260803133802.jpeg",
+            "https://img.yad2.co.il/Pic/202608/03/2_5/o/y2_1pa_998781_20260803133926.jpeg",
+            "https://img.yad2.co.il/Pic/202608/03/2_5/o/y2_1pa_999157_20260803133919.jpeg",
+            "https://img.yad2.co.il/Pic/202608/03/2_5/o/y2_1pa_995291_20260803133922.jpeg"
+          ],
+          "squareMeterBuild": 142
+        },
+        "customer": {
+          "agencyName": "שחף נכסים",
+          "agencyLogo": "//images.yad2.co.il/Pic/TivMiniSite/y2_1_06432_20200503010504.jpeg?t=1788724300065",
+          "brokers": [
+            {
+              "id": 766049,
+              "name": "יגאל זר",
+              "logo": "https://img.yad2.co.il/Pic/TradeMiniSite/ea4c983e-b0d8-4b3d-9bb2-443eec76dafc.jpeg?t=1788724300065",
+              "avatar": "https://img.yad2.co.il/Pic/TradeMiniSite/ea4c983e-b0d8-4b3d-9bb2-443eec76dafc.jpeg?t=1788724300065"
+            }
+          ]
+        },
+        "tags": [],
+        "orderId": 57455115,
+        "priority": 3,
+        "packages": {}
+      }
+    ],
+    "pagination": {
+      "total": 37,
+      "totalPages": 2
+    }
+  }
+}

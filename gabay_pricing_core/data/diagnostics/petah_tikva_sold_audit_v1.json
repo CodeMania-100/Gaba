@@ -1,0 +1,976 @@
+{
+  "audit_version": "petah_tikva_sold_audit_v1",
+  "purpose": "Non-destructive readiness audit before defining deduplication, QA, geographic and program rules.",
+  "generated_at": "2026-09-06T21:15:40.790701",
+  "families": {
+    "3R": {
+      "family": "3R",
+      "source_rows": 2000,
+      "exact_room_rows": 1997,
+      "target_area_rows": 1130,
+      "target_area_recent_24m_rows": 711,
+      "field_frequency": {
+        "dedupeKey": 2000,
+        "dealDate": 2000,
+        "dealAmount": 2000,
+        "pricePerSqm": 2000,
+        "address": 2000,
+        "cityName": 2000,
+        "neighborhoodName": 2000,
+        "rooms": 2000,
+        "floor": 2000,
+        "buildingFloors": 2000,
+        "area": 2000,
+        "yearBuilt": 2000,
+        "propertyType": 2000,
+        "isFirstHand": 2000,
+        "gush": 2000,
+        "helka": 2000,
+        "tatHelka": 2000,
+        "parcelNum": 2000,
+        "assetId": 2000,
+        "prevDeals": 2000,
+        "trend": 2000,
+        "scrapedAt": 2000
+      },
+      "coverage": {
+        "with_date": 711,
+        "with_address": 687,
+        "with_neighborhood": 709,
+        "with_gush_parcel": 711,
+        "with_subparcel": 0,
+        "with_deal_id": 0
+      },
+      "duplicate_analysis": {
+        "duplicate_deal_id_groups": 0,
+        "duplicate_fingerprint_groups": 0,
+        "duplicate_fingerprint_rows": 0,
+        "sample_duplicate_fingerprints": []
+      },
+      "location_analysis": {
+        "independent_location_count": 432,
+        "top_locations": [
+          [
+            "address:עזריאל 1",
+            20
+          ],
+          [
+            "address:בלפור 8",
+            18
+          ],
+          [
+            "address:שחם 23",
+            17
+          ],
+          [
+            "address:הצוערים 3",
+            16
+          ],
+          [
+            "address:בייליס 20",
+            12
+          ],
+          [
+            "address:מנחם רצון 18",
+            10
+          ],
+          [
+            "address:כנסת ישראל 69",
+            9
+          ],
+          [
+            "address:שלום צלח 25",
+            8
+          ],
+          [
+            "address:אלתר מיהוד 10",
+            8
+          ],
+          [
+            "address:יוספסברג 7",
+            8
+          ],
+          [
+            "address:בעל שם-טוב 2",
+            8
+          ],
+          [
+            "address:קלויזנר 2",
+            7
+          ],
+          [
+            "address:שחם 27",
+            7
+          ],
+          [
+            "address:זאב ברנדה 2",
+            7
+          ],
+          [
+            "address:הנביאים 19",
+            6
+          ],
+          [
+            "address:צה\"ל 13",
+            6
+          ],
+          [
+            "address:ז'בוטינסקי 19",
+            5
+          ],
+          [
+            "address:יהושע שטמפפר 73",
+            5
+          ],
+          [
+            "address:שלום צלח 27",
+            5
+          ],
+          [
+            "address:מיכל לייב כץ 96",
+            5
+          ],
+          [
+            "address:יהושע שטמפפר 81",
+            5
+          ],
+          [
+            "address:שלום צלח 35",
+            4
+          ],
+          [
+            "address:שלום צלח 33",
+            4
+          ],
+          [
+            "address:טבריה 34",
+            4
+          ],
+          [
+            "address:אבינועם ילין 6",
+            4
+          ],
+          [
+            "address:ז'בוטינסקי 16",
+            4
+          ],
+          [
+            "address:יואל אנגל 2",
+            4
+          ],
+          [
+            "address:הרב משה בלוי 1",
+            3
+          ],
+          [
+            "address:בורוכוב 4",
+            3
+          ],
+          [
+            "address:מסריק 1",
+            3
+          ]
+        ]
+      },
+      "neighborhoods": [
+        [
+          "מרכז העיר",
+          268
+        ],
+        [
+          "רמת ורבר",
+          66
+        ],
+        [
+          "עמישב",
+          53
+        ],
+        [
+          "עין גנים",
+          36
+        ],
+        [
+          "מחנה יהודה",
+          33
+        ],
+        [
+          "נווה עוז הירוקה",
+          30
+        ],
+        [
+          "שעריה",
+          29
+        ],
+        [
+          "קרול",
+          29
+        ],
+        [
+          "כפר גנים ב",
+          23
+        ],
+        [
+          "אחדות",
+          23
+        ],
+        [
+          "שיפר",
+          20
+        ],
+        [
+          "נווה מעוז",
+          20
+        ],
+        [
+          "קרית חזני",
+          16
+        ],
+        [
+          "יוספטל",
+          9
+        ],
+        [
+          "קריית הרב סלומון",
+          9
+        ],
+        [
+          "הדר המושבות",
+          9
+        ],
+        [
+          "כפר גנים א",
+          8
+        ],
+        [
+          "הדר המושבות החדשה",
+          7
+        ],
+        [
+          "הדר גנים",
+          6
+        ],
+        [
+          "קרית אליעזר פרי",
+          4
+        ],
+        [
+          "גני הדר",
+          3
+        ],
+        [
+          "בר יהודה",
+          3
+        ],
+        [
+          "UNKNOWN",
+          2
+        ],
+        [
+          "נווה גן",
+          2
+        ],
+        [
+          "שיכון מפ\"ם",
+          1
+        ],
+        [
+          "קריית דוד אלעזר",
+          1
+        ],
+        [
+          "קריית מטלון",
+          1
+        ]
+      ],
+      "first_hand_values": {
+        "None": 576,
+        "True": 14,
+        "False": 121
+      },
+      "distribution": {
+        "amount_min": 375000.0,
+        "amount_median": 2015000.0,
+        "amount_max": 3500000.0,
+        "ppsm_min": 5357.0,
+        "ppsm_median": 28667.0,
+        "ppsm_max": 57377.0
+      },
+      "suspicious_count": 9,
+      "suspicious_records": [
+        {
+          "deal_id": null,
+          "date": "2026-05-13",
+          "rooms": 3.0,
+          "area": 69.37,
+          "amount": 450000.0,
+          "ppsm": 6487.0,
+          "address": "ביל\"ו 18",
+          "street": null,
+          "house": null,
+          "neighborhood": "מרכז העיר",
+          "gush": "6374",
+          "parcel": "6374-24-18",
+          "subparcel": null,
+          "first_hand": null,
+          "audit_flags": [
+            "very_low_ppsm"
+          ]
+        },
+        {
+          "deal_id": null,
+          "date": "2026-04-23",
+          "rooms": 3.0,
+          "area": 68.65,
+          "amount": 700000.0,
+          "ppsm": 10197.0,
+          "address": "הרב מסעוד פינטו 8",
+          "street": null,
+          "house": null,
+          "neighborhood": "שיפר",
+          "gush": "6355",
+          "parcel": "6355-752-9",
+          "subparcel": null,
+          "first_hand": null,
+          "audit_flags": [
+            "very_low_ppsm"
+          ]
+        },
+        {
+          "deal_id": null,
+          "date": "2025-11-04",
+          "rooms": 3.0,
+          "area": 63.0,
+          "amount": 600000.0,
+          "ppsm": 9524.0,
+          "address": "הרצל 77",
+          "street": null,
+          "house": null,
+          "neighborhood": "מרכז העיר",
+          "gush": "6383",
+          "parcel": "6383-295-3",
+          "subparcel": null,
+          "first_hand": null,
+          "audit_flags": [
+            "very_low_ppsm"
+          ]
+        },
+        {
+          "deal_id": null,
+          "date": "2025-07-02",
+          "rooms": 3.0,
+          "area": 73.0,
+          "amount": 790000.0,
+          "ppsm": 10822.0,
+          "address": "יהושע שטמפפר 58",
+          "street": null,
+          "house": null,
+          "neighborhood": "עין גנים",
+          "gush": "6378",
+          "parcel": "6378-5-4",
+          "subparcel": null,
+          "first_hand": false,
+          "audit_flags": [
+            "very_low_ppsm"
+          ]
+        },
+        {
+          "deal_id": null,
+          "date": "2025-06-09",
+          "rooms": 3.0,
+          "area": 70.0,
+          "amount": 375000.0,
+          "ppsm": 5357.0,
+          "address": null,
+          "street": null,
+          "house": null,
+          "neighborhood": "מרכז העיר",
+          "gush": "6374",
+          "parcel": "6374-138-9",
+          "subparcel": null,
+          "first_hand": null,
+          "audit_flags": [
+            "very_low_ppsm"
+          ]
+        },
+        {
+          "deal_id": null,
+          "date": "2025-06-03",
+          "rooms": 3.0,
+          "area": 59.0,
+          "amount": 530000.0,
+          "ppsm": 8983.0,
+          "address": "קהילת פראג 6",
+          "street": null,
+          "house": null,
+          "neighborhood": "יוספטל",
+          "gush": "6326",
+          "parcel": "6326-331-15",
+          "subparcel": null,
+          "first_hand": null,
+          "audit_flags": [
+            "very_low_ppsm"
+          ]
+        },
+        {
+          "deal_id": null,
+          "date": "2025-01-20",
+          "rooms": 3.0,
+          "area": 79.0,
+          "amount": 700000.0,
+          "ppsm": 8861.0,
+          "address": "זאב ברנדה 21",
+          "street": null,
+          "house": null,
+          "neighborhood": "מרכז העיר",
+          "gush": "6387",
+          "parcel": "6387-68-15",
+          "subparcel": null,
+          "first_hand": null,
+          "audit_flags": [
+            "very_low_ppsm"
+          ]
+        },
+        {
+          "deal_id": null,
+          "date": "2025-01-08",
+          "rooms": 3.0,
+          "area": 74.0,
+          "amount": 540000.0,
+          "ppsm": 7297.0,
+          "address": "יהושע שטמפפר 43",
+          "street": null,
+          "house": null,
+          "neighborhood": "מרכז העיר",
+          "gush": "6377",
+          "parcel": "6377-239-2",
+          "subparcel": null,
+          "first_hand": false,
+          "audit_flags": [
+            "very_low_ppsm"
+          ]
+        },
+        {
+          "deal_id": null,
+          "date": "2024-10-09",
+          "rooms": 3.0,
+          "area": 67.0,
+          "amount": 525000.0,
+          "ppsm": 7836.0,
+          "address": "גוש חלב 21",
+          "street": null,
+          "house": null,
+          "neighborhood": "קריית מטלון",
+          "gush": "6191",
+          "parcel": "6191-9-30",
+          "subparcel": null,
+          "first_hand": null,
+          "audit_flags": [
+            "very_low_ppsm"
+          ]
+        }
+      ]
+    },
+    "5R": {
+      "family": "5R",
+      "source_rows": 2000,
+      "exact_room_rows": 1403,
+      "target_area_rows": 896,
+      "target_area_recent_24m_rows": 707,
+      "field_frequency": {
+        "dedupeKey": 2000,
+        "dealDate": 2000,
+        "dealAmount": 2000,
+        "pricePerSqm": 2000,
+        "address": 2000,
+        "cityName": 2000,
+        "neighborhoodName": 2000,
+        "rooms": 2000,
+        "floor": 2000,
+        "buildingFloors": 2000,
+        "area": 2000,
+        "yearBuilt": 2000,
+        "propertyType": 2000,
+        "isFirstHand": 2000,
+        "gush": 2000,
+        "helka": 2000,
+        "tatHelka": 2000,
+        "parcelNum": 2000,
+        "assetId": 2000,
+        "prevDeals": 2000,
+        "trend": 2000,
+        "scrapedAt": 2000
+      },
+      "coverage": {
+        "with_date": 707,
+        "with_address": 624,
+        "with_neighborhood": 689,
+        "with_gush_parcel": 707,
+        "with_subparcel": 0,
+        "with_deal_id": 0
+      },
+      "duplicate_analysis": {
+        "duplicate_deal_id_groups": 0,
+        "duplicate_fingerprint_groups": 0,
+        "duplicate_fingerprint_rows": 0,
+        "sample_duplicate_fingerprints": []
+      },
+      "location_analysis": {
+        "independent_location_count": 365,
+        "top_locations": [
+          [
+            "address:שחם 31",
+            29
+          ],
+          [
+            "address:ניר 15",
+            20
+          ],
+          [
+            "address:זאב ברנדה 40",
+            17
+          ],
+          [
+            "address:הרב משה בלוי 28",
+            16
+          ],
+          [
+            "address:כנסת ישראל 27",
+            14
+          ],
+          [
+            "address:ברנדייס 47",
+            12
+          ],
+          [
+            "address:דוד טבצ'ניק 1",
+            12
+          ],
+          [
+            "address:מבצע דקל 16",
+            10
+          ],
+          [
+            "address:מנחם רצון 18",
+            10
+          ],
+          [
+            "address:שחם 23",
+            10
+          ],
+          [
+            "address:נחמיה עמינח 6",
+            10
+          ],
+          [
+            "address:שחם 27",
+            9
+          ],
+          [
+            "address:מיכל לייב כץ 88",
+            8
+          ],
+          [
+            "address:הרב משה בלוי 3",
+            7
+          ],
+          [
+            "address:שחם 19",
+            7
+          ],
+          [
+            "address:עזריאל 1",
+            7
+          ],
+          [
+            "address:נחום ניר 15",
+            6
+          ],
+          [
+            "address:לוחמי הגטו 35",
+            6
+          ],
+          [
+            "address:שלום צלח 43",
+            6
+          ],
+          [
+            "address:דוד וולפסון 39",
+            5
+          ],
+          [
+            "address:הרב משה בלוי 1",
+            5
+          ],
+          [
+            "address:פנקס 5",
+            5
+          ],
+          [
+            "address:מיכל לייב כץ 90",
+            5
+          ],
+          [
+            "address:לוחמי הגטו 37",
+            5
+          ],
+          [
+            "address:דוד וולפסון 60",
+            5
+          ],
+          [
+            "address:אליעזר קפלן 41",
+            4
+          ],
+          [
+            "address:הכרם 4",
+            4
+          ],
+          [
+            "address:הרב אריה לוין 5",
+            4
+          ],
+          [
+            "address:מיכל לייב כץ 94",
+            4
+          ],
+          [
+            "address:זאב ברנדה 26",
+            4
+          ]
+        ]
+      },
+      "neighborhoods": [
+        [
+          "מרכז העיר",
+          113
+        ],
+        [
+          "נווה עוז הירוקה",
+          89
+        ],
+        [
+          "הדר המושבות החדשה",
+          64
+        ],
+        [
+          "כפר גנים א",
+          58
+        ],
+        [
+          "שיפר",
+          46
+        ],
+        [
+          "נווה גן",
+          34
+        ],
+        [
+          "כפר גנים ב",
+          33
+        ],
+        [
+          "כפר גנים ג",
+          31
+        ],
+        [
+          "קריית הרב סלומון",
+          29
+        ],
+        [
+          "מחנה יהודה",
+          27
+        ],
+        [
+          "עין גנים",
+          21
+        ],
+        [
+          "שעריה",
+          20
+        ],
+        [
+          "UNKNOWN",
+          18
+        ],
+        [
+          "גני הדר",
+          17
+        ],
+        [
+          "קרול",
+          17
+        ],
+        [
+          "הדר גנים",
+          13
+        ],
+        [
+          "רמת ורבר",
+          12
+        ],
+        [
+          "קרית חזני",
+          11
+        ],
+        [
+          "בר יהודה",
+          9
+        ],
+        [
+          "עמישב",
+          9
+        ],
+        [
+          "נווה מעוז",
+          9
+        ],
+        [
+          "עין גנים דרום",
+          8
+        ],
+        [
+          "הדר המושבות",
+          7
+        ],
+        [
+          "שיכון רסקו",
+          3
+        ],
+        [
+          "שיכון מפ\"ם",
+          2
+        ],
+        [
+          "כפר אברהם",
+          2
+        ],
+        [
+          "אחדות",
+          1
+        ],
+        [
+          "יוספטל",
+          1
+        ],
+        [
+          "קריית מטלון",
+          1
+        ],
+        [
+          "שיכון הפועל המזרחי",
+          1
+        ],
+        [
+          "קריית אלון",
+          1
+        ]
+      ],
+      "first_hand_values": {
+        "None": 647,
+        "True": 32,
+        "False": 28
+      },
+      "distribution": {
+        "amount_min": 500000.0,
+        "amount_median": 3140000.0,
+        "amount_max": 28900000.0,
+        "ppsm_min": 4237.0,
+        "ppsm_median": 26860.0,
+        "ppsm_max": 255752.0
+      },
+      "suspicious_count": 10,
+      "suspicious_records": [
+        {
+          "deal_id": null,
+          "date": "2026-06-20",
+          "rooms": 5.0,
+          "area": 118.0,
+          "amount": 500000.0,
+          "ppsm": 4237.0,
+          "address": "שלום צלח 37",
+          "street": null,
+          "house": null,
+          "neighborhood": "עמישב",
+          "gush": "6320",
+          "parcel": "6320-160-5",
+          "subparcel": null,
+          "first_hand": null,
+          "audit_flags": [
+            "very_low_ppsm"
+          ]
+        },
+        {
+          "deal_id": null,
+          "date": "2026-05-17",
+          "rooms": 5.0,
+          "area": 104.83,
+          "amount": 966000.0,
+          "ppsm": 9288.0,
+          "address": "רחובות 3",
+          "street": null,
+          "house": null,
+          "neighborhood": "הדר המושבות",
+          "gush": "7195",
+          "parcel": "7195-10-10",
+          "subparcel": null,
+          "first_hand": null,
+          "audit_flags": [
+            "very_low_ppsm"
+          ]
+        },
+        {
+          "deal_id": null,
+          "date": "2026-05-06",
+          "rooms": 5.0,
+          "area": 113.0,
+          "amount": 28900000.0,
+          "ppsm": 255752.0,
+          "address": "הרב משה בלוי 3",
+          "street": null,
+          "house": null,
+          "neighborhood": "שיפר",
+          "gush": "6355",
+          "parcel": "6355-428-2",
+          "subparcel": null,
+          "first_hand": true,
+          "audit_flags": [
+            "very_high_ppsm"
+          ]
+        },
+        {
+          "deal_id": null,
+          "date": "2026-03-18",
+          "rooms": 5.0,
+          "area": 126.0,
+          "amount": 1321000.0,
+          "ppsm": 10484.0,
+          "address": "מוצקין 12",
+          "street": null,
+          "house": null,
+          "neighborhood": "מרכז העיר",
+          "gush": "6375",
+          "parcel": "6375-219-17",
+          "subparcel": null,
+          "first_hand": null,
+          "audit_flags": [
+            "very_low_ppsm"
+          ]
+        },
+        {
+          "deal_id": null,
+          "date": "2025-11-10",
+          "rooms": 5.0,
+          "area": 118.0,
+          "amount": 700000.0,
+          "ppsm": 5932.0,
+          "address": null,
+          "street": null,
+          "house": null,
+          "neighborhood": "כפר גנים א",
+          "gush": "6713",
+          "parcel": "6713-90-35",
+          "subparcel": null,
+          "first_hand": null,
+          "audit_flags": [
+            "very_low_ppsm"
+          ]
+        },
+        {
+          "deal_id": null,
+          "date": "2025-10-03",
+          "rooms": 5.0,
+          "area": 117.0,
+          "amount": 850000.0,
+          "ppsm": 7265.0,
+          "address": "דוד טבצ'ניק 15",
+          "street": null,
+          "house": null,
+          "neighborhood": "נווה גן",
+          "gush": "6362",
+          "parcel": "6362-169-11",
+          "subparcel": null,
+          "first_hand": null,
+          "audit_flags": [
+            "very_low_ppsm"
+          ]
+        },
+        {
+          "deal_id": null,
+          "date": "2025-08-12",
+          "rooms": 5.0,
+          "area": 113.0,
+          "amount": 950000.0,
+          "ppsm": 8407.0,
+          "address": "הרב משה בלוי 5",
+          "street": null,
+          "house": null,
+          "neighborhood": "שיפר",
+          "gush": "6355",
+          "parcel": "6355-427-2",
+          "subparcel": null,
+          "first_hand": null,
+          "audit_flags": [
+            "very_low_ppsm"
+          ]
+        },
+        {
+          "deal_id": null,
+          "date": "2025-08-08",
+          "rooms": 5.0,
+          "area": 127.0,
+          "amount": 1061000.0,
+          "ppsm": 8354.0,
+          "address": "ארלוזורוב 46",
+          "street": null,
+          "house": null,
+          "neighborhood": "רמת ורבר",
+          "gush": "6373",
+          "parcel": "6373-1075-26",
+          "subparcel": null,
+          "first_hand": null,
+          "audit_flags": [
+            "very_low_ppsm"
+          ]
+        },
+        {
+          "deal_id": null,
+          "date": "2025-03-03",
+          "rooms": 5.0,
+          "area": 121.0,
+          "amount": 1225000.0,
+          "ppsm": 10124.0,
+          "address": "דוד וולפסון 39",
+          "street": null,
+          "house": null,
+          "neighborhood": "עין גנים",
+          "gush": "6404",
+          "parcel": "6404-311-102",
+          "subparcel": null,
+          "first_hand": false,
+          "audit_flags": [
+            "very_low_ppsm"
+          ]
+        },
+        {
+          "deal_id": null,
+          "date": "2025-02-16",
+          "rooms": 5.0,
+          "area": 108.0,
+          "amount": 1050000.0,
+          "ppsm": 9722.0,
+          "address": "שלומציון המלכה 6",
+          "street": null,
+          "house": null,
+          "neighborhood": "שיכון הפועל המזרחי",
+          "gush": "6399",
+          "parcel": "6399-290-113",
+          "subparcel": null,
+          "first_hand": null,
+          "audit_flags": [
+            "very_low_ppsm"
+          ]
+        }
+      ]
+    }
+  }
+}

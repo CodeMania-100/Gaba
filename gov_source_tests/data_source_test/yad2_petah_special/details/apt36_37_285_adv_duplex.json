@@ -1,0 +1,132 @@
+{
+  "success": true,
+  "data": {
+    "token": "wbvl4w9m",
+    "orderId": 56829240,
+    "adNumber": 48953932,
+    "adType": "commercial",
+    "categoryId": 2,
+    "subcategoryId": 5,
+    "priority": 1,
+    "statusId": 1,
+    "price": 5950000,
+    "additionalDetails": {
+      "balconiesCount": 2,
+      "entranceDate": "2026-08-01T00:00:00",
+      "squareMeter": 285,
+      "roomsCount": 6,
+      "propertyGroup": {
+        "id": 1,
+        "text": "דירות",
+        "textEng": "apartments"
+      },
+      "property": {
+        "id": 7,
+        "text": "דופלקס",
+        "textEng": "duplex"
+      },
+      "parkingSpacesCount": 2,
+      "propertyCondition": {
+        "id": 3,
+        "text": "במצב שמור"
+      },
+      "squareMeterBuild": 168,
+      "isPillarBuilding": true,
+      "buildingTopFloor": 7
+    },
+    "inProperty": {
+      "includeAirconditioner": true,
+      "includeBalcony": true,
+      "includeBoiler": true,
+      "includeElevator": true,
+      "includeParking": true,
+      "includeSecurityRoom": true,
+      "includeWarehouse": true,
+      "isHandicapped": true,
+      "isRenovated": true,
+      "isKitchenKosher": true,
+      "includeTornado": true
+    },
+    "searchText": "שם מוכר תיווך הMושבה דניאל נכס למכירה מסוג דופלקס עם מספר חדרים 6 בקומה 7 בכתובת יוסף נקר כפר גנים ג פתח תקווה אזור פתח תקווה והסביבה מרכז הנכס כולל ממ\"ד מעלית חניה מחסן מיזוג גישה לנכים מרפסת משופצת מצב הנכס במצב שמור תאור לקוח נכס מספר: 51215, חדש בשוק! בכפר גנים ג', במיקום הכי טוב הכי גבוה בשכונה, דופלקס פנטהאוז מרווח, 2 דירות בקומה, מרפסות ענקיות 117 מ\"ר, מחסן צמוד, 2 חניות נפרדות, מעלית שבת!\nקרוב למרכזים המסחריים ולמוסדות לימוד! מומלץ במיוחד. prime location תיווך המושבה הינה סוכנות נדל\"ן מובילה בשכונות החדשות של פתח תקווה  \r\nאם המושבות, נווה גן וכפר גנים ג' בלבד.\r\n\r\nהסוכנות קיימת ופועלת קרוב ל-20 שנים וממוקמת במרכז המסחרי \"חצי חינם\" בשכונת אם המושבות.\r\n\r\nאנו נצמדים בהתמדה לערכים אשר מנחים עבורנו את הדרך מידי יום ויום, ביניהם  רמת שירות בלתי מתפשרת, יחס אישי, חדשנות ויצירת ערך מוסף ויתרונות יחסיים ללקוחותינו, מוכרים וקונים כאחד. סוכנות תיווך הMושבה",
+    "customer": {
+      "name": "דניאל",
+      "id": 102057,
+      "isVirtualPhoneNumber": true,
+      "agencyName": "תיווך הMושבה",
+      "agencyLogo": "//images.yad2.co.il/Pic/TivMiniSite/logo100_5_1_726161_20190924090959-l.jpg?t=1788714386421",
+      "brokerAvatar": "https://img.yad2.co.il/Pic/TradeMiniSite/ffa057fd-85e5-4eee-b8f5-6fb89b923006.jpeg?t=1788714386421",
+      "agencyAbout": "תיווך המושבה הינה סוכנות נדל\"ן מובילה בשכונות החדשות של פתח תקווה  \r\nאם המושבות, נווה גן וכפר גנים ג' בלבד.\r\n\r\nהסוכנות קיימת ופועלת קרוב ל-20 שנים וממוקמת במרכז המסחרי \"חצי חינם\" בשכונת אם המושבות.\r\n\r\nאנו נצמדים בהתמדה לערכים אשר מנחים עבורנו את הדרך מידי יום ויום, ביניהם  רמת שירות בלתי מתפשרת, יחס אישי, חדשנות ויצירת ערך מוסף ויתרונות יחסיים ללקוחותינו, מוכרים וקונים כאחד.",
+      "brokers": [
+        {
+          "name": "דניאל",
+          "avatar": "https://img.yad2.co.il/Pic/TradeMiniSite/ffa057fd-85e5-4eee-b8f5-6fb89b923006.jpeg?t=1788714386421",
+          "id": 378,
+          "licenseNumber": "3982802"
+        }
+      ],
+      "licenseNumber": "3982802"
+    },
+    "packages": {
+      "hasMiniSite": true
+    },
+    "address": {
+      "topArea": {
+        "id": 2,
+        "text": "מרכז",
+        "textEng": "hamerkaz_area"
+      },
+      "region": {
+        "id": 1,
+        "text": "מרכז והשרון",
+        "textEng": "Center"
+      },
+      "area": {
+        "id": 4,
+        "text": "פתח תקווה והסביבה",
+        "textEng": "petah_tikva_area"
+      },
+      "city": {
+        "id": "7900",
+        "text": "פתח תקווה"
+      },
+      "neighborhood": {
+        "id": 755,
+        "text": "כפר גנים ג"
+      },
+      "street": {
+        "id": "1285",
+        "text": "יוסף נקר"
+      },
+      "coords": {
+        "lat": 32.0727523333333,
+        "lon": 34.8707023333333
+      },
+      "house": {
+        "floor": 7
+      },
+      "addressMasterId": 6022523
+    },
+    "metaData": {
+      "coverImage": "https://img.yad2.co.il/Pic/202604/20/2_5/o/o2_5_1_08402_20260420082732.jpg",
+      "images": [
+        "https://img.yad2.co.il/Pic/202604/20/2_5/o/o2_5_1_08402_20260420082732.jpg",
+        "https://img.yad2.co.il/Pic/202604/20/2_5/o/o2_5_2_03176_20260420082733.jpg",
+        "https://img.yad2.co.il/Pic/202604/20/2_5/o/o2_5_3_06063_20260420082733.jpg",
+        "https://img.yad2.co.il/Pic/202604/20/2_5/o/o2_5_4_02616_20260420082734.jpg",
+        "https://img.yad2.co.il/Pic/202604/20/2_5/o/o2_5_5_03197_20260420082734.jpg",
+        "https://img.yad2.co.il/Pic/202604/20/2_5/o/o2_5_6_04769_20260420082735.jpg",
+        "https://img.yad2.co.il/Pic/202604/20/2_5/o/o2_5_7_09294_20260420082735.jpg",
+        "https://img.yad2.co.il/Pic/202604/20/2_5/o/o2_5_8_07738_20260420082736.jpg"
+      ],
+      "description": "נכס מספר: 51215, חדש בשוק! בכפר גנים ג', במיקום הכי טוב הכי גבוה בשכונה, דופלקס פנטהאוז מרווח, 2 דירות בקומה, מרפסות ענקיות 117 מ\"ר, מחסן צמוד, 2 חניות נפרדות, מעלית שבת!\nקרוב למרכזים המסחריים ולמוסדות לימוד! מומלץ במיוחד.",
+      "shelterDistance": 758
+    },
+    "dates": {
+      "updatedAt": "2026-09-06T20:06:25",
+      "createdAt": "2026-04-20T08:27:05",
+      "endsAt": "2027-07-11T00:00:00",
+      "rebouncedAt": "2026-09-06T20:06:25"
+    },
+    "abovePrice": "5000000"
+  }
+}

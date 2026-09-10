@@ -1,0 +1,11 @@
+# Runtime dependencies for app_api/ + pricing_core/ + petah_tikva_pricing.py
+# only -- derived from the actual `import` statements in those modules, not
+# from the full shared local dev .venv (which also carries unrelated
+# tooling: fastmcp, nadlan-mcp, redis test doubles, etc.). Versions pinned to
+# what is verified working in local development.
+fastapi==0.141.1
+pydantic==2.13.5
+SQLAlchemy==2.0.52
+uvicorn[standard]==0.52.4
+openpyxl==3.1.5
+python-multipart==0.0.32

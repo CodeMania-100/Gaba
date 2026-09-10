@@ -47,7 +47,7 @@ DEMO_DISCLAIMER = (
 # competitor register) and must never be reused here as the subject address.
 SUBJECT_PROJECT_NAME = "פרויקט הדגמה – המרכז השקט"
 SUBJECT_LOCATION_NOTE = (
-    "מיקום הדגמה לצורך ניתוח השוק – כתובת הפרויקט לא סופקה במסגרת המטלה"
+    "מיקום הפרויקט לצורך ההדגמה מבוסס על הנחת עבודה; כתובת מדויקת לא סופקה במטלה."
 )
 
 SOURCE_REGISTRY = {
@@ -68,6 +68,17 @@ def _frozen_dir() -> Path:
 
 def _load(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _load_market_map_geocodes(frozen_dir: Path) -> dict | None:
+    """Passthrough of the frozen, one-time geocoding pass (see
+    build_map_geocodes_v1.py) -- never recomputed or geocoded live here.
+    Returns None (rather than raising) if the geocode file hasn't been
+    generated yet, so the rest of the workspace payload still builds."""
+    path = frozen_dir / "map_geocodes_v1.json"
+    if not path.exists():
+        return None
+    return _load(path)
 
 
 def _sold_raw_rows(family_data: dict) -> list[dict]:
@@ -497,6 +508,7 @@ def build_petah_tikva_workspace_payload(data_dir: Path | None = None) -> dict:
         "standard_attribute_enrichment": build_standard_attribute_enrichment(root, competitor_landscape),
         "special_unit_market_context": build_special_unit_market_context(root, special_units, families, special_indications),
         "price_list": full_price_list,
+        "market_map_geocodes": _load_market_map_geocodes(frozen),
         "strategy": {
             "note": price_list_doc["plan"]["note"],
             "disclaimer": price_list_doc["disclaimer"],

@@ -1,0 +1,2158 @@
+{
+  "version": "map_geocodes_v1",
+  "generated_at": "2026-09-09T21:36:52.016812+00:00",
+  "geocoder": "nominatim_openstreetmap",
+  "validation": {
+    "city_tokens": [
+      "פתח תקווה",
+      "פתח תקוה",
+      "petah tikva",
+      "petah tiqwa",
+      "petah-tikva"
+    ],
+    "bbox": {
+      "min_lat": 32.03,
+      "max_lat": 32.13,
+      "min_lng": 34.82,
+      "max_lng": 34.94
+    },
+    "note": "Every accepted record resolved inside Petah Tikva by both the geocoder's own address components and this coordinate envelope; ambiguous/out-of-area/too-coarse results are listed under unresolved rather than guessed."
+  },
+  "sold_evidence_coverage": {
+    "usable_transactions_total": 321,
+    "unique_addresses_total": 214,
+    "unique_addresses_resolved": 191
+  },
+  "competitors": {
+    "resolved": [
+      {
+        "record_id": "competitor:זאב ברנדה 22",
+        "address": "זאב ברנדה 22, פתח תקווה",
+        "lat": 32.0807293,
+        "lng": 34.8852882,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "זאב ברנדה, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "competitor:הרב ניימן 8",
+        "address": "הרב ניימן 8, פתח תקווה",
+        "lat": 32.0841368,
+        "lng": 34.8791001,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "8, הרב ניימן, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "competitor:חפץ חיים 25",
+        "address": "חפץ חיים 25, פתח תקווה",
+        "lat": 32.0833052,
+        "lng": 34.8872075,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "חפץ חיים, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "competitor:רוטשילד 163–165",
+        "address": "רוטשילד 163–165, פתח תקווה",
+        "lat": 32.0900454,
+        "lng": 34.8806092,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "רוטשילד, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4941642, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "competitor:ברנדה 49",
+        "address": "זאב ברנדה 49, פתח תקווה",
+        "lat": 32.0807293,
+        "lng": 34.8852882,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "זאב ברנדה, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "competitor:מתחם סוף רוטשילד",
+        "address": "רוטשילד 170–172, פתח תקווה",
+        "lat": 32.0817963,
+        "lng": 34.8835091,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "רוטשילד, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "competitor:THE SPOT",
+        "address": "יהושע שטמפפר 83–87, פתח תקווה",
+        "lat": 32.0945026,
+        "lng": 34.8918851,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "יהושע שטמפפר, נווה מעוז, תקומה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4929422, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "competitor:מגדלי ספיר",
+        "address": "יוסף ספיר 25–29, פתח תקווה",
+        "lat": 32.0973596,
+        "lng": 34.8932458,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "יוסף ספיר, נווה מעוז, שיפר, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4929422, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "competitor:הבעל שם טוב 61",
+        "address": "בעל שם טוב 61, פתח תקווה",
+        "lat": 32.0779553,
+        "lng": 34.8960034,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "בעל שם טוב, מחנה יהודה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4932404, ישראל",
+        "verified": true
+      }
+    ],
+    "unresolved": [
+      {
+        "record_id": "competitor:DeFour",
+        "address": "ברנדה פינת בלפור, פתח תקווה",
+        "reason": "no_results"
+      }
+    ]
+  },
+  "sold": {
+    "resolved": [
+      {
+        "record_id": "sold_address:זאב ברנדה 43",
+        "address": "זאב ברנדה 43",
+        "lat": 32.0807293,
+        "lng": 34.8852882,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "זאב ברנדה, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:פנקס 3",
+        "address": "פנקס 3",
+        "lat": 32.0813715,
+        "lng": 34.881342,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "3, פנקס, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:פנקס 1",
+        "address": "פנקס 1",
+        "lat": 32.0816078,
+        "lng": 34.8816878,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "1, פנקס, נווה מעוז, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:בר כוכבא 27",
+        "address": "בר כוכבא 27",
+        "lat": 32.092735,
+        "lng": 34.8853174,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "27, בר כוכבא, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4956027, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:בלפור 8",
+        "address": "בלפור 8",
+        "lat": 32.0821458,
+        "lng": 34.8860303,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "בלפור, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:רוטשילד 92",
+        "address": "רוטשילד 92",
+        "lat": 32.0852745,
+        "lng": 34.8818793,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "92, רוטשילד, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:זאב אורלוב 4",
+        "address": "זאב אורלוב 4",
+        "lat": 32.0909276,
+        "lng": 34.8767181,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "4, זאב אורלוב, רמת ורבר, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4941642, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:מנחם אוסישקין 6",
+        "address": "מנחם אוסישקין 6",
+        "lat": 32.0901831,
+        "lng": 34.8892991,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "אוסישקין, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:ההסתדרות 2",
+        "address": "ההסתדרות 2",
+        "lat": 32.0856828,
+        "lng": 34.8826144,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "2, ההסתדרות, יוספטל, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:דוד וולפסון 24",
+        "address": "דוד וולפסון 24",
+        "lat": 32.0878994,
+        "lng": 34.8929849,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "דוד וולפסון, עין גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:צבי הרמן שפירא 15",
+        "address": "צבי הרמן שפירא 15",
+        "lat": 32.0833062,
+        "lng": 34.8861064,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "15, צבי הרמן שפירא, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:רוטשילד 31",
+        "address": "רוטשילד 31",
+        "lat": 32.0923251,
+        "lng": 34.8810673,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "31, רוטשילד, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4941642, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:יהושע שטמפפר 73",
+        "address": "יהושע שטמפפר 73",
+        "lat": 32.0939501,
+        "lng": 34.8897946,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "73, יהושע שטמפפר, נווה מעוז, תקומה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4929422, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:ביל\"ו 18",
+        "address": "ביל\"ו 18",
+        "lat": 32.0871911,
+        "lng": 34.8786626,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "18, ביל\"ו, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4941642, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:רוטשילד 166",
+        "address": "רוטשילד 166",
+        "lat": 32.0900454,
+        "lng": 34.8806092,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "רוטשילד, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4941642, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:יהושע שטמפפר 67",
+        "address": "יהושע שטמפפר 67",
+        "lat": 32.0911439,
+        "lng": 34.887369,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "יהושע שטמפפר, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4956027, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:הרצל 14",
+        "address": "הרצל 14",
+        "lat": 32.0849163,
+        "lng": 34.8843707,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "14, הרצל, קריית אלעזר, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:ביל\"ו 23",
+        "address": "ביל\"ו 23",
+        "lat": 32.0867764,
+        "lng": 34.8786011,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "23, ביל\"ו, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4941642, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:ההסתדרות 15",
+        "address": "ההסתדרות 15",
+        "lat": 32.085854,
+        "lng": 34.8834762,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "ההסתדרות, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:חיים עוזר 18",
+        "address": "חיים עוזר 18",
+        "lat": 32.0878626,
+        "lng": 34.8864824,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "18, חיים עוזר, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:הרצל 5",
+        "address": "הרצל 5",
+        "lat": 32.085119,
+        "lng": 34.8831137,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "5, הרצל, קריית אלעזר, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:אורלנסקי 28",
+        "address": "אורלנסקי 28",
+        "lat": 32.0833545,
+        "lng": 34.8905222,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "אורלנסקי, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:נחלת צבי 18",
+        "address": "נחלת צבי 18",
+        "lat": 32.0912977,
+        "lng": 34.8894127,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "18, נחלת צבי, עין גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:פינסקר 55",
+        "address": "פינסקר 55",
+        "lat": 32.0926025,
+        "lng": 34.8829897,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "55, פינסקר, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4956027, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:פיק\"א 20",
+        "address": "פיק\"א 20",
+        "lat": 32.0864982,
+        "lng": 34.8797485,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "20, פיק\"א, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:הרצל 23",
+        "address": "הרצל 23",
+        "lat": 32.0852837,
+        "lng": 34.8869244,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "הרצל, קריית אלעזר, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:מנחם אוסישקין 13",
+        "address": "מנחם אוסישקין 13",
+        "lat": 32.0901831,
+        "lng": 34.8892991,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "אוסישקין, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:דוד וולפסון 48",
+        "address": "דוד וולפסון 48",
+        "lat": 32.0878994,
+        "lng": 34.8929849,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "דוד וולפסון, עין גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:רוטשילד 97",
+        "address": "רוטשילד 97",
+        "lat": 32.0840987,
+        "lng": 34.8831444,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "97, רוטשילד, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:הראשונים 7",
+        "address": "הראשונים 7",
+        "lat": 32.0891653,
+        "lng": 34.8878351,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "הראשונים, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:רוטשילד 79",
+        "address": "רוטשילד 79",
+        "lat": 32.0817963,
+        "lng": 34.8835091,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "רוטשילד, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:אלתר מיהוד 10",
+        "address": "אלתר מיהוד 10",
+        "lat": 32.0817453,
+        "lng": 34.8822565,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "10, אלתר מיהוד, יוספטל, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:אבינועם ילין 5",
+        "address": "אבינועם ילין 5",
+        "lat": 32.0790691,
+        "lng": 34.8880362,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "אבינועם ילין, קריית אלון, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:גד מכנס 32",
+        "address": "גד מכנס 32",
+        "lat": 32.078265,
+        "lng": 34.8883209,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "גד מכנס, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:חפץ חיים 75",
+        "address": "חפץ חיים 75",
+        "lat": 32.0833052,
+        "lng": 34.8872075,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "חפץ חיים, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:הרצל 51",
+        "address": "הרצל 51",
+        "lat": 32.0852837,
+        "lng": 34.8869244,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "הרצל, קריית אלעזר, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:אבינועם ילין 6",
+        "address": "אבינועם ילין 6",
+        "lat": 32.0790074,
+        "lng": 34.8875051,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "6, אבינועם ילין, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:חפץ חיים 22",
+        "address": "חפץ חיים 22",
+        "lat": 32.0833052,
+        "lng": 34.8872075,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "חפץ חיים, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:חפץ חיים 31",
+        "address": "חפץ חיים 31",
+        "lat": 32.0833052,
+        "lng": 34.8872075,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "חפץ חיים, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:רוטשילד 143",
+        "address": "רוטשילד 143",
+        "lat": 32.0817963,
+        "lng": 34.8835091,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "רוטשילד, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:זאב ברנדה 22",
+        "address": "זאב ברנדה 22",
+        "lat": 32.0807293,
+        "lng": 34.8852882,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "זאב ברנדה, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:זאב ברנדה 11",
+        "address": "זאב ברנדה 11",
+        "lat": 32.0824604,
+        "lng": 34.8848587,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "11, זאב ברנדה, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:הרצל 80",
+        "address": "הרצל 80",
+        "lat": 32.0852837,
+        "lng": 34.8869244,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "הרצל, קריית אלעזר, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:כהן חיים 10",
+        "address": "כהן חיים 10",
+        "lat": 32.081036,
+        "lng": 34.8823094,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "10, חיים כהן, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:פרופ' שור 1",
+        "address": "פרופ' שור 1",
+        "lat": 32.0941574,
+        "lng": 34.8877781,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "פרופ' שור, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4956027, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:רופין 8",
+        "address": "רופין 8",
+        "lat": 32.0912273,
+        "lng": 34.8788723,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "8, ארתור רופין, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4941642, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:רמב\"ם 32",
+        "address": "רמב\"ם 32",
+        "lat": 32.0915616,
+        "lng": 34.8899111,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "רמב\"ם, עין גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:יעקב קרול 5",
+        "address": "יעקב קרול 5",
+        "lat": 32.0914148,
+        "lng": 34.8779198,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "יעקב קרול, רמת ורבר, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4941642, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:אלתר מיהוד 3",
+        "address": "אלתר מיהוד 3",
+        "lat": 32.0816181,
+        "lng": 34.8828949,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "3, אלתר מיהוד, יוספטל, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:בן יהודה 28",
+        "address": "בן יהודה 28",
+        "lat": 32.0795668,
+        "lng": 34.882379,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "28, אליעזר בן יהודה, נווה מעוז, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:טרומפלדור 31",
+        "address": "טרומפלדור 31",
+        "lat": 32.0847977,
+        "lng": 34.8787064,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "31, טרומפלדור, כפר גנים ובת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:חפץ חיים 21",
+        "address": "חפץ חיים 21",
+        "lat": 32.0833052,
+        "lng": 34.8872075,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "חפץ חיים, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:פיק\"א 21",
+        "address": "פיק\"א 21",
+        "lat": 32.0859281,
+        "lng": 34.8792313,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "21, פיק\"א, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:אורלנסקי 29",
+        "address": "אורלנסקי 29",
+        "lat": 32.0833545,
+        "lng": 34.8905222,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "אורלנסקי, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:יהודה הלוי 31",
+        "address": "יהודה הלוי 31",
+        "lat": 32.0885053,
+        "lng": 34.8897141,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "יהודה הלוי, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:ההגנה 17",
+        "address": "ההגנה 17",
+        "lat": 32.0884011,
+        "lng": 34.8855535,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "17, ההגנה, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:אורלנסקי 2",
+        "address": "אורלנסקי 2",
+        "lat": 32.0833545,
+        "lng": 34.8905222,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "אורלנסקי, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:חפץ חיים 25",
+        "address": "חפץ חיים 25",
+        "lat": 32.0833052,
+        "lng": 34.8872075,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "חפץ חיים, יוספטל, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:זאב אורלוב 90",
+        "address": "זאב אורלוב 90",
+        "lat": 32.0944212,
+        "lng": 34.8855966,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "זאב אורלוב, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4956027, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:הרצל 77",
+        "address": "הרצל 77",
+        "lat": 32.0852837,
+        "lng": 34.8869244,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "הרצל, קריית אלעזר, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:הרב קלישר 10",
+        "address": "הרב קלישר 10",
+        "lat": 32.0791916,
+        "lng": 34.8941459,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "הרב קלישר, מחנה יהודה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:יהודה הלוי 21",
+        "address": "יהודה הלוי 21",
+        "lat": 32.0885053,
+        "lng": 34.8897141,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "יהודה הלוי, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:מכנס גד 10",
+        "address": "מכנס גד 10",
+        "lat": 32.078265,
+        "lng": 34.8883209,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "גד מכנס, קריית אלעזר, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:סעדיה גאון 5",
+        "address": "סעדיה גאון 5",
+        "lat": 32.087625,
+        "lng": 34.8792273,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "5, סעדיה גאון, נווה מעוז, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4941642, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:רופין 11",
+        "address": "רופין 11",
+        "lat": 32.0913857,
+        "lng": 34.8787314,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "ארתור רופין, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4941642, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:חפץ חיים 33",
+        "address": "חפץ חיים 33",
+        "lat": 32.0833052,
+        "lng": 34.8872075,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "חפץ חיים, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:בעל שם-טוב 2",
+        "address": "בעל שם-טוב 2",
+        "lat": 32.0779553,
+        "lng": 34.8960034,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "בעל שם טוב, מחנה יהודה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4932404, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:צבי הרמן שפירא 20",
+        "address": "צבי הרמן שפירא 20",
+        "lat": 32.0831577,
+        "lng": 34.8853786,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "20, צבי הרמן שפירא, קריית אלעזר, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:בר כוכבא 30",
+        "address": "בר כוכבא 30",
+        "lat": 32.0949128,
+        "lng": 34.8855856,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "בר כוכבא, קרול, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4933911, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:רוטשילד 170",
+        "address": "רוטשילד 170",
+        "lat": 32.0871316,
+        "lng": 34.8816404,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "רוטשילד, נווה מעוז, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:רוטשילד 95",
+        "address": "רוטשילד 95",
+        "lat": 32.0842784,
+        "lng": 34.8830874,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "95, רוטשילד, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:רוטשילד 66",
+        "address": "רוטשילד 66",
+        "lat": 32.0884006,
+        "lng": 34.8808117,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "66, רוטשילד, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4941642, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:פרופ' שור 2",
+        "address": "פרופ' שור 2",
+        "lat": 32.0941574,
+        "lng": 34.8877781,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "פרופ' שור, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4956027, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:חכם יוסף חיים 8",
+        "address": "חכם יוסף חיים 8",
+        "lat": 32.0920964,
+        "lng": 34.8826676,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "8, חכם יוסף חיים, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4956027, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:זבוטינסקי 7",
+        "address": "זבוטינסקי 7",
+        "lat": 32.0688996,
+        "lng": 34.8501918,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "ז'בוטינסקי, קרית אונו, רמת אילן, גבעת שמואל, נפת פתח תקווה, מחוז המרכז, 5530002, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:זאב ברנדה 2",
+        "address": "זאב ברנדה 2",
+        "lat": 32.0832636,
+        "lng": 34.8841736,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "2, זאב ברנדה, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:וינגייט 15",
+        "address": "וינגייט 15",
+        "lat": 32.0924231,
+        "lng": 34.8877119,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "וינגייט, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4956027, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:חובבי ציון 10",
+        "address": "חובבי ציון 10",
+        "lat": 32.0878526,
+        "lng": 34.8827486,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "Cofix, 10, חובבי ציון, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:ביאליק 18",
+        "address": "ביאליק 18",
+        "lat": 32.081697,
+        "lng": 34.8883513,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "ביאליק, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:דוד וולפסון 28",
+        "address": "דוד וולפסון 28",
+        "lat": 32.0878994,
+        "lng": 34.8929849,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "דוד וולפסון, עין גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:קרן קיימת לישראל 38",
+        "address": "קרן קיימת לישראל 38",
+        "lat": 32.079588,
+        "lng": 34.8848424,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "קרן קיימת לישראל, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:בר כוכבא 29",
+        "address": "בר כוכבא 29",
+        "lat": 32.0931042,
+        "lng": 34.8852366,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "29, בר כוכבא, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4956027, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:בר כוכבא 28",
+        "address": "בר כוכבא 28",
+        "lat": 32.0920945,
+        "lng": 34.8857253,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "28, בר כוכבא, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4956027, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:רוטשילד 70",
+        "address": "רוטשילד 70",
+        "lat": 32.0880134,
+        "lng": 34.8810099,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "70, רוטשילד, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4941642, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:ההסתדרות 3",
+        "address": "ההסתדרות 3",
+        "lat": 32.0860148,
+        "lng": 34.8830826,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "3, ההסתדרות, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:משה הס 19",
+        "address": "משה הס 19",
+        "lat": 32.0883458,
+        "lng": 34.8888529,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "משה הס, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:בן יהודה 40",
+        "address": "בן יהודה 40",
+        "lat": 32.0815018,
+        "lng": 34.8819111,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "אליעזר בן יהודה, נווה מעוז, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:פרץ פסקל 7",
+        "address": "פרץ פסקל 7",
+        "lat": 32.0844025,
+        "lng": 34.8862576,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "פסקל פרץ, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:ז'בוטינסקי 16",
+        "address": "ז'בוטינסקי 16",
+        "lat": 32.0906211,
+        "lng": 34.8773416,
+        "coordinate_source": "geocoded_address",
+        "precision": "approximate",
+        "resolved_label": "ז'בוטינסקי 16, רמת ורבר, פתח תקווה, נפת פתח תקווה, מחוז המרכז, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:אלתר מיהוד 4",
+        "address": "אלתר מיהוד 4",
+        "lat": 32.0819294,
+        "lng": 34.8829298,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "4, אלתר מיהוד, יוספטל, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:פנקס 16",
+        "address": "פנקס 16",
+        "lat": 32.0815661,
+        "lng": 34.8803678,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "16, פנקס, נווה מעוז, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:אחד העם 30",
+        "address": "אחד העם 30",
+        "lat": 32.0841083,
+        "lng": 34.8888732,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "30, אחד העם, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:טרומפלדור 39",
+        "address": "טרומפלדור 39",
+        "lat": 32.0836409,
+        "lng": 34.8786234,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "39, טרומפלדור, כפר גנים ובת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:חיים עוזר 33",
+        "address": "חיים עוזר 33",
+        "lat": 32.0873656,
+        "lng": 34.88705,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "חיים עוזר, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:גוטמן 11",
+        "address": "גוטמן 11",
+        "lat": 32.0905565,
+        "lng": 34.8826446,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "גוטמן, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4956027, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:שרה אהרונסון 8",
+        "address": "שרה אהרונסון 8",
+        "lat": 32.0863085,
+        "lng": 34.8888196,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "שרה אהרונסון, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:דוד וולפסון 1",
+        "address": "דוד וולפסון 1",
+        "lat": 32.0878994,
+        "lng": 34.8929849,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "דוד וולפסון, עין גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:דוד וולפסון 30",
+        "address": "דוד וולפסון 30",
+        "lat": 32.0878994,
+        "lng": 34.8929849,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "דוד וולפסון, עין גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:חפץ חיים 18",
+        "address": "חפץ חיים 18",
+        "lat": 32.0833052,
+        "lng": 34.8872075,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "חפץ חיים, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:משה הס 9",
+        "address": "משה הס 9",
+        "lat": 32.0883458,
+        "lng": 34.8888529,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "משה הס, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:סלומון 8",
+        "address": "סלומון 8",
+        "lat": 32.0848809,
+        "lng": 34.8809211,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "8, סלומון, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:בר כוכבא 54",
+        "address": "בר כוכבא 54",
+        "lat": 32.0939374,
+        "lng": 34.8855919,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "בר כוכבא, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4956027, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:רוטשילד 168",
+        "address": "רוטשילד 168",
+        "lat": 32.088419,
+        "lng": 34.8811436,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "רוטשילד, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4941642, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:חפץ חיים 35",
+        "address": "חפץ חיים 35",
+        "lat": 32.0833052,
+        "lng": 34.8872075,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "חפץ חיים, יוספטל, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:יהודה הלוי 32",
+        "address": "יהודה הלוי 32",
+        "lat": 32.0885053,
+        "lng": 34.8897141,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "יהודה הלוי, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:קרן קיימת לישראל 16",
+        "address": "קרן קיימת לישראל 16",
+        "lat": 32.079588,
+        "lng": 34.8848424,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "קרן קיימת לישראל, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:גוטמן 32",
+        "address": "גוטמן 32",
+        "lat": 32.0905565,
+        "lng": 34.8826446,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "גוטמן, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4956027, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:אחד העם 59",
+        "address": "אחד העם 59",
+        "lat": 32.084725,
+        "lng": 34.890206,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "59, אחד העם, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:מונטיפיורי 13",
+        "address": "מונטיפיורי 13",
+        "lat": 32.0882247,
+        "lng": 34.8824339,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "13, מונטיפיורי, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:צבי הרמן שפירא 28",
+        "address": "צבי הרמן שפירא 28",
+        "lat": 32.0824698,
+        "lng": 34.8858437,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "28, צבי הרמן שפירא, קריית אלעזר, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:הראשונים 8",
+        "address": "הראשונים 8",
+        "lat": 32.0891653,
+        "lng": 34.8878351,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "הראשונים, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:שרה אהרונסון 13",
+        "address": "שרה אהרונסון 13",
+        "lat": 32.0863085,
+        "lng": 34.8888196,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "שרה אהרונסון, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:נחלת צבי 25",
+        "address": "נחלת צבי 25",
+        "lat": 32.0916543,
+        "lng": 34.8891014,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "25, נחלת צבי, עין גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:רוטשילד 133",
+        "address": "רוטשילד 133",
+        "lat": 32.0926837,
+        "lng": 34.8806375,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "רוטשילד, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4933911, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:חפץ חיים 34",
+        "address": "חפץ חיים 34",
+        "lat": 32.0833052,
+        "lng": 34.8872075,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "חפץ חיים, יוספטל, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:נחלת צבי 2",
+        "address": "נחלת צבי 2",
+        "lat": 32.0902322,
+        "lng": 34.8880533,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "2, נחלת צבי, עין גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:הרב קוק 32",
+        "address": "הרב קוק 32",
+        "lat": 32.0820362,
+        "lng": 34.8793827,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "32, הרב קוק, יוספטל, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:יהושע שטמפפר 55",
+        "address": "יהושע שטמפפר 55",
+        "lat": 32.0945026,
+        "lng": 34.8918851,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "יהושע שטמפפר, נווה מעוז, תקומה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4929422, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:אורלנסקי 24",
+        "address": "אורלנסקי 24",
+        "lat": 32.0833545,
+        "lng": 34.8905222,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "אורלנסקי, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:גד מכנס 24",
+        "address": "גד מכנס 24",
+        "lat": 32.078265,
+        "lng": 34.8883209,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "גד מכנס, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:חפץ חיים 47",
+        "address": "חפץ חיים 47",
+        "lat": 32.0833052,
+        "lng": 34.8872075,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "חפץ חיים, יוספטל, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:חפץ חיים 20",
+        "address": "חפץ חיים 20",
+        "lat": 32.0833052,
+        "lng": 34.8872075,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "חפץ חיים, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:זאב ברנדה 21",
+        "address": "זאב ברנדה 21",
+        "lat": 32.0807293,
+        "lng": 34.8852882,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "זאב ברנדה, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:נחלת צבי 7",
+        "address": "נחלת צבי 7",
+        "lat": 32.0907857,
+        "lng": 34.8880611,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "7, נחלת צבי, עין גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:הרצל 52",
+        "address": "הרצל 52",
+        "lat": 32.0852837,
+        "lng": 34.8869244,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "הרצל, יוספטל, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:בלפור 26",
+        "address": "בלפור 26",
+        "lat": 32.082196,
+        "lng": 34.8870625,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "26, בלפור, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:הרב הלר 3",
+        "address": "הרב הלר 3",
+        "lat": 32.0851139,
+        "lng": 34.8915645,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "הרב הלר, מחנה יהודה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:עקיבא ליברכט 7",
+        "address": "עקיבא ליברכט 7",
+        "lat": 32.0911443,
+        "lng": 34.8849969,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "עקיבא ליברכט, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4956027, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:מונטיפיורי 6",
+        "address": "מונטיפיורי 6",
+        "lat": 32.0878652,
+        "lng": 34.8824163,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "מונטיפיורי, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:פרופ' שור 15",
+        "address": "פרופ' שור 15",
+        "lat": 32.094219,
+        "lng": 34.8872066,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "15, פרופ' שור, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4956027, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:חפץ חיים 36",
+        "address": "חפץ חיים 36",
+        "lat": 32.0833052,
+        "lng": 34.8872075,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "חפץ חיים, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:ברנדה זאב 63",
+        "address": "ברנדה זאב 63",
+        "lat": 32.0807293,
+        "lng": 34.8852882,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "זאב ברנדה, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:הרצל 78",
+        "address": "הרצל 78",
+        "lat": 32.0852837,
+        "lng": 34.8869244,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "הרצל, קריית אלעזר, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:אורלנסקי 25",
+        "address": "אורלנסקי 25",
+        "lat": 32.0833545,
+        "lng": 34.8905222,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "אורלנסקי, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:פיק\"א 26",
+        "address": "פיק\"א 26",
+        "lat": 32.0863766,
+        "lng": 34.8791547,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "26, פיק\"א, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:יהודה הלוי 26",
+        "address": "יהודה הלוי 26",
+        "lat": 32.0878196,
+        "lng": 34.889705,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "26, יהודה הלוי, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:יואל אנגל 2",
+        "address": "יואל אנגל 2",
+        "lat": 32.0794393,
+        "lng": 34.8835283,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "אנגל, יוספטל, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:צבי הרמן שפירא 55",
+        "address": "צבי הרמן שפירא 55",
+        "lat": 32.0798563,
+        "lng": 34.8873375,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "55, צבי הרמן שפירא, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:ז'בוטינסקי 9",
+        "address": "ז'בוטינסקי 9",
+        "lat": 32.0899491,
+        "lng": 34.8793856,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "9, ז'בוטינסקי, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4941642, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:חיים עוזר 17",
+        "address": "חיים עוזר 17",
+        "lat": 32.0886689,
+        "lng": 34.8870339,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "17, חיים עוזר, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:זאב ברנדה 26",
+        "address": "זאב ברנדה 26",
+        "lat": 32.0807293,
+        "lng": 34.8852882,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "זאב ברנדה, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:מיכל לייב כץ 3",
+        "address": "מיכל לייב כץ 3",
+        "lat": 32.0811236,
+        "lng": 34.878778,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "3, מיכל לייב כץ, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:גד מכנס 9",
+        "address": "גד מכנס 9",
+        "lat": 32.078265,
+        "lng": 34.8883209,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "גד מכנס, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:יהודה הלוי 9",
+        "address": "יהודה הלוי 9",
+        "lat": 32.0885053,
+        "lng": 34.8897141,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "יהודה הלוי, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:ביל\"ו 19",
+        "address": "ביל\"ו 19",
+        "lat": 32.0869523,
+        "lng": 34.8790826,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "19, ביל\"ו, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4941642, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:פינסקר 51",
+        "address": "פינסקר 51",
+        "lat": 32.0922864,
+        "lng": 34.8831663,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "51, פינסקר, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4956027, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:האחים שטרייט 3",
+        "address": "האחים שטרייט 3",
+        "lat": 32.0935199,
+        "lng": 34.8836086,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "האחים שטרייט, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4956027, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:אחד העם 51",
+        "address": "אחד העם 51",
+        "lat": 32.0848306,
+        "lng": 34.8945493,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "אחד העם, מחנה יהודה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:רוטשילד 136",
+        "address": "רוטשילד 136",
+        "lat": 32.088419,
+        "lng": 34.8811436,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "רוטשילד, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4941642, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:זבוטינסקי 18",
+        "address": "זבוטינסקי 18",
+        "lat": 32.0688996,
+        "lng": 34.8501918,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "ז'בוטינסקי, קרית אונו, רמת אילן, גבעת שמואל, נפת פתח תקווה, מחוז המרכז, 5530002, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:בר כוכבא 26",
+        "address": "בר כוכבא 26",
+        "lat": 32.0939374,
+        "lng": 34.8855919,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "בר כוכבא, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4956027, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:פינסקר 29",
+        "address": "פינסקר 29",
+        "lat": 32.0926496,
+        "lng": 34.8834331,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "פינסקר, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4956027, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:רמב\"ם 6",
+        "address": "רמב\"ם 6",
+        "lat": 32.0915616,
+        "lng": 34.8899111,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "רמב\"ם, עין גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:בן יהודה 10",
+        "address": "בן יהודה 10",
+        "lat": 32.081159,
+        "lng": 34.8818542,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "10, אליעזר בן יהודה, נווה מעוז, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:הכרם 4",
+        "address": "הכרם 4",
+        "lat": 32.082518,
+        "lng": 34.8794234,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "הכרם, נווה מעוז, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:זאב ברנדה 3",
+        "address": "זאב ברנדה 3",
+        "lat": 32.0832102,
+        "lng": 34.8846514,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "3, זאב ברנדה, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:זאב ברנדה 40",
+        "address": "זאב ברנדה 40",
+        "lat": 32.0807293,
+        "lng": 34.8852882,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "זאב ברנדה, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:פנקס 5",
+        "address": "פנקס 5",
+        "lat": 32.0814025,
+        "lng": 34.8811197,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "5, פנקס, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:התשעים ושלוש 5",
+        "address": "התשעים ושלוש 5",
+        "lat": 32.083465,
+        "lng": 34.8795538,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "5, התשעים ושלוש, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:נחלת צבי 15",
+        "address": "נחלת צבי 15",
+        "lat": 32.0911838,
+        "lng": 34.888506,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "15–17, נחלת צבי, עין גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:מונטיפיורי 2",
+        "address": "מונטיפיורי 2",
+        "lat": 32.0878652,
+        "lng": 34.8824163,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "מונטיפיורי, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:חפץ חיים 80",
+        "address": "חפץ חיים 80",
+        "lat": 32.0833052,
+        "lng": 34.8872075,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "חפץ חיים, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:רוטשילד 160",
+        "address": "רוטשילד 160",
+        "lat": 32.0900454,
+        "lng": 34.8806092,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "רוטשילד, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4941642, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:הרב קוק 10",
+        "address": "הרב קוק 10",
+        "lat": 32.0826044,
+        "lng": 34.8817469,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "10, הרב קוק, נווה מעוז, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:אחד העם 12",
+        "address": "אחד העם 12",
+        "lat": 32.0834795,
+        "lng": 34.884721,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "12, אחד העם, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:בלפור 40",
+        "address": "בלפור 40",
+        "lat": 32.0826326,
+        "lng": 34.8890523,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "40, בלפור, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:בן יהודה 41",
+        "address": "בן יהודה 41",
+        "lat": 32.0777159,
+        "lng": 34.8834179,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "41, אליעזר בן יהודה, יוספטל, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:מרדכי חפץ 25",
+        "address": "מרדכי חפץ 25",
+        "lat": 32.0827506,
+        "lng": 34.8785515,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "25, חפץ מרדכי, נווה מעוז, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:וינגייט 10",
+        "address": "וינגייט 10",
+        "lat": 32.0924231,
+        "lng": 34.8877119,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "וינגייט, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4956027, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:רמב\"ם 4",
+        "address": "רמב\"ם 4",
+        "lat": 32.0921217,
+        "lng": 34.889136,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "4, רמב\"ם, עין גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:אלתר מיהוד 12",
+        "address": "אלתר מיהוד 12",
+        "lat": 32.0816635,
+        "lng": 34.8820366,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "12, אלתר מיהוד, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:בן יהודה 23",
+        "address": "בן יהודה 23",
+        "lat": 32.079844,
+        "lng": 34.8828597,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "23, אליעזר בן יהודה, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:שפירא הרמן צבי 37",
+        "address": "שפירא הרמן צבי 37",
+        "lat": 32.0814706,
+        "lng": 34.8865823,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "37, צבי הרמן שפירא, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:רחל המשוררת 10",
+        "address": "רחל המשוררת 10",
+        "lat": 32.0853323,
+        "lng": 34.8946361,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "רחל המשוררת, עין גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:דוד וולפסון 6",
+        "address": "דוד וולפסון 6",
+        "lat": 32.0860564,
+        "lng": 34.888347,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "6, דוד וולפסון, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:חפץ חיים 24",
+        "address": "חפץ חיים 24",
+        "lat": 32.0833052,
+        "lng": 34.8872075,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "חפץ חיים, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:אורלנסקי 13",
+        "address": "אורלנסקי 13",
+        "lat": 32.0833545,
+        "lng": 34.8905222,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "אורלנסקי, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:ביאליק 12",
+        "address": "ביאליק 12",
+        "lat": 32.0822456,
+        "lng": 34.8901308,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "12, ביאליק, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:חפץ חיים 26",
+        "address": "חפץ חיים 26",
+        "lat": 32.0833052,
+        "lng": 34.8872075,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "חפץ חיים, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:גד מכנס 27",
+        "address": "גד מכנס 27",
+        "lat": 32.078265,
+        "lng": 34.8883209,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "גד מכנס, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:חפץ חיים 63",
+        "address": "חפץ חיים 63",
+        "lat": 32.0833052,
+        "lng": 34.8872075,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "חפץ חיים, יוספטל, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:מרדכי חפץ 7",
+        "address": "מרדכי חפץ 7",
+        "lat": 32.083244,
+        "lng": 34.8802023,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "7, חפץ מרדכי, נווה מעוז, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:רמב\"ם 8",
+        "address": "רמב\"ם 8",
+        "lat": 32.0917678,
+        "lng": 34.8893683,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "8, רמב\"ם, עין גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:חדד סנדר 8",
+        "address": "חדד סנדר 8",
+        "lat": 32.0851633,
+        "lng": 34.8798318,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "8, סנדר חדד, נווה מעוז, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:הרב קוק 31",
+        "address": "הרב קוק 31",
+        "lat": 32.0817038,
+        "lng": 34.8795294,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "31, הרב קוק, יוספטל, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:צבי הרמן שפירא 10",
+        "address": "צבי הרמן שפירא 10",
+        "lat": 32.0841444,
+        "lng": 34.8852457,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "10, צבי הרמן שפירא, קריית אלעזר, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:אבינועם ילין 19",
+        "address": "אבינועם ילין 19",
+        "lat": 32.0790691,
+        "lng": 34.8880362,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "אבינועם ילין, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:חפץ חיים 64",
+        "address": "חפץ חיים 64",
+        "lat": 32.0833052,
+        "lng": 34.8872075,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "חפץ חיים, יוספטל, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:אלתר מיהוד 5",
+        "address": "אלתר מיהוד 5",
+        "lat": 32.0815544,
+        "lng": 34.8826428,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "5, אלתר מיהוד, בת גנים, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:סלומון 11",
+        "address": "סלומון 11",
+        "lat": 32.0843947,
+        "lng": 34.8808771,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "11, סלומון, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "sold_address:אורלנסקי 8",
+        "address": "אורלנסקי 8",
+        "lat": 32.0833545,
+        "lng": 34.8905222,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "אורלנסקי, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true
+      }
+    ],
+    "unresolved": [
+      {
+        "record_id": "sold_address:העלייה השנייה 6",
+        "address": "העלייה השנייה 6",
+        "reason": "no_results"
+      },
+      {
+        "record_id": "sold_address:מרדכי אנילביץ 7",
+        "address": "מרדכי אנילביץ 7",
+        "reason": "outside_petah_tikva"
+      },
+      {
+        "record_id": "sold_address:שמואל סלנט 1",
+        "address": "שמואל סלנט 1",
+        "reason": "no_results"
+      },
+      {
+        "record_id": "sold_address:הרב יעקב ניימן 8",
+        "address": "הרב יעקב ניימן 8",
+        "reason": "no_results"
+      },
+      {
+        "record_id": "sold_address:הרב קטרוני 37",
+        "address": "הרב קטרוני 37",
+        "reason": "no_results"
+      },
+      {
+        "record_id": "sold_address:הרב קטרוני 12",
+        "address": "הרב קטרוני 12",
+        "reason": "no_results"
+      },
+      {
+        "record_id": "sold_address:הרב קטרוני 44",
+        "address": "הרב קטרוני 44",
+        "reason": "no_results"
+      },
+      {
+        "record_id": "sold_address:משה מרכוס 3",
+        "address": "משה מרכוס 3",
+        "reason": "no_results"
+      },
+      {
+        "record_id": "sold_address:ברוידה 4",
+        "address": "ברוידה 4",
+        "reason": "no_results"
+      },
+      {
+        "record_id": "sold_address:הרב אילויצקי 6",
+        "address": "הרב אילויצקי 6",
+        "reason": "no_results"
+      },
+      {
+        "record_id": "sold_address:הרב קטרוני 5",
+        "address": "הרב קטרוני 5",
+        "reason": "no_results"
+      },
+      {
+        "record_id": "sold_address:שמואל סלנט 74",
+        "address": "שמואל סלנט 74",
+        "reason": "no_results"
+      },
+      {
+        "record_id": "sold_address:מקס נורדאו 9",
+        "address": "מקס נורדאו 9",
+        "reason": "no_results"
+      },
+      {
+        "record_id": "sold_address:שלום שבזי 11",
+        "address": "שלום שבזי 11",
+        "reason": "outside_petah_tikva"
+      },
+      {
+        "record_id": "sold_address:שלום שבזי 3",
+        "address": "שלום שבזי 3",
+        "reason": "outside_petah_tikva"
+      },
+      {
+        "record_id": "sold_address:יהודה בורלא 4",
+        "address": "יהודה בורלא 4",
+        "reason": "outside_petah_tikva"
+      },
+      {
+        "record_id": "sold_address:הרב קטרוני 58",
+        "address": "הרב קטרוני 58",
+        "reason": "no_results"
+      },
+      {
+        "record_id": "sold_address:שלום שבזי 1",
+        "address": "שלום שבזי 1",
+        "reason": "outside_petah_tikva"
+      },
+      {
+        "record_id": "sold_address:שמואל סלנט 41",
+        "address": "שמואל סלנט 41",
+        "reason": "no_results"
+      },
+      {
+        "record_id": "sold_address:הרב קטרוני 19",
+        "address": "הרב קטרוני 19",
+        "reason": "no_results"
+      },
+      {
+        "record_id": "sold_address:שמואל סלנט 59",
+        "address": "שמואל סלנט 59",
+        "reason": "no_results"
+      },
+      {
+        "record_id": "sold_address:אחים יפה 6",
+        "address": "אחים יפה 6",
+        "reason": "no_results"
+      },
+      {
+        "record_id": "sold_address:שמואל סלנט 26",
+        "address": "שמואל סלנט 26",
+        "reason": "no_results"
+      }
+    ]
+  }
+}

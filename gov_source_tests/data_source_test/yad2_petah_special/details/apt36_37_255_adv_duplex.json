@@ -1,0 +1,133 @@
+{
+  "success": true,
+  "data": {
+    "token": "ub2tzaqh",
+    "orderId": 57428488,
+    "adNumber": 78096389,
+    "adType": "commercial",
+    "categoryId": 2,
+    "subcategoryId": 5,
+    "priority": 1,
+    "statusId": 1,
+    "price": 4790000,
+    "additionalDetails": {
+      "balconiesCount": 2,
+      "entranceDate": "2026-09-01T00:00:00",
+      "squareMeter": 255,
+      "roomsCount": 6,
+      "propertyGroup": {
+        "id": 1,
+        "text": "דירות",
+        "textEng": "apartments"
+      },
+      "property": {
+        "id": 7,
+        "text": "דופלקס",
+        "textEng": "duplex"
+      },
+      "parkingSpacesCount": 2,
+      "propertyCondition": {
+        "id": 2,
+        "text": "משופץ"
+      },
+      "squareMeterBuild": 165,
+      "buildingTopFloor": 8,
+      "isEnterDateFlexible": true
+    },
+    "inProperty": {
+      "includeAirconditioner": true,
+      "includeBalcony": true,
+      "includeBoiler": true,
+      "includeElevator": true,
+      "includeParking": true,
+      "includeSecurityRoom": true,
+      "includeWarehouse": true,
+      "isAssetExclusive": true,
+      "isHandicapped": true,
+      "isRenovated": true
+    },
+    "searchText": "שם מוכר פלס תיווך שיווק ויזמות נדל\"ן אייל שומרי - יועץ נדל\"ן ושמאי מקרקעין נכס למכירה מסוג דופלקס עם מספר חדרים 6 בקומה 8 בכתובת נווה גן פתח תקווה אזור פתח תקווה והסביבה מרכז הנכס כולל ממ\"ד מעלית חניה מחסן מיזוג גישה לנכים מרפסת משופצת מצב הנכס משופץ תאור לקוח נכס כזה בשכונה לא יוצא לשוק בכל יום!\n*דופלקס מפנק בנווה גן המבוקשת*\n\n- דופלקס 6 חד' כ165 מ\"ר בנוי! \n-מרפסת 72 מ\"ר + מרפסת 20 מ\"ר \n-סוויטת הורים ענקית! מפנקת במיוחד\n-בקומות 7+8\n-2 חניות בטאבו\n-הנכס משודרג ומשופץ\n-מחסן מסודר וגדול\n\nמחפשים איכות חיים? זה הנכס בשבילכם!\nאל תפספסו את ההזדמנות \n\nלפרטים נוספים התקשרו עכשיו! חברת פלס הוקמה על מנת לתת מענה מקצועי, מקיף וייחודי בשוק הנדלן.\nאנו מביאים לשולחן מעטפת עוצמתית המשלבת מומחיות נדלנית, שמאית ומשפטית שעובדת עבורכם.\n\nהשותפים:\n\nאייל שומרי, שמאי מקרקעין מוסמך ומתווך בעל תואר ראשון במנהל עסקים התמחות בנדלן וניהול נכסים.\n\nעו\"ד דור בן עטיה, עורך דין מוסמך ומתווך בעל תואר ראשון ושני במשפטים התמחות בדיני תכנון ובנייה.\n\nהמוטו שלנו: יושרה, דיוק, מקצוענות. \nבעסקת חייכם אל תתפשרו על פחות. \n\nאנו כאן כדי להעניק לכם שקט נפשי מלא ולהוביל אתכם לעסקה הבטוחה והמשתלמת ביותר. סוכנות פלס תיווך שיווק ויזמות נדל\"ן",
+    "customer": {
+      "name": "אייל שומרי - יועץ נדל\"ן ושמאי מקרקעין",
+      "id": 5058079,
+      "isVirtualPhoneNumber": true,
+      "agencyName": "פלס תיווך שיווק ויזמות נדל\"ן",
+      "agencyLogo": "//images.yad2.co.il/Pic/TivMiniSite/5e7e760a-a111-4313-801c-d1583da77dfc.png?t=1788714231054",
+      "brokerAvatar": "https://img.yad2.co.il/Pic/TradeMiniSite/c63f0d22-2184-4362-8eef-9f91d07a15f1.jpeg?t=1788714231054",
+      "agencyAbout": "חברת פלס הוקמה על מנת לתת מענה מקצועי, מקיף וייחודי בשוק הנדלן.\nאנו מביאים לשולחן מעטפת עוצמתית המשלבת מומחיות נדלנית, שמאית ומשפטית שעובדת עבורכם.\n\nהשותפים:\n\nאייל שומרי, שמאי מקרקעין מוסמך ומתווך בעל תואר ראשון במנהל עסקים התמחות בנדלן וניהול נכסים.\n\nעו\"ד דור בן עטיה, עורך דין מוסמך ומתווך בעל תואר ראשון ושני במשפטים התמחות בדיני תכנון ובנייה.\n\nהמוטו שלנו: יושרה, דיוק, מקצוענות. \nבעסקת חייכם אל תתפשרו על פחות. \n\nאנו כאן כדי להעניק לכם שקט נפשי מלא ולהוביל אתכם לעסקה הבטוחה והמשתלמת ביותר.",
+      "brokers": [
+        {
+          "name": "אייל שומרי - יועץ נדל\"ן ושמאי מקרקעין",
+          "avatar": "https://img.yad2.co.il/Pic/TradeMiniSite/c63f0d22-2184-4362-8eef-9f91d07a15f1.jpeg?t=1788714231054",
+          "id": 1111112900,
+          "licenseNumber": "3166631"
+        }
+      ],
+      "licenseNumber": "3201305"
+    },
+    "packages": {
+      "hasMiniSite": true
+    },
+    "address": {
+      "topArea": {
+        "id": 2,
+        "text": "מרכז",
+        "textEng": "hamerkaz_area"
+      },
+      "region": {
+        "id": 1,
+        "text": "מרכז והשרון",
+        "textEng": "Center"
+      },
+      "area": {
+        "id": 4,
+        "text": "פתח תקווה והסביבה",
+        "textEng": "petah_tikva_area"
+      },
+      "city": {
+        "id": "7900",
+        "text": "פתח תקווה"
+      },
+      "neighborhood": {
+        "id": 761,
+        "text": "נווה גן"
+      },
+      "street": {
+        "id": "0192"
+      },
+      "coords": {
+        "lat": 32.095045,
+        "lon": 34.872787
+      },
+      "house": {
+        "floor": 8
+      },
+      "addressMasterId": 6163256
+    },
+    "metaData": {
+      "coverImage": "https://img.yad2.co.il/Pic/202609/01/2_5/o/y2_1_p4qS8SY8uG_20260901.jpg",
+      "images": [
+        "https://img.yad2.co.il/Pic/202609/01/2_5/o/y2_1_p4qS8SY8uG_20260901.jpg",
+        "https://img.yad2.co.il/Pic/202609/01/2_5/o/y2_2_QNSl98ax6L_20260901.jpg",
+        "https://img.yad2.co.il/Pic/202609/01/2_5/o/y2_3_hZxIxgXFg__20260901.jpg",
+        "https://img.yad2.co.il/Pic/202609/01/2_5/o/y2_4_GuJZVqaOsL_20260901.jpg",
+        "https://img.yad2.co.il/Pic/202609/01/2_5/o/y2_5_c6pQdY8Svi_20260901.jpg",
+        "https://img.yad2.co.il/Pic/202609/01/2_5/o/y2_6_HZuaE951qk_20260901.jpg",
+        "https://img.yad2.co.il/Pic/202609/01/2_5/o/y2_7_rZQK32ai9X_20260901.jpg",
+        "https://img.yad2.co.il/Pic/202609/01/2_5/o/y2_8_RS8kKrPq6r_20260901.jpg",
+        "https://img.yad2.co.il/Pic/202609/01/2_5/o/y2_9_PmBELTqKlp_20260901.jpg",
+        "https://img.yad2.co.il/Pic/202609/01/2_5/o/y2_10_tsU8LMRCkr_20260901.jpg",
+        "https://img.yad2.co.il/Pic/202609/01/2_5/o/y2_11_2PITcKf2EV_20260901.jpg"
+      ],
+      "description": "נכס כזה בשכונה לא יוצא לשוק בכל יום!\n*דופלקס מפנק בנווה גן המבוקשת*\n\n- דופלקס 6 חד' כ165 מ\"ר בנוי! \n-מרפסת 72 מ\"ר + מרפסת 20 מ\"ר \n-סוויטת הורים ענקית! מפנקת במיוחד\n-בקומות 7+8\n-2 חניות בטאבו\n-הנכס משודרג ומשופץ\n-מחסן מסודר וגדול\n\nמחפשים איכות חיים? זה הנכס בשבילכם!\nאל תפספסו את ההזדמנות \n\nלפרטים נוספים התקשרו עכשיו!",
+      "shelterDistance": 644
+    },
+    "dates": {
+      "updatedAt": "2026-09-06T20:03:47",
+      "createdAt": "2026-08-27T11:13:01",
+      "endsAt": "2027-02-25T00:00:00",
+      "rebouncedAt": "2026-09-06T20:03:47"
+    },
+    "abovePrice": "4500000"
+  }
+}

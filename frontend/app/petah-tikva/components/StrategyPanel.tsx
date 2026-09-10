@@ -118,7 +118,7 @@ export default function StrategyPanel({
       )}
 
       {loading && <p className="mt-3 text-sm text-slate-500">מחשב תרחיש...</p>}
-      {error && <p className="mt-3 text-sm text-red-700">שגיאה בחישוב תרחיש: {error}</p>}
+      {error && <p className="mt-3 text-sm text-red-700">{error}</p>}
 
       {scenario && !loading && <FinancialImpact scenario={scenario} selectedFamily={selectedFamily} />}
 

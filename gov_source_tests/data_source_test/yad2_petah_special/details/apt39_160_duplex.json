@@ -1,0 +1,139 @@
+{
+  "success": true,
+  "data": {
+    "token": "au7ykbzg",
+    "orderId": 57030421,
+    "adNumber": 81661085,
+    "adType": "commercial",
+    "categoryId": 2,
+    "subcategoryId": 5,
+    "priority": 1,
+    "statusId": 1,
+    "price": 2630000,
+    "furnitureInfo": "ארון חדר הורים",
+    "additionalDetails": {
+      "balconiesCount": 1,
+      "entranceDate": "2026-07-16T00:00:00",
+      "squareMeter": 160,
+      "roomsCount": 5,
+      "propertyGroup": {
+        "id": 1,
+        "text": "דירות",
+        "textEng": "apartments"
+      },
+      "property": {
+        "id": 7,
+        "text": "דופלקס",
+        "textEng": "duplex"
+      },
+      "parkingSpacesCount": 1,
+      "propertyCondition": {
+        "id": 2,
+        "text": "משופץ"
+      },
+      "squareMeterBuild": 160,
+      "isPillarBuilding": true,
+      "buildingTopFloor": 6,
+      "isEnterDateFlexible": true
+    },
+    "inProperty": {
+      "includeAirconditioner": true,
+      "includeBalcony": true,
+      "includeBoiler": true,
+      "includeElevator": true,
+      "includeFurniture": true,
+      "includeParking": true,
+      "includeSecurityRoom": false,
+      "includeBuildingShelter": true,
+      "isAssetExclusive": true,
+      "isRenovated": true,
+      "includeTornado": true
+    },
+    "searchText": "שם מוכר אורית לוי נדל\"ן אורית לוי נדל\"ן נכס למכירה מסוג דופלקס עם מספר חדרים 5 בקומה 6 בכתובת זאב ברנדה 30 המרכז השקט / מרכז העיר פתח תקווה אזור פתח תקווה והסביבה מרכז הנכס כולל מקלט בבניין ריהוט מעלית חניה מיזוג מרפסת משופצת מצב הנכס משופץ תאור לקוח למכירה דולפקס 5 חדרים \nכולל מרפסת  50 מ \nמטבח משופץ , יחידת הורים נעימה מרווחת  \n3 חדרי שרותים ומקלחות \nחניה מקורה\nמקלט מסודר בבנין אורית לוי נדל\"ן הינה סוכנות תיווך ברמה אחרת באווירה נעימה ואכפתית אני מסייעת לגשר ולנהל משא ומתן בין הצדדים , מיומנות שרכשתי בלימודי גישור וניסיון שניצבר במהלך השנים בתיווך .\n\nאני בעלת תקשורת בין אישית ואנושית ועושה את עבודתי בנאמנות ויושרה בליווי צמוד לטובת הלקוח .\nשביעות הרצון לאורך כל התהליך חשובה ומשמעותית עבורי ולכן תמיד העיסקה מסתיימת עם זר פרחים לבבי לאחר חתימת החוזה \n\nמומחית בכפר גנים ג' פתח תקווה והסביבה .\n\nלכן אם אתם סקרנים לדעת כמה הבית שלכם שווה ? \nצרו קשר וניפגש \nאורית לוי נדל\"ן ארון חדר הורים סוכנות אורית לוי נדל\"ן",
+    "customer": {
+      "name": "אורית לוי נדל\"ן",
+      "id": 1252174,
+      "isVirtualPhoneNumber": true,
+      "agencyName": "אורית לוי נדל\"ן",
+      "agencyLogo": "//images.yad2.co.il/Pic/TivMiniSite/logo2_5_3606_20170117210108.jpg?t=1788726076522",
+      "brokerAvatar": "https://img.yad2.co.il/Pic/TradeMiniSite/b8eb03a5-d3bb-4a9e-b18d-88e94cb0a189.png?t=1788726076522",
+      "agencyAbout": "אורית לוי נדל\"ן הינה סוכנות תיווך ברמה אחרת באווירה נעימה ואכפתית אני מסייעת לגשר ולנהל משא ומתן בין הצדדים , מיומנות שרכשתי בלימודי גישור וניסיון שניצבר במהלך השנים בתיווך .\n\nאני בעלת תקשורת בין אישית ואנושית ועושה את עבודתי בנאמנות ויושרה בליווי צמוד לטובת הלקוח .\nשביעות הרצון לאורך כל התהליך חשובה ומשמעותית עבורי ולכן תמיד העיסקה מסתיימת עם זר פרחים לבבי לאחר חתימת החוזה \n\nמומחית בכפר גנים ג' פתח תקווה והסביבה .\n\nלכן אם אתם סקרנים לדעת כמה הבית שלכם שווה ? \nצרו קשר וניפגש \nאורית לוי נדל\"ן",
+      "brokers": [
+        {
+          "name": "אורית לוי נדל\"ן",
+          "avatar": "https://img.yad2.co.il/Pic/TradeMiniSite/b8eb03a5-d3bb-4a9e-b18d-88e94cb0a189.png?t=1788726076522",
+          "id": 2796,
+          "licenseNumber": "31033280"
+        }
+      ],
+      "licenseNumber": "31033280"
+    },
+    "packages": {
+      "hasMiniSite": true,
+      "isPlatinum": true,
+      "isNeighborhoodKing": true
+    },
+    "address": {
+      "topArea": {
+        "id": 2,
+        "text": "מרכז",
+        "textEng": "hamerkaz_area"
+      },
+      "region": {
+        "id": 1,
+        "text": "מרכז והשרון",
+        "textEng": "Center"
+      },
+      "area": {
+        "id": 4,
+        "text": "פתח תקווה והסביבה",
+        "textEng": "petah_tikva_area"
+      },
+      "city": {
+        "id": "7900",
+        "text": "פתח תקווה"
+      },
+      "neighborhood": {
+        "id": 2001001,
+        "text": "המרכז השקט / מרכז העיר"
+      },
+      "street": {
+        "id": "0805",
+        "text": "זאב ברנדה"
+      },
+      "coords": {
+        "lat": 32.080419,
+        "lon": 34.885161
+      },
+      "house": {
+        "number": 30,
+        "floor": 6
+      },
+      "addressMasterId": 6056062
+    },
+    "metaData": {
+      "coverImage": "https://img.yad2.co.il/Pic/202606/03/2_5/o/y2_1pa_010075_20260603002544.jpeg",
+      "images": [
+        "https://img.yad2.co.il/Pic/202606/03/2_5/o/y2_1pa_010075_20260603002544.jpeg",
+        "https://img.yad2.co.il/Pic/202606/03/2_5/o/y2_1pa_010946_20260603002531.jpeg",
+        "https://img.yad2.co.il/Pic/202606/03/2_5/o/y2_1pa_010799_20260603002538.jpeg",
+        "https://img.yad2.co.il/Pic/202606/03/2_5/o/y2_1pa_010834_20260603002537.jpeg",
+        "https://img.yad2.co.il/Pic/202606/03/2_5/o/y2_1pa_010562_20260603002538.jpeg",
+        "https://img.yad2.co.il/Pic/202606/03/2_5/o/y2_1pa_010052_20260603002538.jpeg",
+        "https://img.yad2.co.il/Pic/202606/03/2_5/o/y2_1pa_010964_20260603002538.jpeg",
+        "https://img.yad2.co.il/Pic/202606/03/2_5/o/y2_1pa_010214_20260603002538.jpeg",
+        "https://img.yad2.co.il/Pic/202606/03/2_5/o/y2_1pa_010180_20260603002544.jpeg",
+        "https://img.yad2.co.il/Pic/202606/03/2_5/o/y2_1pa_010621_20260603002548.jpeg"
+      ],
+      "description": "למכירה דולפקס 5 חדרים \nכולל מרפסת  50 מ \nמטבח משופץ , יחידת הורים נעימה מרווחת  \n3 חדרי שרותים ומקלחות \nחניה מקורה\nמקלט מסודר בבנין",
+      "shelterDistance": 61
+    },
+    "dates": {
+      "updatedAt": "2026-09-06T23:21:15",
+      "createdAt": "2026-06-03T00:26:16",
+      "endsAt": "2027-08-29T00:00:00",
+      "rebouncedAt": "2026-09-06T23:21:15"
+    },
+    "abovePrice": "2500000"
+  }
+}

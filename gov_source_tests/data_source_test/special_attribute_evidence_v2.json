@@ -1,0 +1,1115 @@
+{
+  "version": "special_attribute_evidence_v2",
+  "methodology": {
+    "sold_matching": "Curated sold transaction is re-resolved from the Tax Authority dataset by rooms + area + price. Corrupted V1 address strings are ignored.",
+    "attribute_policy": "Only explicit structured fields or explicit listing text are accepted. Coordinate-like numbers are never interpreted as balcony/garden areas.",
+    "unknown_policy": "Missing parking, storage, elevator, orientation, view, condition or outdoor area remains Unknown."
+  },
+  "subjects": {
+    "APT1": {
+      "rooms": 3,
+      "type": "garden",
+      "internal_area": 70.8,
+      "outdoor_area": 100.0,
+      "floor": "ground",
+      "orientation": "east",
+      "parking": null,
+      "storage": null
+    },
+    "APT2": {
+      "rooms": 3,
+      "type": "garden",
+      "internal_area": 65.6,
+      "outdoor_area": 69.0,
+      "floor": "ground",
+      "orientation": "east",
+      "parking": null,
+      "storage": null
+    },
+    "APT3": {
+      "rooms": 2,
+      "type": "garden",
+      "internal_area": 57.0,
+      "outdoor_area": 18.0,
+      "floor": "ground",
+      "orientation": "east",
+      "parking": null,
+      "storage": null
+    },
+    "APT36": {
+      "rooms": 6,
+      "type": "triplex",
+      "internal_area": 255.2,
+      "outdoor_area": 94.6,
+      "floors": "9-11",
+      "orientation": "east",
+      "parking": null,
+      "storage": null
+    },
+    "APT37": {
+      "rooms": 6,
+      "type": "triplex",
+      "internal_area": 260.1,
+      "outdoor_area": 97.4,
+      "floors": "9-11",
+      "orientation": "west",
+      "parking": null,
+      "storage": null
+    },
+    "APT38": {
+      "rooms": 7,
+      "type": "duplex",
+      "internal_area": 170.1,
+      "outdoor_area": 39.6,
+      "floors": "9-10",
+      "orientation": "west",
+      "parking": null,
+      "storage": null
+    },
+    "APT39": {
+      "rooms": 5,
+      "type": "duplex",
+      "internal_area": 158.6,
+      "outdoor_area": 39.6,
+      "floors": "9-10",
+      "orientation": null,
+      "parking": null,
+      "storage": null
+    }
+  },
+  "sold_evidence": {
+    "APT36_37": [
+      {
+        "selection_numeric": {
+          "rooms": 5,
+          "area": 230,
+          "price": 3635000
+        },
+        "resolved_address": "היבנר 38",
+        "resolution_status": "UNIQUE_NUMERIC_TAX_MATCH",
+        "tax_matches": [
+          {
+            "deal_id": "3629954505",
+            "address": "היבנר 38",
+            "rooms": 5.0,
+            "area": 230.0,
+            "price": 3635000.0,
+            "date": "2025-04-30",
+            "floor": "שלישית+גג",
+            "tax_property_type": "דירה בבית קומות"
+          }
+        ],
+        "sold_unit_attributes": {
+          "rooms": 5.0,
+          "internal_area": 230.0,
+          "price": 3635000.0,
+          "date": "2025-04-30",
+          "floor_configuration": "שלישית+גג",
+          "tax_property_type": "דירה בבית קומות",
+          "balcony_area": null,
+          "garden_area": null,
+          "parking_count": null,
+          "storage": null,
+          "elevator": null,
+          "orientation": null,
+          "view": null,
+          "condition": null
+        }
+      },
+      {
+        "selection_numeric": {
+          "rooms": 6,
+          "area": 268,
+          "price": 7000000
+        },
+        "resolved_address": "נקאש 15",
+        "resolution_status": "UNIQUE_NUMERIC_TAX_MATCH",
+        "tax_matches": [
+          {
+            "deal_id": "3603100099",
+            "address": "נקאש 15",
+            "rooms": 6.0,
+            "area": 268.0,
+            "price": 7000000.0,
+            "date": "2024-07-25",
+            "floor": "שלוש עשרה",
+            "tax_property_type": "דירה בבית קומות"
+          }
+        ],
+        "sold_unit_attributes": {
+          "rooms": 6.0,
+          "internal_area": 268.0,
+          "price": 7000000.0,
+          "date": "2024-07-25",
+          "floor_configuration": "שלוש עשרה",
+          "tax_property_type": "דירה בבית קומות",
+          "balcony_area": null,
+          "garden_area": null,
+          "parking_count": null,
+          "storage": null,
+          "elevator": null,
+          "orientation": null,
+          "view": null,
+          "condition": null
+        }
+      },
+      {
+        "selection_numeric": {
+          "rooms": 6,
+          "area": 180,
+          "price": 5250000
+        },
+        "resolved_address": "תרזה קוגלמן 4",
+        "resolution_status": "UNIQUE_NUMERIC_TAX_MATCH",
+        "tax_matches": [
+          {
+            "deal_id": "3635365586",
+            "address": "תרזה קוגלמן 4",
+            "rooms": 6.0,
+            "area": 180.0,
+            "price": 5250000.0,
+            "date": "2025-11-23",
+            "floor": "תשיעית +עשירית",
+            "tax_property_type": "דירה בבית קומות"
+          }
+        ],
+        "sold_unit_attributes": {
+          "rooms": 6.0,
+          "internal_area": 180.0,
+          "price": 5250000.0,
+          "date": "2025-11-23",
+          "floor_configuration": "תשיעית +עשירית",
+          "tax_property_type": "דירה בבית קומות",
+          "balcony_area": null,
+          "garden_area": null,
+          "parking_count": null,
+          "storage": null,
+          "elevator": null,
+          "orientation": null,
+          "view": null,
+          "condition": null
+        }
+      },
+      {
+        "selection_numeric": {
+          "rooms": 6,
+          "area": 244,
+          "price": 6200000
+        },
+        "resolved_address": "החרוב 25",
+        "resolution_status": "UNIQUE_NUMERIC_TAX_MATCH",
+        "tax_matches": [
+          {
+            "deal_id": "3635637403",
+            "address": "החרוב 25",
+            "rooms": 6.0,
+            "area": 244.0,
+            "price": 6200000.0,
+            "date": "2025-11-03",
+            "floor": null,
+            "tax_property_type": "דירה בבית קומות"
+          }
+        ],
+        "sold_unit_attributes": {
+          "rooms": 6.0,
+          "internal_area": 244.0,
+          "price": 6200000.0,
+          "date": "2025-11-03",
+          "floor_configuration": null,
+          "tax_property_type": "דירה בבית קומות",
+          "balcony_area": null,
+          "garden_area": null,
+          "parking_count": null,
+          "storage": null,
+          "elevator": null,
+          "orientation": null,
+          "view": null,
+          "condition": null
+        }
+      },
+      {
+        "selection_numeric": {
+          "rooms": 6,
+          "area": 278,
+          "price": 4500000
+        },
+        "resolved_address": "מסקין 26",
+        "resolution_status": "UNIQUE_NUMERIC_TAX_MATCH",
+        "tax_matches": [
+          {
+            "deal_id": "3625659199",
+            "address": "מסקין 26",
+            "rooms": 6.0,
+            "area": 278.0,
+            "price": 4500000.0,
+            "date": "2025-01-16",
+            "floor": null,
+            "tax_property_type": "דירה בבית קומות"
+          }
+        ],
+        "sold_unit_attributes": {
+          "rooms": 6.0,
+          "internal_area": 278.0,
+          "price": 4500000.0,
+          "date": "2025-01-16",
+          "floor_configuration": null,
+          "tax_property_type": "דירה בבית קומות",
+          "balcony_area": null,
+          "garden_area": null,
+          "parking_count": null,
+          "storage": null,
+          "elevator": null,
+          "orientation": null,
+          "view": null,
+          "condition": null
+        }
+      },
+      {
+        "selection_numeric": {
+          "rooms": 6,
+          "area": 288,
+          "price": 6180000
+        },
+        "resolved_address": "עין גדי 38",
+        "resolution_status": "UNIQUE_NUMERIC_TAX_MATCH",
+        "tax_matches": [
+          {
+            "deal_id": "3626929892",
+            "address": "עין גדי 38",
+            "rooms": 6.0,
+            "area": 288.0,
+            "price": 6180000.0,
+            "date": "2025-01-23",
+            "floor": null,
+            "tax_property_type": "דירה בבית קומות"
+          }
+        ],
+        "sold_unit_attributes": {
+          "rooms": 6.0,
+          "internal_area": 288.0,
+          "price": 6180000.0,
+          "date": "2025-01-23",
+          "floor_configuration": null,
+          "tax_property_type": "דירה בבית קומות",
+          "balcony_area": null,
+          "garden_area": null,
+          "parking_count": null,
+          "storage": null,
+          "elevator": null,
+          "orientation": null,
+          "view": null,
+          "condition": null
+        }
+      }
+    ],
+    "APT38": [
+      {
+        "selection_numeric": {
+          "rooms": 7,
+          "area": 170,
+          "price": 3700000
+        },
+        "resolved_address": "כנסת ישראל 17",
+        "resolution_status": "UNIQUE_NUMERIC_TAX_MATCH",
+        "tax_matches": [
+          {
+            "deal_id": "3606035885",
+            "address": "כנסת ישראל 17",
+            "rooms": 7.0,
+            "area": 170.0,
+            "price": 3700000.0,
+            "date": "2024-10-27",
+            "floor": "מרתף+קרקע+ראשונה",
+            "tax_property_type": "דירה בבית קומות"
+          }
+        ],
+        "sold_unit_attributes": {
+          "rooms": 7.0,
+          "internal_area": 170.0,
+          "price": 3700000.0,
+          "date": "2024-10-27",
+          "floor_configuration": "מרתף+קרקע+ראשונה",
+          "tax_property_type": "דירה בבית קומות",
+          "balcony_area": null,
+          "garden_area": null,
+          "parking_count": null,
+          "storage": null,
+          "elevator": null,
+          "orientation": null,
+          "view": null,
+          "condition": null
+        }
+      },
+      {
+        "selection_numeric": {
+          "rooms": 7,
+          "area": 148,
+          "price": 2900000
+        },
+        "resolved_address": "י\"ד הבנים 3",
+        "resolution_status": "UNIQUE_NUMERIC_TAX_MATCH",
+        "tax_matches": [
+          {
+            "deal_id": "3605884041",
+            "address": "י\"ד הבנים 3",
+            "rooms": 7.0,
+            "area": 148.0,
+            "price": 2900000.0,
+            "date": "2024-10-01",
+            "floor": "רביעית + גג",
+            "tax_property_type": "דירה בבית קומות"
+          }
+        ],
+        "sold_unit_attributes": {
+          "rooms": 7.0,
+          "internal_area": 148.0,
+          "price": 2900000.0,
+          "date": "2024-10-01",
+          "floor_configuration": "רביעית + גג",
+          "tax_property_type": "דירה בבית קומות",
+          "balcony_area": null,
+          "garden_area": null,
+          "parking_count": null,
+          "storage": null,
+          "elevator": null,
+          "orientation": null,
+          "view": null,
+          "condition": null
+        }
+      },
+      {
+        "selection_numeric": {
+          "rooms": 6,
+          "area": 166,
+          "price": 3700000
+        },
+        "resolved_address": "ישראל ישעיהו 6",
+        "resolution_status": "UNIQUE_NUMERIC_TAX_MATCH",
+        "tax_matches": [
+          {
+            "deal_id": "3626587054",
+            "address": "ישראל ישעיהו 6",
+            "rooms": 6.0,
+            "area": 166.0,
+            "price": 3700000.0,
+            "date": "2025-02-06",
+            "floor": "חמישית+שישית",
+            "tax_property_type": "דירה בבית קומות"
+          }
+        ],
+        "sold_unit_attributes": {
+          "rooms": 6.0,
+          "internal_area": 166.0,
+          "price": 3700000.0,
+          "date": "2025-02-06",
+          "floor_configuration": "חמישית+שישית",
+          "tax_property_type": "דירה בבית קומות",
+          "balcony_area": null,
+          "garden_area": null,
+          "parking_count": null,
+          "storage": null,
+          "elevator": null,
+          "orientation": null,
+          "view": null,
+          "condition": null
+        }
+      },
+      {
+        "selection_numeric": {
+          "rooms": 6,
+          "area": 168,
+          "price": 5900000
+        },
+        "resolved_address": null,
+        "resolution_status": "MULTIPLE_TAX_MATCHES",
+        "tax_matches": [
+          {
+            "deal_id": "3625524929",
+            "address": "מרטין בובר 11",
+            "rooms": 6.0,
+            "area": 168.0,
+            "price": 5900000.0,
+            "date": "2025-01-09",
+            "floor": "קרקע",
+            "tax_property_type": "קוטג' דו משפחתי"
+          },
+          {
+            "deal_id": "3602707207",
+            "address": "פנחס חגין 1",
+            "rooms": 6.0,
+            "area": 168.0,
+            "price": 5900000.0,
+            "date": "2024-07-02",
+            "floor": "שישית+שביעית",
+            "tax_property_type": "דירה בבית קומות"
+          }
+        ],
+        "sold_unit_attributes": {
+          "rooms": null,
+          "internal_area": null,
+          "price": null,
+          "date": null,
+          "floor_configuration": null,
+          "tax_property_type": null,
+          "balcony_area": null,
+          "garden_area": null,
+          "parking_count": null,
+          "storage": null,
+          "elevator": null,
+          "orientation": null,
+          "view": null,
+          "condition": null
+        }
+      },
+      {
+        "selection_numeric": {
+          "rooms": 6,
+          "area": 177,
+          "price": 5550000
+        },
+        "resolved_address": "הפרדס 8",
+        "resolution_status": "UNIQUE_NUMERIC_TAX_MATCH",
+        "tax_matches": [
+          {
+            "deal_id": "3602250022",
+            "address": "הפרדס 8",
+            "rooms": 6.0,
+            "area": 177.0,
+            "price": 5550000.0,
+            "date": "2024-06-26",
+            "floor": "שביעית+שמינית",
+            "tax_property_type": "דירה בבית קומות"
+          }
+        ],
+        "sold_unit_attributes": {
+          "rooms": 6.0,
+          "internal_area": 177.0,
+          "price": 5550000.0,
+          "date": "2024-06-26",
+          "floor_configuration": "שביעית+שמינית",
+          "tax_property_type": "דירה בבית קומות",
+          "balcony_area": null,
+          "garden_area": null,
+          "parking_count": null,
+          "storage": null,
+          "elevator": null,
+          "orientation": null,
+          "view": null,
+          "condition": null
+        }
+      },
+      {
+        "selection_numeric": {
+          "rooms": 6,
+          "area": 180,
+          "price": 5250000
+        },
+        "resolved_address": "תרזה קוגלמן 4",
+        "resolution_status": "UNIQUE_NUMERIC_TAX_MATCH",
+        "tax_matches": [
+          {
+            "deal_id": "3635365586",
+            "address": "תרזה קוגלמן 4",
+            "rooms": 6.0,
+            "area": 180.0,
+            "price": 5250000.0,
+            "date": "2025-11-23",
+            "floor": "תשיעית +עשירית",
+            "tax_property_type": "דירה בבית קומות"
+          }
+        ],
+        "sold_unit_attributes": {
+          "rooms": 6.0,
+          "internal_area": 180.0,
+          "price": 5250000.0,
+          "date": "2025-11-23",
+          "floor_configuration": "תשיעית +עשירית",
+          "tax_property_type": "דירה בבית קומות",
+          "balcony_area": null,
+          "garden_area": null,
+          "parking_count": null,
+          "storage": null,
+          "elevator": null,
+          "orientation": null,
+          "view": null,
+          "condition": null
+        }
+      }
+    ],
+    "APT39": [
+      {
+        "selection_numeric": {
+          "rooms": 5,
+          "area": 157,
+          "price": 5900000
+        },
+        "resolved_address": "מבצע דקל 14",
+        "resolution_status": "UNIQUE_NUMERIC_TAX_MATCH",
+        "tax_matches": [
+          {
+            "deal_id": "3633131484",
+            "address": "מבצע דקל 14",
+            "rooms": 5.0,
+            "area": 157.0,
+            "price": 5900000.0,
+            "date": "2025-08-04",
+            "floor": "עשרים ושבע+ עשרים ושמונה",
+            "tax_property_type": "דירה בבית קומות"
+          }
+        ],
+        "sold_unit_attributes": {
+          "rooms": 5.0,
+          "internal_area": 157.0,
+          "price": 5900000.0,
+          "date": "2025-08-04",
+          "floor_configuration": "עשרים ושבע+ עשרים ושמונה",
+          "tax_property_type": "דירה בבית קומות",
+          "balcony_area": null,
+          "garden_area": null,
+          "parking_count": null,
+          "storage": null,
+          "elevator": null,
+          "orientation": null,
+          "view": null,
+          "condition": null
+        }
+      },
+      {
+        "selection_numeric": {
+          "rooms": 5,
+          "area": 163,
+          "price": 5400000
+        },
+        "resolved_address": "איסר הראל 6",
+        "resolution_status": "UNIQUE_NUMERIC_TAX_MATCH",
+        "tax_matches": [
+          {
+            "deal_id": "3601967910",
+            "address": "איסר הראל 6",
+            "rooms": 5.0,
+            "area": 163.0,
+            "price": 5400000.0,
+            "date": "2024-06-07",
+            "floor": "תשע עשרה+עשרים",
+            "tax_property_type": "דירה בבית קומות"
+          }
+        ],
+        "sold_unit_attributes": {
+          "rooms": 5.0,
+          "internal_area": 163.0,
+          "price": 5400000.0,
+          "date": "2024-06-07",
+          "floor_configuration": "תשע עשרה+עשרים",
+          "tax_property_type": "דירה בבית קומות",
+          "balcony_area": null,
+          "garden_area": null,
+          "parking_count": null,
+          "storage": null,
+          "elevator": null,
+          "orientation": null,
+          "view": null,
+          "condition": null
+        }
+      },
+      {
+        "selection_numeric": {
+          "rooms": 5,
+          "area": 166,
+          "price": 4694000
+        },
+        "resolved_address": "כנסת ישראל 17",
+        "resolution_status": "UNIQUE_NUMERIC_TAX_MATCH",
+        "tax_matches": [
+          {
+            "deal_id": "3605029846",
+            "address": "כנסת ישראל 17",
+            "rooms": 5.0,
+            "area": 166.0,
+            "price": 4694000.0,
+            "date": "2024-09-26",
+            "floor": "מרתף+קרקע+ראשונה",
+            "tax_property_type": "דירה בבית קומות"
+          }
+        ],
+        "sold_unit_attributes": {
+          "rooms": 5.0,
+          "internal_area": 166.0,
+          "price": 4694000.0,
+          "date": "2024-09-26",
+          "floor_configuration": "מרתף+קרקע+ראשונה",
+          "tax_property_type": "דירה בבית קומות",
+          "balcony_area": null,
+          "garden_area": null,
+          "parking_count": null,
+          "storage": null,
+          "elevator": null,
+          "orientation": null,
+          "view": null,
+          "condition": null
+        }
+      },
+      {
+        "selection_numeric": {
+          "rooms": 5,
+          "area": 145,
+          "price": 3200000
+        },
+        "resolved_address": "התשעים ושלוש 3",
+        "resolution_status": "UNIQUE_NUMERIC_TAX_MATCH",
+        "tax_matches": [
+          {
+            "deal_id": "3655065895",
+            "address": "התשעים ושלוש 3",
+            "rooms": 5.0,
+            "area": 145.0,
+            "price": 3200000.0,
+            "date": "2026-01-24",
+            "floor": "שלישית+רביעית+גג",
+            "tax_property_type": "דירה בבית קומות"
+          }
+        ],
+        "sold_unit_attributes": {
+          "rooms": 5.0,
+          "internal_area": 145.0,
+          "price": 3200000.0,
+          "date": "2026-01-24",
+          "floor_configuration": "שלישית+רביעית+גג",
+          "tax_property_type": "דירה בבית קומות",
+          "balcony_area": null,
+          "garden_area": null,
+          "parking_count": null,
+          "storage": null,
+          "elevator": null,
+          "orientation": null,
+          "view": null,
+          "condition": null
+        }
+      },
+      {
+        "selection_numeric": {
+          "rooms": 5,
+          "area": 173,
+          "price": 5175000
+        },
+        "resolved_address": "מסקין 11",
+        "resolution_status": "UNIQUE_NUMERIC_TAX_MATCH",
+        "tax_matches": [
+          {
+            "deal_id": "3602001898",
+            "address": "מסקין 11",
+            "rooms": 5.0,
+            "area": 173.0,
+            "price": 5175000.0,
+            "date": "2024-07-03",
+            "floor": "חמישית+ שישית",
+            "tax_property_type": "קוטג' חד משפחתי"
+          }
+        ],
+        "sold_unit_attributes": {
+          "rooms": 5.0,
+          "internal_area": 173.0,
+          "price": 5175000.0,
+          "date": "2024-07-03",
+          "floor_configuration": "חמישית+ שישית",
+          "tax_property_type": "קוטג' חד משפחתי",
+          "balcony_area": null,
+          "garden_area": null,
+          "parking_count": null,
+          "storage": null,
+          "elevator": null,
+          "orientation": null,
+          "view": null,
+          "condition": null
+        }
+      },
+      {
+        "selection_numeric": {
+          "rooms": 5,
+          "area": 144,
+          "price": 4200000
+        },
+        "resolved_address": "יעל רום 17",
+        "resolution_status": "UNIQUE_NUMERIC_TAX_MATCH",
+        "tax_matches": [
+          {
+            "deal_id": "3603812310",
+            "address": "יעל רום 17",
+            "rooms": 5.0,
+            "area": 144.0,
+            "price": 4200000.0,
+            "date": "2024-08-26",
+            "floor": "תשע עשרה + עשרים",
+            "tax_property_type": "דירה בבית קומות"
+          }
+        ],
+        "sold_unit_attributes": {
+          "rooms": 5.0,
+          "internal_area": 144.0,
+          "price": 4200000.0,
+          "date": "2024-08-26",
+          "floor_configuration": "תשע עשרה + עשרים",
+          "tax_property_type": "דירה בבית קומות",
+          "balcony_area": null,
+          "garden_area": null,
+          "parking_count": null,
+          "storage": null,
+          "elevator": null,
+          "orientation": null,
+          "view": null,
+          "condition": null
+        }
+      },
+      {
+        "selection_numeric": {
+          "rooms": 5.5,
+          "area": 157,
+          "price": 2920000
+        },
+        "resolved_address": "שלומציון המלכה 6",
+        "resolution_status": "UNIQUE_NUMERIC_TAX_MATCH",
+        "tax_matches": [
+          {
+            "deal_id": "3633966655",
+            "address": "שלומציון המלכה 6",
+            "rooms": 5.5,
+            "area": 157.0,
+            "price": 2920000.0,
+            "date": "2025-09-21",
+            "floor": "שמינית+גג",
+            "tax_property_type": "דירה בבית קומות"
+          }
+        ],
+        "sold_unit_attributes": {
+          "rooms": 5.5,
+          "internal_area": 157.0,
+          "price": 2920000.0,
+          "date": "2025-09-21",
+          "floor_configuration": "שמינית+גג",
+          "tax_property_type": "דירה בבית קומות",
+          "balcony_area": null,
+          "garden_area": null,
+          "parking_count": null,
+          "storage": null,
+          "elevator": null,
+          "orientation": null,
+          "view": null,
+          "condition": null
+        }
+      }
+    ]
+  },
+  "asking_evidence": {
+    "0xkpq9l7": [
+      {
+        "token": "0xkpq9l7",
+        "address": "עגנון",
+        "attributes": {
+          "property_type": "דירת גן",
+          "rooms": 3.0,
+          "built_area": 74.0,
+          "advertised_area": 74.0,
+          "balcony_area_explicit": null,
+          "balcony_components": null,
+          "garden_area_explicit": 29.0,
+          "garden_components": null,
+          "parking_count": 1.0,
+          "storage": null,
+          "elevator": true,
+          "floor_configuration": "0",
+          "orientation": null,
+          "view": null,
+          "condition": null,
+          "build_year": null,
+          "attribute_source": "listing_unit_fact",
+          "description_excerpt": "חולמים על דירת גן ברמת ורבר פתח תקווה ?  אחוזת עגנון מבית יד ליטל - חווית מגורים אחרת . גאים להציג מבחר נדיר של דירות גן בנות 3-4 חדרים,  עם גינות גדולות ברחוב שקט ללא מוצא. זה המקום שבו הילדים יוצאים לשחק בגינה, מארחים בלי לחשוב פעמיים, ונהנים מהשקט של הבית - בלי לוותר על הנוחות של העיר. פארקים, הקניון הגדול והרכבת הקלה נמצאים במרחק הליכה. יש הרבה דירות. יש מעט מאוד דירות גן. בואו נדבר ."
+        },
+        "source": "C:\\Users\\AVIV\\gaba\\gov_source_tests\\data_source_test\\yad2_petah_special\\yad2_asking_normalized.csv"
+      }
+    ],
+    "5i4tr2xo": [
+      {
+        "token": "5i4tr2xo",
+        "address": null,
+        "attributes": {
+          "property_type": "duplex",
+          "rooms": 7.0,
+          "built_area": 145.0,
+          "advertised_area": 145.0,
+          "balcony_area_explicit": null,
+          "balcony_components": null,
+          "garden_area_explicit": null,
+          "garden_components": null,
+          "parking_count": 1.0,
+          "storage": true,
+          "elevator": true,
+          "floor_configuration": "4+5",
+          "orientation": [
+            "east",
+            "west"
+          ],
+          "view": null,
+          "condition": [
+            "renovated"
+          ],
+          "build_year": null,
+          "attribute_source": "listing_unit_fact",
+          "description_excerpt": "מחפשים את הנכס הבא שלכם?? את ההזדמנות הזו לא תרצו לפספס!! דופלקס 5.5 חדרים שהוגדלה ל-7 145 מ\"ר + יחידת הורים הדירה שופצה מהיסוד קומה 4 + 5 2 כיווני אוויר מזרח - מערב ממ\"ד, מעלית, חניה יח\"ד מושכרת ב-3,500 חניה שהוסבה למחסן מושכר ב-650 קומת תחתונה: 4 חדרים, 2 שירותים, 2 מקלחות קומה עליונה: יחידה מושכרת של 2 חדרים עם שירותים ומקלחת + חדר מתבגר. הזדרזו ליצור קשר!"
+        },
+        "source": "C:\\Users\\AVIV\\gaba\\gov_source_tests\\data_source_test\\yad2_petah_special\\yad2_asking_normalized.csv"
+      }
+    ],
+    "7a8ynci1": [
+      {
+        "token": "7a8ynci1",
+        "address": null,
+        "attributes": {
+          "property_type": "duplex",
+          "rooms": 6.0,
+          "built_area": 177.0,
+          "advertised_area": 256.0,
+          "balcony_area_explicit": 80.0,
+          "balcony_components": [
+            80.0
+          ],
+          "garden_area_explicit": null,
+          "garden_components": null,
+          "parking_count": 2.0,
+          "storage": true,
+          "elevator": true,
+          "floor_configuration": "6",
+          "orientation": null,
+          "view": null,
+          "condition": null,
+          "build_year": null,
+          "attribute_source": "listing_unit_fact",
+          "description_excerpt": "למכירה בכפר גנים ג' במרכז השכונה ברחוב שקט.  דופלקס 6 חדרים ( הוסב ל 5)  177 מר + כ 80 מר מרפסות + מחסן + 2 חניות נפרדות"
+        },
+        "source": "C:\\Users\\AVIV\\gaba\\gov_source_tests\\data_source_test\\yad2_petah_special\\yad2_asking_normalized.csv"
+      }
+    ],
+    "81py2t5u": [
+      {
+        "token": "81py2t5u",
+        "address": "הנביאים",
+        "attributes": {
+          "property_type": "דירת גן",
+          "rooms": 2.0,
+          "built_area": 47.0,
+          "advertised_area": 72.0,
+          "balcony_area_explicit": null,
+          "balcony_components": null,
+          "garden_area_explicit": 23.0,
+          "garden_components": [
+            23.0
+          ],
+          "parking_count": 1.0,
+          "storage": null,
+          "elevator": true,
+          "floor_configuration": "0",
+          "orientation": null,
+          "view": null,
+          "condition": [
+            "new_property"
+          ],
+          "build_year": null,
+          "attribute_source": "listing_unit_fact",
+          "description_excerpt": "דירת גן חדשה 47 מ\"ר בנוי + 23 מ\"ר גינה (ללא מרפסות מעל)  , הכוללת חניה , בבניין בוטיק בן 7 קומות בלבד , ליווי בנקאי.  כניסה מיידית  עסקה !!!!!"
+        },
+        "source": "C:\\Users\\AVIV\\gaba\\gov_source_tests\\data_source_test\\yad2_petah_special\\yad2_asking_normalized.csv"
+      }
+    ],
+    "9bsyydsn": [
+      {
+        "token": "9bsyydsn",
+        "address": "העצמאות",
+        "attributes": {
+          "property_type": "penthouse",
+          "rooms": 6.0,
+          "built_area": 220.0,
+          "advertised_area": 220.0,
+          "balcony_area_explicit": null,
+          "balcony_components": null,
+          "garden_area_explicit": null,
+          "garden_components": null,
+          "parking_count": 2.0,
+          "storage": true,
+          "elevator": true,
+          "floor_configuration": "5+6",
+          "orientation": null,
+          "view": [
+            "open_view"
+          ],
+          "condition": null,
+          "build_year": null,
+          "attribute_source": "listing_unit_fact",
+          "description_excerpt": "למכירה דירת פנטהאוז -גג הכי יפה בכפר גנים ג' !! ברחוב העצמאות במיקום הכי מבוקש בשכונה, דירה עורפית ושקטה עם נוף פתוח שלא ייחסם מעולם,עם פרטיות חלומית!! סלון מרווח ופינת משפחה גדולה. דירה בקומה 5+6. יש מחסן. יש סורגים. 2 חניות נפרדות ענקיות בטאבו יש כניסה מ2 הקומות. במיקום הכי טוב בשכונה,בקרבה לבתי כנסת-בתי ספר וקניון גנים. לפרטים ותאום סיור התקשרו עכשיו- דניאל בן דוד נכסים"
+        },
+        "source": "C:\\Users\\AVIV\\gaba\\gov_source_tests\\data_source_test\\yad2_petah_special\\yad2_asking_normalized.csv"
+      }
+    ],
+    "am2daomo": [
+      {
+        "token": "am2daomo",
+        "address": null,
+        "attributes": {
+          "property_type": "garden",
+          "rooms": 3.0,
+          "built_area": 76.0,
+          "advertised_area": 76.0,
+          "garden_area_explicit": 90.0,
+          "price": 2490000.0,
+          "parking_count": null,
+          "storage": null,
+          "elevator": null,
+          "floor_configuration": "ground",
+          "orientation": null,
+          "view": null,
+          "condition": null,
+          "attribute_source": "previous_local_audit"
+        },
+        "source": "previous_local_audit"
+      }
+    ],
+    "au7ykbzg": [
+      {
+        "token": "au7ykbzg",
+        "address": "זאב ברנדה",
+        "attributes": {
+          "property_type": "duplex",
+          "rooms": 5.0,
+          "built_area": 160.0,
+          "advertised_area": 160.0,
+          "balcony_area_explicit": null,
+          "balcony_components": null,
+          "garden_area_explicit": null,
+          "garden_components": null,
+          "parking_count": 1.0,
+          "storage": null,
+          "elevator": true,
+          "floor_configuration": "6",
+          "orientation": null,
+          "view": null,
+          "condition": [
+            "renovated"
+          ],
+          "build_year": null,
+          "attribute_source": "listing_unit_fact",
+          "description_excerpt": "למכירה דולפקס 5 חדרים  כולל מרפסת  50 מ  מטבח משופץ , יחידת הורים נעימה מרווחת   3 חדרי שרותים ומקלחות  חניה מקורה מקלט מסודר בבנין"
+        },
+        "source": "C:\\Users\\AVIV\\gaba\\gov_source_tests\\data_source_test\\yad2_petah_special\\yad2_asking_normalized.csv"
+      }
+    ],
+    "kihl5wee": [
+      {
+        "token": "kihl5wee",
+        "address": null,
+        "attributes": {
+          "property_type": "garden",
+          "rooms": 3.0,
+          "built_area": 85.0,
+          "advertised_area": 85.0,
+          "garden_area_explicit": 89.0,
+          "price": 2900000.0,
+          "parking_count": null,
+          "storage": null,
+          "elevator": null,
+          "floor_configuration": "ground",
+          "orientation": null,
+          "view": null,
+          "condition": null,
+          "attribute_source": "previous_local_audit"
+        },
+        "source": "previous_local_audit"
+      }
+    ],
+    "tkgbr5hx": [
+      {
+        "token": "tkgbr5hx",
+        "address": "עין גנים",
+        "attributes": {
+          "property_type": "duplex",
+          "rooms": 6.0,
+          "built_area": 220.0,
+          "advertised_area": 220.0,
+          "balcony_area_explicit": 130.0,
+          "balcony_components": [
+            130.0
+          ],
+          "garden_area_explicit": null,
+          "garden_components": null,
+          "parking_count": 3.0,
+          "storage": null,
+          "elevator": true,
+          "floor_configuration": "6",
+          "orientation": null,
+          "view": null,
+          "condition": null,
+          "build_year": null,
+          "attribute_source": "listing_unit_fact",
+          "description_excerpt": "למכירה בעין גנים 83 פתח תקווה נדיר! פנטהאוז דופלקס ענק עם 3 חניות בטאבו! נכס ייחודי ביותר בשוק הנדל\"ן מושלם למשפחות גדולות או כאלה שרוצים לייצר דירה נוספת ומניבה לנכס יש שתי כניסות , אופטימלי לחלוקה. שטח בנוי: 220 מ\"ר נטו! מרפסת שמש: 130 מ\"ר. 6 חדרים (אופציה ליותר) סלון ענק מעל 100 מטר מיקום: קומה 6-7. 3 חניות פרטיות רשומות בטאבו."
+        },
+        "source": "C:\\Users\\AVIV\\gaba\\gov_source_tests\\data_source_test\\yad2_petah_special\\yad2_asking_normalized.csv"
+      }
+    ],
+    "ub2tzaqh": [
+      {
+        "token": "ub2tzaqh",
+        "address": null,
+        "attributes": {
+          "property_type": "duplex",
+          "rooms": 6.0,
+          "built_area": 165.0,
+          "advertised_area": 255.0,
+          "balcony_area_explicit": 92.0,
+          "balcony_components": [
+            72.0,
+            20.0
+          ],
+          "garden_area_explicit": null,
+          "garden_components": null,
+          "parking_count": 2.0,
+          "storage": true,
+          "elevator": true,
+          "floor_configuration": "7+8",
+          "orientation": null,
+          "view": null,
+          "condition": [
+            "renovated",
+            "upgraded"
+          ],
+          "build_year": null,
+          "attribute_source": "listing_unit_fact",
+          "description_excerpt": "נכס כזה בשכונה לא יוצא לשוק בכל יום! *דופלקס מפנק בנווה גן המבוקשת*  - דופלקס 6 חד' כ165 מ\"ר בנוי!  -מרפסת 72 מ\"ר + מרפסת 20 מ\"ר  -סוויטת הורים ענקית! מפנקת במיוחד -בקומות 7+8 -2 חניות בטאבו -הנכס משודרג ומשופץ -מחסן מסודר וגדול  מחפשים איכות חיים? זה הנכס בשבילכם! אל תפספסו את ההזדמנות   לפרטים נוספים התקשרו עכשיו!"
+        },
+        "source": "C:\\Users\\AVIV\\gaba\\gov_source_tests\\data_source_test\\yad2_petah_special\\yad2_asking_normalized.csv"
+      }
+    ],
+    "wbvl4w9m": [
+      {
+        "token": "wbvl4w9m",
+        "address": "יוסף נקר",
+        "attributes": {
+          "property_type": "duplex",
+          "rooms": 6.0,
+          "built_area": 168.0,
+          "advertised_area": 285.0,
+          "balcony_area_explicit": null,
+          "balcony_components": null,
+          "garden_area_explicit": null,
+          "garden_components": null,
+          "parking_count": 2.0,
+          "storage": true,
+          "elevator": true,
+          "floor_configuration": "7",
+          "orientation": null,
+          "view": null,
+          "condition": null,
+          "build_year": null,
+          "attribute_source": "listing_unit_fact",
+          "description_excerpt": "נכס מספר: 51215, חדש בשוק! בכפר גנים ג', במיקום הכי טוב הכי גבוה בשכונה, דופלקס פנטהאוז מרווח, 2 דירות בקומה, מרפסות ענקיות 117 מ\"ר, מחסן צמוד, 2 חניות נפרדות, מעלית שבת! קרוב למרכזים המסחריים ולמוסדות לימוד! מומלץ במיוחד."
+        },
+        "source": "C:\\Users\\AVIV\\gaba\\gov_source_tests\\data_source_test\\yad2_petah_special\\yad2_asking_normalized.csv"
+      }
+    ]
+  }
+}

@@ -1,0 +1,2079 @@
+{
+  "version": "petah_tikva_sold_duplicate_audit_v3",
+  "rule": "candidate only: same address OR same gush/helka, with same rooms, area and amount, within one day",
+  "families": {
+    "3R": {
+      "scoped_transactions": 268,
+      "candidate_pair_count": 14,
+      "pairs": [
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 178,
+            "date": "2026-03-22",
+            "address": "אבינועם ילין 5",
+            "rooms": 3.0,
+            "area": 72.0,
+            "amount": 1960000.0,
+            "ppsm": 27222.0,
+            "gush": "6396",
+            "helka": "108",
+            "tatHelka": "12",
+            "firstHand": null,
+            "assetId": "11352690357",
+            "dedupeKey": "6396-108-12:2026-03-22:1960000",
+            "parcelNum": "6396-108-12"
+          },
+          "b": {
+            "_index": 171,
+            "date": "2026-03-23",
+            "address": "אבינועם ילין 5",
+            "rooms": 3.0,
+            "area": 72.0,
+            "amount": 1960000.0,
+            "ppsm": 27222.0,
+            "gush": "6396",
+            "helka": "108",
+            "tatHelka": "17",
+            "firstHand": null,
+            "assetId": "3656780636",
+            "dedupeKey": "6396-108-17:2026-03-23:1960000",
+            "parcelNum": "6396-108-17"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 187,
+            "date": "2026-03-18",
+            "address": "אבינועם ילין 6",
+            "rooms": 3.0,
+            "area": 69.0,
+            "amount": 2170000.0,
+            "ppsm": 31449.0,
+            "gush": "6396",
+            "helka": "112",
+            "tatHelka": "8",
+            "firstHand": null,
+            "assetId": "11352690376",
+            "dedupeKey": "6396-112-8:2026-03-18:2170000",
+            "parcelNum": "6396-112-8"
+          },
+          "b": {
+            "_index": 184,
+            "date": "2026-03-19",
+            "address": "אבינועם ילין 6",
+            "rooms": 3.0,
+            "area": 69.0,
+            "amount": 2170000.0,
+            "ppsm": 31449.0,
+            "gush": "6396",
+            "helka": "112",
+            "tatHelka": "10",
+            "firstHand": null,
+            "assetId": "3656522710",
+            "dedupeKey": "6396-112-10:2026-03-19:2170000",
+            "parcelNum": "6396-112-10"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 196,
+            "date": "2026-03-14",
+            "address": "אבינועם ילין 6",
+            "rooms": 3.0,
+            "area": 69.0,
+            "amount": 2255000.0,
+            "ppsm": 32681.0,
+            "gush": "6396",
+            "helka": "112",
+            "tatHelka": "7",
+            "firstHand": null,
+            "assetId": "11352690375",
+            "dedupeKey": "6396-112-7:2026-03-14:2255000",
+            "parcelNum": "6396-112-7"
+          },
+          "b": {
+            "_index": 193,
+            "date": "2026-03-15",
+            "address": "אבינועם ילין 6",
+            "rooms": 3.0,
+            "area": 69.0,
+            "amount": 2255000.0,
+            "ppsm": 32681.0,
+            "gush": "6396",
+            "helka": "112",
+            "tatHelka": "11",
+            "firstHand": null,
+            "assetId": "3656520593",
+            "dedupeKey": "6396-112-11:2026-03-15:2255000",
+            "parcelNum": "6396-112-11"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 306,
+            "date": "2025-12-28",
+            "address": "אלתר מיהוד 10",
+            "rooms": 3.0,
+            "area": 70.0,
+            "amount": 2250000.0,
+            "ppsm": 32143.0,
+            "gush": "6381",
+            "helka": "135",
+            "tatHelka": "11",
+            "firstHand": null,
+            "assetId": "11352688644",
+            "dedupeKey": "6381-135-11:2025-12-28:2250000",
+            "parcelNum": "6381-135-11"
+          },
+          "b": {
+            "_index": 301,
+            "date": "2025-12-29",
+            "address": "אלתר מיהוד 10",
+            "rooms": 3.0,
+            "area": 70.0,
+            "amount": 2250000.0,
+            "ppsm": 32143.0,
+            "gush": "6381",
+            "helka": "135",
+            "tatHelka": "12",
+            "firstHand": null,
+            "assetId": "3654577100",
+            "dedupeKey": "6381-135-12:2025-12-29:2250000",
+            "parcelNum": "6381-135-12"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 340,
+            "date": "2025-12-03",
+            "address": "אלתר מיהוד 10",
+            "rooms": 3.0,
+            "area": 70.0,
+            "amount": 1950000.0,
+            "ppsm": 27857.0,
+            "gush": "6381",
+            "helka": "135",
+            "tatHelka": "10",
+            "firstHand": null,
+            "assetId": "11352688643",
+            "dedupeKey": "6381-135-10:2025-12-03:1950000",
+            "parcelNum": "6381-135-10"
+          },
+          "b": {
+            "_index": 335,
+            "date": "2025-12-04",
+            "address": "אלתר מיהוד 10",
+            "rooms": 3.0,
+            "area": 70.0,
+            "amount": 1950000.0,
+            "ppsm": 27857.0,
+            "gush": "6381",
+            "helka": "135",
+            "tatHelka": "13",
+            "firstHand": null,
+            "assetId": "3636422636",
+            "dedupeKey": "6381-135-13:2025-12-04:1950000",
+            "parcelNum": "6381-135-13"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "first_hand_value_differs",
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 388,
+            "date": "2025-11-11",
+            "address": "חפץ חיים 25",
+            "rooms": 3.0,
+            "area": 75.0,
+            "amount": 2315000.0,
+            "ppsm": 30867.0,
+            "gush": "6385",
+            "helka": "107",
+            "tatHelka": "8",
+            "firstHand": true,
+            "assetId": "11351005988",
+            "dedupeKey": "6385-107-8:2025-11-11:2315000",
+            "parcelNum": "6385-107-8"
+          },
+          "b": {
+            "_index": 383,
+            "date": "2025-11-12",
+            "address": "חפץ חיים 25",
+            "rooms": 3.0,
+            "area": 75.0,
+            "amount": 2315000.0,
+            "ppsm": 30867.0,
+            "gush": "6385",
+            "helka": "107",
+            "tatHelka": "11",
+            "firstHand": false,
+            "assetId": "3635326813",
+            "dedupeKey": "6385-107-11:2025-11-12:2315000",
+            "parcelNum": "6385-107-11"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 435,
+            "date": "2025-10-15",
+            "address": "בעל שם-טוב 2",
+            "rooms": 3.0,
+            "area": 74.0,
+            "amount": 1950000.0,
+            "ppsm": 26351.0,
+            "gush": "6384",
+            "helka": "6",
+            "tatHelka": "8",
+            "firstHand": null,
+            "assetId": "11352688815",
+            "dedupeKey": "6384-6-8:2025-10-15:1950000",
+            "parcelNum": "6384-6-8"
+          },
+          "b": {
+            "_index": 433,
+            "date": "2025-10-16",
+            "address": "בעל שם-טוב 2",
+            "rooms": 3.0,
+            "area": 74.0,
+            "amount": 1950000.0,
+            "ppsm": 26351.0,
+            "gush": "6384",
+            "helka": "6",
+            "tatHelka": "17",
+            "firstHand": null,
+            "assetId": "3634740201",
+            "dedupeKey": "6384-6-17:2025-10-16:1950000",
+            "parcelNum": "6384-6-17"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 497,
+            "date": "2025-08-30",
+            "address": "אלתר מיהוד 10",
+            "rooms": 3.0,
+            "area": 63.0,
+            "amount": 1800000.0,
+            "ppsm": 28571.0,
+            "gush": "6381",
+            "helka": "135",
+            "tatHelka": "6",
+            "firstHand": null,
+            "assetId": "11352688646",
+            "dedupeKey": "6381-135-6:2025-08-30:1800000",
+            "parcelNum": "6381-135-6"
+          },
+          "b": {
+            "_index": 496,
+            "date": "2025-08-31",
+            "address": "אלתר מיהוד 10",
+            "rooms": 3.0,
+            "area": 63.0,
+            "amount": 1800000.0,
+            "ppsm": 28571.0,
+            "gush": "6381",
+            "helka": "135",
+            "tatHelka": "15",
+            "firstHand": null,
+            "assetId": "3634133927",
+            "dedupeKey": "6381-135-15:2025-08-31:1800000",
+            "parcelNum": "6381-135-15"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 586,
+            "date": "2025-07-14",
+            "address": "בעל שם-טוב 2",
+            "rooms": 3.0,
+            "area": 74.0,
+            "amount": 1930000.0,
+            "ppsm": 26081.0,
+            "gush": "6384",
+            "helka": "6",
+            "tatHelka": "6",
+            "firstHand": null,
+            "assetId": "11352688813",
+            "dedupeKey": "6384-6-6:2025-07-14:1930000",
+            "parcelNum": "6384-6-6"
+          },
+          "b": {
+            "_index": 584,
+            "date": "2025-07-15",
+            "address": "בעל שם-טוב 2",
+            "rooms": 3.0,
+            "area": 74.0,
+            "amount": 1930000.0,
+            "ppsm": 26081.0,
+            "gush": "6384",
+            "helka": "6",
+            "tatHelka": "20",
+            "firstHand": null,
+            "assetId": "3632463440",
+            "dedupeKey": "6384-6-20:2025-07-15:1930000",
+            "parcelNum": "6384-6-20"
+          }
+        },
+        {
+          "reasons": [
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 0,
+          "flags": [
+            "first_hand_value_differs",
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 752,
+            "date": "2025-03-30",
+            "address": "בלפור 8",
+            "rooms": 3.0,
+            "area": 67.0,
+            "amount": 2050000.0,
+            "ppsm": 30597.0,
+            "gush": "6387",
+            "helka": "22",
+            "tatHelka": "4",
+            "firstHand": false,
+            "assetId": "3628867527",
+            "dedupeKey": "6387-22-4:2025-03-30:2050000",
+            "parcelNum": "6387-22-4"
+          },
+          "b": {
+            "_index": 753,
+            "date": "2025-03-30",
+            "address": "זאב ברנדה 2",
+            "rooms": 3.0,
+            "area": 67.0,
+            "amount": 2050000.0,
+            "ppsm": 30597.0,
+            "gush": "6387",
+            "helka": "22",
+            "tatHelka": "5",
+            "firstHand": null,
+            "assetId": "3628865642",
+            "dedupeKey": "6387-22-5:2025-03-30:2050000",
+            "parcelNum": "6387-22-5"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 1021,
+            "date": "2024-12-14",
+            "address": "בעל שם-טוב 2",
+            "rooms": 3.0,
+            "area": 78.0,
+            "amount": 2250000.0,
+            "ppsm": 28846.0,
+            "gush": "6384",
+            "helka": "6",
+            "tatHelka": "7",
+            "firstHand": null,
+            "assetId": "11352688814",
+            "dedupeKey": "6384-6-7:2024-12-14:2250000",
+            "parcelNum": "6384-6-7"
+          },
+          "b": {
+            "_index": 1018,
+            "date": "2024-12-15",
+            "address": "בעל שם-טוב 2",
+            "rooms": 3.0,
+            "area": 78.0,
+            "amount": 2250000.0,
+            "ppsm": 28846.0,
+            "gush": "6384",
+            "helka": "6",
+            "tatHelka": "21",
+            "firstHand": null,
+            "assetId": "3625206248",
+            "dedupeKey": "6384-6-21:2024-12-15:2250000",
+            "parcelNum": "6384-6-21"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 1103,
+            "date": "2024-11-09",
+            "address": "זאב ברנדה 26",
+            "rooms": 3.0,
+            "area": 78.0,
+            "amount": 2200000.0,
+            "ppsm": 28205.0,
+            "gush": "6387",
+            "helka": "25",
+            "tatHelka": "10",
+            "firstHand": null,
+            "assetId": "11352689125",
+            "dedupeKey": "6387-25-10:2024-11-09:2200000",
+            "parcelNum": "6387-25-10"
+          },
+          "b": {
+            "_index": 1101,
+            "date": "2024-11-10",
+            "address": "זאב ברנדה 26",
+            "rooms": 3.0,
+            "area": 78.0,
+            "amount": 2200000.0,
+            "ppsm": 28205.0,
+            "gush": "6387",
+            "helka": "25",
+            "tatHelka": "17",
+            "firstHand": null,
+            "assetId": "3607107029",
+            "dedupeKey": "6387-25-17:2024-11-10:2200000",
+            "parcelNum": "6387-25-17"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 1112,
+            "date": "2024-11-06",
+            "address": "מיכל לייב כץ 3",
+            "rooms": 3.0,
+            "area": 75.0,
+            "amount": 2340000.0,
+            "ppsm": 31200.0,
+            "gush": "6381",
+            "helka": "190",
+            "tatHelka": "6",
+            "firstHand": null,
+            "assetId": "11352688729",
+            "dedupeKey": "6381-190-6:2024-11-06:2340000",
+            "parcelNum": "6381-190-6"
+          },
+          "b": {
+            "_index": 1108,
+            "date": "2024-11-07",
+            "address": "מיכל לייב כץ 3",
+            "rooms": 3.0,
+            "area": 75.0,
+            "amount": 2340000.0,
+            "ppsm": 31200.0,
+            "gush": "6381",
+            "helka": "190",
+            "tatHelka": "7",
+            "firstHand": null,
+            "assetId": "3606241408",
+            "dedupeKey": "6381-190-7:2024-11-07:2340000",
+            "parcelNum": "6381-190-7"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 1120,
+            "date": "2024-10-30",
+            "address": "בעל שם-טוב 2",
+            "rooms": 3.0,
+            "area": 78.0,
+            "amount": 2300000.0,
+            "ppsm": 29487.0,
+            "gush": "6384",
+            "helka": "6",
+            "tatHelka": "16",
+            "firstHand": null,
+            "assetId": "11352688808",
+            "dedupeKey": "6384-6-16:2024-10-30:2300000",
+            "parcelNum": "6384-6-16"
+          },
+          "b": {
+            "_index": 1116,
+            "date": "2024-10-31",
+            "address": "בעל שם-טוב 2",
+            "rooms": 3.0,
+            "area": 78.0,
+            "amount": 2300000.0,
+            "ppsm": 29487.0,
+            "gush": "6384",
+            "helka": "6",
+            "tatHelka": "22",
+            "firstHand": null,
+            "assetId": "3606319215",
+            "dedupeKey": "6384-6-22:2024-10-31:2300000",
+            "parcelNum": "6384-6-22"
+          }
+        }
+      ]
+    },
+    "5R": {
+      "scoped_transactions": 113,
+      "candidate_pair_count": 34,
+      "pairs": [
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "first_hand_value_differs",
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 103,
+            "date": "2026-05-18",
+            "address": "הכרם 4",
+            "rooms": 5.0,
+            "area": 117.0,
+            "amount": 3250000.0,
+            "ppsm": 27778.0,
+            "gush": "6381",
+            "helka": "203",
+            "tatHelka": "3",
+            "firstHand": true,
+            "assetId": "11352688742",
+            "dedupeKey": "6381-203-3:2026-05-18:3250000",
+            "parcelNum": "6381-203-3"
+          },
+          "b": {
+            "_index": 100,
+            "date": "2026-05-19",
+            "address": "הכרם 4",
+            "rooms": 5.0,
+            "area": 117.0,
+            "amount": 3250000.0,
+            "ppsm": 27778.0,
+            "gush": "6381",
+            "helka": "203",
+            "tatHelka": "4",
+            "firstHand": null,
+            "assetId": "3658518287",
+            "dedupeKey": "6381-203-4:2026-05-19:3250000",
+            "parcelNum": "6381-203-4"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "first_hand_value_differs",
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 145,
+            "date": "2026-04-20",
+            "address": "זאב ברנדה 40",
+            "rooms": 5.0,
+            "area": 120.0,
+            "amount": 2845000.0,
+            "ppsm": 23708.0,
+            "gush": "6387",
+            "helka": "33",
+            "tatHelka": "12",
+            "firstHand": true,
+            "assetId": "11352689159",
+            "dedupeKey": "6387-33-12:2026-04-20:2845000",
+            "parcelNum": "6387-33-12"
+          },
+          "b": {
+            "_index": 144,
+            "date": "2026-04-21",
+            "address": "זאב ברנדה 40",
+            "rooms": 5.0,
+            "area": 120.0,
+            "amount": 2845000.0,
+            "ppsm": 23708.0,
+            "gush": "6387",
+            "helka": "33",
+            "tatHelka": "13",
+            "firstHand": null,
+            "assetId": "3657792388",
+            "dedupeKey": "6387-33-13:2026-04-21:2845000",
+            "parcelNum": "6387-33-13"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "first_hand_value_differs",
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 178,
+            "date": "2026-03-29",
+            "address": "פנקס 5",
+            "rooms": 5.0,
+            "area": 120.0,
+            "amount": 3225000.0,
+            "ppsm": 26875.0,
+            "gush": "6381",
+            "helka": "244",
+            "tatHelka": "4",
+            "firstHand": true,
+            "assetId": "11352688744",
+            "dedupeKey": "6381-244-4:2026-03-29:3225000",
+            "parcelNum": "6381-244-4"
+          },
+          "b": {
+            "_index": 171,
+            "date": "2026-03-30",
+            "address": "פנקס 5",
+            "rooms": 5.0,
+            "area": 120.0,
+            "amount": 3225000.0,
+            "ppsm": 26875.0,
+            "gush": "6381",
+            "helka": "244",
+            "tatHelka": "7",
+            "firstHand": null,
+            "assetId": "3657113382",
+            "dedupeKey": "6381-244-7:2026-03-30:3225000",
+            "parcelNum": "6381-244-7"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "first_hand_value_differs",
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 180,
+            "date": "2026-03-28",
+            "address": "שמואל סלנט 41",
+            "rooms": 5.0,
+            "area": 125.0,
+            "amount": 3500000.0,
+            "ppsm": 28000.0,
+            "gush": "6397",
+            "helka": "210",
+            "tatHelka": "11",
+            "firstHand": true,
+            "assetId": "11352690527",
+            "dedupeKey": "6397-210-11:2026-03-28:3500000",
+            "parcelNum": "6397-210-11"
+          },
+          "b": {
+            "_index": 175,
+            "date": "2026-03-29",
+            "address": "שמואל סלנט 41",
+            "rooms": 5.0,
+            "area": 125.0,
+            "amount": 3500000.0,
+            "ppsm": 28000.0,
+            "gush": "6397",
+            "helka": "210",
+            "tatHelka": "12",
+            "firstHand": null,
+            "assetId": "3656986623",
+            "dedupeKey": "6397-210-12:2026-03-29:3500000",
+            "parcelNum": "6397-210-12"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 215,
+            "date": "2026-03-15",
+            "address": "זאב ברנדה 40",
+            "rooms": 5.0,
+            "area": 117.0,
+            "amount": 2860000.0,
+            "ppsm": 24444.0,
+            "gush": "6387",
+            "helka": "33",
+            "tatHelka": "11",
+            "firstHand": null,
+            "assetId": "11352689158",
+            "dedupeKey": "6387-33-11:2026-03-15:2860000",
+            "parcelNum": "6387-33-11"
+          },
+          "b": {
+            "_index": 212,
+            "date": "2026-03-16",
+            "address": "זאב ברנדה 40",
+            "rooms": 5.0,
+            "area": 117.0,
+            "amount": 2860000.0,
+            "ppsm": 24444.0,
+            "gush": "6387",
+            "helka": "33",
+            "tatHelka": "14",
+            "firstHand": null,
+            "assetId": "3656501192",
+            "dedupeKey": "6387-33-14:2026-03-16:2860000",
+            "parcelNum": "6387-33-14"
+          }
+        },
+        {
+          "reasons": [
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 229,
+            "date": "2026-03-09",
+            "address": null,
+            "rooms": 5.0,
+            "area": 120.0,
+            "amount": 2980000.0,
+            "ppsm": 24833.0,
+            "gush": "6386",
+            "helka": "270",
+            "tatHelka": "6",
+            "firstHand": null,
+            "assetId": "11352689061",
+            "dedupeKey": "6386-270-6:2026-03-09:2980000",
+            "parcelNum": "6386-270-6"
+          },
+          "b": {
+            "_index": 226,
+            "date": "2026-03-10",
+            "address": null,
+            "rooms": 5.0,
+            "area": 120.0,
+            "amount": 2980000.0,
+            "ppsm": 24833.0,
+            "gush": "6386",
+            "helka": "270",
+            "tatHelka": "20",
+            "firstHand": null,
+            "assetId": "3656449746",
+            "dedupeKey": "6386-270-20:2026-03-10:2980000",
+            "parcelNum": "6386-270-20"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 250,
+            "date": "2026-02-24",
+            "address": "הכרם 4",
+            "rooms": 5.0,
+            "area": 118.0,
+            "amount": 4354000.0,
+            "ppsm": 36898.0,
+            "gush": "6381",
+            "helka": "203",
+            "tatHelka": "2",
+            "firstHand": null,
+            "assetId": "11352688741",
+            "dedupeKey": "6381-203-2:2026-02-24:4354000",
+            "parcelNum": "6381-203-2"
+          },
+          "b": {
+            "_index": 244,
+            "date": "2026-02-25",
+            "address": "הכרם 4",
+            "rooms": 5.0,
+            "area": 118.0,
+            "amount": 4354000.0,
+            "ppsm": 36898.0,
+            "gush": "6381",
+            "helka": "203",
+            "tatHelka": "5",
+            "firstHand": null,
+            "assetId": "3656481298",
+            "dedupeKey": "6381-203-5:2026-02-25:4354000",
+            "parcelNum": "6381-203-5"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 301,
+            "date": "2026-01-20",
+            "address": "זאב ברנדה 26",
+            "rooms": 5.0,
+            "area": 114.0,
+            "amount": 2500000.0,
+            "ppsm": 21930.0,
+            "gush": "6387",
+            "helka": "25",
+            "tatHelka": "12",
+            "firstHand": null,
+            "assetId": "11352689127",
+            "dedupeKey": "6387-25-12:2026-01-20:2500000",
+            "parcelNum": "6387-25-12"
+          },
+          "b": {
+            "_index": 299,
+            "date": "2026-01-21",
+            "address": "זאב ברנדה 26",
+            "rooms": 5.0,
+            "area": 114.0,
+            "amount": 2500000.0,
+            "ppsm": 21930.0,
+            "gush": "6387",
+            "helka": "25",
+            "tatHelka": "15",
+            "firstHand": null,
+            "assetId": "3655258513",
+            "dedupeKey": "6387-25-15:2026-01-21:2500000",
+            "parcelNum": "6387-25-15"
+          }
+        },
+        {
+          "reasons": [
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 366,
+            "date": "2025-12-23",
+            "address": "יחיאל מיכל פינס 33",
+            "rooms": 5.0,
+            "area": 118.0,
+            "amount": 2605000.0,
+            "ppsm": 22076.0,
+            "gush": "6396",
+            "helka": "220",
+            "tatHelka": "15",
+            "firstHand": null,
+            "assetId": "11352690389",
+            "dedupeKey": "6396-220-15:2025-12-23:2605000",
+            "parcelNum": "6396-220-15"
+          },
+          "b": {
+            "_index": 360,
+            "date": "2025-12-24",
+            "address": "חפץ חיים 80",
+            "rooms": 5.0,
+            "area": 118.0,
+            "amount": 2605000.0,
+            "ppsm": 22076.0,
+            "gush": "6396",
+            "helka": "220",
+            "tatHelka": "24",
+            "firstHand": null,
+            "assetId": "3636539651",
+            "dedupeKey": "6396-220-24:2025-12-24:2605000",
+            "parcelNum": "6396-220-24"
+          }
+        },
+        {
+          "reasons": [
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 411,
+            "date": "2025-12-08",
+            "address": "יהוד 2",
+            "rooms": 5.0,
+            "area": 112.0,
+            "amount": 2850000.0,
+            "ppsm": 25446.0,
+            "gush": "6386",
+            "helka": "169",
+            "tatHelka": "10",
+            "firstHand": null,
+            "assetId": "11352688946",
+            "dedupeKey": "6386-169-10:2025-12-08:2850000",
+            "parcelNum": "6386-169-10"
+          },
+          "b": {
+            "_index": 409,
+            "date": "2025-12-09",
+            "address": "רוטשילד 160",
+            "rooms": 5.0,
+            "area": 112.0,
+            "amount": 2850000.0,
+            "ppsm": 25446.0,
+            "gush": "6386",
+            "helka": "169",
+            "tatHelka": "29",
+            "firstHand": null,
+            "assetId": "3636184082",
+            "dedupeKey": "6386-169-29:2025-12-09:2850000",
+            "parcelNum": "6386-169-29"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 486,
+            "date": "2025-11-15",
+            "address": "פנקס 5",
+            "rooms": 5.0,
+            "area": 120.0,
+            "amount": 3300000.0,
+            "ppsm": 27500.0,
+            "gush": "6381",
+            "helka": "244",
+            "tatHelka": "3",
+            "firstHand": null,
+            "assetId": "11352688743",
+            "dedupeKey": "6381-244-3:2025-11-15:3300000",
+            "parcelNum": "6381-244-3"
+          },
+          "b": {
+            "_index": 478,
+            "date": "2025-11-16",
+            "address": "פנקס 5",
+            "rooms": 5.0,
+            "area": 120.0,
+            "amount": 3300000.0,
+            "ppsm": 27500.0,
+            "gush": "6381",
+            "helka": "244",
+            "tatHelka": "8",
+            "firstHand": null,
+            "assetId": "3635437129",
+            "dedupeKey": "6381-244-8:2025-11-16:3300000",
+            "parcelNum": "6381-244-8"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 506,
+            "date": "2025-11-05",
+            "address": "זאב ברנדה 26",
+            "rooms": 5.0,
+            "area": 114.0,
+            "amount": 3400000.0,
+            "ppsm": 29825.0,
+            "gush": "6387",
+            "helka": "25",
+            "tatHelka": "11",
+            "firstHand": null,
+            "assetId": "11352689126",
+            "dedupeKey": "6387-25-11:2025-11-05:3400000",
+            "parcelNum": "6387-25-11"
+          },
+          "b": {
+            "_index": 505,
+            "date": "2025-11-06",
+            "address": "זאב ברנדה 26",
+            "rooms": 5.0,
+            "area": 114.0,
+            "amount": 3400000.0,
+            "ppsm": 29825.0,
+            "gush": "6387",
+            "helka": "25",
+            "tatHelka": "16",
+            "firstHand": null,
+            "assetId": "3635556522",
+            "dedupeKey": "6387-25-16:2025-11-06:3400000",
+            "parcelNum": "6387-25-16"
+          }
+        },
+        {
+          "reasons": [
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 516,
+            "date": "2025-11-04",
+            "address": "יהוד 2",
+            "rooms": 5.0,
+            "area": 120.0,
+            "amount": 3100000.0,
+            "ppsm": 25833.0,
+            "gush": "6386",
+            "helka": "169",
+            "tatHelka": "2",
+            "firstHand": null,
+            "assetId": "11352688956",
+            "dedupeKey": "6386-169-2:2025-11-04:3100000",
+            "parcelNum": "6386-169-2"
+          },
+          "b": {
+            "_index": 509,
+            "date": "2025-11-05",
+            "address": "רוטשילד 160",
+            "rooms": 5.0,
+            "area": 120.0,
+            "amount": 3100000.0,
+            "ppsm": 25833.0,
+            "gush": "6386",
+            "helka": "169",
+            "tatHelka": "31",
+            "firstHand": null,
+            "assetId": "3635299321",
+            "dedupeKey": "6386-169-31:2025-11-05:3100000",
+            "parcelNum": "6386-169-31"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "first_hand_value_differs",
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 553,
+            "date": "2025-10-18",
+            "address": "רמב\"ם 4",
+            "rooms": 5.0,
+            "area": 127.0,
+            "amount": 2789000.0,
+            "ppsm": 21961.0,
+            "gush": "6378",
+            "helka": "135",
+            "tatHelka": "12",
+            "firstHand": true,
+            "assetId": "11351005765",
+            "dedupeKey": "6378-135-12:2025-10-18:2789000",
+            "parcelNum": "6378-135-12"
+          },
+          "b": {
+            "_index": 551,
+            "date": "2025-10-19",
+            "address": "רמב\"ם 4",
+            "rooms": 5.0,
+            "area": 127.0,
+            "amount": 2789000.0,
+            "ppsm": 21961.0,
+            "gush": "6378",
+            "helka": "135",
+            "tatHelka": "13",
+            "firstHand": false,
+            "assetId": "3634803334",
+            "dedupeKey": "6378-135-13:2025-10-19:2789000",
+            "parcelNum": "6378-135-13"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "first_hand_value_differs",
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 657,
+            "date": "2025-08-23",
+            "address": "רוטשילד 170",
+            "rooms": 5.0,
+            "area": 121.0,
+            "amount": 2885000.0,
+            "ppsm": 23843.0,
+            "gush": "6386",
+            "helka": "227",
+            "tatHelka": "17",
+            "firstHand": true,
+            "assetId": "11351006201",
+            "dedupeKey": "6386-227-17:2025-08-23:2885000",
+            "parcelNum": "6386-227-17"
+          },
+          "b": {
+            "_index": 656,
+            "date": "2025-08-24",
+            "address": "רוטשילד 170",
+            "rooms": 5.0,
+            "area": 121.0,
+            "amount": 2885000.0,
+            "ppsm": 23843.0,
+            "gush": "6386",
+            "helka": "227",
+            "tatHelka": "23",
+            "firstHand": false,
+            "assetId": "3633080270",
+            "dedupeKey": "6386-227-23:2025-08-24:2885000",
+            "parcelNum": "6386-227-23"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 660,
+            "date": "2025-08-20",
+            "address": "זאב ברנדה 40",
+            "rooms": 5.0,
+            "area": 117.0,
+            "amount": 2810000.0,
+            "ppsm": 24017.0,
+            "gush": "6387",
+            "helka": "33",
+            "tatHelka": "9",
+            "firstHand": null,
+            "assetId": "11352689166",
+            "dedupeKey": "6387-33-9:2025-08-20:2810000",
+            "parcelNum": "6387-33-9"
+          },
+          "b": {
+            "_index": 659,
+            "date": "2025-08-21",
+            "address": "זאב ברנדה 40",
+            "rooms": 5.0,
+            "area": 117.0,
+            "amount": 2810000.0,
+            "ppsm": 24017.0,
+            "gush": "6387",
+            "helka": "33",
+            "tatHelka": "15",
+            "firstHand": null,
+            "assetId": "3633052749",
+            "dedupeKey": "6387-33-15:2025-08-21:2810000",
+            "parcelNum": "6387-33-15"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 684,
+            "date": "2025-08-09",
+            "address": "זאב ברנדה 40",
+            "rooms": 5.0,
+            "area": 120.0,
+            "amount": 2920000.0,
+            "ppsm": 24333.0,
+            "gush": "6387",
+            "helka": "33",
+            "tatHelka": "7",
+            "firstHand": null,
+            "assetId": "11352689164",
+            "dedupeKey": "6387-33-7:2025-08-09:2920000",
+            "parcelNum": "6387-33-7"
+          },
+          "b": {
+            "_index": 682,
+            "date": "2025-08-10",
+            "address": "זאב ברנדה 40",
+            "rooms": 5.0,
+            "area": 120.0,
+            "amount": 2920000.0,
+            "ppsm": 24333.0,
+            "gush": "6387",
+            "helka": "33",
+            "tatHelka": "17",
+            "firstHand": null,
+            "assetId": "3632870455",
+            "dedupeKey": "6387-33-17:2025-08-10:2920000",
+            "parcelNum": "6387-33-17"
+          }
+        },
+        {
+          "reasons": [
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 705,
+            "date": "2025-08-04",
+            "address": null,
+            "rooms": 5.0,
+            "area": 119.0,
+            "amount": 2900000.0,
+            "ppsm": 24370.0,
+            "gush": "6386",
+            "helka": "270",
+            "tatHelka": "4",
+            "firstHand": null,
+            "assetId": "11352689059",
+            "dedupeKey": "6386-270-4:2025-08-04:2900000",
+            "parcelNum": "6386-270-4"
+          },
+          "b": {
+            "_index": 701,
+            "date": "2025-08-05",
+            "address": null,
+            "rooms": 5.0,
+            "area": 119.0,
+            "amount": 2900000.0,
+            "ppsm": 24370.0,
+            "gush": "6386",
+            "helka": "270",
+            "tatHelka": "21",
+            "firstHand": null,
+            "assetId": "3632933385",
+            "dedupeKey": "6386-270-21:2025-08-05:2900000",
+            "parcelNum": "6386-270-21"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "first_hand_value_differs",
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 733,
+            "date": "2025-07-23",
+            "address": "רוטשילד 170",
+            "rooms": 5.0,
+            "area": 121.0,
+            "amount": 2905000.0,
+            "ppsm": 24008.0,
+            "gush": "6386",
+            "helka": "227",
+            "tatHelka": "15",
+            "firstHand": true,
+            "assetId": "11351006199",
+            "dedupeKey": "6386-227-15:2025-07-23:2905000",
+            "parcelNum": "6386-227-15"
+          },
+          "b": {
+            "_index": 731,
+            "date": "2025-07-24",
+            "address": "רוטשילד 170",
+            "rooms": 5.0,
+            "area": 121.0,
+            "amount": 2905000.0,
+            "ppsm": 24008.0,
+            "gush": "6386",
+            "helka": "227",
+            "tatHelka": "25",
+            "firstHand": false,
+            "assetId": "3632443865",
+            "dedupeKey": "6386-227-25:2025-07-24:2905000",
+            "parcelNum": "6386-227-25"
+          }
+        },
+        {
+          "reasons": [
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 784,
+            "date": "2025-07-02",
+            "address": "יחיאל מיכל פינס 33",
+            "rooms": 5.0,
+            "area": 118.0,
+            "amount": 2625000.0,
+            "ppsm": 22246.0,
+            "gush": "6396",
+            "helka": "220",
+            "tatHelka": "11",
+            "firstHand": null,
+            "assetId": "11352690386",
+            "dedupeKey": "6396-220-11:2025-07-02:2625000",
+            "parcelNum": "6396-220-11"
+          },
+          "b": {
+            "_index": 781,
+            "date": "2025-07-03",
+            "address": "חפץ חיים 80",
+            "rooms": 5.0,
+            "area": 118.0,
+            "amount": 2625000.0,
+            "ppsm": 22246.0,
+            "gush": "6396",
+            "helka": "220",
+            "tatHelka": "26",
+            "firstHand": null,
+            "assetId": "3631627776",
+            "dedupeKey": "6396-220-26:2025-07-03:2625000",
+            "parcelNum": "6396-220-26"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 823,
+            "date": "2025-06-15",
+            "address": "זאב ברנדה 40",
+            "rooms": 5.0,
+            "area": 120.0,
+            "amount": 2960000.0,
+            "ppsm": 24667.0,
+            "gush": "6387",
+            "helka": "33",
+            "tatHelka": "5",
+            "firstHand": null,
+            "assetId": "11352689162",
+            "dedupeKey": "6387-33-5:2025-06-15:2960000",
+            "parcelNum": "6387-33-5"
+          },
+          "b": {
+            "_index": 820,
+            "date": "2025-06-16",
+            "address": "זאב ברנדה 40",
+            "rooms": 5.0,
+            "area": 120.0,
+            "amount": 2960000.0,
+            "ppsm": 24667.0,
+            "gush": "6387",
+            "helka": "33",
+            "tatHelka": "19",
+            "firstHand": null,
+            "assetId": "3631060275",
+            "dedupeKey": "6387-33-19:2025-06-16:2960000",
+            "parcelNum": "6387-33-19"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 876,
+            "date": "2025-05-17",
+            "address": "אורלנסקי 13",
+            "rooms": 5.0,
+            "area": 113.0,
+            "amount": 2680000.0,
+            "ppsm": 23717.0,
+            "gush": "6385",
+            "helka": "146",
+            "tatHelka": "11",
+            "firstHand": null,
+            "assetId": "11352688851",
+            "dedupeKey": "6385-146-11:2025-05-17:2680000",
+            "parcelNum": "6385-146-11"
+          },
+          "b": {
+            "_index": 871,
+            "date": "2025-05-18",
+            "address": "אורלנסקי 13",
+            "rooms": 5.0,
+            "area": 113.0,
+            "amount": 2680000.0,
+            "ppsm": 23717.0,
+            "gush": "6385",
+            "helka": "146",
+            "tatHelka": "15",
+            "firstHand": null,
+            "assetId": "3630147297",
+            "dedupeKey": "6385-146-15:2025-05-18:2680000",
+            "parcelNum": "6385-146-15"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 905,
+            "date": "2025-05-03",
+            "address": "מרדכי חפץ 7",
+            "rooms": 5.0,
+            "area": 114.0,
+            "amount": 3670000.0,
+            "ppsm": 32193.0,
+            "gush": "6381",
+            "helka": "61",
+            "tatHelka": "3",
+            "firstHand": null,
+            "assetId": "11352688750",
+            "dedupeKey": "6381-61-3:2025-05-03:3670000",
+            "parcelNum": "6381-61-3"
+          },
+          "b": {
+            "_index": 903,
+            "date": "2025-05-04",
+            "address": "מרדכי חפץ 7",
+            "rooms": 5.0,
+            "area": 114.0,
+            "amount": 3670000.0,
+            "ppsm": 32193.0,
+            "gush": "6381",
+            "helka": "61",
+            "tatHelka": "4",
+            "firstHand": null,
+            "assetId": "3630338929",
+            "dedupeKey": "6381-61-4:2025-05-04:3670000",
+            "parcelNum": "6381-61-4"
+          }
+        },
+        {
+          "reasons": [
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 960,
+            "date": "2025-03-31",
+            "address": null,
+            "rooms": 5.0,
+            "area": 120.0,
+            "amount": 3040000.0,
+            "ppsm": 25333.0,
+            "gush": "6386",
+            "helka": "270",
+            "tatHelka": "19",
+            "firstHand": null,
+            "assetId": "11352689056",
+            "dedupeKey": "6386-270-19:2025-03-31:3040000",
+            "parcelNum": "6386-270-19"
+          },
+          "b": {
+            "_index": 957,
+            "date": "2025-04-01",
+            "address": null,
+            "rooms": 5.0,
+            "area": 120.0,
+            "amount": 3040000.0,
+            "ppsm": 25333.0,
+            "gush": "6386",
+            "helka": "270",
+            "tatHelka": "22",
+            "firstHand": null,
+            "assetId": "3629496479",
+            "dedupeKey": "6386-270-22:2025-04-01:3040000",
+            "parcelNum": "6386-270-22"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 975,
+            "date": "2025-03-25",
+            "address": "שמואל סלנט 59",
+            "rooms": 5.0,
+            "area": 114.0,
+            "amount": 2880000.0,
+            "ppsm": 25263.0,
+            "gush": "6397",
+            "helka": "108",
+            "tatHelka": "13",
+            "firstHand": null,
+            "assetId": "11352690433",
+            "dedupeKey": "6397-108-13:2025-03-25:2880000",
+            "parcelNum": "6397-108-13"
+          },
+          "b": {
+            "_index": 971,
+            "date": "2025-03-26",
+            "address": "שמואל סלנט 59",
+            "rooms": 5.0,
+            "area": 114.0,
+            "amount": 2880000.0,
+            "ppsm": 25263.0,
+            "gush": "6397",
+            "helka": "108",
+            "tatHelka": "15",
+            "firstHand": null,
+            "assetId": "3628790764",
+            "dedupeKey": "6397-108-15:2025-03-26:2880000",
+            "parcelNum": "6397-108-15"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 1131,
+            "date": "2025-02-03",
+            "address": "זאב ברנדה 40",
+            "rooms": 5.0,
+            "area": 120.0,
+            "amount": 2830000.0,
+            "ppsm": 23583.0,
+            "gush": "6387",
+            "helka": "33",
+            "tatHelka": "3",
+            "firstHand": null,
+            "assetId": "11352689161",
+            "dedupeKey": "6387-33-3:2025-02-03:2830000",
+            "parcelNum": "6387-33-3"
+          },
+          "b": {
+            "_index": 1128,
+            "date": "2025-02-04",
+            "address": "זאב ברנדה 40",
+            "rooms": 5.0,
+            "area": 120.0,
+            "amount": 2830000.0,
+            "ppsm": 23583.0,
+            "gush": "6387",
+            "helka": "33",
+            "tatHelka": "21",
+            "firstHand": null,
+            "assetId": "3627169867",
+            "dedupeKey": "6387-33-21:2025-02-04:2830000",
+            "parcelNum": "6387-33-21"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 1166,
+            "date": "2025-01-25",
+            "address": "זאב ברנדה 40",
+            "rooms": 5.0,
+            "area": 117.0,
+            "amount": 2810000.0,
+            "ppsm": 24017.0,
+            "gush": "6387",
+            "helka": "33",
+            "tatHelka": "2",
+            "firstHand": null,
+            "assetId": "11352689160",
+            "dedupeKey": "6387-33-2:2025-01-25:2810000",
+            "parcelNum": "6387-33-2"
+          },
+          "b": {
+            "_index": 1163,
+            "date": "2025-01-26",
+            "address": "זאב ברנדה 40",
+            "rooms": 5.0,
+            "area": 117.0,
+            "amount": 2810000.0,
+            "ppsm": 24017.0,
+            "gush": "6387",
+            "helka": "33",
+            "tatHelka": "22",
+            "firstHand": null,
+            "assetId": "3627164589",
+            "dedupeKey": "6387-33-22:2025-01-26:2810000",
+            "parcelNum": "6387-33-22"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 1178,
+            "date": "2025-01-22",
+            "address": "זאב ברנדה 40",
+            "rooms": 5.0,
+            "area": 117.0,
+            "amount": 2800000.0,
+            "ppsm": 23932.0,
+            "gush": "6387",
+            "helka": "33",
+            "tatHelka": "1",
+            "firstHand": null,
+            "assetId": "11352689156",
+            "dedupeKey": "6387-33-1:2025-01-22:2800000",
+            "parcelNum": "6387-33-1"
+          },
+          "b": {
+            "_index": 1174,
+            "date": "2025-01-23",
+            "address": "זאב ברנדה 40",
+            "rooms": 5.0,
+            "area": 117.0,
+            "amount": 2800000.0,
+            "ppsm": 23932.0,
+            "gush": "6387",
+            "helka": "33",
+            "tatHelka": "23",
+            "firstHand": null,
+            "assetId": "3627164357",
+            "dedupeKey": "6387-33-23:2025-01-23:2800000",
+            "parcelNum": "6387-33-23"
+          }
+        },
+        {
+          "reasons": [
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 1186,
+            "date": "2025-01-19",
+            "address": null,
+            "rooms": 5.0,
+            "area": 119.0,
+            "amount": 2960000.0,
+            "ppsm": 24874.0,
+            "gush": "6386",
+            "helka": "270",
+            "tatHelka": "14",
+            "firstHand": null,
+            "assetId": "11352689051",
+            "dedupeKey": "6386-270-14:2025-01-19:2960000",
+            "parcelNum": "6386-270-14"
+          },
+          "b": {
+            "_index": 1184,
+            "date": "2025-01-20",
+            "address": null,
+            "rooms": 5.0,
+            "area": 119.0,
+            "amount": 2960000.0,
+            "ppsm": 24874.0,
+            "gush": "6386",
+            "helka": "270",
+            "tatHelka": "24",
+            "firstHand": null,
+            "assetId": "3627206639",
+            "dedupeKey": "6386-270-24:2025-01-20:2960000",
+            "parcelNum": "6386-270-24"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 1312,
+            "date": "2024-12-17",
+            "address": "גד מכנס 27",
+            "rooms": 5.0,
+            "area": 126.0,
+            "amount": 3800000.0,
+            "ppsm": 30159.0,
+            "gush": "6396",
+            "helka": "150",
+            "tatHelka": "3",
+            "firstHand": null,
+            "assetId": "11352690379",
+            "dedupeKey": "6396-150-3:2024-12-17:3800000",
+            "parcelNum": "6396-150-3"
+          },
+          "b": {
+            "_index": 1302,
+            "date": "2024-12-18",
+            "address": "גד מכנס 27",
+            "rooms": 5.0,
+            "area": 126.0,
+            "amount": 3800000.0,
+            "ppsm": 30159.0,
+            "gush": "6396",
+            "helka": "150",
+            "tatHelka": "9",
+            "firstHand": null,
+            "assetId": "3625346028",
+            "dedupeKey": "6396-150-9:2024-12-18:3800000",
+            "parcelNum": "6396-150-9"
+          }
+        },
+        {
+          "reasons": [
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 1418,
+            "date": "2024-11-19",
+            "address": "יהוד 2",
+            "rooms": 5.0,
+            "area": 120.0,
+            "amount": 3050000.0,
+            "ppsm": 25417.0,
+            "gush": "6386",
+            "helka": "169",
+            "tatHelka": "22",
+            "firstHand": null,
+            "assetId": "11352688959",
+            "dedupeKey": "6386-169-22:2024-11-19:3050000",
+            "parcelNum": "6386-169-22"
+          },
+          "b": {
+            "_index": 1409,
+            "date": "2024-11-20",
+            "address": "רוטשילד 160",
+            "rooms": 5.0,
+            "area": 120.0,
+            "amount": 3050000.0,
+            "ppsm": 25417.0,
+            "gush": "6386",
+            "helka": "169",
+            "tatHelka": "33",
+            "firstHand": null,
+            "assetId": "3607005848",
+            "dedupeKey": "6386-169-33:2024-11-20:3050000",
+            "parcelNum": "6386-169-33"
+          }
+        },
+        {
+          "reasons": [
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 1451,
+            "date": "2024-11-06",
+            "address": "יהוד 2",
+            "rooms": 5.0,
+            "area": 120.0,
+            "amount": 2950000.0,
+            "ppsm": 24583.0,
+            "gush": "6386",
+            "helka": "169",
+            "tatHelka": "5",
+            "firstHand": null,
+            "assetId": "11352688965",
+            "dedupeKey": "6386-169-5:2024-11-06:2950000",
+            "parcelNum": "6386-169-5"
+          },
+          "b": {
+            "_index": 1447,
+            "date": "2024-11-07",
+            "address": "רוטשילד 160",
+            "rooms": 5.0,
+            "area": 120.0,
+            "amount": 2950000.0,
+            "ppsm": 24583.0,
+            "gush": "6386",
+            "helka": "169",
+            "tatHelka": "34",
+            "firstHand": null,
+            "assetId": "3607004630",
+            "dedupeKey": "6386-169-34:2024-11-07:2950000",
+            "parcelNum": "6386-169-34"
+          }
+        },
+        {
+          "reasons": [
+            "same_address_rooms_area_amount_within_1_day",
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 1506,
+            "date": "2024-10-14",
+            "address": "סלומון 11",
+            "rooms": 5.0,
+            "area": 112.0,
+            "amount": 2940000.0,
+            "ppsm": 26250.0,
+            "gush": "6394",
+            "helka": "95",
+            "tatHelka": "14",
+            "firstHand": null,
+            "assetId": "11352690333",
+            "dedupeKey": "6394-95-14:2024-10-14:2940000",
+            "parcelNum": "6394-95-14"
+          },
+          "b": {
+            "_index": 1500,
+            "date": "2024-10-15",
+            "address": "סלומון 11",
+            "rooms": 5.0,
+            "area": 112.0,
+            "amount": 2940000.0,
+            "ppsm": 26250.0,
+            "gush": "6394",
+            "helka": "95",
+            "tatHelka": "33",
+            "firstHand": null,
+            "assetId": "3605757398",
+            "dedupeKey": "6394-95-33:2024-10-15:2940000",
+            "parcelNum": "6394-95-33"
+          }
+        },
+        {
+          "reasons": [
+            "same_gush_helka_rooms_area_amount_within_1_day"
+          ],
+          "date_delta_days": 1,
+          "flags": [
+            "subparcel_differs",
+            "asset_id_differs"
+          ],
+          "a": {
+            "_index": 1581,
+            "date": "2024-09-23",
+            "address": null,
+            "rooms": 5.0,
+            "area": 120.0,
+            "amount": 2930000.0,
+            "ppsm": 24417.0,
+            "gush": "6386",
+            "helka": "270",
+            "tatHelka": "17",
+            "firstHand": null,
+            "assetId": "11352689054",
+            "dedupeKey": "6386-270-17:2024-09-23:2930000",
+            "parcelNum": "6386-270-17"
+          },
+          "b": {
+            "_index": 1576,
+            "date": "2024-09-24",
+            "address": null,
+            "rooms": 5.0,
+            "area": 120.0,
+            "amount": 2930000.0,
+            "ppsm": 24417.0,
+            "gush": "6386",
+            "helka": "270",
+            "tatHelka": "28",
+            "firstHand": null,
+            "assetId": "3605339189",
+            "dedupeKey": "6386-270-28:2024-09-24:2930000",
+            "parcelNum": "6386-270-28"
+          }
+        }
+      ]
+    }
+  }
+}

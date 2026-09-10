@@ -1,0 +1,17 @@
+node_modules
+.next
+.git
+*.log
+npm-debug.log*
+.env
+.env.*
+!.env.example
+shots
+*.png
+test-results
+playwright-report
+.pytest_cache
+__pycache__
+.DS_Store
+Thumbs.db
+README.md

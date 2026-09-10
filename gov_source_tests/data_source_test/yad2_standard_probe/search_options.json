@@ -1,0 +1,127 @@
+{
+  "success": true,
+  "data": {
+    "property": [
+      {
+        "text": "דירה",
+        "value": "1",
+        "group": "apartments",
+        "advancedSearch": 0
+      },
+      {
+        "text": "דירת גן",
+        "value": "3",
+        "group": "apartments",
+        "advancedSearch": 0
+      },
+      {
+        "text": "בית פרטי/ קוטג'",
+        "value": "5",
+        "group": "houses",
+        "advancedSearch": 0
+      },
+      {
+        "text": "גג/ פנטהאוז",
+        "value": "6",
+        "group": "apartments",
+        "advancedSearch": 0
+      },
+      {
+        "text": "מגרשים",
+        "value": "33",
+        "group": "misc",
+        "advancedSearch": 1
+      },
+      {
+        "text": "דופלקס",
+        "value": "7",
+        "group": "apartments",
+        "advancedSearch": 1
+      },
+      {
+        "text": "דו משפחתי",
+        "value": "39",
+        "group": "houses",
+        "advancedSearch": 0
+      },
+      {
+        "text": "תיירות ונופש",
+        "value": "25",
+        "group": "apartments",
+        "advancedSearch": 1
+      },
+      {
+        "text": "מרתף/ פרטר",
+        "value": "49",
+        "group": "apartments",
+        "advancedSearch": 1
+      },
+      {
+        "text": "טריפלקס",
+        "value": "51",
+        "group": "apartments",
+        "advancedSearch": 1
+      },
+      {
+        "text": "יחידת דיור",
+        "value": "11",
+        "group": "apartments",
+        "advancedSearch": 1
+      },
+      {
+        "text": "משק חקלאי/ נחלה",
+        "value": "32",
+        "group": "houses",
+        "advancedSearch": 1
+      },
+      {
+        "text": "משק עזר",
+        "value": "55",
+        "group": "houses",
+        "advancedSearch": 1
+      },
+      {
+        "text": "דיור מוגן",
+        "value": "61",
+        "group": "misc",
+        "advancedSearch": 1
+      },
+      {
+        "text": "בניין מגורים",
+        "value": "44",
+        "group": "misc",
+        "advancedSearch": 1
+      },
+      {
+        "text": "סטודיו/ לופט",
+        "value": "4",
+        "group": "apartments",
+        "advancedSearch": 1
+      },
+      {
+        "text": "מחסן",
+        "value": "45",
+        "group": "misc",
+        "advancedSearch": 1
+      },
+      {
+        "text": "חניה",
+        "value": "30",
+        "group": "misc",
+        "advancedSearch": 1
+      },
+      {
+        "text": "קב' רכישה/ זכות לנכס",
+        "value": "50",
+        "group": "misc",
+        "advancedSearch": 1
+      },
+      {
+        "text": "כללי",
+        "value": "41",
+        "group": "misc",
+        "advancedSearch": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "success": true,
+  "data": {
+    "paginator": {
+      "limit": 10,
+      "offset": 0,
+      "total_pages": 1,
+      "current_page": 1,
+      "total_rows": 8
+    },
+    "data": [
+      {
+        "region_id": 2,
+        "region_heb": "דרום"
+      },
+      {
+        "region_id": 4,
+        "region_heb": "יהודה, שומרון ובקעת הירדן"
+      },
+      {
+        "region_id": 8,
+        "region_heb": "ירושלים"
+      },
+      {
+        "region_id": 6,
+        "region_heb": "ירושלים והסביבה"
+      },
+      {
+        "region_id": 5,
+        "region_heb": "מישור החוף הצפוני"
+      },
+      {
+        "region_id": 1,
+        "region_heb": "מרכז והשרון"
+      },
+      {
+        "region_id": 7,
+        "region_heb": "צפון והעמקים"
+      },
+      {
+        "region_id": 3,
+        "region_heb": "תל אביב והסביבה"
+      }
+    ]
+  }
+}

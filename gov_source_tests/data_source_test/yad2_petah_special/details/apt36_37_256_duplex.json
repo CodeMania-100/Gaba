@@ -1,0 +1,129 @@
+{
+  "success": true,
+  "data": {
+    "token": "7a8ynci1",
+    "orderId": 56210152,
+    "adNumber": 49537416,
+    "adType": "commercial",
+    "categoryId": 2,
+    "subcategoryId": 5,
+    "priority": 1,
+    "statusId": 1,
+    "price": 5650000,
+    "additionalDetails": {
+      "balconiesCount": 2,
+      "entranceDate": "2026-06-14T00:00:00",
+      "squareMeter": 256,
+      "roomsCount": 6,
+      "propertyGroup": {
+        "id": 1,
+        "text": "דירות",
+        "textEng": "apartments"
+      },
+      "property": {
+        "id": 7,
+        "text": "דופלקס",
+        "textEng": "duplex"
+      },
+      "parkingSpacesCount": 2,
+      "propertyCondition": {
+        "id": 3,
+        "text": "במצב שמור"
+      },
+      "squareMeterBuild": 177,
+      "buildingTopFloor": 6,
+      "isEnterDateFlexible": true
+    },
+    "inProperty": {
+      "includeAirconditioner": true,
+      "includeBalcony": true,
+      "includeBoiler": true,
+      "includeElevator": true,
+      "includeParking": true,
+      "includeSecurityRoom": true,
+      "includeWarehouse": true,
+      "isRenovated": true
+    },
+    "searchText": "שם מוכר דירות גואטה-משנת 1964 הכי ותיקים, הכי חזקים! רונה נכס למכירה מסוג דופלקס עם מספר חדרים 6 בקומה 6 בכתובת כפר גנים ג פתח תקווה אזור פתח תקווה והסביבה מרכז הנכס כולל ממ\"ד מעלית חניה מחסן מיזוג מרפסת משופצת מצב הנכס במצב שמור תאור לקוח למכירה בכפר גנים ג' במרכז השכונה ברחוב שקט. \nדופלקס 6 חדרים ( הוסב ל 5) \n177 מר + כ 80 מר מרפסות + מחסן + 2 חניות נפרדות שתי מרפסות, אחת בכל קומה חב דירות גואטה מתמחה בשיווק נדלן בפתח תקווה והסביבה ומהווה דור המשך למשפחה העוסקת בענף  משנת 1964 ומעורה היטב בפעילות הנדלן באזור * 12 סוכני נדלן חרוצים ומנוסים בעלי רישיון ממשרד המשפטים*מרכז קשרים ענף עם רשימת לקוחות פוטנציאלים*שימוש במערכות טכנולוגיות חדישות לאיתור וקידום הנכס , הכי ותיקים-הכי חזקים! סוכנות דירות גואטה-משנת 1964 הכי ותיקים, הכי חזקים!",
+    "customer": {
+      "name": "רונה",
+      "id": 482074,
+      "isVirtualPhoneNumber": true,
+      "agencyName": "דירות גואטה-משנת 1964 הכי ותיקים, הכי חזקים!",
+      "agencyLogo": "//images.yad2.co.il/Pic/TivMiniSite/y2_1_07803_20211214092924.jpeg?t=1788723377423",
+      "brokerAvatar": "https://img.yad2.co.il/Pic/TradeMiniSite/b9b1fec6-e349-45ec-8d7c-de342dc5cd3d.jpeg?t=1788723377423",
+      "agencyAbout": "חב דירות גואטה מתמחה בשיווק נדלן בפתח תקווה והסביבה ומהווה דור המשך למשפחה העוסקת בענף  משנת 1964 ומעורה היטב בפעילות הנדלן באזור * 12 סוכני נדלן חרוצים ומנוסים בעלי רישיון ממשרד המשפטים*מרכז קשרים ענף עם רשימת לקוחות פוטנציאלים*שימוש במערכות טכנולוגיות חדישות לאיתור וקידום הנכס , הכי ותיקים-הכי חזקים!",
+      "brokers": [
+        {
+          "name": "רונה",
+          "avatar": "https://img.yad2.co.il/Pic/TradeMiniSite/b9b1fec6-e349-45ec-8d7c-de342dc5cd3d.jpeg?t=1788723377423",
+          "id": 754995,
+          "licenseNumber": "3227337"
+        }
+      ],
+      "licenseNumber": "397304"
+    },
+    "packages": {
+      "hasBrokerOfficeLeftPromotion": true,
+      "hasMiniSite": true,
+      "isPlatinum": true,
+      "isNeighborhoodKing": true,
+      "isPlatinumMobile": true,
+      "isTrio": true
+    },
+    "address": {
+      "topArea": {
+        "id": 2,
+        "text": "מרכז",
+        "textEng": "hamerkaz_area"
+      },
+      "region": {
+        "id": 1,
+        "text": "מרכז והשרון",
+        "textEng": "Center"
+      },
+      "area": {
+        "id": 4,
+        "text": "פתח תקווה והסביבה",
+        "textEng": "petah_tikva_area"
+      },
+      "city": {
+        "id": "7900",
+        "text": "פתח תקווה"
+      },
+      "neighborhood": {
+        "id": 755,
+        "text": "כפר גנים ג"
+      },
+      "street": {
+        "id": "1299"
+      },
+      "coords": {
+        "lat": 32.07409,
+        "lon": 34.869138
+      },
+      "house": {
+        "floor": 6
+      },
+      "addressMasterId": 6055946
+    },
+    "metaData": {
+      "coverImage": "https://img.yad2.co.il/Pic/202602/08/2_5/o/y2_6_QRq7Ei3FHk_20260208.jpg",
+      "images": [
+        "https://img.yad2.co.il/Pic/202602/08/2_5/o/y2_6_QRq7Ei3FHk_20260208.jpg",
+        "https://img.yad2.co.il/Pic/202602/08/2_5/o/y2_4_cUwqeGsXoT_20260208.jpg",
+        "https://img.yad2.co.il/Pic/202511/23/2_5/o/y2_1_kD2h2xaZNV_20251123.jpg",
+        "https://img.yad2.co.il/Pic/202602/08/2_5/o/y2_3_HEfEPU9e3k_20260208.jpg"
+      ],
+      "description": "למכירה בכפר גנים ג' במרכז השכונה ברחוב שקט. \nדופלקס 6 חדרים ( הוסב ל 5) \n177 מר + כ 80 מר מרפסות + מחסן + 2 חניות נפרדות",
+      "shelterDistance": 556
+    },
+    "dates": {
+      "updatedAt": "2026-09-06T22:36:16",
+      "createdAt": "2025-11-19T12:26:20",
+      "endsAt": "2027-08-31T00:00:00",
+      "rebouncedAt": "2026-09-06T22:36:16"
+    },
+    "abovePrice": "5000000"
+  }
+}

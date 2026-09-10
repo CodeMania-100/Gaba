@@ -1,0 +1,287 @@
+{
+  "version": "sold_attribute_candidates_v2",
+  "methodology": {
+    "target_source": "special_attribute_evidence_v2.json resolved Tax transactions",
+    "rule": "Same-building/current listing attributes are candidates/context only. Nothing is promoted to an exact sold-unit fact automatically."
+  },
+  "files_scanned": 85,
+  "records_checked": 24742,
+  "baskets": {
+    "APT36_37": [
+      {
+        "target_transaction": {
+          "basket": "APT36_37",
+          "deal_id": "3629954505",
+          "address": "היבנר 38",
+          "rooms": 5.0,
+          "area": 230.0,
+          "price": 3635000.0,
+          "date": "2025-04-30",
+          "floor": "שלישית+גג",
+          "tax_property_type": "דירה בבית קומות"
+        },
+        "candidate_count": 0,
+        "candidates": []
+      },
+      {
+        "target_transaction": {
+          "basket": "APT36_37",
+          "deal_id": "3603100099",
+          "address": "נקאש 15",
+          "rooms": 6.0,
+          "area": 268.0,
+          "price": 7000000.0,
+          "date": "2024-07-25",
+          "floor": "שלוש עשרה",
+          "tax_property_type": "דירה בבית קומות"
+        },
+        "candidate_count": 0,
+        "candidates": []
+      },
+      {
+        "target_transaction": {
+          "basket": "APT36_37",
+          "deal_id": "3635365586",
+          "address": "תרזה קוגלמן 4",
+          "rooms": 6.0,
+          "area": 180.0,
+          "price": 5250000.0,
+          "date": "2025-11-23",
+          "floor": "תשיעית +עשירית",
+          "tax_property_type": "דירה בבית קומות"
+        },
+        "candidate_count": 0,
+        "candidates": []
+      },
+      {
+        "target_transaction": {
+          "basket": "APT36_37",
+          "deal_id": "3635637403",
+          "address": "החרוב 25",
+          "rooms": 6.0,
+          "area": 244.0,
+          "price": 6200000.0,
+          "date": "2025-11-03",
+          "floor": null,
+          "tax_property_type": "דירה בבית קומות"
+        },
+        "candidate_count": 0,
+        "candidates": []
+      },
+      {
+        "target_transaction": {
+          "basket": "APT36_37",
+          "deal_id": "3625659199",
+          "address": "מסקין 26",
+          "rooms": 6.0,
+          "area": 278.0,
+          "price": 4500000.0,
+          "date": "2025-01-16",
+          "floor": null,
+          "tax_property_type": "דירה בבית קומות"
+        },
+        "candidate_count": 0,
+        "candidates": []
+      },
+      {
+        "target_transaction": {
+          "basket": "APT36_37",
+          "deal_id": "3626929892",
+          "address": "עין גדי 38",
+          "rooms": 6.0,
+          "area": 288.0,
+          "price": 6180000.0,
+          "date": "2025-01-23",
+          "floor": null,
+          "tax_property_type": "דירה בבית קומות"
+        },
+        "candidate_count": 0,
+        "candidates": []
+      }
+    ],
+    "APT38": [
+      {
+        "target_transaction": {
+          "basket": "APT38",
+          "deal_id": "3606035885",
+          "address": "כנסת ישראל 17",
+          "rooms": 7.0,
+          "area": 170.0,
+          "price": 3700000.0,
+          "date": "2024-10-27",
+          "floor": "מרתף+קרקע+ראשונה",
+          "tax_property_type": "דירה בבית קומות"
+        },
+        "candidate_count": 0,
+        "candidates": []
+      },
+      {
+        "target_transaction": {
+          "basket": "APT38",
+          "deal_id": "3605884041",
+          "address": "י\"ד הבנים 3",
+          "rooms": 7.0,
+          "area": 148.0,
+          "price": 2900000.0,
+          "date": "2024-10-01",
+          "floor": "רביעית + גג",
+          "tax_property_type": "דירה בבית קומות"
+        },
+        "candidate_count": 0,
+        "candidates": []
+      },
+      {
+        "target_transaction": {
+          "basket": "APT38",
+          "deal_id": "3626587054",
+          "address": "ישראל ישעיהו 6",
+          "rooms": 6.0,
+          "area": 166.0,
+          "price": 3700000.0,
+          "date": "2025-02-06",
+          "floor": "חמישית+שישית",
+          "tax_property_type": "דירה בבית קומות"
+        },
+        "candidate_count": 0,
+        "candidates": []
+      },
+      {
+        "target_transaction": {
+          "basket": "APT38",
+          "deal_id": "3602707207",
+          "address": "פנחס חגין 1",
+          "rooms": 6.0,
+          "area": 168.0,
+          "price": 5900000.0,
+          "date": "2024-07-02",
+          "floor": "שישית+שביעית",
+          "tax_property_type": "דירה בבית קומות"
+        },
+        "candidate_count": 0,
+        "candidates": []
+      },
+      {
+        "target_transaction": {
+          "basket": "APT38",
+          "deal_id": "3602250022",
+          "address": "הפרדס 8",
+          "rooms": 6.0,
+          "area": 177.0,
+          "price": 5550000.0,
+          "date": "2024-06-26",
+          "floor": "שביעית+שמינית",
+          "tax_property_type": "דירה בבית קומות"
+        },
+        "candidate_count": 0,
+        "candidates": []
+      },
+      {
+        "target_transaction": {
+          "basket": "APT38",
+          "deal_id": "3635365586",
+          "address": "תרזה קוגלמן 4",
+          "rooms": 6.0,
+          "area": 180.0,
+          "price": 5250000.0,
+          "date": "2025-11-23",
+          "floor": "תשיעית +עשירית",
+          "tax_property_type": "דירה בבית קומות"
+        },
+        "candidate_count": 0,
+        "candidates": []
+      }
+    ],
+    "APT39": [
+      {
+        "target_transaction": {
+          "basket": "APT39",
+          "deal_id": "3633131484",
+          "address": "מבצע דקל 14",
+          "rooms": 5.0,
+          "area": 157.0,
+          "price": 5900000.0,
+          "date": "2025-08-04",
+          "floor": "עשרים ושבע+ עשרים ושמונה",
+          "tax_property_type": "דירה בבית קומות"
+        },
+        "candidate_count": 0,
+        "candidates": []
+      },
+      {
+        "target_transaction": {
+          "basket": "APT39",
+          "deal_id": "3601967910",
+          "address": "איסר הראל 6",
+          "rooms": 5.0,
+          "area": 163.0,
+          "price": 5400000.0,
+          "date": "2024-06-07",
+          "floor": "תשע עשרה+עשרים",
+          "tax_property_type": "דירה בבית קומות"
+        },
+        "candidate_count": 0,
+        "candidates": []
+      },
+      {
+        "target_transaction": {
+          "basket": "APT39",
+          "deal_id": "3605029846",
+          "address": "כנסת ישראל 17",
+          "rooms": 5.0,
+          "area": 166.0,
+          "price": 4694000.0,
+          "date": "2024-09-26",
+          "floor": "מרתף+קרקע+ראשונה",
+          "tax_property_type": "דירה בבית קומות"
+        },
+        "candidate_count": 0,
+        "candidates": []
+      },
+      {
+        "target_transaction": {
+          "basket": "APT39",
+          "deal_id": "3655065895",
+          "address": "התשעים ושלוש 3",
+          "rooms": 5.0,
+          "area": 145.0,
+          "price": 3200000.0,
+          "date": "2026-01-24",
+          "floor": "שלישית+רביעית+גג",
+          "tax_property_type": "דירה בבית קומות"
+        },
+        "candidate_count": 0,
+        "candidates": []
+      },
+      {
+        "target_transaction": {
+          "basket": "APT39",
+          "deal_id": "3603812310",
+          "address": "יעל רום 17",
+          "rooms": 5.0,
+          "area": 144.0,
+          "price": 4200000.0,
+          "date": "2024-08-26",
+          "floor": "תשע עשרה + עשרים",
+          "tax_property_type": "דירה בבית קומות"
+        },
+        "candidate_count": 0,
+        "candidates": []
+      },
+      {
+        "target_transaction": {
+          "basket": "APT39",
+          "deal_id": "3633966655",
+          "address": "שלומציון המלכה 6",
+          "rooms": 5.5,
+          "area": 157.0,
+          "price": 2920000.0,
+          "date": "2025-09-21",
+          "floor": "שמינית+גג",
+          "tax_property_type": "דירה בבית קומות"
+        },
+        "candidate_count": 0,
+        "candidates": []
+      }
+    ]
+  }
+}

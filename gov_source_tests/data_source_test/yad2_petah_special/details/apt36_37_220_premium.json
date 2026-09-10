@@ -1,0 +1,131 @@
+{
+  "success": true,
+  "data": {
+    "token": "9bsyydsn",
+    "orderId": 57311234,
+    "adNumber": 79934750,
+    "adType": "commercial",
+    "categoryId": 2,
+    "subcategoryId": 5,
+    "priority": 1,
+    "statusId": 1,
+    "price": 5600000,
+    "additionalDetails": {
+      "balconiesCount": 2,
+      "entranceDate": "2026-08-16T00:00:00",
+      "squareMeter": 220,
+      "roomsCount": 6,
+      "propertyGroup": {
+        "id": 1,
+        "text": "דירות",
+        "textEng": "apartments"
+      },
+      "property": {
+        "id": 6,
+        "text": "גג/ פנטהאוז",
+        "textEng": "penthouse"
+      },
+      "parkingSpacesCount": 2,
+      "propertyCondition": {
+        "id": 6,
+        "text": "חדש (גרו בנכס)"
+      },
+      "squareMeterBuild": 220,
+      "buildingTopFloor": 6,
+      "isEnterDateFlexible": true
+    },
+    "inProperty": {
+      "includeAirconditioner": true,
+      "includeBalcony": true,
+      "includeBoiler": true,
+      "includeBars": true,
+      "includeElevator": true,
+      "includeParking": true,
+      "includeSecurityRoom": true,
+      "includeWarehouse": true,
+      "isHandicapped": true,
+      "isRenovated": true
+    },
+    "searchText": "שם מוכר דניאל בן דוד דניאל נכס למכירה מסוג גג/ פנטהאוז עם מספר חדרים 6 בקומה 5 בכתובת העצמאות פתח תקווה אזור פתח תקווה והסביבה מרכז הנכס כולל ממ\"ד מעלית חניה מחסן סורגים מיזוג גישה לנכים מרפסת משופצת מצב הנכס חדש (גרו בנכס) תאור לקוח למכירה דירת פנטהאוז -גג הכי יפה בכפר גנים ג' !!\nברחוב העצמאות במיקום הכי מבוקש בשכונה, דירה עורפית ושקטה עם נוף פתוח שלא ייחסם מעולם,עם פרטיות חלומית!!\nסלון מרווח ופינת משפחה גדולה.\nדירה בקומה 5+6.\nיש מחסן.\nיש סורגים.\n2 חניות נפרדות ענקיות בטאבו\nיש כניסה מ2 הקומות.\nבמיקום הכי טוב בשכונה,בקרבה לבתי כנסת-בתי ספר וקניון גנים.\nלפרטים ותאום סיור התקשרו עכשיו- דניאל בן דוד נכסים שוקל למכור את הדירה שלך? להערכת מחיר הדירה שלכם בחינם התקשרו עכשיו לדניאל בן דוד 054-3970447\nפה לכל שאלה סוכנות דניאל בן דוד",
+    "customer": {
+      "name": "דניאל",
+      "id": 7996746,
+      "isVirtualPhoneNumber": true,
+      "agencyName": "דניאל בן דוד",
+      "agencyLogo": "//images.yad2.co.il/Pic/TivMiniSite/7ed37f61-2eff-4b63-9be6-4730fe3a6c9f.png?t=1788722848660",
+      "agencyAbout": "שוקל למכור את הדירה שלך? להערכת מחיר הדירה שלכם בחינם התקשרו עכשיו לדניאל בן דוד 054-3970447\nפה לכל שאלה",
+      "brokers": [
+        {
+          "name": "דניאל",
+          "id": 760941,
+          "licenseNumber": "3202877"
+        }
+      ],
+      "licenseNumber": "3202877"
+    },
+    "packages": {
+      "hasMiniSite": true
+    },
+    "address": {
+      "topArea": {
+        "id": 2,
+        "text": "מרכז",
+        "textEng": "hamerkaz_area"
+      },
+      "region": {
+        "id": 1,
+        "text": "מרכז והשרון",
+        "textEng": "Center"
+      },
+      "area": {
+        "id": 4,
+        "text": "פתח תקווה והסביבה",
+        "textEng": "petah_tikva_area"
+      },
+      "city": {
+        "id": "7900",
+        "text": "פתח תקווה"
+      },
+      "neighborhood": {
+        "id": 755
+      },
+      "street": {
+        "id": "1205",
+        "text": "העצמאות"
+      },
+      "coords": {
+        "lat": 32.0743630434783,
+        "lon": 34.8754712282609
+      },
+      "house": {
+        "floor": 5
+      },
+      "addressMasterId": 21518589
+    },
+    "metaData": {
+      "video": "//yad2.cdnwiz.com/p/102/sp/10200/playManifest/entryId/0_34i60pm5/format/url/protocol/http",
+      "coverImage": "https://img.yad2.co.il/Pic/202608/16/2_5/o/y2_10_0nPZihAxbS_20260816.JPG",
+      "images": [
+        "https://img.yad2.co.il/Pic/202608/16/2_5/o/y2_10_0nPZihAxbS_20260816.JPG",
+        "https://img.yad2.co.il/Pic/202608/02/2_5/o/y2_1_994175_20260802.JPG",
+        "https://img.yad2.co.il/Pic/202608/02/2_5/o/y2_7_WwHhmEWQeM_20260802.JPG",
+        "https://img.yad2.co.il/Pic/202608/02/2_5/o/y2_3_993571_20260802.JPG",
+        "https://img.yad2.co.il/Pic/202608/02/2_5/o/y2_8_u6ait9vK3f_20260802.JPG",
+        "https://img.yad2.co.il/Pic/202608/02/2_5/o/y2_5_993262_20260802.JPG",
+        "https://img.yad2.co.il/Pic/202608/02/2_5/o/y2_10_zLwAsuGt3x_20260802.png",
+        "https://img.yad2.co.il/Pic/202608/02/2_5/o/y2_7_996088_20260802.JPG",
+        "https://img.yad2.co.il/Pic/202608/02/2_5/o/y2_8_991456_20260802.JPG",
+        "https://img.yad2.co.il/Pic/202608/02/2_5/o/y2_9_dDm9oH768L_20260802.JPG"
+      ],
+      "description": "למכירה דירת פנטהאוז -גג הכי יפה בכפר גנים ג' !!\nברחוב העצמאות במיקום הכי מבוקש בשכונה, דירה עורפית ושקטה עם נוף פתוח שלא ייחסם מעולם,עם פרטיות חלומית!!\nסלון מרווח ופינת משפחה גדולה.\nדירה בקומה 5+6.\nיש מחסן.\nיש סורגים.\n2 חניות נפרדות ענקיות בטאבו\nיש כניסה מ2 הקומות.\nבמיקום הכי טוב בשכונה,בקרבה לבתי כנסת-בתי ספר וקניון גנים.\nלפרטים ותאום סיור התקשרו עכשיו- דניאל בן דוד נכסים",
+      "shelterDistance": 972
+    },
+    "dates": {
+      "updatedAt": "2026-09-06T22:27:27",
+      "createdAt": "2026-07-27T16:09:17",
+      "endsAt": "2027-07-14T00:00:00",
+      "rebouncedAt": "2026-09-06T22:27:27"
+    },
+    "abovePrice": "5000000"
+  }
+}

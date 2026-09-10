@@ -29,8 +29,13 @@ class InventoryImport(BaseModel):
 
 
 class ProjectStartRequest(BaseModel):
-    """Generic (city, address) project-start request. Today only Petah Tikva /
-    חפץ חיים 25 resolves to a snapshot -- see app_api.project_launcher.
+    """Generic (city, address) project-start request. Today only Petah Tikva
+    (with no exact address -- the assignment never supplied one) resolves to
+    a snapshot -- see app_api.project_launcher.
+
+    address may legitimately be empty: the Petah Tikva demo's subject project
+    has no real street address, so an empty string is the honest value, not
+    a missing one -- min_length is intentionally 0 here (unlike city).
 
     inventory_fingerprint is the deterministic fingerprint returned by
     POST /api/v1/inventory/preview for the workbook the user just uploaded.
@@ -40,7 +45,7 @@ class ProjectStartRequest(BaseModel):
     served against an unrelated inventory."""
 
     city: str = Field(min_length=1, max_length=255)
-    address: str = Field(min_length=1, max_length=255)
+    address: str = Field(default="", max_length=255)
     inventory_fingerprint: str | None = None
 
 

@@ -1,0 +1,69 @@
+# Production compose for the Gabay pricing demo -- self-contained: only
+# Docker + Docker Compose + a git checkout are required, nothing on the host
+# (no host nginx/Node/npm/PM2/Python venv).
+#
+# Deliberately does NOT publish 80/443 or bind 0.0.0.0:3000/0.0.0.0:8000 --
+# the VPS's existing Docker reverse proxy (for a different app already using
+# those ports) reaches gabay-web/gabay-api over Docker networking once it's
+# attached to whatever external network that proxy uses. That attachment
+# isn't decided here (see README note below); this file is written so it's a
+# small addition once the proxy's architecture is known -- e.g. adding
+#
+#   networks:
+#     default:
+#     proxy-net:
+#       external: true
+#
+# to the relevant service(s) and a top-level `networks: proxy-net: external:
+# true` block.
+#
+# Local verification without the future reverse proxy: see the
+# "ports:" comments below -- temporary localhost-only publishes are commented
+# in for debugging and should stay commented out (or removed) for the actual
+# VPS deployment.
+
+services:
+  gabay-api:
+    build:
+      context: .
+      dockerfile: gabay_pricing_core/Dockerfile
+    restart: unless-stopped
+    environment:
+      # Same-origin production (browser -> reverse proxy -> this container)
+      # means CORS normally never triggers -- kept configurable regardless
+      # since the exact proxy architecture isn't chosen yet (item 15's
+      # "alternative" architecture, or local debugging, could still hit this
+      # container directly with a browser Origin header).
+      CORS_ALLOW_ORIGINS: ${CORS_ALLOW_ORIGINS:-https://gaba.eventdecor.co.il}
+      # SQLite is sufficient for this demo (see gabay_pricing_core/README.md);
+      # override to a PostgreSQL DATABASE_URL only if that ever becomes
+      # necessary -- not required for the petah-tikva demo itself.
+      DATABASE_URL: ${DATABASE_URL:-sqlite:///./gabay_pricing.db}
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3).read()"]
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+      retries: 3
+    # No "ports:" -- reached over the Docker network only. Uncomment for a
+    # one-off local debugging session (never for the real VPS deployment):
+    # ports:
+    #   - "127.0.0.1:18000:8000"
+
+  gabay-web:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        # Same-origin production: the browser calls /api/v1/... on whatever
+        # host served the page. Must be set at BUILD time (NEXT_PUBLIC_* is
+        # inlined into the client bundle, not read at container start) --
+        # overriding it here after the image is already built has no effect.
+        NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL:-}
+    restart: unless-stopped
+    depends_on:
+      - gabay-api
+    # No "ports:" -- reached over the Docker network only. Uncomment for a
+    # one-off local debugging session (never for the real VPS deployment):
+    # ports:
+    #   - "127.0.0.1:13000:3000"

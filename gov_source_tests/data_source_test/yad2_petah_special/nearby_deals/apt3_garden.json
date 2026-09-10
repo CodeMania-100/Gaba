@@ -1,0 +1,90 @@
+{
+  "success": true,
+  "data": {
+    "completed": [
+      {
+        "address": "הנביאים 24",
+        "buildYear": 2026,
+        "buildingMR": 56,
+        "floor": 7,
+        "numberOfFloors": 7,
+        "price": 1950000,
+        "propertyType": "דירה בבית קומות",
+        "rooms": 2.5,
+        "saleDay": "22.02.26"
+      },
+      {
+        "address": "הנביאים 24",
+        "buildYear": 2024,
+        "buildingMR": 43,
+        "floor": 1,
+        "numberOfFloors": 7,
+        "price": 1500000,
+        "propertyType": "דירה בבית קומות",
+        "rooms": 2,
+        "saleDay": "14.01.25"
+      },
+      {
+        "address": "שולמית 9",
+        "buildYear": 1960,
+        "buildingMR": 47,
+        "floor": 1,
+        "numberOfFloors": 2,
+        "price": 648968,
+        "propertyType": "דירה בבית קומות",
+        "rooms": 2,
+        "saleDay": "07.12.23"
+      },
+      {
+        "address": "מלאכי 8",
+        "buildYear": 1960,
+        "buildingMR": 53,
+        "floor": 1,
+        "numberOfFloors": 3,
+        "price": 912601,
+        "propertyType": "דירה בבית קומות",
+        "rooms": 2,
+        "saleDay": "17.04.23"
+      },
+      {
+        "address": "התחייה 5",
+        "buildYear": 1940,
+        "buildingMR": 47,
+        "floor": 2,
+        "numberOfFloors": 2,
+        "price": 1470000,
+        "propertyType": "דירה בבית קומות",
+        "rooms": 2,
+        "saleDay": "01.02.23"
+      },
+      {
+        "address": "מלאכי 8",
+        "buildYear": 1960,
+        "buildingMR": 53,
+        "floor": 3,
+        "numberOfFloors": 3,
+        "price": 607750,
+        "propertyType": "דירה בבית קומות",
+        "rooms": 2,
+        "saleDay": "03.11.22"
+      },
+      {
+        "address": "דוד רזיאל 17",
+        "buildYear": 1970,
+        "buildingMR": 41,
+        "floor": 1,
+        "numberOfFloors": 3,
+        "price": 1380000,
+        "propertyType": "דירה בבית קומות",
+        "rooms": 2,
+        "saleDay": "13.03.22"
+      }
+    ],
+    "statistics": {
+      "avgPrice": 1950000,
+      "count": 1,
+      "maxPrice": 1950000,
+      "minPrice": 1950000
+    }
+  }
+}

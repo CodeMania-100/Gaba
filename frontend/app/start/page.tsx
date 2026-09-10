@@ -9,7 +9,20 @@ import { checkWorkspaceContext, WORKSPACE_MISMATCH_MESSAGE } from "@/lib/workspa
 // later means adding another <option> here plus another registration in
 // app_api/project_launcher.py -- this screen does not otherwise change.
 const SUPPORTED_CITIES = ["פתח תקווה"];
-const DEFAULT_ADDRESS = "חפץ חיים 25";
+
+// The assignment never supplied an exact street address for the subject
+// project -- חפץ חיים 25 is a *competitor* record in the evidence data, not
+// the subject's address, and must never be shown here as if it were. The
+// actual request sent to the backend always uses an empty address (see
+// handleResolve) -- app_api/project_launcher.py's registered snapshot is
+// keyed on an equally empty address for the same reason (_PETAH_TIKVA_ADDRESS
+// there). The כתובת/גוש-חלקה selects below are demo-only UI: they show that
+// the tool *can* narrow to street/parcel precision, but selecting one here
+// does not feed any real filtering yet (no new geospatial backend logic in
+// this pass) and must never be read as the real subject address.
+const DEMO_NEIGHBORHOODS = ["המרכז השקט / מרכז העיר"];
+const DEMO_ADDRESSES = ["(לא נבחר)", "כתובת לדוגמה 1", "כתובת לדוגמה 2", "כתובת לדוגמה 3"];
+const DEMO_GUSH_HELKA = ["(לא נבחר)", "גוש לדוגמה 1234 / חלקה 56", "גוש לדוגמה 2210 / חלקה 12", "גוש לדוגמה 5567 / חלקה 8"];
 
 const STAGE_INTERVAL_MS = 350;
 
@@ -22,9 +35,14 @@ export default function ProjectStartPage() {
   const [phase, setPhase] = useState<Phase>("upload");
   const [preview, setPreview] = useState<InventoryPreview | null>(null);
   const [uploadError, setUploadError] = useState<string | null>(null);
+  const [selectedFileName, setSelectedFileName] = useState<string | null>(null);
 
   const [city, setCity] = useState(SUPPORTED_CITIES[0]);
-  const [address, setAddress] = useState(DEFAULT_ADDRESS);
+  // Demo-only geographic precision selects (see DEMO_* comment above) --
+  // purely illustrative, never sent to the backend.
+  const [neighborhood, setNeighborhood] = useState(DEMO_NEIGHBORHOODS[0]);
+  const [demoAddress, setDemoAddress] = useState(DEMO_ADDRESSES[0]);
+  const [demoGushHelka, setDemoGushHelka] = useState(DEMO_GUSH_HELKA[0]);
 
   const [stages, setStages] = useState<string[]>([]);
   const [stageIndex, setStageIndex] = useState(0);
@@ -38,7 +56,8 @@ export default function ProjectStartPage() {
       setPreview(result);
       setPhase("identified");
     } catch (err) {
-      setUploadError(err instanceof Error ? err.message : String(err));
+      console.error("Failed to preview inventory file:", err);
+      setUploadError("לא ניתן לטעון כרגע את נתוני הפרויקט. נסה לרענן בעוד מספר שניות.");
     }
   }
 
@@ -51,8 +70,10 @@ export default function ProjectStartPage() {
       // The stage list itself comes from the backend (the real pipeline step
       // names); only the pacing of revealing them is presentational. No data
       // is invented here -- the actual request below is the only source of
-      // the eventual result.
-      const resultPromise = api.startProject(city, address, preview?.fingerprint ?? null);
+      // the eventual result. Address is always empty: the assignment never
+      // supplied one, and the כתובת/גוש-חלקה selects above are demo-only
+      // (see the DEMO_* comment) -- not real filtering inputs yet.
+      const resultPromise = api.startProject(city, "", preview?.fingerprint ?? null);
 
       timerRef.current = setInterval(() => {
         setStageIndex((i) => Math.min(i + 1, 7));
@@ -85,9 +106,10 @@ export default function ProjectStartPage() {
       setPhase("unsupported");
       setMessage(result.message ?? "פרויקט זה עדיין לא נתמך במצב הדגמה.");
     } catch (err) {
+      console.error("Failed to start project:", err);
       if (timerRef.current) clearInterval(timerRef.current);
       setPhase("error");
-      setMessage(err instanceof Error ? err.message : String(err));
+      setMessage("לא ניתן לטעון כרגע את נתוני הפרויקט. נסה לרענן בעוד מספר שניות.");
     }
   }
 
@@ -95,7 +117,7 @@ export default function ProjectStartPage() {
     <main className="mx-auto flex min-h-screen max-w-lg flex-col justify-center gap-6 px-6 py-16">
       <div>
         <h1 className="text-2xl font-bold text-slate-900">התחלת פרויקט תמחור</h1>
-        <p className="mt-1 text-sm text-slate-600">העלאת תמהיל דירות ← בחירת מיקום פרויקט ← ניתוח שוק ← מחירון.</p>
+        <p className="mt-1 text-sm text-slate-600">העלאת תמהיל ← בחירת מיקום הפרויקט ← ניתוח שוק ← תמחור.</p>
       </div>
 
       <WorkflowProgress phase={phase} />
@@ -103,18 +125,35 @@ export default function ProjectStartPage() {
       {phase === "upload" && (
         <div className="rounded-lg border border-slate-300 bg-white p-5">
           <h2 className="font-semibold text-slate-900">1. העלאת תמהיל הדירות</h2>
-          <p className="mt-1 text-sm text-slate-600">בחרו את חוברת התמהיל (קובץ xlsx). הקובץ ייקרא ויסווג בלבד — עדיין לא נוצר תיק תמחור.</p>
+          <p className="mt-1 text-sm text-slate-600">
+            בחרו את קובץ התמהיל (XLSX).
+            <br />
+            בשלב זה המערכת קוראת ומאמתת את נתוני הדירות בלבד.
+          </p>
           <input
             ref={fileInputRef}
             type="file"
             accept=".xlsx"
             onChange={(e) => {
               const file = e.target.files?.[0];
-              if (file) void handleFile(file);
+              if (file) {
+                setSelectedFileName(file.name);
+                void handleFile(file);
+              }
             }}
-            className="mt-4 block w-full text-sm text-slate-700 file:me-3 file:rounded-md file:border-0 file:bg-slate-900 file:px-4 file:py-2 file:text-white hover:file:bg-slate-800"
+            className="sr-only"
           />
-          {uploadError && <p className="mt-3 text-sm text-red-700">שגיאה בקריאת הקובץ: {uploadError}</p>}
+          <div className="mt-4 flex items-center gap-3">
+            <button
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+              className="rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800"
+            >
+              בחירת קובץ Excel
+            </button>
+            <span className="text-sm text-slate-500">{selectedFileName || "לא נבחר קובץ"}</span>
+          </div>
+          {uploadError && <p className="mt-3 text-sm text-red-700">{uploadError}</p>}
         </div>
       )}
 
@@ -138,38 +177,23 @@ export default function ProjectStartPage() {
       {phase === "context" && (
         <div className="flex flex-col gap-4 rounded-lg border border-slate-300 bg-white p-5">
           <h2 className="font-semibold text-slate-900">3. פרטי הפרויקט</h2>
-          <label className="flex flex-col gap-1 text-sm">
-            <span className="font-medium text-slate-700">עיר</span>
-            <select
-              value={city}
-              onChange={(e) => setCity(e.target.value)}
-              className="rounded-md border border-slate-300 px-3 py-2 text-slate-900"
-            >
-              {SUPPORTED_CITIES.map((c) => (
-                <option key={c} value={c}>
-                  {c}
-                </option>
-              ))}
-            </select>
-          </label>
+          <p className="text-xs text-slate-500">
+            ניתן לצמצם את היקף איסוף וסינון נתוני השוק בהדרגה: עיר ← אזור/שכונה ← כתובת ← גוש/חלקה.
+          </p>
 
-          <label className="flex flex-col gap-1 text-sm">
-            <span className="font-medium text-slate-700">כתובת / שם פרויקט</span>
-            <input
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              className="rounded-md border border-slate-300 px-3 py-2 text-slate-900"
-              placeholder={DEFAULT_ADDRESS}
-            />
-          </label>
+          <LocationSelect label="עיר" value={city} onChange={setCity} options={SUPPORTED_CITIES} />
+          <LocationSelect label="אזור / שכונה" value={neighborhood} onChange={setNeighborhood} options={DEMO_NEIGHBORHOODS} />
+          <LocationSelect label="כתובת" value={demoAddress} onChange={setDemoAddress} options={DEMO_ADDRESSES} />
+          <LocationSelect label="גוש / חלקה" value={demoGushHelka} onChange={setDemoGushHelka} options={DEMO_GUSH_HELKA} />
 
-          <p className="rounded bg-slate-50 px-2 py-1 text-xs text-slate-500">
-            מיקום הדגמה — הכתובת לא סופקה על ידי החברה. הנתונים משויכים לתמהיל שהועלה ולפרויקט זה בלבד.
+          <p className="rounded bg-slate-50 px-2 py-1.5 text-xs text-slate-500">
+            רמת הדיוק במיקום קובעת את היקף איסוף וסינון נתוני השוק. כתובת וגוש/חלקה כאן הם ערכי הדגמה בלבד — הפרויקט
+            עצמו מבוסס על אזור מסחרי לצורך ההדגמה; כתובת מדויקת לא סופקה במטלה.
           </p>
 
           <button
             onClick={handleResolve}
-            disabled={!city.trim() || !address.trim()}
+            disabled={!city.trim()}
             className="rounded-md bg-slate-900 px-4 py-3 font-medium text-white hover:bg-slate-800 disabled:opacity-50"
           >
             המשך לניתוח השוק
@@ -227,7 +251,7 @@ export default function ProjectStartPage() {
 
       {phase === "error" && (
         <div className="rounded-lg border border-red-300 bg-red-50 p-4 text-sm text-red-800">
-          <p>שגיאה באיתור הפרויקט: {message}</p>
+          <p>{message}</p>
           <button
             onClick={() => setPhase("context")}
             className="mt-3 rounded-md border border-red-400 px-3 py-1.5 text-sm text-red-800 hover:bg-red-100"
@@ -240,11 +264,43 @@ export default function ProjectStartPage() {
   );
 }
 
+function LocationSelect({
+  label,
+  value,
+  onChange,
+  options,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  options: string[];
+}) {
+  return (
+    <label className="flex flex-col gap-1 text-sm">
+      <span className="font-medium text-slate-700">{label}</span>
+      <select
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="rounded-md border border-slate-300 px-3 py-2 text-slate-900"
+      >
+        {options.map((o) => (
+          <option key={o} value={o}>
+            {o}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
+}
+
+// Static breadcrumb labels only -- never a data value (e.g. a real unit
+// count). The dynamic "X יחידות זוהו" figure is shown once, inside the
+// "identified" phase card below, only after a file has actually been parsed.
 const WORKFLOW_STEPS: { key: Phase[]; label: string }[] = [
-  { key: ["upload"], label: "העלאת תמהיל" },
-  { key: ["identified"], label: "39 יחידות זוהו" },
-  { key: ["context"], label: "מיקום הפרויקט" },
-  { key: ["running", "unsupported", "mismatch", "error"], label: "נתוני השוק" },
+  { key: ["upload", "identified"], label: "העלאת תמהיל" },
+  { key: ["context"], label: "בחירת מיקום הפרויקט" },
+  { key: ["running", "unsupported", "mismatch", "error"], label: "ניתוח שוק" },
+  { key: [], label: "תמחור" },
 ];
 
 function WorkflowProgress({ phase }: { phase: Phase }) {

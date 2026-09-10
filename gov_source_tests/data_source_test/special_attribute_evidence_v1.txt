@@ -1,0 +1,323 @@
+=======================================================================================================================================
+SPECIAL ATTRIBUTE EVIDENCE V1
+NO API / NETWORK CALLS
+=======================================================================================================================================
+
+SUBJECTS
+---------------------------------------------------------------------------------------------------------------------------------------
+APT1: {"rooms": 3, "type": "garden", "internal_area": 70.8, "outdoor_area": 100.0, "floor": "ground", "orientation": "east", "parking": null, "storage": null}
+APT2: {"rooms": 3, "type": "garden", "internal_area": 65.6, "outdoor_area": 69.0, "floor": "ground", "orientation": "east", "parking": null, "storage": null}
+APT3: {"rooms": 2, "type": "garden", "internal_area": 57.0, "outdoor_area": 18.0, "floor": "ground", "orientation": "east", "parking": null, "storage": null}
+APT36: {"rooms": 6, "type": "triplex", "internal_area": 255.2, "outdoor_area": 94.6, "floors": "9-11", "orientation": "east", "parking": null, "storage": null}
+APT37: {"rooms": 6, "type": "triplex", "internal_area": 260.1, "outdoor_area": 97.4, "floors": "9-11", "orientation": "west", "parking": null, "storage": null}
+APT38: {"rooms": 7, "type": "duplex", "internal_area": 170.1, "outdoor_area": 39.6, "floors": "9-10", "orientation": "west", "parking": null, "storage": null}
+APT39: {"rooms": 5, "type": "duplex", "internal_area": 158.6, "outdoor_area": 39.6, "floors": "9-10", "orientation": null, "parking": null, "storage": null}
+
+=======================================================================================================================================
+ASKING LISTING ATTRIBUTE COVERAGE
+=======================================================================================================================================
+
+TOKEN: 0xkpq9l7
+  property_type       : דירת גן
+  rooms               : 3.0
+  built_area          : 74.0
+  advertised_area     : 74.0
+  balcony_area        : None
+  garden_area         : 29.0
+  parking_count       : 1.0
+  storage             : None
+  elevator            : True
+  build_year          : None
+  floor               : 0
+  total_floors        : None
+  orientation         : None
+  view_terms          : None
+  condition           : ['new', 'renovated']
+
+TOKEN: 5i4tr2xo
+  property_type       : duplex
+  rooms               : 7.0
+  built_area          : 145.0
+  advertised_area     : 145.0
+  balcony_area        : 34.913273
+  garden_area         : 145.0
+  parking_count       : 1.0
+  storage             : None
+  elevator            : True
+  build_year          : None
+  floor               : 4
+  total_floors        : None
+  orientation         : None
+  view_terms          : ['??']
+  condition           : ['new', 'renovated']
+
+TOKEN: 7a8ynci1
+  property_type       : duplex
+  rooms               : 6.0
+  built_area          : 177.0
+  advertised_area     : 256.0
+  balcony_area        : 34.869138
+  garden_area         : 256.0
+  parking_count       : 2.0
+  storage             : None
+  elevator            : True
+  build_year          : None
+  floor               : 6
+  total_floors        : None
+  orientation         : None
+  view_terms          : None
+  condition           : ['new', 'renovated']
+
+TOKEN: 81py2t5u
+  property_type       : דירת גן
+  rooms               : 2.0
+  built_area          : 47.0
+  advertised_area     : 72.0
+  balcony_area        : 34.89821
+  garden_area         : 23.0
+  parking_count       : 1.0
+  storage             : None
+  elevator            : True
+  build_year          : None
+  floor               : 0
+  total_floors        : None
+  orientation         : None
+  view_terms          : None
+  condition           : ['new', 'renovated']
+
+TOKEN: 9bsyydsn
+  property_type       : penthouse
+  rooms               : 6.0
+  built_area          : 220.0
+  advertised_area     : 220.0
+  balcony_area        : None
+  garden_area         : 220.0
+  parking_count       : 2.0
+  storage             : None
+  elevator            : True
+  build_year          : None
+  floor               : 5
+  total_floors        : None
+  orientation         : None
+  view_terms          : None
+  condition           : ['new', 'renovated']
+
+TOKEN: am2daomo
+  property_type       : None
+  rooms               : None
+  built_area          : None
+  advertised_area     : None
+  balcony_area        : None
+  garden_area         : None
+  parking_count       : None
+  storage             : None
+  elevator            : None
+  build_year          : None
+  floor               : None
+  total_floors        : None
+  orientation         : None
+  view_terms          : None
+  condition           : None
+
+TOKEN: au7ykbzg
+  property_type       : duplex
+  rooms               : 5.0
+  built_area          : 160.0
+  advertised_area     : 160.0
+  balcony_area        : 34.885161
+  garden_area         : 160.0
+  parking_count       : 1.0
+  storage             : None
+  elevator            : True
+  build_year          : None
+  floor               : 6
+  total_floors        : None
+  orientation         : None
+  view_terms          : None
+  condition           : ['new', 'renovated']
+
+TOKEN: kihl5wee
+  property_type       : None
+  rooms               : None
+  built_area          : None
+  advertised_area     : None
+  balcony_area        : None
+  garden_area         : None
+  parking_count       : None
+  storage             : None
+  elevator            : None
+  build_year          : None
+  floor               : None
+  total_floors        : None
+  orientation         : None
+  view_terms          : None
+  condition           : None
+
+TOKEN: tkgbr5hx
+  property_type       : duplex
+  rooms               : 6.0
+  built_area          : 220.0
+  advertised_area     : 220.0
+  balcony_area        : 34.898999
+  garden_area         : 220.0
+  parking_count       : 3.0
+  storage             : None
+  elevator            : True
+  build_year          : None
+  floor               : 6
+  total_floors        : None
+  orientation         : None
+  view_terms          : None
+  condition           : ['new', 'renovated']
+
+TOKEN: ub2tzaqh
+  property_type       : duplex
+  rooms               : 6.0
+  built_area          : 165.0
+  advertised_area     : 255.0
+  balcony_area        : 34.872787
+  garden_area         : 255.0
+  parking_count       : 2.0
+  storage             : None
+  elevator            : True
+  build_year          : None
+  floor               : 8
+  total_floors        : None
+  orientation         : None
+  view_terms          : None
+  condition           : ['new', 'renovated']
+
+TOKEN: wbvl4w9m
+  property_type       : duplex
+  rooms               : 6.0
+  built_area          : 168.0
+  advertised_area     : 285.0
+  balcony_area        : None
+  garden_area         : 285.0
+  parking_count       : 2.0
+  storage             : None
+  elevator            : True
+  build_year          : None
+  floor               : 7
+  total_floors        : None
+  orientation         : None
+  view_terms          : None
+  condition           : ['new', 'renovated']
+
+=======================================================================================================================================
+CURATED SOLD COMPS
+=======================================================================================================================================
+
+#######################################################################################################################################
+APT36_37
+#######################################################################################################################################
+
+????? 38 | 5R | 230m? | ?3,635,000
+  TAX MATCHES: 0
+  EXACT BUILDING CONTEXT RECORDS: 0
+  SAME STREET CONTEXT RECORDS: 0
+
+???? 15 | 6R | 268m? | ?7,000,000
+  TAX MATCHES: 0
+  EXACT BUILDING CONTEXT RECORDS: 0
+  SAME STREET CONTEXT RECORDS: 0
+
+???? ?????? 4 | 6R | 180m? | ?5,250,000
+  TAX MATCHES: 0
+  EXACT BUILDING CONTEXT RECORDS: 0
+  SAME STREET CONTEXT RECORDS: 0
+
+????? 25 | 6R | 244m? | ?6,200,000
+  TAX MATCHES: 0
+  EXACT BUILDING CONTEXT RECORDS: 0
+  SAME STREET CONTEXT RECORDS: 0
+
+????? 26 | 6R | 278m? | ?4,500,000
+  TAX MATCHES: 0
+  EXACT BUILDING CONTEXT RECORDS: 0
+  SAME STREET CONTEXT RECORDS: 0
+
+??? ??? 38 | 6R | 288m? | ?6,180,000
+  TAX MATCHES: 0
+  EXACT BUILDING CONTEXT RECORDS: 0
+  SAME STREET CONTEXT RECORDS: 0
+
+#######################################################################################################################################
+APT38
+#######################################################################################################################################
+
+???? ????? 17 | 7R | 170m? | ?3,700,000
+  TAX MATCHES: 0
+  EXACT BUILDING CONTEXT RECORDS: 0
+  SAME STREET CONTEXT RECORDS: 0
+
+?"? ????? 3 | 7R | 148m? | ?2,900,000
+  TAX MATCHES: 0
+  EXACT BUILDING CONTEXT RECORDS: 0
+  SAME STREET CONTEXT RECORDS: 0
+
+????? ?????? 6 | 6R | 166m? | ?3,700,000
+  TAX MATCHES: 0
+  EXACT BUILDING CONTEXT RECORDS: 0
+  SAME STREET CONTEXT RECORDS: 0
+
+???? ???? 1 | 6R | 168m? | ?5,900,000
+  TAX MATCHES: 0
+  EXACT BUILDING CONTEXT RECORDS: 0
+  SAME STREET CONTEXT RECORDS: 0
+
+????? 8 | 6R | 177m? | ?5,550,000
+  TAX MATCHES: 0
+  EXACT BUILDING CONTEXT RECORDS: 0
+  SAME STREET CONTEXT RECORDS: 0
+
+???? ?????? 4 | 6R | 180m? | ?5,250,000
+  TAX MATCHES: 0
+  EXACT BUILDING CONTEXT RECORDS: 0
+  SAME STREET CONTEXT RECORDS: 0
+
+#######################################################################################################################################
+APT39
+#######################################################################################################################################
+
+???? ??? 14 | 5R | 157m? | ?5,900,000
+  TAX MATCHES: 0
+  EXACT BUILDING CONTEXT RECORDS: 0
+  SAME STREET CONTEXT RECORDS: 0
+
+???? ???? 6 | 5R | 163m? | ?5,400,000
+  TAX MATCHES: 0
+  EXACT BUILDING CONTEXT RECORDS: 0
+  SAME STREET CONTEXT RECORDS: 0
+
+???? ????? 17 | 5R | 166m? | ?4,694,000
+  TAX MATCHES: 0
+  EXACT BUILDING CONTEXT RECORDS: 0
+  SAME STREET CONTEXT RECORDS: 0
+
+?????? ????? 3 | 5R | 145m? | ?3,200,000
+  TAX MATCHES: 0
+  EXACT BUILDING CONTEXT RECORDS: 0
+  SAME STREET CONTEXT RECORDS: 0
+
+????? 11 | 5R | 173m? | ?5,175,000
+  TAX MATCHES: 0
+  EXACT BUILDING CONTEXT RECORDS: 0
+  SAME STREET CONTEXT RECORDS: 0
+
+??? ??? 17 | 5R | 144m? | ?4,200,000
+  TAX MATCHES: 0
+  EXACT BUILDING CONTEXT RECORDS: 0
+  SAME STREET CONTEXT RECORDS: 0
+
+???????? ????? 6 | 5.5R | 157m? | ?2,920,000
+  TAX MATCHES: 0
+  EXACT BUILDING CONTEXT RECORDS: 0
+  SAME STREET CONTEXT RECORDS: 0
+
+=======================================================================================================================================
+IMPORTANT
+=======================================================================================================================================
+Parking/storage/balcony/orientation/view/condition from another unit in the building are NOT automatically assigned to the sold comp.
+They remain building/product context unless the exact sold unit can be linked to that listing.
+Unknown attributes remain Unknown; no automatic premium/discount.

@@ -1,7 +1,8 @@
 """Generic project-start launcher.
 
-Today this only resolves one frozen snapshot -- Petah Tikva / חפץ חיים 25 --
-so the existing Petah Tikva demo stays fully deterministic. It is structured
+Today this only resolves one frozen snapshot -- Petah Tikva, no exact address
+(the assignment never supplied one) -- so the existing Petah Tikva demo stays
+fully deterministic. It is structured
 so a future production flow can plug in real collectors without changing the
 request/response contract the frontend already speaks:
 
@@ -60,7 +61,15 @@ INVENTORY_MISMATCH_MESSAGE = (
 # petah_tikva_pricing.py / petah_tikva_workspace.py's _sold_raw_rows docstring
 # for why: פתח תקווה vs פתח תקוה, a known, already-handled quirk, not a typo).
 _PETAH_TIKVA_CITY_SPELLINGS = frozenset({"פתח תקווה", "פתח תקוה"})
-_PETAH_TIKVA_ADDRESS = "חפץ חיים 25"
+# The assignment never supplied an exact street address for the subject
+# project. חפץ חיים 25 is a *competitor* record in the evidence data (see the
+# competitor register) -- it was previously (wrongly) reused here as a
+# project-identification key, which made the frontend default-fill it into
+# the subject's own address field as if it were real. The registered key is
+# now an empty address, matching the frontend's now-empty default; the
+# inventory-fingerprint check remains the real safety net (see
+# resolve_project_start's docstring).
+_PETAH_TIKVA_ADDRESS = ""
 
 
 def _normalize(value: str | None) -> str:

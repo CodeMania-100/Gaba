@@ -75,15 +75,79 @@ export function noVerifiedRuleMessage(featureLabel: string): string {
 const PROJECT_STATUS_LABELS: Record<string, string> = {
   active_marketing: "שיווק פעיל",
   construction_started: "בבנייה",
-  presale: "מכירה מוקדמת (PRESALE)",
+  presale: "מכירה מוקדמת",
+  "active marketed / construction context": "בשיווק פעיל / בבנייה",
+  marketed_project: "פרויקט בשיווק",
+  "marketed project": "פרויקט בשיווק",
+  "current marketed project": "פרויקט בשיווק",
+  "active marketed project": "פרויקט בשיווק פעיל",
+  "active presale": "פריסייל פעיל",
+  "new project / construction process": "פרויקט חדש / בתהליך בנייה",
+  completed: "הושלם",
+  "public permit status not clearly official": "סטטוס היתר לא אומת ממקור רשמי",
 };
 
 /** Project status strings in the source data are free text (research notes,
- * not a closed enum) -- map known ones to a clean Hebrew label and fall back
- * to showing the original text rather than hiding it. */
+ * not a closed enum) -- map known clauses to a clean Hebrew label. Compound
+ * "clause; clause" strings are split and each clause translated
+ * independently, so a combination never seen before (e.g. a new project's
+ * own two-clause note) still gets each half translated where recognized.
+ * Falls back to showing the original English clause rather than hiding it
+ * or inventing a translation for genuinely unrecognized research text. */
 export function projectStatusLabel(status: string | null | undefined): string | null {
   if (!status) return null;
-  return PROJECT_STATUS_LABELS[status] ?? status;
+  if (PROJECT_STATUS_LABELS[status]) return PROJECT_STATUS_LABELS[status];
+  const clauses = status
+    .split(";")
+    .map((c) => c.trim())
+    .filter(Boolean);
+  if (clauses.length <= 1) return status;
+  return clauses.map((c) => PROJECT_STATUS_LABELS[c] ?? c).join(" · ");
+}
+
+/** Payment-terms strings are also free research text, but they follow a
+ * handful of recurring shapes (an X%/Y% split, optionally with signing/
+ * occupancy/delivery wording and/or a bridge-loan mention, or PRESALE/
+ * custom-terms notes) -- recognized generically by pattern rather than by an
+ * exhaustive per-string dictionary, so new phrasings using the same shape
+ * still translate. Falls back to the original text when no known shape
+ * matches, never inventing terms that weren't in the source. */
+export function paymentTermsLabel(raw: string | null | undefined): string | null {
+  if (!raw) return null;
+  const hasBridgeLoan = /bridge[- ]loan|bridge financing/i.test(raw);
+  const bridgeSuffix = hasBridgeLoan ? " (עם הלוואת גישור)" : "";
+
+  const pctSplit = raw.match(/(\d{1,3})\s*%.*?(\d{1,3})\s*%/);
+  const hasSigning = /sign/i.test(raw);
+  const hasOccupancyOrDelivery = /occupancy|delivery/i.test(raw);
+  if (pctSplit && hasSigning && hasOccupancyOrDelivery) {
+    return `מסלול תשלום: ${pctSplit[1]}% בחתימה, ${pctSplit[2]}% במסירה${bridgeSuffix}`;
+  }
+
+  const ratioSplit = raw.match(/(\d{1,3})\s*\/\s*(\d{1,3})/);
+  if (ratioSplit) {
+    return `מסלול תשלום ${ratioSplit[1]}/${ratioSplit[2]}${bridgeSuffix}`;
+  }
+
+  if (/pre-?sale/i.test(raw)) return "תנאי פריסייל";
+  if (/customi[sz]ed/i.test(raw)) return "תנאי תשלום מותאמים אישית";
+  if (/convenient/i.test(raw)) return "תנאי תשלום נוחים";
+
+  return raw;
+}
+
+/** Delivery-date strings are usually a plain "YYYY-MM" value, but a few carry
+ * an English qualifier clause (e.g. "reported in public project context")
+ * appended after the date -- keep the real date as-is and translate only the
+ * recognized qualifier, never inventing a date that wasn't in the source. */
+export function deliveryLabel(raw: string | null | undefined): string | null {
+  if (!raw) return null;
+  const dateMatch = raw.match(/^(\d{4}-\d{2})\b/);
+  if (!dateMatch) return raw;
+  const rest = raw.slice(dateMatch[1].length).trim();
+  if (!rest) return dateMatch[1];
+  if (/reported in public/i.test(rest)) return `${dateMatch[1]} (על פי דיווח פומבי)`;
+  return `${dateMatch[1]} (${rest})`;
 }
 
 /** One new-development comparable's variant closest in rooms/area to the
@@ -231,8 +295,8 @@ export function buildProductComparisonRows(subject: SubjectSpec, item: Comparabl
   }
 
   push("סטטוס הפרויקט", null, projectStatusLabel(projectLevel.status as string | null), "project_level_fact");
-  push("מועד מסירה", null, projectLevel.delivery != null ? String(projectLevel.delivery) : null, "project_level_fact");
-  push("תנאי תשלום", null, projectLevel.payment_terms != null ? String(projectLevel.payment_terms) : null, "project_level_fact");
+  push("מועד מסירה", null, deliveryLabel(projectLevel.delivery as string | null), "project_level_fact");
+  push("תנאי תשלום", null, paymentTermsLabel(projectLevel.payment_terms as string | null), "project_level_fact");
 
   return rows;
 }

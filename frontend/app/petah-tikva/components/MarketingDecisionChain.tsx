@@ -21,11 +21,19 @@ import {
 import StepHeading from "./StepHeading";
 import PricingWaterfall from "./PricingWaterfall";
 import { deriveWaterfallSteps } from "@/lib/executiveVisuals";
+import { buildMondayApprovalPayload, MondaySendResult, sendPricingApprovalToMonday } from "@/lib/mondayIntegration";
 
 interface Props {
   row: PtkPriceListRow;
   state: MarketingStrategyState;
   onChange: (updater: (prev: MarketingStrategyState) => MarketingStrategyState) => void;
+  // Internal confidence code ("high"/"medium"/"low"/"insufficient") for this
+  // unit's market indication -- standard route: row.market_range?.confidence;
+  // special route: the special-unit indication's own confidence. Passed in
+  // from UnitDrawer, which already has workspace context this component
+  // does not (task item 5/10 -- backend owns the Hebrew mapping, this
+  // component only forwards the code).
+  confidence: string | null;
 }
 
 /** Drawer block 4 (see UnitDrawer.tsx) -- "החלטת התמחור לדירה <unit>", built
@@ -43,7 +51,7 @@ interface Props {
  * component never needs to know which pricing route produced it. Uses
  * computePriceBreakdown exactly as before -- no new adjustment layer, no
  * formula change, only display. */
-export default function MarketingDecisionChain({ row, state, onChange }: Props) {
+export default function MarketingDecisionChain({ row, state, onChange, confidence }: Props) {
   const [showFormula, setShowFormula] = useState(false);
   const bucket = familyBucketOf(row);
   const familyAdjustment = state.familyAdjustments[bucket] ?? EMPTY_ADJUSTMENT;
@@ -170,7 +178,69 @@ export default function MarketingDecisionChain({ row, state, onChange }: Props) 
           </>
         )}
       </div>
+
+      {/* שלח לאישור ב-Monday -- clearly downstream of מחיר מוצע above, never
+          inside the research-methodology toggle (task item 12). */}
+      {marketIndicationIls != null && proposedIls != null && (
+        <SendToMondayApprovalButton row={row} state={state} breakdown={breakdown} confidence={confidence} />
+      )}
     </section>
+  );
+}
+
+/** States: idle -> "שלח לאישור ב-Monday", sending -> "שולח ל-Monday...",
+ * sent -> "נשלח ל-Monday" + link to the board, error -> "לא ניתן היה לשלוח
+ * ל-Monday" + retry (task item 13). Never shows the raw backend/GraphQL
+ * error text. */
+function SendToMondayApprovalButton({
+  row,
+  state,
+  breakdown,
+  confidence,
+}: {
+  row: PtkPriceListRow;
+  state: MarketingStrategyState;
+  breakdown: ReturnType<typeof computePriceBreakdown>;
+  confidence: string | null;
+}) {
+  const [result, setResult] = useState<MondaySendResult | null>(null);
+  const [sending, setSending] = useState(false);
+
+  const send = async () => {
+    const payload = buildMondayApprovalPayload(row, state, breakdown, confidence);
+    if (!payload) return;
+    setSending(true);
+    setResult(null);
+    const outcome = await sendPricingApprovalToMonday(payload);
+    setSending(false);
+    setResult(outcome);
+  };
+
+  return (
+    <div className="mt-3 flex flex-col items-center gap-1.5 border-t border-slate-100 pt-3">
+      <button
+        onClick={send}
+        disabled={sending}
+        className="rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-60"
+      >
+        {sending ? "שולח ל-Monday..." : result?.ok ? "נשלח ל-Monday" : "שלח לאישור ב-Monday"}
+      </button>
+      {result?.ok && (
+        <a href={result.boardUrl} target="_blank" rel="noreferrer" className="text-xs text-slate-500 underline hover:text-slate-800">
+          פתח את לוח האישור
+        </a>
+      )}
+      {result && !result.ok && (
+        <div className="flex items-center gap-2 text-xs text-red-700">
+          <span>{result.reason === "not_configured" ? "החיבור ל-Monday אינו מוגדר" : "לא ניתן היה לשלוח ל-Monday"}</span>
+          {result.reason === "failed" && (
+            <button onClick={send} className="underline hover:text-red-900">
+              נסה שוב
+            </button>
+          )}
+        </div>
+      )}
+    </div>
   );
 }
 

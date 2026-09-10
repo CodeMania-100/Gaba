@@ -239,9 +239,9 @@ export function sellThroughStatus(actualPct: number, targetPct: number): SellThr
 
 export const SELL_THROUGH_STATUS_LABELS: Record<SellThroughStatus, string> = {
   no_target: "לא הוגדר יעד",
-  ahead: "מקדימה את היעד",
+  ahead: "מעל היעד",
   on_target: "בהתאם ליעד",
-  behind: "מפגרת אחרי היעד",
+  behind: "מתחת ליעד",
 };
 
 /** Plain factual difference (actual - target), in percentage points --

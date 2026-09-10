@@ -192,3 +192,32 @@ class LifecycleEventCreate(BaseModel):
 class StateSnapshotCreate(BaseModel):
     inventory_version_id: str
     as_of: datetime | None = None
+
+
+class MondayPricingApprovalRequest(BaseModel):
+    """One unit's current pricing decision, as already assembled by the
+    Marketing UI (see frontend/lib/marketingStrategy.ts) -- this is a
+    transport shape only. confidence/project_phase are the app's own
+    internal codes (never raw Hebrew), which app_api.monday_integration maps
+    to the Monday board's existing status labels itself -- see task item 5:
+    "Do not trust/display arbitrary frontend labels when we already have
+    canonical mappings." """
+
+    unit_number: int | str
+    property_type: str = Field(min_length=1, max_length=120)
+    rooms: float | None = None
+    market_indication: float = Field(gt=0)
+    proposed_price: float = Field(gt=0)
+    confidence: str = Field(min_length=1, max_length=40)
+    project_phase: str = Field(min_length=1, max_length=40)
+    sell_through_actual_pct: float | None = None
+    sell_through_target_pct: float | None = None
+    # The application's existing authoritative net strategy effect for this
+    # unit (phase + sales-progress + project/group/unit adjustments) -- never
+    # recomputed here, see task item 8.
+    strategy_effect_pct: float = 0.0
+    # Already-formatted, already-Hebrew lines built by the frontend from
+    # whatever rationale text Marketing actually entered -- e.g.
+    # ["שלב הפרויקט: תרחיש פריסייל.", "התאמה לדירה זו: כיוון מערב..."].
+    # Only non-empty, real entries; nothing here is invented server-side.
+    rationales: list[str] = Field(default_factory=list)

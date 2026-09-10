@@ -76,6 +76,13 @@ export default function UnitDrawer({ row, workspace, marketingStrategy, onChange
   const route = pricingRouteOf(row);
   const isSold = marketingStrategy.soldUnitNumbers.has(row.unit_number);
   const saleRecord = internalSaleForUnit(marketingStrategy, row.unit_number);
+  // Same confidence source each route's own market-indication block already
+  // displays -- forwarded to MarketingDecisionChain's "שלח לאישור ב-Monday"
+  // button so Monday receives the real confidence, not a guess.
+  const confidence =
+    route === "standard_family"
+      ? (row.market_range?.confidence ?? null)
+      : (workspace.special_unit_market_context.units[row.unit_number]?.market_indication?.confidence ?? null);
 
   return (
     <div className="fixed inset-0 z-50 flex justify-start bg-black/40" onClick={onClose}>
@@ -131,7 +138,7 @@ export default function UnitDrawer({ row, workspace, marketingStrategy, onChange
 
           {/* 4. החלטת שיווק -- the strongest visual element in this drawer; owns
               its own header, styled to match StepHeading (see MarketingDecisionChain) */}
-          <MarketingDecisionChain row={row} state={marketingStrategy} onChange={onChangeMarketingStrategy} />
+          <MarketingDecisionChain row={row} state={marketingStrategy} onChange={onChangeMarketingStrategy} confidence={confidence} />
         </div>
       </div>
     </div>

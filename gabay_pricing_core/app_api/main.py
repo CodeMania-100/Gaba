@@ -4,9 +4,22 @@ import hashlib
 import json
 import os
 from contextlib import contextmanager
+from pathlib import Path
 from typing import Any
 
 import openpyxl
+
+try:
+    # Local dev convenience only: loads MONDAY_API_TOKEN and friends from the
+    # repo-root .env (gitignored, never committed) without overriding any
+    # variable the process already has set. A missing python-dotenv or .env
+    # file is not fatal -- the app still runs, just without those optional
+    # integrations (see monday_integration.MondayConfigError).
+    from dotenv import load_dotenv
+
+    load_dotenv(Path(__file__).resolve().parents[2] / ".env", override=False)
+except ImportError:
+    pass
 from fastapi import FastAPI, File, HTTPException, Query, UploadFile, status
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import func, select
@@ -32,6 +45,7 @@ from .db_models import (
 from .demo_snapshot import RequiredSourceMissingError, build_demo_market_snapshot
 from .inventory_preview import build_inventory_preview
 from .migrations import apply_schema_migrations
+from .monday_integration import MondayApiError, MondayConfigError, create_pricing_approval_item
 from .petah_tikva_workspace import build_petah_tikva_scenario_payload, build_petah_tikva_workspace_payload
 from .project_launcher import resolve_project_start
 from .schemas import (
@@ -39,6 +53,7 @@ from .schemas import (
     InventoryImport,
     InventoryVersionRead,
     LifecycleEventCreate,
+    MondayPricingApprovalRequest,
     PetahTikvaScenarioRequest,
     PricingSessionCreate,
     PricingSessionRead,
@@ -215,6 +230,20 @@ def create_app(database_url: str | None = None) -> FastAPI:
             return build_petah_tikva_scenario_payload(payload.range_position_pct, payload.name)
         except FileNotFoundError as exc:
             raise HTTPException(status_code=503, detail=f"petah_tikva_frozen_artifact_missing: {exc}") from exc
+
+    # --- Monday.com pricing-approval integration ---------------------------------
+    # One outbound demo integration: create a real item on the existing
+    # "אישור מחירון – פרויקט פתח תקווה" board so approval continues there. No
+    # inbound sync/webhooks (see app_api.monday_integration's module docstring).
+
+    @app.post("/api/v1/integrations/monday/pricing-approval")
+    def monday_pricing_approval(payload: MondayPricingApprovalRequest):
+        try:
+            return create_pricing_approval_item(payload)
+        except MondayConfigError as exc:
+            raise HTTPException(status_code=503, detail="monday_not_configured") from exc
+        except MondayApiError as exc:
+            raise HTTPException(status_code=502, detail="monday_request_failed") from exc
 
     # --- market snapshots --------------------------------------------------------
 

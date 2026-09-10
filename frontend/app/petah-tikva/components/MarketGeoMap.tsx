@@ -1056,7 +1056,10 @@ function ParticipationBadge({ contributes, contributingLabel, contextLabel }: { 
 const SPECIAL_STATUS_LABELS: Record<"participating" | "context_only" | "excluded", string> = {
   participating: "משתתף בחישוב",
   context_only: "מידע להקשר בלבד — אינו משתתף בחישוב",
-  excluded: "הוצא מסל ההשוואה",
+  // Explicitly states "did not participate" alongside "removed from the
+  // comparison basket" -- a viewer must never read this status as merely
+  // "unused" without also seeing the plain non-participation statement.
+  excluded: "הוצא מסל ההשוואה — לא השתתף בחישוב",
 };
 
 /** Three-state participation status for special-unit evidence (task item

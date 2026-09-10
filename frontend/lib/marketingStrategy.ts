@@ -238,6 +238,36 @@ export const SELL_THROUGH_STATUS_LABELS: Record<SellThroughStatus, string> = {
   behind: "מפגרת אחרי היעד",
 };
 
+/** Plain factual difference (actual - target), in percentage points --
+ * never a price adjustment. Marketing still has to type
+ * salesProgressAdjustment.adjustment_pct in manually; this only answers
+ * "how far are we from the target," it never feeds the formula (see task
+ * item 2). null when no target was supplied (0 = "not set", not a real
+ * target of 0%). */
+export function sellThroughGapPoints(actualPct: number, targetPct: number): number | null {
+  if (!targetPct) return null;
+  return actualPct - targetPct;
+}
+
+// Exact Hebrew labels for the three commercial-adjustment levels (task item
+// 3) -- centralized so MarketingStrategyPanel (project-wide) and
+// MarketingDecisionChain (per-unit drawer) never drift into different
+// wording for the same underlying state field.
+export const PROJECT_ADJUSTMENT_LABEL = "התאמה כללית לפרויקט";
+export const UNIT_ADJUSTMENT_LABEL = "התאמה לדירה זו";
+// The group itself (task item 3: "For a 3R apartment: התאמה לקבוצת הדירות /
+// 3 חדרים") is shown as a second line via FAMILY_BUCKET_LABELS[bucket] at
+// each call site -- this label is deliberately the same regardless of
+// bucket, so nothing here invents a per-type (e.g. "triplex family") rule.
+export const GROUP_ADJUSTMENT_LABEL = "התאמה לקבוצת הדירות";
+
+// Per-level helper text (task item 4) -- explains scope in plain language
+// instead of expecting the reader to infer "project/group/unit" from the
+// label alone.
+export const PROJECT_ADJUSTMENT_HELPER = "חלה על כל הדירות בפרויקט";
+export const GROUP_ADJUSTMENT_HELPER = "חלה על כל הדירות בקבוצה הנבחרת";
+export const UNIT_ADJUSTMENT_HELPER = "חלה רק על הדירה הנוכחית";
+
 export interface RevenueSummary {
   marketIndicationRevenueIls: number;
   proposedRevenueIls: number;

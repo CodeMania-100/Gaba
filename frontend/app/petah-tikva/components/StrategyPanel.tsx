@@ -55,10 +55,10 @@ export default function StrategyPanel({
     <section className="rounded-lg border border-slate-300 bg-white p-5">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div>
-          <h2 className="text-lg font-bold text-slate-900">אסטרטגיית תמחור החברה</h2>
+          <h2 className="text-lg font-bold text-slate-900">כלי מחקר: מיקום מול טווח השוק (היסטורי)</h2>
           <p className="text-xs text-slate-500">
-            בחרו היכן למקם את המחיר בתוך טווח השוק הנתמך. שינוי האסטרטגיה אינו משנה את נתוני השוק — רק את המחיר המסחרי
-            המוצע.
+            כלי הדגמה הנדסי לבחינת מיקום בתוך טווח השוק הנתמך. אינו מזין את מחיר השיווק המוצע בפועל — המחיר המוצע
+            לכל דירה נקבע דרך ההתאמות המסחריות בכרטיס הדירה.
           </p>
         </div>
         <span className="rounded bg-slate-100 px-2 py-1 text-xs font-medium text-slate-600">בסיס ההדגמה (50%) נשמר ללא שינוי</span>

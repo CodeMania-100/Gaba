@@ -25,6 +25,7 @@ import {
   MarketingStrategyState,
   PROJECT_PHASE_LABELS,
 } from "@/lib/marketingStrategy";
+import { ApartmentParameterRow, deriveApartmentParameterRows, PARAMETER_STATUS_LABELS, siblingUnitNumber } from "@/lib/apartmentParameters";
 
 interface Props {
   row: PtkPriceListRow;
@@ -109,8 +110,13 @@ export default function UnitDrawer({ row, workspace, marketingStrategy, onChange
             </section>
           )}
 
-          {/* 1. פרטי הדירה */}
-          <UnitFactsBlock row={row} isSold={isSold} />
+          {/* 1. פרטי הדירה + מאפייני הדירה בתהליך התמחור */}
+          <UnitFactsBlock row={row} isSold={isSold} isSpecial={route !== "standard_family"} />
+
+          {/* Unit 36/37 comparison card -- existing inventory data only, no new
+              comparison engine (task item 11). Rendered only for that one
+              real sibling pair. */}
+          <SiblingComparisonCard row={row} workspace={workspace} />
 
           {/* 2. אינדיקציית שוק */}
           {route === "standard_family" ? (
@@ -140,23 +146,94 @@ function Fact({ label, value }: { label: string; value: string }) {
   );
 }
 
-// 1. פרטי הדירה
-function UnitFactsBlock({ row, isSold }: { row: PtkPriceListRow; isSold: boolean }) {
-  const rooms = roomsOf(row);
+// 1. פרטי הדירה + מאפייני הדירה בתהליך התמחור
+function UnitFactsBlock({ row, isSold, isSpecial }: { row: PtkPriceListRow; isSold: boolean; isSpecial: boolean }) {
+  const rows = deriveApartmentParameterRows(row, isSpecial);
   return (
     <section>
       <StepHeading n={1} title="פרטי הדירה" />
-      <div className="grid grid-cols-2 gap-3 rounded-md bg-slate-50 p-3 text-sm">
-        <Fact label="סוג" value={unitTypeLabel(row.family)} />
-        <Fact label="חדרים" value={rooms != null ? String(rooms) : "—"} />
-        <Fact label="שטח פנימי" value={row.internal_area_sqm != null ? `${num(row.internal_area_sqm)} מ״ר` : "—"} />
-        <Fact label={outdoorLabel(row.family)} value={row.balcony_area_sqm != null ? `${num(row.balcony_area_sqm)} מ״ר` : "—"} />
-        <Fact label="קומה" value={row.floor != null ? String(row.floor) : "—"} />
-        <Fact label="כיוון אוויר" value={row.orientation ?? "—"} />
-        <Fact label="חניה" value={row.parking != null ? String(row.parking) : "לא ידוע"} />
-        <Fact label="מחסן" value={row.storage == null ? "לא ידוע" : row.storage ? "יש" : "אין"} />
+      <div className="mb-3 grid grid-cols-2 gap-3 rounded-md bg-slate-50 p-3 text-sm">
         <Fact label="סטטוס" value={isSold ? "נמכרה" : STATUS_LABELS[row.status] ?? row.status} />
       </div>
+
+      {/* מאפייני הדירה בתהליך התמחור (task items 8-10): what the engine
+          actually does with each attribute -- never claims a quantitative
+          price effect unless one really exists. */}
+      <div className="mb-1 text-sm font-semibold text-slate-800">מאפייני הדירה בתהליך התמחור</div>
+      <div className="overflow-x-auto rounded-md border border-slate-200">
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="border-b border-slate-200 bg-slate-50 text-start text-[11px] text-slate-500">
+              <th className="px-2.5 py-1.5 text-start font-medium">מאפיין</th>
+              <th className="px-2.5 py-1.5 text-start font-medium">ערך</th>
+              <th className="px-2.5 py-1.5 text-start font-medium">אופן השימוש</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r: ApartmentParameterRow) => (
+              <tr key={r.label} className="border-b border-slate-100 last:border-0">
+                <td className="px-2.5 py-1.5 align-top font-medium text-slate-700">{r.label}</td>
+                <td className="px-2.5 py-1.5 align-top text-slate-900">{r.value}</td>
+                <td className="px-2.5 py-1.5 align-top text-slate-600">
+                  <div>{r.usage}</div>
+                  <div className="mt-0.5 text-[11px] font-medium text-slate-400">{PARAMETER_STATUS_LABELS[r.status]}</div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  );
+}
+
+// Unit 36/37 comparison card (task item 11) -- rendered only for that one
+// real triplex sibling pair, using existing inventory + market-indication
+// data already loaded for the drawer.
+function SiblingComparisonCard({ row, workspace }: { row: PtkPriceListRow; workspace: PetahTikvaWorkspace }) {
+  const siblingNumber = siblingUnitNumber(row.unit_number);
+  if (!siblingNumber) return null;
+  const sibling = workspace.price_list.find((r) => r.unit_number === siblingNumber);
+  if (!sibling) return null;
+
+  const marketIndicationIls = (r: PtkPriceListRow) => workspace.special_unit_market_context.units[r.unit_number]?.market_indication?.suggested_price_ils ?? null;
+
+  const rows: { label: string; a: string; b: string }[] = [
+    { label: "סוג", a: unitTypeLabel(row.family), b: unitTypeLabel(sibling.family) },
+    { label: "חדרים", a: roomsOf(row) != null ? String(roomsOf(row)) : "—", b: roomsOf(sibling) != null ? String(roomsOf(sibling)) : "—" },
+    { label: "שטח פנימי", a: row.internal_area_sqm != null ? `${num(row.internal_area_sqm)} מ״ר` : "—", b: sibling.internal_area_sqm != null ? `${num(sibling.internal_area_sqm)} מ״ר` : "—" },
+    { label: outdoorLabel(row.family), a: row.balcony_area_sqm != null ? `${num(row.balcony_area_sqm)} מ״ר` : "—", b: sibling.balcony_area_sqm != null ? `${num(sibling.balcony_area_sqm)} מ״ר` : "—" },
+    { label: "קומות", a: row.floor != null ? String(row.floor) : "—", b: sibling.floor != null ? String(sibling.floor) : "—" },
+    { label: "כיוון", a: row.orientation ?? "—", b: sibling.orientation ?? "—" },
+    { label: "אינדיקציית שוק", a: marketIndicationIls(row) != null ? ils(marketIndicationIls(row)!) : "—", b: marketIndicationIls(sibling) != null ? ils(marketIndicationIls(sibling)!) : "—" },
+  ];
+
+  return (
+    <section className="rounded-md border border-slate-200 bg-white p-3">
+      <div className="mb-2 text-sm font-semibold text-slate-800">השוואה לדירה דומה בפרויקט</div>
+      <div className="overflow-x-auto">
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="text-[11px] text-slate-500">
+              <th className="px-1.5 py-1 text-start font-medium"></th>
+              <th className="px-1.5 py-1 text-start font-medium">דירה {row.unit_number}</th>
+              <th className="px-1.5 py-1 text-start font-medium">דירה {siblingNumber}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr key={r.label} className="border-t border-slate-100">
+                <td className="px-1.5 py-1 text-slate-500">{r.label}</td>
+                <td className="px-1.5 py-1 font-medium text-slate-900">{r.a}</td>
+                <td className="px-1.5 py-1 font-medium text-slate-900">{r.b}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="mt-2 text-[11px] text-slate-400">
+        הדירות נשענות על אותו בסיס שוק. ההבדלים במאפייני הדירה מוצגים למחלקת השיווק לצורך קבלת החלטה על התאמה מסחרית.
+      </p>
     </section>
   );
 }

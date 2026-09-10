@@ -8,9 +8,11 @@ import {
   FAMILY_BUCKET_LABELS,
   FamilyBucket,
   MarketingStrategyState,
+  PROJECT_ADJUSTMENT_LABEL,
   PROJECT_PHASE_LABELS,
   PROJECT_PHASES,
   SELL_THROUGH_STATUS_LABELS,
+  sellThroughGapPoints,
   sellThroughStatus,
   StrategyAdjustment,
 } from "@/lib/marketingStrategy";
@@ -114,6 +116,23 @@ export default function MarketingStrategyPanel({ rows, state, onChange }: Props)
               <span className="text-slate-500">%</span>
             </label>
             {salesDataSupplied && <StatusBadge status={projectStatus} />}
+            {/* Plain factual difference (actual - target), never a price
+                adjustment (task item 2) -- shown only when a target was
+                supplied and sales data exists, so it never reads "0" as a
+                real measured gap. */}
+            {salesDataSupplied &&
+              (() => {
+                const gap = sellThroughGapPoints(progress.sellThroughPct, state.targetSellThroughPct);
+                return gap != null ? (
+                  <span className="text-xs text-slate-500">
+                    פער מול היעד:{" "}
+                    <span className={`font-semibold tabular-nums ${gap > 0 ? "text-emerald-700" : gap < 0 ? "text-red-700" : "text-slate-600"}`}>
+                      {gap > 0 ? "+" : ""}
+                      {num(gap, 1)} נקודות אחוז
+                    </span>
+                  </span>
+                ) : null;
+              })()}
           </div>
 
           <div className="mt-2 flex flex-col gap-1 text-xs text-slate-600">
@@ -160,10 +179,10 @@ export default function MarketingStrategyPanel({ rows, state, onChange }: Props)
         <h3 className="mb-3 text-sm font-bold text-slate-900">3. השפעה על המחיר</h3>
 
         <div className="flex flex-col gap-2">
-          <EffectRecapRow label="התאמת שלב הפרויקט" adjustment={state.phaseAdjustment} effectIls={revenue.phaseEffectRevenueIls} />
-          <EffectRecapRow label="התאמת קצב המכירות" adjustment={state.salesProgressAdjustment} effectIls={revenue.salesProgressEffectRevenueIls} />
+          <EffectRecapRow label="השפעת שלב הפרויקט על המחיר" adjustment={state.phaseAdjustment} effectIls={revenue.phaseEffectRevenueIls} />
+          <EffectRecapRow label="השפעת קצב המכירות על המחיר" adjustment={state.salesProgressAdjustment} effectIls={revenue.salesProgressEffectRevenueIls} />
           <AdjustmentEditor
-            title="התאמה ידנית"
+            title={PROJECT_ADJUSTMENT_LABEL}
             value={state.projectAdjustment}
             onChange={(next) => onChange((prev) => ({ ...prev, projectAdjustment: next }))}
             effectIls={revenue.manualEffectRevenueIls}

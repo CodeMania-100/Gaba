@@ -24,6 +24,7 @@ import {
   internalSalesForBucket,
   MarketingStrategyState,
   PROJECT_PHASE_LABELS,
+  sellThroughGapPoints,
 } from "@/lib/marketingStrategy";
 import { ApartmentParameterRow, deriveApartmentParameterRows, PARAMETER_STATUS_LABELS, siblingUnitNumber } from "@/lib/apartmentParameters";
 
@@ -379,20 +380,29 @@ function ProjectStatusBlock({ row, workspace, state }: { row: PtkPriceListRow; w
 
   const salesDataSupplied = progress.unitsSold > 0;
 
+  const gap = sellThroughGapPoints(state.actualSellThroughPct, state.targetSellThroughPct);
+
   return (
     <section>
       <StepHeading n={3} title="מצב הפרויקט" />
       <div className="grid grid-cols-2 gap-3 rounded-md bg-slate-50 p-3 text-sm">
         <Fact label="שלב הפרויקט" value={PROJECT_PHASE_LABELS[state.projectPhase]} />
-        {salesDataSupplied ? (
-          <>
-            <Fact label="שיעור מכירה — כלל הפרויקט" value={`${num(progress.sellThroughPct, 0)}%`} />
-            <Fact label={`שיעור מכירה — ${FAMILY_BUCKET_LABELS[bucket]}`} value={`${num(familyProgress.sellThroughPct, 0)}%`} />
-          </>
-        ) : (
-          <div className="col-span-2 text-xs text-slate-400">לא סופקו נתוני מכירות בפועל במטלה.</div>
-        )}
+        <Fact label="קצב מכירות בפועל" value={`${num(state.actualSellThroughPct, 0)}%`} />
+        <Fact label="יעד קצב מכירות" value={`${num(state.targetSellThroughPct, 0)}%`} />
+        <Fact
+          label="פער מול היעד"
+          value={gap != null ? `${gap > 0 ? "+" : ""}${num(gap, 1)} נקודות אחוז` : "—"}
+        />
       </div>
+      <p className="mt-1 text-[11px] text-slate-400">
+        שלב הפרויקט, קצב המכירות בפועל והיעד נערכים בכרטיס אסטרטגיית השיווק הראשי ואינם משנים את המחיר בעצמם.
+      </p>
+      {salesDataSupplied && (
+        <div className="mt-2 grid grid-cols-2 gap-3 rounded-md bg-slate-50 p-3 text-sm">
+          <Fact label="שיעור מכירה לפי עסקאות שנרשמו — כלל הפרויקט" value={`${num(progress.sellThroughPct, 0)}%`} />
+          <Fact label={`שיעור מכירה לפי עסקאות שנרשמו — ${FAMILY_BUCKET_LABELS[bucket]}`} value={`${num(familyProgress.sellThroughPct, 0)}%`} />
+        </div>
+      )}
       <div className="mt-2">
         <div className="mb-1 text-xs font-semibold text-slate-500">עסקאות שבוצעו בפרויקט (משפחה זו)</div>
         {relevantSales.length === 0 ? (

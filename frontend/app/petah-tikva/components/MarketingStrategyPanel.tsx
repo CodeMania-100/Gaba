@@ -37,7 +37,7 @@ const NO_SALES_DATA_MESSAGE = "לא סופקו נתוני מכירות בפוע�
 export default function MarketingStrategyPanel({ rows, state, onChange }: Props) {
   const progress = computeSalesProgress(rows, state.soldUnitNumbers);
   const revenue = computeRevenueSummary(rows, state);
-  const projectStatus = sellThroughStatus(progress.sellThroughPct, state.targetSellThroughPct);
+  const projectStatus = sellThroughStatus(state.actualSellThroughPct, state.targetSellThroughPct);
   const salesDataSupplied = progress.unitsSold > 0;
   const totalEffectPct = revenue.marketIndicationRevenueIls > 0 ? (revenue.differenceIls / revenue.marketIndicationRevenueIls) * 100 : 0;
 
@@ -84,26 +84,27 @@ export default function MarketingStrategyPanel({ rows, state, onChange }: Props)
         <div className="rounded-md border border-slate-200 p-4">
           <h3 className="mb-2 text-sm font-semibold text-slate-900">2. מצב המכירות</h3>
 
-          {/* מה אנחנו יודעים */}
-          <div className="mb-1 text-xs font-semibold text-slate-500">מה אנחנו יודעים</div>
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-            <MiniStat label="סה״כ דירות" value={String(progress.unitsTotal)} />
-            {salesDataSupplied ? (
-              <>
-                <MiniStat label="דירות שנמכרו" value={String(progress.unitsSold)} />
-                <MiniStat label="דירות שנותרו" value={String(progress.unitsRemaining)} />
-                <MiniStat label="שיעור מכירה בפועל" value={`${num(progress.sellThroughPct, 0)}%`} />
-              </>
-            ) : (
-              <div className="col-span-3 flex items-end">
-                <span className="text-sm text-slate-400">{NO_SALES_DATA_MESSAGE}</span>
-              </div>
-            )}
-          </div>
-
-          <div className="mt-2 flex flex-wrap items-center gap-2">
+          {/* קצב מכירות בפועל / יעד קצב מכירות -- both plain, directly
+              editable demo inputs (not derived from soldUnitNumbers). פער
+              מול היעד below is the only calculated field here (actual -
+              target); it never feeds a price adjustment -- see
+              sellThroughGapPoints. */}
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
             <label className="flex items-center gap-1 text-xs">
-              <span className="text-slate-500">יעד שיעור מכירה</span>
+              <span className="text-slate-500">קצב מכירות בפועל</span>
+              <input
+                type="number"
+                step={1}
+                min={0}
+                max={100}
+                value={state.actualSellThroughPct}
+                onChange={(e) => onChange((prev) => ({ ...prev, actualSellThroughPct: Number(e.target.value) || 0 }))}
+                className="w-14 rounded-md border border-slate-300 px-1.5 py-1 text-sm"
+              />
+              <span className="text-slate-500">%</span>
+            </label>
+            <label className="flex items-center gap-1 text-xs">
+              <span className="text-slate-500">יעד קצב מכירות</span>
               <input
                 type="number"
                 step={1}
@@ -115,24 +116,48 @@ export default function MarketingStrategyPanel({ rows, state, onChange }: Props)
               />
               <span className="text-slate-500">%</span>
             </label>
-            {salesDataSupplied && <StatusBadge status={projectStatus} />}
+            <StatusBadge status={projectStatus} />
             {/* Plain factual difference (actual - target), never a price
-                adjustment (task item 2) -- shown only when a target was
-                supplied and sales data exists, so it never reads "0" as a
-                real measured gap. */}
-            {salesDataSupplied &&
-              (() => {
-                const gap = sellThroughGapPoints(progress.sellThroughPct, state.targetSellThroughPct);
-                return gap != null ? (
-                  <span className="text-xs text-slate-500">
-                    פער מול היעד:{" "}
-                    <span className={`font-semibold tabular-nums ${gap > 0 ? "text-emerald-700" : gap < 0 ? "text-red-700" : "text-slate-600"}`}>
-                      {gap > 0 ? "+" : ""}
-                      {num(gap, 1)} נקודות אחוז
-                    </span>
+                adjustment -- always recalculated live from the two inputs
+                above. */}
+            {(() => {
+              const gap = sellThroughGapPoints(state.actualSellThroughPct, state.targetSellThroughPct);
+              return gap != null ? (
+                <span className="text-xs text-slate-500">
+                  פער מול היעד:{" "}
+                  <span className={`font-semibold tabular-nums ${gap > 0 ? "text-emerald-700" : gap < 0 ? "text-red-700" : "text-slate-600"}`}>
+                    {gap > 0 ? "+" : ""}
+                    {num(gap, 1)} נקודות אחוז
                   </span>
-                ) : null;
-              })()}
+                </span>
+              ) : (
+                <span className="text-xs text-slate-400">הזינו יעד כדי לחשב פער</span>
+              );
+            })()}
+          </div>
+          <p className="mt-1 text-[11px] text-slate-400">
+            שינוי שלב הפרויקט, קצב המכירות בפועל או היעד אינו משנה את מחיר השיווק המוצע — רק שדות ההשפעה למטה משנים מחיר.
+          </p>
+
+          {/* מה אנחנו יודעים -- context from actual per-unit internal sale
+              records (soldUnitNumbers), a separate, more granular data
+              source from the plain "קצב מכירות בפועל" input above. */}
+          <div className="mt-3 border-t border-slate-100 pt-3">
+            <div className="mb-1 text-xs font-semibold text-slate-500">מה אנחנו יודעים מעסקאות פנימיות שנרשמו</div>
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+              <MiniStat label="סה״כ דירות" value={String(progress.unitsTotal)} />
+              {salesDataSupplied ? (
+                <>
+                  <MiniStat label="דירות שנמכרו" value={String(progress.unitsSold)} />
+                  <MiniStat label="דירות שנותרו" value={String(progress.unitsRemaining)} />
+                  <MiniStat label="שיעור מכירה לפי עסקאות שנרשמו" value={`${num(progress.sellThroughPct, 0)}%`} />
+                </>
+              ) : (
+                <div className="col-span-3 flex items-end">
+                  <span className="text-sm text-slate-400">{NO_SALES_DATA_MESSAGE}</span>
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="mt-2 flex flex-col gap-1 text-xs text-slate-600">

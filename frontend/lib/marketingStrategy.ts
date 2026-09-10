@@ -66,8 +66,13 @@ export interface MarketingStrategyState {
   // Demo default: no internal-project-sales records were supplied. Real
   // records could be added here later without changing the shape.
   internalProjectSales: InternalProjectSaleRecord[];
+  // Marketing-entered demo input (a plain percentage, not derived from
+  // soldUnitNumbers) -- 0 = not supplied. Purely descriptive, compared
+  // against targetSellThroughPct below to produce the read-only gap; never
+  // feeds salesProgressAdjustment automatically.
+  actualSellThroughPct: number;
   // Marketing-entered benchmark, not computed. 0 = not supplied. Purely a
-  // display comparison against the computed sell-through -- never feeds
+  // display comparison against actualSellThroughPct -- never feeds
   // salesProgressAdjustment automatically.
   targetSellThroughPct: number;
   // Explicit, project-wide, Marketing-entered percentage conceptually tied
@@ -90,6 +95,7 @@ export function defaultMarketingStrategyState(): MarketingStrategyState {
     projectPhase: "presale",
     soldUnitNumbers: new Set(),
     internalProjectSales: [],
+    actualSellThroughPct: 0,
     targetSellThroughPct: 0,
     phaseAdjustment: { ...EMPTY_ADJUSTMENT },
     salesProgressAdjustment: { ...EMPTY_ADJUSTMENT },

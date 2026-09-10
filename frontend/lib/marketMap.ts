@@ -10,13 +10,32 @@
 // contributors, sold quality_status, competitor quantitative_eligibility) --
 // no eligibility rule is invented in this module.
 
-import { CompetitorRegisterProject, JsonRecord, PetahTikvaWorkspace } from "./api";
+import { CompetitorRegisterProject, JsonRecord, PetahTikvaWorkspace, SpecialUnitIndication } from "./api";
 import { buildFactSheet, CompetitorFactSheet } from "./competitorIntelligence";
 import { ils } from "./format";
 
 export type MarketMapKind = "asking" | "sold" | "competitor" | "project_area";
 export type MarketMapFamily = "3R" | "5R";
 export type CoordinatePrecision = "address" | "street" | "approximate";
+
+// The 7 special (garden/duplex/triplex) apartments -- unit-specific
+// comparable baskets, never generic "6-room"/"7-room" families (see task
+// "Map Batch -- special apartments" item 1).
+export type SpecialUnitNumber = 1 | 2 | 3 | 36 | 37 | 38 | 39;
+export const SPECIAL_UNIT_NUMBERS: SpecialUnitNumber[] = [1, 2, 3, 36, 37, 38, 39];
+
+// Replaces the map's old family-only concept. Standard selection behaves
+// exactly as before; special selection is a completely separate concept
+// (unit-specific basket, not a room-count family) -- see item 1/20.
+export type MarketMapSelection =
+  | { kind: "standard_family"; family: MarketMapFamily }
+  | { kind: "special_unit"; unitNumber: SpecialUnitNumber };
+
+// The three participation states every special-evidence point must
+// distinguish (task item 6): actually voted in the suggested price,
+// included as size/context info only, or excluded from the comparison
+// basket entirely (with the real reason).
+export type SpecialParticipation = "participating" | "context_only" | "excluded";
 
 export interface MarketMapPoint {
   id: string;
@@ -70,6 +89,28 @@ export interface MarketMapPoint {
   // no per-unit product taxonomy exists on our side to compare against.
   highlights?: string[];
   relevanceTags?: string[];
+
+  // Free-text context note reused across kinds (special-unit asking's
+  // known_features, etc.) -- always a pass-through of an existing backend
+  // field, never generated.
+  note?: string;
+
+  // Special-unit evidence extras -- only set when this point was derived for
+  // a specific special-unit selection (see deriveSpecial*Points below).
+  // Standard points never set these; contributesToPricing stays the one
+  // source of truth there.
+  specialUnitNumber?: SpecialUnitNumber;
+  specialStatus?: SpecialParticipation;
+  specialStatusReason?: string;
+  // The comparable's own tier label (tier_a_direct/tier_b_size_relaxed/
+  // tier_c_broadened), straight from pricing_core.special_market_indication
+  // -- shown in the "why relevant" panel, never a computed similarity score.
+  specialTierLabel?: string;
+  // The evidence record's own product-type text, when the source actually
+  // states one (only current-asking special records carry this) -- used
+  // only for the subject-vs-evidence comparison table's "סוג" row; left
+  // unset (rendered as "—") when the source doesn't say, never guessed.
+  specialEvidenceType?: string;
 }
 
 // ---------------------------------------------------------------------------
@@ -387,4 +428,298 @@ export function pointContributesForFamily(point: MarketMapPoint, workspace: Peta
   const eligibility = project?.quantitative_eligibility as Record<string, { eligible: boolean }> | undefined;
   const key = family === "3R" ? "standard_3r" : "standard_5r";
   return eligibility?.[key]?.eligible ?? false;
+}
+
+// ---------------------------------------------------------------------------
+// Special units (garden/duplex/triplex) -- unit-specific comparable baskets,
+// read entirely from workspace.special_unit_market_context (already the
+// finalized, reviewed output of pricing_core.special_market_indication; see
+// gabay_pricing_core/app_api/special_unit_context.py and
+// special_market_indication_data.py). Nothing here recomputes eligibility,
+// a tier, or a price -- every status/reason is a straight read of that
+// payload. Coordinates come only from the frozen special_sold/special_asking
+// geocode sets (or the standard competitor set) -- never geocoded here.
+// ---------------------------------------------------------------------------
+
+export const SPECIAL_UNIT_CATEGORY_LABELS: Record<string, string> = { garden: "דירת גן", duplex: "דופלקס", triplex: "טריפלקס" };
+
+interface StatusEntry {
+  status: SpecialParticipation;
+  reason?: string;
+  tier?: string;
+}
+
+/** label -> participation status, built from one lane of an already-computed
+ * SpecialUnitIndication. `label` is exactly how pricing_core.
+ * special_market_indication constructed it (sold/asking: address (or type as
+ * a fallback when address is missing); new_development: "{project} ({price
+ * segment})") -- matching against it is a plain lookup, never a re-derivation
+ * of the classification itself. */
+function buildStatusIndex(
+  indication: SpecialUnitIndication | null | undefined,
+  lane: "sold" | "current_asking" | "new_development"
+): Map<string, StatusEntry> {
+  const map = new Map<string, StatusEntry>();
+  if (!indication) return map;
+  const laneResult = indication.lanes[lane];
+  if (laneResult) {
+    for (const c of laneResult.comps_used) map.set(c.label, { status: "participating", tier: c.tier });
+    for (const c of laneResult.comps_context_only) map.set(c.label, { status: "context_only", tier: c.tier });
+  }
+  for (const e of indication.excluded) {
+    if (e.lane === lane) map.set(e.label, { status: "excluded", reason: e.reason });
+  }
+  return map;
+}
+
+function pricePerSqmOrUndefined(price: number | undefined, area: number | undefined): number | undefined {
+  return price != null && area != null && area > 0 ? price / area : undefined;
+}
+
+/** Sold-basket evidence for one special unit -- merges the basket's selected
+ * (participating/context, per market_indication) and basket-level-rejected
+ * records (excluded before ever reaching the indication engine) into one
+ * point set. Multiple records at the same address are grouped (never
+ * jittered), matching the standard sold-point convention. */
+export function deriveSpecialSoldPoints(workspace: PetahTikvaWorkspace, unitNumber: SpecialUnitNumber): MarketMapPoint[] {
+  const context = workspace.special_unit_market_context.units[String(unitNumber)];
+  if (!context) return [];
+  const statusIdx = buildStatusIndex(context.market_indication, "sold");
+  const geocodes = workspace.market_map_geocodes?.special_sold?.resolved ?? [];
+  const geoByAddress = new Map(geocodes.map((g) => [g.address, g]));
+
+  const byAddress = new Map<string, JsonRecord[]>();
+  for (const r of [...context.sold_selected, ...context.sold_rejected]) {
+    const addr = r.address as string | undefined;
+    if (!addr) continue;
+    if (!byAddress.has(addr)) byAddress.set(addr, []);
+    byAddress.get(addr)!.push(r);
+  }
+
+  const points: MarketMapPoint[] = [];
+  for (const [address, records] of byAddress) {
+    const geo = geoByAddress.get(address);
+    if (!geo) continue; // unresolved -- omitted, never guessed; see coverage helper
+    const entry = statusIdx.get(address);
+    // Basket-level rejects (context.sold_rejected) never reach build_sold_
+    // inputs, so they never appear in statusIdx -- their own `reason` field
+    // is the only source of truth for them.
+    const basketReason = records.find((r) => typeof r.reason === "string")?.reason as string | undefined;
+    const status: SpecialParticipation = entry?.status ?? (basketReason ? "excluded" : "context_only");
+    const reason = entry?.reason ?? basketReason;
+    const latest = records[0];
+    const price = latest.price as number | undefined;
+    const area = latest.internal_area as number | undefined;
+    points.push({
+      id: `special_sold:${unitNumber}:${address}`,
+      kind: "sold",
+      lat: geo.lat,
+      lng: geo.lng,
+      title: "עסקה שבוצעה — השוואה ליחידה מיוחדת",
+      address,
+      priceIls: price,
+      pricePerSqm: pricePerSqmOrUndefined(price, area),
+      priceBasis: "sold",
+      internalArea: area,
+      rooms: latest.rooms as number | undefined,
+      date: latest.date as string | undefined,
+      contributesToPricing: status === "participating",
+      coordinatePrecision: geo.precision,
+      specialUnitNumber: unitNumber,
+      specialStatus: status,
+      specialStatusReason: reason,
+      specialTierLabel: entry?.tier,
+      note: (latest.floor_configuration as string | undefined) ?? undefined,
+      transactionCount: records.length,
+    });
+  }
+  return points;
+}
+
+/** Current-asking evidence for one special unit -- direct + broadened
+ * comparables (already segment-tagged and de-duplicated per unit by
+ * build_special_unit_market_context), joined against participation status
+ * from the same market_indication used for the suggested price. */
+export function deriveSpecialAskingPoints(workspace: PetahTikvaWorkspace, unitNumber: SpecialUnitNumber): MarketMapPoint[] {
+  const context = workspace.special_unit_market_context.units[String(unitNumber)];
+  if (!context) return [];
+  const statusIdx = buildStatusIndex(context.market_indication, "current_asking");
+  const geocodes = workspace.market_map_geocodes?.special_asking?.resolved ?? [];
+  const geoByAddress = new Map(geocodes.map((g) => [g.address, g]));
+
+  const points: MarketMapPoint[] = [];
+  const seen = new Set<string>();
+  for (const r of [...context.direct_comparables, ...context.broadened_comparables]) {
+    const address = r.address as string | undefined;
+    if (!address || seen.has(address)) continue;
+    seen.add(address);
+    const geo = geoByAddress.get(address);
+    if (!geo) continue;
+    const entry = statusIdx.get(address) ?? (r.type ? statusIdx.get(r.type as string) : undefined);
+    const price = r.price_ils as number | undefined;
+    const area = r.area_m2 as number | undefined;
+    const status: SpecialParticipation = entry?.status ?? "context_only";
+    points.push({
+      id: `special_asking:${unitNumber}:${address}`,
+      kind: "asking",
+      lat: geo.lat,
+      lng: geo.lng,
+      title: "דירה מוצעת — השוואה ליחידה מיוחדת",
+      address,
+      priceIls: price,
+      pricePerSqm: pricePerSqmOrUndefined(price, area),
+      priceBasis: "asking",
+      internalArea: area,
+      rooms: r.rooms as number | undefined,
+      floor: r.floor as string | undefined,
+      contributesToPricing: status === "participating",
+      coordinatePrecision: geo.precision,
+      specialUnitNumber: unitNumber,
+      specialStatus: status,
+      specialStatusReason: entry?.reason,
+      specialTierLabel: entry?.tier,
+      specialEvidenceType: (r.type as string | undefined) ?? undefined,
+      note: (r.known_features as string | undefined) ?? undefined,
+      sourceUrl: (r.source_url as string | undefined) ?? undefined,
+    });
+  }
+  return points;
+}
+
+/** New-development/competitor evidence relevant to one special unit --
+ * scoped to only the competitors pricing_core.special_market_indication
+ * actually considered for this unit's category (via its lanes/excluded
+ * lists), never every competitor in the register (task item 3: answer
+ * "where is the evidence this unit's indication is based on", not "show
+ * every project we happen to have"). A competitor with multiple price
+ * segments takes its best-found status (participating > context > excluded)
+ * since at least one of its offers is relevant at that level. */
+export function deriveSpecialCompetitorPoints(workspace: PetahTikvaWorkspace, unitNumber: SpecialUnitNumber): MarketMapPoint[] {
+  const context = workspace.special_unit_market_context.units[String(unitNumber)];
+  const indication = context?.market_indication;
+  if (!indication) return [];
+
+  const parseProjectName = (label: string) => label.replace(/\s*\([^)]*\)\s*$/, "").trim();
+  const rank: Record<SpecialParticipation, number> = { participating: 2, context_only: 1, excluded: 0 };
+  const statusByProject = new Map<string, StatusEntry>();
+  const consider = (label: string, entry: StatusEntry) => {
+    const name = parseProjectName(label);
+    const existing = statusByProject.get(name);
+    if (!existing || rank[entry.status] > rank[existing.status]) statusByProject.set(name, entry);
+  };
+
+  const laneResult = indication.lanes.new_development;
+  if (laneResult) {
+    for (const c of laneResult.comps_used) consider(c.label, { status: "participating", tier: c.tier });
+    for (const c of laneResult.comps_context_only) consider(c.label, { status: "context_only", tier: c.tier });
+  }
+  for (const e of indication.excluded) {
+    if (e.lane === "new_development") consider(e.label, { status: "excluded", reason: e.reason });
+  }
+
+  const geocodes = workspace.market_map_geocodes?.competitors.resolved ?? [];
+  const geoByName = new Map(geocodes.map((g) => [g.record_id.replace(/^competitor:/, ""), g]));
+
+  const points: MarketMapPoint[] = [];
+  for (const [name, entry] of statusByProject) {
+    const geo = geoByName.get(name);
+    if (!geo) continue;
+    const fact = buildFactSheet(workspace, name, name);
+    const registerProject = workspace.competitor_landscape.projects.find((p) => p.project_name === name);
+    points.push({
+      id: geo.record_id,
+      kind: "competitor",
+      lat: geo.lat,
+      lng: geo.lng,
+      title: name,
+      address: (registerProject?.address as string | null) ?? undefined,
+      priceIls: fact.currentPriceIls ?? undefined,
+      priceBasis: fact.isStartingPriceOnly ? "starting_price" : "unit_price",
+      classification: registerProject?.display_classification,
+      contributesToPricing: entry.status === "participating",
+      coordinatePrecision: geo.precision,
+      specialUnitNumber: unitNumber,
+      specialStatus: entry.status,
+      specialStatusReason: entry.reason,
+      specialTierLabel: entry.tier,
+      fact,
+      highlights: registerProject ? deriveCompetitorHighlights(registerProject) : undefined,
+      relevanceTags: registerProject ? deriveCompetitorRelevanceTags(registerProject) : undefined,
+    });
+  }
+  return points;
+}
+
+export interface SpecialUnitMapCoverage {
+  soldMappedCount: number;
+  soldTotalCount: number;
+  askingMappedCount: number;
+  askingTotalCount: number;
+}
+
+/** How much of this unit's real evidence basket actually made it onto the
+ * map -- never let the map silently look like the full basket when some
+ * addresses didn't geocode (task item 15). */
+export function deriveSpecialUnitMapCoverage(
+  workspace: PetahTikvaWorkspace,
+  unitNumber: SpecialUnitNumber,
+  soldPoints: MarketMapPoint[],
+  askingPoints: MarketMapPoint[]
+): SpecialUnitMapCoverage {
+  const context = workspace.special_unit_market_context.units[String(unitNumber)];
+  const soldTotalCount = new Set([...(context?.sold_selected ?? []), ...(context?.sold_rejected ?? [])].map((r) => r.address).filter(Boolean)).size;
+  const askingTotalCount = new Set(
+    [...(context?.direct_comparables ?? []), ...(context?.broadened_comparables ?? [])].map((r) => r.address).filter(Boolean)
+  ).size;
+  return {
+    soldMappedCount: soldPoints.length,
+    soldTotalCount,
+    askingMappedCount: askingPoints.length,
+    askingTotalCount,
+  };
+}
+
+export interface SpecialUnitSubjectFacts {
+  unitNumber: SpecialUnitNumber;
+  category: string; // "garden" | "duplex" | "triplex"
+  categoryLabel: string;
+  rooms: number | null;
+  internalArea: number | null;
+  outdoorArea: number | null;
+  outdoorLabel: string; // "שטח חצר" for garden units, "מרפסת" otherwise
+  floor: string | number | null;
+  orientation: string | null;
+}
+
+/** Subject-apartment facts for the compact card shown above the map when a
+ * special unit is selected (task item 9) -- read straight from the real
+ * price-list row, never re-derived. Only fields that are actually known are
+ * populated; the card itself only renders what's non-null. */
+export function deriveSpecialUnitSubjectFacts(workspace: PetahTikvaWorkspace, unitNumber: SpecialUnitNumber): SpecialUnitSubjectFacts | null {
+  const row = workspace.price_list.find((r) => r.unit_number === String(unitNumber));
+  if (!row) return null;
+  const context = workspace.special_unit_market_context.units[String(unitNumber)];
+  const category = context?.category ?? (row.family === "garden_apartment" ? "garden" : row.family);
+  return {
+    unitNumber,
+    category,
+    categoryLabel: SPECIAL_UNIT_CATEGORY_LABELS[category] ?? category,
+    rooms: row.rooms ?? null,
+    internalArea: row.internal_area_sqm,
+    outdoorArea: row.balcony_area_sqm,
+    outdoorLabel: category === "garden" ? "שטח חצר" : "מרפסת",
+    floor: row.floor,
+    orientation: row.orientation,
+  };
+}
+
+const SPECIAL_UNIT_SHORT_CATEGORY_LABELS: Record<string, string> = { garden: "גן", duplex: "דופלקס", triplex: "טריפלקס" };
+
+/** Dropdown label for the special-unit selector, e.g. "דירה 1 — גן, 3 חד׳". */
+export function specialUnitDropdownLabel(workspace: PetahTikvaWorkspace, unitNumber: SpecialUnitNumber): string {
+  const facts = deriveSpecialUnitSubjectFacts(workspace, unitNumber);
+  if (!facts) return `דירה ${unitNumber}`;
+  const shortCategory = SPECIAL_UNIT_SHORT_CATEGORY_LABELS[facts.category] ?? facts.categoryLabel;
+  const roomsPart = facts.rooms != null ? `, ${facts.rooms} חד׳` : "";
+  return `דירה ${unitNumber} — ${shortCategory}${roomsPart}`;
 }

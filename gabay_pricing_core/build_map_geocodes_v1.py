@@ -1,7 +1,13 @@
-"""One-time geocoding pass for the market map (see "MAP UPGRADE" task).
+"""One-time geocoding pass for the market map (see "MAP UPGRADE" and "Map
+Batch -- special apartments" tasks).
 
 Resolves real lat/lng coordinates for:
-  1. The competitor-register project addresses (workspace.competitor_landscape.projects).
+  1. The competitor-register project addresses (workspace.competitor_landscape.projects),
+     merged with the extra new-development competitor addresses referenced
+     only by the special-unit evidence package (data/frozen/
+     special_unit_master_data_v1.json's expanded_market_evidence.competitors)
+     -- same "competitor:<project_name>" record_id namespace either way, so
+     the map's competitor layer treats both as one concept.
   2. Every UNIQUE address among sold-transaction records already accepted by
      the pricing engine's own quality gate (quality_status == "usable") --
      never one geocode per duplicate transaction, and never a re-opened
@@ -10,6 +16,15 @@ Resolves real lat/lng coordinates for:
      script is guaranteed to operate on exactly the same already-accepted
      records the app itself shows -- no risk of drifting from a stale or
      differently-filtered source file.
+  3. Every UNIQUE address in the special-unit sold baskets (curated_special_
+     review.baskets -- selected, broadened, AND rejected: excluded/context
+     records still need a coordinate so the map can plot them with the
+     correct non-participating status, see task item 25) and the special-
+     unit current-asking evidence pool (expanded_market_evidence.
+     current_asking_evidence). Read from the frozen special-unit master file
+     directly (not the workspace API) since that file IS the authoritative,
+     already-reviewed source for these baskets -- nothing here re-derives or
+     re-filters them.
 
 Uses OpenStreetMap's public Nominatim geocoder, rate-limited to ~1 request/
 second per its usage policy, with a descriptive User-Agent. This is a
@@ -142,12 +157,26 @@ def main() -> None:
     with urllib.request.urlopen(req, timeout=30) as resp:
         workspace = json.loads(resp.read().decode("utf-8"))
 
-    # 1. Competitor register projects.
+    master = json.loads((root / "data" / "frozen" / "special_unit_master_data_v1.json").read_text(encoding="utf-8"))
+
+    # 1. Competitor register projects, plus any extra new-development
+    # competitor addresses the special-unit evidence package references that
+    # aren't already in the standard register -- same record_id namespace,
+    # merged into one list (a competitor project is a competitor project
+    # regardless of which lane cites it).
     competitor_items = [
         (f"competitor:{p['project_name']}", p["address"])
         for p in workspace["competitor_landscape"]["projects"]
         if p.get("address")
     ]
+    existing_competitor_names = {p["project_name"] for p in workspace["competitor_landscape"]["projects"]}
+    special_competitors = master["expanded_market_evidence"]["competitors"]
+    extra_competitor_items = [
+        (f"competitor:{c['project_name']}", c["address"])
+        for c in special_competitors
+        if c.get("address") and c["project_name"] not in existing_competitor_names
+    ]
+    competitor_items = competitor_items + extra_competitor_items
 
     # 2. Unique sold-transaction addresses already accepted by the pricing
     # engine's own quality gate -- one geocode per unique address, not per
@@ -164,15 +193,52 @@ def main() -> None:
                 sold_addresses[addr] = f"sold_address:{addr}"
     sold_items = [(record_id, addr) for addr, record_id in sold_addresses.items()]
 
-    print(f"\n{len(competitor_items)} competitor addresses, {len(sold_items)} unique sold addresses "
-          f"(covering {total_usable} usable sold transactions).")
-    print(f"Estimated time: ~{(len(competitor_items) + len(sold_items)) * RATE_LIMIT_SECONDS / 60:.1f} minutes.\n")
+    # 3. Unique special-unit sold-basket addresses -- selected, broadened,
+    # AND rejected, so excluded/context records can still be plotted (with
+    # their non-participating status) rather than silently vanishing from
+    # "כל נתוני השוק" mode.
+    special_sold_addresses: dict[str, str] = {}
+    for basket in master["curated_special_review"]["baskets"].values():
+        records = (
+            (basket.get("selected_sold") or [])
+            + (basket.get("selected_broadened_sold") or [])
+            + (basket.get("rejected_sold") or [])
+        )
+        for r in records:
+            addr = r.get("address")
+            if addr and addr not in special_sold_addresses:
+                special_sold_addresses[addr] = f"special_sold_address:{addr}"
+    special_sold_items = [(record_id, addr) for addr, record_id in special_sold_addresses.items()]
+
+    # 4. Unique special-unit current-asking evidence addresses (direct +
+    # broadened -- both, same reasoning as above).
+    special_asking_addresses: dict[str, str] = {}
+    for r in master["expanded_market_evidence"]["current_asking_evidence"]:
+        addr = r.get("address")
+        if addr and addr not in special_asking_addresses:
+            special_asking_addresses[addr] = f"special_asking_address:{addr}"
+    special_asking_items = [(record_id, addr) for addr, record_id in special_asking_addresses.items()]
+
+    total_items = len(competitor_items) + len(sold_items) + len(special_sold_items) + len(special_asking_items)
+    print(
+        f"\n{len(competitor_items)} competitor addresses ({len(extra_competitor_items)} new from special evidence), "
+        f"{len(sold_items)} unique sold addresses (covering {total_usable} usable sold transactions), "
+        f"{len(special_sold_items)} unique special-unit sold-basket addresses, "
+        f"{len(special_asking_items)} unique special-unit asking addresses."
+    )
+    print(f"Estimated time: ~{total_items * RATE_LIMIT_SECONDS / 60:.1f} minutes.\n")
 
     print("Geocoding competitor addresses...")
     competitor_resolved, competitor_unresolved = geocode_batch(competitor_items)
 
     print("\nGeocoding sold-transaction addresses...")
     sold_resolved, sold_unresolved = geocode_batch(sold_items)
+
+    print("\nGeocoding special-unit sold-basket addresses...")
+    special_sold_resolved, special_sold_unresolved = geocode_batch(special_sold_items)
+
+    print("\nGeocoding special-unit asking addresses...")
+    special_asking_resolved, special_asking_unresolved = geocode_batch(special_asking_items)
 
     output = {
         "version": "map_geocodes_v1",
@@ -190,8 +256,18 @@ def main() -> None:
             "unique_addresses_total": len(sold_items),
             "unique_addresses_resolved": len(sold_resolved),
         },
+        "special_sold_evidence_coverage": {
+            "unique_addresses_total": len(special_sold_items),
+            "unique_addresses_resolved": len(special_sold_resolved),
+        },
+        "special_asking_evidence_coverage": {
+            "unique_addresses_total": len(special_asking_items),
+            "unique_addresses_resolved": len(special_asking_resolved),
+        },
         "competitors": {"resolved": competitor_resolved, "unresolved": competitor_unresolved},
         "sold": {"resolved": sold_resolved, "unresolved": sold_unresolved},
+        "special_sold": {"resolved": special_sold_resolved, "unresolved": special_sold_unresolved},
+        "special_asking": {"resolved": special_asking_resolved, "unresolved": special_asking_unresolved},
     }
 
     out_path.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -199,6 +275,8 @@ def main() -> None:
     print(f"Competitors: {len(competitor_resolved)} resolved, {len(competitor_unresolved)} unresolved.")
     print(f"Sold addresses: {len(sold_resolved)} resolved, {len(sold_unresolved)} unresolved "
           f"(covering {sum(1 for a in sold_addresses if a)} unique addresses / {total_usable} usable transactions).")
+    print(f"Special-unit sold-basket addresses: {len(special_sold_resolved)} resolved, {len(special_sold_unresolved)} unresolved.")
+    print(f"Special-unit asking addresses: {len(special_asking_resolved)} resolved, {len(special_asking_unresolved)} unresolved.")
 
 
 if __name__ == "__main__":

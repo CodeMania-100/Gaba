@@ -412,6 +412,13 @@ export interface MapGeocodeFile {
   };
   competitors: { resolved: MapGeocodeRecord[]; unresolved: JsonRecord[] };
   sold: { resolved: MapGeocodeRecord[]; unresolved: JsonRecord[] };
+  // Special-unit (garden/duplex/triplex) evidence-basket addresses -- same
+  // one-time geocoding pass, frozen alongside the standard sets. Optional
+  // because older frozen files predate this extension.
+  special_sold_evidence_coverage?: { unique_addresses_total: number; unique_addresses_resolved: number };
+  special_asking_evidence_coverage?: { unique_addresses_total: number; unique_addresses_resolved: number };
+  special_sold?: { resolved: MapGeocodeRecord[]; unresolved: JsonRecord[] };
+  special_asking?: { resolved: MapGeocodeRecord[]; unresolved: JsonRecord[] };
 }
 
 export interface PetahTikvaWorkspace {

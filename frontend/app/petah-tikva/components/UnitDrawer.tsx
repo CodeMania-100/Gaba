@@ -37,6 +37,11 @@ interface Props {
   // their own inline SpecialUnitAnalysis toggle instead (no page navigation
   // needed -- see SpecialBody below).
   onOpenFamilyEvidence: (family: "3R" | "5R") => void;
+  // "הצג את ראיות השוק על המפה" (task item 19) -- closes the drawer,
+  // switches MarketGeoMap to this exact unit (special basket, or standard
+  // family), and scrolls to it. A separate destination from
+  // onOpenFamilyEvidence above (the research tables), not a replacement.
+  onOpenMapEvidence: (row: PtkPriceListRow) => void;
   onClose: () => void;
 }
 
@@ -65,7 +70,7 @@ export interface SpecialReviewPayload {
  * of every research record; the full evidence detail stays reachable
  * through each route's own drill-down (see onOpenFamilyEvidence /
  * SpecialUnitAnalysis). */
-export default function UnitDrawer({ row, workspace, marketingStrategy, onChangeMarketingStrategy, onOpenFamilyEvidence, onClose }: Props) {
+export default function UnitDrawer({ row, workspace, marketingStrategy, onChangeMarketingStrategy, onOpenFamilyEvidence, onOpenMapEvidence, onClose }: Props) {
   const route = pricingRouteOf(row);
   const isSold = marketingStrategy.soldUnitNumbers.has(row.unit_number);
   const saleRecord = internalSaleForUnit(marketingStrategy, row.unit_number);
@@ -109,9 +114,9 @@ export default function UnitDrawer({ row, workspace, marketingStrategy, onChange
 
           {/* 2. אינדיקציית שוק */}
           {route === "standard_family" ? (
-            <MarketIndicationBlockStandard row={row} workspace={workspace} onOpenFamilyEvidence={onOpenFamilyEvidence} />
+            <MarketIndicationBlockStandard row={row} workspace={workspace} onOpenFamilyEvidence={onOpenFamilyEvidence} onOpenMapEvidence={onOpenMapEvidence} />
           ) : (
-            <MarketIndicationBlockSpecial row={row} workspace={workspace} />
+            <MarketIndicationBlockSpecial row={row} workspace={workspace} onOpenMapEvidence={onOpenMapEvidence} />
           )}
 
           {/* 3. מצב הפרויקט */}
@@ -161,10 +166,12 @@ function MarketIndicationBlockStandard({
   row,
   workspace,
   onOpenFamilyEvidence,
+  onOpenMapEvidence,
 }: {
   row: PtkPriceListRow;
   workspace: PetahTikvaWorkspace;
   onOpenFamilyEvidence: (family: "3R" | "5R") => void;
+  onOpenMapEvidence: (row: PtkPriceListRow) => void;
 }) {
   const family = workspace.families.find((f) => f.family === row.family);
   const confidence = row.market_range?.confidence;
@@ -201,19 +208,29 @@ function MarketIndicationBlockStandard({
             })}
           </ul>
         )}
-        <button
-          onClick={() => onOpenFamilyEvidence(row.family as "3R" | "5R")}
-          className="mt-3 text-xs text-slate-500 underline hover:text-slate-800"
-        >
-          הצג ראיות והשוואות
-        </button>
+        <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
+          <button onClick={() => onOpenFamilyEvidence(row.family as "3R" | "5R")} className="text-xs text-slate-500 underline hover:text-slate-800">
+            הצג ראיות והשוואות
+          </button>
+          <button onClick={() => onOpenMapEvidence(row)} className="text-xs text-slate-500 underline hover:text-slate-800">
+            הצג את ראיות השוק על המפה
+          </button>
+        </div>
       </div>
     </section>
   );
 }
 
 // ב. אינדיקציית השוק -- special (garden/duplex/triplex) route
-function MarketIndicationBlockSpecial({ row, workspace }: { row: PtkPriceListRow; workspace: PetahTikvaWorkspace }) {
+function MarketIndicationBlockSpecial({
+  row,
+  workspace,
+  onOpenMapEvidence,
+}: {
+  row: PtkPriceListRow;
+  workspace: PetahTikvaWorkspace;
+  onOpenMapEvidence: (row: PtkPriceListRow) => void;
+}) {
   const [showAnalysis, setShowAnalysis] = useState(false);
   const context = workspace.special_unit_market_context.units[row.unit_number];
   const indication = context?.market_indication;
@@ -263,9 +280,14 @@ function MarketIndicationBlockSpecial({ row, workspace }: { row: PtkPriceListRow
         ) : (
           <p className="text-sm text-slate-500">אין עדיין אינדיקציית שוק ליחידה זו — ממתינה לבדיקה פרטנית.</p>
         )}
-        <button onClick={() => setShowAnalysis(true)} className="mt-3 text-xs text-slate-500 underline hover:text-slate-800">
-          הצג ראיות והשוואות
-        </button>
+        <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
+          <button onClick={() => setShowAnalysis(true)} className="text-xs text-slate-500 underline hover:text-slate-800">
+            הצג ראיות והשוואות
+          </button>
+          <button onClick={() => onOpenMapEvidence(row)} className="text-xs text-slate-500 underline hover:text-slate-800">
+            הצג את ראיות השוק על המפה
+          </button>
+        </div>
       </div>
     </section>
   );

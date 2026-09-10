@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { api, PetahTikvaScenario, PetahTikvaWorkspace, pricingRouteOf, PtkPriceListRow } from "@/lib/api";
 import { checkWorkspaceContext, WORKSPACE_MISMATCH_MESSAGE } from "@/lib/workspaceGuard";
+import { MarketMapSelection, SPECIAL_UNIT_NUMBERS, SpecialUnitNumber } from "@/lib/marketMap";
 import FamilyPanel from "./components/FamilyPanel";
 import DecisionBoard from "./components/DecisionBoard";
 import StrategyPanel from "./components/StrategyPanel";
@@ -26,7 +27,16 @@ export default function PetahTikvaWorkspacePage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [mismatch, setMismatch] = useState<string | null>(null);
-  const [family, setFamily] = useState<"3R" | "5R">("3R");
+  // Standard 3R/5R family, shared by Competitive Intelligence / Research
+  // Section / the family evidence panels -- unrelated to the map's own
+  // selection below (see task item 20: a special-unit map selection must
+  // never break these standard-only sections).
+  const [researchFamily, setResearchFamily] = useState<"3R" | "5R">("3R");
+  // The geo map's own selection -- can be a standard family OR one of the 7
+  // special units. Fully independent state; only the explicit "הצג ... על
+  // המפה" drawer action (see openMapEvidence below) deliberately syncs the
+  // two.
+  const [mapSelection, setMapSelection] = useState<MarketMapSelection>({ kind: "standard_family", family: "3R" });
   const [selectedUnit, setSelectedUnit] = useState<PtkPriceListRow | null>(null);
   const [evidenceLane, setEvidenceLane] = useState<"sold" | "current_asking" | "new_development" | null>(null);
 
@@ -68,7 +78,7 @@ export default function PetahTikvaWorkspacePage() {
 
   const openFamilyEvidence = useCallback((f: "3R" | "5R") => {
     setSelectedUnit(null);
-    setFamily(f);
+    setResearchFamily(f);
     setResearchOpen(true);
     // Double rAF: the research section must mount (it's collapsed via the
     // `hidden` attribute, not unmounted, but the family switch above still
@@ -76,6 +86,31 @@ export default function PetahTikvaWorkspacePage() {
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         document.getElementById("evidence-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  }, []);
+
+  // "הצג את ראיות השוק על המפה" (UnitDrawer, task item 19) -- closes the
+  // drawer, switches the map to this exact unit's evidence (special-unit
+  // basket, or standard family), and scrolls to the map. For a standard
+  // unit this also syncs researchFamily, since navigating here is a
+  // deliberate single "show me this unit's context" action (unlike the
+  // map's own family toggle, which stays fully independent -- see item 20).
+  const openMapEvidence = useCallback((row: PtkPriceListRow) => {
+    setSelectedUnit(null);
+    if (pricingRouteOf(row) === "standard_family") {
+      const f = row.family as "3R" | "5R";
+      setResearchFamily(f);
+      setMapSelection({ kind: "standard_family", family: f });
+    } else {
+      const n = Number(row.unit_number);
+      if ((SPECIAL_UNIT_NUMBERS as number[]).includes(n)) {
+        setMapSelection({ kind: "special_unit", unitNumber: n as SpecialUnitNumber });
+      }
+    }
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        document.getElementById("market-geo-map")?.scrollIntoView({ behavior: "smooth", block: "start" });
       });
     });
   }, []);
@@ -121,7 +156,7 @@ export default function PetahTikvaWorkspacePage() {
     );
   }
 
-  const currentFamily = data.families.find((f) => f.family === family) ?? data.families[0];
+  const currentFamily = data.families.find((f) => f.family === researchFamily) ?? data.families[0];
 
   // The frozen baseline price_list is never mutated. When a scenario is active,
   // standard rows are swapped for the scenario's (in-memory, backend-computed)
@@ -181,18 +216,18 @@ export default function PetahTikvaWorkspacePage() {
         <MarketingStrategyPanel rows={displayRows} state={marketingStrategy} onChange={setMarketingStrategy} />
 
         {/* Market & competition -- visible, not collapsed */}
-        <section className="flex flex-col gap-6">
+        <section id="market-geo-map" className="flex flex-col gap-6">
           <div>
             <h2 className="text-lg font-bold text-slate-900">שוק ותחרות</h2>
             <p className="text-xs text-slate-500">מיקום גאוגרפי, מודיעין תחרותי, ומיקום אינדיקציית השוק שלנו מול החלופות.</p>
           </div>
-          <MarketGeoMap workspace={data} family={family} onFamilyChange={setFamily} />
+          <MarketGeoMap workspace={data} selection={mapSelection} onSelectionChange={setMapSelection} />
           <CompetitiveIntelligence
             workspace={data}
             rows={displayRows}
             marketingStrategy={marketingStrategy}
-            family={family}
-            onFamilyChange={setFamily}
+            family={researchFamily}
+            onFamilyChange={setResearchFamily}
           />
           <CompetitorMap workspace={data} />
         </section>
@@ -204,9 +239,9 @@ export default function PetahTikvaWorkspacePage() {
               {(["3R", "5R"] as const).map((f) => (
                 <button
                   key={f}
-                  onClick={() => setFamily(f)}
+                  onClick={() => setResearchFamily(f)}
                   className={`px-5 py-2 text-sm font-semibold transition ${
-                    family === f ? "bg-slate-900 text-white" : "bg-white text-slate-600 hover:bg-slate-50"
+                    researchFamily === f ? "bg-slate-900 text-white" : "bg-white text-slate-600 hover:bg-slate-50"
                   }`}
                 >
                   {f === "3R" ? "3 חדרים" : "5 חדרים"}
@@ -224,7 +259,7 @@ export default function PetahTikvaWorkspacePage() {
               loading={scenarioLoading}
               error={scenarioError}
               baselineTotalIls={data.project.total_standard_unit_revenue_ils}
-              selectedFamily={family}
+              selectedFamily={researchFamily}
               familyRange={{ lower: currentFamily?.market.supported_lower ?? null, upper: currentFamily?.market.supported_upper ?? null }}
               onSelectPosition={loadScenario}
               onResetToBaseline={() => setScenario(null)}
@@ -249,6 +284,7 @@ export default function PetahTikvaWorkspacePage() {
           marketingStrategy={marketingStrategy}
           onChangeMarketingStrategy={setMarketingStrategy}
           onOpenFamilyEvidence={openFamilyEvidence}
+          onOpenMapEvidence={openMapEvidence}
           onClose={() => setSelectedUnit(null)}
         />
       )}

@@ -110,12 +110,19 @@ function fmtPct(pct: number): string {
  * than dropping the comparison entirely -- callers that only want a
  * "findings list" (worth flagging) should skip consistent results
  * themselves; callers that always want to show a fixed pair (task item 7's
- * Unit 36/37 card) can render the "consistent" state directly. Classification
- * is fully deterministic: because phase/sales-progress/project adjustments
- * are always shared within one group, the only fields that can legitimately
- * differ are market_indication and the unit-level adjustment -- so
- * "needs_review" only fires in the (here, essentially unreachable but still
- * correctly handled) case where neither differs yet the prices do. */
+ * Unit 36/37 card) can render the "consistent" state directly.
+ *
+ * Status semantics (corrected per follow-up feedback -- "מוסבר" requires an
+ * actual documented reason, not just a traceable number):
+ *   - A difference caused by market_indication itself (evidence, not a
+ *     human decision) is always "explained" -- there is nothing to
+ *     document, the market simply values the units differently.
+ *   - A difference caused by a discretionary group/unit strategy
+ *     adjustment is "explained" only when that adjustment's own rationale
+ *     text is non-empty; if the adjustment exists but carries no rationale,
+ *     status is "needs_review" -- the numeric source is known, but from a
+ *     Marketing decision-support standpoint the commercial reason is not,
+ *     so it still deserves a human look before being called explained. */
 export function compareUnits(a: UnitSnapshot, b: UnitSnapshot, groupLabel: string): ConsistencyFinding | null {
   const proposedA = a.breakdown.proposedIls;
   const proposedB = b.breakdown.proposedIls;
@@ -134,6 +141,7 @@ export function compareUnits(a: UnitSnapshot, b: UnitSnapshot, groupLabel: strin
   const groupAdjustmentLine = groupDiffers
     ? `התאמה לקבוצת הדירות שונה: ${fmtPct(a.groupAdjustment.adjustment_pct)} מול ${fmtPct(b.groupAdjustment.adjustment_pct)}`
     : "התאמה לקבוצת הדירות זהה";
+  const groupRationaleMissing = groupDiffers && !(a.groupAdjustment.adjustment_pct >= b.groupAdjustment.adjustment_pct ? a : b).groupAdjustment.rationale.trim();
 
   const unitDiffers = a.unitAdjustment.adjustment_pct !== b.unitAdjustment.adjustment_pct;
   let unitAdjustmentLine: string;
@@ -151,8 +159,13 @@ export function compareUnits(a: UnitSnapshot, b: UnitSnapshot, groupLabel: strin
     unitAdjustmentLine = "התאמה לדירה זו זהה בשתי הדירות";
   }
 
+  // Market evidence never needs a documented rationale; a discretionary
+  // group/unit adjustment does. Any discretionary adjustment missing its
+  // rationale forces "needs_review" even if the market also differs, since
+  // the undocumented adjustment is itself a fact worth a human look.
+  const discretionaryMissingRationale = rationaleMissing || groupRationaleMissing;
   const explained = marketDiffers || groupDiffers || unitDiffers;
-  const status: ConsistencyStatus = !meaningfulDiff ? "consistent" : explained ? "explained" : "needs_review";
+  const status: ConsistencyStatus = !meaningfulDiff ? "consistent" : discretionaryMissingRationale ? "needs_review" : explained ? "explained" : "needs_review";
 
   return {
     id: `${a.row.unit_number}-${b.row.unit_number}`,

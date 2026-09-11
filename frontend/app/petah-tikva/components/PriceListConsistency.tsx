@@ -145,12 +145,11 @@ function FindingCard({ finding, onOpenUnit }: { finding: ConsistencyFinding; onO
         פער: <DiffHeadline finding={finding} />
       </p>
 
-      {isExplained ? (
-        <div className="mt-1.5">
-          <p className="text-xs font-medium text-slate-500">הסבר שנמצא:</p>
-          <ExplanationLines finding={finding} />
-        </div>
-      ) : (
+      <div className="mt-1.5">
+        <p className="text-xs font-medium text-slate-500">{isExplained ? "הסבר שנמצא:" : "נמצאה התאמה, ללא נימוק מתועד:"}</p>
+        <ExplanationLines finding={finding} />
+      </div>
+      {!isExplained && (
         <p className="mt-1.5 text-xs text-slate-600">
           נמצא פער של {ils(Math.abs(finding.diffIls))} בין דירות בעלות מאפיינים דומים.
           <br />

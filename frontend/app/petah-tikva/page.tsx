@@ -10,6 +10,7 @@ import DecisionBoard from "./components/DecisionBoard";
 import StrategyPanel from "./components/StrategyPanel";
 import DataQualitySection, { CaseStudyCard3R } from "./components/DataQualitySection";
 import PricingDecisionBoard from "./components/PricingDecisionBoard";
+import PriceListConsistency from "./components/PriceListConsistency";
 import ProjectKpiSummary from "./components/ProjectKpiSummary";
 import ExecutiveOverview from "./components/ExecutiveOverview";
 import BuildingExplorer from "./components/BuildingExplorer";
@@ -211,6 +212,9 @@ export default function PetahTikvaWorkspacePage() {
           onSelectUnit={setSelectedUnit}
           activeScenarioPct={scenario && !scenario.is_baseline_position ? scenario.range_position_pct : null}
         />
+
+        {/* Price-list consistency review -- decision support, not another valuation model */}
+        <PriceListConsistency workspace={data} rows={displayRows} state={marketingStrategy} onSelectUnit={setSelectedUnit} />
 
         {/* Marketing strategy: phase, sales state, explicit strategy effects */}
         <MarketingStrategyPanel rows={displayRows} state={marketingStrategy} onChange={setMarketingStrategy} />

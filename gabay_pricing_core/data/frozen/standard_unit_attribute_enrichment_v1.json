@@ -1894,9 +1894,17 @@
             "source": "Market2 public registered-deal mirror",
             "source_url": "https://www.market2.co.il/lp/building/petah-tikva/%D7%97%D7%99%D7%99%D7%9D-%D7%9B%D7%94%D7%9F/5?street=%D7%A4%D7%A0%D7%A7%D7%A1",
             "underlying_source": "registered_government_transactions"
+          },
+          {
+            "source": "Dirobot public registered-deal mirror",
+            "source_url": "https://www.dirobot.co.il/building-prices/%D7%A4%D7%AA%D7%97%20%D7%AA%D7%A7%D7%95%D7%95%D7%94%2C%20%D7%A4%D7%A0%D7%A7%D7%A1%2C%205",
+            "underlying_source": "registered_government_transactions",
+            "note": "Dirobot reports 88m² for the floor-1 ₪3.26M record, conflicting with local direct Tax + Market2 120m²."
           }
         ],
-        "caveat": "Strong observational floor comparison, but not an experimental control and no premium is calculated."
+        "caveat": "Strong observational floor comparison, but not an experimental control and no premium is calculated.",
+        "data_quality_flag": "Dirobot area conflict on floor-1 record -- local direct Tax + Market2 report 120m²; Dirobot reports 88m². The direct Tax Authority figure is kept as the primary source; the conflict remains visible rather than silently resolved.",
+        "source_verification_note": "Re-verified 2026-09-11 (research_gap_closure_report_v1): local government price + area unchanged; Dirobot conflict confirmed and now recorded explicitly."
       },
       {
         "family": "standard_3r",

@@ -13,6 +13,7 @@ import {
   deriveSpecialAskingPoints,
   deriveSpecialCompetitorPoints,
   deriveSpecialSoldPoints,
+  deriveSpecialTypologyContextPoints,
   deriveSpecialUnitMapCoverage,
   deriveSpecialUnitSubjectFacts,
   MarketMapFamily,
@@ -164,6 +165,14 @@ export default function MarketGeoMap({ workspace, selection, onSelectionChange }
     () => (specialUnitNumber != null ? deriveSpecialAskingPoints(workspace, specialUnitNumber) : []),
     [workspace, specialUnitNumber]
   );
+  // Newly-researched triplex-product context (task item 9) -- kept as its
+  // own memo (not merged into specialAskingAll's derivation) since it's a
+  // distinct, always-non-voting source, but flows through the exact same
+  // asking-layer rendering/toggle below.
+  const specialTypologyContextAll = useMemo(
+    () => (specialUnitNumber != null ? deriveSpecialTypologyContextPoints(workspace, specialUnitNumber) : []),
+    [workspace, specialUnitNumber]
+  );
   const specialCompetitorAll = useMemo(
     () => (specialUnitNumber != null ? deriveSpecialCompetitorPoints(workspace, specialUnitNumber) : []),
     [workspace, specialUnitNumber]
@@ -180,7 +189,7 @@ export default function MarketGeoMap({ workspace, selection, onSelectionChange }
 
   // The one set the rest of the component (rendering, fitBounds, etc.)
   // actually works with, picked by mode.
-  const activeAsking = isSpecial ? specialAskingAll : askingByFamily;
+  const activeAsking = isSpecial ? [...specialAskingAll, ...specialTypologyContextAll] : askingByFamily;
   const activeSold = isSpecial ? specialSoldAll : soldByFamily;
   const activeCompetitor = isSpecial ? specialCompetitorAll : competitorAll;
 

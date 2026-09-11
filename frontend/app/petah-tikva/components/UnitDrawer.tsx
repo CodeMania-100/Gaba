@@ -5,6 +5,7 @@ import { CONFIDENCE_COLORS, CONFIDENCE_LABELS, confidenceExplanation, LANE_LABEL
 import { ils, num, rangeOrPoint } from "@/lib/format";
 import MarketingDecisionChain from "./MarketingDecisionChain";
 import SpecialUnitDecisionPanel from "./SpecialUnitDecisionPanel";
+import StandardFeatureFindings from "./StandardFeatureFindings";
 import StepHeading from "./StepHeading";
 import {
   computeSalesProgress,
@@ -143,6 +144,14 @@ export default function UnitDrawer({ row, workspace, marketingStrategy, onChange
             <>
               {/* 1. פרטי הדירה + מאפייני הדירה בתהליך התמחור */}
               <UnitFactsBlock row={row} isSold={isSold} isSpecial={false} />
+
+              {/* מה מצאנו לגבי מאפייני הדירה? -- matched-floor research
+                  evidence, right after the apartment-parameter table (task
+                  "Focused Batch — Integrate New Research Evidence" item 4). */}
+              <StandardFeatureFindings
+                family={workspace.standard_attribute_enrichment.families[row.family === "3R" ? "standard_3r" : "standard_5r"]}
+                familyKey={row.family === "3R" ? "standard_3r" : "standard_5r"}
+              />
 
               {/* 2. אינדיקציית שוק */}
               <MarketIndicationBlockStandard row={row} workspace={workspace} onOpenFamilyEvidence={onOpenFamilyEvidence} onOpenMapEvidence={onOpenMapEvidence} />

@@ -9,6 +9,7 @@ import {
   ChartPoint,
   chartMethodLabel,
   confidenceDimensions,
+  confidenceReasonOverride,
   deriveChartPoints,
   deriveHighlightedComparable,
   deriveLaneFunnel,
@@ -17,11 +18,14 @@ import {
   methodSentence,
   primaryLaneName,
   SpecialLaneName,
+  triplexEvidenceStory,
 } from "@/lib/specialUnitDecision";
 import { SPECIAL_UNIT_CATEGORY_LABELS } from "@/lib/marketMap";
+import { highConfidenceListingLink, historicalDuplexContext, triplexContextCards } from "@/lib/researchContext";
 import PriceAxisChart from "./PriceAxisChart";
 import EvidenceFunnel from "./EvidenceFunnel";
 import SpecialUnitAnalysis from "./SpecialUnitAnalysis";
+import { HighConfidenceLinkCard, HistoricalDuplexContextSection, TriplexContextSection } from "./SpecialResearchContext";
 import StepHeading from "./StepHeading";
 
 interface Props {
@@ -58,6 +62,17 @@ export default function SpecialUnitDecisionPanel({ row, workspace, state, confid
   const funnel = context && primaryLane ? deriveLaneFunnel(context, primaryLane) : null;
   const gapText = context ? evidenceGapText(context) : null;
 
+  // Supplemental research context (task "Focused Batch — Integrate New
+  // Research Evidence" items 6-13) -- read from the same already-merged,
+  // non-voting first_researcher_context this drawer's "פירוט מלא" section
+  // already carries; only reshaped here for a compact, decision-focused
+  // presentation. Nothing here feeds market_indication/confidence.
+  const researchRecords = context?.first_researcher_context ?? [];
+  const triplexCards = triplexContextCards(researchRecords);
+  const historicalDuplex = historicalDuplexContext(researchRecords);
+  const mivtzaLink = highConfidenceListingLink(researchRecords);
+  const tripleStory = context ? triplexEvidenceStory(context, triplexCards.length) : null;
+
   return (
     <div className="flex flex-col gap-5">
       {/* A. החלטת מחיר / אינדיקציית שוק */}
@@ -90,14 +105,40 @@ export default function SpecialUnitDecisionPanel({ row, workspace, state, confid
             </div>
           )}
 
+          {/* Apt39 Mivtza Dekel high-confidence Tax/listing link (task
+              items 10-11) -- sits right next to the highlighted comparable
+              since it enriches that same participating sale. */}
+          {mivtzaLink && (
+            <div className="mt-3 border-t border-slate-100 pt-3">
+              <HighConfidenceLinkCard link={mivtzaLink} />
+            </div>
+          )}
+
           <div className="mt-3 border-t border-slate-100 pt-3">
-            <ConfidenceExplanation indication={indication} />
+            <ConfidenceExplanation indication={indication} broadDirectTypeContextCount={triplexCards.length} />
           </div>
 
-          {gapText && (
+          {(tripleStory || gapText) && (
             <div className="mt-3 rounded-md bg-amber-50 p-2.5 text-xs text-amber-900">
               <div className="font-semibold">מה חסר כדי לחזק את האינדיקציה?</div>
-              <p className="mt-0.5">{gapText}</p>
+              {tripleStory ? (
+                <div className="mt-1 flex flex-col gap-1">
+                  {tripleStory.map((line, i) => (
+                    <p key={i}>{line}</p>
+                  ))}
+                </div>
+              ) : (
+                <p className="mt-0.5">{gapText}</p>
+              )}
+            </div>
+          )}
+
+          {/* Apt36/37 triplex-product context + Apt38 historical duplex
+              context (task items 7, 12) -- collapsed, never plotted/voted. */}
+          {(triplexCards.length > 0 || historicalDuplex) && (
+            <div className="mt-3 flex flex-col gap-2 border-t border-slate-100 pt-3">
+              <TriplexContextSection cards={triplexCards} />
+              <HistoricalDuplexContextSection context={historicalDuplex} />
             </div>
           )}
         </section>
@@ -261,8 +302,11 @@ function HighlightedComparableCard({
   );
 }
 
-function ConfidenceExplanation({ indication }: { indication: SpecialUnitIndication }) {
-  const dims = confidenceDimensions(indication);
+function ConfidenceExplanation({ indication, broadDirectTypeContextCount }: { indication: SpecialUnitIndication; broadDirectTypeContextCount: number }) {
+  const dims = confidenceDimensions(indication, broadDirectTypeContextCount);
+  // Explanatory-only override (task item 8) -- indication.confidence itself
+  // never changes; only which sentence explains it.
+  const reason = confidenceReasonOverride(broadDirectTypeContextCount) ?? indication.confidence_reason;
   return (
     <div>
       <div className="mb-1.5 flex items-center gap-2">
@@ -278,7 +322,7 @@ function ConfidenceExplanation({ indication }: { indication: SpecialUnitIndicati
           </div>
         ))}
       </div>
-      <p className="mt-1.5 text-[11px] text-slate-400">{indication.confidence_reason}</p>
+      <p className="mt-1.5 text-[11px] text-slate-400">{reason}</p>
     </div>
   );
 }

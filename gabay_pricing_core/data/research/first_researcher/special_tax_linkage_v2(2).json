@@ -1,0 +1,442 @@
+{
+  "version": "special_tax_linkage_v2_rebuilt_2026_09_11",
+  "supersedes_prior_same_named_research": true,
+  "metadata": {
+    "retrieved_at": "2026-09-11",
+    "matching_fields_used": [
+      "exact address",
+      "rooms",
+      "registered/listing area semantics",
+      "floor configuration",
+      "transaction/listing timing where available",
+      "property type",
+      "deal/subparcel/unit identifier where available"
+    ],
+    "critical_rule": "Address alone never transfers listing attributes to a historical sale."
+  },
+  "linkage_attempts": [
+    {
+      "linkage_id": "GARDEN_BRANDA18",
+      "subject_targets": [
+        "Apt1",
+        "Apt2"
+      ],
+      "address": "זאב ברנדה 18, פתח תקווה",
+      "listing_evidence": {
+        "source": "ad.co.il archive",
+        "source_url": "https://www.ad.co.il/archive/nadlansale?props=10-10&rp5=3%2C3&sp1=82&sp3=3&sp4=1326&view=list&withprice=1",
+        "rooms": 3,
+        "advertised_area_states_m2": [
+          85,
+          95
+        ],
+        "garden_or_yard": "explicit exit to garden/yard; no measured garden area",
+        "asking_price_states_ils": [
+          1430000,
+          1400000
+        ]
+      },
+      "tax_search": {
+        "available_local_tax_slice_match": null,
+        "public_registered_transaction_match_located": false
+      },
+      "linkage_result": "NO_MATCH",
+      "confidence": "NONE",
+      "reasoning": "Exact-address archived product exists, but no matching Tax transaction with compatible identity fields was located in the sources searched.",
+      "attribute_transfer_allowed": false
+    },
+    {
+      "linkage_id": "GARDEN_DAPHNA7",
+      "subject_targets": [
+        "Apt3"
+      ],
+      "address": "דפנה 7, פתח תקווה",
+      "listing_evidence": {
+        "source": "ad.co.il archived rental",
+        "source_url": "https://www.ad.co.il/archive/nadlanrent?props=298-17396&sp274=22880&sp276=17500&sp277=17688&view=list&withprice=1",
+        "rooms": 2.5,
+        "advertised_area_m2": 55,
+        "garden_area_m2": 65
+      },
+      "tax_search": {
+        "public_registered_transaction_match_located": false,
+        "note": "Search results were noisy across other cities; no defensible Petah Tikva sale match was found."
+      },
+      "linkage_result": "NO_MATCH",
+      "confidence": "NONE",
+      "reasoning": "Rental listing and no matching sale identity. Useful product context only.",
+      "attribute_transfer_allowed": false
+    },
+    {
+      "linkage_id": "TRIPLEX_ARTHUR_RUPPIN8",
+      "subject_targets": [
+        "Apt36",
+        "Apt37"
+      ],
+      "address": "ארתור רופין 8, פתח תקווה",
+      "listing_evidence": {
+        "source": "ad.co.il archive",
+        "source_url": "https://www.ad.co.il/archive/nadlansale?props=11-11&rp5=6%2C6&sp1=110&sp3=3&sp4=1353",
+        "property_type": "triplex / three-level roof product",
+        "rooms": 6,
+        "advertised_area_m2": 150,
+        "asking_price_ils": 2100000
+      },
+      "tax_evidence": {
+        "source": "Nadlanist Tax-derived building history",
+        "date": "2022-11-22",
+        "rooms": 5,
+        "registered_area_m2": 151,
+        "floor_configuration": "3-4",
+        "price_ils": 2900000
+      },
+      "linkage_result": "SAME_ADDRESS_AMBIGUOUS",
+      "confidence": "LOW",
+      "reasoning": "Area is close but rooms differ and Tax floor pattern does not establish the three-level listing.",
+      "attribute_transfer_allowed": false
+    },
+    {
+      "linkage_id": "TRIPLEX_OSSISHKIN22",
+      "subject_targets": [
+        "Apt36",
+        "Apt37"
+      ],
+      "address": "מנחם אוסישקין 22, פתח תקווה",
+      "listing_evidence": {
+        "source": "ad.co.il archive",
+        "source_url": "https://www.ad.co.il/archive/nadlansale?props=11-11&rp5=6%2C6&sp1=110&sp3=3&sp4=1353",
+        "property_type": "triplex",
+        "rooms": 6,
+        "advertised_area_m2": 150,
+        "asking_price_ils": 2300000
+      },
+      "tax_evidence": {
+        "source": "WizBid/registered-tax street history",
+        "source_url": "https://wizbid.co.il/nadlan/%D7%A4%D7%AA%D7%97%20%D7%AA%D7%A7%D7%95%D7%95%D7%94/rechov/%D7%9E%D7%A0%D7%97%D7%9D%20%D7%90%D7%95%D7%A1%D7%99%D7%A9%D7%A7%D7%99%D7%9F",
+        "matching_6r_150_record_located": false
+      },
+      "linkage_result": "NO_MATCH",
+      "confidence": "NONE",
+      "reasoning": "The public registered-deal history located for the street/building does not expose a matching 6R/150m² sale.",
+      "attribute_transfer_allowed": false
+    },
+    {
+      "linkage_id": "TRIPLEX_MONTEFIORE14",
+      "subject_targets": [
+        "Apt36",
+        "Apt37"
+      ],
+      "address": "מונטיפיורי 14, פתח תקווה",
+      "listing_evidence": {
+        "source": "ad.co.il archive",
+        "source_url": "https://www.ad.co.il/archive/nadlansale?props=11-11&rp5=6%2C6&sp1=110&sp3=3&sp4=1353",
+        "property_type": "triplex",
+        "rooms": 6,
+        "advertised_area_m2": 160,
+        "asking_price_observations_ils": [
+          1850000,
+          1900000,
+          2280000
+        ]
+      },
+      "tax_evidence": {
+        "source": "WizBid Tax-derived history",
+        "source_url": "https://wizbid.co.il/nadlan/%D7%A4%D7%AA%D7%97%20%D7%AA%D7%A7%D7%95%D7%95%D7%94/rechov/%D7%9E%D7%95%D7%A0%D7%98%D7%99%D7%A4%D7%99%D7%95%D7%A8%D7%99",
+        "recent_exact_address_sale": {
+          "date": "2025-08-10",
+          "rooms": 4,
+          "area_m2": 97,
+          "price_ils": 1750000
+        }
+      },
+      "linkage_result": "NO_MATCH",
+      "confidence": "NONE",
+      "reasoning": "No matching 6R/160m² registered sale was located at the address.",
+      "attribute_transfer_allowed": false
+    },
+    {
+      "linkage_id": "TRIPLEX_HATISHIM_3",
+      "subject_targets": [
+        "Apt36",
+        "Apt37",
+        "Apt39"
+      ],
+      "address": "התשעים ושלוש 3, פתח תקווה",
+      "listing_evidence": {
+        "source": "ad.co.il archive",
+        "source_url": "https://www.ad.co.il/archive/nadlansale",
+        "property_type": "triplex",
+        "rooms": 5.5,
+        "advertised_area_m2": 200,
+        "levels": 3,
+        "roof_terrace": true
+      },
+      "tax_evidence": {
+        "source": "local direct Tax dataset",
+        "deal_id": "3655065895",
+        "date": "2026-01-24",
+        "rooms": 5,
+        "registered_area_m2": 145,
+        "floor_configuration": "3+4+roof",
+        "price_ils": 3200000
+      },
+      "linkage_result": "SAME_ADDRESS_AMBIGUOUS",
+      "confidence": "MEDIUM_FOR_PRODUCT_CONTEXT",
+      "reasoning": "Rare three-level floor signal is compatible, but rooms/area differ and no stable unit ID links the archive to the sale.",
+      "attribute_transfer_allowed": false
+    },
+    {
+      "linkage_id": "DUPLEX_YD_HABANIM3",
+      "subject_targets": [
+        "Apt38"
+      ],
+      "address": "י״ד הבנים 3, פתח תקווה",
+      "listing_evidence": {
+        "source": "ad.co.il archive",
+        "source_url": "https://www.ad.co.il/archive/nadlansale",
+        "property_type": "roof/multi-level apartment",
+        "rooms": 6.5,
+        "advertised_area_m2": 165,
+        "roof_area_m2": 120
+      },
+      "tax_evidence": {
+        "source": "local direct Tax dataset",
+        "deal_id": "3605884041",
+        "date": "2024-10-01",
+        "rooms": 7,
+        "registered_area_m2": 148,
+        "floor_configuration": "4+roof",
+        "price_ils": 2900000
+      },
+      "linkage_result": "SAME_ADDRESS_AMBIGUOUS",
+      "confidence": "LOW_MEDIUM",
+      "reasoning": "Similar roof configuration but rooms/area differ.",
+      "attribute_transfer_allowed": false
+    },
+    {
+      "linkage_id": "DUPLEX_MIVTZA_DEKEL14",
+      "subject_targets": [
+        "Apt39"
+      ],
+      "address": "מבצע דקל 14, פתח תקווה",
+      "listing_evidence": {
+        "source": "ad.co.il archive",
+        "source_url": "https://www.ad.co.il/archive/nadlansale?props=10-10&sp1=103&sp3=3&sp4=1849&view=list",
+        "property_type": "penthouse duplex",
+        "rooms": "5 originally 6",
+        "floor_configuration": "27+28",
+        "balcony_area_m2": 50,
+        "storage_area_m2": 10,
+        "parking": true,
+        "elevator": true
+      },
+      "tax_evidence": {
+        "source": "local direct Tax dataset",
+        "deal_id": "3633131484",
+        "date": "2025-08-04",
+        "rooms": 5,
+        "registered_area_m2": 157,
+        "floor_configuration": "27+28",
+        "price_ils": 5900000
+      },
+      "linkage_result": "HIGH_CONFIDENCE_UNIT_LINK",
+      "confidence": "HIGH_BUT_NOT_EXACT",
+      "reasoning": "Exact address, rare identical 27+28 configuration, and compatible room history strongly narrow the candidate.",
+      "attribute_transfer_allowed": false,
+      "manual_review_note": "A stable listing-unit/subparcel/date bridge is still missing; attributes remain high-confidence candidate evidence."
+    },
+    {
+      "linkage_id": "DUPLEX_YAEL_ROM17",
+      "subject_targets": [
+        "Apt39"
+      ],
+      "address": "יעל רום 17, פתח תקווה",
+      "listing_evidence": {
+        "source": "ad.co.il archive",
+        "source_url": "https://www.ad.co.il/archive/nadlansale?props=18-18&sp1=28&sp2=2&view=list&withprice=1",
+        "property_type": "penthouse/duplex",
+        "rooms": 5,
+        "advertised_area_m2": 150,
+        "parking": true,
+        "storage": true,
+        "elevator": true
+      },
+      "tax_evidence": {
+        "source": "local direct Tax dataset",
+        "deal_id": "3603812310",
+        "date": "2024-08-26",
+        "rooms": 5,
+        "registered_area_m2": 144,
+        "floor_configuration": "19+20",
+        "price_ils": 4200000
+      },
+      "linkage_result": "SAME_ADDRESS_AMBIGUOUS",
+      "confidence": "MEDIUM",
+      "reasoning": "Rooms and area are close, but listing floor/unit identifier is not exposed.",
+      "attribute_transfer_allowed": false
+    },
+    {
+      "linkage_id": "DUPLEX_KNESSET_ISRAEL17",
+      "subject_targets": [
+        "Apt38",
+        "Apt39"
+      ],
+      "address": "כנסת ישראל 17, פתח תקווה",
+      "listing_evidence": {
+        "source": "same-address public listing context",
+        "property_form": "private-house/cottage-like",
+        "rooms": 7.5,
+        "built_area_m2": 220,
+        "levels": 4
+      },
+      "tax_evidence": {
+        "source": "local direct Tax dataset",
+        "sales": [
+          {
+            "deal_id": "3606035885",
+            "rooms": 7,
+            "area_m2": 170,
+            "price_ils": 3700000,
+            "floor_configuration": "basement+ground+1"
+          },
+          {
+            "deal_id": "3605029846",
+            "rooms": 5,
+            "area_m2": 166,
+            "price_ils": 4694000,
+            "floor_configuration": "basement+ground+1"
+          }
+        ]
+      },
+      "linkage_result": "SAME_ADDRESS_AMBIGUOUS",
+      "confidence": "LOW",
+      "reasoning": "Same address contains house/cottage-like product; property form cannot be assumed to match the registered apartment records.",
+      "attribute_transfer_allowed": false,
+      "quarantine_property_form": true
+    },
+    {
+      "linkage_id": "DUPLEX_PINCHAS_HAGIN1",
+      "subject_targets": [
+        "Apt38"
+      ],
+      "address": "פנחס חגין 1, פתח תקווה",
+      "listing_evidence": {
+        "source": "ad.co.il archived street-level product context",
+        "source_url": "https://www.ad.co.il/archive/nadlansale",
+        "house_number_exposed": false,
+        "examples": "6R/170m² duplex-penthouse style products on Pinchas Hagin street"
+      },
+      "tax_evidence": {
+        "source": "local direct Tax + Market2/WizBid mirror",
+        "deal_id": "3602707207",
+        "date": "2024-07-02",
+        "rooms": 6,
+        "registered_area_m2": 168,
+        "price_ils": 5900000,
+        "floor_configuration": "6+7",
+        "subparcel": "6716-292-18"
+      },
+      "linkage_result": "NO_MATCH",
+      "confidence": "NONE_FOR_UNIT_LINK",
+      "reasoning": "Archived premium listings did not expose house number 1, so they remain street context only.",
+      "attribute_transfer_allowed": false
+    },
+    {
+      "linkage_id": "DUPLEX_HAPARDES8",
+      "subject_targets": [
+        "Apt38"
+      ],
+      "address": "הפרדס 8, פתח תקווה",
+      "listing_evidence": {
+        "source": "no exact duplex archive located in this pass",
+        "source_url": null
+      },
+      "tax_evidence": {
+        "source": "local direct Tax + mirror",
+        "deal_id": "3602250022",
+        "date": "2024-06-26",
+        "rooms": 6,
+        "registered_area_m2": 177,
+        "price_ils": 5550000,
+        "floor_configuration": "7+8",
+        "subparcel": "6712-466-13"
+      },
+      "linkage_result": "NO_MATCH",
+      "confidence": "NONE_FOR_LISTING_LINK",
+      "reasoning": "Multi-level Tax signal is useful but no exact-address duplex listing was found to prove typology.",
+      "attribute_transfer_allowed": false
+    },
+    {
+      "linkage_id": "DUPLEX_SHLOMZION6",
+      "subject_targets": [
+        "Apt39"
+      ],
+      "address": "שלומציון המלכה 6, פתח תקווה",
+      "listing_evidence": {
+        "source": "no exact-unit feature listing linked",
+        "source_url": null
+      },
+      "tax_evidence": {
+        "source": "local direct Tax + Market2",
+        "deal_id": "3633966655",
+        "date": "2025-09-21",
+        "rooms": 5.5,
+        "registered_area_m2": 157,
+        "price_ils": 2920000,
+        "floor_configuration": "8+roof",
+        "subparcel": "6399-290-129",
+        "same_subparcel_older_sale": {
+          "date": "2023-12-04",
+          "rooms": 5.5,
+          "registered_area_m2": 122,
+          "price_ils": 2600000
+        }
+      },
+      "linkage_result": "NO_MATCH",
+      "confidence": "HIGH_FOR_REGISTERED_UNIT_HISTORY_ONLY",
+      "reasoning": "Subparcel history is strong identity information inside Tax data, but no listing features are linked to that subparcel.",
+      "attribute_transfer_allowed": false
+    },
+    {
+      "linkage_id": "DUPLEX_ISSER_HAREL6",
+      "subject_targets": [
+        "Apt39"
+      ],
+      "address": "איסר הראל 6, פתח תקווה",
+      "listing_evidence": {
+        "source": "no exact archived unit-feature listing established",
+        "source_url": null
+      },
+      "tax_evidence": {
+        "source": "direct local government data + two Tax-derived mirrors",
+        "deal_id": "3601967910",
+        "date": "2024-06-07",
+        "rooms": 5,
+        "registered_area_m2": 163,
+        "direct_local_price_ils": 5400000,
+        "wizbid_price_ils": 5400000,
+        "market2_price_ils": 4900000,
+        "market2_subparcel": "6360-188-74"
+      },
+      "linkage_result": "NO_MATCH",
+      "confidence": "NONE_FOR_LISTING_LINK",
+      "reasoning": "Sale itself is a direct registered transaction, but no exact archived unit-feature record was linked. Secondary mirror conflict remains.",
+      "attribute_transfer_allowed": false,
+      "transaction_conflict_status": "AUTHORITATIVE_LOCAL_SOURCE_PREFERRED_BUT_CONFLICT_RETAINED"
+    }
+  ],
+  "summary": {
+    "EXACT_UNIT_LINK": 0,
+    "HIGH_CONFIDENCE_UNIT_LINK": 1,
+    "SAME_BUILDING_ONLY": 0,
+    "SAME_ADDRESS_AMBIGUOUS": 5,
+    "NO_MATCH": 8,
+    "verified_sold_garden_exact": 0,
+    "verified_sold_triplex_exact": 0,
+    "verified_sold_duplex_exact": 0,
+    "high_confidence_duplex_link_candidates": [
+      "מבצע דקל 14"
+    ]
+  },
+  "important_interpretation": "Failure to achieve an exact link means identity was not proven with the available fields; it does not mean no such sold special unit exists."
+}

@@ -2693,5 +2693,41 @@
         "reason": "too_coarse"
       }
     ]
+  },
+  "special_typology_context": {
+    "resolved": [
+      {
+        "record_id": "special_typology_context:ארתור רופין 8",
+        "address": "ארתור רופין 8",
+        "lat": 32.0912273,
+        "lng": 34.8788723,
+        "coordinate_source": "geocoded_address",
+        "precision": "address",
+        "resolved_label": "8, ארתור רופין, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4941642, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "special_typology_context:מנחם אוסישקין 22",
+        "address": "מנחם אוסישקין 22",
+        "lat": 32.0901831,
+        "lng": 34.8892991,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "אוסישקין, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+        "verified": true
+      },
+      {
+        "record_id": "special_typology_context:מונטיפיורי 14",
+        "address": "מונטיפיורי 14",
+        "lat": 32.0878652,
+        "lng": 34.8824163,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "מונטיפיורי, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4949007, ישראל",
+        "verified": true
+      }
+    ],
+    "unresolved": [],
+    "generated_at": "2026-09-11T01:16:52.286951+00:00"
   }
 }

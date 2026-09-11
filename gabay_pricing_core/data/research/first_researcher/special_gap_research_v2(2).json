@@ -1,0 +1,1057 @@
+{
+  "version": "special_gap_research_v2_rebuilt_2026_09_11",
+  "supersedes_prior_same_named_research": true,
+  "metadata": {
+    "retrieved_at": "2026-09-11",
+    "scope": "Focused evidence strengthening across Apt1/2/3/36/37/38/39 and standard 3R/5R feature evidence.",
+    "pricing_engine_updated": false,
+    "objective": "Convert context/broadened evidence into direct, attributable, normalized evidence where sources support it; preserve unresolved gaps."
+  },
+  "methodology_guards": [
+    "No generic volume collection.",
+    "No opaque similarity score.",
+    "No new valuation or price recommendation.",
+    "Built/internal, advertised, balcony, garden, roof and terrace areas are kept separate.",
+    "A same-address listing is not an exact sold-unit link by itself.",
+    "Tax-derived mirrors are not independent from the direct registered-transaction lane.",
+    "Project starting price is not an exact special-unit price.",
+    "Null means unverified/unknown, not false."
+  ],
+  "gap_matrix_before": [
+    {
+      "row": "Apt1",
+      "subject": "3R garden, 70.8m² internal + 100m² workbook outdoor column, ground, east",
+      "completed_sold": "WEAK: standard 3R sold evidence exists; no verified garden typology linkage",
+      "current_asking": "MEDIUM: direct 3R garden listings already collected",
+      "archived_asking": "WEAK",
+      "new_development": "MEDIUM: garden products exist but model/room/area mismatch common",
+      "exact_type": "PARTIAL",
+      "exact_rooms": "YES in asking",
+      "near_size": "YES in asking",
+      "same_submarket": "PARTIAL",
+      "outdoor_area_known": "YES for several asking comps",
+      "floor_known": "YES",
+      "parking_known": "PARTIAL",
+      "storage_known": "PARTIAL/UNKNOWN",
+      "orientation_known": "PARTIAL",
+      "exact_unit_tax_linkage": "NO",
+      "confidence_gap": "No verified sold-garden unit; garden size varies materially."
+    },
+    {
+      "row": "Apt2",
+      "subject": "3R garden, 65.6m² internal + 69m² workbook outdoor column, ground, east",
+      "completed_sold": "WEAK: standard 3R sold evidence exists; no verified garden typology linkage",
+      "current_asking": "MEDIUM: direct 3R garden listings already collected",
+      "archived_asking": "WEAK",
+      "new_development": "MEDIUM",
+      "exact_type": "PARTIAL",
+      "exact_rooms": "YES in asking",
+      "near_size": "YES in asking",
+      "same_submarket": "PARTIAL",
+      "outdoor_area_known": "YES for several asking comps",
+      "floor_known": "YES",
+      "parking_known": "PARTIAL",
+      "storage_known": "PARTIAL/UNKNOWN",
+      "orientation_known": "PARTIAL",
+      "exact_unit_tax_linkage": "NO",
+      "confidence_gap": "No verified sold-garden unit."
+    },
+    {
+      "row": "Apt3",
+      "subject": "2R garden, 57m² internal + 18m² workbook outdoor column, ground, east",
+      "completed_sold": "WEAK: 2R/2.5R sold context exists; garden typology not verified",
+      "current_asking": "MEDIUM-: rare direct 2R garden listing exists",
+      "archived_asking": "WEAK",
+      "new_development": "WEAK for exact 2R garden",
+      "exact_type": "YES in one current asking comp",
+      "exact_rooms": "YES in one current asking comp",
+      "near_size": "PARTIAL",
+      "same_submarket": "PARTIAL",
+      "outdoor_area_known": "YES on direct current comp",
+      "floor_known": "YES",
+      "parking_known": "YES on direct current comp",
+      "storage_known": "UNKNOWN",
+      "orientation_known": "UNKNOWN",
+      "exact_unit_tax_linkage": "NO",
+      "confidence_gap": "No verified sold-garden linkage."
+    },
+    {
+      "row": "Apt36",
+      "subject": "6R triplex, 255.2m² internal + 94.6m² outdoor, floors 9-11, east",
+      "completed_sold": "MEDIUM: large/multi-level achieved sales, but no verified triplex linkage",
+      "current_asking": "MEDIUM: direct triplex exists but materially undersized; larger duplex/penthouse analogues exist",
+      "archived_asking": "MEDIUM: triplex records existed but had not been systematically normalized",
+      "new_development": "MEDIUM: premium products but exact triplex models scarce",
+      "exact_type": "YES, but mostly undersized/archive",
+      "exact_rooms": "YES",
+      "near_size": "WEAK for true internal triplex area",
+      "same_submarket": "PARTIAL",
+      "outdoor_area_known": "PARTIAL",
+      "floor_known": "PARTIAL",
+      "parking_known": "PARTIAL",
+      "storage_known": "PARTIAL",
+      "orientation_known": "PARTIAL",
+      "exact_unit_tax_linkage": "NO",
+      "confidence_gap": "Direct near-size 255-260m² triplex and verified sold-triplex link missing."
+    },
+    {
+      "row": "Apt37",
+      "subject": "6R triplex, 260.1m² internal + 97.4m² outdoor, floors 9-11, west",
+      "completed_sold": "MEDIUM: large/multi-level achieved sales, but no verified triplex linkage",
+      "current_asking": "MEDIUM",
+      "archived_asking": "MEDIUM",
+      "new_development": "MEDIUM",
+      "exact_type": "YES, but mostly undersized/archive",
+      "exact_rooms": "YES",
+      "near_size": "WEAK for true internal triplex area",
+      "same_submarket": "PARTIAL",
+      "outdoor_area_known": "PARTIAL",
+      "floor_known": "PARTIAL",
+      "parking_known": "PARTIAL",
+      "storage_known": "PARTIAL",
+      "orientation_known": "PARTIAL",
+      "exact_unit_tax_linkage": "NO",
+      "confidence_gap": "Same as Apt36."
+    },
+    {
+      "row": "Apt38",
+      "subject": "7R duplex, 170.1m² internal + 39.6m² outdoor, floors 9-10, west",
+      "completed_sold": "MEDIUM: multi-level sold candidates; exact duplex typology not Tax-linked",
+      "current_asking": "HIGH: direct 7R duplex evidence near target size",
+      "archived_asking": "MEDIUM",
+      "new_development": "MEDIUM",
+      "exact_type": "YES in asking",
+      "exact_rooms": "YES in asking",
+      "near_size": "YES",
+      "same_submarket": "PARTIAL",
+      "outdoor_area_known": "PARTIAL",
+      "floor_known": "YES on several",
+      "parking_known": "PARTIAL",
+      "storage_known": "PARTIAL",
+      "orientation_known": "PARTIAL",
+      "exact_unit_tax_linkage": "NO",
+      "confidence_gap": "Need verified sold duplex or exact 7R developer model."
+    },
+    {
+      "row": "Apt39",
+      "subject": "5R duplex, 158.6m² internal + 39.6m² outdoor, floors 9-10",
+      "completed_sold": "MEDIUM+: strong multi-level sold basket; typology linkage incomplete",
+      "current_asking": "HIGH: near-exact 5R/160m² duplex plus multiple direct comps",
+      "archived_asking": "HIGH product context",
+      "new_development": "MEDIUM+",
+      "exact_type": "YES",
+      "exact_rooms": "YES",
+      "near_size": "YES",
+      "same_submarket": "YES on some records",
+      "outdoor_area_known": "YES on some",
+      "floor_known": "YES on some",
+      "parking_known": "YES on some",
+      "storage_known": "PARTIAL",
+      "orientation_known": "PARTIAL",
+      "exact_unit_tax_linkage": "NO exact; strong candidates existed",
+      "confidence_gap": "Need defensible historical listing-to-Tax linkage and conflict cleanup."
+    },
+    {
+      "row": "Standard 3R feature evidence",
+      "subject": "69m² internal, 12m² balcony, floors 1-8",
+      "completed_sold": "STRONG market-price universe",
+      "current_asking": "STRONG market-price universe",
+      "archived_asking": "CONTEXT",
+      "new_development": "STRONG market-price universe",
+      "exact_type": "YES",
+      "exact_rooms": "YES",
+      "near_size": "YES",
+      "same_submarket": "YES",
+      "outdoor_area_known": "INCONSISTENT",
+      "floor_known": "YES on many",
+      "parking_known": "PARTIAL",
+      "storage_known": "PARTIAL",
+      "orientation_known": "WEAK",
+      "exact_unit_tax_linkage": "N/A for feature question",
+      "confidence_gap": "Market range is not the gap; matched-pair feature attribution is."
+    },
+    {
+      "row": "Standard 5R feature evidence",
+      "subject": "111.1m² internal, 12m² balcony, floors 1-8, west",
+      "completed_sold": "STRONG market-price universe",
+      "current_asking": "STRONG market-price universe",
+      "archived_asking": "CONTEXT",
+      "new_development": "STRONG market-price universe",
+      "exact_type": "YES",
+      "exact_rooms": "YES",
+      "near_size": "YES",
+      "same_submarket": "YES",
+      "outdoor_area_known": "INCONSISTENT",
+      "floor_known": "YES on many",
+      "parking_known": "PARTIAL",
+      "storage_known": "PARTIAL",
+      "orientation_known": "PARTIAL",
+      "exact_unit_tax_linkage": "N/A for feature question",
+      "confidence_gap": "Need matched pairs; do not derive feature premiums from unrelated units."
+    }
+  ],
+  "new_or_strengthened_records": [
+    {
+      "record_id": "GARDEN_ZEEV_BRANDA_18_ARCHIVE",
+      "track": "A_garden",
+      "subjects": [
+        "Apt1",
+        "Apt2"
+      ],
+      "source": "ad.co.il archived sale listing",
+      "source_url": "https://www.ad.co.il/archive/nadlansale?props=10-10&rp5=3%2C3&sp1=82&sp3=3&sp4=1326&view=list&withprice=1",
+      "retrieved_at": "2026-09-11",
+      "original_wording": "שלושה חדרים ... כולל יציאה לגינה קטנה",
+      "normalized": {
+        "address": "זאב ברנדה 18, פתח תקווה",
+        "submarket": "מרכז העיר דרום / central quiet-area context",
+        "property_type": "ground/garden-like apartment",
+        "rooms": 3,
+        "advertised_area_m2": 85,
+        "built_internal_area_m2": null,
+        "garden_area_m2": null,
+        "balcony_area_m2": null,
+        "asking_price_ils": 1430000,
+        "floor": "ground",
+        "parking_count": null,
+        "storage": true,
+        "elevator": null,
+        "orientation": null,
+        "condition": "renovated",
+        "listing_date": null
+      },
+      "evidence_class": "DIRECT_ROOMS_AND_GARDEN_FORM_ARCHIVED_ASKING_AREA_SEMANTICS_UNKNOWN",
+      "helps_because": "Exact-address historical 3R ground/garden-form product in the central Petah Tikva market.",
+      "does_not_qualify_because": "Garden size is not published, advertised area is not explicitly labelled built/internal, and no exact Tax-unit linkage was located."
+    },
+    {
+      "record_id": "GARDEN_ZEEV_BRANDA_18_ARCHIVE_ALT",
+      "track": "A_garden",
+      "subjects": [
+        "Apt1",
+        "Apt2"
+      ],
+      "source": "ad.co.il archived sale listing",
+      "source_url": "https://www.ad.co.il/archive/nadlansale?pageindex=3&props=18-18&rp5=3%2C3.5&sp3=3&sp4=1326&view=list",
+      "retrieved_at": "2026-09-11",
+      "original_wording": "דירת קרקע 3 חדרים מרווחת ... יציאה לחצר גדולה ומקסימה",
+      "normalized": {
+        "address": "זאב ברנדה 18, פתח תקווה",
+        "property_type": "ground/garden-like apartment",
+        "rooms": 3,
+        "advertised_area_m2": 95,
+        "garden_area_m2": null,
+        "asking_price_ils": 1400000,
+        "floor": "ground",
+        "orientation_count": 3,
+        "condition": "renovated",
+        "rear_quiet": true
+      },
+      "evidence_class": "ARCHIVED_SAME_ADDRESS_PRODUCT_STATE",
+      "helps_because": "Confirms repeated historical garden/yard use at the address and adds orientation/quiet-position detail.",
+      "does_not_qualify_because": "Area/price differ from the other archived state; likely another state/unit and still no measured garden area or Tax linkage."
+    },
+    {
+      "record_id": "GARDEN_DAPHNA_7_ARCHIVED_RENT",
+      "track": "A_garden",
+      "subjects": [
+        "Apt3"
+      ],
+      "source": "ad.co.il archived rental listing",
+      "source_url": "https://www.ad.co.il/archive/nadlanrent?props=298-17396&sp274=22880&sp276=17500&sp277=17688&view=list&withprice=1",
+      "retrieved_at": "2026-09-11",
+      "original_wording": "דירת גן 2.5חד' +גינה 65מ'",
+      "normalized": {
+        "address": "דפנה 7, פתח תקווה",
+        "submarket": "רמת ורבר",
+        "property_type": "garden apartment",
+        "rooms": 2.5,
+        "advertised_area_m2": 55,
+        "garden_area_m2": 65,
+        "rent_asking_ils_per_month": 5000,
+        "sale_asking_price_ils": null
+      },
+      "evidence_class": "PRODUCT_ATTRIBUTE_CONTEXT_NOT_SALE_PRICE",
+      "helps_because": "Rare small-room garden product with explicit separate garden area.",
+      "does_not_qualify_because": "Rental, 2.5R rather than 2R, garden much larger than Apt3, and no sale/Tax unit linkage."
+    },
+    {
+      "record_id": "GARDEN_2R_SAVED_YAD2",
+      "track": "A_garden",
+      "subjects": [
+        "Apt3"
+      ],
+      "source": "saved Yad2/HappyEndpoint listing detail",
+      "source_url": null,
+      "retrieved_at": "2026-09-06",
+      "original_wording": "saved structured listing detail",
+      "normalized": {
+        "token": "81py2t5u",
+        "address": "הנביאים, פתח תקווה",
+        "property_type": "garden apartment",
+        "rooms": 2,
+        "built_internal_area_m2": 47,
+        "garden_area_m2": 23,
+        "balcony_area_m2": null,
+        "asking_price_ils": 1700000,
+        "floor": "ground",
+        "parking_count": 1,
+        "elevator": true,
+        "condition": "new property"
+      },
+      "evidence_class": "DIRECT_CURRENT_ASKING_EXACT_TYPE_EXACT_ROOMS",
+      "helps_because": "Closest structured direct 2R garden asking evidence with explicit built/garden split.",
+      "does_not_qualify_because": "Smaller internal area than Apt3 and no exact house number/Tax linkage."
+    },
+    {
+      "record_id": "TRIPLEX_CURRENT_HARAV_WOLF",
+      "track": "B_triplex",
+      "subjects": [
+        "Apt36",
+        "Apt37"
+      ],
+      "source": "Yad2 current listing search",
+      "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=4&city=7900&property=51",
+      "retrieved_at": "2026-09-11",
+      "original_wording": "triplex listing in Kfar Ganim A",
+      "normalized": {
+        "address": "הרב וולף, כפר גנים א, פתח תקווה",
+        "property_type": "triplex",
+        "rooms": 6.5,
+        "advertised_area_m2": 153,
+        "built_internal_area_m2": null,
+        "asking_price_ils_current_observed": 3950000,
+        "previous_asking_price_ils_observed": 4150000,
+        "floor": 4
+      },
+      "evidence_class": "DIRECT_CURRENT_TRIPLEX_TYPE_SIZE_RELAXED",
+      "helps_because": "Current Petah Tikva direct triplex typology with explicit asking price.",
+      "does_not_qualify_because": "153m² advertised is materially below 255–260m² subjects; 6.5R and different submarket."
+    },
+    {
+      "record_id": "TRIPLEX_ARTHUR_RUPPIN_8",
+      "track": "B_triplex",
+      "subjects": [
+        "Apt36",
+        "Apt37"
+      ],
+      "source": "ad.co.il archived sale listing + Nadlanist registered-deal history",
+      "source_url": "https://www.ad.co.il/archive/nadlansale?props=11-11&rp5=6%2C6&sp1=110&sp3=3&sp4=1353",
+      "retrieved_at": "2026-09-11",
+      "original_wording": "ארתור רופין 8 ... 150 ... 6 ... 2,100,000 ₪",
+      "normalized": {
+        "address": "ארתור רופין 8, פתח תקווה",
+        "property_type": "triplex / three-level roof product",
+        "rooms": 6,
+        "advertised_area_m2": 150,
+        "asking_price_ils": 2100000,
+        "parking": true,
+        "elevator": true,
+        "tax_same_address_observation": {
+          "date": "2022-11-22",
+          "rooms": 5,
+          "registered_area_m2": 151,
+          "floor_configuration": "3-4",
+          "price_ils": 2900000
+        }
+      },
+      "evidence_class": "DIRECT_ARCHIVED_TRIPLEX_EXACT_ROOMS_SIZE_RELAXED",
+      "helps_because": "Exact-address archive proves 6R triplex product exists and is numerically advertised.",
+      "does_not_qualify_because": "The same-address Tax sale is 5R, not 6R, and floor/room pattern does not prove the same unit."
+    },
+    {
+      "record_id": "TRIPLEX_OSSISHKIN_22",
+      "track": "B_triplex",
+      "subjects": [
+        "Apt36",
+        "Apt37"
+      ],
+      "source": "ad.co.il archived sale listing",
+      "source_url": "https://www.ad.co.il/archive/nadlansale?props=11-11&rp5=6%2C6&sp1=110&sp3=3&sp4=1353",
+      "retrieved_at": "2026-09-11",
+      "original_wording": "אוסישקין 22 ... 150 ... 6 ... 2,300,000 ₪",
+      "normalized": {
+        "address": "מנחם אוסישקין 22, פתח תקווה",
+        "property_type": "triplex",
+        "rooms": 6,
+        "advertised_area_m2": 150,
+        "asking_price_ils": 2300000,
+        "floor_configuration": "levels 5-7/roof described in archive",
+        "parking": true,
+        "elevator": true,
+        "mamad": true,
+        "balcony": true
+      },
+      "evidence_class": "DIRECT_ARCHIVED_TRIPLEX_EXACT_ROOMS_SIZE_RELAXED",
+      "helps_because": "Another exact-room archived Petah Tikva triplex, so triplex evidence is not limited to one listing.",
+      "does_not_qualify_because": "Too small for Apt36/37 and no matching 6R/150m² registered sale was located."
+    },
+    {
+      "record_id": "TRIPLEX_MONTEFIORE_14",
+      "track": "B_triplex",
+      "subjects": [
+        "Apt36",
+        "Apt37"
+      ],
+      "source": "ad.co.il archive + public registered-deal mirror",
+      "source_url": "https://www.ad.co.il/archive/nadlansale?props=11-11&rp5=6%2C6&sp1=110&sp3=3&sp4=1353",
+      "retrieved_at": "2026-09-11",
+      "original_wording": "מונטיפיורי 14 ... 160 ... 6 ... 1,850,000 ₪",
+      "normalized": {
+        "address": "מונטיפיורי 14, פתח תקווה",
+        "property_type": "triplex",
+        "rooms": 6,
+        "advertised_area_m2": 160,
+        "built_internal_area_m2_from_other_archive_state": 145,
+        "roof_area_m2_from_other_archive_state": 75,
+        "asking_price_observations_ils": [
+          1850000,
+          1900000,
+          2280000
+        ],
+        "parking_count": 1,
+        "elevator": true,
+        "orientation": [
+          "north",
+          "west",
+          "east"
+        ],
+        "condition": "renovated",
+        "recent_registered_sale_at_address": {
+          "date": "2025-08-10",
+          "rooms": 4,
+          "registered_area_m2": 97,
+          "price_ils": 1750000
+        }
+      },
+      "evidence_class": "DIRECT_ARCHIVED_TRIPLEX_WITH_AREA_STATE_VARIATION",
+      "helps_because": "Exact 6R triplex archive and one state separates 145m² built from 75m² roof.",
+      "does_not_qualify_because": "Still far below subject internal size; archive states vary; no exact Tax match."
+    },
+    {
+      "record_id": "TRIPLEX_EIN_GANIM_ARCHIVE",
+      "track": "B_triplex",
+      "subjects": [
+        "Apt36",
+        "Apt37"
+      ],
+      "source": "ad.co.il archived sale listing",
+      "source_url": "https://www.ad.co.il/archive/nadlansale",
+      "retrieved_at": "2026-09-11",
+      "original_wording": "6 חדרים ... 130 מ״ר בנוי ... גג בנוי 60 מ״ר",
+      "normalized": {
+        "address": "עין גנים, פתח תקווה (house number not exposed)",
+        "property_type": "triplex",
+        "rooms": 6,
+        "built_internal_area_m2": 130,
+        "roof_built_area_m2": 60,
+        "advertised_area_m2": 200,
+        "asking_price_ils": 1850000,
+        "parking_count": 1,
+        "elevator": true,
+        "orientation_count": 3
+      },
+      "evidence_class": "DIRECT_ARCHIVED_TRIPLEX_EXACT_ROOMS_ADDRESS_INCOMPLETE",
+      "helps_because": "Separates internal built and roof-built components for a true 6R triplex.",
+      "does_not_qualify_because": "House number is hidden and internal area is much smaller; cannot Tax-link."
+    },
+    {
+      "record_id": "DUPLEX_HAFEZ_HAIM_26_SCALE_ANALOGUE",
+      "track": "B_triplex",
+      "subjects": [
+        "Apt36",
+        "Apt37"
+      ],
+      "source": "ad.co.il archived sale listing",
+      "source_url": "https://www.ad.co.il/archive/nadlansale?sp1=28&sp2=2&sp3=3&sp4=1326&view=list&withimage=1",
+      "retrieved_at": "2026-09-11",
+      "original_wording": "כ-260 מ״ר הכוללים גג כ 100 מטר",
+      "normalized": {
+        "address": "חפץ חיים 26, פתח תקווה",
+        "property_type": "roof duplex",
+        "rooms": 5.5,
+        "advertised_area_m2": 250,
+        "stated_total_including_roof_m2": 260,
+        "roof_area_m2": 100,
+        "built_internal_area_m2": null,
+        "asking_price_ils": 2580000,
+        "floor": 4,
+        "parking": true,
+        "storage": true,
+        "elevator": true,
+        "condition": "renovated"
+      },
+      "evidence_class": "SAME_LOCATION_SCALE_ANALOGUE_TYPE_RELAXED",
+      "helps_because": "Rare same-location scale analogue around 250-260m² total.",
+      "does_not_qualify_because": "Roof duplex, 5.5R; 260m² explicitly includes ~100m² roof and is not internal built area."
+    },
+    {
+      "record_id": "DUPLEX7R_URI_KARNI_ACHIEVED_PRESS",
+      "track": "C_7R_duplex",
+      "subjects": [
+        "Apt38"
+      ],
+      "source": "local real-estate press report",
+      "source_url": "https://www.melabes.co.il/real_estate/79524",
+      "retrieved_at": "2026-09-11",
+      "original_wording": "7-room duplex ... 180 square meters ... 100 square meter terrace",
+      "normalized": {
+        "address": "אורי קרני, כפר גנים ג, פתח תקווה",
+        "property_type": "duplex",
+        "rooms": 7,
+        "built_internal_area_m2": 180,
+        "outdoor_area_m2": 100,
+        "reported_sold_price_ils": 4750000,
+        "reported_asking_price_ils": 4850000,
+        "report_date": "2022-01-30"
+      },
+      "evidence_class": "DIRECT_TYPE_SIZE_FALLBACK_REPORTED_ACHIEVED_SALE",
+      "helps_because": "Direct 7R duplex at near subject internal size with separate terrace and reported achieved price.",
+      "does_not_qualify_because": "Old/fallback evidence and not linked to a Tax deal ID/subparcel in this pass."
+    },
+    {
+      "record_id": "DUPLEX7R_YD_HABANIM_3_ARCHIVE",
+      "track": "C_7R_duplex",
+      "subjects": [
+        "Apt38"
+      ],
+      "source": "ad.co.il archive + local Tax transaction",
+      "source_url": "https://www.ad.co.il/archive/nadlansale",
+      "retrieved_at": "2026-09-11",
+      "original_wording": "קומה רביעית ... קומה שנייה ... גג 120 מ״ר",
+      "normalized": {
+        "address": "י״ד הבנים 3, פתח תקווה",
+        "archived_listing": {
+          "property_type": "roof/multi-level apartment",
+          "rooms": 6.5,
+          "advertised_area_m2": 165,
+          "roof_area_m2": 120,
+          "parking": true,
+          "elevator": true,
+          "condition": "renovated"
+        },
+        "tax_sale": {
+          "deal_id": "3605884041",
+          "rooms": 7,
+          "registered_area_m2": 148,
+          "price_ils": 2900000,
+          "date": "2024-10-01",
+          "floor_configuration": "4 + roof"
+        }
+      },
+      "evidence_class": "SAME_ADDRESS_AMBIGUOUS_MULTI_LEVEL",
+      "helps_because": "Exact address and similar multi-level roof configuration supports product context around the sold candidate.",
+      "does_not_qualify_because": "Rooms and area differ; no stable unit identifier connects listing to Tax sale."
+    },
+    {
+      "record_id": "DUPLEX5R_MIVTZA_DEKEL_14_HIGH_CONFIDENCE_LINK",
+      "track": "D_5R_duplex",
+      "subjects": [
+        "Apt39"
+      ],
+      "source": "local Tax transaction + ad.co.il archived listing",
+      "source_url": "https://www.ad.co.il/archive/nadlansale?props=10-10&sp1=103&sp3=3&sp4=1849&view=list",
+      "retrieved_at": "2026-09-11",
+      "original_wording": "5 rooms, originally 6; floors 27+28; balcony and storage advertised",
+      "normalized": {
+        "address": "מבצע דקל 14, פתח תקווה",
+        "tax_sale": {
+          "deal_id": "3633131484",
+          "rooms": 5,
+          "registered_area_m2": 157,
+          "price_ils": 5900000,
+          "date": "2025-08-04",
+          "floor_configuration": "27+28"
+        },
+        "archived_listing": {
+          "property_type": "penthouse duplex",
+          "rooms": "5 (originally 6)",
+          "floor_configuration": "27+28",
+          "balcony_area_m2": 50,
+          "storage_area_m2": 10,
+          "parking": true,
+          "elevator": true,
+          "condition": "renovated/upgraded"
+        }
+      },
+      "evidence_class": "HIGH_CONFIDENCE_UNIT_LINK",
+      "helps_because": "Rare exact-address + exact multi-level floor pattern + 5R/originally-6 product combination strongly narrows identity.",
+      "does_not_qualify_because": "No shared stable listing unit/subparcel identifier or explicit sale/listing date linkage; do not promote to EXACT_UNIT_LINK automatically."
+    },
+    {
+      "record_id": "ISSER_HAREL_6_SOURCE_CONFLICT",
+      "track": "D_5R_duplex",
+      "subjects": [
+        "Apt39"
+      ],
+      "source": "direct local government transaction dataset + WizBid + Market2 mirrors",
+      "source_url": "https://wizbid.co.il/nadlan/%D7%A4%D7%AA%D7%97%20%D7%AA%D7%A7%D7%95%D7%95%D7%94/rechov/%D7%90%D7%99%D7%A1%D7%A8%20%D7%94%D7%A8%D7%90%D7%9C",
+      "retrieved_at": "2026-09-11",
+      "original_wording": "same address/date/5R/163m² appears with conflicting mirror prices",
+      "normalized": {
+        "address": "איסר הראל 6, פתח תקווה",
+        "deal_id": "3601967910",
+        "rooms": 5,
+        "registered_area_m2": 163,
+        "date": "2024-06-07",
+        "direct_local_government_price_ils": 5400000,
+        "wizbid_price_ils": 5400000,
+        "market2_price_ils": 4900000,
+        "local_floor_configuration": "19+20",
+        "market2_floor_reported": 9
+      },
+      "evidence_class": "AUTHORITATIVE_SOURCE_PREFERENCE_WITH_SECONDARY_MIRROR_CONFLICT",
+      "helps_because": "Direct local government value is corroborated by one Tax-derived mirror.",
+      "does_not_qualify_because": "A second Tax-derived mirror conflicts on both price/floor; preserve QA flag and do not treat mirrors as independent votes."
+    },
+    {
+      "record_id": "NEWDEV_ZEEV_BRANDA_22_PRODUCT_BAND",
+      "track": "F_new_development",
+      "subjects": [
+        "Apt36",
+        "Apt37",
+        "Apt38",
+        "Apt39"
+      ],
+      "source": "developer/Yad1/Diraly project marketing",
+      "source_url": "https://www.yad2.co.il/yad1/project/16515",
+      "retrieved_at": "2026-09-11",
+      "original_wording": "roof duplex 5-6 rooms, 148-192m²; balconies/roof areas published as a band",
+      "normalized": {
+        "project": "זאב ברנדה 22",
+        "developer": "רכסים בנייה ויזמות",
+        "submarket": "המרכז השקט / מרכז העיר",
+        "property_type": "roof duplex",
+        "rooms": "5-6",
+        "built_internal_area_range_m2": [
+          148,
+          192
+        ],
+        "balcony_roof_area_range_m2": [
+          44,
+          110
+        ],
+        "published_product_band_from_price_ils": 4490000,
+        "floors": "9-10",
+        "parking": "regular underground parking",
+        "project_payment_terms": "80/20 campaign reported"
+      },
+      "evidence_class": "DIRECT_DEVELOPER_PRODUCT_BAND_NOT_EXACT_VARIANT_PRICE",
+      "helps_because": "Adds explicit premium-product area/outdoor band and price threshold in the same central submarket.",
+      "does_not_qualify_because": "The ₪4.49M is a product-band 'from' price, not a price tied to one exact 148/192m² model."
+    },
+    {
+      "record_id": "NEWDEV_BRANDA_49",
+      "track": "F_new_development",
+      "subjects": [
+        "Apt36",
+        "Apt37",
+        "Apt38",
+        "Apt39"
+      ],
+      "source": "Yad1 project page",
+      "source_url": "https://www.yad2.co.il/yad1/project/15063",
+      "retrieved_at": "2026-09-11",
+      "original_wording": "5-6 rooms, 121-301m²; garden and penthouse products",
+      "normalized": {
+        "project": "ברנדה 49",
+        "developer": "א.פ. נחום חברה לבניין והשקעות",
+        "submarket": "המרכז השקט / מרכז העיר",
+        "rooms": "5-6",
+        "area_range_m2": [
+          121,
+          301
+        ],
+        "special_products": [
+          "garden",
+          "penthouse"
+        ],
+        "project_start_price_ils": 2900000,
+        "parking": "project-level: parking for every apartment",
+        "storage": "project-level: private storage for every apartment"
+      },
+      "evidence_class": "PROJECT_LEVEL_PREMIUM_PRODUCT_CONTEXT",
+      "helps_because": "Same-submarket project reaches the scale of Apt36/37 and explicitly includes premium special products.",
+      "does_not_qualify_because": "No exact special-unit price or floorplan dimensions were publicly exposed."
+    },
+    {
+      "record_id": "NEWDEV_SHABAZI_3_5_CORRECTED",
+      "track": "F_new_development",
+      "subjects": [
+        "Apt36",
+        "Apt37",
+        "Apt38",
+        "Apt39"
+      ],
+      "source": "Yad1/Yad2 project marketing",
+      "source_url": "https://www.yad2.co.il/yad1/project/14639",
+      "retrieved_at": "2026-09-11",
+      "original_wording": "6R duplex, 181m², floor 9; project from ₪2.40M",
+      "normalized": {
+        "project": "שבזי 3-5",
+        "developer": "שמי בנייה ייזום והתחדשות עירונית",
+        "property_type": "duplex",
+        "rooms": 6,
+        "internal_area_m2": 181,
+        "floor": 9,
+        "unit_specific_price_ils": null,
+        "project_start_price_ils": 2400000,
+        "features": [
+          "large sun balconies",
+          "private parking"
+        ]
+      },
+      "evidence_class": "EXACT_PRODUCT_DIMENSIONS_PRICE_MISSING",
+      "helps_because": "Exact 6R duplex size/floor is public and near the smaller special-unit scale.",
+      "does_not_qualify_because": "₪2.40M is the project starting price, not proven to be the 181m² duplex price."
+    },
+    {
+      "record_id": "NEWDEV_THE_SPOT",
+      "track": "F_new_development",
+      "subjects": [
+        "Apt39"
+      ],
+      "source": "Yad1 project page",
+      "source_url": "https://www.yad2.co.il/yad1/project/19459",
+      "retrieved_at": "2026-09-11",
+      "original_wording": "project 70-146m², 3-5 rooms; premium upper products",
+      "normalized": {
+        "project": "THE SPOT",
+        "developer": "שיא עינב",
+        "address": "יהושע שטמפפר 83-87, פתח תקווה",
+        "rooms": "3-5",
+        "area_range_m2": [
+          70,
+          146
+        ],
+        "known_5r_upper_product_area_m2": 146,
+        "known_upper_product_floors": "9-10",
+        "unit_specific_price_ils": null,
+        "project_start_price_ils": 2250000
+      },
+      "evidence_class": "EXACT_PRODUCT_SIZE_CONTEXT_PRICE_MISSING",
+      "helps_because": "5R premium product at 146m² is close enough to Apt39 to be relevant product context.",
+      "does_not_qualify_because": "Exact 5R upper-product price and outdoor area are still not published."
+    },
+    {
+      "record_id": "NEWDEV_DEFOUR",
+      "track": "F_new_development",
+      "subjects": [
+        "Apt1",
+        "Apt2",
+        "Apt3",
+        "Apt36",
+        "Apt37",
+        "Apt38",
+        "Apt39"
+      ],
+      "source": "Yad1/Diraly marketing",
+      "source_url": "https://www.yad2.co.il/yad1/project/16523",
+      "retrieved_at": "2026-09-11",
+      "original_wording": "3-6 rooms; garden and roof/penthouse product context",
+      "normalized": {
+        "project": "DeFour",
+        "developer": "בוני התיכון",
+        "submarket": "המרכז השקט / מרכז העיר",
+        "buildings": 4,
+        "floors_each": 9,
+        "special_products": [
+          "3R garden",
+          "5R/6R roof/penthouse"
+        ],
+        "unit_specific_price_ils": null,
+        "project_start_price_ils": 2200000,
+        "payment_terms": "customized"
+      },
+      "evidence_class": "SAME_SUBMARKET_PROJECT_CONTEXT_SPECIAL_PRICES_MISSING",
+      "helps_because": "Same-submarket competitor spans both garden and premium roof products.",
+      "does_not_qualify_because": "Special-unit model prices/floorplan dimensions remain undisclosed."
+    },
+    {
+      "record_id": "NEWDEV_NAVE_PARK",
+      "track": "F_new_development",
+      "subjects": [
+        "Apt36",
+        "Apt37",
+        "Apt38",
+        "Apt39"
+      ],
+      "source": "Yad1 project page",
+      "source_url": "https://www.yad2.co.il/yad1/project/15615",
+      "retrieved_at": "2026-09-11",
+      "original_wording": "5R penthouse 195m² floor 31; 6R pricing also published",
+      "normalized": {
+        "project": "NAVE PARK",
+        "submarket": "נווה גן",
+        "rooms": "3-6",
+        "area_range_m2": [
+          83,
+          280
+        ],
+        "five_room_penthouse": {
+          "internal_area_m2": 195,
+          "floor": 31,
+          "from_price_ils": 7500000
+        },
+        "six_room_from_price_ils": 3850000,
+        "six_room_exact_area_m2": null
+      },
+      "evidence_class": "UNIT_SPECIFIC_PENTHOUSE_PRICE_PLUS_6R_STARTING_CONTEXT",
+      "helps_because": "Provides a real premium-unit price point with exact penthouse area/floor.",
+      "does_not_qualify_because": "Different submarket/type; the 6R price is not tied to a public exact area."
+    },
+    {
+      "record_id": "QA_TEREZA_KUGELMAN_4",
+      "track": "H_data_quality",
+      "subjects": [
+        "Apt36",
+        "Apt37",
+        "Apt38"
+      ],
+      "source": "local government transaction dataset vs Market2 Tax-derived mirror",
+      "source_url": "https://www.market2.co.il/",
+      "retrieved_at": "2026-09-11",
+      "original_wording": "same 2025-11-23 / 6R / 180m² record appears at a radically different price",
+      "normalized": {
+        "address": "תרזה קוגלמן 4, פתח תקווה",
+        "date": "2025-11-23",
+        "rooms": 6,
+        "area_m2": 180,
+        "local_government_price_ils": 5250000,
+        "public_mirror_price_ils": 242000,
+        "public_mirror_subparcel": "6362-175-112"
+      },
+      "evidence_class": "QUARANTINE_TRANSACTION_PRICE_CONFLICT",
+      "helps_because": "Prevents a suspicious record from contaminating numeric summaries.",
+      "does_not_qualify_because": "Conflict is unresolved; neither value should be silently substituted."
+    },
+    {
+      "record_id": "QA_MICHAL_LEIB_KATZ_80",
+      "track": "H_data_quality",
+      "subjects": [
+        "Apt36",
+        "Apt37"
+      ],
+      "source": "ad.co.il archive",
+      "source_url": "https://www.ad.co.il/archive/nadlansale",
+      "retrieved_at": "2026-09-11",
+      "original_wording": "טריפלקס 3 קומות פלוס גג",
+      "normalized": {
+        "address": "מיכל לייב כץ 80, פתח תקווה",
+        "property_type": "triplex",
+        "rooms": 5,
+        "advertised_area_m2": 400,
+        "area_semantics": "unclear / likely total multi-level-and-roof presentation",
+        "parking": true,
+        "storage": true,
+        "elevator": true
+      },
+      "evidence_class": "QUARANTINE_AREA_SEMANTICS",
+      "helps_because": "Confirms triplex product existence.",
+      "does_not_qualify_because": "400m² display cannot be treated as comparable internal area without component breakdown."
+    }
+  ],
+  "cbs_check": {
+    "source": "Israel Central Bureau of Statistics (CBS)",
+    "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price04aa/aa2_2_h.pdf",
+    "retrieved_at": "2026-09-11",
+    "finding": "CBS publishes aggregate dwelling-price statistics by large cities/room groups and applies quality/statistical methodology; it is not a unit-level garden/duplex/triplex linkage source.",
+    "use": "macro QA / market context only",
+    "not_for": [
+      "exact-unit linkage",
+      "garden/duplex/triplex classification",
+      "parking/storage/orientation feature effects"
+    ],
+    "evidence_class": "MACRO_CONTEXT_ONLY"
+  },
+  "gap_matrix_after": [
+    {
+      "row": "Apt1",
+      "completed_sold": "WEAK for sold garden typology",
+      "current_asking": "MEDIUM+ direct",
+      "archived_asking": "MEDIUM: added central 3R ground/garden-form archive",
+      "new_development": "MEDIUM",
+      "exact_type": "YES in asking/archive",
+      "exact_rooms": "YES",
+      "near_size": "YES for internal area",
+      "same_submarket": "IMPROVED",
+      "outdoor_area_known": "YES in some current comps; not Branda archive",
+      "floor_known": "YES",
+      "parking_known": "PARTIAL",
+      "storage_known": "PARTIAL",
+      "orientation_known": "PARTIAL",
+      "exact_unit_tax_linkage": "NO",
+      "confidence_gap": "MEDIUM; sold-garden linkage still missing"
+    },
+    {
+      "row": "Apt2",
+      "completed_sold": "WEAK for sold garden typology",
+      "current_asking": "MEDIUM+",
+      "archived_asking": "MEDIUM",
+      "new_development": "MEDIUM",
+      "exact_type": "YES",
+      "exact_rooms": "YES",
+      "near_size": "YES",
+      "same_submarket": "IMPROVED",
+      "outdoor_area_known": "YES in several current comps",
+      "floor_known": "YES",
+      "parking_known": "PARTIAL",
+      "storage_known": "PARTIAL",
+      "orientation_known": "PARTIAL",
+      "exact_unit_tax_linkage": "NO",
+      "confidence_gap": "MEDIUM; sold-garden linkage still missing"
+    },
+    {
+      "row": "Apt3",
+      "completed_sold": "WEAK for sold garden typology",
+      "current_asking": "MEDIUM: direct 2R garden remains best numeric product evidence",
+      "archived_asking": "MEDIUM- product context: 2.5R/55 + 65 garden rental",
+      "new_development": "WEAK exact 2R",
+      "exact_type": "YES",
+      "exact_rooms": "YES in current asking",
+      "near_size": "PARTIAL",
+      "same_submarket": "PARTIAL",
+      "outdoor_area_known": "YES",
+      "floor_known": "YES",
+      "parking_known": "YES on current comp",
+      "storage_known": "PARTIAL",
+      "orientation_known": "UNKNOWN",
+      "exact_unit_tax_linkage": "NO",
+      "confidence_gap": "MEDIUM-; no sold-garden link"
+    },
+    {
+      "row": "Apt36",
+      "completed_sold": "MEDIUM broadened achieved-price evidence; no verified triplex Tax link",
+      "current_asking": "MEDIUM+ direct type but undersized",
+      "archived_asking": "STRONGER: multiple exact-room triplex archives normalized",
+      "new_development": "MEDIUM+: explicit premium product bands/models improved",
+      "exact_type": "YES across multiple archived/current records",
+      "exact_rooms": "YES across multiple archived records",
+      "near_size": "NO clean 220-300m² internal 6R triplex located",
+      "same_submarket": "YES on several archived/type-relaxed records",
+      "outdoor_area_known": "YES on some analogues",
+      "floor_known": "YES on some",
+      "parking_known": "YES on some",
+      "storage_known": "YES on some",
+      "orientation_known": "YES on some",
+      "exact_unit_tax_linkage": "NO",
+      "confidence_gap": "MEDIUM+ evidence breadth, but direct near-size sold triplex remains open"
+    },
+    {
+      "row": "Apt37",
+      "completed_sold": "MEDIUM broadened achieved-price evidence; no verified triplex Tax link",
+      "current_asking": "MEDIUM+ direct type but undersized",
+      "archived_asking": "STRONGER",
+      "new_development": "MEDIUM+",
+      "exact_type": "YES",
+      "exact_rooms": "YES",
+      "near_size": "NO clean 220-300m² internal 6R triplex located",
+      "same_submarket": "YES on several",
+      "outdoor_area_known": "YES on some",
+      "floor_known": "YES on some",
+      "parking_known": "YES on some",
+      "storage_known": "YES on some",
+      "orientation_known": "YES on some",
+      "exact_unit_tax_linkage": "NO",
+      "confidence_gap": "MEDIUM+ evidence breadth, direct near-size sold triplex still open"
+    },
+    {
+      "row": "Apt38",
+      "completed_sold": "MEDIUM+: old reported achieved 7R/180 duplex adds direct-type fallback; Tax-linked duplex still unproven",
+      "current_asking": "HIGH",
+      "archived_asking": "MEDIUM+",
+      "new_development": "MEDIUM",
+      "exact_type": "YES",
+      "exact_rooms": "YES",
+      "near_size": "YES",
+      "same_submarket": "PARTIAL",
+      "outdoor_area_known": "YES on direct fallback",
+      "floor_known": "YES on several",
+      "parking_known": "YES on several",
+      "storage_known": "PARTIAL",
+      "orientation_known": "PARTIAL",
+      "exact_unit_tax_linkage": "NO verified duplex linkage",
+      "confidence_gap": "HIGH asking / MEDIUM+ achieved-type support"
+    },
+    {
+      "row": "Apt39",
+      "completed_sold": "MEDIUM+ to HIGH contextual: high-confidence Mivtza Dekel link; direct sale prices already existed",
+      "current_asking": "HIGH",
+      "archived_asking": "HIGH",
+      "new_development": "MEDIUM+",
+      "exact_type": "YES",
+      "exact_rooms": "YES",
+      "near_size": "YES",
+      "same_submarket": "YES",
+      "outdoor_area_known": "YES on several",
+      "floor_known": "YES",
+      "parking_known": "YES on several",
+      "storage_known": "YES on several",
+      "orientation_known": "PARTIAL",
+      "exact_unit_tax_linkage": "HIGH_CONFIDENCE_UNIT_LINK at Mivtza Dekel 14; no strict exact ID link",
+      "confidence_gap": "Strongest special unit; Isser Harel conflict retained"
+    },
+    {
+      "row": "Standard 3R feature evidence",
+      "completed_sold": "STRONG",
+      "current_asking": "STRONG",
+      "archived_asking": "CONTEXT",
+      "new_development": "STRONG",
+      "exact_type": "YES",
+      "exact_rooms": "YES",
+      "near_size": "YES",
+      "same_submarket": "YES",
+      "outdoor_area_known": "PARTIAL",
+      "floor_known": "YES",
+      "parking_known": "PARTIAL",
+      "storage_known": "PARTIAL",
+      "orientation_known": "PARTIAL",
+      "exact_unit_tax_linkage": "N/A",
+      "confidence_gap": "NEW: strong observational floor pair exists at exact 69m²; still no causal monetary rule"
+    },
+    {
+      "row": "Standard 5R feature evidence",
+      "completed_sold": "STRONG",
+      "current_asking": "STRONG",
+      "archived_asking": "CONTEXT",
+      "new_development": "STRONG",
+      "exact_type": "YES",
+      "exact_rooms": "YES",
+      "near_size": "YES",
+      "same_submarket": "YES",
+      "outdoor_area_known": "PARTIAL",
+      "floor_known": "YES",
+      "parking_known": "PARTIAL",
+      "storage_known": "PARTIAL",
+      "orientation_known": "PARTIAL",
+      "exact_unit_tax_linkage": "N/A",
+      "confidence_gap": "NEW: same-day same-address 5R floor observation exists, plus other pairs; no causal monetary rule"
+    }
+  ],
+  "search_outcomes": {
+    "near_size_direct_6r_triplex_220_300_internal_m2": {
+      "status": "NOT_FOUND_AFTER_BROADER_ARCHIVE_AND_CURRENT_SEARCH",
+      "important_qualification": "This is a search result, not a claim that such properties do not exist.",
+      "records_found_instead": [
+        "Harav Wolf 6.5R / 153m² current triplex",
+        "Ossishkin 22 6R / 150m² archived triplex",
+        "Arthur Ruppin 8 6R / 150m² archived triplex",
+        "Montefiore 14 6R / 160m² archived triplex",
+        "Ein Ganim 6R / 130 built + 60 roof-built archived triplex",
+        "Hafez Haim 26 ~260m² including ~100m² roof, but roof duplex"
+      ]
+    },
+    "verified_sold_garden_tax_link": {
+      "status": "NOT_ACHIEVED",
+      "qualification": "Several exact-address garden-form archives were found, but no listing-to-Tax identity was strong enough to transfer garden attributes to a registered sale."
+    },
+    "verified_sold_triplex_tax_link": {
+      "status": "NOT_ACHIEVED",
+      "qualification": "Exact-address Tax records at Arthur Ruppin / Montefiore / Hatishim Veshalosh did not match the archived triplex rooms/area/floor strongly enough."
+    },
+    "verified_sold_duplex_tax_link": {
+      "status": "HIGH_CONFIDENCE_BUT_NOT_EXACT_AT_MIVTZA_DEKEL_14",
+      "qualification": "Rare exact address + floors 27+28 + room configuration strongly links product context, but no stable listing unit/subparcel identifier was available."
+    }
+  }
+}

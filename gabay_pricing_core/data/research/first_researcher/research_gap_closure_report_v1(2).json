@@ -1,0 +1,182 @@
+{
+  "version": "research_gap_closure_report_v1_rebuilt_2026_09_11",
+  "metadata": {
+    "retrieved_at": "2026-09-11",
+    "pricing_engine_updated": false,
+    "research_priority_followed": [
+      "verified sold special-unit linkages",
+      "near-size direct special-unit comparables",
+      "exact new-development special models/prices",
+      "same-submarket evidence",
+      "standard matched feature pairs",
+      "data quality"
+    ]
+  },
+  "major_corrections_to_prior_research": [
+    {
+      "correction": "It was too strong to say no useful standard matched floor pairs existed.",
+      "new_fact": "The existing direct Tax dataset contains at least one very strong standard 3R observation: Avinoam Yellin 6, 3R/69m² on floors 6 vs 2, only four days apart. It also contains 5R pairs.",
+      "impact": "Display as observational evidence; still no causal floor adjustment."
+    },
+    {
+      "correction": "Shabazi 3-5's ₪2.40M must not be labelled the exact 181m² duplex price.",
+      "new_fact": "181m² / 6R / floor9 product dimensions are public; ₪2.40M is a project starting price unless a unit-specific price is explicitly published.",
+      "impact": "Keep price as starting-price context only."
+    },
+    {
+      "correction": "Tereza Kugelman 4 is not a normal small mirror discrepancy.",
+      "new_fact": "The same date/rooms/area is represented as ₪5.25M in the local direct dataset and ₪242k in one Tax-derived public mirror.",
+      "impact": "Quarantine the transaction price until a direct official re-query."
+    },
+    {
+      "correction": "A failed public product-link search must not invalidate an existing direct Tax transaction.",
+      "new_fact": "Israel Yeshayahu 6 remains a valid registered 6R/166m² multi-level transaction in the local Tax data; what is unverified is its exact duplex typology, not the transaction itself.",
+      "impact": "Do not remove the sale; keep typology unverified."
+    }
+  ],
+  "before_after_matrix": [
+    {
+      "unit_dimension": "Apt1 — garden evidence",
+      "previous_evidence_quality": "MEDIUM",
+      "new_evidence": "Added exact-address central 3R ground/garden-form archive at זאב ברנדה 18; retained rich current garden comps.",
+      "new_classification": "MEDIUM+ asking/product evidence; sold-garden still unverified",
+      "changes_numeric_eligibility": "no",
+      "reason": "No exact historical garden listing-to-Tax identity established."
+    },
+    {
+      "unit_dimension": "Apt2 — garden evidence",
+      "previous_evidence_quality": "MEDIUM",
+      "new_evidence": "Same Branda 18 archive adds same-submarket product context; existing current comps include explicit 69/89/90m² garden observations.",
+      "new_classification": "MEDIUM+",
+      "changes_numeric_eligibility": "no",
+      "reason": "No verified sold-garden link."
+    },
+    {
+      "unit_dimension": "Apt3 — 2R garden",
+      "previous_evidence_quality": "LOW/MEDIUM-",
+      "new_evidence": "Direct saved 2R/47+23 garden sale listing remains strongest; added Daphna 7 2.5R/55 +65m² garden archived rental product evidence.",
+      "new_classification": "MEDIUM- product evidence",
+      "changes_numeric_eligibility": "no",
+      "reason": "Rental archive is not a sale and no sold-garden Tax link was proven."
+    },
+    {
+      "unit_dimension": "Apt36 — triplex",
+      "previous_evidence_quality": "MEDIUM broadened",
+      "new_evidence": "Multiple direct 6R archived triplexes normalized: Ossishkin22 150m², Arthur Ruppin8 150m², Montefiore14 160m², Ein Ganim component areas; Hafez26 scale analogue; Branda22 product band.",
+      "new_classification": "MEDIUM+ direct-typology breadth / broadened scale",
+      "changes_numeric_eligibility": "no",
+      "reason": "No clean 220–300m² internal 6R triplex and no verified sold-triplex linkage."
+    },
+    {
+      "unit_dimension": "Apt37 — triplex",
+      "previous_evidence_quality": "MEDIUM broadened",
+      "new_evidence": "Same strengthened direct-triplex archive set as Apt36.",
+      "new_classification": "MEDIUM+ direct-typology breadth / broadened scale",
+      "changes_numeric_eligibility": "no",
+      "reason": "Same core gap as Apt36."
+    },
+    {
+      "unit_dimension": "Apt38 — 7R duplex",
+      "previous_evidence_quality": "HIGH asking / MEDIUM sold typology",
+      "new_evidence": "Added direct reported achieved 7R/180m² +100m² terrace duplex sale as older fallback; exact-address YD Habanim roof/multi-level archive cross-match remains ambiguous.",
+      "new_classification": "HIGH asking; MEDIUM+ direct-type achieved fallback",
+      "changes_numeric_eligibility": "no",
+      "reason": "Press sale is old and not Tax-linked; Tax candidates remain typology-unverified."
+    },
+    {
+      "unit_dimension": "Apt39 — 5R duplex",
+      "previous_evidence_quality": "HIGH",
+      "new_evidence": "מבצע דקל 14 upgraded to HIGH_CONFIDENCE_UNIT_LINK candidate; איסר הראל conflict resolved by source hierarchy but retained as QA conflict.",
+      "new_classification": "HIGH+ evidence traceability",
+      "changes_numeric_eligibility": "no",
+      "reason": "Mivtza sale was already numeric; enrichment does not create a new independent price vote."
+    },
+    {
+      "unit_dimension": "Standard 3R — floor feature evidence",
+      "previous_evidence_quality": "LOW for feature monetization",
+      "new_evidence": "Found direct Tax observational pair at אבינועם ילין 6: exact 3R/69m², floors 6 and 2, four days apart; also 74m² Baal Shem Tov pair.",
+      "new_classification": "STRONG_OBSERVATIONAL_PAIR_AVAILABLE; causal rule still unverified",
+      "changes_numeric_eligibility": "no for adjustment",
+      "reason": "Orientation/balcony/parking/storage/model identity remain unobserved."
+    },
+    {
+      "unit_dimension": "Standard 5R — floor feature evidence",
+      "previous_evidence_quality": "LOW for feature monetization",
+      "new_evidence": "Found Pinkas5 same-day 5R/120m² floor1 vs floor5 pair in direct Tax + Market2; Branda40 117m² floor8 vs floor1 also exists; Haplmah15 candidate has duplicate-price conflict.",
+      "new_classification": "STRONG/MEDIUM OBSERVATIONAL FLOOR EVIDENCE; no causal monetary rule",
+      "changes_numeric_eligibility": "no for adjustment",
+      "reason": "Unit model/amenities remain uncontrolled; Pinkas has a Dirobot area conflict that must remain visible."
+    }
+  ],
+  "gap_status_after_research": {
+    "VERIFIED_SOLD_GARDEN_EXACT_UNIT": "0",
+    "VERIFIED_SOLD_TRIPLEX_EXACT_UNIT": "0",
+    "VERIFIED_SOLD_DUPLEX_EXACT_UNIT": "0",
+    "HIGH_CONFIDENCE_SPECIAL_LISTING_TAX_LINKS": [
+      "מבצע דקל 14"
+    ],
+    "NEAR_SIZE_6R_TRIPLEX_220_300_INTERNAL": "not located",
+    "DIRECT_6R_TRIPLEX_ARCHIVED_RECORDS": "multiple",
+    "STANDARD_3R_MATCHED_FLOOR_OBSERVATIONS": "yes",
+    "STANDARD_5R_MATCHED_FLOOR_OBSERVATIONS": "yes",
+    "STANDARD_CAUSAL_FEATURE_PRICE_RULE": "אין כלל כספי מאומת"
+  },
+  "cbs_assessment": {
+    "source": "Israel Central Bureau of Statistics (CBS)",
+    "source_url": "https://www.cbs.gov.il/he/publications/Madad/DocLib/2026/price04aa/aa2_2_h.pdf",
+    "retrieved_at": "2026-09-11",
+    "finding": "CBS publishes aggregate dwelling-price statistics by large cities/room groups and applies quality/statistical methodology; it is not a unit-level garden/duplex/triplex linkage source.",
+    "use": "macro QA / market context only",
+    "not_for": [
+      "exact-unit linkage",
+      "garden/duplex/triplex classification",
+      "parking/storage/orientation feature effects"
+    ],
+    "evidence_class": "MACRO_CONTEXT_ONLY"
+  },
+  "data_quality_quarantines": [
+    {
+      "record": "תרזה קוגלמן 4",
+      "status": "QUARANTINE_TRANSACTION_PRICE_CONFLICT",
+      "reason": "Local direct government dataset ₪5.25M vs public Tax-derived mirror ₪242k for same date/rooms/area."
+    },
+    {
+      "record": "איסר הראל 6",
+      "status": "DIRECT_LOCAL_VALUE_PREFERRED_WITH_CONFLICT_FLAG",
+      "reason": "Direct local + WizBid ₪5.4M; Market2 ₪4.9M and floor conflict."
+    },
+    {
+      "record": "מיכל לייב כץ 80",
+      "status": "QUARANTINE_AREA_SEMANTICS",
+      "reason": "Archived triplex displayed 400m² without defensible built/outdoor component semantics."
+    },
+    {
+      "record": "REMAX 233m² outside Petah Tikva",
+      "status": "EXCLUDE",
+      "reason": "Wrong geography."
+    },
+    {
+      "record": "פנקס 5 floor-1 area",
+      "status": "MIRROR_CONFLICT",
+      "reason": "Direct local Tax + Market2 show 120m²; Dirobot shows 88m² for ₪3.26M floor-1 transaction."
+    }
+  ],
+  "what_changed": [
+    "Triplex evidence is materially broader than the earlier 'one current triplex' framing: multiple archived exact-room triplex products exist.",
+    "The core Apt36/37 weakness is now specifically near-size internal-area and sold-unit linkage, not lack of triplex evidence in general.",
+    "Apt39 now has a high-confidence historical listing-to-sale identity candidate at Mivtza Dekel 14.",
+    "Standard 3R/5R already contained useful matched floor observations in the Tax data; they were previously underused."
+  ],
+  "what_did_not_change": [
+    "No pricing-engine changes were made.",
+    "No garden/triplex/duplex historical listing achieved strict EXACT_UNIT_LINK.",
+    "No numeric floor/balcony/orientation/parking/storage premium is approved.",
+    "CBS remains macro context rather than a unit-level linkage source."
+  ],
+  "next_review_decisions": [
+    "Decide whether HIGH_CONFIDENCE_UNIT_LINK at Mivtza Dekel 14 is sufficient for human-reviewed attribute display while keeping attributes non-voting.",
+    "Review Avinoam Yellin 6 and Pinkas 5 matched floor observations as descriptive evidence only.",
+    "Re-query the direct official record for Tereza Kugelman 4 before any numeric use.",
+    "Do not spend effort on more generic listings; remaining searches should target stable unit identifiers/floorplans/transaction IDs."
+  ]
+}

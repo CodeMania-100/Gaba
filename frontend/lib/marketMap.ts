@@ -650,6 +650,53 @@ export function deriveSpecialCompetitorPoints(workspace: PetahTikvaWorkspace, un
   return points;
 }
 
+/** Newly-researched triplex-product context points (task "Focused Batch —
+ * Integrate New Research Evidence" item 9) -- archived listings that prove a
+ * real 6R triplex product exists at that address, geocoded once (see
+ * add_special_typology_context_geocodes_v1.py) and joined here purely by
+ * address against this unit's own first_researcher_context (never a new
+ * eligibility computation). Always contributesToPricing=false: these never
+ * vote, so the map's existing "רק ראיות שנכנסו לחישוב" filter already hides
+ * them automatically, leaving them visible only under "כל נתוני השוק". */
+export function deriveSpecialTypologyContextPoints(workspace: PetahTikvaWorkspace, unitNumber: SpecialUnitNumber): MarketMapPoint[] {
+  const geocodes = workspace.market_map_geocodes?.special_typology_context?.resolved ?? [];
+  if (geocodes.length === 0) return [];
+  const records = workspace.special_unit_market_context.units[String(unitNumber)]?.first_researcher_context ?? [];
+
+  const points: MarketMapPoint[] = [];
+  for (const geo of geocodes) {
+    const record = records.find((r) => {
+      if (r.context_type !== "triplex_context") return false;
+      const address = ((r.normalized as JsonRecord | undefined) ?? r).address as string | undefined;
+      return address != null && address.includes(geo.address);
+    });
+    if (!record) continue;
+    const facts = (record.normalized as JsonRecord | undefined) ?? record;
+    const states = facts.archive_states as JsonRecord[] | undefined;
+    const rooms = (facts.rooms as number | undefined) ?? (states?.[0]?.rooms as number | undefined);
+    const internalArea = (facts.advertised_area_m2 as number | undefined) ?? (facts.built_internal_area_m2 as number | undefined) ?? (states?.[0]?.advertised_area_m2 as number | undefined);
+    const priceIls = (facts.asking_price_ils as number | undefined) ?? (states?.[0]?.asking_price_ils as number | undefined);
+    points.push({
+      id: geo.record_id,
+      kind: "asking",
+      lat: geo.lat,
+      lng: geo.lng,
+      title: "טריפלקס — הקשר לסוג הנכס",
+      address: geo.address,
+      rooms,
+      internalArea,
+      priceIls,
+      priceBasis: "asking",
+      contributesToPricing: false,
+      coordinatePrecision: geo.precision,
+      specialUnitNumber: unitNumber,
+      specialStatus: "context_only",
+      specialStatusReason: "לא השתתף בחישוב",
+    });
+  }
+  return points;
+}
+
 export interface SpecialUnitMapCoverage {
   soldMappedCount: number;
   soldTotalCount: number;

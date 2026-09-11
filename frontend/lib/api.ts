@@ -419,6 +419,10 @@ export interface MapGeocodeFile {
   special_asking_evidence_coverage?: { unique_addresses_total: number; unique_addresses_resolved: number };
   special_sold?: { resolved: MapGeocodeRecord[]; unresolved: JsonRecord[] };
   special_asking?: { resolved: MapGeocodeRecord[]; unresolved: JsonRecord[] };
+  // Newly-researched triplex-product context addresses (task "Focused Batch
+  // — Integrate New Research Evidence" item 9) -- same one-time geocoding
+  // pass (add_special_typology_context_geocodes_v1.py), never voting.
+  special_typology_context?: { resolved: MapGeocodeRecord[]; unresolved: JsonRecord[] };
 }
 
 export interface PetahTikvaWorkspace {

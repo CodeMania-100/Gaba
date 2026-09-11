@@ -143,7 +143,15 @@ export interface ConfidenceDimension {
  * few fixed Hebrew words to show, never a number, and never feed back into
  * confidence/market_indication themselves (those remain pricing_core's own
  * output, read as-is). */
-export function confidenceDimensions(indication: SpecialUnitIndication): ConfidenceDimension[] {
+/** `broadDirectTypeContextCount` (task item 8): the number of real,
+ * verified-address, non-voting direct-type context records found for this
+ * category (e.g. the Apt36/37 triplex_context cards) -- when there are
+ * enough of them, "התאמת סוג הנכס" reflects that direct triplex PRODUCT
+ * evidence is now good, even though none of those records vote in the
+ * priced comps (which stay all tier_b_size_relaxed, since no near-size sale
+ * was found). This only changes explanatory wording; it never touches
+ * confidence/market_indication themselves. */
+export function confidenceDimensions(indication: SpecialUnitIndication, broadDirectTypeContextCount = 0): ConfidenceDimension[] {
   const totalUsed = (["sold", "current_asking", "new_development"] as const).reduce(
     (s, l) => s + (indication.lanes[l]?.comps_used.length ?? 0),
     0
@@ -155,7 +163,8 @@ export function confidenceDimensions(indication: SpecialUnitIndication): Confide
   const primary = primaryLaneName(indication);
   const primaryComps = primary ? (indication.lanes[primary]?.comps_used ?? []) : [];
   const directCount = primaryComps.filter((c) => c.tier === "tier_a_direct").length;
-  const typeMatch = primaryComps.length === 0 ? "לא ידועה" : directCount === primaryComps.length ? "מלאה" : "חלקית";
+  let typeMatch = primaryComps.length === 0 ? "לא ידועה" : directCount === primaryComps.length ? "מלאה" : "חלקית";
+  if (broadDirectTypeContextCount >= 3 && typeMatch === "חלקית") typeMatch = "טובה";
 
   const maxAreaDiffPct =
     primaryComps.length === 0
@@ -168,6 +177,16 @@ export function confidenceDimensions(indication: SpecialUnitIndication): Confide
     { label: "התאמת סוג הנכס", value: typeMatch },
     { label: "התאמת קנה המידה", value: scaleMatch },
   ];
+}
+
+/** Explanatory-only override of the closing confidence sentence (task item
+ * 8) -- shown instead of indication.confidence_reason only when there is
+ * now real breadth of direct-type context evidence to explain (currently
+ * just the Apt36/37 triplex case). Never changes indication.confidence
+ * itself. */
+export function confidenceReasonOverride(broadDirectTypeContextCount: number): string | null {
+  if (broadDirectTypeContextCount < 3) return null;
+  return "נמצאו מספר טריפלקסים בני 6 חדרים, אך הם קטנים משמעותית מהדירות בפרויקט.";
 }
 
 // ---------------------------------------------------------------------------
@@ -286,4 +305,23 @@ export function evidenceGapText(context: SpecialUnitContext): string | null {
   const lower = Math.round(area);
   const upper = lower + 5;
   return `עסקה מאומתת של ${categoryLabel} בגודל הקרוב ל־${lower}–${upper} מ״ר.`;
+}
+
+/** Corrected triplex evidence story (task item 6) -- replaces the old,
+ * easy-to-misread single-line gap text with the fuller, accurate narrative
+ * once real breadth of direct-type context exists: triplex evidence is not
+ * scarce in general, the specific remaining gap is near-size + sold-unit
+ * linkage. Returns null (falls back to the plain evidenceGapText above)
+ * when there isn't enough triplex context to justify the fuller story. */
+export function triplexEvidenceStory(context: SpecialUnitContext, triplexContextCount: number): string[] | null {
+  if (context.category !== "triplex" || triplexContextCount < 2) return null;
+  const indication = context.market_indication;
+  const area = indication?.subject_internal_area_sqm;
+  const lower = area != null ? Math.round(area) : 255;
+  const upper = area != null ? lower + 5 : 260;
+  return [
+    "נמצאו מספר נכסי טריפלקס בני 6 חדרים להשוואה.",
+    `המגבלה העיקרית: לא נמצאה עסקה מאומתת של טריפלקס בשטח פנימי הקרוב ל־${lower}–${upper} מ״ר.`,
+    "לא הוכח קישור ודאי בין מודעת טריפלקס היסטורית לעסקת מכר ספציפית ברשות המסים.",
+  ];
 }

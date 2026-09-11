@@ -1,0 +1,455 @@
+{
+  "version": "standard_feature_matched_pairs_v1_rebuilt_2026_09_11",
+  "metadata": {
+    "retrieved_at": "2026-09-11",
+    "purpose": "Matched observations for standard 3R/5R feature effects. Raw observed prices only; no premium/adjustment recommendation.",
+    "pricing_methodology_changed": false,
+    "causal_rule_verified": false,
+    "current_conclusion": "אין כלל כספי מאומת"
+  },
+  "matched_unit_pairs": {
+    "floor": [
+      {
+        "pair_id": "FLOOR_3R_AVINOAM_YELLIN_6",
+        "family": "standard_3r",
+        "quality": "STRONG_OBSERVATIONAL_PAIR",
+        "address": "אבינועם ילין 6, פתח תקווה",
+        "match_basis": "same exact address, exact 3 rooms, exact registered area 69m², transactions 4 days apart, distinct subparcels, different floors",
+        "observations": [
+          {
+            "deal_id": "11359095666",
+            "date": "2026-03-14",
+            "rooms": 3,
+            "registered_area_m2": 69,
+            "floor": 6,
+            "price_ils": 2255000,
+            "subparcel": 7
+          },
+          {
+            "deal_id": "11359095667",
+            "date": "2026-03-18",
+            "rooms": 3,
+            "registered_area_m2": 69,
+            "floor": 2,
+            "price_ils": 2170000,
+            "subparcel": 8
+          }
+        ],
+        "sources": [
+          {
+            "source": "local direct Tax Authority / registered-deal dataset",
+            "source_type": "registered_sale",
+            "source_url": "https://www.nadlan.gov.il/",
+            "retrieved_at": "2026-09-11",
+            "underlying_source": "registered_government_transactions",
+            "source_file": "Pasted text(20260906-172653).txt",
+            "note": "portal URL; exact record values preserved from local direct dataset"
+          },
+          {
+            "source": "WizBid Tax-derived mirror",
+            "source_type": "registered_sale_mirror",
+            "source_url": "https://wizbid.co.il/nadlan/%D7%A4%D7%AA%D7%97%20%D7%AA%D7%A7%D7%95%D7%95%D7%94/rechov/%D7%90%D7%91%D7%99%D7%A0%D7%95%D7%A2%D7%9D%20%D7%99%D7%9C%D7%99%D7%9F",
+            "retrieved_at": "2026-09-11",
+            "underlying_source": "registered_government_transactions"
+          }
+        ],
+        "observed_price_difference_ils": 85000,
+        "direction": "floor 6 observation priced above floor 2 observation",
+        "not_attributed_to_floor": true,
+        "uncontrolled_fields": [
+          "orientation",
+          "balcony",
+          "parking",
+          "storage",
+          "condition",
+          "exact model/stack"
+        ],
+        "numeric_adjustment_eligible": false
+      },
+      {
+        "pair_id": "FLOOR_5R_PINKAS_5",
+        "family": "standard_5r",
+        "quality": "STRONG_OBSERVATIONAL_PAIR_WITH_SECONDARY_AREA_CONFLICT",
+        "address": "פנקס 5, פתח תקווה",
+        "match_basis": "direct local Tax + Market2: same address, same day, exact 5 rooms, 120m², different floors/subparcels",
+        "observations": [
+          {
+            "deal_id": "3657117935",
+            "date": "2026-03-30",
+            "rooms": 5,
+            "registered_area_m2": 120,
+            "floor": 1,
+            "price_ils": 3260000,
+            "subparcel": 1
+          },
+          {
+            "deal_id": "3657113382",
+            "date": "2026-03-30",
+            "rooms": 5,
+            "registered_area_m2": 120,
+            "floor": 5,
+            "price_ils": 3225000,
+            "subparcel": 7
+          }
+        ],
+        "sources": [
+          {
+            "source": "local direct Tax Authority / registered-deal dataset",
+            "source_type": "registered_sale",
+            "source_url": "https://www.nadlan.gov.il/",
+            "retrieved_at": "2026-09-11",
+            "underlying_source": "registered_government_transactions",
+            "source_file": "Pasted text(20260906-172653).txt"
+          },
+          {
+            "source": "Market2 Tax-derived mirror",
+            "source_type": "registered_sale_mirror",
+            "source_url": "https://www.market2.co.il/lp/building/petah-tikva/%D7%97%D7%99%D7%99%D7%9D-%D7%9B%D7%94%D7%9F/5?street=%D7%A4%D7%A0%D7%A7%D7%A1",
+            "retrieved_at": "2026-09-11",
+            "underlying_source": "registered_government_transactions"
+          },
+          {
+            "source": "Dirobot Tax-derived mirror",
+            "source_type": "registered_sale_mirror",
+            "source_url": "https://www.dirobot.co.il/building-prices/%D7%A4%D7%AA%D7%97%20%D7%AA%D7%A7%D7%95%D7%95%D7%94%2C%20%D7%A4%D7%A0%D7%A7%D7%A1%2C%205",
+            "retrieved_at": "2026-09-11",
+            "underlying_source": "registered_government_transactions",
+            "note": "Dirobot reports 88m² for the floor-1 ₪3.26M record, conflicting with local direct Tax + Market2 120m²."
+          }
+        ],
+        "observed_price_difference_ils": -35000,
+        "direction": "floor 5 observation priced below floor 1 observation",
+        "not_attributed_to_floor": true,
+        "uncontrolled_fields": [
+          "orientation",
+          "balcony",
+          "parking",
+          "storage",
+          "condition",
+          "exact model/stack"
+        ],
+        "data_quality_flag": "Dirobot area conflict on floor-1 record",
+        "numeric_adjustment_eligible": false
+      },
+      {
+        "pair_id": "FLOOR_3R_BAAL_SHEM_TOV_2",
+        "family": "standard_3r",
+        "quality": "MEDIUM_OBSERVATIONAL_PAIR",
+        "address": "בעל שם-טוב 2, פתח תקווה",
+        "match_basis": "same address, exact rooms and registered area; different floors, ~3 months apart",
+        "observations": [
+          {
+            "deal_id": "11359094126",
+            "date": "2025-07-14",
+            "rooms": 3,
+            "registered_area_m2": 74,
+            "floor": 4,
+            "price_ils": 1930000,
+            "subparcel": 6
+          },
+          {
+            "deal_id": "11359094128",
+            "date": "2025-10-15",
+            "rooms": 3,
+            "registered_area_m2": 74,
+            "floor": 8,
+            "price_ils": 1950000,
+            "subparcel": 8
+          }
+        ],
+        "sources": [
+          {
+            "source": "local direct Tax Authority / registered-deal dataset",
+            "source_type": "registered_sale",
+            "source_url": "https://www.nadlan.gov.il/",
+            "retrieved_at": "2026-09-11",
+            "underlying_source": "registered_government_transactions",
+            "source_file": "Pasted text(20260906-172653).txt"
+          }
+        ],
+        "observed_price_difference_ils": 20000,
+        "direction": "floor 8 observation priced above floor 4 observation",
+        "not_attributed_to_floor": true,
+        "uncontrolled_fields": [
+          "market-time movement",
+          "orientation",
+          "balcony",
+          "parking",
+          "storage",
+          "condition",
+          "exact model/stack"
+        ],
+        "numeric_adjustment_eligible": false
+      },
+      {
+        "pair_id": "FLOOR_5R_ZEEV_BRANDA_40",
+        "family": "standard_5r",
+        "quality": "MEDIUM_OBSERVATIONAL_PAIR",
+        "address": "זאב ברנדה 40, פתח תקווה",
+        "match_basis": "same address, exact 5 rooms and 117m²; different floors, ~2.5 months apart",
+        "observations": [
+          {
+            "deal_id": "11359094482",
+            "date": "2025-12-29",
+            "rooms": 5,
+            "registered_area_m2": 117,
+            "floor": 8,
+            "price_ils": 3050000,
+            "subparcel": 10
+          },
+          {
+            "deal_id": "3656501192",
+            "date": "2026-03-16",
+            "rooms": 5,
+            "registered_area_m2": 117,
+            "floor": 1,
+            "price_ils": 2860000,
+            "subparcel": 16
+          }
+        ],
+        "sources": [
+          {
+            "source": "local direct Tax Authority / registered-deal dataset",
+            "source_type": "registered_sale",
+            "source_url": "https://www.nadlan.gov.il/",
+            "retrieved_at": "2026-09-11",
+            "underlying_source": "registered_government_transactions",
+            "source_file": "Pasted text(20260906-172653).txt"
+          }
+        ],
+        "observed_price_difference_ils": 190000,
+        "direction": "floor 8 observation priced above floor 1 observation",
+        "not_attributed_to_floor": true,
+        "uncontrolled_fields": [
+          "market-time movement",
+          "orientation",
+          "balcony",
+          "parking",
+          "storage",
+          "condition",
+          "exact model/stack"
+        ],
+        "numeric_adjustment_eligible": false
+      },
+      {
+        "pair_id": "FLOOR_5R_HAPALMACH_15",
+        "family": "standard_5r",
+        "quality": "CANDIDATE_WITH_DUPLICATE_PRICE_CONFLICT",
+        "address": "הפלמ״ח 15, פתח תקווה",
+        "match_basis": "same building, same 5 rooms, 122m², adjacent dates/floors",
+        "observations": [
+          {
+            "date": "2026-06-22",
+            "rooms": 5,
+            "registered_area_m2": 122,
+            "floor": 3,
+            "price_ils": 3340000,
+            "subparcel": "6373-338-4"
+          },
+          {
+            "date": "2026-06-22",
+            "rooms": 5,
+            "registered_area_m2": 122,
+            "floor": 3,
+            "price_ils": 3360000,
+            "subparcel": "6373-338-4"
+          },
+          {
+            "date": "2026-06-21",
+            "rooms": 5,
+            "registered_area_m2": 122,
+            "floor": 4,
+            "price_ils": 3360000,
+            "subparcel": "6373-338-3"
+          }
+        ],
+        "sources": [
+          {
+            "source": "Market2 Tax-derived mirror",
+            "source_type": "registered_sale_mirror",
+            "source_url": "https://www.market2.co.il/lp/building/petah-tikva/%D7%A7%D7%93%D7%99%D7%A9-%D7%9C%D7%95%D7%96/3?street=%D7%94%D7%A4%D7%9C%D7%9E%22%D7%97",
+            "retrieved_at": "2026-09-11",
+            "underlying_source": "registered_government_transactions"
+          },
+          {
+            "source": "WizBid Tax-derived mirror",
+            "source_type": "registered_sale_mirror",
+            "source_url": "https://wizbid.co.il/nadlan/%D7%A4%D7%AA%D7%97%20%D7%AA%D7%A7%D7%95%D7%95%D7%94/rechov/%D7%94%D7%A4%D7%9C%D7%9E%22%D7%97",
+            "retrieved_at": "2026-09-11",
+            "underlying_source": "registered_government_transactions"
+          }
+        ],
+        "observed_price_difference_ils": null,
+        "not_attributed_to_floor": true,
+        "data_quality_flag": "same date/subparcel/floor 3 appears at two prices; cannot select one silently",
+        "numeric_adjustment_eligible": false
+      },
+      {
+        "pair_id": "FLOOR_3R_BOROCHOV_4",
+        "family": "standard_3r",
+        "quality": "CANDIDATE_AREA_UNKNOWN",
+        "address": "בורוכוב 4, פתח תקווה",
+        "match_basis": "same exact address/date/rooms, different floor; area not exposed in source",
+        "observations": [
+          {
+            "date": "2026-07-29",
+            "rooms": 3,
+            "registered_area_m2": null,
+            "floor": 7,
+            "total_building_floors": 9,
+            "price_ils": 2138271
+          },
+          {
+            "date": "2026-07-29",
+            "rooms": 3,
+            "registered_area_m2": null,
+            "floor": 2,
+            "total_building_floors": 9,
+            "price_ils": 2006900
+          }
+        ],
+        "sources": [
+          {
+            "source": "Diraly display of Tax Authority neighborhood transactions",
+            "source_type": "registered_sale_mirror",
+            "source_url": "https://www.diraly.co.il/projects/%D7%A6%D7%94-%D7%9C-17-19",
+            "retrieved_at": "2026-09-11",
+            "underlying_source": "registered_government_transactions"
+          }
+        ],
+        "observed_price_difference_ils": 131371,
+        "direction": "floor 7 observation priced above floor 2",
+        "not_attributed_to_floor": true,
+        "uncontrolled_fields": [
+          "area",
+          "model/stack",
+          "orientation",
+          "balcony",
+          "parking",
+          "storage"
+        ],
+        "numeric_adjustment_eligible": false
+      }
+    ],
+    "orientation": [],
+    "balcony_size": [],
+    "parking": [],
+    "storage": []
+  },
+  "matched_attribute_nonpriced_observations": {
+    "orientation": [
+      {
+        "project": "רוטשילד 163-165",
+        "variants": [
+          {
+            "rooms": 5,
+            "internal_area_m2": 112,
+            "balcony_area_m2": 12,
+            "parking": 1,
+            "orientation": [
+              "south",
+              "west"
+            ],
+            "price_ils": null
+          },
+          {
+            "rooms": 5,
+            "internal_area_m2": 112,
+            "balcony_area_m2": 12,
+            "parking": 1,
+            "orientation": [
+              "north",
+              "west"
+            ],
+            "price_ils": null
+          }
+        ],
+        "source_url": "https://katash.co.il/%D7%A8%D7%95%D7%98%D7%A9%D7%99%D7%9C%D7%93-163-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%95%D7%94/",
+        "why_not_monetizable": "Excellent model match but model-specific prices are not public."
+      }
+    ],
+    "balcony_size": [
+      {
+        "project": "השופט ברנדייס 47",
+        "variants": [
+          {
+            "rooms": 5,
+            "internal_area_m2": 118,
+            "balcony_area_m2": 12,
+            "orientation": [
+              "east",
+              "south",
+              "west"
+            ],
+            "parking": 1,
+            "price_ils": null
+          },
+          {
+            "rooms": 5,
+            "internal_area_m2": 118,
+            "balcony_area_m2": 11,
+            "orientation": [
+              "east",
+              "south",
+              "west"
+            ],
+            "parking": 1,
+            "price_ils": null
+          }
+        ],
+        "source_url": "https://katash.co.il/%D7%91%D7%A8%D7%A0%D7%93%D7%99%D7%99%D7%A1-47-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%95%D7%94/",
+        "why_not_monetizable": "Prices by model are not public."
+      }
+    ],
+    "parking": [
+      {
+        "project": "רוטשילד 163-165",
+        "observation": "All shown standard 5R floorplan models include one underground parking space.",
+        "source_url": "https://katash.co.il/%D7%A8%D7%95%D7%98%D7%A9%D7%99%D7%9C%D7%93-163-%D7%A4%D7%AA%D7%97-%D7%AA%D7%A7%D7%95%D7%95%D7%94/",
+        "why_not_monetizable": "No otherwise-matched variant without parking."
+      }
+    ],
+    "storage": [
+      {
+        "project": "TRIO",
+        "observation": "Project-level marketing states attached storage for apartments.",
+        "source_url": "https://www.yad2.co.il/yad1/project/16844",
+        "why_not_monetizable": "No otherwise-matched with/without-storage unit price pair."
+      }
+    ]
+  },
+  "new_development_priced_pair_result": {
+    "status": "NO_FULLY_DEFENSIBLE_PUBLISHED_PAIR_FOUND",
+    "near_misses": [
+      {
+        "project": "TRIO",
+        "rooms": 5,
+        "internal_area_m2": 110,
+        "known_floor_price": {
+          "floor": 1,
+          "price_ils": 2890000
+        },
+        "other_floor": 5,
+        "other_floor_price_ils": null,
+        "source_url": "https://www.yad2.co.il/yad1/project/16844"
+      },
+      {
+        "project": "חנקין 11",
+        "rooms": 5,
+        "internal_area_m2": 118,
+        "floor_range": "6-8",
+        "published_starting_price_ils": 2900000,
+        "reason": "one price across a floor range, not separate floor prices",
+        "source_url": "https://www.yad2.co.il/yad1/project/14561"
+      }
+    ]
+  },
+  "conclusion": {
+    "floor": "Strong observational pairs now exist, including an exact-69m² 3R pair and a same-day 5R pair. They do not establish a causal floor premium because other unit attributes/model identity are unobserved.",
+    "orientation": "אין כלל כספי מאומת",
+    "balcony": "אין כלל כספי מאומת",
+    "parking": "אין כלל כספי מאומת",
+    "storage": "אין כלל כספי מאומת",
+    "pricing_engine_action": "NONE"
+  }
+}

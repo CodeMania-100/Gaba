@@ -3808,5 +3808,55 @@
         "reason": "Property-form conflict prevents upgrading the Tax records to apartment duplex evidence."
       }
     ]
+  },
+  "third_researcher_context_v1": {
+    "source_bundle": "third_researcher_2026-09-11",
+    "source_files": [
+      "data/research/first_researcher/research_gap_closure_report_v1(2).json",
+      "data/research/first_researcher/special_gap_research_v2(2).json",
+      "data/research/first_researcher/special_tax_linkage_v2(2).json",
+      "data/research/first_researcher/standard_feature_matched_pairs_v1(2).json"
+    ],
+    "excluded_source_files": {
+      "research_gap_closure_report_v1(2).json": "reference/summary only -- never ingested as pricing data"
+    },
+    "standard_feature_provenance": {
+      "role": "corroboration only -- re-verified deal_id/date/floor/price/subparcel for Avinoam Yellin 6, Pinkas 5, Baal Shem Tov 2 and Zeev Branda 40 all match the canonical data/frozen/standard_unit_attribute_enrichment_v1.json exactly; that file remains the runtime/UI source and these records are not duplicated as separate display cards",
+      "verified_monetary_rule": null
+    },
+    "special_typology_provenance": {
+      "role": "corroboration only -- the Apt36/37 triplex-context records (Ossishkin 22, Arthur Ruppin 8, Montefiore 14) and the Apt39 Mivtza Dekel 14 high-confidence Tax/listing link were re-verified and match the already-merged second_researcher_context_v1 records; not duplicated here"
+    },
+    "numeric_eligibility_default": false,
+    "usage_rule": "Context/provenance only, same as first_researcher_context_v2 and second_researcher_context_v1. No record here is read by pricing_core.special_market_indication or any voting-lane builder. pricing_engine_updated=false (per this pass's own metadata), no causal feature-price rule was verified, review_required_before_numeric_use=true.",
+    "garden_context": [],
+    "triplex_context": [],
+    "duplex_context": [
+      {
+        "id": "APT38_URI_KARNI_HISTORICAL_PRESS_FALLBACK",
+        "context_type": "duplex_context",
+        "relevant_units": [
+          "38"
+        ],
+        "numeric_eligibility": false,
+        "source": "local real-estate press report",
+        "source_type": "reported_achieved_sale_press",
+        "source_url": "https://www.melabes.co.il/real_estate/79524",
+        "retrieved_date": "2026-09-11",
+        "normalized": {
+          "address": "אורי קרני, כפר גנים ג, פתח תקווה",
+          "property_type": "duplex",
+          "rooms": 7,
+          "built_internal_area_m2": 180,
+          "outdoor_area_m2": 100,
+          "report_date": "2022-01-30"
+        },
+        "evidence_class": "DIRECT_TYPE_SIZE_FALLBACK_REPORTED_ACHIEVED_SALE",
+        "why_relevant": "Direct 7R duplex at near-subject internal size (180m² vs Apt38's 170.1m²) with a separately reported outdoor/terrace component -- structurally the closest direct-type match found for Apt38.",
+        "why_not_numeric": "Old report (2022), not linked to any Tax deal ID/subparcel in this pass -- historical context only, not a registered or Tax-linked transaction."
+      }
+    ],
+    "new_development_updates": [],
+    "qa_and_linkage": []
   }
 }

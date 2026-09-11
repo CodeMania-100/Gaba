@@ -18,6 +18,7 @@ import {
   sellThroughGapPoints,
 } from "@/lib/marketingStrategy";
 import { ApartmentParameterRow, deriveApartmentParameterRows, PARAMETER_STATUS_LABELS } from "@/lib/apartmentParameters";
+import { buildConsistencySummary } from "@/lib/priceListConsistency";
 
 interface Props {
   row: PtkPriceListRow;
@@ -76,6 +77,24 @@ export default function UnitDrawer({ row, workspace, marketingStrategy, onChange
       : (workspace.special_unit_market_context.units[row.unit_number]?.market_indication?.confidence ?? null);
 
   const isSpecial = route !== "standard_family";
+
+  // Recommended range for the closing recap in MarketingDecisionChain --
+  // standard route reads row.market_range directly; special route reads the
+  // same indicative_lower/upper_ils this drawer's own section A/B already
+  // display elsewhere. Never a new range calculation.
+  const marketRange = route === "standard_family"
+    ? (row.market_range ? { lower: row.market_range.lower, upper: row.market_range.upper } : null)
+    : (() => {
+        const indication = workspace.special_unit_market_context.units[row.unit_number]?.market_indication;
+        return indication ? { lower: indication.indicative_lower_ils, upper: indication.indicative_upper_ils } : null;
+      })();
+
+  // This unit's own consistency finding (if any), reusing the exact same
+  // lib/priceListConsistency.ts logic PriceListConsistency.tsx already runs
+  // over the whole board -- no new floor/size/sibling heuristics here.
+  const consistencyFinding = buildConsistencySummary(workspace.price_list, marketingStrategy).findings.find(
+    (f) => f.unitA.row.unit_number === row.unit_number || f.unitB.row.unit_number === row.unit_number
+  ) ?? null;
   // Special units get real room to show the chart/funnel/comparison layers
   // on desktop (task item 1: ~560-650px / ~40-45vw), while staying
   // full/near-full-screen on mobile (no width cap below the sm breakpoint).
@@ -93,7 +112,15 @@ export default function UnitDrawer({ row, workspace, marketingStrategy, onChange
           its own header, styled to match StepHeading (see MarketingDecisionChain).
           Also where "שלח לאישור ב-Monday" lives, downstream of the proposed
           price (task item 20). */}
-      <MarketingDecisionChain row={row} state={marketingStrategy} onChange={onChangeMarketingStrategy} confidence={confidence} />
+      <MarketingDecisionChain
+        row={row}
+        state={marketingStrategy}
+        onChange={onChangeMarketingStrategy}
+        confidence={confidence}
+        isSpecial={isSpecial}
+        marketRange={marketRange}
+        consistencyFinding={consistencyFinding}
+      />
     </>
   );
 

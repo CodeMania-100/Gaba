@@ -397,7 +397,7 @@ export default function MarketGeoMap({ workspace, selection, onSelectionChange }
   return (
     <section className="flex flex-col gap-4 rounded-lg border border-slate-300 bg-white p-5 shadow-sm">
       <div>
-        <h2 className="text-lg font-bold text-slate-900">מפת השוק והתחרות</h2>
+        <h2 className="text-lg font-bold text-slate-900">איפה נמצאות ראיות השוק?</h2>
         <p className="text-xs text-slate-500">מיקום עסקאות, דירות מוצעות ופרויקטים מתחרים בסביבת אזור ההשוואה</p>
         <p className="mt-1 text-[11px] text-slate-400">
           כתובת הפרויקט לא סופקה במטלה; סמן הפרויקט מייצג את מרכז אזור ההדגמה בלבד.

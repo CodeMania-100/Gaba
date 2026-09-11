@@ -26,7 +26,7 @@ export default function StandardFeatureFindings({ family, familyKey }: Props) {
 
   return (
     <section className="rounded-md border border-slate-200 p-3">
-      <div className="mb-2 text-sm font-semibold text-slate-800">מה מצאנו לגבי מאפייני הדירה?</div>
+      <div className="mb-2 text-sm font-semibold text-slate-800">מה נתוני השוק מלמדים על הקומה?</div>
 
       {/* Distinction legend (task item 5) -- shown once, applies to every row below. */}
       <div className="mb-2 grid grid-cols-[1fr_auto_auto_auto] gap-x-3 gap-y-1 rounded bg-slate-50 px-2.5 py-1.5 text-[11px] text-slate-500">

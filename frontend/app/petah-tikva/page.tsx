@@ -2,25 +2,18 @@
 
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
-import { api, PetahTikvaScenario, PetahTikvaWorkspace, pricingRouteOf, PtkPriceListRow } from "@/lib/api";
+import { api, PetahTikvaWorkspace, pricingRouteOf, PtkPriceListRow } from "@/lib/api";
 import { checkWorkspaceContext, WORKSPACE_MISMATCH_MESSAGE } from "@/lib/workspaceGuard";
 import { MarketMapSelection, SPECIAL_UNIT_NUMBERS, SpecialUnitNumber } from "@/lib/marketMap";
-import FamilyPanel from "./components/FamilyPanel";
-import DecisionBoard from "./components/DecisionBoard";
-import StrategyPanel from "./components/StrategyPanel";
-import DataQualitySection, { CaseStudyCard3R } from "./components/DataQualitySection";
 import PricingDecisionBoard from "./components/PricingDecisionBoard";
 import PriceListConsistency from "./components/PriceListConsistency";
 import ProjectKpiSummary from "./components/ProjectKpiSummary";
 import ExecutiveOverview from "./components/ExecutiveOverview";
 import BuildingExplorer from "./components/BuildingExplorer";
 import UnitDrawer from "./components/UnitDrawer";
-import EvidenceDetailModal from "./components/EvidenceDetailModal";
-import CompetitorMap from "./components/CompetitorMap";
-import CompetitiveIntelligence from "./components/CompetitiveIntelligence";
-import MarketGeoMap from "./components/MarketGeoMap";
 import MarketingStrategyPanel from "./components/MarketingStrategyPanel";
-import ResearchSection from "./components/ResearchSection";
+import WorkspaceTabs, { TopTab } from "./components/WorkspaceTabs";
+import MarketAndCompetitionWorkspace, { MarketInnerTab } from "./components/MarketAndCompetitionWorkspace";
 import { defaultMarketingStrategyState, MarketingStrategyState } from "@/lib/marketingStrategy";
 
 export default function PetahTikvaWorkspacePage() {
@@ -28,25 +21,25 @@ export default function PetahTikvaWorkspacePage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [mismatch, setMismatch] = useState<string | null>(null);
-  // Standard 3R/5R family, shared by Competitive Intelligence / Research
-  // Section / the family evidence panels -- unrelated to the map's own
-  // selection below (see task item 20: a special-unit map selection must
-  // never break these standard-only sections).
-  const [researchFamily, setResearchFamily] = useState<"3R" | "5R">("3R");
+  // Standard 3R/5R family, shared by the market/competition workspace --
+  // unrelated to the map's own selection below (a special-unit map
+  // selection must never break these standard-only sections).
+  const [marketFamily, setMarketFamily] = useState<"3R" | "5R">("3R");
   // The geo map's own selection -- can be a standard family OR one of the 7
   // special units. Fully independent state; only the explicit "הצג ... על
   // המפה" drawer action (see openMapEvidence below) deliberately syncs the
   // two.
   const [mapSelection, setMapSelection] = useState<MarketMapSelection>({ kind: "standard_family", family: "3R" });
   const [selectedUnit, setSelectedUnit] = useState<PtkPriceListRow | null>(null);
-  const [evidenceLane, setEvidenceLane] = useState<"sold" | "current_asking" | "new_development" | null>(null);
-
-  const [scenario, setScenario] = useState<PetahTikvaScenario | null>(null);
-  const [scenarioLoading, setScenarioLoading] = useState(false);
-  const [scenarioError, setScenarioError] = useState<string | null>(null);
 
   const [marketingStrategy, setMarketingStrategy] = useState<MarketingStrategyState>(defaultMarketingStrategyState());
-  const [researchOpen, setResearchOpen] = useState(false);
+
+  // Top-level capability shell + the market workspace's own inner tab --
+  // both controlled here (not self-managed) so the drawer's "הצג ראיות"
+  // actions can jump straight to a specific tab/inner-tab from anywhere,
+  // and so navigating away and back never resets either selection.
+  const [activeTab, setActiveTab] = useState<TopTab>("pricing");
+  const [marketInnerTab, setMarketInnerTab] = useState<MarketInnerTab>("map");
 
   useEffect(() => {
     let cancelled = false;
@@ -77,31 +70,26 @@ export default function PetahTikvaWorkspacePage() {
     };
   }, []);
 
+  // "הצג ראיות והשוואות" (UnitDrawer) -- closes the drawer, jumps to השוק
+  // והמתחרים, and opens Tab ג (product comparison) for this unit's family.
   const openFamilyEvidence = useCallback((f: "3R" | "5R") => {
     setSelectedUnit(null);
-    setResearchFamily(f);
-    setResearchOpen(true);
-    // Double rAF: the research section must mount (it's collapsed via the
-    // `hidden` attribute, not unmounted, but the family switch above still
-    // needs a render pass) before scrollIntoView can find #evidence-section.
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        document.getElementById("evidence-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
+    setMarketFamily(f);
+    setActiveTab("market");
+    setMarketInnerTab("comparison");
   }, []);
 
-  // "הצג את ראיות השוק על המפה" (UnitDrawer, task item 19) -- closes the
-  // drawer, switches the map to this exact unit's evidence (special-unit
-  // basket, or standard family), and scrolls to the map. For a standard
-  // unit this also syncs researchFamily, since navigating here is a
-  // deliberate single "show me this unit's context" action (unlike the
-  // map's own family toggle, which stays fully independent -- see item 20).
+  // "הצג את ראיות השוק על המפה" (UnitDrawer) -- closes the drawer, switches
+  // the map to this exact unit's evidence (special-unit basket, or standard
+  // family), and jumps to Tab א of השוק והמתחרים. For a standard unit this
+  // also syncs marketFamily, since navigating here is a deliberate single
+  // "show me this unit's context" action (unlike the map's own family
+  // toggle, which stays fully independent).
   const openMapEvidence = useCallback((row: PtkPriceListRow) => {
     setSelectedUnit(null);
     if (pricingRouteOf(row) === "standard_family") {
       const f = row.family as "3R" | "5R";
-      setResearchFamily(f);
+      setMarketFamily(f);
       setMapSelection({ kind: "standard_family", family: f });
     } else {
       const n = Number(row.unit_number);
@@ -109,25 +97,8 @@ export default function PetahTikvaWorkspacePage() {
         setMapSelection({ kind: "special_unit", unitNumber: n as SpecialUnitNumber });
       }
     }
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        document.getElementById("market-geo-map")?.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
-  }, []);
-
-  const loadScenario = useCallback(async (pct: number) => {
-    setScenarioLoading(true);
-    setScenarioError(null);
-    try {
-      const result = await api.getPetahTikvaScenario(pct);
-      setScenario(result);
-    } catch (err) {
-      console.error("Failed to compute scenario:", err);
-      setScenarioError("לא ניתן לטעון כרגע את נתוני הפרויקט. נסה לרענן בעוד מספר שניות.");
-    } finally {
-      setScenarioLoading(false);
-    }
+    setActiveTab("market");
+    setMarketInnerTab("map");
   }, []);
 
   if (loading) {
@@ -157,18 +128,14 @@ export default function PetahTikvaWorkspacePage() {
     );
   }
 
-  const currentFamily = data.families.find((f) => f.family === researchFamily) ?? data.families[0];
+  const currentFamily = data.families.find((f) => f.family === marketFamily) ?? data.families[0];
 
-  // The frozen baseline price_list is never mutated. When a scenario is active,
-  // standard rows are swapped for the scenario's (in-memory, backend-computed)
-  // price -- with the baseline price carried alongside for comparison -- while
-  // the 7 special rows always come from the untouched baseline, unaffected by
-  // any strategy position.
-  const scenarioByUnit = new Map((scenario?.price_list ?? []).map((r) => [r.unit_number, r]));
-  const displayRows: PtkPriceListRow[] = data.price_list.map((baseRow) => {
-    if (!scenario || pricingRouteOf(baseRow) !== "standard_family") return baseRow;
-    return scenarioByUnit.get(baseRow.unit_number) ?? baseRow;
-  });
+  // The frozen baseline price_list is the only price list rendered anywhere
+  // in the user-facing product -- the historical 25/50/75 scenario selector
+  // that used to swap it out has been removed entirely (kept only outside
+  // this application, for historical research), so there is exactly one
+  // market indication and one proposed price everywhere.
+  const displayRows: PtkPriceListRow[] = data.price_list;
 
   return (
     <div className="min-h-screen pb-16">
@@ -195,90 +162,33 @@ export default function PetahTikvaWorkspacePage() {
         )}
       </header>
 
-      <main className="flex flex-col gap-6 px-6 py-5">
-        {/* KPI summary */}
-        <ProjectKpiSummary rows={displayRows} state={marketingStrategy} />
-
-        {/* Executive overview: apartment mix, market trend, insights */}
-        <ExecutiveOverview workspace={data} rows={displayRows} />
-
-        {/* Visual building/floor explorer */}
-        <BuildingExplorer rows={displayRows} marketingStrategy={marketingStrategy} onSelectUnit={setSelectedUnit} />
-
-        {/* Full 39-unit operational table */}
-        <PricingDecisionBoard
-          rows={displayRows}
-          state={marketingStrategy}
-          onSelectUnit={setSelectedUnit}
-          activeScenarioPct={scenario && !scenario.is_baseline_position ? scenario.range_position_pct : null}
-        />
-
-        {/* Price-list consistency review -- decision support, not another valuation model */}
-        <PriceListConsistency workspace={data} rows={displayRows} state={marketingStrategy} onSelectUnit={setSelectedUnit} />
-
-        {/* Marketing strategy: phase, sales state, explicit strategy effects */}
-        <MarketingStrategyPanel rows={displayRows} state={marketingStrategy} onChange={setMarketingStrategy} />
-
-        {/* Market & competition -- visible, not collapsed */}
-        <section id="market-geo-map" className="flex flex-col gap-6">
-          <div>
-            <h2 className="text-lg font-bold text-slate-900">שוק ותחרות</h2>
-            <p className="text-xs text-slate-500">מיקום גאוגרפי, מודיעין תחרותי, ומיקום אינדיקציית השוק שלנו מול החלופות.</p>
-          </div>
-          <MarketGeoMap workspace={data} selection={mapSelection} onSelectionChange={setMapSelection} />
-          <CompetitiveIntelligence
-            workspace={data}
-            rows={displayRows}
-            marketingStrategy={marketingStrategy}
-            family={researchFamily}
-            onFamilyChange={setResearchFamily}
-          />
-          <CompetitorMap workspace={data} />
-        </section>
-
-        {/* Data / methodology -- collapsed by default */}
-        <ResearchSection open={researchOpen} onToggle={() => setResearchOpen((v) => !v)}>
-          <section id="evidence-section">
-            <div className="mb-3 flex overflow-hidden rounded-md border border-slate-300 w-fit">
-              {(["3R", "5R"] as const).map((f) => (
-                <button
-                  key={f}
-                  onClick={() => setResearchFamily(f)}
-                  className={`px-5 py-2 text-sm font-semibold transition ${
-                    researchFamily === f ? "bg-slate-900 text-white" : "bg-white text-slate-600 hover:bg-slate-50"
-                  }`}
-                >
-                  {f === "3R" ? "3 חדרים" : "5 חדרים"}
-                </button>
-              ))}
-            </div>
-            {currentFamily && <FamilyPanel family={currentFamily} workspace={data} onOpenEvidence={setEvidenceLane} />}
-          </section>
-
-          {currentFamily && <DecisionBoard workspace={data} family={currentFamily} scenario={scenario} />}
-
-          <div id="strategy-section">
-            <StrategyPanel
-              scenario={scenario}
-              loading={scenarioLoading}
-              error={scenarioError}
-              baselineTotalIls={data.project.total_standard_unit_revenue_ils}
-              selectedFamily={researchFamily}
-              familyRange={{ lower: currentFamily?.market.supported_lower ?? null, upper: currentFamily?.market.supported_upper ?? null }}
-              onSelectPosition={loadScenario}
-              onResetToBaseline={() => setScenario(null)}
+      <main className="px-6 py-5">
+        <WorkspaceTabs
+          activeTab={activeTab}
+          onActiveTabChange={setActiveTab}
+          pricingContent={
+            <>
+              <ProjectKpiSummary rows={displayRows} state={marketingStrategy} />
+              <ExecutiveOverview workspace={data} rows={displayRows} />
+              <BuildingExplorer rows={displayRows} marketingStrategy={marketingStrategy} onSelectUnit={setSelectedUnit} />
+              <PricingDecisionBoard rows={displayRows} state={marketingStrategy} onSelectUnit={setSelectedUnit} />
+              <PriceListConsistency workspace={data} rows={displayRows} state={marketingStrategy} onSelectUnit={setSelectedUnit} />
+            </>
+          }
+          marketContent={
+            <MarketAndCompetitionWorkspace
+              workspace={data}
+              marketingStrategy={marketingStrategy}
+              family={marketFamily}
+              onFamilyChange={setMarketFamily}
+              mapSelection={mapSelection}
+              onMapSelectionChange={setMapSelection}
+              innerTab={marketInnerTab}
+              onInnerTabChange={setMarketInnerTab}
             />
-          </div>
-
-          <CaseStudyCard3R caseStudy={data.data_quality.case_study_3r_new_development} />
-
-          {currentFamily && <DataQualitySection workspace={data} family={currentFamily} />}
-
-          <details className="rounded-md border border-slate-200 p-3 text-sm">
-            <summary className="cursor-pointer text-xs font-semibold text-slate-500">הערות מתודולוגיות והנחות</summary>
-            <p className="mt-2 text-xs text-slate-400">{data.project.disclaimer}</p>
-          </details>
-        </ResearchSection>
+          }
+          strategyContent={<MarketingStrategyPanel rows={displayRows} state={marketingStrategy} onChange={setMarketingStrategy} />}
+        />
       </main>
 
       {selectedUnit && (
@@ -291,9 +201,6 @@ export default function PetahTikvaWorkspacePage() {
           onOpenMapEvidence={openMapEvidence}
           onClose={() => setSelectedUnit(null)}
         />
-      )}
-      {evidenceLane && currentFamily && (
-        <EvidenceDetailModal workspace={data} family={currentFamily.family} lane={evidenceLane} onClose={() => setEvidenceLane(null)} />
       )}
     </div>
   );

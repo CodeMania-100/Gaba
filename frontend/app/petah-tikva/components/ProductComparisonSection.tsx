@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { JsonRecord, PtkFamily, StandardAttributeEnrichment, StandardAttributeEnrichmentFamily } from "@/lib/api";
+import { JsonRecord, PetahTikvaWorkspace, PtkFamily, StandardAttributeEnrichment, StandardAttributeEnrichmentFamily } from "@/lib/api";
 import { CLASSIFICATION_COLORS, CLASSIFICATION_LABELS } from "@/lib/competitorRegister";
 import {
   ComparableItem,
@@ -15,9 +15,17 @@ import {
   projectStatusLabel,
 } from "@/lib/standardEnrichment";
 import { ils } from "@/lib/format";
-import FloorAndAttributeContext from "./FloorAndAttributeContext";
+import { deriveMatchStateRows, MATCH_STATE_COLORS, MATCH_STATE_LABELS } from "@/lib/competitorMatchStates";
+import { ProjectPhase } from "@/lib/marketingStrategy";
+import CompetitorComparisonMatrix from "./CompetitorComparisonMatrix";
 
 interface Props {
+  // Optional: only used to render the genuine product-attribute matrix rows
+  // (area/floor/delivery/payment) below the per-competitor comparison
+  // cards. Omitted by callers that don't have this context handy -- the
+  // section still works without it, just without that extra matrix.
+  workspace?: PetahTikvaWorkspace;
+  projectPhase?: ProjectPhase;
   family: PtkFamily;
   familyKey: "standard_3r" | "standard_5r";
   enrichment: StandardAttributeEnrichment;
@@ -27,7 +35,7 @@ interface Props {
 
 const PRIMARY_ROW_COUNT = 6;
 
-export default function ProductComparisonSection({ family, familyKey, enrichment, activePrice, priceLabel }: Props) {
+export default function ProductComparisonSection({ workspace, projectPhase, family, familyKey, enrichment, activePrice, priceLabel }: Props) {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const [sourcesIndex, setSourcesIndex] = useState<number | null>(null);
 
@@ -47,9 +55,9 @@ export default function ProductComparisonSection({ family, familyKey, enrichment
   return (
     <section className="rounded-lg border border-slate-300 bg-white p-5">
       <div className="mb-1">
-        <h2 className="text-lg font-bold text-slate-900">השוואת מאפייני המוצר</h2>
+        <h2 className="text-lg font-bold text-slate-900">במה המוצר שלנו שונה מהמתחרים?</h2>
         <p className="text-xs text-slate-500">
-          כיצד הדירה שלנו שונה מחלופות אמיתיות בשוק — ללא המצאת מקדמי מחיר. מחיר {priceLabel} מוצג לצורך התמצאות בלבד.
+          השוואת מאפיינים אמיתיים — ללא המצאת מקדמי מחיר. מחיר {priceLabel} מוצג לצורך התמצאות בלבד.
         </p>
       </div>
 
@@ -92,19 +100,27 @@ export default function ProductComparisonSection({ family, familyKey, enrichment
                   <table className="w-full table-fixed text-sm">
                     <thead>
                       <tr className="text-[11px] font-normal text-slate-400">
-                        <th className="w-[34%] text-start font-normal"></th>
-                        <th className="w-[33%] text-end font-normal">שלנו</th>
-                        <th className="w-[33%] text-end font-normal">המתחרה</th>
+                        <th className="w-[28%] text-start font-normal"></th>
+                        <th className="w-[27%] text-end font-normal">שלנו</th>
+                        <th className="w-[27%] text-end font-normal">המתחרה</th>
+                        <th className="w-[18%] text-end font-normal"></th>
                       </tr>
                     </thead>
                     <tbody>
-                      {visibleRows.map((row) => (
+                      {deriveMatchStateRows(visibleRows).map((row) => (
                         <tr key={row.label} className="border-t border-slate-100">
                           <td className="py-1 text-slate-500">{row.label}</td>
                           <td className="py-1 text-end font-medium text-slate-900">{row.subjectValue}</td>
                           <td className="py-1 text-end font-medium text-slate-900">
                             {row.competitorValue}
                             {row.scope && <span className="ms-1 text-[10px] font-normal text-slate-400">({factScopeLabel(row.scope)})</span>}
+                          </td>
+                          <td className="py-1 text-end">
+                            {row.matchState && (
+                              <span className={`rounded px-1.5 py-0.5 text-[10px] font-semibold ${MATCH_STATE_COLORS[row.matchState]}`}>
+                                {MATCH_STATE_LABELS[row.matchState]}
+                              </span>
+                            )}
                           </td>
                         </tr>
                       ))}
@@ -135,11 +151,22 @@ export default function ProductComparisonSection({ family, familyKey, enrichment
         </div>
       )}
 
-      <NoAutomaticRuleNotes familyKey={familyKey} enrichment={enrichment} />
+      {/* Genuine product-attribute rows only (area, floor, delivery, payment)
+          -- price/positioning rows live under "מול אילו פרויקטים אנחנו
+          מתחרים?" instead (MarketPositionSection), never duplicated here. */}
+      {workspace && projectPhase && (
+        <div className="mt-4 border-t border-slate-100 pt-4">
+          <CompetitorComparisonMatrix
+            workspace={workspace}
+            projectPhase={projectPhase}
+            family={family.family}
+            rowKeys={["area", "floor", "delivery", "payment"]}
+            title="השוואת מאפיינים מול פרויקטים מתחרים"
+          />
+        </div>
+      )}
 
-      <div className="mt-3">
-        <FloorAndAttributeContext family={enrichment.families[familyKey]} />
-      </div>
+      <NoAutomaticRuleNotes familyKey={familyKey} enrichment={enrichment} />
     </section>
   );
 }

@@ -14,13 +14,15 @@ interface Props {
   onFamilyChange: (f: "3R" | "5R") => void;
 }
 
-/** Market-position chart + competitor matrix share one family toggle (see
- * task item 19/20's combined "market-position comparison -> full competitor
- * matrix" ordering) -- and that same toggle is the one shared family
- * selector for the whole market section, controlled by the parent page so
- * it never contradicts the map's own family filter (item 33). Both are pure
- * re-displays of lib/executiveVisuals.ts derivations -- no independent
- * market calculation. */
+/** "איפה המחיר שלנו ממוקם מול האלטרנטיבות?" -- price-positioning only
+ * (task: kept apart from the genuine product-attribute comparison in
+ * ProductComparisonSection). Market-position chart + the price-only rows of
+ * the competitor matrix share one family toggle, controlled by the parent
+ * section so it never contradicts the map's own family filter. Both are
+ * pure re-displays of lib/executiveVisuals.ts derivations -- no independent
+ * market calculation, and this never introduces a second "proposed price"
+ * (task item 5): it only shows where the existing proposed price sits
+ * against alternatives. */
 export default function MarketPositionSection({ workspace, projectPhase, family, onFamilyChange }: Props) {
   const categories = useMemo(() => deriveMarketPosition(workspace, family), [workspace, family]);
 
@@ -28,8 +30,8 @@ export default function MarketPositionSection({ workspace, projectPhase, family,
     <div className="flex flex-col gap-5">
       <div className="flex flex-wrap items-start justify-between gap-2">
         <div>
-          <h3 className="text-base font-semibold text-slate-900">מיקום אינדיקציית השוק שלנו</h3>
-          <p className="text-xs text-slate-500">השוואה למקורות השוק הקיימים עבור המשפחה הנבחרת</p>
+          <h3 className="text-base font-semibold text-slate-900">איפה המחיר שלנו ממוקם מול האלטרנטיבות?</h3>
+          <p className="text-xs text-slate-500">השוואת מיקום מחיר בלבד — לא השוואת מאפייני מוצר — עבור המשפחה הנבחרת</p>
         </div>
         <div className="flex overflow-hidden rounded-md border border-slate-300">
           {(["3R", "5R"] as const).map((f) => (
@@ -48,7 +50,13 @@ export default function MarketPositionSection({ workspace, projectPhase, family,
 
       <MarketPositionChart categories={categories} />
 
-      <CompetitorComparisonMatrix workspace={workspace} projectPhase={projectPhase} family={family} />
+      <CompetitorComparisonMatrix
+        workspace={workspace}
+        projectPhase={projectPhase}
+        family={family}
+        rowKeys={["price", "price_kind", "ppsm", "phase"]}
+        title="השוואת מחיר מול פרויקטים מתחרים"
+      />
     </div>
   );
 }

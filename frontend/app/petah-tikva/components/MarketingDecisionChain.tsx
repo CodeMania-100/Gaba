@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { PtkPriceListRow } from "@/lib/api";
-import { roomsOf, unitTypeLabel } from "@/lib/family";
-import { ils, num } from "@/lib/format";
+import { CONFIDENCE_LABELS, roomsOf, unitTypeLabel } from "@/lib/family";
+import { ils, num, rangeOrPoint } from "@/lib/format";
+import { ConsistencyFinding } from "@/lib/priceListConsistency";
 import {
   computePriceBreakdown,
   EMPTY_ADJUSTMENT,
@@ -34,6 +35,23 @@ interface Props {
   // does not (task item 5/10 -- backend owns the Hebrew mapping, this
   // component only forwards the code).
   confidence: string | null;
+  // Whether this unit routes through special-unit review -- only changes the
+  // wording of the ₪0 attribute-adjustment bridge line below (special units'
+  // characteristics may already be folded into their own basket/indication,
+  // so ₪0 there means "no *additional* explicit adjustment", not "no
+  // feature value").
+  isSpecial: boolean;
+  // The recommended range recap at the bottom -- standard route:
+  // row.market_range; special route: the indication's own
+  // indicative_lower/upper_ils. Same values already shown earlier in the
+  // drawer (section 2 / section A); this is only a closing recap next to
+  // the proposed price, not a new calculation.
+  marketRange: { lower: number | null; upper: number | null } | null;
+  // This unit's own price-list consistency finding, if any -- reuses
+  // lib/priceListConsistency.ts's existing compareUnits/family-ladder logic
+  // exactly as PriceListConsistency.tsx already runs it over the whole
+  // board. No new floor/size/sibling heuristics are added here (P1).
+  consistencyFinding: ConsistencyFinding | null;
 }
 
 /** Drawer block 4 (see UnitDrawer.tsx) -- "החלטת התמחור לדירה <unit>", built
@@ -51,7 +69,7 @@ interface Props {
  * component never needs to know which pricing route produced it. Uses
  * computePriceBreakdown exactly as before -- no new adjustment layer, no
  * formula change, only display. */
-export default function MarketingDecisionChain({ row, state, onChange, confidence }: Props) {
+export default function MarketingDecisionChain({ row, state, onChange, confidence, isSpecial, marketRange, consistencyFinding }: Props) {
   const [showFormula, setShowFormula] = useState(false);
   const bucket = familyBucketOf(row);
   const familyAdjustment = state.familyAdjustments[bucket] ?? EMPTY_ADJUSTMENT;
@@ -101,6 +119,20 @@ export default function MarketingDecisionChain({ row, state, onChange, confidenc
           .filter(Boolean)
           .join(" · ")}
         <span className="mt-0.5 block text-[11px] text-slate-400">מוצג לצורך השוואה בלבד — פירוט מלא בסעיף 1 למעלה. מאפייני הדירה אינם משנים את המחיר אוטומטית.</span>
+      </div>
+
+      {/* ₪0 attribute-adjustment bridge (task feedback point 2): never
+          worded as "these features are worth zero" -- only that no verified
+          standalone monetary coefficient exists for them yet. */}
+      <div className="mb-3 rounded-md border border-dashed border-slate-200 px-2.5 py-2 text-xs">
+        <div className="flex items-center justify-between">
+          <span className="text-slate-500">+ התאמות מאפייני דירה שכומתו בנפרד</span>
+          <span className="font-medium tabular-nums text-slate-400">{ils(0)}</span>
+        </div>
+        <p className="mt-1 text-[11px] text-slate-400">
+          אין כיום בסיס נתונים מספיק לכימות כספי נפרד; המאפיינים מוצגים כראיות תומכות.
+          {isSpecial && " ייתכן שמאפייני הדירה כבר משוקללים בתוך אינדיקציית השוק הפרטנית לדירה זו — ₪0 כאן משמעו ללא התאמה כספית מפורשת נוספת מעבר לאינדיקציה, לא שאין למאפיינים ערך."}
+        </p>
       </div>
 
       <div className="mb-3">
@@ -178,6 +210,23 @@ export default function MarketingDecisionChain({ row, state, onChange, confidenc
               </div>
             )}
           </>
+        )}
+
+        {marketRange && (marketRange.lower != null || marketRange.upper != null) && (
+          <p className="mt-2 text-xs text-slate-500">
+            טווח מומלץ: {rangeOrPoint(marketRange.lower, marketRange.upper)}
+            {confidence && (
+              <>
+                {" · "}רמת ביטחון: {CONFIDENCE_LABELS[confidence] ?? confidence}
+              </>
+            )}
+          </p>
+        )}
+
+        {consistencyFinding && (
+          <p className={`mt-1 text-xs ${consistencyFinding.status === "needs_review" ? "font-medium text-amber-700" : "text-slate-500"}`}>
+            {consistencyFinding.status === "explained" ? "פער מוסבר מול דירה דומה" : "פער לבדיקה מול דירה דומה"} — פירוט בבדיקת עקביות המחירון
+          </p>
         )}
       </div>
 

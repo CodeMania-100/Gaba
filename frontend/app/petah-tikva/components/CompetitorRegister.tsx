@@ -16,9 +16,14 @@ import {
   roomRangeLabel,
   standoutFeatureLabel,
 } from "@/lib/competitorRegister";
+import { ProjectPhase } from "@/lib/marketingStrategy";
+import MarketPositionSection from "./MarketPositionSection";
 
 interface Props {
   workspace: PetahTikvaWorkspace;
+  projectPhase: ProjectPhase;
+  family: "3R" | "5R";
+  onFamilyChange: (f: "3R" | "5R") => void;
 }
 
 const GROUP_FILTERS: { key: CompetitorFilterGroup; label: string }[] = [
@@ -37,7 +42,17 @@ const FAMILY_FILTERS: { key: CompetitorFamilyFilter; label: string }[] = [
   { key: "large_premium", label: "יחידות גדולות" },
 ];
 
-export default function CompetitorMap({ workspace }: Props) {
+/** "מול אילו פרויקטים אנחנו מתחרים?" -- the single canonical competitor
+ * register (Tab ב of השוק והמתחרים). This *is* the full register grid
+ * (renamed from CompetitorMap.tsx, which despite its old name was never a
+ * map -- see MarketGeoMap.tsx for the real geographic view, Tab א).
+ * Price-positioning (where our price sits vs. these same projects) is a
+ * labeled sub-block here via MarketPositionSection, reusing the exact same
+ * real fact-sheet/matrix data the old standalone "CompetitiveIntelligence"
+ * section showed -- that section's own demo-only sales-velocity history and
+ * alerts are not carried over (they were never real data). No new
+ * comparison logic lives here. */
+export default function CompetitorRegister({ workspace, projectPhase, family, onFamilyChange }: Props) {
   const [groupFilter, setGroupFilter] = useState<CompetitorFilterGroup>("all");
   const [familyFilter, setFamilyFilter] = useState<CompetitorFamilyFilter>("all");
 
@@ -50,32 +65,38 @@ export default function CompetitorMap({ workspace }: Props) {
   const h5 = landscape.quantitative_headline["5R"];
 
   return (
-    <section id="competitor-map-section" className="flex flex-col gap-4 rounded-lg border border-slate-300 bg-white p-5">
-      <div>
-        <h2 className="text-lg font-bold text-slate-900">מפת התחרות</h2>
-        <p className="mt-1 text-sm text-slate-700">{landscape.project_count} פרויקטים רלוונטיים נותחו.</p>
-        <p className="mt-1 text-sm text-slate-700">
-          {h3.strict_contributor_count} פרויקטים עמדו בתנאים המחמירים להשפעה כמותית על טווח דירות 3 חדרים ·{" "}
-          {h5.strict_contributor_count} פרויקטים עמדו בתנאים המחמירים להשפעה כמותית על טווח דירות 5 חדרים.
-        </p>
-        <p className="mt-1 text-xs text-slate-500">
-          פרויקטים נוספים משמשים להשוואת תחרות, מאפייני מוצר והקשר שוק — לא לחישוב טווח השוק הכמותי.
-        </p>
-      </div>
+    <div className="flex flex-col gap-5">
+      <section id="competitor-register-section" className="flex flex-col gap-4">
+        <div>
+          <h2 className="text-lg font-bold text-slate-900">מול אילו פרויקטים אנחנו מתחרים?</h2>
+          <p className="mt-1 text-sm text-slate-700">{landscape.project_count} פרויקטים רלוונטיים נותחו.</p>
+          <p className="mt-1 text-sm text-slate-700">
+            {h3.strict_contributor_count} פרויקטים עמדו בתנאים המחמירים להשפעה כמותית על טווח דירות 3 חדרים ·{" "}
+            {h5.strict_contributor_count} פרויקטים עמדו בתנאים המחמירים להשפעה כמותית על טווח דירות 5 חדרים.
+          </p>
+          <p className="mt-1 text-xs text-slate-500">
+            פרויקטים נוספים משמשים להשוואת תחרות, מאפייני מוצר והקשר שוק — לא לחישוב טווח השוק הכמותי.
+          </p>
+        </div>
 
-      <div className="flex flex-wrap items-center gap-4">
-        <FilterGroup options={GROUP_FILTERS} value={groupFilter} onChange={(v) => setGroupFilter(v as CompetitorFilterGroup)} />
-        <FilterGroup options={FAMILY_FILTERS} value={familyFilter} onChange={(v) => setFamilyFilter(v as CompetitorFamilyFilter)} />
-      </div>
+        <div className="flex flex-wrap items-center gap-4">
+          <FilterGroup options={GROUP_FILTERS} value={groupFilter} onChange={(v) => setGroupFilter(v as CompetitorFilterGroup)} />
+          <FilterGroup options={FAMILY_FILTERS} value={familyFilter} onChange={(v) => setFamilyFilter(v as CompetitorFamilyFilter)} />
+        </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project) => (
-          <CompetitorRegisterCard key={project.project_name} project={project} />
-        ))}
-      </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {projects.map((project) => (
+            <CompetitorRegisterCard key={project.project_name} project={project} />
+          ))}
+        </div>
 
-      {projects.length === 0 && <p className="text-sm text-slate-500">אין פרויקטים התואמים את הסינון הנבחר.</p>}
-    </section>
+        {projects.length === 0 && <p className="text-sm text-slate-500">אין פרויקטים התואמים את הסינון הנבחר.</p>}
+      </section>
+
+      <div className="rounded-lg border-2 border-slate-900 bg-gradient-to-b from-slate-50 to-white p-5">
+        <MarketPositionSection workspace={workspace} projectPhase={projectPhase} family={family} onFamilyChange={onFamilyChange} />
+      </div>
+    </div>
   );
 }
 

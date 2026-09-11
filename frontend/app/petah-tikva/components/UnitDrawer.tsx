@@ -1,20 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import { pricingRouteOf, PetahTikvaWorkspace, PtkPriceListRow } from "@/lib/api";
-import {
-  CONFIDENCE_COLORS,
-  CONFIDENCE_LABELS,
-  confidenceExplanation,
-  LANE_LABELS,
-  outdoorLabel,
-  roomsOf,
-  STATUS_LABELS,
-  unitTypeLabel,
-} from "@/lib/family";
-import { ils, isPointValue, num, rangeOrPoint } from "@/lib/format";
-import SpecialUnitAnalysis from "./SpecialUnitAnalysis";
+import { CONFIDENCE_COLORS, CONFIDENCE_LABELS, confidenceExplanation, LANE_LABELS, STATUS_LABELS } from "@/lib/family";
+import { ils, num, rangeOrPoint } from "@/lib/format";
 import MarketingDecisionChain from "./MarketingDecisionChain";
+import SpecialUnitDecisionPanel from "./SpecialUnitDecisionPanel";
 import StepHeading from "./StepHeading";
 import {
   computeSalesProgress,
@@ -26,7 +16,7 @@ import {
   PROJECT_PHASE_LABELS,
   sellThroughGapPoints,
 } from "@/lib/marketingStrategy";
-import { ApartmentParameterRow, deriveApartmentParameterRows, PARAMETER_STATUS_LABELS, siblingUnitNumber } from "@/lib/apartmentParameters";
+import { ApartmentParameterRow, deriveApartmentParameterRows, PARAMETER_STATUS_LABELS } from "@/lib/apartmentParameters";
 
 interface Props {
   row: PtkPriceListRow;
@@ -84,10 +74,32 @@ export default function UnitDrawer({ row, workspace, marketingStrategy, onChange
       ? (row.market_range?.confidence ?? null)
       : (workspace.special_unit_market_context.units[row.unit_number]?.market_indication?.confidence ?? null);
 
+  const isSpecial = route !== "standard_family";
+  // Special units get real room to show the chart/funnel/comparison layers
+  // on desktop (task item 1: ~560-650px / ~40-45vw), while staying
+  // full/near-full-screen on mobile (no width cap below the sm breakpoint).
+  // Standard units keep the original compact width -- they don't need the
+  // extra space (task item 1: "do not make the standard-unit drawer
+  // unnecessarily huge").
+  const widthClass = isSpecial ? "sm:w-[42vw] sm:min-w-[560px] sm:max-w-[650px]" : "max-w-md";
+
+  const projectStatusAndDecision = (
+    <>
+      {/* מצב הפרויקט */}
+      <ProjectStatusBlock row={row} workspace={workspace} state={marketingStrategy} />
+
+      {/* D. התאמות החברה -- the strongest visual element in this drawer; owns
+          its own header, styled to match StepHeading (see MarketingDecisionChain).
+          Also where "שלח לאישור ב-Monday" lives, downstream of the proposed
+          price (task item 20). */}
+      <MarketingDecisionChain row={row} state={marketingStrategy} onChange={onChangeMarketingStrategy} confidence={confidence} />
+    </>
+  );
+
   return (
     <div className="fixed inset-0 z-50 flex justify-start bg-black/40" onClick={onClose}>
       <div
-        className="h-full w-full max-w-md overflow-y-auto bg-white shadow-xl"
+        className={`h-full w-full overflow-y-auto bg-white shadow-xl ${widthClass}`}
         onClick={(e) => e.stopPropagation()}
         dir="rtl"
       >
@@ -118,27 +130,27 @@ export default function UnitDrawer({ row, workspace, marketingStrategy, onChange
             </section>
           )}
 
-          {/* 1. פרטי הדירה + מאפייני הדירה בתהליך התמחור */}
-          <UnitFactsBlock row={row} isSold={isSold} isSpecial={route !== "standard_family"} />
-
-          {/* Unit 36/37 comparison card -- existing inventory data only, no new
-              comparison engine (task item 11). Rendered only for that one
-              real sibling pair. */}
-          <SiblingComparisonCard row={row} workspace={workspace} />
-
-          {/* 2. אינדיקציית שוק */}
-          {route === "standard_family" ? (
-            <MarketIndicationBlockStandard row={row} workspace={workspace} onOpenFamilyEvidence={onOpenFamilyEvidence} onOpenMapEvidence={onOpenMapEvidence} />
+          {isSpecial ? (
+            <SpecialUnitDecisionPanel
+              row={row}
+              workspace={workspace}
+              state={marketingStrategy}
+              confidence={confidence}
+              onOpenMapEvidence={onOpenMapEvidence}
+              projectStatusAndDecision={projectStatusAndDecision}
+            />
           ) : (
-            <MarketIndicationBlockSpecial row={row} workspace={workspace} onOpenMapEvidence={onOpenMapEvidence} />
+            <>
+              {/* 1. פרטי הדירה + מאפייני הדירה בתהליך התמחור */}
+              <UnitFactsBlock row={row} isSold={isSold} isSpecial={false} />
+
+              {/* 2. אינדיקציית שוק */}
+              <MarketIndicationBlockStandard row={row} workspace={workspace} onOpenFamilyEvidence={onOpenFamilyEvidence} onOpenMapEvidence={onOpenMapEvidence} />
+
+              {/* 3-4. מצב הפרויקט + החלטת שיווק */}
+              {projectStatusAndDecision}
+            </>
           )}
-
-          {/* 3. מצב הפרויקט */}
-          <ProjectStatusBlock row={row} workspace={workspace} state={marketingStrategy} />
-
-          {/* 4. החלטת שיווק -- the strongest visual element in this drawer; owns
-              its own header, styled to match StepHeading (see MarketingDecisionChain) */}
-          <MarketingDecisionChain row={row} state={marketingStrategy} onChange={onChangeMarketingStrategy} confidence={confidence} />
         </div>
       </div>
     </div>
@@ -195,57 +207,6 @@ function UnitFactsBlock({ row, isSold, isSpecial }: { row: PtkPriceListRow; isSo
   );
 }
 
-// Unit 36/37 comparison card (task item 11) -- rendered only for that one
-// real triplex sibling pair, using existing inventory + market-indication
-// data already loaded for the drawer.
-function SiblingComparisonCard({ row, workspace }: { row: PtkPriceListRow; workspace: PetahTikvaWorkspace }) {
-  const siblingNumber = siblingUnitNumber(row.unit_number);
-  if (!siblingNumber) return null;
-  const sibling = workspace.price_list.find((r) => r.unit_number === siblingNumber);
-  if (!sibling) return null;
-
-  const marketIndicationIls = (r: PtkPriceListRow) => workspace.special_unit_market_context.units[r.unit_number]?.market_indication?.suggested_price_ils ?? null;
-
-  const rows: { label: string; a: string; b: string }[] = [
-    { label: "סוג", a: unitTypeLabel(row.family), b: unitTypeLabel(sibling.family) },
-    { label: "חדרים", a: roomsOf(row) != null ? String(roomsOf(row)) : "—", b: roomsOf(sibling) != null ? String(roomsOf(sibling)) : "—" },
-    { label: "שטח פנימי", a: row.internal_area_sqm != null ? `${num(row.internal_area_sqm)} מ״ר` : "—", b: sibling.internal_area_sqm != null ? `${num(sibling.internal_area_sqm)} מ״ר` : "—" },
-    { label: outdoorLabel(row.family), a: row.balcony_area_sqm != null ? `${num(row.balcony_area_sqm)} מ״ר` : "—", b: sibling.balcony_area_sqm != null ? `${num(sibling.balcony_area_sqm)} מ״ר` : "—" },
-    { label: "קומות", a: row.floor != null ? String(row.floor) : "—", b: sibling.floor != null ? String(sibling.floor) : "—" },
-    { label: "כיוון", a: row.orientation ?? "—", b: sibling.orientation ?? "—" },
-    { label: "אינדיקציית שוק", a: marketIndicationIls(row) != null ? ils(marketIndicationIls(row)!) : "—", b: marketIndicationIls(sibling) != null ? ils(marketIndicationIls(sibling)!) : "—" },
-  ];
-
-  return (
-    <section className="rounded-md border border-slate-200 bg-white p-3">
-      <div className="mb-2 text-sm font-semibold text-slate-800">השוואה לדירה דומה בפרויקט</div>
-      <div className="overflow-x-auto">
-        <table className="w-full text-sm">
-          <thead>
-            <tr className="text-[11px] text-slate-500">
-              <th className="px-1.5 py-1 text-start font-medium"></th>
-              <th className="px-1.5 py-1 text-start font-medium">דירה {row.unit_number}</th>
-              <th className="px-1.5 py-1 text-start font-medium">דירה {siblingNumber}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((r) => (
-              <tr key={r.label} className="border-t border-slate-100">
-                <td className="px-1.5 py-1 text-slate-500">{r.label}</td>
-                <td className="px-1.5 py-1 font-medium text-slate-900">{r.a}</td>
-                <td className="px-1.5 py-1 font-medium text-slate-900">{r.b}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <p className="mt-2 text-[11px] text-slate-400">
-        הדירות נשענות על אותו בסיס שוק. ההבדלים במאפייני הדירה מוצגים למחלקת השיווק לצורך קבלת החלטה על התאמה מסחרית.
-      </p>
-    </section>
-  );
-}
-
 // ב. אינדיקציית השוק -- standard 3R/5R route
 function MarketIndicationBlockStandard({
   row,
@@ -295,78 +256,6 @@ function MarketIndicationBlockStandard({
         )}
         <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
           <button onClick={() => onOpenFamilyEvidence(row.family as "3R" | "5R")} className="text-xs text-slate-500 underline hover:text-slate-800">
-            הצג ראיות והשוואות
-          </button>
-          <button onClick={() => onOpenMapEvidence(row)} className="text-xs text-slate-500 underline hover:text-slate-800">
-            הצג את ראיות השוק על המפה
-          </button>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// ב. אינדיקציית השוק -- special (garden/duplex/triplex) route
-function MarketIndicationBlockSpecial({
-  row,
-  workspace,
-  onOpenMapEvidence,
-}: {
-  row: PtkPriceListRow;
-  workspace: PetahTikvaWorkspace;
-  onOpenMapEvidence: (row: PtkPriceListRow) => void;
-}) {
-  const [showAnalysis, setShowAnalysis] = useState(false);
-  const context = workspace.special_unit_market_context.units[row.unit_number];
-  const indication = context?.market_indication;
-  const lanes: ("sold" | "current_asking" | "new_development")[] = ["sold", "current_asking", "new_development"];
-
-  if (showAnalysis) {
-    return <SpecialUnitAnalysis row={row} context={context} marketContext={workspace.special_unit_market_context} />;
-  }
-
-  return (
-    <section>
-      <StepHeading n={2} title="אינדיקציית שוק" />
-      <div className="rounded-md border border-slate-200 p-3">
-        {indication ? (
-          <>
-            <div className="mb-2 flex items-center gap-2">
-              <span
-                className={`rounded px-2 py-1 text-xs font-medium ${CONFIDENCE_COLORS[indication.confidence] ?? "bg-slate-100 text-slate-700"}`}
-                title={indication.confidence_reason}
-              >
-                ביטחון {CONFIDENCE_LABELS[indication.confidence] ?? indication.confidence}
-              </span>
-              {indication.suggested_price_ils != null && (
-                <span className="text-xs text-slate-500">
-                  {ils(indication.suggested_price_ils)}
-                  {!isPointValue(indication.indicative_lower_ils, indication.indicative_upper_ils) && (
-                    <> ({rangeOrPoint(indication.indicative_lower_ils, indication.indicative_upper_ils)})</>
-                  )}
-                </span>
-              )}
-            </div>
-            <ul className="flex flex-col gap-1 text-sm">
-              {lanes.map((lane) => {
-                const laneResult = indication.lanes[lane];
-                const voting = indication.voting_lane_names.includes(lane);
-                return (
-                  <li key={lane} className="flex items-center justify-between">
-                    <span className="text-slate-700">{LANE_LABELS[lane].title}</span>
-                    <span className={voting ? "text-emerald-700" : laneResult ? "text-amber-700" : "text-slate-400"}>
-                      {voting ? "משתתף בחישוב" : laneResult ? "הקשר בלבד" : "אין נתונים"}
-                    </span>
-                  </li>
-                );
-              })}
-            </ul>
-          </>
-        ) : (
-          <p className="text-sm text-slate-500">אין עדיין אינדיקציית שוק ליחידה זו — ממתינה לבדיקה פרטנית.</p>
-        )}
-        <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
-          <button onClick={() => setShowAnalysis(true)} className="text-xs text-slate-500 underline hover:text-slate-800">
             הצג ראיות והשוואות
           </button>
           <button onClick={() => onOpenMapEvidence(row)} className="text-xs text-slate-500 underline hover:text-slate-800">

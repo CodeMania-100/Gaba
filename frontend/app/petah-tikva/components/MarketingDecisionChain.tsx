@@ -162,7 +162,9 @@ export default function MarketingDecisionChain({ row, state, onChange, confidenc
             {totalPct}%<br />= מחיר שיווק מוצע {ils(proposedIls)}
           </p>
         )}
-        {marketIndicationIls != null && (
+        {/* Strategy waterfall only when there is something to show (task item
+            22) -- a flat, all-zero waterfall is never useful. */}
+        {marketIndicationIls != null && totalPct !== 0 && (
           <>
             <button onClick={() => setShowFormula((v) => !v)} className="mt-2 text-xs text-slate-400 underline hover:text-slate-600">
               {showFormula ? "הסתרת פירוט חישוב" : "איך נבנה מחיר השיווק?"}

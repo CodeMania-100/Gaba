@@ -42,40 +42,40 @@ const FAMILY_FILTERS: { key: CompetitorFamilyFilter; label: string }[] = [
   { key: "large_premium", label: "יחידות גדולות" },
 ];
 
-/** "מול אילו פרויקטים אנחנו מתחרים?" -- the single canonical competitor
- * register (Tab ב of השוק והמתחרים). This *is* the full register grid
- * (renamed from CompetitorMap.tsx, which despite its old name was never a
- * map -- see MarketGeoMap.tsx for the real geographic view, Tab א).
- * Price-positioning (where our price sits vs. these same projects) is a
- * labeled sub-block here via MarketPositionSection, reusing the exact same
- * real fact-sheet/matrix data the old standalone "CompetitiveIntelligence"
- * section showed -- that section's own demo-only sales-velocity history and
- * alerts are not carried over (they were never real data). No new
- * comparison logic lives here. */
+const COLLAPSED_PROJECT_COUNT = 6;
+
+/** "מול מי אנחנו מתחרים?" (Tab 2-ב). Positioning leads (where our price
+ * sits vs. the market) -- the register itself is the concise, secondary
+ * piece: a capped grid of project cards with an explicit expand action,
+ * never the whole register dumped open by default. This *is* the single
+ * canonical competitor register grid (renamed from CompetitorMap.tsx, which
+ * despite its old name was never a map -- see MarketGeoMap.tsx for the real
+ * geographic view, Tab א). No new comparison logic lives here. */
 export default function CompetitorRegister({ workspace, projectPhase, family, onFamilyChange }: Props) {
   const [groupFilter, setGroupFilter] = useState<CompetitorFilterGroup>("all");
   const [familyFilter, setFamilyFilter] = useState<CompetitorFamilyFilter>("all");
+  const [showAllProjects, setShowAllProjects] = useState(false);
 
   const landscape = workspace.competitor_landscape;
   const projects = landscape.projects.filter(
     (p) => (groupFilter === "all" || p.display_classification === groupFilter) && matchesFamilyFilter(p, familyFilter)
   );
+  const visibleProjects = showAllProjects ? projects : projects.slice(0, COLLAPSED_PROJECT_COUNT);
 
   const h3 = landscape.quantitative_headline["3R"];
   const h5 = landscape.quantitative_headline["5R"];
 
   return (
     <div className="flex flex-col gap-5">
+      <div className="rounded-lg border-2 border-ink/80 bg-gradient-to-b from-canvas to-surface p-5">
+        <MarketPositionSection workspace={workspace} projectPhase={projectPhase} family={family} onFamilyChange={onFamilyChange} />
+      </div>
+
       <section id="competitor-register-section" className="flex flex-col gap-4">
         <div>
-          <h2 className="text-lg font-bold text-slate-900">מול אילו פרויקטים אנחנו מתחרים?</h2>
-          <p className="mt-1 text-sm text-slate-700">{landscape.project_count} פרויקטים רלוונטיים נותחו.</p>
-          <p className="mt-1 text-sm text-slate-700">
-            {h3.strict_contributor_count} פרויקטים עמדו בתנאים המחמירים להשפעה כמותית על טווח דירות 3 חדרים ·{" "}
-            {h5.strict_contributor_count} פרויקטים עמדו בתנאים המחמירים להשפעה כמותית על טווח דירות 5 חדרים.
-          </p>
-          <p className="mt-1 text-xs text-slate-500">
-            פרויקטים נוספים משמשים להשוואת תחרות, מאפייני מוצר והקשר שוק — לא לחישוב טווח השוק הכמותי.
+          <h2 className="font-heading text-lg font-bold text-ink">מרשם המתחרים</h2>
+          <p className="mt-1 text-sm text-ink-muted">
+            {landscape.project_count} פרויקטים רלוונטיים נותחו · {h3.strict_contributor_count} תרמו לטווח 3 חדרים · {h5.strict_contributor_count} תרמו לטווח 5 חדרים.
           </p>
         </div>
 
@@ -85,17 +85,19 @@ export default function CompetitorRegister({ workspace, projectPhase, family, on
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project) => (
+          {visibleProjects.map((project) => (
             <CompetitorRegisterCard key={project.project_name} project={project} />
           ))}
         </div>
 
-        {projects.length === 0 && <p className="text-sm text-slate-500">אין פרויקטים התואמים את הסינון הנבחר.</p>}
-      </section>
+        {projects.length === 0 && <p className="text-sm text-ink-muted">אין פרויקטים התואמים את הסינון הנבחר.</p>}
 
-      <div className="rounded-lg border-2 border-slate-900 bg-gradient-to-b from-slate-50 to-white p-5">
-        <MarketPositionSection workspace={workspace} projectPhase={projectPhase} family={family} onFamilyChange={onFamilyChange} />
-      </div>
+        {projects.length > COLLAPSED_PROJECT_COUNT && (
+          <button onClick={() => setShowAllProjects((v) => !v)} className="w-fit text-xs text-ink-muted underline hover:text-ink">
+            {showAllProjects ? "הצג פחות" : `הצג את כל הפרויקטים (${projects.length})`}
+          </button>
+        )}
+      </section>
     </div>
   );
 }
@@ -110,13 +112,13 @@ function FilterGroup<T extends string>({
   onChange: (v: T) => void;
 }) {
   return (
-    <div className="flex overflow-hidden rounded-md border border-slate-300">
+    <div className="flex overflow-hidden rounded-md border border-hairline">
       {options.map((opt) => (
         <button
           key={opt.key}
           onClick={() => onChange(opt.key)}
           className={`px-3 py-1.5 text-sm font-medium transition ${
-            value === opt.key ? "bg-slate-900 text-white" : "bg-white text-slate-600 hover:bg-slate-50"
+            value === opt.key ? "bg-ink text-surface" : "bg-surface text-ink-muted hover:bg-canvas"
           }`}
         >
           {opt.label}
@@ -140,11 +142,11 @@ function CompetitorRegisterCard({ project }: { project: CompetitorRegisterProjec
   const classification = project.display_classification;
 
   return (
-    <div className="flex flex-col gap-2 rounded-lg border border-slate-200 p-4">
+    <div className="flex flex-col gap-2 rounded-md border border-hairline p-4">
       <div className="flex items-start justify-between gap-2">
         <div>
-          <div className="font-semibold text-slate-900">{project.project_name}</div>
-          <div className="text-xs text-slate-500">יזם: {developer ?? "לא פורסם"}</div>
+          <div className="font-semibold text-ink">{project.project_name}</div>
+          <div className="text-xs text-ink-muted">יזם: {developer ?? "לא פורסם"}</div>
         </div>
         <span className={`shrink-0 rounded px-1.5 py-0.5 text-xs font-medium ${CLASSIFICATION_COLORS[classification]}`}>
           {CLASSIFICATION_LABELS[classification]}
@@ -160,13 +162,13 @@ function CompetitorRegisterCard({ project }: { project: CompetitorRegisterProjec
         {terms && <Row label="תנאי תשלום" value={terms} />}
       </dl>
 
-      <button onClick={() => setShowSource((v) => !v)} className="mt-1 w-fit text-xs text-slate-400 underline hover:text-slate-600">
+      <button onClick={() => setShowSource((v) => !v)} className="mt-1 w-fit text-xs text-ink-muted underline hover:text-ink">
         {showSource ? "הסתרת מקור ופרטים" : "מקור ופרטים"}
       </button>
 
       {showSource && (
-        <div className="mt-1 rounded border border-dashed border-slate-300 p-2 text-xs text-slate-500">
-          <div className="font-semibold text-slate-600">כשירות כמותית לטווח השוק:</div>
+        <div className="mt-1 rounded border border-dashed border-hairline p-2 text-xs text-ink-muted">
+          <div className="font-semibold text-ink-muted">כשירות כמותית לטווח השוק:</div>
           <ul className="list-inside list-disc">
             {Object.entries(project.quantitative_eligibility).map(([family, verdict]) => (
               <li key={family}>
@@ -177,9 +179,9 @@ function CompetitorRegisterCard({ project }: { project: CompetitorRegisterProjec
           </ul>
           {((project.source_urls as string[] | undefined)?.length ?? 0) > 0 && (
             <div className="mt-2">
-              <div className="font-semibold text-slate-600">מקורות:</div>
+              <div className="font-semibold text-ink-muted">מקורות:</div>
               {(project.source_urls as string[]).map((url) => (
-                <a key={url} href={url} target="_blank" rel="noreferrer" className="block break-all text-blue-700 underline">
+                <a key={url} href={url} target="_blank" rel="noreferrer" className="block break-all text-accent underline">
                   {url}
                 </a>
               ))}
@@ -187,7 +189,7 @@ function CompetitorRegisterCard({ project }: { project: CompetitorRegisterProjec
           )}
           {((project.warnings as string[] | undefined)?.length ?? 0) > 0 && (
             <div className="mt-2">
-              <div className="font-semibold text-slate-600">אזהרות:</div>
+              <div className="font-semibold text-ink-muted">אזהרות:</div>
               <ul className="list-inside list-disc">
                 {(project.warnings as string[]).map((w, i) => (
                   <li key={i}>{w}</li>
@@ -204,8 +206,8 @@ function CompetitorRegisterCard({ project }: { project: CompetitorRegisterProjec
 function Row({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex justify-between gap-3">
-      <dt className="shrink-0 text-slate-400">{label}</dt>
-      <dd className="text-end font-medium text-slate-800">{value}</dd>
+      <dt className="shrink-0 text-ink-muted">{label}</dt>
+      <dd className="text-end font-medium text-ink">{value}</dd>
     </div>
   );
 }

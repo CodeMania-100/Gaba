@@ -35,15 +35,15 @@ export default function CompetitorComparisonMatrix({ workspace, projectPhase, fa
 
   return (
     <div className="flex flex-col gap-3">
-      <h3 className="text-base font-semibold text-slate-900">{title ?? "מיקום מול פרויקטים מתחרים"}</h3>
+      <h3 className="font-heading text-base font-semibold text-ink">{title ?? "מיקום מול פרויקטים מתחרים"}</h3>
 
-      <div className="overflow-x-auto rounded-md border border-slate-200">
+      <div className="overflow-x-auto rounded-md border border-hairline">
         <table className="w-full min-w-[640px] text-sm">
-          <thead className="bg-slate-50">
+          <thead className="bg-canvas">
             <tr>
-              <th className="px-3 py-2 text-start text-xs font-medium text-slate-500"></th>
+              <th className="px-3 py-2 text-start text-xs font-medium text-ink-muted"></th>
               {matrix.columns.map((col, i) => (
-                <th key={col} className={`px-3 py-2 text-start text-xs font-semibold ${i === 0 ? "text-slate-900" : "text-slate-600"}`}>
+                <th key={col} className={`px-3 py-2 text-start text-xs font-semibold ${i === 0 ? "text-ink" : "text-ink-muted"}`}>
                   {col}
                 </th>
               ))}
@@ -51,10 +51,10 @@ export default function CompetitorComparisonMatrix({ workspace, projectPhase, fa
           </thead>
           <tbody>
             {rows.map((row) => (
-              <tr key={row.key} className="border-t border-slate-100">
-                <td className="px-3 py-2 text-xs text-slate-500">{row.label}</td>
+              <tr key={row.key} className="border-t border-hairline">
+                <td className="px-3 py-2 text-xs text-ink-muted">{row.label}</td>
                 {row.values.map((v, i) => (
-                  <td key={i} className={`px-3 py-2 text-xs ${i === 0 ? "font-semibold text-slate-900" : "text-slate-700"} ${v === "לא פורסם" ? "text-slate-300" : ""}`}>
+                  <td key={i} className={`px-3 py-2 text-xs ${i === 0 ? "font-semibold text-ink" : "text-ink-muted"} ${v === "לא פורסם" ? "text-ink-muted/50" : ""}`}>
                     {v}
                   </td>
                 ))}

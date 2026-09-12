@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 import { PetahTikvaWorkspace, PtkPriceListRow } from "@/lib/api";
-import { deriveApartmentMix, deriveExecutiveInsights, deriveQuarterlySoldTrend } from "@/lib/executiveVisuals";
+import { deriveApartmentMix, deriveCompletedSalesOverview, deriveExecutiveInsights } from "@/lib/executiveVisuals";
 import ApartmentMixDonut from "./ApartmentMixDonut";
 import MarketTrendChart from "./MarketTrendChart";
 import ExecutiveInsights from "./ExecutiveInsights";
@@ -17,7 +17,7 @@ interface Props {
  * research detail (see task's page-architecture mission). */
 export default function ExecutiveOverview({ workspace, rows }: Props) {
   const mix = useMemo(() => deriveApartmentMix(rows), [rows]);
-  const trend = useMemo(() => deriveQuarterlySoldTrend(workspace), [workspace]);
+  const completedSales = useMemo(() => deriveCompletedSalesOverview(workspace), [workspace]);
   const insights = useMemo(() => deriveExecutiveInsights(workspace), [workspace]);
   const total = rows.length;
 
@@ -30,7 +30,7 @@ export default function ExecutiveOverview({ workspace, rows }: Props) {
 
       <div className="grid gap-6 lg:grid-cols-2">
         <ApartmentMixDonut mix={mix} total={total} />
-        <MarketTrendChart series={trend} />
+        <MarketTrendChart overview={completedSales} />
       </div>
 
       <ExecutiveInsights insights={insights} />

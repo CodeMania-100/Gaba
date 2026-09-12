@@ -34,13 +34,13 @@ const TABS: { key: TopTab; label: string }[] = [
 export default function WorkspaceTabs({ activeTab, onActiveTabChange, pricingContent, marketContent, strategyContent }: Props) {
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex overflow-hidden rounded-lg border-2 border-slate-900 w-fit">
+      <div className="flex overflow-hidden rounded-lg border border-hairline w-fit">
         {TABS.map((t) => (
           <button
             key={t.key}
             onClick={() => onActiveTabChange(t.key)}
-            className={`px-6 py-2.5 text-sm font-bold transition-colors ${
-              activeTab === t.key ? "bg-slate-900 text-white" : "bg-white text-slate-600 hover:bg-slate-50"
+            className={`px-6 py-2.5 text-sm font-semibold transition-colors ${
+              activeTab === t.key ? "bg-ink text-surface" : "bg-surface text-ink-muted hover:bg-canvas"
             }`}
           >
             {t.label}

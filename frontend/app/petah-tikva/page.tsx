@@ -8,13 +8,14 @@ import { MarketMapSelection, SPECIAL_UNIT_NUMBERS, SpecialUnitNumber } from "@/l
 import PricingDecisionBoard from "./components/PricingDecisionBoard";
 import PriceListConsistency from "./components/PriceListConsistency";
 import ProjectKpiSummary from "./components/ProjectKpiSummary";
-import ExecutiveOverview from "./components/ExecutiveOverview";
 import BuildingExplorer from "./components/BuildingExplorer";
 import UnitDrawer from "./components/UnitDrawer";
 import MarketingStrategyPanel from "./components/MarketingStrategyPanel";
 import WorkspaceTabs, { TopTab } from "./components/WorkspaceTabs";
 import MarketAndCompetitionWorkspace, { MarketInnerTab } from "./components/MarketAndCompetitionWorkspace";
 import MarketContextSelector from "./components/MarketContextSelector";
+import ProjectIntro from "./components/ProjectIntro";
+import MethodologyStrip from "./components/MethodologyStrip";
 import { defaultMarketingStrategyState, MarketingStrategyState } from "@/lib/marketingStrategy";
 
 export default function PetahTikvaWorkspacePage() {
@@ -41,6 +42,10 @@ export default function PetahTikvaWorkspacePage() {
   // and so navigating away and back never resets either selection.
   const [activeTab, setActiveTab] = useState<TopTab>("pricing");
   const [marketInnerTab, setMarketInnerTab] = useState<MarketInnerTab>("map");
+  // Tab 1's stacking-plan / full-table toggle -- only one of
+  // BuildingExplorer/PricingDecisionBoard renders at a time (previously both
+  // rendered simultaneously).
+  const [pricingView, setPricingView] = useState<"stacking" | "table">("stacking");
 
   // "הקשר שוק" -- which of the four frozen market contexts the same
   // 39-apartment inventory is being evaluated against. Persistent, page-
@@ -112,7 +117,7 @@ export default function PetahTikvaWorkspacePage() {
     setSelectedUnit(null);
     setMarketFamily(f);
     setActiveTab("market");
-    setMarketInnerTab("comparison");
+    setMarketInnerTab("competitors");
   }, []);
 
   // "הצג את ראיות השוק על המפה" (UnitDrawer) -- closes the drawer, switches
@@ -138,14 +143,14 @@ export default function PetahTikvaWorkspacePage() {
   }, []);
 
   if (loading) {
-    return <div className="p-10 text-slate-600">טוען את מרחב התמחור...</div>;
+    return <div className="bg-canvas p-10 text-ink-muted">טוען את מרחב התמחור...</div>;
   }
   if (mismatch) {
     return (
-      <div className="mx-auto max-w-lg p-10">
-        <div className="rounded-lg border border-red-300 bg-red-50 p-5 text-sm text-red-800">
+      <div className="mx-auto max-w-lg bg-canvas p-10">
+        <div className="rounded-lg border border-conflict/40 bg-conflict/10 p-5 text-sm text-conflict">
           <p className="whitespace-pre-line font-medium">{WORKSPACE_MISMATCH_MESSAGE}</p>
-          <p className="mt-2 font-mono text-xs text-red-600">{mismatch}</p>
+          <p className="mt-2 font-mono text-xs opacity-80">{mismatch}</p>
         </div>
       </div>
     );
@@ -155,16 +160,14 @@ export default function PetahTikvaWorkspacePage() {
     // stack trace or a bare hostname/URL); the actual error is still
     // available in the browser console for debugging.
     return (
-      <div className="mx-auto max-w-lg p-10">
-        <div className="rounded-lg border border-red-300 bg-red-50 p-5 text-center text-sm text-red-800">
+      <div className="mx-auto max-w-lg bg-canvas p-10">
+        <div className="rounded-lg border border-conflict/40 bg-conflict/10 p-5 text-center text-sm text-conflict">
           <p className="font-medium">לא ניתן לטעון כרגע את נתוני הפרויקט.</p>
           <p className="mt-1">נסה לרענן בעוד מספר שניות.</p>
         </div>
       </div>
     );
   }
-
-  const currentFamily = data.families.find((f) => f.family === marketFamily) ?? data.families[0];
 
   // The frozen baseline price_list is the only price list rendered anywhere
   // in the user-facing product -- the historical 25/50/75 scenario selector
@@ -174,31 +177,20 @@ export default function PetahTikvaWorkspacePage() {
   const displayRows: PtkPriceListRow[] = data.price_list;
 
   return (
-    <div className="min-h-screen pb-16">
-      <header className="border-b border-slate-300 bg-white px-6 py-5">
+    <div className="min-h-screen bg-canvas pb-16">
+      <header className="border-b border-hairline bg-surface px-6 py-5">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
-            <div className="text-xs font-semibold uppercase tracking-wide text-slate-400">כלי תומך החלטה לתמחור דירות</div>
-            <h1 className="mt-0.5 text-xl font-bold text-slate-900">
-              {data.project.name} | {data.project.city}
-            </h1>
-            <p className="mt-0.5 text-sm text-slate-500">
-              {data.project.address ?? `${data.project.commercial_area} / ${data.project.official_neighborhood}`}
-            </p>
+            <div className="text-xs font-semibold uppercase tracking-wide text-ink-muted">מרחב תמחור גבאי</div>
+            <p className="mt-0.5 text-sm text-ink-muted">כלי תומך החלטה לתמחור דירות</p>
           </div>
           <div className="flex items-center gap-3">
             <MarketContextSelector contexts={marketContexts} value={marketContext} onChange={handleMarketContextChange} />
-            <Link href="/" className="rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50">
+            <Link href="/" className="rounded-md border border-hairline px-3 py-1.5 text-sm text-ink-muted hover:bg-canvas">
               פרויקטים
             </Link>
           </div>
         </div>
-        {data.project.demo_location_assumption && (
-          <p className="mt-2 inline-block rounded bg-slate-100 px-2 py-1 text-[11px] text-slate-400">
-            {data.project.location_note ??
-              "מיקום הפרויקט לצורך ההדגמה מבוסס על הנחת עבודה; כתובת מדויקת לא סופקה במטלה."}
-          </p>
-        )}
       </header>
 
       <main className="px-6 py-5">
@@ -207,10 +199,39 @@ export default function PetahTikvaWorkspacePage() {
           onActiveTabChange={setActiveTab}
           pricingContent={
             <>
-              <ProjectKpiSummary rows={displayRows} state={marketingStrategy} />
-              <ExecutiveOverview workspace={data} rows={displayRows} />
-              <BuildingExplorer rows={displayRows} marketingStrategy={marketingStrategy} onSelectUnit={setSelectedUnit} />
-              <PricingDecisionBoard rows={displayRows} state={marketingStrategy} onSelectUnit={setSelectedUnit} />
+              <ProjectIntro projectName={`${data.project.name} | ${data.project.city}`} unitCount={displayRows.length} />
+              {data.project.demo_location_assumption && (
+                <p className="-mt-3 inline-block w-fit rounded bg-hairline/40 px-2 py-1 text-[11px] text-ink-muted">
+                  {data.project.location_note ??
+                    "מיקום הפרויקט לצורך ההדגמה מבוסס על הנחת עבודה; כתובת מדויקת לא סופקה במטלה."}
+                </p>
+              )}
+              <ProjectKpiSummary workspace={data} rows={displayRows} state={marketingStrategy} />
+              <MethodologyStrip />
+
+              <div className="flex overflow-hidden rounded-md border border-hairline w-fit">
+                <button
+                  onClick={() => setPricingView("stacking")}
+                  className={`px-4 py-2 text-sm font-medium transition-colors ${pricingView === "stacking" ? "bg-ink text-surface" : "bg-surface text-ink-muted hover:bg-canvas"}`}
+                >
+                  מבט קומות
+                </button>
+                <button
+                  onClick={() => setPricingView("table")}
+                  className={`px-4 py-2 text-sm font-medium transition-colors ${pricingView === "table" ? "bg-ink text-surface" : "bg-surface text-ink-muted hover:bg-canvas"}`}
+                >
+                  מחירון מלא
+                </button>
+              </div>
+
+              <div className="rounded-lg border border-hairline bg-surface p-5">
+                {pricingView === "stacking" ? (
+                  <BuildingExplorer rows={displayRows} marketingStrategy={marketingStrategy} onSelectUnit={setSelectedUnit} />
+                ) : (
+                  <PricingDecisionBoard rows={displayRows} state={marketingStrategy} onSelectUnit={setSelectedUnit} />
+                )}
+              </div>
+
               <PriceListConsistency workspace={data} rows={displayRows} state={marketingStrategy} onSelectUnit={setSelectedUnit} />
             </>
           }
@@ -227,7 +248,15 @@ export default function PetahTikvaWorkspacePage() {
               onInnerTabChange={setMarketInnerTab}
             />
           }
-          strategyContent={<MarketingStrategyPanel rows={displayRows} state={marketingStrategy} onChange={setMarketingStrategy} />}
+          strategyContent={
+            <MarketingStrategyPanel
+              rows={displayRows}
+              state={marketingStrategy}
+              onChange={setMarketingStrategy}
+              onOpenUnit={setSelectedUnit}
+              onBackToPriceList={() => setActiveTab("pricing")}
+            />
+          }
         />
       </main>
 

@@ -410,29 +410,29 @@ export default function MarketGeoMap({ workspace, selection, onSelectionChange }
   const priceLabelsVisible = currentZoom >= PRICE_LABEL_MIN_ZOOM;
 
   return (
-    <section className="flex flex-col gap-4 rounded-lg border border-slate-300 bg-white p-5 shadow-sm">
+    <section className="flex flex-col gap-4 rounded-lg border border-hairline bg-surface p-5">
       <div>
-        <h2 className="text-lg font-bold text-slate-900">איפה נמצאות ראיות השוק?</h2>
-        <p className="text-xs text-slate-500">מיקום עסקאות, דירות מוצעות ופרויקטים מתחרים בסביבת אזור ההשוואה</p>
-        <p className="mt-1 text-[11px] text-slate-400">
+        <h2 className="font-heading text-lg font-bold text-ink">איפה נמצאות ראיות השוק?</h2>
+        <p className="text-xs text-ink-muted">מיקום עסקאות, דירות מוצעות ופרויקטים מתחרים בסביבת אזור ההשוואה</p>
+        <p className="mt-1 text-[11px] text-ink-muted/70">
           כתובת הפרויקט לא סופקה במטלה; סמן הפרויקט מייצג את מרכז אזור ההדגמה בלבד.
         </p>
       </div>
 
       {/* top-level selector: standard families + special apartments. Special
-          units are never folded into a generic room-count family (task
-          item 1) -- picking "דירות מיוחדות" reveals a compact secondary
-          dropdown rather than seven buttons across the map (item 2). */}
+          units are never folded into a generic room-count family -- picking
+          "דירות מיוחדות" reveals a compact secondary dropdown rather than
+          seven buttons across the map. */}
       <div className="flex flex-wrap items-center gap-3">
-        <div className="flex overflow-hidden rounded-md border border-slate-300 w-fit">
+        <div className="flex overflow-hidden rounded-md border border-hairline w-fit">
           {(["3R", "5R"] as const).map((f) => (
             <button
               key={f}
               onClick={() => onSelectionChange({ kind: "standard_family", family: f })}
               className={`px-4 py-2 text-sm font-semibold transition-colors ${
                 selection.kind === "standard_family" && selection.family === f
-                  ? "bg-slate-900 text-white"
-                  : "bg-white text-slate-600 hover:bg-slate-50"
+                  ? "bg-ink text-surface"
+                  : "bg-surface text-ink-muted hover:bg-canvas"
               }`}
             >
               {f === "3R" ? "3 חדרים" : "5 חדרים"}
@@ -440,7 +440,7 @@ export default function MarketGeoMap({ workspace, selection, onSelectionChange }
           ))}
           <button
             onClick={() => onSelectionChange({ kind: "special_unit", unitNumber: lastSpecialUnit })}
-            className={`px-4 py-2 text-sm font-semibold transition-colors ${isSpecial ? "bg-slate-900 text-white" : "bg-white text-slate-600 hover:bg-slate-50"}`}
+            className={`px-4 py-2 text-sm font-semibold transition-colors ${isSpecial ? "bg-ink text-surface" : "bg-surface text-ink-muted hover:bg-canvas"}`}
           >
             דירות מיוחדות
           </button>
@@ -450,7 +450,7 @@ export default function MarketGeoMap({ workspace, selection, onSelectionChange }
           <select
             value={specialUnitNumber ?? lastSpecialUnit}
             onChange={(e) => onSelectionChange({ kind: "special_unit", unitNumber: Number(e.target.value) as SpecialUnitNumber })}
-            className="rounded-md border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-800"
+            className="rounded-md border border-hairline bg-surface px-3 py-2 text-sm font-medium text-ink"
           >
             {SPECIAL_UNIT_NUMBERS.map((n) => (
               <option key={n} value={n}>
@@ -461,16 +461,16 @@ export default function MarketGeoMap({ workspace, selection, onSelectionChange }
         )}
       </div>
 
-      {/* subject-apartment card (task item 9) -- only known fields, garden
-          units get "שטח חצר" rather than balcony terminology */}
+      {/* subject-apartment card -- only known fields, garden units get
+          "שטח חצר" rather than balcony terminology */}
       {isSpecial && subjectFacts && (
-        <div className="rounded-md border border-slate-200 bg-white p-3 text-sm">
-          <div className="font-bold text-slate-900">דירה {subjectFacts.unitNumber}</div>
-          <div className="text-xs text-slate-500">
+        <div className="rounded-md border border-hairline bg-surface p-3 text-sm">
+          <div className="font-bold text-ink">דירה {subjectFacts.unitNumber}</div>
+          <div className="text-xs text-ink-muted">
             {subjectFacts.categoryLabel}
             {subjectFacts.rooms != null && ` | ${subjectFacts.rooms} חדרים`}
           </div>
-          <div className="mt-1.5 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-600">
+          <div className="mt-1.5 flex flex-wrap gap-x-4 gap-y-1 text-xs text-ink-muted">
             {subjectFacts.internalArea != null && <span>{num(subjectFacts.internalArea)} מ״ר פנים</span>}
             {subjectFacts.outdoorArea != null && (
               <span>
@@ -487,19 +487,19 @@ export default function MarketGeoMap({ workspace, selection, onSelectionChange }
           from "all market data" to "only evidence that entered the
           calculation" is what demonstrates the tool's core value, so it
           gets deliberately stronger visual weight than the layer checkboxes
-          below it (feedback item 2). */}
-      <div className="rounded-lg border-2 border-slate-900 bg-amber-50/50 p-2.5">
-        <div className="mb-1.5 text-[11px] font-bold uppercase tracking-wide text-slate-500">תצוגה</div>
-        <div className="flex overflow-hidden rounded-md border border-slate-300 bg-white">
+          below it. */}
+      <div className="rounded-lg border-2 border-accent/60 bg-accent/5 p-2.5">
+        <div className="mb-1.5 text-[11px] font-bold uppercase tracking-wide text-ink-muted">תצוגה</div>
+        <div className="flex overflow-hidden rounded-md border border-hairline bg-surface">
           <button
             onClick={() => setOnlyEvidence(false)}
-            className={`flex-1 px-4 py-2.5 text-sm font-semibold transition-colors ${!onlyEvidence ? "bg-slate-900 text-white" : "bg-white text-slate-600 hover:bg-slate-50"}`}
+            className={`flex-1 px-4 py-2.5 text-sm font-semibold transition-colors ${!onlyEvidence ? "bg-ink text-surface" : "bg-surface text-ink-muted hover:bg-canvas"}`}
           >
             כל נתוני השוק
           </button>
           <button
             onClick={() => setOnlyEvidence(true)}
-            className={`flex-1 px-4 py-2.5 text-sm font-semibold transition-colors ${onlyEvidence ? "bg-slate-900 text-white" : "bg-white text-slate-600 hover:bg-slate-50"}`}
+            className={`flex-1 px-4 py-2.5 text-sm font-semibold transition-colors ${onlyEvidence ? "bg-ink text-surface" : "bg-surface text-ink-muted hover:bg-canvas"}`}
           >
             רק ראיות שנכנסו לחישוב
           </button>
@@ -507,22 +507,22 @@ export default function MarketGeoMap({ workspace, selection, onSelectionChange }
       </div>
 
       {/* שכבות -- secondary, ordinary-weight controls */}
-      <div className="flex flex-wrap items-center gap-4 rounded-md bg-slate-50 px-3 py-2 text-xs text-slate-600">
-        <span className="font-semibold text-slate-500">שכבות:</span>
+      <div className="flex flex-wrap items-center gap-4 rounded-md bg-canvas px-3 py-2 text-xs text-ink-muted">
+        <span className="font-semibold text-ink-muted">שכבות:</span>
         <LayerCheckbox label="עסקאות שבוצעו" checked={layers.sold} onChange={(v) => setLayers((s) => ({ ...s, sold: v }))} />
         <LayerCheckbox label="דירות מוצעות" checked={layers.asking} onChange={(v) => setLayers((s) => ({ ...s, asking: v }))} />
         <LayerCheckbox label="פרויקטים מתחרים" checked={layers.competitor} onChange={(v) => setLayers((s) => ({ ...s, competitor: v }))} />
         {ppsmDomain && (
-          <div className="mr-auto flex overflow-hidden rounded-md border border-slate-300">
+          <div className="mr-auto flex overflow-hidden rounded-md border border-hairline">
             <button
               onClick={() => setViewMode("source")}
-              className={`px-2.5 py-1 text-xs font-medium transition-colors ${viewMode === "source" ? "bg-slate-900 text-white" : "bg-white text-slate-600 hover:bg-slate-50"}`}
+              className={`px-2.5 py-1 text-xs font-medium transition-colors ${viewMode === "source" ? "bg-ink text-surface" : "bg-surface text-ink-muted hover:bg-canvas"}`}
             >
               סוג מקור
             </button>
             <button
               onClick={() => setViewMode("ppsm")}
-              className={`px-2.5 py-1 text-xs font-medium transition-colors ${viewMode === "ppsm" ? "bg-slate-900 text-white" : "bg-white text-slate-600 hover:bg-slate-50"}`}
+              className={`px-2.5 py-1 text-xs font-medium transition-colors ${viewMode === "ppsm" ? "bg-ink text-surface" : "bg-surface text-ink-muted hover:bg-canvas"}`}
             >
               מחיר למ״ר
             </button>
@@ -531,7 +531,7 @@ export default function MarketGeoMap({ workspace, selection, onSelectionChange }
       </div>
 
       {/* compact summary strip -- "above the map", answers what N dots on
-          the map actually represent (feedback item 4 / special item 8) */}
+          the map actually represent */}
       {isSpecial ? (
         <SpecialUnitSummary
           unitNumber={specialUnitNumber}
@@ -541,21 +541,21 @@ export default function MarketGeoMap({ workspace, selection, onSelectionChange }
           coverage={specialCoverage}
         />
       ) : (
-        <div className="rounded-md border border-slate-200 bg-slate-50 px-4 py-3">
-          <div className="text-sm font-bold text-slate-900">{family === "3R" ? "3 חדרים" : "5 חדרים"}</div>
-          <div className="mt-1.5 flex flex-wrap gap-x-6 gap-y-1 text-xs text-slate-600">
+        <div className="rounded-md border border-hairline bg-canvas px-4 py-3">
+          <div className="text-sm font-bold text-ink">{family === "3R" ? "3 חדרים" : "5 חדרים"}</div>
+          <div className="mt-1.5 flex flex-wrap gap-x-6 gap-y-1 text-xs text-ink-muted">
             <span>
-              <span className="font-semibold text-slate-800">{soldFamilyCoverage.includedTotal}</span> עסקאות שנכללו
+              <span className="font-semibold text-ink">{soldFamilyCoverage.includedTotal}</span> עסקאות שנכללו
             </span>
             <span>
-              <span className="font-semibold text-slate-800">{askingRelevantCount}</span> מודעות רלוונטיות
+              <span className="font-semibold text-ink">{askingRelevantCount}</span> מודעות רלוונטיות
             </span>
             <span>
-              <span className="font-semibold text-slate-800">{competitorAll.length}</span> פרויקטים מתחרים
+              <span className="font-semibold text-ink">{competitorAll.length}</span> פרויקטים מתחרים
             </span>
           </div>
           {soldFamilyCoverage.mappedTotal < soldFamilyCoverage.includedTotal && (
-            <div className="mt-1 text-xs font-medium text-amber-700">
+            <div className="mt-1 text-xs font-medium text-warning">
               {soldFamilyCoverage.mappedTotal} מתוך {soldFamilyCoverage.includedTotal} עסקאות ממופות
             </div>
           )}
@@ -564,32 +564,32 @@ export default function MarketGeoMap({ workspace, selection, onSelectionChange }
 
       {/* map + side panel */}
       <div className="flex gap-3" dir="ltr">
-        <div className={`relative overflow-hidden rounded-md border border-slate-200 ${selected ? "w-[72%]" : "w-full"}`} style={{ height: 620 }}>
+        <div className={`relative overflow-hidden rounded-md border border-hairline ${selected ? "w-[72%]" : "w-full"}`} style={{ height: 620 }}>
           <div ref={containerRef} className="h-full w-full" />
           {mapError && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 bg-slate-50 text-center" dir="rtl">
-              <p className="text-sm font-medium text-slate-600">לא ניתן לטעון כרגע את שכבת המפה</p>
-              <p className="text-xs text-slate-400">נתוני השוק וההשוואות עדיין זמינים במערכת</p>
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-1 bg-canvas text-center" dir="rtl">
+              <p className="text-sm font-medium text-ink-muted">לא ניתן לטעון כרגע את שכבת המפה</p>
+              <p className="text-xs text-ink-muted/70">נתוני השוק וההשוואות עדיין זמינים במערכת</p>
             </div>
           )}
           {selected && (
             <button
               dir="rtl"
               onClick={resetToDefaultView}
-              className="absolute left-2 top-[76px] z-10 rounded-md border border-slate-300 bg-white px-2.5 py-1.5 text-xs font-medium text-slate-700 shadow-md hover:bg-slate-50"
+              className="absolute left-2 top-[76px] z-10 rounded-md border border-hairline bg-surface px-2.5 py-1.5 text-xs font-medium text-ink-muted shadow-sm hover:bg-canvas"
             >
               ↺ חזרה לאזור הפרויקט
             </button>
           )}
           {priceLabelsVisible && !mapError && (
-            <div dir="rtl" className="absolute right-2 top-2 z-10 rounded-md bg-white/95 px-2 py-1 text-[11px] font-medium text-slate-600 shadow-sm">
+            <div dir="rtl" className="absolute right-2 top-2 z-10 rounded-md bg-surface/95 px-2 py-1 text-[11px] font-medium text-ink-muted shadow-sm">
               תוויות: מחיר למ״ר
             </div>
           )}
           {hover && !selected && (
             <div
               dir="rtl"
-              className="pointer-events-none absolute z-10 rounded-md border border-slate-200 bg-white px-2.5 py-1.5 text-xs shadow-md"
+              className="pointer-events-none absolute z-10 rounded-md border border-hairline bg-surface px-2.5 py-1.5 text-xs shadow-sm"
               style={{ left: hover.x + 12, top: hover.y + 12 }}
             >
               <HoverContent point={hover.point} />
@@ -598,7 +598,7 @@ export default function MarketGeoMap({ workspace, selection, onSelectionChange }
         </div>
 
         {selected && (
-          <div dir="rtl" className="w-[28%] shrink-0 overflow-y-auto rounded-md border border-slate-200 bg-white p-3" style={{ height: 620 }}>
+          <div dir="rtl" className="w-[28%] shrink-0 overflow-y-auto rounded-md border border-hairline bg-surface p-3" style={{ height: 620 }}>
             <DetailPanel point={selected} workspace={workspace} family={family} onClose={() => setSelected(null)} />
           </div>
         )}

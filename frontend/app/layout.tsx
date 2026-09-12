@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
-import { Heebo } from "next/font/google";
+import { Assistant, Frank_Ruhl_Libre } from "next/font/google";
 import "./globals.css";
 
-const heebo = Heebo({
+const assistant = Assistant({
   subsets: ["hebrew", "latin"],
-  variable: "--font-heebo",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-assistant",
+});
+
+const frankRuhlLibre = Frank_Ruhl_Libre({
+  subsets: ["hebrew", "latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-frank-ruhl",
 });
 
 // Kept city-neutral on purpose: this metadata applies to every route
@@ -19,7 +26,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="he" dir="rtl" className={`${heebo.variable} h-full`}>
+    <html lang="he" dir="rtl" className={`${assistant.variable} ${frankRuhlLibre.variable} h-full`}>
       <body className="min-h-full bg-slate-100 text-slate-900 antialiased">{children}</body>
     </html>
   );

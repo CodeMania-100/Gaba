@@ -283,6 +283,92 @@ export interface RevenueSummary {
   manualEffectRevenueIls: number;
 }
 
+// ---------------------------------------------------------------------------
+// Strategy impact summary (Tab 3) -- "affected units" and "outside the
+// supported market range" as two small, precisely-scoped comparative facts.
+// Both read row.market_range, which has the identical {lower, upper,
+// confidence} shape for standard AND special units alike (a special unit's
+// range is its own indicative range, from a different methodology, but
+// structurally the same field computePriceBreakdown already consumes
+// generically for any row) -- so this runs over all 39 rows with a usable
+// range rather than standard-only, and reports the two groups separately so
+// a reader never has to guess which inventory slice a count describes.
+// ---------------------------------------------------------------------------
+
+export type RangePosition = "above_range" | "within_range" | "below_range";
+
+export interface StrategyImpactUnit {
+  unitNumber: string;
+  bucket: FamilyBucket;
+  proposedIls: number;
+  lowerIls: number | null;
+  upperIls: number | null;
+  position: RangePosition;
+}
+
+export interface StrategyImpactGroup {
+  totalWithRange: number;
+  affectedCount: number;
+  outsideRange: StrategyImpactUnit[];
+}
+
+export interface StrategyImpactSummary {
+  standard: StrategyImpactGroup;
+  special: StrategyImpactGroup;
+}
+
+function emptyImpactGroup(): StrategyImpactGroup {
+  return { totalWithRange: 0, affectedCount: 0, outsideRange: [] };
+}
+
+/** For every row with a usable market_range, compares the current
+ * proposed price (computePriceBreakdown, unchanged formula) against that
+ * range -- purely comparative display logic, no new pricing input. A row
+ * counts as "affected" only when totalPct !== 0 for that specific unit
+ * (the same definition the drawer/consistency review already use), never a
+ * blanket "every unit" count. Rows without a usable range (lower and upper
+ * both null, or no market_range at all) are excluded rather than coerced
+ * into a false in-range/out-of-range verdict. */
+export function deriveStrategyImpactSummary(rows: PtkPriceListRow[], state: MarketingStrategyState): StrategyImpactSummary {
+  const standard = emptyImpactGroup();
+  const special = emptyImpactGroup();
+
+  for (const row of rows) {
+    const range = row.market_range;
+    if (!range || (range.lower == null && range.upper == null)) continue;
+    const breakdown = computePriceBreakdown(state, row);
+    if (breakdown.proposedIls == null) continue;
+
+    const group = row.family_key != null ? standard : special;
+    group.totalWithRange += 1;
+    if (breakdown.totalPct !== 0) group.affectedCount += 1;
+
+    const proposed = breakdown.proposedIls;
+    let position: RangePosition = "within_range";
+    if (range.upper != null && proposed > range.upper) position = "above_range";
+    else if (range.lower != null && proposed < range.lower) position = "below_range";
+
+    if (position !== "within_range") {
+      group.outsideRange.push({
+        unitNumber: row.unit_number,
+        bucket: familyBucketOf(row),
+        proposedIls: proposed,
+        lowerIls: range.lower,
+        upperIls: range.upper,
+        position,
+      });
+    }
+  }
+
+  return { standard, special };
+}
+
+export const RANGE_POSITION_LABELS: Record<RangePosition, string> = {
+  above_range: "מעל טווח השוק",
+  within_range: "בתוך טווח השוק",
+  below_range: "מתחת לטווח השוק",
+};
+
 export function computeRevenueSummary(rows: PtkPriceListRow[], state: MarketingStrategyState): RevenueSummary {
   let marketIndicationRevenueIls = 0;
   let proposedRevenueIls = 0;

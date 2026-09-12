@@ -52,9 +52,45 @@ export function deriveApartmentMix(rows: PtkPriceListRow[]): ApartmentMixSlice[]
 }
 
 // ---------------------------------------------------------------------------
-// Quarterly sold price/sqm trend (task item 5) -- real frozen tax evidence
-// only, median per quarter, sparse quarters omitted (never interpolated).
+// Completed-sales market snapshot (real frozen tax/sold evidence only).
+//
+// "insufficient_for_trend != no_data": a context can have real, valid
+// completed-sale evidence that simply doesn't span enough distinct quarters
+// to draw a connected multi-point trend line. That is a *presentation*
+// constraint, not an evidence shortage -- the old code conflated the two by
+// filtering out any quarter with fewer than 3 transactions (per family) and
+// then treating an all-empty result as "no data", which incorrectly showed
+// the empty-state message for e.g. Netanya/Ashkelon even though both have
+// real completed-sale rows (just thin, and spread thin per family-quarter).
+//
+// Mode is decided from the COMBINED 3R+5R evidence pool for this context
+// (never from one family alone -- a context can clear 2 distinct quarters
+// combined even when neither family does individually):
+//   >=2 distinct quarters (across both families) -> quarterly_trend
+//   ==1 distinct quarter                          -> single_quarter
+//   >=1 valid transaction but none dateable into a quarter -> scatter
+//   0 valid transactions                          -> empty
+//
+// "Valid" / "usable" here is exactly the same evidence this card has always
+// used -- workspace.evidence_provenance.sold.{3R,5R}.records with
+// quality_status "usable" (the same gate the pricing engine itself uses).
+// Never current asking, starting prices, historical marketing prices, or
+// context-only special evidence -- this card is completed-sale evidence
+// only. No pricing range is recomputed here.
 // ---------------------------------------------------------------------------
+
+export type CompletedSalesMode = "quarterly_trend" | "single_quarter" | "scatter" | "empty";
+
+export interface CompletedSaleObservation {
+  family: "3R" | "5R";
+  address: string | null;
+  date: string | null;
+  quarterKey: string | null;
+  quarterLabel: string | null;
+  priceIls: number | null;
+  areaSqm: number | null;
+  pricePerSqm: number;
+}
 
 export interface QuarterlyTrendPoint {
   quarterKey: string;
@@ -69,10 +105,18 @@ export interface QuarterlyTrendSeries {
   points: QuarterlyTrendPoint[];
 }
 
-// Below this many usable transactions in a quarter, the point is omitted
-// rather than shown as a shaky median (see task: "do not create fake trend
-// continuity").
-const MIN_TRANSACTIONS_PER_QUARTER = 3;
+export interface CompletedSalesOverview {
+  mode: CompletedSalesMode;
+  // All valid observations (both families, sorted by date where known) --
+  // used directly by single_quarter/scatter rendering.
+  observations: CompletedSaleObservation[];
+  // Per-family quarterly series -- used only by quarterly_trend rendering.
+  quarterlySeries: QuarterlyTrendSeries[];
+  medianPricePerSqm: number | null;
+  transactionCount: number;
+  // Only set for single_quarter mode.
+  quarterLabel: string | null;
+}
 
 function quarterOf(dateStr: string): { key: string; label: string; sortKey: number } | null {
   const d = new Date(dateStr);
@@ -88,30 +132,50 @@ function median(values: number[]): number {
   return sorted.length % 2 !== 0 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
 }
 
-export function deriveQuarterlySoldTrend(workspace: PetahTikvaWorkspace): QuarterlyTrendSeries[] {
+function collectCompletedSaleObservations(workspace: PetahTikvaWorkspace): CompletedSaleObservation[] {
+  const families: ("3R" | "5R")[] = ["3R", "5R"];
+  const observations: CompletedSaleObservation[] = [];
+  for (const fam of families) {
+    const records = (workspace.evidence_provenance.sold[fam]?.records as JsonRecord[] | undefined) ?? [];
+    // Same contributor/QA gate the pricing engine itself uses -- never
+    // current asking, starting prices, historical marketing, or context-
+    // only evidence (none of which live in this sold-records array anyway).
+    for (const r of records) {
+      if (r.quality_status !== "usable") continue;
+      const price = (r.price as number | null) ?? null;
+      const area = (r.area as number | null) ?? null;
+      const ppsm = (r.price_per_sqm as number | null) ?? (price != null && area ? price / area : null);
+      if (ppsm == null) continue; // not a usable price/sqm observation
+      const dateStr = (r.event_date as string | undefined) ?? null;
+      const q = dateStr ? quarterOf(dateStr) : null;
+      observations.push({
+        family: fam,
+        address: (r.address as string | null) ?? null,
+        date: dateStr,
+        quarterKey: q?.key ?? null,
+        quarterLabel: q?.label ?? null,
+        priceIls: price,
+        areaSqm: area,
+        pricePerSqm: ppsm,
+      });
+    }
+  }
+  return observations.sort((a, b) => (a.date ?? "").localeCompare(b.date ?? ""));
+}
+
+function buildQuarterlySeries(observations: CompletedSaleObservation[]): QuarterlyTrendSeries[] {
   const families: ("3R" | "5R")[] = ["3R", "5R"];
   return families.map((fam) => {
-    const records = (workspace.evidence_provenance.sold[fam]?.records as JsonRecord[] | undefined) ?? [];
-    // "Transactions already accepted into our standard sold evidence" --
-    // quality_status "usable" is the same gate the pricing engine itself
-    // uses; low_confidence/ambiguous records are shown elsewhere (data
-    // quality) but never plotted here as if they were accepted evidence.
-    const usable = records.filter((r) => r.quality_status === "usable");
     const byQuarter = new Map<string, { label: string; sortKey: number; ppsms: number[] }>();
-    for (const r of usable) {
-      const dateStr = r.event_date as string | undefined;
-      if (!dateStr) continue;
-      const q = quarterOf(dateStr);
-      if (!q) continue;
-      const price = r.price as number | null;
-      const area = r.area as number | null;
-      const ppsm = (r.price_per_sqm as number | null) ?? (price != null && area ? price / area : null);
-      if (ppsm == null) continue;
-      if (!byQuarter.has(q.key)) byQuarter.set(q.key, { label: q.label, sortKey: q.sortKey, ppsms: [] });
-      byQuarter.get(q.key)!.ppsms.push(ppsm);
+    for (const o of observations) {
+      if (o.family !== fam || o.quarterKey == null) continue;
+      if (!byQuarter.has(o.quarterKey)) {
+        const [yStr, qStr] = o.quarterKey.split("-Q");
+        byQuarter.set(o.quarterKey, { label: o.quarterLabel!, sortKey: Number(yStr) * 4 + Number(qStr), ppsms: [] });
+      }
+      byQuarter.get(o.quarterKey)!.ppsms.push(o.pricePerSqm);
     }
     const points: QuarterlyTrendPoint[] = [...byQuarter.entries()]
-      .filter(([, v]) => v.ppsms.length >= MIN_TRANSACTIONS_PER_QUARTER)
       .sort((a, b) => a[1].sortKey - b[1].sortKey)
       .map(([key, v]) => ({
         quarterKey: key,
@@ -121,6 +185,47 @@ export function deriveQuarterlySoldTrend(workspace: PetahTikvaWorkspace): Quarte
       }));
     return { family: fam, familyLabel: fam === "3R" ? "3 חדרים" : "5 חדרים", points };
   });
+}
+
+export function deriveCompletedSalesOverview(workspace: PetahTikvaWorkspace): CompletedSalesOverview {
+  const observations = collectCompletedSaleObservations(workspace);
+  const transactionCount = observations.length;
+
+  if (transactionCount === 0) {
+    return { mode: "empty", observations: [], quarterlySeries: [], medianPricePerSqm: null, transactionCount: 0, quarterLabel: null };
+  }
+
+  const medianPricePerSqm = median(observations.map((o) => o.pricePerSqm));
+  const distinctQuarters = new Set(observations.map((o) => o.quarterKey).filter((k): k is string => k != null));
+
+  if (distinctQuarters.size >= 2) {
+    return {
+      mode: "quarterly_trend",
+      observations,
+      quarterlySeries: buildQuarterlySeries(observations),
+      medianPricePerSqm,
+      transactionCount,
+      quarterLabel: null,
+    };
+  }
+
+  if (distinctQuarters.size === 1) {
+    const [onlyQuarterKey] = distinctQuarters;
+    const quarterObservations = observations.filter((o) => o.quarterKey === onlyQuarterKey);
+    return {
+      mode: "single_quarter",
+      observations: quarterObservations,
+      quarterlySeries: [],
+      medianPricePerSqm: median(quarterObservations.map((o) => o.pricePerSqm)),
+      transactionCount: quarterObservations.length,
+      quarterLabel: quarterObservations[0]?.quarterLabel ?? null,
+    };
+  }
+
+  // distinctQuarters.size === 0: real, valid transactions exist, but none of
+  // them carry a dateable event_date -- quarter aggregation itself is not
+  // possible, not merely thin. Never treated as "no data".
+  return { mode: "scatter", observations, quarterlySeries: [], medianPricePerSqm, transactionCount, quarterLabel: null };
 }
 
 // ---------------------------------------------------------------------------

@@ -14,35 +14,35 @@ export default function EvidenceFunnel({ funnel }: { funnel: LaneFunnel }) {
 
   return (
     <div>
-      <div className="mb-1 text-[11px] font-semibold text-slate-500">{funnel.laneLabel}</div>
+      <div className="mb-1 text-[11px] font-semibold text-ink-muted">{funnel.laneLabel}</div>
       <div className="flex flex-col gap-1">
         {funnel.stages.map((stage, i) => (
           <div key={stage.label}>
-            {i > 0 && <div className="ps-1 text-slate-300">↓</div>}
+            {i > 0 && <div className="ps-1 text-ink-muted/50">↓</div>}
             <div className="flex items-center gap-2">
-              <span className="w-28 shrink-0 text-xs text-slate-600">{stage.label}</span>
-              <div className="h-2 flex-1 overflow-hidden rounded-sm bg-slate-100">
-                <div className="h-full rounded-sm bg-slate-500" style={{ width: `${Math.max(6, (stage.count / maxCount) * 100)}%` }} />
+              <span className="w-28 shrink-0 text-xs text-ink-muted">{stage.label}</span>
+              <div className="h-2 flex-1 overflow-hidden rounded-sm bg-hairline/40">
+                <div className="h-full rounded-sm bg-accent/70" style={{ width: `${Math.max(6, (stage.count / maxCount) * 100)}%` }} />
               </div>
-              <span className="w-6 shrink-0 text-end text-xs font-semibold tabular-nums text-slate-900">{stage.count}</span>
+              <span className="w-6 shrink-0 text-end text-xs font-semibold tabular-nums text-ink">{stage.count}</span>
             </div>
           </div>
         ))}
       </div>
 
       {/* Excluded records get their own short, grouped Hebrew reason here --
-          never a raw code (task items 9/25). Participating vs excluded is
-          already visually distinct (this list vs. the chart's solid dots),
-          and this is the one place the exclusion reason itself is spelled
-          out in the primary view. */}
+          never a raw code. Participating vs excluded is already visually
+          distinct (this list vs. the chart's solid dots), and this is the
+          one place the exclusion reason itself is spelled out in the
+          primary view. */}
       {funnel.excludedRecords.length > 0 && (
-        <div className="mt-2 flex flex-col gap-0.5 border-t border-slate-100 pt-2">
+        <div className="mt-2 flex flex-col gap-0.5 border-t border-hairline pt-2">
           {funnel.excludedRecords.map((e, i) => (
             <div key={i} className="flex items-baseline justify-between gap-2 text-[11px]">
-              <span className="text-slate-500">
-                {e.label} <span className="text-slate-400">— הוצא מסל ההשוואה, לא השתתף בחישוב</span>
+              <span className="text-ink-muted">
+                {e.label} <span className="text-ink-muted/70">— הוצא מסל ההשוואה, לא השתתף בחישוב</span>
               </span>
-              <span className="shrink-0 font-medium text-slate-600">{e.groupedReason}</span>
+              <span className="shrink-0 font-medium text-ink-muted">{e.groupedReason}</span>
             </div>
           ))}
         </div>

@@ -3,16 +3,39 @@
 :root {
   --background: #f1f5f9;
   --foreground: #0f172a;
+
+  /* Warm-editorial tokens for the Petah Tikva pricing demo. Additive —
+     the slate defaults above stay untouched for other routes. */
+  --canvas: #faf7f1;
+  --surface: #ffffff;
+  --ink: #241f1a;
+  --ink-muted: #6b6459;
+  --accent: #9c7a3c;
+  --supported: #6b7a4f;
+  --warning: #b8863b;
+  --conflict: #a23b3b;
+  --hairline: #e3ddcf;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-heebo);
+  --font-sans: var(--font-assistant);
+  --font-heading: var(--font-frank-ruhl);
+
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-accent: var(--accent);
+  --color-supported: var(--supported);
+  --color-warning: var(--warning);
+  --color-conflict: var(--conflict);
+  --color-hairline: var(--hairline);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-heebo), Arial, sans-serif;
+  font-family: var(--font-assistant), Arial, sans-serif;
 }

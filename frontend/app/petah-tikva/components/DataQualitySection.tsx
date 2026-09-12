@@ -23,28 +23,28 @@ export default function DataQualitySection({ workspace, family }: Props) {
   const supportingLanes = family.market.support_lanes.length;
 
   return (
-    <section className="flex flex-col gap-3 rounded-lg border border-slate-200 bg-slate-50 p-4">
+    <section className="flex flex-col gap-3 rounded-lg border border-hairline bg-canvas p-4">
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <h2 className="text-sm font-semibold text-slate-600">
-          איכות הנתונים <span className="font-normal text-slate-400">— דירות {ROOM_FAMILY_LABELS[fam] ?? fam}</span>
+        <h2 className="text-sm font-semibold text-ink-muted">
+          איכות הנתונים <span className="font-normal text-ink-muted/70">— דירות {ROOM_FAMILY_LABELS[fam] ?? fam}</span>
         </h2>
-        <button onClick={() => setExpanded((v) => !v)} className="text-xs font-medium text-slate-600 underline hover:text-slate-900">
+        <button onClick={() => setExpanded((v) => !v)} className="text-xs font-medium text-ink-muted underline hover:text-ink">
           {expanded ? "הסתרה" : "איך הנתונים עובדו?"}
         </button>
       </div>
 
-      <div className="flex flex-wrap gap-x-6 gap-y-1 text-xs text-slate-600">
+      <div className="flex flex-wrap gap-x-6 gap-y-1 text-xs text-ink-muted">
         <span>
-          קבוצות השוואה בעסקאות שבוצעו: <b className="text-slate-900">{soldContributors}</b>
+          קבוצות השוואה בעסקאות שבוצעו: <b className="text-ink">{soldContributors}</b>
         </span>
         <span>
-          מקורות בהיצע הנוכחי: <b className="text-slate-900">{askingContributors}</b>
+          מקורות בהיצע הנוכחי: <b className="text-ink">{askingContributors}</b>
         </span>
         <span>
-          פרויקטים מתחרים כמותיים: <b className="text-slate-900">{newDevContributors}</b>
+          פרויקטים מתחרים כמותיים: <b className="text-ink">{newDevContributors}</b>
         </span>
         <span>
-          ערוצי ראיות התומכים בתוצאה: <b className="text-slate-900">{supportingLanes}</b>
+          ערוצי ראיות התומכים בתוצאה: <b className="text-ink">{supportingLanes}</b>
         </span>
       </div>
 

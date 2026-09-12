@@ -35,16 +35,15 @@ interface Props {
   confidence: string | null;
   onOpenMapEvidence: (row: PtkPriceListRow) => void;
   // Rendered here so it stays visually "downstream of the pricing decision"
-  // (task item 20) inside the new hierarchy, exactly as before -- content
-  // and logic untouched.
+  // inside the new hierarchy, exactly as before -- content and logic
+  // untouched.
   projectStatusAndDecision: React.ReactNode;
 }
 
-/** Special-unit ("Focused Batch — Special Apartment Decision Drawer")
- * primary decision layer: sections A-E answer, in order, what the market
- * says / why / how strong the evidence is / what's missing / what the
- * company can still change -- all in well under a screen's worth of
- * scrolling. Section F keeps the full, unmodified research report
+/** Special-unit primary decision layer: sections A-E answer, in order, what
+ * the market says / why / how strong the evidence is / what's missing /
+ * what the company can still change -- all in well under a screen's worth
+ * of scrolling. Section F keeps the full, unmodified research report
  * (SpecialUnitAnalysis) reachable but collapsed. No pricing/eligibility
  * logic lives here -- every number is read from workspace.
  * special_unit_market_context via lib/specialUnitDecision.ts's pure
@@ -62,8 +61,7 @@ export default function SpecialUnitDecisionPanel({ row, workspace, state, confid
   const funnel = context && primaryLane ? deriveLaneFunnel(context, primaryLane) : null;
   const gapText = context ? evidenceGapText(context) : null;
 
-  // Supplemental research context (task "Focused Batch — Integrate New
-  // Research Evidence" items 6-13) -- read from the same already-merged,
+  // Supplemental research context -- read from the same already-merged,
   // non-voting first_researcher_context this drawer's "פירוט מלא" section
   // already carries; only reshaped here for a compact, decision-focused
   // presentation. Nothing here feeds market_indication/confidence.
@@ -80,46 +78,46 @@ export default function SpecialUnitDecisionPanel({ row, workspace, state, confid
 
       {/* B. למה זה המחיר */}
       {context && indication && indication.suggested_price_ils != null ? (
-        <section className="rounded-md border border-slate-200 p-3">
+        <section className="rounded-md border border-hairline p-3">
           <StepHeading n="B" title="למה זה המחיר" />
-          <p className="text-sm text-slate-700">{methodSentence(context)}</p>
-          <button onClick={() => onOpenMapEvidence(row)} className="mt-1.5 text-xs text-slate-500 underline hover:text-slate-800">
+          <p className="text-sm text-ink">{methodSentence(context)}</p>
+          <button onClick={() => onOpenMapEvidence(row)} className="mt-1.5 text-xs text-ink-muted underline hover:text-ink">
             הצג את ראיות השוק על המפה
           </button>
 
           {laneResult && chartPoints.length > 0 && (
-            <div className="mt-3 border-t border-slate-100 pt-3">
+            <div className="mt-3 border-t border-hairline pt-3">
               <PriceAxisChart points={chartPoints} marketIndicationIls={indication.suggested_price_ils} methodLabel={chartMethodLabel(laneResult)} />
             </div>
           )}
 
           {funnel && funnel.stages.some((s) => s.count > 0) && (
-            <div className="mt-3 border-t border-slate-100 pt-3">
+            <div className="mt-3 border-t border-hairline pt-3">
               <EvidenceFunnel funnel={funnel} />
             </div>
           )}
 
           {highlighted && (
-            <div className="mt-3 border-t border-slate-100 pt-3">
+            <div className="mt-3 border-t border-hairline pt-3">
               <HighlightedComparableCard row={row} categoryLabel={categoryLabel} highlighted={highlighted} />
             </div>
           )}
 
-          {/* Apt39 Mivtza Dekel high-confidence Tax/listing link (task
-              items 10-11) -- sits right next to the highlighted comparable
-              since it enriches that same participating sale. */}
+          {/* Apt39 Mivtza Dekel high-confidence Tax/listing link -- sits
+              right next to the highlighted comparable since it enriches
+              that same participating sale. */}
           {mivtzaLink && (
-            <div className="mt-3 border-t border-slate-100 pt-3">
+            <div className="mt-3 border-t border-hairline pt-3">
               <HighConfidenceLinkCard link={mivtzaLink} />
             </div>
           )}
 
-          <div className="mt-3 border-t border-slate-100 pt-3">
+          <div className="mt-3 border-t border-hairline pt-3">
             <ConfidenceExplanation indication={indication} broadDirectTypeContextCount={triplexCards.length} />
           </div>
 
           {(tripleStory || gapText) && (
-            <div className="mt-3 rounded-md bg-amber-50 p-2.5 text-xs text-amber-900">
+            <div className="mt-3 rounded-md bg-warning/10 p-2.5 text-xs text-warning">
               <div className="font-semibold">מה חסר כדי לחזק את האינדיקציה?</div>
               {tripleStory ? (
                 <div className="mt-1 flex flex-col gap-1">
@@ -134,16 +132,16 @@ export default function SpecialUnitDecisionPanel({ row, workspace, state, confid
           )}
 
           {/* Apt36/37 triplex-product context + Apt38 historical duplex
-              context (task items 7, 12) -- collapsed, never plotted/voted. */}
+              context -- collapsed, never plotted/voted. */}
           {(triplexCards.length > 0 || historicalDuplex) && (
-            <div className="mt-3 flex flex-col gap-2 border-t border-slate-100 pt-3">
+            <div className="mt-3 flex flex-col gap-2 border-t border-hairline pt-3">
               <TriplexContextSection cards={triplexCards} />
               <HistoricalDuplexContextSection context={historicalDuplex} />
             </div>
           )}
         </section>
       ) : (
-        <section className="rounded-md border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900">
+        <section className="rounded-md border border-warning/40 bg-warning/10 p-3 text-sm text-warning">
           אין כרגע מספיק ראיות נומריות ליחידה זו כדי לחשב אינדיקציית מחיר.
         </section>
       )}
@@ -159,17 +157,16 @@ export default function SpecialUnitDecisionPanel({ row, workspace, state, confid
           the Monday action -- unchanged content, positioned here). */}
       {projectStatusAndDecision}
 
-      {/* E. הקשר שוק נוסף -- collapsed by default (task item 10). */}
+      {/* E. הקשר שוק נוסף -- collapsed by default. */}
       {context && indication && <AdditionalMarketContext context={context} indication={indication} primaryLane={primaryLane} />}
 
       {/* F. פירוט מלא של הראיות והמקורות -- the pre-existing full research
-          report, unmodified, just relocated behind a collapsed toggle
-          (task item 11). */}
-      <details className="rounded-md border border-slate-200">
-        <summary className="cursor-pointer select-none px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
+          report, unmodified, just relocated behind a collapsed toggle. */}
+      <details className="rounded-md border border-hairline">
+        <summary className="cursor-pointer select-none px-3 py-2 text-sm font-semibold text-ink-muted hover:bg-canvas">
           פירוט מלא של הראיות והמקורות
         </summary>
-        <div className="border-t border-slate-100 px-3 py-3">
+        <div className="border-t border-hairline px-3 py-3">
           <SpecialUnitAnalysis row={row} context={context} marketContext={workspace.special_unit_market_context} />
         </div>
       </details>
@@ -197,30 +194,30 @@ function PriceHeader({
   const primaryIls = isZeroStrategy ? breakdown.marketIndicationIls : breakdown.proposedIls;
 
   return (
-    <section className="rounded-lg border-2 border-slate-900 bg-gradient-to-b from-slate-50 to-white p-4">
+    <section className="rounded-lg border-2 border-ink/80 bg-gradient-to-b from-canvas to-surface p-4">
       <StepHeading n="A" title={`דירה ${row.unit_number}`} />
-      <p className="-mt-1 mb-2 text-xs text-slate-500">
+      <p className="-mt-1 mb-2 text-xs text-ink-muted">
         {categoryLabel}
         {rooms != null ? ` · ${rooms} חדרים` : ""}
         {row.internal_area_sqm != null ? ` · ${num(row.internal_area_sqm)} מ״ר` : ""}
       </p>
 
-      {/* Never repeat the same number three times (task item 3): the zero-
-          strategy state shows the market indication exactly once as the
-          primary number; the non-zero state promotes the proposed price and
-          shows market indication + total strategy effect as secondary
-          recap lines only. */}
-      <div className="text-xs font-semibold text-slate-500">{isZeroStrategy ? "אינדיקציית שוק" : "מחיר מוצע"}</div>
-      <div className="text-3xl font-bold text-slate-900">{ils(primaryIls)}</div>
+      {/* Never repeat the same number three times: the zero-strategy state
+          shows the market indication exactly once as the primary number;
+          the non-zero state promotes the proposed price and shows market
+          indication + total strategy effect as secondary recap lines
+          only. */}
+      <div className="text-xs font-semibold text-ink-muted">{isZeroStrategy ? "אינדיקציית שוק" : "מחיר מוצע"}</div>
+      <div className="text-3xl font-bold text-ink">{ils(primaryIls)}</div>
 
       {!isZeroStrategy && (
-        <div className="mt-1.5 flex flex-wrap gap-x-4 gap-y-0.5 text-xs text-slate-500">
+        <div className="mt-1.5 flex flex-wrap gap-x-4 gap-y-0.5 text-xs text-ink-muted">
           <span>
-            אינדיקציית שוק <span className="font-medium text-slate-700">{ils(breakdown.marketIndicationIls)}</span>
+            אינדיקציית שוק <span className="font-medium text-ink">{ils(breakdown.marketIndicationIls)}</span>
           </span>
           <span>
             התאמות החברה{" "}
-            <span className={`font-medium ${breakdown.totalPct > 0 ? "text-emerald-700" : "text-red-700"}`}>
+            <span className={`font-medium ${breakdown.totalPct > 0 ? "text-supported" : "text-conflict"}`}>
               {breakdown.totalPct > 0 ? "+" : ""}
               {breakdown.totalPct}% · {breakdown.totalPct > 0 ? "+" : ""}
               {ils((breakdown.proposedIls ?? 0) - (breakdown.marketIndicationIls ?? 0))}
@@ -230,13 +227,13 @@ function PriceHeader({
       )}
 
       <div className="mt-2 flex items-center gap-2">
-        <span className={`rounded px-2 py-1 text-xs font-medium ${CONFIDENCE_COLORS[confidence ?? ""] ?? "bg-slate-100 text-slate-700"}`}>
+        <span className={`rounded px-2 py-1 text-xs font-medium ${CONFIDENCE_COLORS[confidence ?? ""] ?? "bg-canvas text-ink-muted"}`}>
           רמת ביטחון: {CONFIDENCE_LABELS[confidence ?? ""] ?? "—"}
         </span>
       </div>
 
       {isZeroStrategy && (
-        <p className="mt-1.5 text-xs text-slate-400">המחיר המוצע זהה לאינדיקציית השוק — ללא התאמות מסחריות.</p>
+        <p className="mt-1.5 text-xs text-ink-muted/70">המחיר המוצע זהה לאינדיקציית השוק — ללא התאמות מסחריות.</p>
       )}
     </section>
   );
@@ -261,51 +258,51 @@ function HighlightedComparableCard({
 
   return (
     <div>
-      <div className="mb-1.5 text-xs font-semibold text-slate-500">{highlighted.ruleLabel}</div>
+      <div className="mb-1.5 text-xs font-semibold text-ink-muted">{highlighted.ruleLabel}</div>
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
           <thead>
-            <tr className="text-[11px] text-slate-500">
+            <tr className="text-[11px] text-ink-muted">
               <th className="px-1.5 py-1 text-start font-medium"></th>
               <th className="px-1.5 py-1 text-start font-medium">דירה {row.unit_number}</th>
               <th className="px-1.5 py-1 text-start font-medium">עסקת השוואה</th>
-              <th className="px-1.5 py-1 text-start font-medium text-slate-300">Δ</th>
+              <th className="px-1.5 py-1 text-start font-medium text-ink-muted/50">Δ</th>
             </tr>
           </thead>
           <tbody>
-            <tr className="border-t border-slate-100">
-              <td className="px-1.5 py-1 text-slate-500">שטח פנימי</td>
-              <td className="px-1.5 py-1 font-medium text-slate-900">{num(c.subject_area_sqm)} מ״ר</td>
-              <td className="px-1.5 py-1 font-medium text-slate-900">{num(c.comparable_area_sqm)} מ״ר</td>
-              <td className="px-1.5 py-1 text-slate-400">
+            <tr className="border-t border-hairline">
+              <td className="px-1.5 py-1 text-ink-muted">שטח פנימי</td>
+              <td className="px-1.5 py-1 font-medium text-ink">{num(c.subject_area_sqm)} מ״ר</td>
+              <td className="px-1.5 py-1 font-medium text-ink">{num(c.comparable_area_sqm)} מ״ר</td>
+              <td className="px-1.5 py-1 text-ink-muted/70">
                 {areaDeltaLabel} ({highlighted.areaDeltaPct > 0 ? "+" : ""}
                 {num(highlighted.areaDeltaPct, 1)}%)
               </td>
             </tr>
-            <tr className="border-t border-slate-100">
-              <td className="px-1.5 py-1 text-slate-500">סוג</td>
-              <td className="px-1.5 py-1 font-medium text-slate-900">{categoryLabel}</td>
-              <td className="px-1.5 py-1 font-medium text-slate-900">{rawType ?? "לא ידוע"}</td>
-              <td className="px-1.5 py-1 text-slate-300">—</td>
+            <tr className="border-t border-hairline">
+              <td className="px-1.5 py-1 text-ink-muted">סוג</td>
+              <td className="px-1.5 py-1 font-medium text-ink">{categoryLabel}</td>
+              <td className="px-1.5 py-1 font-medium text-ink">{rawType ?? "לא ידוע"}</td>
+              <td className="px-1.5 py-1 text-ink-muted/50">—</td>
             </tr>
-            <tr className="border-t border-slate-100">
-              <td className="px-1.5 py-1 text-slate-500">מחיר</td>
-              <td className="px-1.5 py-1 text-slate-300">—</td>
-              <td className="px-1.5 py-1 font-medium text-slate-900">{ilsCompact(c.comparable_price_ils)}</td>
-              <td className="px-1.5 py-1 text-slate-300">—</td>
+            <tr className="border-t border-hairline">
+              <td className="px-1.5 py-1 text-ink-muted">מחיר</td>
+              <td className="px-1.5 py-1 text-ink-muted/50">—</td>
+              <td className="px-1.5 py-1 font-medium text-ink">{ilsCompact(c.comparable_price_ils)}</td>
+              <td className="px-1.5 py-1 text-ink-muted/50">—</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <p className="mt-1 text-[11px] text-slate-400">{c.label}</p>
+      <p className="mt-1 text-[11px] text-ink-muted/70">{c.label}</p>
     </div>
   );
 }
 
 function ConfidenceExplanation({ indication, broadDirectTypeContextCount }: { indication: SpecialUnitIndication; broadDirectTypeContextCount: number }) {
   const dims = confidenceDimensions(indication, broadDirectTypeContextCount);
-  // Explanatory-only override (task item 8) -- indication.confidence itself
-  // never changes; only which sentence explains it.
+  // Explanatory-only override -- indication.confidence itself never
+  // changes; only which sentence explains it.
   const reason = confidenceReasonOverride(broadDirectTypeContextCount) ?? indication.confidence_reason;
   return (
     <div>
@@ -317,18 +314,18 @@ function ConfidenceExplanation({ indication, broadDirectTypeContextCount }: { in
       <div className="flex flex-col gap-1">
         {dims.map((d) => (
           <div key={d.label} className="flex items-center justify-between text-xs">
-            <span className="text-slate-500">{d.label}</span>
-            <span className="font-medium text-slate-800">{d.value}</span>
+            <span className="text-ink-muted">{d.label}</span>
+            <span className="font-medium text-ink">{d.value}</span>
           </div>
         ))}
       </div>
-      <p className="mt-1.5 text-[11px] text-slate-400">{reason}</p>
+      <p className="mt-1.5 text-[11px] text-ink-muted/70">{reason}</p>
     </div>
   );
 }
 
 // ---------------------------------------------------------------------------
-// C. Compact apartment facts (task item 14) + compact sibling card (item 15)
+// C. Compact apartment facts + compact sibling card
 // ---------------------------------------------------------------------------
 
 function CompactApartmentFacts({ row }: { row: PtkPriceListRow }) {
@@ -339,20 +336,20 @@ function CompactApartmentFacts({ row }: { row: PtkPriceListRow }) {
   const roleWorthy = rows.filter((r) => (r.status === "shown_for_comparison" || r.status === "not_monetized") && r.value !== "—" && r.value !== "לא ידוע");
 
   return (
-    <div className="rounded-md border border-slate-200 p-3">
+    <div className="rounded-md border border-hairline p-3">
       <div className="grid grid-cols-2 gap-x-4 gap-y-1.5 text-sm">
         {rows.map((r) => (
           <div key={r.label} className="flex items-baseline justify-between gap-2">
-            <span className="text-slate-500">{r.label}</span>
-            <span className="font-medium text-slate-900">{r.value}</span>
+            <span className="text-ink-muted">{r.label}</span>
+            <span className="font-medium text-ink">{r.value}</span>
           </div>
         ))}
       </div>
       {roleWorthy.length > 0 && (
-        <div className="mt-2 flex flex-col gap-1 border-t border-slate-100 pt-2">
+        <div className="mt-2 flex flex-col gap-1 border-t border-hairline pt-2">
           {roleWorthy.map((r) => (
-            <p key={r.label} className="text-[11px] text-slate-400">
-              <span className="font-medium text-slate-500">{r.label}: </span>
+            <p key={r.label} className="text-[11px] text-ink-muted/70">
+              <span className="font-medium text-ink-muted">{r.label}: </span>
               {r.usage}
             </p>
           ))}
@@ -363,8 +360,8 @@ function CompactApartmentFacts({ row }: { row: PtkPriceListRow }) {
 }
 
 // Compact variant of UnitDrawer's SiblingComparisonCard -- same data/rule,
-// tighter layout to match this drawer's overall density (task item 15:
-// "preserve... make it compact"). Only unit 36/37 render anything.
+// tighter layout to match this drawer's overall density. Only unit 36/37
+// render anything.
 function SiblingComparisonCompact({ row, workspace }: { row: PtkPriceListRow; workspace: PetahTikvaWorkspace }) {
   const siblingNumber = row.unit_number === "36" ? "37" : row.unit_number === "37" ? "36" : null;
   if (!siblingNumber) return null;
@@ -380,11 +377,11 @@ function SiblingComparisonCompact({ row, workspace }: { row: PtkPriceListRow; wo
   ];
 
   return (
-    <div className="mt-3 rounded-md border border-slate-200 bg-white p-3">
-      <div className="mb-1.5 text-xs font-semibold text-slate-500">השוואה לדירה דומה בפרויקט</div>
+    <div className="mt-3 rounded-md border border-hairline bg-surface p-3">
+      <div className="mb-1.5 text-xs font-semibold text-ink-muted">השוואה לדירה דומה בפרויקט</div>
       <table className="w-full text-sm">
         <thead>
-          <tr className="text-[11px] text-slate-400">
+          <tr className="text-[11px] text-ink-muted/70">
             <th className="text-start font-medium"></th>
             <th className="text-start font-medium">{row.unit_number}</th>
             <th className="text-start font-medium">{siblingNumber}</th>
@@ -392,15 +389,15 @@ function SiblingComparisonCompact({ row, workspace }: { row: PtkPriceListRow; wo
         </thead>
         <tbody>
           {rows.map((r) => (
-            <tr key={r.label} className="border-t border-slate-100">
-              <td className="py-1 text-slate-500">{r.label}</td>
-              <td className="py-1 font-medium text-slate-900">{r.a}</td>
-              <td className="py-1 font-medium text-slate-900">{r.b}</td>
+            <tr key={r.label} className="border-t border-hairline">
+              <td className="py-1 text-ink-muted">{r.label}</td>
+              <td className="py-1 font-medium text-ink">{r.a}</td>
+              <td className="py-1 font-medium text-ink">{r.b}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      <p className="mt-1.5 text-[11px] text-slate-400">
+      <p className="mt-1.5 text-[11px] text-ink-muted/70">
         שתי הדירות נשענות על אותו בסיס שוק. הבדלי המוצר מוצגים למחלקת השיווק לצורך החלטה על התאמה מסחרית.
       </p>
     </div>
@@ -426,26 +423,26 @@ function AdditionalMarketContext({
   if (otherLanes.length === 0) return null;
 
   return (
-    <details className="rounded-md border border-slate-200">
-      <summary className="cursor-pointer select-none px-3 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">הקשר שוק נוסף</summary>
-      <div className="flex flex-col gap-3 border-t border-slate-100 px-3 py-3">
+    <details className="rounded-md border border-hairline">
+      <summary className="cursor-pointer select-none px-3 py-2 text-sm font-semibold text-ink-muted hover:bg-canvas">הקשר שוק נוסף</summary>
+      <div className="flex flex-col gap-3 border-t border-hairline px-3 py-3">
         {otherLanes.map((laneName) => {
           const lane = indication.lanes[laneName]!;
           const entries = [...lane.comps_used, ...lane.comps_context_only].slice(0, 6);
           return (
             <div key={laneName}>
-              <div className="mb-1 text-xs font-semibold text-slate-500">
+              <div className="mb-1 text-xs font-semibold text-ink-muted">
                 {LANE_TITLES[laneName]} ({lane.comps_used.length + lane.comps_context_only.length})
               </div>
-              <ul className="flex flex-col gap-0.5 text-xs text-slate-600">
+              <ul className="flex flex-col gap-0.5 text-xs text-ink-muted">
                 {entries.map((c, i) => {
                   const isModelPrice = (c.note ?? "").startsWith("floorplan");
                   return (
                     <li key={i} className="flex items-center justify-between gap-2">
                       <span className="truncate">{c.label}</span>
-                      <span className="shrink-0 tabular-nums text-slate-500">
+                      <span className="shrink-0 tabular-nums text-ink-muted">
                         {ilsCompact(c.comparable_price_ils)}
-                        {isModelPrice && <span className="ms-1 text-[10px] text-slate-400">מחיר דגם</span>}
+                        {isModelPrice && <span className="ms-1 text-[10px] text-ink-muted/70">מחיר דגם</span>}
                       </span>
                     </li>
                   );
@@ -454,7 +451,7 @@ function AdditionalMarketContext({
             </div>
           );
         })}
-        <p className="text-[11px] text-slate-400">
+        <p className="text-[11px] text-ink-muted/70">
           נתונים אלה לא הצביעו באינדיקציית המחיר הסופית ליחידה זו — מוצגים כהקשר שוק בלבד. פירוט מלא זמין ב״פירוט מלא של הראיות והמקורות״.
         </p>
       </div>

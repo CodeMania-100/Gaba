@@ -6,8 +6,8 @@
 export default function StepHeading({ n, title }: { n: number | string; title: string }) {
   return (
     <div className="mb-2 flex items-center gap-2">
-      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-slate-900 text-[11px] font-bold text-white">{n}</span>
-      <h3 className="text-sm font-semibold text-slate-900">{title}</h3>
+      <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-ink text-[11px] font-bold text-surface">{n}</span>
+      <h3 className="text-sm font-semibold text-ink">{title}</h3>
     </div>
   );
 }

@@ -42,12 +42,12 @@ export default function PriceAxisChart({ points, marketIndicationIls, methodLabe
           stay physical, desyncing the two). */}
       <div dir="ltr">
         <div className="relative h-14 w-full">
-          <div className="absolute inset-x-0 top-1/2 h-px bg-slate-200" />
+          <div className="absolute inset-x-0 top-1/2 h-px bg-hairline" />
 
-          {/* Market-indication line -- strongest emphasis (task item 5). */}
-          <div className="absolute top-0 bottom-2 w-[3px] rounded-full bg-slate-900" style={{ left: `${indicationPct}%` }} />
+          {/* Market-indication line -- strongest emphasis. */}
+          <div className="absolute top-0 bottom-2 w-[3px] rounded-full bg-ink" style={{ left: `${indicationPct}%` }} />
           <div
-            className="absolute top-0 whitespace-nowrap text-[10px] font-semibold text-slate-900"
+            className="absolute top-0 whitespace-nowrap text-[10px] font-semibold text-ink"
             style={{ left: `${indicationPct}%`, transform: "translateX(-50%)" }}
           >
             {ilsCompact(marketIndicationIls)}
@@ -56,10 +56,10 @@ export default function PriceAxisChart({ points, marketIndicationIls, methodLabe
           {points.map((p, i) => {
             const left = toPct(p.priceIls);
             const dotClass = p.isHighlighted
-              ? "h-3.5 w-3.5 bg-blue-600 ring-2 ring-blue-200"
+              ? "h-3.5 w-3.5 bg-accent ring-2 ring-accent/25"
               : p.participating
-                ? "h-2.5 w-2.5 bg-slate-500"
-                : "h-2 w-2 border border-slate-300 bg-white";
+                ? "h-2.5 w-2.5 bg-ink-muted"
+                : "h-2 w-2 border border-hairline bg-surface";
             return (
               <div
                 key={`${p.label}-${i}`}
@@ -71,28 +71,28 @@ export default function PriceAxisChart({ points, marketIndicationIls, methodLabe
           })}
         </div>
 
-        <div className="flex items-center justify-between text-[10px] text-slate-400">
+        <div className="flex items-center justify-between text-[10px] text-ink-muted/70">
           <span>{ilsCompact(domainMin)}</span>
-          <span className="text-slate-600" dir="rtl">
+          <span className="text-ink-muted" dir="rtl">
             ↑ אינדיקציית שוק
           </span>
           <span>{ilsCompact(domainMax)}</span>
         </div>
       </div>
 
-      <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-0.5 text-[10px] text-slate-400">
+      <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-0.5 text-[10px] text-ink-muted/70">
         <span className="flex items-center gap-1">
-          <span className="inline-block h-2.5 w-2.5 rounded-full bg-slate-500" /> השתתפו בחישוב
+          <span className="inline-block h-2.5 w-2.5 rounded-full bg-ink-muted" /> השתתפו בחישוב
         </span>
         <span className="flex items-center gap-1">
-          <span className="inline-block h-2 w-2 rounded-full border border-slate-300 bg-white" /> הקשר שוק בלבד
+          <span className="inline-block h-2 w-2 rounded-full border border-hairline bg-surface" /> הקשר שוק בלבד
         </span>
         <span className="flex items-center gap-1">
-          <span className="inline-block h-3 w-3 rounded-full bg-blue-600" /> עסקה מרכזית
+          <span className="inline-block h-3 w-3 rounded-full bg-accent" /> עסקה מרכזית
         </span>
       </div>
 
-      {methodLabel && <p className="mt-1 text-[11px] text-slate-400">{methodLabel}</p>}
+      {methodLabel && <p className="mt-1 text-[11px] text-ink-muted/70">{methodLabel}</p>}
     </div>
   );
 }

@@ -1,0 +1,90 @@
+{
+  "audit_type": "semantic_reconciliation_final_freeze",
+  "research_performed": false,
+  "date": "2026-09-12",
+  "decisions": [
+    {
+      "record_id": "ta-archive-yiftach4-garden57",
+      "layer": "special_full_v2",
+      "change": "CURRENT_ASKING -> HISTORICAL_MARKETING_PRICE; observed_date -> null",
+      "reason": "Source is an ad.co.il archive and row notes already stated it is not current.",
+      "retrieved_at": "2026-09-11"
+    },
+    {
+      "record_id": "ta-archive-yiftach4-garden57",
+      "layer": "precision_overlay_v3",
+      "change": "CURRENT_ASKING -> HISTORICAL_MARKETING_PRICE; observed_date -> null",
+      "reason": "Archive semantics reconciled with notes/source."
+    },
+    {
+      "record_id": "net-archive-park9-garden-duplex150",
+      "layer": "special_full_v2",
+      "change": "CURRENT_ASKING -> HISTORICAL_MARKETING_PRICE; observed_date -> null",
+      "reason": "Final validation requires actual archive-source rows to be non-current."
+    },
+    {
+      "record_id": "net-archive-hanofar-garden120",
+      "layer": "special_full_v2",
+      "change": "CURRENT_ASKING -> HISTORICAL_MARKETING_PRICE; observed_date -> null",
+      "reason": "Final validation requires actual archive-source rows to be non-current."
+    },
+    {
+      "record_id": "ta-galipolis-3r-73-3215000",
+      "layer": "special_full_v2",
+      "change": "VERIFIED_UNIT_PRICE/quantitative -> STARTING_PRICE/non-quantitative",
+      "reason": "No retained durable evidence ties the campaign ₪3.215M price to the exact 73 m² model."
+    },
+    {
+      "record_id": "ta-galipolis-3r-73-3215000",
+      "layer": "precision_overlay_v3",
+      "change": "VERIFIED_UNIT_PRICE/quantitative -> STARTING_PRICE/non-quantitative",
+      "reason": "No retained durable evidence ties the campaign ₪3.215M price to the exact 73 m² model."
+    }
+  ],
+  "galipolis_evidence_resolution": {
+    "decision": "DOWNGRADE",
+    "price_type": "STARTING_PRICE",
+    "quantitative_unit_price_area": false,
+    "basis": "Existing collected evidence contains a structured R1 record classifying 3R/73m²/₪3.215M as STARTING_PRICE and V3 campaign-source notes saying “from ₪3.215M”. No retained durable source artifact ties ₪3.215M to the exact 73m² model.",
+    "new_research_used": false
+  },
+  "tel_aviv_3r_rerun": {
+    "engine": {
+      "repository": "CodeMania-100/Gaba",
+      "commit": "17b12526a139c30941aacffb4ce871de21a38fa7",
+      "path": "gabay_pricing_core/pricing_core/market_range.py",
+      "git_blob_sha": "97b55065dc533369f93c5731cf58bcda240d1d7a",
+      "methodology_version": "market-range-v2-program-regime"
+    },
+    "sold_range_ils": {
+      "lower": 2560000.0,
+      "center": 2891000.0,
+      "upper": 3251000.0
+    },
+    "current_asking_range_ils": {
+      "lower": 2514000.0,
+      "center": 2560000.0,
+      "upper": 2748000.0
+    },
+    "new_development_range_ils": {
+      "lower": 3347000.0,
+      "center": 3472000.0,
+      "upper": 3596000.0
+    },
+    "status": "consensus",
+    "confidence": "medium",
+    "supported_range_ils": {
+      "lower": 2560000.0,
+      "upper": 2748000.0,
+      "support_lanes": [
+        "current_asking",
+        "sold"
+      ]
+    },
+    "market_indication_point_ils": 2654000.0,
+    "methodology_changed": false
+  },
+  "v3_contradictions_remaining": 0,
+  "observed_date_policy": "Unknown publication dates remain null; retrieved_at is retained.",
+  "validation_pass": true
+}

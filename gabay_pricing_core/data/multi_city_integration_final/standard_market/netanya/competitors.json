@@ -1,0 +1,198 @@
+[
+  {
+    "project_name": "בראשית פמלי – קריית השרון",
+    "submarket_tier": "exact_submarket",
+    "neighborhood": "קריית השרון",
+    "developer": null,
+    "project_status": "active",
+    "relevant_to_3r": true,
+    "relevant_to_5r": true,
+    "quantitative_for_3r": false,
+    "quantitative_for_5r": false,
+    "context_only": true,
+    "unit_prices": [],
+    "payment_terms": [],
+    "sources": [
+      {
+        "source_title": "בראשית פמלי – קריית השרון",
+        "source_url": null,
+        "retrieved_at": "2026-09-11",
+        "source_date": null,
+        "provenance_status": "legacy_reference_only"
+      }
+    ],
+    "notes": "Room mix relevant, but no verified standard target model price+area pair.",
+    "legacy_sources": [
+      "turn243899search7",
+      "turn243899search9"
+    ],
+    "latitude": 32.30321,
+    "longitude": 34.87567,
+    "coordinate_precision": "selected_submarket_centroid_fallback",
+    "coordinate_source_url": "https://mapcarta.com/W1010040276",
+    "record_uid": "competitor-3fcc9800b87b6a86"
+  },
+  {
+    "project_name": "גינדי צמרות נתניה",
+    "submarket_tier": "exact_submarket",
+    "neighborhood": "קריית השרון",
+    "developer": "גינדי",
+    "project_status": "occupied/completed context",
+    "relevant_to_3r": false,
+    "relevant_to_5r": true,
+    "quantitative_for_3r": false,
+    "quantitative_for_5r": false,
+    "context_only": true,
+    "unit_prices": [],
+    "payment_terms": [],
+    "sources": [
+      {
+        "source_title": "פרויקט צמרות נתניה | קבוצת גינדי",
+        "source_url": "https://gindi.com/project/gindi-tzamarot-netanya/",
+        "retrieved_at": "2026-09-11",
+        "source_date": null
+      }
+    ],
+    "notes": "Exact-neighborhood competitive context.",
+    "legacy_sources": [
+      "turn243899search0"
+    ],
+    "latitude": 32.30321,
+    "longitude": 34.87567,
+    "coordinate_precision": "selected_submarket_centroid_fallback",
+    "coordinate_source_url": "https://mapcarta.com/W1010040276",
+    "record_uid": "competitor-158b6776240a3d10"
+  },
+  {
+    "project_name": "גבאי על הפארק",
+    "submarket_tier": "adjacent_submarket",
+    "neighborhood": null,
+    "developer": "גבאי",
+    "project_status": "active/context",
+    "relevant_to_3r": true,
+    "relevant_to_5r": true,
+    "quantitative_for_3r": false,
+    "quantitative_for_5r": false,
+    "context_only": true,
+    "unit_prices": [],
+    "payment_terms": [],
+    "sources": [
+      {
+        "source_title": "גבאי על הפארק | קבוצת גבאי",
+        "source_url": "https://gabaygroup.com/projects/%D7%91%D7%A0%D7%99%D7%9E%D7%99%D7%9F-%D7%A0%D7%AA%D7%A0%D7%99%D7%94/",
+        "retrieved_at": "2026-09-11",
+        "source_date": null
+      }
+    ],
+    "notes": "Adjacent/context only.",
+    "legacy_sources": [
+      "turn243899search1",
+      "turn243899search6"
+    ],
+    "address": "שדרות בנימין 98",
+    "latitude": 32.30321,
+    "longitude": 34.87567,
+    "coordinate_precision": "selected_submarket_centroid_fallback",
+    "coordinate_source_url": "https://mapcarta.com/W1010040276",
+    "record_uid": "competitor-5c3110c970e6b305"
+  },
+  {
+    "project_name": "DAVID",
+    "submarket_tier": "broader_context",
+    "neighborhood": null,
+    "developer": null,
+    "project_status": "active/context",
+    "relevant_to_3r": true,
+    "relevant_to_5r": true,
+    "quantitative_for_3r": false,
+    "quantitative_for_5r": false,
+    "context_only": true,
+    "unit_prices": [],
+    "payment_terms": [],
+    "sources": [
+      {
+        "source_title": "DAVID | בוני התיכון",
+        "source_url": "https://www.boh.co.il/projects/44",
+        "retrieved_at": "2026-09-11",
+        "source_date": null
+      }
+    ],
+    "notes": "Broader Netanya context.",
+    "legacy_sources": [
+      "turn243899search2",
+      "turn243899search3",
+      "turn243899search4"
+    ],
+    "address": "דוד רזיאל 26-32",
+    "latitude": 32.30321,
+    "longitude": 34.87567,
+    "coordinate_precision": "selected_submarket_centroid_fallback",
+    "coordinate_source_url": "https://mapcarta.com/W1010040276",
+    "record_uid": "competitor-c227a6484eb5eade"
+  },
+  {
+    "project_name": "THE STRIP",
+    "submarket_tier": "broader_context",
+    "neighborhood": null,
+    "developer": null,
+    "project_status": "active/context",
+    "relevant_to_3r": true,
+    "relevant_to_5r": true,
+    "quantitative_for_3r": false,
+    "quantitative_for_5r": false,
+    "context_only": true,
+    "unit_prices": [],
+    "payment_terms": [],
+    "sources": [
+      {
+        "source_title": "פרויקט THE STRIP נתניה",
+        "source_url": "https://www.yad2.co.il/yad1/project/19096",
+        "retrieved_at": "2026-09-11",
+        "source_date": null
+      }
+    ],
+    "notes": "Broader Netanya context.",
+    "legacy_sources": [
+      "turn243899search5",
+      "turn243899search12"
+    ],
+    "address": "שמחה ארליך פינת בן צבי",
+    "latitude": 32.30321,
+    "longitude": 34.87567,
+    "coordinate_precision": "selected_submarket_centroid_fallback",
+    "coordinate_source_url": "https://mapcarta.com/W1010040276",
+    "record_uid": "competitor-d45de33bd9b40b39"
+  },
+  {
+    "project_name": "AQUA SENSE",
+    "submarket_tier": "broader_context",
+    "neighborhood": null,
+    "developer": null,
+    "project_status": "active/context",
+    "relevant_to_3r": false,
+    "relevant_to_5r": true,
+    "quantitative_for_3r": false,
+    "quantitative_for_5r": false,
+    "context_only": true,
+    "unit_prices": [],
+    "payment_terms": [],
+    "sources": [
+      {
+        "source_title": "פרויקט AQUA SENSE - נתניה",
+        "source_url": "https://www.yad2.co.il/yad1/project/16126",
+        "retrieved_at": "2026-09-11",
+        "source_date": null
+      }
+    ],
+    "notes": "Broader Netanya context.",
+    "legacy_sources": [
+      "turn243899search8"
+    ],
+    "address": "אמנון ליפקין שחק 8",
+    "latitude": 32.30321,
+    "longitude": 34.87567,
+    "coordinate_precision": "selected_submarket_centroid_fallback",
+    "coordinate_source_url": "https://mapcarta.com/W1010040276",
+    "record_uid": "competitor-38fb06f960c3bc95"
+  }
+]

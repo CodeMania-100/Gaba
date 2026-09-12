@@ -1,0 +1,66 @@
+{
+  "dataset": "precision_enrichment_v3",
+  "research_as_of": "2026-09-12",
+  "baseline": "special_unit_addon_enriched_v2",
+  "baseline_sha256": "6d5ece0a268a8f51ce72774efef2b84eefff142bed9eb3911be51bca95e55d46",
+  "selected_comparables": 13,
+  "selected_projects": 9,
+  "checks": [
+    {
+      "check": "baseline_immutable_hash",
+      "passed": true,
+      "detail": "6d5ece0a268a8f51ce72774efef2b84eefff142bed9eb3911be51bca95e55d46"
+    },
+    {
+      "check": "selected_comparable_count",
+      "passed": true,
+      "detail": "13 selected"
+    },
+    {
+      "check": "selected_project_count",
+      "passed": true,
+      "detail": "9 selected"
+    },
+    {
+      "check": "comparables_per_city",
+      "passed": true,
+      "detail": "{'תל אביב-יפו': 4, 'נתניה': 5, 'אשקלון': 4}"
+    },
+    {
+      "check": "projects_per_city",
+      "passed": true,
+      "detail": "{'תל אביב-יפו': 3, 'נתניה': 3, 'אשקלון': 3}"
+    },
+    {
+      "check": "all_comparables_have_source",
+      "passed": true,
+      "detail": "Every selected comparable has a source/direct URL."
+    },
+    {
+      "check": "all_projects_have_sources",
+      "passed": true,
+      "detail": "Every selected project has source URLs."
+    },
+    {
+      "check": "unresolved_enum",
+      "passed": true,
+      "detail": "208 unresolved field rows"
+    },
+    {
+      "check": "new_rows_tightly_scoped",
+      "passed": true,
+      "detail": "Only Derech HaPark 25 archive row added; qualifies via explicit 18m² outdoor geometry + duplex product."
+    },
+    {
+      "check": "standard_3r_5r_untouched",
+      "passed": true,
+      "detail": "No standard-market files were opened for writing or copied into v3."
+    },
+    {
+      "check": "pricing_methodology_unchanged",
+      "passed": true,
+      "detail": "No pricing calculation or premium rule exists in this package."
+    }
+  ],
+  "passed": true
+}

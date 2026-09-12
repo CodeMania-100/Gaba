@@ -1,0 +1,166 @@
+{
+  "dataset": "special_unit_addon_enriched_v2",
+  "validation_status": "PASS",
+  "validated_at": "2026-09-12",
+  "checks_passed": 29,
+  "checks_total": 29,
+  "checks": [
+    {
+      "check": "required_files_present",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "check": "baseline_v1_immutable",
+      "passed": true,
+      "detail": "SHA-256 baseline snapshot unchanged"
+    },
+    {
+      "check": "standard_3r_5r_modified_false",
+      "passed": true,
+      "detail": "No standard dataset path opened for write"
+    },
+    {
+      "check": "petah_tikva_modified_false",
+      "passed": true,
+      "detail": "No Petah Tikva file path opened for write"
+    },
+    {
+      "check": "pricing_methodology_changed_false",
+      "passed": true,
+      "detail": "Evidence-only enrichment"
+    },
+    {
+      "check": "project_ids_unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "asking_listing_ids_unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "sold_record_ids_unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "allowed_price_semantics_asking",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "allowed_price_semantics_variants",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "starting_prices_not_quantitative",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "asking_has_source_url",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "sold_has_source_url",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "asking_has_coordinates",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "sold_has_coordinates",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "current_asking_observed_date_complete",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "current_asking_retrieved_at_complete",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "repost_conflicts_preserved",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "no_forced_direct_special_sale",
+      "passed": true,
+      "detail": "No public record defensibly proved direct special typology"
+    },
+    {
+      "check": "project_register_not_resale_records",
+      "passed": true,
+      "detail": "Only actual development/project entities are in project registry"
+    },
+    {
+      "check": "before_audit_written",
+      "passed": true,
+      "detail": "1080 missing baseline field instances"
+    },
+    {
+      "check": "field_provenance_written",
+      "passed": true,
+      "detail": "322 enriched field provenance rows"
+    },
+    {
+      "check": "all_31_baseline_projects_received_targeted_audit",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "netanya_small_garden_gap_explicit",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "ashkelon_small_garden_gap_explicit",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "tel_aviv_large_special_gap_explicit",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "coverage_recomputed_from_final_rows",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "competitor_coverage_recomputed_from_final_projects",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "variant_csv_json_sync",
+      "passed": true,
+      "detail": "json=29 csv=29"
+    }
+  ],
+  "remaining_known_gaps": [
+    "No DIRECT_SPECIAL_SALE proven in any segment.",
+    "Netanya exact 2–3R 55–85m² resale garden asking remains unavailable after targeted search; only project-level 3R garden context found.",
+    "Barnea exact 2–3R 50–90m² garden resale asking remains unavailable after targeted search.",
+    "No genuine project-level duplex/triplex model located for Netanya or Ashkelon competitors with defensible room+area+price; ordinary penthouses were not relabeled.",
+    "Most project coordinates remain neighborhood/project centroid because exact coordinates were not published in durable sources; no guessed coordinates inserted."
+  ],
+  "semantic_freeze": {
+    "yiftach_archived_not_current": true,
+    "galipolis_starting_price_non_quantitative": true,
+    "observed_dates_not_manufactured": true
+  }
+}

@@ -35,3 +35,7 @@ frontend/.next/
 frontend/*.tsbuildinfo
 frontend/*.log
 frontend/shots/
+
+# One-off personal-machine data-installation script (references a local
+# Downloads folder/username) -- not application code, never part of the repo.
+install_multi_city_data.ps1

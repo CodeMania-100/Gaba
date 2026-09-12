@@ -1,0 +1,29 @@
+{
+  "city": "תל אביב-יפו",
+  "neighborhood": "יד אליהו",
+  "selection_reason": "Conventional residential stock with recent 3R/5R resale activity, current listings, and several quantitatively priced new-development models.",
+  "center": {
+    "lat": 32.05899,
+    "lng": 34.79285,
+    "precision": "submarket_centroid",
+    "source_title": "Yad Eliyahu — OpenStreetMap neighborhood way via Mapcarta",
+    "source_url": "https://mapcarta.com/W819219043",
+    "retrieved_at": "2026-09-11"
+  },
+  "geography_definition": {
+    "tier_1": "יד אליהו only",
+    "tier_2": "immediately adjacent eastern/southeastern Tel Aviv submarkets, only if Tier 1 is insufficient",
+    "tier_3": "broader Tel Aviv-Yafo context, reference only unless explicitly documented"
+  },
+  "broadening_used": {
+    "3R": "none",
+    "5R": "none"
+  },
+  "integration_key": {
+    "city": "תל אביב-יפו",
+    "selected_submarket": "יד אליהו"
+  },
+  "pricing_scope_adapter": {
+    "enabled": false
+  }
+}

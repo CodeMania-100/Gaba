@@ -1,0 +1,42 @@
+[
+  {
+    "city": "פתח תקווה",
+    "submarket": "existing demo checkpoint",
+    "family": "3R",
+    "target_area_sqm": "69.0",
+    "status": "consensus",
+    "confidence": "low",
+    "supported_lower_ils": "1295000.0",
+    "supported_upper_ils": "1376000.0",
+    "market_indication_point_ils": "1336000.0",
+    "support_lanes": "existing checkpoint — not recalculated",
+    "sold_independent_groups": "",
+    "asking_independent_groups": "",
+    "newdev_independent_groups": "",
+    "geographic_scope_notes": "Existing Petah Tikva values preserved as supplied; no algorithm change.",
+    "major_warnings": "baseline checkpoint",
+    "reference_only": "true",
+    "integration_write_allowed": "false",
+    "do_not_overwrite_application_data": "true"
+  },
+  {
+    "city": "פתח תקווה",
+    "submarket": "existing demo checkpoint",
+    "family": "5R",
+    "target_area_sqm": "111.1",
+    "status": "consensus",
+    "confidence": "medium",
+    "supported_lower_ils": "1479000.0",
+    "supported_upper_ils": "2040000.0",
+    "market_indication_point_ils": "1760000.0",
+    "support_lanes": "existing checkpoint — not recalculated",
+    "sold_independent_groups": "",
+    "asking_independent_groups": "",
+    "newdev_independent_groups": "",
+    "geographic_scope_notes": "Existing Petah Tikva values preserved as supplied; no algorithm change.",
+    "major_warnings": "baseline checkpoint",
+    "reference_only": "true",
+    "integration_write_allowed": "false",
+    "do_not_overwrite_application_data": "true"
+  }
+]

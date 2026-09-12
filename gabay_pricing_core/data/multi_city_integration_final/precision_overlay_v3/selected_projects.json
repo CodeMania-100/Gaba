@@ -1,0 +1,1277 @@
+{
+  "dataset": "precision_enrichment_v3",
+  "research_as_of": "2026-09-12",
+  "baseline": "special_unit_addon_enriched_v2 (immutable)",
+  "selected_project_count": 9,
+  "projects": [
+    {
+      "project_id": "ta-rayk-east-side",
+      "project_name": "RAYK EAST SIDE",
+      "developer_company": "RAYK",
+      "development_company": "RAYK",
+      "marketing_company": null,
+      "contractor_company": "RAYK",
+      "architect": "זית לב אדריכלים",
+      "financing_bank": null,
+      "address": "לוחמי גליפולי 56-58, תל אביב-יפו",
+      "street": "לוחמי גליפולי",
+      "street_number": "56-58",
+      "raw_neighborhood_label": "יד אליהו",
+      "normalized_submarket": "יד אליהו",
+      "city": "תל אביב-יפו",
+      "geography_tier": "CORE",
+      "tier_reason": "Exact-neighborhood active project with unusually broad special-unit mix.",
+      "latitude": 32.05899,
+      "longitude": 34.79285,
+      "coordinate_precision": "NEIGHBORHOOD_CENTROID",
+      "coordinate_note": "Selected-market centroid fallback for map context; NOT an exact building/project coordinate.",
+      "project_status": "active/marketing",
+      "permit_status": null,
+      "construction_status": null,
+      "estimated_delivery": "2029",
+      "number_of_buildings": 4,
+      "number_of_floors": 8,
+      "number_of_units": 93,
+      "room_range": [
+        2,
+        7
+      ],
+      "area_range_sqm": [
+        145,
+        185
+      ],
+      "product_types": [
+        "standard_apartments",
+        "garden",
+        "garden_duplex",
+        "penthouse",
+        "large_premium_apartment"
+      ],
+      "known_unit_variants": [
+        {
+          "rooms": "2",
+          "unit_type": "garden_apartment",
+          "internal_area_sqm": null,
+          "balcony_area_sqm": null,
+          "garden_area_sqm": null,
+          "floor": null,
+          "floors": null,
+          "orientation": null,
+          "parking": null,
+          "storage": null,
+          "mamad": null,
+          "price_ils": "2900000",
+          "price_type": "STARTING_PRICE",
+          "observed_date": null,
+          "source_url": "https://rayklocations.raykgroup.com/east/",
+          "applicable_segments": "APT1_2;APT3",
+          "quantitative_unit_price_area": "false",
+          "notes": "Starting-price context; area not published for same model.",
+          "retrieved_at": null,
+          "source_type": null,
+          "verification_status": null
+        },
+        {
+          "rooms": "5-7",
+          "unit_type": "large_apartment",
+          "internal_area_sqm": "145-185",
+          "balcony_area_sqm": null,
+          "garden_area_sqm": null,
+          "floor": null,
+          "floors": null,
+          "orientation": null,
+          "parking": null,
+          "storage": null,
+          "mamad": null,
+          "price_ils": null,
+          "price_type": "CONTEXT_ONLY",
+          "observed_date": null,
+          "source_url": "https://rayklocations.raykgroup.com/east/",
+          "applicable_segments": "APT36_37;APT38;APT39",
+          "quantitative_unit_price_area": "false",
+          "notes": "Price semantics normalized to CONTEXT_ONLY in freeze pass; no quantitative promotion.",
+          "retrieved_at": null,
+          "source_type": null,
+          "verification_status": null
+        },
+        {
+          "rooms": "5",
+          "unit_type": "standard_apartment",
+          "internal_area_sqm": "151",
+          "balcony_area_sqm": null,
+          "garden_area_sqm": null,
+          "floor": null,
+          "floors": null,
+          "orientation": null,
+          "parking": null,
+          "storage": null,
+          "mamad": null,
+          "price_ils": "4890000",
+          "price_type": "STARTING_PRICE",
+          "observed_date": null,
+          "source_url": "https://www.yad2.co.il/yad1/project/16277",
+          "applicable_segments": null,
+          "quantitative_unit_price_area": "false",
+          "notes": "Targeted R1 reconciliation corrected semantics: Yad2 lists a 5R 151m² apartment from ₪4.89M. It is not proven to be a garden unit and STARTING_PRICE is context-only.",
+          "retrieved_at": null,
+          "source_type": null,
+          "verification_status": null
+        },
+        {
+          "rooms": null,
+          "unit_type": "garden_duplex",
+          "internal_area_sqm": null,
+          "balcony_area_sqm": null,
+          "garden_area_sqm": null,
+          "floor": null,
+          "floors": null,
+          "orientation": null,
+          "parking": null,
+          "storage": null,
+          "mamad": null,
+          "price_ils": null,
+          "price_type": "CONTEXT_ONLY",
+          "observed_date": "2026-09-12",
+          "source_url": "https://rayklocations.raykgroup.com/east/",
+          "applicable_segments": "APT1_2;APT3;APT38;APT39",
+          "quantitative_unit_price_area": "false",
+          "notes": "Official project page explicitly advertises garden-duplex product; no model-specific room/area/price pair located.",
+          "retrieved_at": "2026-09-12",
+          "source_type": "official_developer",
+          "verification_status": "PRODUCT_TYPE_VERIFIED"
+        },
+        {
+          "rooms": null,
+          "unit_type": "garden_duplex",
+          "internal_area_sqm": null,
+          "balcony_area_sqm": null,
+          "garden_area_sqm": null,
+          "floor": null,
+          "floors": null,
+          "orientation": null,
+          "parking": true,
+          "storage": null,
+          "mamad": true,
+          "price_ils": null,
+          "price_type": "CONTEXT_ONLY",
+          "observed_date": "2026-09-12",
+          "source_url": "https://rayklocations.raykgroup.com/east/",
+          "applicable_segments": "APT1_2;APT3;APT38;APT39",
+          "quantitative_unit_price_area": "false",
+          "notes": "Official product type; numeric outdoor/model geometry not public in targeted pass.",
+          "retrieved_at": "2026-09-12",
+          "source_type": "official_developer",
+          "verification_status": "PRODUCT_TYPE_VERIFIED"
+        }
+      ],
+      "parking": true,
+      "storage": null,
+      "mamad": true,
+      "garden": true,
+      "balcony": true,
+      "orientation": null,
+      "elevator": true,
+      "number_of_elevators": 2,
+      "apartments_per_floor": null,
+      "building_height": null,
+      "lobby_facilities": [
+        "underground_parking",
+        "premium_lobbies"
+      ],
+      "commercial_ground_floor": null,
+      "view_park_frontage": null,
+      "premium_specification": "Smart-home / high-finish positioning published by project.",
+      "payment_terms": [],
+      "promotions": [
+        {
+          "promotion_text": "משכנתה בריבית קבועה 1.99% ללא הצמדה — בכפוף לתנאי הקמפיין",
+          "promotion_type": "mortgage_campaign",
+          "validity": null,
+          "source_url": "https://www.yad2.co.il/yad1/project/16277"
+        }
+      ],
+      "source_urls": [
+        "https://rayklocations.raykgroup.com/east/",
+        "https://www.yad2.co.il/yad1/project/16277"
+      ],
+      "source_ids": [
+        "ta-rayk"
+      ],
+      "warnings": [
+        "Do not classify the 5R/151m²/₪4.89M model as a garden apartment; Yad2 presents it as an apartment with a starting price."
+      ],
+      "precision_notes": [
+        "Official RAYK sources: 4 boutique buildings, project marketed, architect Zait-Lev, 93 units; campaign/Yad2 sources have exposed 94 units elsewhere — conflict preserved.",
+        "Official project spec states two passenger elevators per building, underground conventional parking, EV charging preparation; garden-duplex and penthouse-with-private-pool products are explicit.",
+        "No model-specific numeric garden/balcony area was publicly recovered."
+      ],
+      "precision_sources": [
+        "https://rayklocations.raykgroup.com/east/",
+        "https://www.raykgroup.com/projects/market/?ContentID=62918",
+        "https://www.yad2.co.il/yad1/project/16277"
+      ]
+    },
+    {
+      "project_id": "ta-tidhar-between",
+      "project_name": "TIDHAR בין השדרות",
+      "developer_company": "תדהר",
+      "development_company": "תדהר",
+      "marketing_company": null,
+      "contractor_company": "תדהר",
+      "architect": "גוגנהיים בלוך אדריכלים / רבין אדריכלים (planning-source attribution)",
+      "financing_bank": null,
+      "address": "לה גווארדיה 69, תל אביב-יפו",
+      "street": "לה גווארדיה",
+      "street_number": "69",
+      "raw_neighborhood_label": "יד אליהו",
+      "normalized_submarket": "יד אליהו",
+      "city": "תל אביב-יפו",
+      "geography_tier": "CORE",
+      "tier_reason": "Exact Yad Eliyahu project on La Guardia; direct local alternative.",
+      "latitude": 32.05899,
+      "longitude": 34.79285,
+      "coordinate_precision": "NEIGHBORHOOD_CENTROID",
+      "coordinate_note": "Selected-market centroid fallback for map context; NOT an exact building/project coordinate.",
+      "project_status": "active/new development",
+      "permit_status": null,
+      "construction_status": "construction underway",
+      "estimated_delivery": null,
+      "number_of_buildings": 7,
+      "number_of_floors": "10-17 (Yad2 project representation also shows 18 as max display)",
+      "number_of_units": 289,
+      "room_range": [
+        2,
+        5
+      ],
+      "area_range_sqm": [],
+      "product_types": [
+        "standard_apartments",
+        "garden",
+        "duplex",
+        "penthouse"
+      ],
+      "known_unit_variants": [
+        {
+          "rooms": "3",
+          "unit_type": "standard_apartment",
+          "internal_area_sqm": "71",
+          "balcony_area_sqm": null,
+          "garden_area_sqm": null,
+          "floor": null,
+          "floors": null,
+          "orientation": null,
+          "parking": null,
+          "storage": null,
+          "mamad": null,
+          "price_ils": "3700000",
+          "price_type": "VERIFIED_UNIT_PRICE",
+          "observed_date": null,
+          "source_url": "https://www.yad2.co.il/yad1/project/16499",
+          "applicable_segments": null,
+          "quantitative_unit_price_area": "true",
+          "notes": null,
+          "retrieved_at": null,
+          "source_type": null,
+          "verification_status": null
+        },
+        {
+          "rooms": "5",
+          "unit_type": "standard_apartment",
+          "internal_area_sqm": "105",
+          "balcony_area_sqm": null,
+          "garden_area_sqm": null,
+          "floor": null,
+          "floors": null,
+          "orientation": null,
+          "parking": null,
+          "storage": null,
+          "mamad": null,
+          "price_ils": "4758000",
+          "price_type": "VERIFIED_UNIT_PRICE",
+          "observed_date": null,
+          "source_url": "https://www.yad2.co.il/yad1/project/16499",
+          "applicable_segments": null,
+          "quantitative_unit_price_area": "true",
+          "notes": null,
+          "retrieved_at": null,
+          "source_type": null,
+          "verification_status": null
+        }
+      ],
+      "parking": null,
+      "storage": null,
+      "mamad": null,
+      "garden": true,
+      "balcony": true,
+      "orientation": null,
+      "elevator": true,
+      "number_of_elevators": null,
+      "apartments_per_floor": null,
+      "building_height": null,
+      "lobby_facilities": null,
+      "commercial_ground_floor": null,
+      "view_park_frontage": null,
+      "premium_specification": "New-development specification; exact feature set varies by model.",
+      "payment_terms": [],
+      "promotions": [
+        {
+          "promotion_text": "10 שנות אחריות תדהר",
+          "promotion_type": "warranty_campaign",
+          "validity": null,
+          "source_url": "https://www.yad2.co.il/yad1/project/16499"
+        }
+      ],
+      "source_urls": [
+        "https://www.yad2.co.il/yad1/project/16499"
+      ],
+      "source_ids": [
+        "ta-tidhar"
+      ],
+      "warnings": [],
+      "precision_notes": [
+        "Official project site exposes apartment model types: building 1 types 50A, 59.1, 97, 105B1; building 2 types 80A/80B/80D1/95A; building 3 type 79B.",
+        "Yad2 states 7 buildings / 289 apartments and 2-5 rooms, duplexes and penthouses; construction underway.",
+        "Official project text describes Tidhar as both entrepreneurial/development and contracting company for the project. Numeric balcony/garden areas for the selected models were not recovered."
+      ],
+      "precision_sources": [
+        "https://www.tidhar-benhasderot.co.il/",
+        "https://www.yad2.co.il/yad1/project/16499",
+        "https://project-tlv.info/buildings/la-guardia/65-2/"
+      ],
+      "model_table_precision": [
+        {
+          "building": "1",
+          "room_type": "2R",
+          "model": "50A"
+        },
+        {
+          "building": "1",
+          "room_type": "2R",
+          "model": "59.1"
+        },
+        {
+          "building": "1",
+          "room_type": "4R",
+          "model": "97"
+        },
+        {
+          "building": "1",
+          "room_type": "5R",
+          "model": "105B1"
+        },
+        {
+          "building": "2",
+          "room_type": "3R",
+          "model": "80A/80B/80D1"
+        },
+        {
+          "building": "2",
+          "room_type": "4R",
+          "model": "95A"
+        },
+        {
+          "building": "3",
+          "room_type": "3R",
+          "model": "79B"
+        }
+      ]
+    },
+    {
+      "project_id": "ta-galipolis",
+      "project_name": "GALIPOLIS",
+      "developer_company": "אלמוג",
+      "development_company": "אלמוג",
+      "marketing_company": null,
+      "contractor_company": null,
+      "architect": "פרייס אדריכלים",
+      "financing_bank": null,
+      "address": null,
+      "street": null,
+      "street_number": null,
+      "raw_neighborhood_label": "יד אליהו",
+      "normalized_submarket": "יד אליהו",
+      "city": "תל אביב-יפו",
+      "geography_tier": "CORE",
+      "tier_reason": "Boutique presale project in the heart of Yad Eliyahu.",
+      "latitude": 32.05899,
+      "longitude": 34.79285,
+      "coordinate_precision": "NEIGHBORHOOD_CENTROID",
+      "coordinate_note": "Selected-market centroid fallback for map context; NOT an exact building/project coordinate.",
+      "project_status": "presale",
+      "permit_status": null,
+      "construction_status": null,
+      "estimated_delivery": null,
+      "number_of_buildings": 1,
+      "number_of_floors": 7,
+      "number_of_units": 69,
+      "room_range": [
+        2,
+        5
+      ],
+      "area_range_sqm": [],
+      "product_types": [
+        "standard_apartments",
+        "garden",
+        "garden_duplex",
+        "penthouse"
+      ],
+      "known_unit_variants": [
+        {
+          "rooms": "3",
+          "unit_type": "standard_apartment",
+          "internal_area_sqm": "73",
+          "balcony_area_sqm": null,
+          "garden_area_sqm": null,
+          "floor": null,
+          "floors": null,
+          "orientation": null,
+          "parking": null,
+          "storage": null,
+          "mamad": null,
+          "price_ils": "3215000",
+          "price_type": "STARTING_PRICE",
+          "observed_date": null,
+          "source_url": "https://almog-ltd.com/project/galipoliz/",
+          "applicable_segments": null,
+          "quantitative_unit_price_area": false,
+          "notes": "Campaign price is published as “from ₪3.215M”; retained as starting-price context. No retained durable source ties ₪3.215M to the exact 73 m² model.",
+          "retrieved_at": "2026-09-12",
+          "source_type": null,
+          "verification_status": "STARTING_PRICE_CONTEXT_ONLY"
+        },
+        {
+          "rooms": null,
+          "unit_type": "garden_duplex",
+          "internal_area_sqm": null,
+          "balcony_area_sqm": null,
+          "garden_area_sqm": null,
+          "floor": null,
+          "floors": null,
+          "orientation": null,
+          "parking": null,
+          "storage": null,
+          "mamad": null,
+          "price_ils": null,
+          "price_type": "CONTEXT_ONLY",
+          "observed_date": "2026-09-12",
+          "source_url": "https://almog-ltd.com/project/galipoliz/",
+          "applicable_segments": "APT1_2;APT3;APT38;APT39",
+          "quantitative_unit_price_area": "false",
+          "notes": "Developer page states garden-duplex product exists; no explicit model area+price recovered.",
+          "retrieved_at": "2026-09-12",
+          "source_type": "official_developer",
+          "verification_status": "PRODUCT_TYPE_VERIFIED"
+        }
+      ],
+      "parking": null,
+      "storage": null,
+      "mamad": true,
+      "garden": true,
+      "balcony": true,
+      "orientation": null,
+      "elevator": null,
+      "number_of_elevators": null,
+      "apartments_per_floor": null,
+      "building_height": 7,
+      "lobby_facilities": null,
+      "commercial_ground_floor": null,
+      "view_park_frontage": null,
+      "premium_specification": null,
+      "payment_terms": [],
+      "promotions": [],
+      "source_urls": [
+        "https://almog-ltd.com/project/galipoliz/"
+      ],
+      "source_ids": [
+        "ta-galipolis"
+      ],
+      "warnings": [
+        "₪3.215M is STARTING_PRICE context only; not a quantitative unit price+area contributor."
+      ],
+      "precision_notes": [
+        "Official main project page says one 7-floor building with 3 separate entrances / 69 units; a campaign page calls these 3 boutique buildings. Kept as a source-structure conflict rather than silently reconciled.",
+        "Product mix explicitly includes 2-5R, garden, garden-duplex and penthouses; official page mentions wide balconies but no numeric outdoor sizes.",
+        "Semantic freeze resolved: ₪3.215M is a campaign starting price, not a verified 73 m² model price."
+      ],
+      "precision_sources": [
+        "https://almog-ltd.com/project/galipoliz/",
+        "https://almog-group.ussl.co.il/galipolis-almog/"
+      ]
+    },
+    {
+      "project_id": "net-bereshit-family",
+      "project_name": "בראשית פמלי — קריית השרון",
+      "developer_company": "קבוצת דוד אזולאי",
+      "development_company": "קבוצת דוד אזולאי",
+      "marketing_company": null,
+      "contractor_company": null,
+      "architect": "גור אדריכלים",
+      "financing_bank": null,
+      "address": "חורשת האלונים 12, נתניה",
+      "street": "חורשת האלונים",
+      "street_number": "12",
+      "raw_neighborhood_label": "קריית השרון",
+      "normalized_submarket": "קריית השרון",
+      "city": "נתניה",
+      "geography_tier": "CORE",
+      "tier_reason": "Exact Kiryat Hasharon project opposite Sergeant Grove.",
+      "latitude": 32.30321,
+      "longitude": 34.87567,
+      "coordinate_precision": "NEIGHBORHOOD_CENTROID",
+      "coordinate_note": "Selected-market centroid fallback for map context; NOT an exact building/project coordinate.",
+      "project_status": "active / near occupancy",
+      "permit_status": null,
+      "construction_status": null,
+      "estimated_delivery": null,
+      "number_of_buildings": 1,
+      "number_of_floors": 15,
+      "number_of_units": 62,
+      "room_range": [
+        3,
+        5
+      ],
+      "area_range_sqm": [],
+      "product_types": [
+        "standard_apartments",
+        "garden",
+        "penthouse"
+      ],
+      "known_unit_variants": [
+        {
+          "rooms": "3",
+          "unit_type": "garden_apartment",
+          "internal_area_sqm": null,
+          "balcony_area_sqm": null,
+          "garden_area_sqm": null,
+          "floor": "ground",
+          "floors": null,
+          "orientation": null,
+          "parking": null,
+          "storage": null,
+          "mamad": null,
+          "price_ils": "2490000",
+          "price_type": "STARTING_PRICE",
+          "observed_date": "2026-09-11",
+          "source_url": "https://www.yad2.co.il/yad1/project/13271",
+          "applicable_segments": "APT1_2;APT3",
+          "quantitative_unit_price_area": "false",
+          "notes": "Current crawl; area not published for same model.",
+          "retrieved_at": null,
+          "source_type": null,
+          "verification_status": null
+        },
+        {
+          "rooms": "3",
+          "unit_type": "garden_apartment",
+          "internal_area_sqm": null,
+          "balcony_area_sqm": null,
+          "garden_area_sqm": null,
+          "floor": "ground",
+          "floors": null,
+          "orientation": null,
+          "parking": null,
+          "storage": null,
+          "mamad": null,
+          "price_ils": "2550000",
+          "price_type": "HISTORICAL_MARKETING_PRICE",
+          "observed_date": null,
+          "source_url": "https://www.yad2.co.il/yad1/project/13271",
+          "applicable_segments": "APT1_2;APT3",
+          "quantitative_unit_price_area": "false",
+          "notes": "Older Yad2 crawl preserved rather than silently replaced.",
+          "retrieved_at": null,
+          "source_type": null,
+          "verification_status": null
+        }
+      ],
+      "parking": true,
+      "storage": null,
+      "mamad": true,
+      "garden": true,
+      "balcony": null,
+      "orientation": null,
+      "elevator": true,
+      "number_of_elevators": null,
+      "apartments_per_floor": null,
+      "building_height": 16,
+      "lobby_facilities": null,
+      "commercial_ground_floor": null,
+      "view_park_frontage": null,
+      "premium_specification": null,
+      "payment_terms": [],
+      "promotions": [
+        {
+          "promotion_text": "CASH-BACK במשך שנה / trade-in campaign",
+          "promotion_type": "trade_in_cashback",
+          "validity": null,
+          "source_url": "https://www.yad2.co.il/yad1/project/13271"
+        }
+      ],
+      "source_urls": [
+        "https://www.yad2.co.il/yad1/project/13271"
+      ],
+      "source_ids": [
+        "net-bereshit"
+      ],
+      "warnings": [
+        "Source copy alternates between 15-floor description and structured 16-floor metadata; structured project metadata retained with warning."
+      ],
+      "precision_notes": [
+        "Official developer page says a 15-floor building; Yad2 project representation shows 16 floors. Conflict preserved.",
+        "3/4/5R, special garden apartments and penthouses; current Yad2 garden 3R price is a STARTING_PRICE and no model area was recovered."
+      ],
+      "precision_sources": [
+        "https://www.azoulay-group.co.il/%D7%91%D7%A8%D7%90%D7%A9%D7%99%D7%AA-%D7%A4%D7%9E%D7%9C%D7%99-%D7%A7%D7%A8%D7%99%D7%AA-%D7%94%D7%A9%D7%A8%D7%95%D7%9F-%D7%A0%D7%AA%D7%A0%D7%99%D7%94/",
+        "https://www.yad2.co.il/yad1/project/13271"
+      ]
+    },
+    {
+      "project_id": "net-gabay-park",
+      "project_name": "גבאי על הפארק",
+      "developer_company": "קבוצת גבאי",
+      "development_company": "קבוצת גבאי",
+      "marketing_company": null,
+      "contractor_company": null,
+      "architect": "ניר ואפי לבנטר אדריכלים",
+      "financing_bank": null,
+      "address": "שדרות בנימין 98, נתניה",
+      "street": "שדרות בנימין",
+      "street_number": "98",
+      "raw_neighborhood_label": "פארק הים / נתניה",
+      "normalized_submarket": "קריית השרון",
+      "city": "נתניה",
+      "geography_tier": "ADJACENT",
+      "tier_reason": "Park HaYam project is a realistic higher-end new-build substitute for Netanya buyers.",
+      "latitude": 32.30321,
+      "longitude": 34.87567,
+      "coordinate_precision": "NEIGHBORHOOD_CENTROID",
+      "coordinate_note": "Selected-market centroid fallback for map context; NOT an exact building/project coordinate.",
+      "project_status": "active/new development",
+      "permit_status": null,
+      "construction_status": null,
+      "estimated_delivery": null,
+      "number_of_buildings": 1,
+      "number_of_floors": 23,
+      "number_of_units": 82,
+      "room_range": [
+        3,
+        6
+      ],
+      "area_range_sqm": [
+        98,
+        189.2
+      ],
+      "product_types": [
+        "standard_apartments",
+        "penthouse"
+      ],
+      "known_unit_variants": [
+        {
+          "rooms": "6",
+          "unit_type": "penthouse",
+          "internal_area_sqm": "189.2",
+          "balcony_area_sqm": null,
+          "garden_area_sqm": null,
+          "floor": null,
+          "floors": null,
+          "orientation": null,
+          "parking": null,
+          "storage": null,
+          "mamad": null,
+          "price_ils": null,
+          "price_type": "CONTEXT_ONLY",
+          "observed_date": null,
+          "source_url": "https://gabaygroup.com/projects/%D7%91%D7%A0%D7%99%D7%9E%D7%99%D7%9F-%D7%A0%D7%AA%D7%A0%D7%99%D7%94/",
+          "applicable_segments": "APT36_37;APT38;APT39",
+          "quantitative_unit_price_area": "false",
+          "notes": "Price semantics normalized to CONTEXT_ONLY in freeze pass; no quantitative promotion.",
+          "retrieved_at": null,
+          "source_type": null,
+          "verification_status": null
+        }
+      ],
+      "parking": true,
+      "storage": null,
+      "mamad": true,
+      "garden": null,
+      "balcony": true,
+      "orientation": null,
+      "elevator": true,
+      "number_of_elevators": null,
+      "apartments_per_floor": null,
+      "building_height": null,
+      "lobby_facilities": [
+        "double_height_lobby",
+        "residents_room",
+        "stroller_room"
+      ],
+      "commercial_ground_floor": null,
+      "view_park_frontage": null,
+      "premium_specification": null,
+      "payment_terms": [
+        "20/80"
+      ],
+      "promotions": [
+        {
+          "promotion_text": "מחיר פתיחה פומבי סביב ₪3.49M; ללא שטח מפורש לאותו דגם",
+          "promotion_type": "starting_price",
+          "validity": null,
+          "source_url": "https://www.diraly.co.il/projects/%D7%92%D7%91%D7%90%D7%99-%D7%A2%D7%9C-%D7%94%D7%A4%D7%90%D7%A8%D7%A7"
+        }
+      ],
+      "source_urls": [
+        "https://gabaygroup.com/projects/%D7%91%D7%A0%D7%99%D7%9E%D7%99%D7%9F-%D7%A0%D7%AA%D7%A0%D7%99%D7%94/",
+        "https://www.yad2.co.il/yad1/project/16610"
+      ],
+      "source_ids": [
+        "net-gabay-park"
+      ],
+      "warnings": [
+        "Public sources show an address-number discrepancy (שדרות בנימין 82 vs 98); baseline address preserved."
+      ],
+      "precision_notes": [
+        "Official Gabay page confirms Shderot Binyamin 98, 23 floors, 82 units, 3/4/5R plus penthouses and large balconies. Yad2 exposes project range 98–189.2 m² / 3–6R, including a 6R 189.2 m² penthouse on floor 23.",
+        "Special penthouse/mini-penthouse spec includes outdoor-kitchen utility preparation and reinforced terrace area for water installation.",
+        "20/80 payment context retained from public project marketing. Numeric penthouse balcony area was not recovered."
+      ],
+      "precision_sources": [
+        "https://gabaygroup.com/projects/%D7%91%D7%A0%D7%99%D7%9E%D7%99%D7%9F-%D7%A0%D7%AA%D7%A0%D7%99%D7%94/",
+        "https://www.yad2.co.il/yad1/project/15441"
+      ]
+    },
+    {
+      "project_id": "net-the-strip",
+      "project_name": "THE STRIP נתניה",
+      "developer_company": "אאורה ישראל",
+      "development_company": "אאורה ישראל",
+      "marketing_company": null,
+      "contractor_company": null,
+      "architect": "כנען שנהב",
+      "financing_bank": null,
+      "address": "בן צבי 60-72+86-92, נתניה",
+      "street": null,
+      "street_number": null,
+      "raw_neighborhood_label": "נאות שקד / נתניה",
+      "normalized_submarket": "קריית השרון",
+      "city": "נתניה",
+      "geography_tier": "BROADER",
+      "tier_reason": "Major broader-city new-development alternative with large high-floor product.",
+      "latitude": 32.30321,
+      "longitude": 34.87567,
+      "coordinate_precision": "NEIGHBORHOOD_CENTROID",
+      "coordinate_note": "Selected-market centroid fallback for map context; NOT an exact building/project coordinate.",
+      "project_status": "בשיווק",
+      "permit_status": null,
+      "construction_status": null,
+      "estimated_delivery": null,
+      "number_of_buildings": 11,
+      "number_of_floors": "10-40",
+      "number_of_units": 1158,
+      "room_range": [
+        2,
+        6
+      ],
+      "area_range_sqm": [],
+      "product_types": [
+        "standard_apartments",
+        "penthouse"
+      ],
+      "known_unit_variants": [
+        {
+          "rooms": "6",
+          "unit_type": "penthouse",
+          "internal_area_sqm": "209",
+          "balcony_area_sqm": null,
+          "garden_area_sqm": null,
+          "floor": "38",
+          "floors": null,
+          "orientation": null,
+          "parking": null,
+          "storage": null,
+          "mamad": null,
+          "price_ils": "7999000",
+          "price_type": "STARTING_PRICE",
+          "observed_date": "2026-09-11",
+          "source_url": "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=17&city=7400&maxRooms=6&minRooms=6&property=7&sort=price-asc",
+          "applicable_segments": "APT36_37;APT38;APT39",
+          "quantitative_unit_price_area": "false",
+          "notes": null,
+          "retrieved_at": null,
+          "source_type": null,
+          "verification_status": null
+        }
+      ],
+      "parking": true,
+      "storage": true,
+      "mamad": true,
+      "garden": null,
+      "balcony": null,
+      "orientation": null,
+      "elevator": true,
+      "number_of_elevators": null,
+      "apartments_per_floor": null,
+      "building_height": null,
+      "lobby_facilities": null,
+      "commercial_ground_floor": null,
+      "view_park_frontage": null,
+      "premium_specification": null,
+      "payment_terms": [
+        "20/80"
+      ],
+      "promotions": [
+        {
+          "promotion_text": "20/80 + published indexation/cancellation campaign terms; not monetized",
+          "promotion_type": "payment_campaign",
+          "validity": null,
+          "source_url": "https://www.auraisrael.co.il/project/the-strip-netanya/"
+        }
+      ],
+      "source_urls": [
+        "https://www.yad2.co.il/yad1/project/19096",
+        "https://www.auraisrael.co.il/project/the-strip-netanya/"
+      ],
+      "source_ids": [
+        "net-strip"
+      ],
+      "warnings": [
+        "Yad2 has also exposed a 1,558-unit figure on another project representation; official Aura current project listing states 1,158 units. Conflict preserved in note, not silently reconciled.",
+        "Published total unit count conflicts across public summaries (1,158 vs 1,558); no silent correction applied."
+      ],
+      "precision_notes": [
+        "Official Aura project page confirms 11 buildings, 10–40 floors, 1,158 apartments, architect Canaan Shenhav, and exact project address range.",
+        "Yad2 public search exposes a 6R penthouse, floor 38, 209 m²; price remains STARTING_PRICE semantics in the selected dataset.",
+        "Third-party public model page supports parking/mamad/balcony feature presence; exact numeric outdoor area not recovered."
+      ],
+      "precision_sources": [
+        "https://auraisrael.co.il/project/%D7%A0%D7%AA%D7%A0%D7%99%D7%94-%D7%91%D7%9F-%D7%A6%D7%91%D7%99/",
+        "https://www.yad2.co.il/realestate/forsale/center-and-sharon?area=70&city=0182&dealType=1&page=1",
+        "https://www.diraly.co.il/fr/projects/the-strip-%D7%A0%D7%AA%D7%A0%D7%99%D7%94"
+      ]
+    },
+    {
+      "project_id": "ash-halomot-barnea",
+      "project_name": "חלומות ברנע הירוקה",
+      "developer_company": "שיכון ובינוי נדל״ן",
+      "development_company": "שיכון ובינוי נדל״ן + מכלוף בכור ובניו",
+      "marketing_company": null,
+      "contractor_company": "שיכון ובינוי נדל״ן + מכלוף בכור ובניו",
+      "architect": null,
+      "financing_bank": null,
+      "address": "שדרות הציונות 5, אשקלון",
+      "street": "שדרות הציונות",
+      "street_number": "5",
+      "raw_neighborhood_label": "גני ברנע",
+      "normalized_submarket": "ברנע",
+      "city": "אשקלון",
+      "geography_tier": "ADJACENT",
+      "tier_reason": "Barnea-family/Ganei Barnea project; closest meaningful large new-development comparator.",
+      "latitude": 31.68751,
+      "longitude": 34.57109,
+      "coordinate_precision": "NEIGHBORHOOD_CENTROID",
+      "coordinate_note": "Selected-market centroid fallback for map context; NOT an exact building/project coordinate.",
+      "project_status": "partly occupied / phases marketed",
+      "permit_status": null,
+      "construction_status": null,
+      "estimated_delivery": null,
+      "number_of_buildings": 7,
+      "number_of_floors": null,
+      "number_of_units": 900,
+      "room_range": [
+        4,
+        5
+      ],
+      "area_range_sqm": [],
+      "product_types": [
+        "standard_apartments",
+        "garden",
+        "mini_penthouse",
+        "penthouse"
+      ],
+      "known_unit_variants": [],
+      "parking": null,
+      "storage": null,
+      "mamad": true,
+      "garden": true,
+      "balcony": true,
+      "orientation": null,
+      "elevator": null,
+      "number_of_elevators": null,
+      "apartments_per_floor": null,
+      "building_height": null,
+      "lobby_facilities": null,
+      "commercial_ground_floor": null,
+      "view_park_frontage": null,
+      "premium_specification": null,
+      "payment_terms": [],
+      "promotions": [
+        {
+          "promotion_text": "5R starting about ₪1.619M (archived/current project-portal context)",
+          "promotion_type": "starting_price",
+          "validity": null,
+          "source_url": "https://www.ad.co.il/project/halomot-barnea"
+        }
+      ],
+      "source_urls": [
+        "https://www.shbn.co.il/projects/ashkelon-dreams/",
+        "https://www.ad.co.il/project/halomot-barnea"
+      ],
+      "source_ids": [
+        "ash-shbn"
+      ],
+      "warnings": [
+        "Official group page identifies Shikun & Binui Real Estate together with Mahluf Bechor as developer/executing companies.",
+        "v2_source_conflict:number_of_units: baseline=900; source=469; source=https://www.ad.co.il/project/halomot-barnea",
+        "v2_source_conflict:development_company: baseline='שיכון ובינוי נדל״ן + מכלוף בכור ובניו'; source='שיכון ובינוי נדל״ן + מכלוף בכור'; source=https://www.ad.co.il/project/halomot-barnea"
+      ],
+      "precision_notes": [
+        "Official Shikun & Binui page confirms about 900 apartments, 4–5R, garden, mini-penthouse and penthouse; some units available for immediate occupancy.",
+        "Official technical spec explicitly references mamad window/filter system and balcony access. Numeric model outdoor areas/prices were not recovered in the targeted pass."
+      ],
+      "precision_sources": [
+        "https://www.shbn.co.il/projects/ashkelon-dreams/"
+      ]
+    },
+    {
+      "project_id": "ash-peretz-wine",
+      "project_name": "פרץ בוני הנגב בעיר היין",
+      "developer_company": "פרץ בוני הנגב",
+      "development_company": "פרץ בוני הנגב",
+      "marketing_company": null,
+      "contractor_company": null,
+      "architect": "שורץ בסנוף אדריכלים ובוני ערים בע״מ",
+      "financing_bank": null,
+      "address": "אריאל שרון 50, אשקלון",
+      "street": "אריאל שרון",
+      "street_number": "50",
+      "raw_neighborhood_label": "עיר היין",
+      "normalized_submarket": "ברנע",
+      "city": "אשקלון",
+      "geography_tier": "BROADER",
+      "tier_reason": "Large current Ashkelon new-development alternative with garden/penthouse supply.",
+      "latitude": 31.691238994527577,
+      "longitude": 34.59556929926041,
+      "coordinate_precision": "PROJECT",
+      "coordinate_note": "Project-source exact coordinate retained from durable project record.",
+      "project_status": "limited remaining inventory / near occupancy",
+      "permit_status": null,
+      "construction_status": null,
+      "estimated_delivery": null,
+      "number_of_buildings": null,
+      "number_of_floors": null,
+      "number_of_units": 198,
+      "room_range": [
+        3,
+        5
+      ],
+      "area_range_sqm": [],
+      "product_types": [
+        "standard_apartments",
+        "garden",
+        "penthouse"
+      ],
+      "known_unit_variants": [
+        {
+          "rooms": null,
+          "unit_type": "garden_apartment",
+          "internal_area_sqm": null,
+          "balcony_area_sqm": null,
+          "garden_area_sqm": null,
+          "floor": "ground",
+          "floors": null,
+          "orientation": null,
+          "parking": null,
+          "storage": null,
+          "mamad": null,
+          "price_ils": "2200000",
+          "price_type": "STARTING_PRICE",
+          "observed_date": "2026-09-11",
+          "source_url": "https://www.yad2.co.il/realestate/forsale/south?area=21&city=7100&neighborhood=471&property=7",
+          "applicable_segments": "APT1_2;APT3",
+          "quantitative_unit_price_area": "false",
+          "notes": null,
+          "retrieved_at": null,
+          "source_type": null,
+          "verification_status": null
+        },
+        {
+          "rooms": "5",
+          "unit_type": "standard_apartment",
+          "internal_area_sqm": "126",
+          "balcony_area_sqm": "14.36",
+          "garden_area_sqm": null,
+          "floor": null,
+          "floors": null,
+          "orientation": null,
+          "parking": "2",
+          "storage": "4.47 m²",
+          "mamad": null,
+          "price_ils": "1441898",
+          "price_type": "HISTORICAL_MARKETING_PRICE",
+          "observed_date": "historical government-program price list",
+          "source_url": "https://www.peretzbh.co.il/price-list/",
+          "applicable_segments": null,
+          "quantitative_unit_price_area": "false",
+          "notes": "Historical program price/model; preserved for context only, not current market quantitative evidence.",
+          "retrieved_at": "2026-09-12",
+          "source_type": "official_developer_program_price_list",
+          "verification_status": "HISTORICAL_MODEL_VERIFIED"
+        }
+      ],
+      "parking": null,
+      "storage": null,
+      "mamad": null,
+      "garden": true,
+      "balcony": null,
+      "orientation": null,
+      "elevator": null,
+      "number_of_elevators": null,
+      "apartments_per_floor": null,
+      "building_height": null,
+      "lobby_facilities": null,
+      "commercial_ground_floor": null,
+      "view_park_frontage": null,
+      "premium_specification": null,
+      "payment_terms": [],
+      "promotions": [],
+      "source_urls": [
+        "https://www.yad2.co.il/yad1/project/8647"
+      ],
+      "source_ids": [
+        "ash-peretz-citywine"
+      ],
+      "warnings": [],
+      "precision_notes": [
+        "Official developer plans page exposes real floor-plan/model inventory including garden and penthouse types.",
+        "Historical government-program model table is retained only as HISTORICAL_MARKETING_PRICE context. Example 5R model A: 126 m² + 14.36 m² balcony + 4.47 m² storage + 2 parking.",
+        "Current project page says limited remaining inventory and occupancy during the year; no current special-model unit-specific price+outdoor pair was recovered."
+      ],
+      "precision_sources": [
+        "https://www.peretzbh.co.il/project/ir-hayain/plans/",
+        "https://www.peretzbh.co.il/mishtaken/%D7%A4%D7%A8%D7%A5-%D7%91%D7%95%D7%A0%D7%99-%D7%94%D7%A0%D7%92%D7%91-%D7%A2%D7%99%D7%A8-%D7%94%D7%99%D7%99%D7%9F-%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F/apartments/",
+        "https://koratgag.co.il/residentual/%D7%A2%D7%99%D7%A8-%D7%94%D7%99%D7%99%D7%9F-%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F/"
+      ],
+      "precision_model_example": {
+        "rooms": 5,
+        "model": "A",
+        "internal_area_sqm": 126.0,
+        "balcony_area_sqm": 14.36,
+        "storage_area_sqm": 4.47,
+        "parking_count": 2,
+        "price_ils": 1441898,
+        "price_type": "HISTORICAL_MARKETING_PRICE",
+        "source_url": "https://www.peretzbh.co.il/mishtaken/%D7%A4%D7%A8%D7%A5-%D7%91%D7%95%D7%A0%D7%99-%D7%94%D7%A0%D7%92%D7%91-%D7%A2%D7%99%D7%A8-%D7%94%D7%99%D7%99%D7%9F-%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F/apartments/"
+      }
+    },
+    {
+      "project_id": "ash-jade",
+      "project_name": "JADE אשקלון",
+      "developer_company": "קבוצת גוהרי / גוהרי יוסי השקעות בע״מ",
+      "development_company": "קבוצת גוהרי / גוהרי יוסי השקעות בע״מ",
+      "marketing_company": null,
+      "contractor_company": null,
+      "architect": "עדו דאובר",
+      "financing_bank": null,
+      "address": "היוצרים 45, אשקלון",
+      "street": "היוצרים",
+      "street_number": "45",
+      "raw_neighborhood_label": "עיר היין",
+      "normalized_submarket": "ברנע",
+      "city": "אשקלון",
+      "geography_tier": "BROADER",
+      "tier_reason": "Current premium City of Wine project with unusually detailed model ranges.",
+      "latitude": 31.68751,
+      "longitude": 34.57109,
+      "coordinate_precision": "NEIGHBORHOOD_CENTROID",
+      "coordinate_note": "Selected-market centroid fallback for map context; NOT an exact building/project coordinate.",
+      "project_status": "construction started",
+      "permit_status": null,
+      "construction_status": null,
+      "estimated_delivery": null,
+      "number_of_buildings": 2,
+      "number_of_floors": null,
+      "number_of_units": null,
+      "room_range": [
+        3,
+        6
+      ],
+      "area_range_sqm": [
+        77.5,
+        304
+      ],
+      "product_types": [
+        "standard_apartments",
+        "penthouse"
+      ],
+      "known_unit_variants": [
+        {
+          "rooms": "3",
+          "unit_type": "standard_apartment",
+          "internal_area_sqm": "77.5",
+          "balcony_area_sqm": null,
+          "garden_area_sqm": null,
+          "floor": null,
+          "floors": null,
+          "orientation": null,
+          "parking": null,
+          "storage": null,
+          "mamad": null,
+          "price_ils": "1790000",
+          "price_type": "STARTING_PRICE",
+          "observed_date": "2026-09-11",
+          "source_url": "https://www.yad2.co.il/yad1/newprojects/south?category=1",
+          "applicable_segments": null,
+          "quantitative_unit_price_area": "false",
+          "notes": null,
+          "retrieved_at": null,
+          "source_type": null,
+          "verification_status": null
+        },
+        {
+          "rooms": "5",
+          "unit_type": "penthouse",
+          "internal_area_sqm": "152",
+          "balcony_area_sqm": null,
+          "garden_area_sqm": null,
+          "floor": null,
+          "floors": null,
+          "orientation": null,
+          "parking": null,
+          "storage": null,
+          "mamad": null,
+          "price_ils": "4450000",
+          "price_type": "STARTING_PRICE",
+          "observed_date": "2026-09-11",
+          "source_url": "https://www.yad2.co.il/yad1/newprojects/south?category=1",
+          "applicable_segments": "APT36_37;APT38;APT39",
+          "quantitative_unit_price_area": "false",
+          "notes": null,
+          "retrieved_at": null,
+          "source_type": null,
+          "verification_status": null
+        },
+        {
+          "rooms": "6",
+          "unit_type": "penthouse",
+          "internal_area_sqm": "173",
+          "balcony_area_sqm": null,
+          "garden_area_sqm": null,
+          "floor": null,
+          "floors": null,
+          "orientation": null,
+          "parking": null,
+          "storage": null,
+          "mamad": null,
+          "price_ils": "5250000",
+          "price_type": "STARTING_PRICE",
+          "observed_date": "2026-09-11",
+          "source_url": "https://www.yad2.co.il/yad1/newprojects/south?category=1",
+          "applicable_segments": "APT36_37;APT38;APT39",
+          "quantitative_unit_price_area": "false",
+          "notes": null,
+          "retrieved_at": null,
+          "source_type": null,
+          "verification_status": null
+        },
+        {
+          "rooms": "4",
+          "unit_type": "standard_apartment",
+          "internal_area_sqm": "106",
+          "balcony_area_sqm": null,
+          "garden_area_sqm": null,
+          "floor": null,
+          "floors": null,
+          "orientation": null,
+          "parking": null,
+          "storage": null,
+          "mamad": null,
+          "price_ils": "2110000",
+          "price_type": "STARTING_PRICE",
+          "observed_date": "2026-09-12",
+          "source_url": "https://www.yad2.co.il/yad1/newprojects/south?category=1",
+          "applicable_segments": null,
+          "quantitative_unit_price_area": "false",
+          "notes": "Starting-price model; preserved as context despite price+area.",
+          "retrieved_at": "2026-09-12",
+          "source_type": "major_property_platform",
+          "verification_status": "PUBLIC_PROJECT_MODEL"
+        },
+        {
+          "rooms": "5",
+          "unit_type": "standard_apartment",
+          "internal_area_sqm": "126",
+          "balcony_area_sqm": null,
+          "garden_area_sqm": null,
+          "floor": null,
+          "floors": null,
+          "orientation": null,
+          "parking": null,
+          "storage": null,
+          "mamad": null,
+          "price_ils": "2290000",
+          "price_type": "STARTING_PRICE",
+          "observed_date": "2026-09-12",
+          "source_url": "https://www.yad2.co.il/yad1/newprojects/south?category=1",
+          "applicable_segments": null,
+          "quantitative_unit_price_area": "false",
+          "notes": "Starting-price model; preserved as context despite price+area.",
+          "retrieved_at": "2026-09-12",
+          "source_type": "major_property_platform",
+          "verification_status": "PUBLIC_PROJECT_MODEL"
+        },
+        {
+          "rooms": "6",
+          "unit_type": "standard_apartment",
+          "internal_area_sqm": "146",
+          "balcony_area_sqm": null,
+          "garden_area_sqm": null,
+          "floor": null,
+          "floors": null,
+          "orientation": null,
+          "parking": null,
+          "storage": null,
+          "mamad": null,
+          "price_ils": "2680000",
+          "price_type": "STARTING_PRICE",
+          "observed_date": "2026-09-12",
+          "source_url": "https://www.yad2.co.il/yad1/newprojects/south?category=1",
+          "applicable_segments": null,
+          "quantitative_unit_price_area": "false",
+          "notes": "Starting-price model; preserved as context despite price+area.",
+          "retrieved_at": "2026-09-12",
+          "source_type": "major_property_platform",
+          "verification_status": "PUBLIC_PROJECT_MODEL"
+        }
+      ],
+      "parking": null,
+      "storage": null,
+      "mamad": null,
+      "garden": null,
+      "balcony": true,
+      "orientation": null,
+      "elevator": null,
+      "number_of_elevators": null,
+      "apartments_per_floor": null,
+      "building_height": null,
+      "lobby_facilities": null,
+      "commercial_ground_floor": null,
+      "view_park_frontage": null,
+      "premium_specification": null,
+      "payment_terms": [],
+      "promotions": [],
+      "source_urls": [
+        "https://www.yad2.co.il/yad1/newprojects/south?area=21&category=1&city=0070&maxRooms=5.5&minRooms=5.5"
+      ],
+      "source_ids": [
+        "ash-jade"
+      ],
+      "warnings": [],
+      "precision_notes": [
+        "Yad2 model table: 3R 77.5 m² from ₪1.79M; 4R 106 m² from ₪2.11M; 5R 126 m² from ₪2.29M; 6R 146 m² from ₪2.68M; 5R penthouse 152 m² from ₪4.45M; 6R penthouse 173 m² from ₪5.25M.",
+        "All “from” prices remain STARTING_PRICE even when area is shown. Numeric balcony area, parking/storage/mamad, financing bank and delivery were not recovered."
+      ],
+      "precision_sources": [
+        "https://www.yad2.co.il/yad1/project/19080"
+      ]
+    }
+  ]
+}

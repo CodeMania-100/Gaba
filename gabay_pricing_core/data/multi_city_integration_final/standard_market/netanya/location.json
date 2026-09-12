@@ -1,0 +1,29 @@
+{
+  "city": "נתניה",
+  "neighborhood": "קריית השרון",
+  "selection_reason": "Large registered transaction universe, conventional apartment stock, active resale market and ongoing/new-development competitive context.",
+  "center": {
+    "lat": 32.30321,
+    "lng": 34.87567,
+    "precision": "submarket_centroid",
+    "source_title": "Kiryat Hasharon — OpenStreetMap neighborhood way via Mapcarta",
+    "source_url": "https://mapcarta.com/W1010040276",
+    "retrieved_at": "2026-09-11"
+  },
+  "geography_definition": {
+    "tier_1": "קריית השרון only",
+    "tier_2": "immediately adjacent east-Netanya neighborhoods, only if Tier 1 is insufficient",
+    "tier_3": "broader Netanya context"
+  },
+  "broadening_used": {
+    "3R": "none for quantitative sold/asking lanes",
+    "5R": "none for quantitative sold/asking lanes"
+  },
+  "integration_key": {
+    "city": "נתניה",
+    "selected_submarket": "קריית השרון"
+  },
+  "pricing_scope_adapter": {
+    "enabled": false
+  }
+}

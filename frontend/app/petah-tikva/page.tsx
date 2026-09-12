@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
-import { api, PetahTikvaWorkspace, pricingRouteOf, PtkPriceListRow } from "@/lib/api";
+import { api, MarketContextSlug, MarketContextSummary, PetahTikvaWorkspace, pricingRouteOf, PtkPriceListRow } from "@/lib/api";
 import { checkWorkspaceContext, WORKSPACE_MISMATCH_MESSAGE } from "@/lib/workspaceGuard";
 import { MarketMapSelection, SPECIAL_UNIT_NUMBERS, SpecialUnitNumber } from "@/lib/marketMap";
 import PricingDecisionBoard from "./components/PricingDecisionBoard";
@@ -14,6 +14,7 @@ import UnitDrawer from "./components/UnitDrawer";
 import MarketingStrategyPanel from "./components/MarketingStrategyPanel";
 import WorkspaceTabs, { TopTab } from "./components/WorkspaceTabs";
 import MarketAndCompetitionWorkspace, { MarketInnerTab } from "./components/MarketAndCompetitionWorkspace";
+import MarketContextSelector from "./components/MarketContextSelector";
 import { defaultMarketingStrategyState, MarketingStrategyState } from "@/lib/marketingStrategy";
 
 export default function PetahTikvaWorkspacePage() {
@@ -41,13 +42,32 @@ export default function PetahTikvaWorkspacePage() {
   const [activeTab, setActiveTab] = useState<TopTab>("pricing");
   const [marketInnerTab, setMarketInnerTab] = useState<MarketInnerTab>("map");
 
+  // "הקשר שוק" -- which of the four frozen market contexts the same
+  // 39-apartment inventory is being evaluated against. Persistent, page-
+  // level state (not per-tab) since it affects all three capabilities.
+  const [marketContext, setMarketContext] = useState<MarketContextSlug>("petah_tikva");
+  const [marketContexts, setMarketContexts] = useState<MarketContextSummary[]>([]);
+
   useEffect(() => {
     let cancelled = false;
+    api.getMarketContexts().then((list) => {
+      if (!cancelled) setMarketContexts(list);
+    }).catch((err) => console.error("Failed to load market contexts:", err));
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+    setLoading(true);
+    setMismatch(null);
+    setError(null);
     api
-      .getPetahTikvaWorkspace()
+      .getMarketWorkspace(marketContext)
       .then((d) => {
         if (cancelled) return;
-        // Defensive guard: never render a Petah Tikva page against
+        // Defensive guard: never render a market context against
         // mismatched/contaminated market metadata -- fail loudly instead.
         const guard = checkWorkspaceContext(d);
         if (!guard.ok) {
@@ -59,7 +79,7 @@ export default function PetahTikvaWorkspacePage() {
       .catch((err) => {
         // Logged for developer debugging only -- never rendered to the user
         // (see the error branch below).
-        console.error("Failed to load Petah Tikva workspace:", err);
+        console.error("Failed to load market workspace:", err);
         if (!cancelled) setError(err instanceof Error ? err.message : String(err));
       })
       .finally(() => {
@@ -68,6 +88,22 @@ export default function PetahTikvaWorkspacePage() {
     return () => {
       cancelled = true;
     };
+  }, [marketContext]);
+
+  // Switching market context must reset every stale selection tied to the
+  // PREVIOUS context's evidence -- a competitor card, a map popup, the
+  // selected inner tab -- so the UI never accidentally shows one context's
+  // record while another is selected. `MarketAndCompetitionWorkspace` also
+  // receives `key={marketContext}` below (see render) so its own internally
+  // -managed state (map viewport, register filters, product-comparison
+  // selection) is reset by a full remount rather than needing every nested
+  // piece of state threaded up here individually.
+  const handleMarketContextChange = useCallback((slug: MarketContextSlug) => {
+    setMarketContext(slug);
+    setSelectedUnit(null);
+    setMapSelection({ kind: "standard_family", family: "3R" });
+    setMarketFamily("3R");
+    setMarketInnerTab("map");
   }, []);
 
   // "הצג ראיות והשוואות" (UnitDrawer) -- closes the drawer, jumps to השוק
@@ -150,9 +186,12 @@ export default function PetahTikvaWorkspacePage() {
               {data.project.address ?? `${data.project.commercial_area} / ${data.project.official_neighborhood}`}
             </p>
           </div>
-          <Link href="/" className="rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50">
-            פרויקטים
-          </Link>
+          <div className="flex items-center gap-3">
+            <MarketContextSelector contexts={marketContexts} value={marketContext} onChange={handleMarketContextChange} />
+            <Link href="/" className="rounded-md border border-slate-300 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-50">
+              פרויקטים
+            </Link>
+          </div>
         </div>
         {data.project.demo_location_assumption && (
           <p className="mt-2 inline-block rounded bg-slate-100 px-2 py-1 text-[11px] text-slate-400">
@@ -177,6 +216,7 @@ export default function PetahTikvaWorkspacePage() {
           }
           marketContent={
             <MarketAndCompetitionWorkspace
+              key={marketContext}
               workspace={data}
               marketingStrategy={marketingStrategy}
               family={marketFamily}

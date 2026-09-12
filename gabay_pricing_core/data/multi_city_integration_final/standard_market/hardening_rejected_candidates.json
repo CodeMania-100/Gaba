@@ -1,0 +1,44 @@
+[
+  {
+    "city": "אשקלון",
+    "selected_submarket": "ברנע",
+    "family": "3R",
+    "address": "בר כוכבא 39",
+    "rooms": 3,
+    "area_sqm": 70,
+    "price_ils": 1320000,
+    "source_url": "https://zipika.com/features/property-details?lng=he&propId=4113216",
+    "status": "rejected",
+    "reason": "wrong_submarket_aphridar",
+    "cross_check_url": "https://www.dirobot.co.il/building-prices/%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F%2C%20%D7%91%D7%A8%20%D7%9B%D7%95%D7%9B%D7%91%D7%90%2C%2039",
+    "retrieved_at": "2026-09-11"
+  },
+  {
+    "city": "אשקלון",
+    "selected_submarket": "ברנע",
+    "family": "3R",
+    "address": "מעלות אשר 25",
+    "rooms": 3,
+    "area_sqm": 80,
+    "price_ils": 1630000,
+    "source_id": "Cbj8cwS0wQr",
+    "source_url": "https://www.madlan.co.il/listings/Cbj8cwS0wQr",
+    "status": "rejected",
+    "reason": "outside_3r_area_band_58.65_79.35",
+    "retrieved_at": "2026-09-11"
+  },
+  {
+    "city": "אשקלון",
+    "selected_submarket": "ברנע",
+    "family": "3R",
+    "address": "משה שרת 34",
+    "rooms": 3,
+    "area_sqm": 90,
+    "price_ils": 1380000,
+    "source_id": "RM2hzpg9lSf",
+    "source_url": "https://www.madlan.co.il/listings/RM2hzpg9lSf",
+    "status": "rejected",
+    "reason": "outside_3r_area_band_and_description_identifies_penthouse",
+    "retrieved_at": "2026-09-11"
+  }
+]

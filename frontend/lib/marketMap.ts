@@ -119,7 +119,7 @@ export interface MarketMapPoint {
 // never presented as the exact subject address (see task item 4).
 // ---------------------------------------------------------------------------
 
-export function deriveProjectAreaPoint(askingPoints: MarketMapPoint[]): MarketMapPoint | null {
+export function deriveProjectAreaPoint(askingPoints: MarketMapPoint[], areaLabel?: string): MarketMapPoint | null {
   if (askingPoints.length === 0) return null;
   const lat = askingPoints.reduce((s, p) => s + p.lat, 0) / askingPoints.length;
   const lng = askingPoints.reduce((s, p) => s + p.lng, 0) / askingPoints.length;
@@ -128,7 +128,11 @@ export function deriveProjectAreaPoint(askingPoints: MarketMapPoint[]): MarketMa
     kind: "project_area",
     lat,
     lng,
-    title: "אזור הפרויקט – המרכז השקט / מרכז העיר",
+    // Falls back to the original Petah Tikva-specific label only when the
+    // caller has no per-context label to pass (keeps Petah Tikva's own
+    // render unchanged); every other market context passes its own
+    // commercial_area/official_neighborhood instead (see MarketGeoMap.tsx).
+    title: areaLabel ? `אזור הפרויקט – ${areaLabel}` : "אזור הפרויקט – המרכז השקט / מרכז העיר",
     contributesToPricing: true,
     coordinatePrecision: "approximate",
   };
@@ -304,6 +308,11 @@ const GEOGRAPHY_ROLE_MAP: Record<string, "core" | "adjacent" | "context"> = {
   core_exact_target: "core",
   adjacent_submarket: "adjacent",
   broader_petah_tikva: "context",
+  // The generic, non-Petah-Tikva-specific equivalent emitted by the three
+  // multi-city contexts for the same geography tier (see
+  // app_api/multi_city_competitor_register.py) -- same visual "context"
+  // tier, different label text (see competitorRegister.ts).
+  broader_market: "context",
 };
 
 // Only the product types that actually distinguish a competitor from a
@@ -315,6 +324,12 @@ const PRODUCT_TYPE_LABELS: Record<string, string> = {
   penthouse_roof: "פנטהאוז גג",
   duplex: "דופלקס",
   penthouse: "פנטהאוז",
+  // The multi-city register's own product_types vocabulary (see
+  // special_full_v2/competitor_projects_v2.json) differs slightly from
+  // Petah Tikva's -- additive entries, nothing above changes.
+  garden: "דירת גן",
+  garden_duplex: "דופלקס גן",
+  large_apartment: "יחידה גדולה",
 };
 
 const RELEVANCE_TAG_LABELS: Record<string, string> = {

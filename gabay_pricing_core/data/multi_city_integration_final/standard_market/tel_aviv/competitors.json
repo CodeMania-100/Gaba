@@ -1,0 +1,201 @@
+[
+  {
+    "project_name": "TIDHAR בין השדרות",
+    "submarket_tier": "exact_submarket",
+    "neighborhood": "יד אליהו",
+    "developer": "תדהר",
+    "project_status": "active/new development",
+    "relevant_to_3r": true,
+    "relevant_to_5r": true,
+    "quantitative_for_3r": true,
+    "quantitative_for_5r": true,
+    "context_only": false,
+    "unit_prices": [
+      {
+        "rooms": 3,
+        "area_sqm": 71,
+        "price_ils": 3700000,
+        "price_basis": "verified_model_price"
+      },
+      {
+        "rooms": 5,
+        "area_sqm": 105,
+        "price_ils": 4758000,
+        "price_basis": "verified_model_price"
+      }
+    ],
+    "payment_terms": [],
+    "sources": [
+      {
+        "source_title": "פרויקט תדהר בין השדרות - יד אליהו, תל אביב יפו",
+        "source_url": "https://www.yad2.co.il/yad1/project/16499",
+        "retrieved_at": "2026-09-11",
+        "source_date": null
+      }
+    ],
+    "notes": "Both models carried into quantitative lane; 5R price/area came from prior-pass verified model.",
+    "legacy_sources": [
+      "turn661930search3",
+      "turn867933search12"
+    ],
+    "address": "לה גווארדיה 69",
+    "latitude": 32.05899,
+    "longitude": 34.79285,
+    "coordinate_precision": "selected_submarket_centroid_fallback",
+    "coordinate_source_url": "https://mapcarta.com/W819219043",
+    "record_uid": "competitor-945e63c4f29806f6"
+  },
+  {
+    "project_name": "GALIPOLIS",
+    "submarket_tier": "exact_submarket",
+    "neighborhood": "יד אליהו",
+    "developer": null,
+    "project_status": "active/new development",
+    "relevant_to_3r": true,
+    "relevant_to_5r": false,
+    "quantitative_for_3r": false,
+    "quantitative_for_5r": false,
+    "context_only": true,
+    "unit_prices": [
+      {
+        "rooms": 3,
+        "area_sqm": 73,
+        "price_ils": 3215000,
+        "price_basis": "starting_price_context_only",
+        "quantitative_unit_price_area": false
+      }
+    ],
+    "payment_terms": [],
+    "sources": [
+      {
+        "source_title": "GALIPOLIS — קבוצת אלמוג",
+        "source_url": "https://almog-group.ussl.co.il/galipolis-almog/",
+        "retrieved_at": "2026-09-11",
+        "source_date": null
+      }
+    ],
+    "notes": "Semantic freeze correction: ₪3.215M is a published campaign starting price. No retained durable source ties it to the exact 73 m² model; excluded from the quantitative new-development lane.",
+    "legacy_sources": [
+      "turn661930search15",
+      "turn661930search5"
+    ],
+    "latitude": 32.05899,
+    "longitude": 34.79285,
+    "coordinate_precision": "selected_submarket_centroid_fallback",
+    "coordinate_source_url": "https://mapcarta.com/W819219043",
+    "record_uid": "competitor-82c32ad6216255d1"
+  },
+  {
+    "project_name": "RAYK EAST SIDE",
+    "submarket_tier": "exact_submarket",
+    "neighborhood": "יד אליהו",
+    "developer": null,
+    "project_status": "active/new development",
+    "relevant_to_3r": true,
+    "relevant_to_5r": true,
+    "quantitative_for_3r": true,
+    "quantitative_for_5r": false,
+    "context_only": false,
+    "unit_prices": [
+      {
+        "rooms": 3,
+        "area_sqm": 74,
+        "price_ils": 3590000,
+        "price_basis": "verified_model_price"
+      },
+      {
+        "rooms": 5,
+        "area_sqm": null,
+        "price_ils": 4890000,
+        "price_basis": "unknown",
+        "status": "conflict",
+        "reason": "fresh result says 111m²; older crawl says 151m²"
+      }
+    ],
+    "payment_terms": [],
+    "sources": [
+      {
+        "source_title": "פרויקט RAYK EAST SIDE - יד אליהו, תל אביב יפו",
+        "source_url": "https://www.yad2.co.il/yad1/project/16277",
+        "retrieved_at": "2026-09-11",
+        "source_date": null
+      }
+    ],
+    "notes": "5R model excluded from numeric lane because price/area join conflicts across source snapshots.",
+    "legacy_sources": [
+      "turn718771search5",
+      "turn792690search1",
+      "turn867933search12"
+    ],
+    "address": "לוחמי גליפולי 56-58",
+    "latitude": 32.05899,
+    "longitude": 34.79285,
+    "coordinate_precision": "selected_submarket_centroid_fallback",
+    "coordinate_source_url": "https://mapcarta.com/W819219043",
+    "record_uid": "competitor-c827d78034745fee"
+  },
+  {
+    "project_name": "פרויקט יגור / קן התור",
+    "submarket_tier": "exact_submarket",
+    "neighborhood": "יד אליהו",
+    "developer": "קן התור",
+    "project_status": "context",
+    "relevant_to_3r": true,
+    "relevant_to_5r": true,
+    "quantitative_for_3r": false,
+    "quantitative_for_5r": false,
+    "context_only": true,
+    "unit_prices": [],
+    "payment_terms": [],
+    "sources": [
+      {
+        "source_title": "פרויקט יגור - יד אליהו, תל אביב יפו",
+        "source_url": "https://www.yad2.co.il/yad1/project/11535",
+        "retrieved_at": "2026-09-11",
+        "source_date": null
+      }
+    ],
+    "notes": "Competitor landscape only; no verified joined model price+area used.",
+    "legacy_sources": [
+      "turn159536search0"
+    ],
+    "address": "יגור 8",
+    "latitude": 32.05899,
+    "longitude": 34.79285,
+    "coordinate_precision": "selected_submarket_centroid_fallback",
+    "coordinate_source_url": "https://mapcarta.com/W819219043",
+    "record_uid": "competitor-b3abe8edac26b252"
+  },
+  {
+    "project_name": "נגבה 26",
+    "submarket_tier": "exact_submarket",
+    "neighborhood": "יד אליהו",
+    "developer": null,
+    "project_status": "renewal/new-build context",
+    "relevant_to_3r": false,
+    "relevant_to_5r": true,
+    "quantitative_for_3r": false,
+    "quantitative_for_5r": false,
+    "context_only": true,
+    "unit_prices": [],
+    "payment_terms": [],
+    "sources": [
+      {
+        "source_title": "נגבה 26 - בן שלום יזמות ובנייה",
+        "source_url": "https://www.ben-shalom.co.il/project/negba-26/",
+        "retrieved_at": "2026-09-11",
+        "source_date": null
+      }
+    ],
+    "notes": "Context only.",
+    "legacy_sources": [
+      "turn853970search8"
+    ],
+    "address": "נגבה 26",
+    "latitude": 32.05899,
+    "longitude": 34.79285,
+    "coordinate_precision": "selected_submarket_centroid_fallback",
+    "coordinate_source_url": "https://mapcarta.com/W819219043",
+    "record_uid": "competitor-40f8c4cf376050a8"
+  }
+]

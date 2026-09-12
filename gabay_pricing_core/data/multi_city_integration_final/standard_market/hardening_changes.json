@@ -1,0 +1,95 @@
+{
+  "as_of": "2026-09-11",
+  "status": "frozen",
+  "changes": [
+    {
+      "item": "petah_tikva",
+      "result": "reference_only",
+      "details": "Removed from integration-facing comparison. Stored under reference_only/ with integration_write_allowed=false and do_not_overwrite_application_data=true."
+    },
+    {
+      "item": "provenance",
+      "result": "hardened",
+      "details": "Opaque turn references retained only as legacy_source_reference/legacy_sources. Stable URL/title/date/durable ID used wherever recovered; otherwise deterministic dataset UID with explicit provenance_status."
+    },
+    {
+      "item": "map_coordinates",
+      "result": "complete",
+      "details": "Selected submarket centers, all accepted sold/asking rows and all competitor projects have non-null latitude/longitude. Exact source coordinates are used where available; fallback coordinates are explicitly labeled as submarket-centroid approximations."
+    },
+    {
+      "item": "netanya_3R",
+      "result": "deepened",
+      "added": "אברהם שפיגלמן 12 — 3R / 74 m² / ₪2.10M",
+      "effect": "Frozen-engine supported range changed from ₪2.128M–₪2.162M to ₪1.958M–₪2.162M."
+    },
+    {
+      "item": "barnea_3R",
+      "result": "deepened",
+      "added": "מונטיפיורי 18 — 3R / 70 m² / ₪1.10M — Tier 2 Barnea-family",
+      "effect": "Former ₪1.338M–₪1.339M boundary overlap widened naturally to ₪1.271M–₪1.339M. extremely_narrow_boundary_overlap no longer applies."
+    },
+    {
+      "item": "tel_aviv_3R",
+      "result": "historical_pre_semantic_reconciliation_no_consensus",
+      "details": "Historical pre-semantic-reconciliation state only; superseded on 2026-09-12 after GALIPOLIS was downgraded to STARTING_PRICE and the pinned engine was rerun."
+    },
+    {
+      "item": "methodology",
+      "result": "repository_authoritative",
+      "details": "Actual pinned repository engine reports version market-range-v2-program-regime. Previous research label market-range-v1 was metadata drift; regression uses exact repository source blob without modification."
+    },
+    {
+      "date": "2026-09-12",
+      "type": "semantic_reconciliation",
+      "subject": "GALIPOLIS 3R 73m² ₪3.215M",
+      "change": "VERIFIED_UNIT_PRICE -> STARTING_PRICE; quantitative=false",
+      "effect": "Tel Aviv 3R rerun now consensus ₪2.560M–₪2.748M; point ₪2.654M; medium confidence",
+      "methodology_changed": false
+    }
+  ],
+  "rejected_in_final_deepening": [
+    {
+      "city": "אשקלון",
+      "selected_submarket": "ברנע",
+      "family": "3R",
+      "address": "בר כוכבא 39",
+      "rooms": 3,
+      "area_sqm": 70,
+      "price_ils": 1320000,
+      "source_url": "https://zipika.com/features/property-details?lng=he&propId=4113216",
+      "status": "rejected",
+      "reason": "wrong_submarket_aphridar",
+      "cross_check_url": "https://www.dirobot.co.il/building-prices/%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F%2C%20%D7%91%D7%A8%20%D7%9B%D7%95%D7%9B%D7%91%D7%90%2C%2039",
+      "retrieved_at": "2026-09-11"
+    },
+    {
+      "city": "אשקלון",
+      "selected_submarket": "ברנע",
+      "family": "3R",
+      "address": "מעלות אשר 25",
+      "rooms": 3,
+      "area_sqm": 80,
+      "price_ils": 1630000,
+      "source_id": "Cbj8cwS0wQr",
+      "source_url": "https://www.madlan.co.il/listings/Cbj8cwS0wQr",
+      "status": "rejected",
+      "reason": "outside_3r_area_band_58.65_79.35",
+      "retrieved_at": "2026-09-11"
+    },
+    {
+      "city": "אשקלון",
+      "selected_submarket": "ברנע",
+      "family": "3R",
+      "address": "משה שרת 34",
+      "rooms": 3,
+      "area_sqm": 90,
+      "price_ils": 1380000,
+      "source_id": "RM2hzpg9lSf",
+      "source_url": "https://www.madlan.co.il/listings/RM2hzpg9lSf",
+      "status": "rejected",
+      "reason": "outside_3r_area_band_and_description_identifies_penthouse",
+      "retrieved_at": "2026-09-11"
+    }
+  ]
+}

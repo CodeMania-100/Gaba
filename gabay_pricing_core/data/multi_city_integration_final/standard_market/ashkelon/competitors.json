@@ -1,0 +1,268 @@
+[
+  {
+    "project_name": "חלומות ברנע הירוקה",
+    "submarket_tier": "adjacent_submarket",
+    "neighborhood": "גני ברנע",
+    "developer": "שיכון ובינוי",
+    "project_status": "occupied/completed context",
+    "relevant_to_3r": false,
+    "relevant_to_5r": true,
+    "quantitative_for_3r": false,
+    "quantitative_for_5r": false,
+    "context_only": true,
+    "unit_prices": [],
+    "payment_terms": [],
+    "sources": [
+      {
+        "source_title": "חלומות ברנע הירוקה | שיכון ובינוי",
+        "source_url": "https://www.shbn.co.il/projects/ashkelon-dreams/",
+        "retrieved_at": "2026-09-11",
+        "source_date": null
+      }
+    ],
+    "notes": "Barnea-family context; advertised 4–5R mix.",
+    "legacy_sources": [
+      "turn841457search0",
+      "turn841457search1"
+    ],
+    "latitude": 31.68751,
+    "longitude": 34.57109,
+    "coordinate_precision": "selected_submarket_centroid_fallback",
+    "coordinate_source_url": "https://mapcarta.com/12936800",
+    "record_uid": "competitor-a15c0cc5d8ed336b"
+  },
+  {
+    "project_name": "חלומות ברנע הירוקה שלב ג",
+    "submarket_tier": "adjacent_submarket",
+    "neighborhood": "גני ברנע",
+    "developer": "שיכון ובינוי",
+    "project_status": "completed/context",
+    "relevant_to_3r": false,
+    "relevant_to_5r": true,
+    "quantitative_for_3r": false,
+    "quantitative_for_5r": false,
+    "context_only": true,
+    "unit_prices": [
+      {
+        "rooms": 5,
+        "area_sqm": null,
+        "price_ils": 1619000,
+        "price_basis": "project_starting_price"
+      }
+    ],
+    "payment_terms": [],
+    "sources": [
+      {
+        "source_title": "חלומות ברנע הירוקה | שיכון ובינוי",
+        "source_url": "https://www.shbn.co.il/projects/ashkelon-dreams/",
+        "retrieved_at": "2026-09-11",
+        "source_date": null
+      }
+    ],
+    "notes": "Starting price lacks same-model area; not quantitative.",
+    "legacy_sources": [
+      "turn841457search2"
+    ],
+    "latitude": 31.68751,
+    "longitude": 34.57109,
+    "coordinate_precision": "selected_submarket_centroid_fallback",
+    "coordinate_source_url": "https://mapcarta.com/12936800",
+    "record_uid": "competitor-608ae60cf799fd2c"
+  },
+  {
+    "project_name": "רמות אשקלון",
+    "submarket_tier": "broader_context",
+    "neighborhood": "רמות אשקלון",
+    "developer": null,
+    "project_status": "building",
+    "relevant_to_3r": true,
+    "relevant_to_5r": true,
+    "quantitative_for_3r": false,
+    "quantitative_for_5r": false,
+    "context_only": true,
+    "unit_prices": [],
+    "payment_terms": [],
+    "sources": [
+      {
+        "source_title": "רמות אשקלון",
+        "source_url": "https://www.madlan.co.il/projects/%D7%9E%D7%AA%D7%97%D7%9D_%D7%98_%D7%9E%D7%AA%D7%97%D7%9D_74490_%D7%9E%D7%92%D7%A8%D7%A9_202_%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F",
+        "retrieved_at": "2026-09-11",
+        "source_date": null,
+        "durable_source_id": "מתחם_ט_מתחם_74490_מגרש_202_אשקלון"
+      }
+    ],
+    "notes": "Broader city competitor, intentionally non-voting.",
+    "legacy_sources": [
+      "local_madlan_projects_only"
+    ],
+    "latitude": 31.67666,
+    "longitude": 34.59663,
+    "coordinate_precision": "project_source_exact",
+    "coordinate_source_url": "https://www.madlan.co.il/projects/%D7%9E%D7%AA%D7%97%D7%9D_%D7%98_%D7%9E%D7%AA%D7%97%D7%9D_74490_%D7%9E%D7%92%D7%A8%D7%A9_202_%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F",
+    "record_uid": "competitor-248066625cf33b35"
+  },
+  {
+    "project_name": "פרץ בוני הנגב בעיר היין",
+    "submarket_tier": "broader_context",
+    "neighborhood": "עיר היין",
+    "developer": "פרץ בוני הנגב",
+    "project_status": "completed/context",
+    "relevant_to_3r": true,
+    "relevant_to_5r": true,
+    "quantitative_for_3r": false,
+    "quantitative_for_5r": false,
+    "context_only": true,
+    "unit_prices": [],
+    "payment_terms": [],
+    "sources": [
+      {
+        "source_title": "פרץ בוני הנגב בעיר היין, אשקלון",
+        "source_url": "https://www.madlan.co.il/projects/%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F_%D7%9E%D7%AA%D7%97%D7%9D_48",
+        "retrieved_at": "2026-09-11",
+        "source_date": null,
+        "durable_source_id": "אשקלון_מתחם_48"
+      }
+    ],
+    "notes": "Broader city context; not Barnea.",
+    "legacy_sources": [
+      "local_madlan_projects_only"
+    ],
+    "latitude": 31.691238994527577,
+    "longitude": 34.59556929926041,
+    "coordinate_precision": "project_source_exact",
+    "coordinate_source_url": "https://www.madlan.co.il/projects/%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F_%D7%9E%D7%AA%D7%97%D7%9D_48",
+    "address": "אריאל שרון 50",
+    "record_uid": "competitor-34270c3e7ffd05cd"
+  },
+  {
+    "project_name": "אייל פרץ ברמות",
+    "submarket_tier": "broader_context",
+    "neighborhood": "רמות אשקלון",
+    "developer": "אייל פרץ",
+    "project_status": "building",
+    "relevant_to_3r": true,
+    "relevant_to_5r": true,
+    "quantitative_for_3r": false,
+    "quantitative_for_5r": false,
+    "context_only": true,
+    "unit_prices": [],
+    "payment_terms": [],
+    "sources": [
+      {
+        "source_title": "אייל פרץ ברמות",
+        "source_url": "https://www.madlan.co.il/projects/%D7%9E%D7%AA%D7%97%D7%9D_%D7%94_%D7%9E%D7%AA%D7%97%D7%9D_74486_%D7%9E%D7%92%D7%A8%D7%A9_109_%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F",
+        "retrieved_at": "2026-09-11",
+        "source_date": null,
+        "durable_source_id": "מתחם_ה_מתחם_74486_מגרש_109_אשקלון"
+      }
+    ],
+    "notes": "Broader city context.",
+    "legacy_sources": [
+      "local_madlan_projects_only"
+    ],
+    "latitude": 31.67493,
+    "longitude": 34.59457,
+    "coordinate_precision": "project_source_exact",
+    "coordinate_source_url": "https://www.madlan.co.il/projects/%D7%9E%D7%AA%D7%97%D7%9D_%D7%94_%D7%9E%D7%AA%D7%97%D7%9D_74486_%D7%9E%D7%92%D7%A8%D7%A9_109_%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F",
+    "record_uid": "competitor-768c04187906bf34"
+  },
+  {
+    "project_name": "אביסרור בעיר היין",
+    "submarket_tier": "broader_context",
+    "neighborhood": "עיר היין",
+    "developer": "אביסרור",
+    "project_status": "completed/context",
+    "relevant_to_3r": false,
+    "relevant_to_5r": true,
+    "quantitative_for_3r": false,
+    "quantitative_for_5r": false,
+    "context_only": true,
+    "unit_prices": [],
+    "payment_terms": [],
+    "sources": [
+      {
+        "source_title": "אביסרור בעיר היין",
+        "source_url": "https://www.madlan.co.il/projects/%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F_%D7%9E%D7%AA%D7%97%D7%9D_49",
+        "retrieved_at": "2026-09-11",
+        "source_date": null,
+        "durable_source_id": "אשקלון_מתחם_49"
+      }
+    ],
+    "notes": "Broader city context.",
+    "legacy_sources": [
+      "local_madlan_projects_only"
+    ],
+    "latitude": 31.690624572428813,
+    "longitude": 34.59530919772534,
+    "coordinate_precision": "project_source_exact",
+    "coordinate_source_url": "https://www.madlan.co.il/projects/%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F_%D7%9E%D7%AA%D7%97%D7%9D_49",
+    "address": "דרך היין 77",
+    "record_uid": "competitor-59827688b2666f35"
+  },
+  {
+    "project_name": "לב אגמים 3+4",
+    "submarket_tier": "broader_context",
+    "neighborhood": "אגמים",
+    "developer": null,
+    "project_status": "completed/context",
+    "relevant_to_3r": false,
+    "relevant_to_5r": true,
+    "quantitative_for_3r": false,
+    "quantitative_for_5r": false,
+    "context_only": true,
+    "unit_prices": [],
+    "payment_terms": [],
+    "sources": [
+      {
+        "source_title": "פרויקט לב אגמים 3 + 4 - גבעת ציון, אשקלון",
+        "source_url": "https://www.madlan.co.il/projects/%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F_%D7%9E%D7%AA%D7%97%D7%9D_4",
+        "retrieved_at": "2026-09-11",
+        "source_date": null,
+        "durable_source_id": "אשקלון_מתחם_4"
+      }
+    ],
+    "notes": "Broader city context.",
+    "legacy_sources": [
+      "local_madlan_projects_only"
+    ],
+    "latitude": 31.65587,
+    "longitude": 34.57529,
+    "coordinate_precision": "project_source_exact",
+    "coordinate_source_url": "https://www.madlan.co.il/projects/%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F_%D7%9E%D7%AA%D7%97%D7%9D_4",
+    "address": "הרב משאש שלום 6",
+    "record_uid": "competitor-2923cc5e103b084b"
+  },
+  {
+    "project_name": "אפי בעיר היין",
+    "submarket_tier": "broader_context",
+    "neighborhood": "עיר היין",
+    "developer": "אפי קפיטל",
+    "project_status": "building",
+    "relevant_to_3r": true,
+    "relevant_to_5r": true,
+    "quantitative_for_3r": false,
+    "quantitative_for_5r": false,
+    "context_only": true,
+    "unit_prices": [],
+    "payment_terms": [],
+    "sources": [
+      {
+        "source_title": "אפי בעיר היין, אשקלון",
+        "source_url": "https://www.madlan.co.il/projects/%D7%94%D7%99%D7%95%D7%A6%D7%A8%D7%99%D7%9D_61_%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F",
+        "retrieved_at": "2026-09-11",
+        "source_date": null,
+        "durable_source_id": "היוצרים_61_אשקלון"
+      }
+    ],
+    "notes": "Broader city context.",
+    "legacy_sources": [
+      "local_madlan_projects_only"
+    ],
+    "latitude": 31.68114,
+    "longitude": 34.60005,
+    "coordinate_precision": "project_source_exact",
+    "coordinate_source_url": "https://www.madlan.co.il/projects/%D7%94%D7%99%D7%95%D7%A6%D7%A8%D7%99%D7%9D_61_%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F",
+    "address": "היוצרים 61",
+    "record_uid": "competitor-aeb926f7fa33c66c"
+  }
+]

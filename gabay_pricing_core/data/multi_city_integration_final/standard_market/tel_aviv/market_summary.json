@@ -1,0 +1,1094 @@
+{
+  "research_as_of": "2026-09-11",
+  "city": "תל אביב-יפו",
+  "neighborhood": "יד אליהו",
+  "geographic_scope": {
+    "tier_1": "יד אליהו only",
+    "tier_2": "immediately adjacent eastern/southeastern Tel Aviv submarkets, only if Tier 1 is insufficient",
+    "tier_3": "broader Tel Aviv-Yafo context, reference only unless explicitly documented"
+  },
+  "location_broadening_used": {
+    "3R": "none",
+    "5R": "none"
+  },
+  "engine_identity": {
+    "repository": "CodeMania-100/Gaba",
+    "branch": "demo-online-v1",
+    "commit": "17b12526a139c30941aacffb4ce871de21a38fa7",
+    "path": "gabay_pricing_core/pricing_core/market_range.py",
+    "git_blob_sha": "97b55065dc533369f93c5731cf58bcda240d1d7a"
+  },
+  "families": {
+    "3R": {
+      "target_internal_area": 69.0,
+      "target_area_band": [
+        58.65,
+        79.35
+      ],
+      "target_balcony_area": 12.0,
+      "status": "consensus",
+      "confidence": "medium",
+      "supported_range": {
+        "lower": 2560000.0,
+        "upper": 2748000.0,
+        "support_lanes": [
+          "current_asking",
+          "sold"
+        ]
+      },
+      "market_indication_point_ils": 2654000.0,
+      "lanes": {
+        "completed_sales": {
+          "lane": "sold",
+          "confidence": "high",
+          "range": {
+            "lower": 2560000.0,
+            "center": 2891000.0,
+            "upper": 3251000.0
+          },
+          "primary_contributor_count": 6,
+          "primary_contributors": [
+            {
+              "lane": "sold",
+              "group_key": "עמק איילון 24",
+              "source_ids": [
+                "עמק איילון24-20260520",
+                "עמק איילון24-20260526",
+                "עמק איילון24-20260628"
+              ],
+              "observed_prices": [
+                3139000.0,
+                3299000.0,
+                2979000.0
+              ],
+              "observed_areas": [
+                70.0,
+                70.0,
+                71.0
+              ],
+              "representative_observed_price": 3139000.0,
+              "representative_observed_area": 70.0,
+              "representative_price_per_sqm": 44842.86,
+              "area_normalized_indication_ils": 3094000.0,
+              "newest_event_date": "2026-06-28",
+              "neighborhood": "יד אליהו",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 3094000.0,
+              "geography_tiers": [
+                "tier_1"
+              ]
+            },
+            {
+              "lane": "sold",
+              "group_key": "יד לבנים 23",
+              "source_ids": [
+                "ידלבנים23-20250408",
+                "ידלבנים23-20250720",
+                "ידלבנים23-20260210",
+                "ידלבנים23-20260611"
+              ],
+              "observed_prices": [
+                2460000.0,
+                2440000.0,
+                2450000.0,
+                2410000.0
+              ],
+              "observed_areas": [
+                64.0,
+                65.0,
+                67.0,
+                65.0
+              ],
+              "representative_observed_price": 2445000.0,
+              "representative_observed_area": 65.0,
+              "representative_price_per_sqm": 37307.69,
+              "area_normalized_indication_ils": 2574000.0,
+              "newest_event_date": "2026-06-11",
+              "neighborhood": "יד אליהו",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 2574000.0,
+              "geography_tiers": [
+                "tier_1"
+              ]
+            },
+            {
+              "lane": "sold",
+              "group_key": "לוחמי גליפולי 19",
+              "source_ids": [
+                "גליפולי19-20250804",
+                "גליפולי19-20251113",
+                "גליפולי19-20260121"
+              ],
+              "observed_prices": [
+                3000000.0,
+                2560000.0,
+                2458000.0
+              ],
+              "observed_areas": [
+                69.0,
+                69.0,
+                69.0
+              ],
+              "representative_observed_price": 2560000.0,
+              "representative_observed_area": 69.0,
+              "representative_price_per_sqm": 37101.45,
+              "area_normalized_indication_ils": 2560000.0,
+              "newest_event_date": "2026-01-21",
+              "neighborhood": "יד אליהו",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 2560000.0,
+              "geography_tiers": [
+                "tier_1"
+              ]
+            },
+            {
+              "lane": "sold",
+              "group_key": "דימונה 5",
+              "source_ids": [
+                "דימונה5-20260113"
+              ],
+              "observed_prices": [
+                2700000.0
+              ],
+              "observed_areas": [
+                60.0
+              ],
+              "representative_observed_price": 2700000.0,
+              "representative_observed_area": 60.0,
+              "representative_price_per_sqm": 45000.0,
+              "area_normalized_indication_ils": 3105000.0,
+              "newest_event_date": "2026-01-13",
+              "neighborhood": "יד אליהו",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 3105000.0,
+              "geography_tiers": [
+                "tier_1"
+              ]
+            },
+            {
+              "lane": "sold",
+              "group_key": "לוחמי גליפולי 58",
+              "source_ids": [
+                "גליפולי58-20250507",
+                "גליפולי58-20251124"
+              ],
+              "observed_prices": [
+                3170000.0,
+                3000000.0
+              ],
+              "observed_areas": [
+                65.0,
+                66.0
+              ],
+              "representative_observed_price": 3085000.0,
+              "representative_observed_area": 65.5,
+              "representative_price_per_sqm": 47111.89,
+              "area_normalized_indication_ils": 3251000.0,
+              "newest_event_date": "2025-11-24",
+              "neighborhood": "יד אליהו",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 3251000.0,
+              "geography_tiers": [
+                "tier_1"
+              ]
+            },
+            {
+              "lane": "sold",
+              "group_key": "נגבה 21",
+              "source_ids": [
+                "נגבה21-20250716"
+              ],
+              "observed_prices": [
+                3000000.0
+              ],
+              "observed_areas": [
+                77.0
+              ],
+              "representative_observed_price": 3000000.0,
+              "representative_observed_area": 77.0,
+              "representative_price_per_sqm": 38961.04,
+              "area_normalized_indication_ils": 2688000.0,
+              "newest_event_date": "2025-07-16",
+              "neighborhood": "יד אליהו",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 2688000.0,
+              "geography_tiers": [
+                "tier_1"
+              ]
+            }
+          ],
+          "reference_records": [],
+          "warnings": [],
+          "methodology_notes": [
+            "Each building contributes once, using the median observed price-per-sqm within the selected sale window.",
+            "Primary completed-sale lookback is 24 months; fallback is 60 months only when independent-building evidence is insufficient.",
+            "A completed sale must be within 15% of the target internal area to be a primary sold-lane contributor; the recency fallback widens time only, never this size-relevance requirement."
+          ],
+          "can_enter_consensus": true,
+          "candidate_outcomes": [
+            {
+              "source_id": "עמק איילון24-20260520",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "עמק איילון 24",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            },
+            {
+              "source_id": "עמק איילון24-20260526",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "עמק איילון 24",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            },
+            {
+              "source_id": "עמק איילון24-20260628",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "עמק איילון 24",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            },
+            {
+              "source_id": "ידלבנים23-20250408",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "יד לבנים 23",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            },
+            {
+              "source_id": "ידלבנים23-20250720",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "יד לבנים 23",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            },
+            {
+              "source_id": "ידלבנים23-20260210",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "יד לבנים 23",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            },
+            {
+              "source_id": "ידלבנים23-20260611",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "יד לבנים 23",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            },
+            {
+              "source_id": "גליפולי19-20250804",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "לוחמי גליפולי 19",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            },
+            {
+              "source_id": "גליפולי19-20251113",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "לוחמי גליפולי 19",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            },
+            {
+              "source_id": "גליפולי19-20260121",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "לוחמי גליפולי 19",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            },
+            {
+              "source_id": "דימונה5-20260113",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "דימונה 5",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            },
+            {
+              "source_id": "גליפולי58-20250507",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "לוחמי גליפולי 58",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            },
+            {
+              "source_id": "גליפולי58-20251124",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "לוחמי גליפולי 58",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            },
+            {
+              "source_id": "נגבה21-20250716",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "נגבה 21",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            }
+          ]
+        },
+        "current_asking": {
+          "lane": "current_asking",
+          "confidence": "high",
+          "range": {
+            "lower": 2514000.0,
+            "center": 2560000.0,
+            "upper": 2748000.0
+          },
+          "primary_contributor_count": 6,
+          "primary_contributors": [
+            {
+              "lane": "current_asking",
+              "group_key": "עמק איילון 2",
+              "source_ids": [
+                "asking-e26af98ca17b785b"
+              ],
+              "observed_prices": [
+                2390000.0
+              ],
+              "observed_areas": [
+                64.0
+              ],
+              "representative_observed_price": 2390000.0,
+              "representative_observed_area": 64.0,
+              "representative_price_per_sqm": 37343.75,
+              "area_normalized_indication_ils": 2577000.0,
+              "newest_event_date": null,
+              "neighborhood": "יד אליהו",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 2577000.0,
+              "geography_tiers": [
+                "tier_1"
+              ]
+            },
+            {
+              "lane": "current_asking",
+              "group_key": "לה גווארדיה 52",
+              "source_ids": [
+                "asking-909acfc7f6c47569"
+              ],
+              "observed_prices": [
+                2390000.0
+              ],
+              "observed_areas": [
+                60.0
+              ],
+              "representative_observed_price": 2390000.0,
+              "representative_observed_area": 60.0,
+              "representative_price_per_sqm": 39833.33,
+              "area_normalized_indication_ils": 2748000.0,
+              "newest_event_date": null,
+              "neighborhood": "יד אליהו",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 2748000.0,
+              "geography_tiers": [
+                "tier_1"
+              ]
+            },
+            {
+              "lane": "current_asking",
+              "group_key": "נגבה 32",
+              "source_ids": [
+                "asking-6c0829af38b778c0"
+              ],
+              "observed_prices": [
+                2420000.0
+              ],
+              "observed_areas": [
+                65.0
+              ],
+              "representative_observed_price": 2420000.0,
+              "representative_observed_area": 65.0,
+              "representative_price_per_sqm": 37230.77,
+              "area_normalized_indication_ils": 2569000.0,
+              "newest_event_date": null,
+              "neighborhood": "יד אליהו",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 2569000.0,
+              "geography_tiers": [
+                "tier_1"
+              ]
+            },
+            {
+              "lane": "current_asking",
+              "group_key": "לה גווארדיה 58",
+              "source_ids": [
+                "asking-ffb464bdd5e11b65"
+              ],
+              "observed_prices": [
+                2440000.0
+              ],
+              "observed_areas": [
+                66.0
+              ],
+              "representative_observed_price": 2440000.0,
+              "representative_observed_area": 66.0,
+              "representative_price_per_sqm": 36969.7,
+              "area_normalized_indication_ils": 2551000.0,
+              "newest_event_date": null,
+              "neighborhood": "יד אליהו",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 2551000.0,
+              "geography_tiers": [
+                "tier_1"
+              ]
+            },
+            {
+              "lane": "current_asking",
+              "group_key": "יד לבנים 23",
+              "source_ids": [
+                "asking-edd16f3408001776"
+              ],
+              "observed_prices": [
+                2550000.0
+              ],
+              "observed_areas": [
+                70.0
+              ],
+              "representative_observed_price": 2550000.0,
+              "representative_observed_area": 70.0,
+              "representative_price_per_sqm": 36428.57,
+              "area_normalized_indication_ils": 2514000.0,
+              "newest_event_date": null,
+              "neighborhood": "יד אליהו",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 2514000.0,
+              "geography_tiers": [
+                "tier_1"
+              ]
+            },
+            {
+              "lane": "current_asking",
+              "group_key": "הגיבור האלמוני",
+              "source_ids": [
+                "asking-373fdc5c0d9a0c56"
+              ],
+              "observed_prices": [
+                2750000.0
+              ],
+              "observed_areas": [
+                75.0
+              ],
+              "representative_observed_price": 2750000.0,
+              "representative_observed_area": 75.0,
+              "representative_price_per_sqm": 36666.67,
+              "area_normalized_indication_ils": 2530000.0,
+              "newest_event_date": null,
+              "neighborhood": "יד אליהו",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 2530000.0,
+              "geography_tiers": [
+                "tier_1"
+              ]
+            }
+          ],
+          "reference_records": [],
+          "warnings": [],
+          "methodology_notes": [
+            "Current asking evidence uses exact normalized neighborhood matches when available."
+          ],
+          "can_enter_consensus": true,
+          "candidate_outcomes": []
+        },
+        "new_development": {
+          "lane": "new_development",
+          "confidence": "medium",
+          "range": {
+            "lower": 3347000.0,
+            "center": 3472000.0,
+            "upper": 3596000.0
+          },
+          "primary_contributor_count": 2,
+          "primary_contributors": [
+            {
+              "lane": "new_development",
+              "group_key": "TIDHAR בין השדרות",
+              "source_ids": [
+                "competitor-945e63c4f29806f6:0"
+              ],
+              "observed_prices": [
+                3700000.0
+              ],
+              "observed_areas": [
+                71.0
+              ],
+              "representative_observed_price": 3700000.0,
+              "representative_observed_area": 71.0,
+              "representative_price_per_sqm": 52112.68,
+              "area_normalized_indication_ils": 3596000.0,
+              "newest_event_date": null,
+              "neighborhood": "יד אליהו",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 3596000.0,
+              "geography_tiers": [
+                "tier_1"
+              ]
+            },
+            {
+              "lane": "new_development",
+              "group_key": "RAYK EAST SIDE",
+              "source_ids": [
+                "competitor-c827d78034745fee:0"
+              ],
+              "observed_prices": [
+                3590000.0
+              ],
+              "observed_areas": [
+                74.0
+              ],
+              "representative_observed_price": 3590000.0,
+              "representative_observed_area": 74.0,
+              "representative_price_per_sqm": 48513.51,
+              "area_normalized_indication_ils": 3347000.0,
+              "newest_event_date": null,
+              "neighborhood": "יד אליהו",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 3347000.0,
+              "geography_tiers": [
+                "tier_1"
+              ]
+            }
+          ],
+          "reference_records": [],
+          "warnings": [
+            "target_area_outside_observed_area_envelope"
+          ],
+          "methodology_notes": [
+            "Only explicitly priced unit offers are used.",
+            "Exact-neighborhood offers with known unit area can create target-equivalent indications.",
+            "Offers with missing area or from other neighborhoods remain visible as reference evidence and do not create a normalized range contribution."
+          ],
+          "can_enter_consensus": true,
+          "candidate_outcomes": []
+        }
+      },
+      "warnings": [
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "methodology": {
+        "version": "market-range-v2-program-regime",
+        "sold_primary_lookback_months": 24,
+        "sold_fallback_lookback_months": 60,
+        "min_independent_sold_buildings": 2,
+        "min_independent_contributors_for_medium": 2,
+        "min_independent_contributors_for_high": 3,
+        "sold_primary_area_tolerance_pct": 0.15
+      },
+      "engine_regression_status": "exact_match_after_semantic_correction",
+      "hardening_note": "GALIPOLIS ₪3.215M downgraded to STARTING_PRICE/non-quantitative. Tel Aviv 3R rerun through pinned repository engine; result updated without methodology change."
+    },
+    "5R": {
+      "target_internal_area": 111.1,
+      "target_area_band": [
+        94.435,
+        127.765
+      ],
+      "target_balcony_area": 12.0,
+      "status": "consensus",
+      "confidence": "medium",
+      "supported_range": {
+        "lower": 3921000.0,
+        "upper": 3988000.0,
+        "support_lanes": [
+          "current_asking",
+          "sold"
+        ]
+      },
+      "market_indication_point_ils": 3954000.0,
+      "lanes": {
+        "completed_sales": {
+          "lane": "sold",
+          "confidence": "high",
+          "range": {
+            "lower": 3921000.0,
+            "center": 4328000.0,
+            "upper": 4965000.0
+          },
+          "primary_contributor_count": 4,
+          "primary_contributors": [
+            {
+              "lane": "sold",
+              "group_key": "יד לבנים 25",
+              "source_ids": [
+                "ידלבנים25-20260617"
+              ],
+              "observed_prices": [
+                4916000.0
+              ],
+              "observed_areas": [
+                110.0
+              ],
+              "representative_observed_price": 4916000.0,
+              "representative_observed_area": 110.0,
+              "representative_price_per_sqm": 44690.91,
+              "area_normalized_indication_ils": 4965000.0,
+              "newest_event_date": "2026-06-17",
+              "neighborhood": "יד אליהו",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 4965000.0,
+              "geography_tiers": [
+                "tier_1"
+              ]
+            },
+            {
+              "lane": "sold",
+              "group_key": "עמק איילון 24",
+              "source_ids": [
+                "עמק איילון24-5R-20260526"
+              ],
+              "observed_prices": [
+                4309000.0
+              ],
+              "observed_areas": [
+                105.0
+              ],
+              "representative_observed_price": 4309000.0,
+              "representative_observed_area": 105.0,
+              "representative_price_per_sqm": 41038.1,
+              "area_normalized_indication_ils": 4559000.0,
+              "newest_event_date": "2026-05-26",
+              "neighborhood": "יד אליהו",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 4559000.0,
+              "geography_tiers": [
+                "tier_1"
+              ]
+            },
+            {
+              "lane": "sold",
+              "group_key": "נגבה 26",
+              "source_ids": [
+                "נגבה26-20250904"
+              ],
+              "observed_prices": [
+                3600000.0
+              ],
+              "observed_areas": [
+                102.0
+              ],
+              "representative_observed_price": 3600000.0,
+              "representative_observed_area": 102.0,
+              "representative_price_per_sqm": 35294.12,
+              "area_normalized_indication_ils": 3921000.0,
+              "newest_event_date": "2025-09-04",
+              "neighborhood": "יד אליהו",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 3921000.0,
+              "geography_tiers": [
+                "tier_1"
+              ]
+            },
+            {
+              "lane": "sold",
+              "group_key": "לוחמי גליפולי 55",
+              "source_ids": [
+                "גליפולי55-20250518"
+              ],
+              "observed_prices": [
+                4500000.0
+              ],
+              "observed_areas": [
+                122.0
+              ],
+              "representative_observed_price": 4500000.0,
+              "representative_observed_area": 122.0,
+              "representative_price_per_sqm": 36885.25,
+              "area_normalized_indication_ils": 4098000.0,
+              "newest_event_date": "2025-05-18",
+              "neighborhood": "יד אליהו",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 4098000.0,
+              "geography_tiers": [
+                "tier_1"
+              ]
+            }
+          ],
+          "reference_records": [],
+          "warnings": [],
+          "methodology_notes": [
+            "Each building contributes once, using the median observed price-per-sqm within the selected sale window.",
+            "Primary completed-sale lookback is 24 months; fallback is 60 months only when independent-building evidence is insufficient.",
+            "A completed sale must be within 15% of the target internal area to be a primary sold-lane contributor; the recency fallback widens time only, never this size-relevance requirement."
+          ],
+          "can_enter_consensus": true,
+          "candidate_outcomes": [
+            {
+              "source_id": "ידלבנים25-20260617",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "יד לבנים 25",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            },
+            {
+              "source_id": "נגבה26-20250904",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "נגבה 26",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            },
+            {
+              "source_id": "גליפולי55-20250518",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "לוחמי גליפולי 55",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            },
+            {
+              "source_id": "עמק איילון24-5R-20260526",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "עמק איילון 24",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            }
+          ],
+          "accepted_record_count": 4,
+          "descriptive_summary": {
+            "price_ils": {
+              "q1": 4131750.0,
+              "median": 4404500.0,
+              "q3": 4604000.0
+            },
+            "price_per_sqm_ils": {
+              "q1": 36487.46,
+              "median": 38961.67,
+              "q3": 41951.3
+            }
+          }
+        },
+        "current_asking": {
+          "lane": "current_asking",
+          "confidence": "high",
+          "range": {
+            "lower": 3131000.0,
+            "center": 3492000.0,
+            "upper": 3988000.0
+          },
+          "primary_contributor_count": 4,
+          "primary_contributors": [
+            {
+              "lane": "current_asking",
+              "group_key": "טור מלכא 6",
+              "source_ids": [
+                "asking-9d3fc94e852fc251"
+              ],
+              "observed_prices": [
+                3290000.0
+              ],
+              "observed_areas": [
+                104.0
+              ],
+              "representative_observed_price": 3290000.0,
+              "representative_observed_area": 104.0,
+              "representative_price_per_sqm": 31634.62,
+              "area_normalized_indication_ils": 3515000.0,
+              "newest_event_date": null,
+              "neighborhood": "יד אליהו",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 3515000.0,
+              "geography_tiers": [
+                "tier_1"
+              ]
+            },
+            {
+              "lane": "current_asking",
+              "group_key": "גוש עציון 20",
+              "source_ids": [
+                "asking-25dadadd500d72bf"
+              ],
+              "observed_prices": [
+                3100000.0
+              ],
+              "observed_areas": [
+                110.0
+              ],
+              "representative_observed_price": 3100000.0,
+              "representative_observed_area": 110.0,
+              "representative_price_per_sqm": 28181.82,
+              "area_normalized_indication_ils": 3131000.0,
+              "newest_event_date": null,
+              "neighborhood": "יד אליהו",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 3131000.0,
+              "geography_tiers": [
+                "tier_1"
+              ]
+            },
+            {
+              "lane": "current_asking",
+              "group_key": "יגור 18",
+              "source_ids": [
+                "asking-c8035e1462497049"
+              ],
+              "observed_prices": [
+                3590000.0
+              ],
+              "observed_areas": [
+                100.0
+              ],
+              "representative_observed_price": 3590000.0,
+              "representative_observed_area": 100.0,
+              "representative_price_per_sqm": 35900.0,
+              "area_normalized_indication_ils": 3988000.0,
+              "newest_event_date": "2026-06-09",
+              "neighborhood": "יד אליהו",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 3988000.0,
+              "geography_tiers": [
+                "tier_1"
+              ]
+            },
+            {
+              "lane": "current_asking",
+              "group_key": "הפלמ\"ח 21",
+              "source_ids": [
+                "asking-b2370d8876a0132b"
+              ],
+              "observed_prices": [
+                3590000.0
+              ],
+              "observed_areas": [
+                115.0
+              ],
+              "representative_observed_price": 3590000.0,
+              "representative_observed_area": 115.0,
+              "representative_price_per_sqm": 31217.39,
+              "area_normalized_indication_ils": 3468000.0,
+              "newest_event_date": null,
+              "neighborhood": "יד אליהו",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 3468000.0,
+              "geography_tiers": [
+                "tier_1"
+              ]
+            }
+          ],
+          "reference_records": [],
+          "warnings": [],
+          "methodology_notes": [
+            "Current asking evidence uses exact normalized neighborhood matches when available."
+          ],
+          "can_enter_consensus": true,
+          "candidate_outcomes": [],
+          "accepted_record_count": 4,
+          "descriptive_summary": {
+            "price_ils": {
+              "q1": 3242500.0,
+              "median": 3440000.0,
+              "q3": 3590000.0
+            },
+            "price_per_sqm_ils": {
+              "q1": 30458.5,
+              "median": 31426.0,
+              "q3": 32700.96
+            }
+          }
+        },
+        "new_development": {
+          "lane": "new_development",
+          "confidence": "low",
+          "range": {
+            "lower": 5034000.0,
+            "center": 5034000.0,
+            "upper": 5034000.0
+          },
+          "primary_contributor_count": 1,
+          "primary_contributors": [
+            {
+              "lane": "new_development",
+              "group_key": "TIDHAR בין השדרות",
+              "source_ids": [
+                "competitor-945e63c4f29806f6:1"
+              ],
+              "observed_prices": [
+                4758000.0
+              ],
+              "observed_areas": [
+                105.0
+              ],
+              "representative_observed_price": 4758000.0,
+              "representative_observed_area": 105.0,
+              "representative_price_per_sqm": 45314.29,
+              "area_normalized_indication_ils": 5034000.0,
+              "newest_event_date": null,
+              "neighborhood": "יד אליהו",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 5034000.0,
+              "geography_tiers": [
+                "tier_1"
+              ]
+            }
+          ],
+          "reference_records": [],
+          "warnings": [
+            "target_area_outside_observed_area_envelope"
+          ],
+          "methodology_notes": [
+            "Only explicitly priced unit offers are used.",
+            "Exact-neighborhood offers with known unit area can create target-equivalent indications.",
+            "Offers with missing area or from other neighborhoods remain visible as reference evidence and do not create a normalized range contribution."
+          ],
+          "can_enter_consensus": false,
+          "candidate_outcomes": [],
+          "accepted_record_count": 1,
+          "descriptive_summary": {
+            "price_ils": {
+              "q1": 4758000.0,
+              "median": 4758000.0,
+              "q3": 4758000.0
+            },
+            "price_per_sqm_ils": {
+              "q1": 45314.29,
+              "median": 45314.29,
+              "q3": 45314.29
+            }
+          }
+        }
+      },
+      "warnings": [
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "methodology": {
+        "version": "market-range-v2-program-regime",
+        "sold_primary_lookback_months": 24,
+        "sold_fallback_lookback_months": 60,
+        "min_independent_sold_buildings": 2,
+        "min_independent_contributors_for_medium": 2,
+        "min_independent_contributors_for_high": 3,
+        "sold_primary_area_tolerance_pct": 0.15
+      },
+      "engine_regression_status": "exact_match"
+    }
+  },
+  "semantic_reconciliation": {
+    "galipolis_price_semantics": "STARTING_PRICE_non_quantitative",
+    "engine_rerun": true,
+    "methodology_changed": false
+  }
+}

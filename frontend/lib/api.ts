@@ -246,7 +246,11 @@ export interface PetahTikvaScenario {
 // "field absent or null" for every one of them.
 export type CompetitorRegisterProject = JsonRecord & {
   project_name: string;
-  geography_role: "core_exact_target" | "adjacent_submarket" | "broader_petah_tikva";
+  // "broader_petah_tikva" is emitted only inside the Petah Tikva context
+  // (a legacy, city-specific string, never reused elsewhere); the other
+  // three market contexts emit the generic "broader_market" for the same
+  // geography tier instead (see app_api/multi_city_competitor_register.py).
+  geography_role: "core_exact_target" | "adjacent_submarket" | "broader_petah_tikva" | "broader_market";
   display_classification: "direct" | "relevant" | "context";
   relevance: string[];
   quantitative_eligibility: Record<string, { eligible: boolean; reason: string }>;
@@ -479,6 +483,24 @@ export interface PetahTikvaWorkspace {
     override_lock_support: string;
   };
   metadata: JsonRecord;
+  // Both fields below are additive (present on every /market-contexts/*
+  // response, including Petah Tikva's own slug) -- optional so this same
+  // type keeps describing the older /petah-tikva/workspace response byte-
+  // for-byte with neither field present.
+  market_context?: { slug: string; city: string; submarket: string | null; display_name: string; city_spellings: string[] };
+  map?: { center: [number, number] | null; zoom: number };
+}
+
+// The four fixed market contexts the "הקשר שוק" selector switches between
+// (see app_api/market_context_registry.py -- not a generic city-onboarding
+// mechanism, just these four registered contexts).
+export type MarketContextSlug = "petah_tikva" | "yad_eliyahu" | "kiryat_hasharon" | "barnea";
+
+export interface MarketContextSummary {
+  slug: MarketContextSlug;
+  display_name: string;
+  city: string;
+  submarket: string | null;
 }
 
 // A unit's pricing route. Standard 3R/5R units go through the existing
@@ -538,7 +560,14 @@ export const api = {
   getImpact: (scenarioId: string, against: string) =>
     request<JsonRecord>(`/api/v1/scenarios/${scenarioId}/impact?against=${encodeURIComponent(against)}`),
 
-  getPetahTikvaWorkspace: () => request<PetahTikvaWorkspace>("/api/v1/demo/petah-tikva/workspace"),
+  // Compatibility wrapper -- equivalent to getMarketWorkspace("petah_tikva"),
+  // kept so existing call sites/tests need no changes.
+  getPetahTikvaWorkspace: () => api.getMarketWorkspace("petah_tikva"),
+
+  getMarketContexts: () => request<MarketContextSummary[]>("/api/v1/demo/market-contexts"),
+
+  getMarketWorkspace: (slug: MarketContextSlug) =>
+    request<PetahTikvaWorkspace>(`/api/v1/demo/market-contexts/${encodeURIComponent(slug)}/workspace`),
 
   getPetahTikvaScenario: (rangePositionPct: number, name?: string) =>
     request<PetahTikvaScenario>("/api/v1/demo/petah-tikva/scenario", {

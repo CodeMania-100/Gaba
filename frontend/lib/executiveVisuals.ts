@@ -349,6 +349,11 @@ export interface CompetitorMatrix {
   rows: CompetitorMatrixRow[];
 }
 
+// Petah Tikva's own curated 3-competitor selection -- a deliberate editorial
+// choice (mixing a core_exact_target contributor with adjacent-submarket
+// context), not a rule any generic ranking reproduces. Kept exactly as-is,
+// used only for the Petah Tikva context, so this batch's multi-city work
+// causes zero drift here.
 const MATRIX_COMPETITORS = [
   { displayName: "THE SPOT", matchName: "THE SPOT" },
   { displayName: "זאב ברנדה 22", matchName: "זאב ברנדה 22" },
@@ -357,7 +362,27 @@ const MATRIX_COMPETITORS = [
 
 const NOT_PUBLISHED = "לא פורסם";
 
-export function deriveCompetitorMatrix(workspace: PetahTikvaWorkspace, family: "3R" | "5R", ourPhaseLabel: string): CompetitorMatrix {
+/** For the three multi-city contexts (which have no such curated list),
+ * picks up to 3 competitor_landscape projects relevant to this family --
+ * "direct" classification first, then "relevant", by name for a
+ * deterministic order -- so the price-positioning matrix compares against
+ * this context's own real competitors instead of Petah Tikva's names
+ * (which would simply never match and show "לא פורסם" for everything). */
+export function deriveDefaultMatrixCompetitors(workspace: PetahTikvaWorkspace, family: "3R" | "5R"): { displayName: string; matchName: string }[] {
+  const relevanceKey = family === "3R" ? "standard_3r" : "standard_5r";
+  const rank: Record<string, number> = { direct: 0, relevant: 1, context: 2 };
+  const projects = workspace.competitor_landscape.projects
+    .filter((p) => ((p.relevance as string[] | undefined) ?? []).includes(relevanceKey))
+    .sort((a, b) => (rank[a.display_classification] ?? 3) - (rank[b.display_classification] ?? 3) || a.project_name.localeCompare(b.project_name));
+  return projects.slice(0, 3).map((p) => ({ displayName: p.project_name, matchName: p.project_name }));
+}
+
+export function deriveCompetitorMatrix(
+  workspace: PetahTikvaWorkspace,
+  family: "3R" | "5R",
+  ourPhaseLabel: string,
+  competitorOverride?: { displayName: string; matchName: string }[]
+): CompetitorMatrix {
   const fam = workspace.families.find((f) => f.family === family);
   const ourMarketIndicationIls =
     fam?.market.supported_lower != null && fam?.market.supported_upper != null
@@ -379,9 +404,10 @@ export function deriveCompetitorMatrix(workspace: PetahTikvaWorkspace, family: "
         : `קומות ${Math.min(...familyFloors)}–${Math.max(...familyFloors)} (בפיזור בבניין)`
       : NOT_PUBLISHED;
 
-  const facts: CompetitorFactSheet[] = MATRIX_COMPETITORS.map((c) => buildFactSheet(workspace, c.displayName, c.matchName));
+  const competitors = competitorOverride ?? MATRIX_COMPETITORS;
+  const facts: CompetitorFactSheet[] = competitors.map((c) => buildFactSheet(workspace, c.displayName, c.matchName));
 
-  const columns = ["הפרויקט שלנו", ...MATRIX_COMPETITORS.map((c) => c.displayName)];
+  const columns = ["הפרויקט שלנו", ...competitors.map((c) => c.displayName)];
 
   const priceRow: CompetitorMatrixRow = {
     key: "price",

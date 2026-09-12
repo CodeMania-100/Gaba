@@ -45,6 +45,8 @@ from .db_models import (
 from .demo_snapshot import RequiredSourceMissingError, build_demo_market_snapshot
 from .inventory_preview import build_inventory_preview
 from .migrations import apply_schema_migrations
+from .market_context_registry import MARKET_CONTEXTS
+from .market_context_workspace import build_market_context_workspace_payload
 from .monday_integration import MondayApiError, MondayConfigError, create_pricing_approval_item
 from .petah_tikva_workspace import build_petah_tikva_scenario_payload, build_petah_tikva_workspace_payload
 from .project_launcher import resolve_project_start
@@ -230,6 +232,33 @@ def create_app(database_url: str | None = None) -> FastAPI:
             return build_petah_tikva_scenario_payload(payload.range_position_pct, payload.name)
         except FileNotFoundError as exc:
             raise HTTPException(status_code=503, detail=f"petah_tikva_frozen_artifact_missing: {exc}") from exc
+
+    # --- Multi-market-context demo workspace (Petah Tikva + 3 frozen contexts) ---
+
+    @app.get("/api/v1/demo/market-contexts")
+    def market_contexts():
+        """Lists the market contexts the "הקשר שוק" selector can switch
+        between -- summary only, no workspace body (see the per-slug route
+        below for the full payload)."""
+        return [
+            {"slug": c.slug, "display_name": c.display_name, "city": c.city, "submarket": c.submarket}
+            for c in MARKET_CONTEXTS.values()
+        ]
+
+    @app.get("/api/v1/demo/market-contexts/{slug}/workspace")
+    def market_context_workspace(slug: str):
+        """Single-payload read for any of the four market contexts, in the
+        same schema build_petah_tikva_workspace_payload already produces
+        (plus one additive `market_context` key). Petah Tikva's own slug
+        delegates to that unmodified function directly -- see
+        market_context_workspace.build_market_context_workspace_payload."""
+        context = MARKET_CONTEXTS.get(slug)
+        if context is None:
+            raise HTTPException(status_code=404, detail=f"unknown_market_context: {slug}")
+        try:
+            return build_market_context_workspace_payload(context)
+        except FileNotFoundError as exc:
+            raise HTTPException(status_code=503, detail=f"market_context_frozen_artifact_missing: {exc}") from exc
 
     # --- Monday.com pricing-approval integration ---------------------------------
     # One outbound demo integration: create a real item on the existing

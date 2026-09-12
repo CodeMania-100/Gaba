@@ -1,0 +1,391 @@
+{
+  "dataset_name": "multi_city_integration_final",
+  "dataset_status": "FROZEN",
+  "frozen_at": "2026-09-12T00:00:00+03:00",
+  "research_performed_in_this_pass": false,
+  "standard_3r_5r_dataset_modified": "semantic correction only: Tel Aviv 3R GALIPOLIS price semantics propagated and engine rerun; methodology unchanged",
+  "petah_tikva_modified": false,
+  "pricing_methodology_changed": false,
+  "layers": {
+    "standard_market": {
+      "role": "authoritative standard 3R/5R market dataset after GALIPOLIS semantic correction",
+      "overlay": false
+    },
+    "special_full_v2": {
+      "role": "full special-unit evidence base after semantic correction",
+      "overlay": false
+    },
+    "precision_overlay_v3": {
+      "role": "curated display/precision overlay only; does not replace special_full_v2",
+      "overlay": true
+    }
+  },
+  "engine_identity": {
+    "repository": "CodeMania-100/Gaba",
+    "branch": "demo-online-v1",
+    "commit": "17b12526a139c30941aacffb4ce871de21a38fa7",
+    "path": "gabay_pricing_core/pricing_core/market_range.py",
+    "git_blob_sha": "97b55065dc533369f93c5731cf58bcda240d1d7a"
+  },
+  "final_tel_aviv_3r": {
+    "status": "consensus",
+    "confidence": "medium",
+    "lower_ils": 2560000,
+    "upper_ils": 2748000,
+    "point_ils": 2654000,
+    "support_lanes": [
+      "current_asking",
+      "sold"
+    ],
+    "new_development_contributors": 2
+  },
+  "validation_file": "final_validation.json",
+  "semantic_audit_file": "semantic_audit.json",
+  "files": [
+    {
+      "path": "README.md",
+      "size_bytes": 1207,
+      "sha256": "530a71ba847c621f1befdc253df05e393df062fbc3514d6ab6e5bdbd7f59bf7e"
+    },
+    {
+      "path": "final_validation.json",
+      "size_bytes": 937,
+      "sha256": "ccd867460f3a939214ecf91a52588f0bf33155e40a0be2787ce9c4c34b363325"
+    },
+    {
+      "path": "precision_overlay_v3/README.md",
+      "size_bytes": 2651,
+      "sha256": "aaf1a51dcdd559b07a60c28431ea182aa002dbd16aef27240cc2de2e8108a108"
+    },
+    {
+      "path": "precision_overlay_v3/completeness_selected_before_after.csv",
+      "size_bytes": 7513,
+      "sha256": "947c00a2386855a0b36cc2a71f2d04efdbb56c5be69b223b5d463a33cc9d2788"
+    },
+    {
+      "path": "precision_overlay_v3/feature_provenance.csv",
+      "size_bytes": 19052,
+      "sha256": "79b73deb3a756791178ca6ae3c7e44317c1493a1679228708c0fc8e9cd35d21d"
+    },
+    {
+      "path": "precision_overlay_v3/selected_comparables.csv",
+      "size_bytes": 11157,
+      "sha256": "33abff3d04d1416caf7550b8b3aa71f355ab9ecff14a3c806fc4ff854096ac0b"
+    },
+    {
+      "path": "precision_overlay_v3/selected_projects.json",
+      "size_bytes": 48317,
+      "sha256": "46d0b1a25197885872d70a7a76f1fd9aa59a1e2b751600711a4531221394f2c4"
+    },
+    {
+      "path": "precision_overlay_v3/unresolved_fields.csv",
+      "size_bytes": 61742,
+      "sha256": "0b8cc1975bd7cc6315d18befc19b62341f19d3f0d91f4b6229bbec45bf8889b8"
+    },
+    {
+      "path": "precision_overlay_v3/validation.json",
+      "size_bytes": 1916,
+      "sha256": "f77443c170b2139460fb64d2b0e4dc7e795a19efe446aec9f484a7e8991b68f9"
+    },
+    {
+      "path": "semantic_audit.json",
+      "size_bytes": 3441,
+      "sha256": "c94c6e3ad878e94bd2fddfb14ccc88204f7dfa9c3861aabbf89e858cd13d8e36"
+    },
+    {
+      "path": "special_full_v2/README.md",
+      "size_bytes": 3402,
+      "sha256": "cd59a2952582d9837726c7b2f09e3e3a75a844629dd7bcd997a148f0b92171c6"
+    },
+    {
+      "path": "special_full_v2/ashkelon/asking_special_v2.csv",
+      "size_bytes": 12219,
+      "sha256": "ba91b72b8f010fa7217904909d5c7e2bee7bf0e2fa33ebf89e9041c517db690f"
+    },
+    {
+      "path": "special_full_v2/ashkelon/sold_special_v2.csv",
+      "size_bytes": 1820,
+      "sha256": "da5f8529e0cece6265e514289ad44d5431d1a5c966aa169754926009022811e0"
+    },
+    {
+      "path": "special_full_v2/competitor_coverage_v2.csv",
+      "size_bytes": 380,
+      "sha256": "04dca7aa8b2e58948eaf776720bf6cb5e11f74cf2183f44590d9ecc9a4e351da"
+    },
+    {
+      "path": "special_full_v2/competitor_projects_v2.json",
+      "size_bytes": 102210,
+      "sha256": "1ab5ec00a0a15db17653470e1f70e763ff8d1815d8da1653e8dde433075f1e1f"
+    },
+    {
+      "path": "special_full_v2/competitor_unit_variants_v2.csv",
+      "size_bytes": 9383,
+      "sha256": "08488dd7f508f7bd0fa2cacefe12c2e4eb8ca0101d3f0347187b70a9b3df5218"
+    },
+    {
+      "path": "special_full_v2/completeness_before_after.csv",
+      "size_bytes": 20547,
+      "sha256": "680f0efdd003964047cc194e149bf81fef8fc86329b7d030c429a3304b02d2cf"
+    },
+    {
+      "path": "special_full_v2/enrichment_validation.json",
+      "size_bytes": 4317,
+      "sha256": "8cabccb9aff9f67d8b3a69542d883f177c26d2456bb3e78669c489b388ede286"
+    },
+    {
+      "path": "special_full_v2/field_provenance.csv",
+      "size_bytes": 60853,
+      "sha256": "383143a9b33a410a0c569a4f803c2dbe18a16b3365406630d3c5a8ada6a0e5cf"
+    },
+    {
+      "path": "special_full_v2/manifest.json",
+      "size_bytes": 4936,
+      "sha256": "57f5b8cb03175d4a81cd16a19014647ca6d31e58796a7192ee1f2bbbdfe4d4db"
+    },
+    {
+      "path": "special_full_v2/missed_competitor_audit.csv",
+      "size_bytes": 9138,
+      "sha256": "bef93c42244f17d982236b15341c68a78e46e8c845e3e4ec620d51648a26e516"
+    },
+    {
+      "path": "special_full_v2/missing_field_audit_before.csv",
+      "size_bytes": 90775,
+      "sha256": "7228d31a4fa556ebfec2e7cfd6351981accbc9f454d277d5960f78e0377d0a73"
+    },
+    {
+      "path": "special_full_v2/netanya/asking_special_v2.csv",
+      "size_bytes": 14136,
+      "sha256": "1b3259b955ce29d37c88c0c58a785d87daa1b99cba936f055854cf484e21a9c8"
+    },
+    {
+      "path": "special_full_v2/netanya/sold_special_v2.csv",
+      "size_bytes": 1845,
+      "sha256": "eed35e81cf979de7056184ff162feb26cb0d0ed7dbeaa9d7e769a94a82cea57f"
+    },
+    {
+      "path": "special_full_v2/special_unit_coverage_v2.csv",
+      "size_bytes": 1073,
+      "sha256": "e486f8e7ff00b40a9d27c263207d3acc32171a1635711e1183f7b0d06b8fc4b3"
+    },
+    {
+      "path": "special_full_v2/tel_aviv/asking_special_v2.csv",
+      "size_bytes": 8759,
+      "sha256": "be9f5c3676aa1049865d480ecee6fe4b8b37e344c9d467772f1b5701ea932925"
+    },
+    {
+      "path": "special_full_v2/tel_aviv/sold_special_v2.csv",
+      "size_bytes": 2890,
+      "sha256": "b92f0814eb44be325b0361fc082b7eb105708737b33c76e3b1c697ca227e4dca"
+    },
+    {
+      "path": "standard_market/FINAL_HARDENING_REPORT.md",
+      "size_bytes": 4304,
+      "sha256": "bef09e77e9b9df7d92aa5a07255ecbd2d6149eb53fe1a82d8d6c2b855a5500eb"
+    },
+    {
+      "path": "standard_market/README.md",
+      "size_bytes": 4150,
+      "sha256": "a6da1de8a6a60e1b9846e4f7613586af5ee3013e83ca09efee1d8f95fcdf8e26"
+    },
+    {
+      "path": "standard_market/ashkelon/competitors.json",
+      "size_bytes": 9829,
+      "sha256": "f72692b3de9b499dec281d59ae62c3552ac7a3bddb2fbf6516db19a6692f2924"
+    },
+    {
+      "path": "standard_market/ashkelon/completed_sales_3r.csv",
+      "size_bytes": 3319,
+      "sha256": "86ac608337611c4fe6b03d63617cf46a413d0ef7ca08a731b8f4e6894055e0c8"
+    },
+    {
+      "path": "standard_market/ashkelon/completed_sales_5r.csv",
+      "size_bytes": 3465,
+      "sha256": "6aa100217f5830228622be472ae36dc4f78d5ea978f660e5fcba90a3076dcf1b"
+    },
+    {
+      "path": "standard_market/ashkelon/current_asking_3r.csv",
+      "size_bytes": 2167,
+      "sha256": "d1690e6cf07489cce8faddcc2b72327d210b58c64ae4e015fa28b8aa2bbf7b61"
+    },
+    {
+      "path": "standard_market/ashkelon/current_asking_5r.csv",
+      "size_bytes": 3010,
+      "sha256": "0bee01d734784485dc1aacec00eb25e4a7f0f144c97b33d1a72c612d29f7b85b"
+    },
+    {
+      "path": "standard_market/ashkelon/location.json",
+      "size_bytes": 1748,
+      "sha256": "0ffdf6b84cc28040ee035af7c79fd5fa6b18192cc1cb82698d13d2716ee610d5"
+    },
+    {
+      "path": "standard_market/ashkelon/market_summary.json",
+      "size_bytes": 30618,
+      "sha256": "3dd791e35ecf07e50d803f0d117e3bf97fdd69f7cf5d0676050fdde7fbde040e"
+    },
+    {
+      "path": "standard_market/ashkelon/research_notes.md",
+      "size_bytes": 2909,
+      "sha256": "5cd4e7fd71c89de3cead1ad86cb3e519e9067cc39a0ccc52afe1151343652fdd"
+    },
+    {
+      "path": "standard_market/calculation_audit.json",
+      "size_bytes": 105261,
+      "sha256": "7e49ad0527823bf1ff9cd158dd41e597b12d8ea3bec678738c1592363f36d8df"
+    },
+    {
+      "path": "standard_market/cross_city_comparison.csv",
+      "size_bytes": 2561,
+      "sha256": "7ba4fa00de3f83b543b9fadf1b312a4aaa106426443bbc6490efef96ee48e5e5"
+    },
+    {
+      "path": "standard_market/cross_city_comparison.json",
+      "size_bytes": 4805,
+      "sha256": "20d11b9b44cf6fbc021787844ce153297648b036513069a68f1aac859bbcac25"
+    },
+    {
+      "path": "standard_market/engine_regression/application_engine_outputs.json",
+      "size_bytes": 104341,
+      "sha256": "96477ec5fb1cb163ae93f8a07074d3a158629ce3496e1f14340fe6c406af76d7"
+    },
+    {
+      "path": "standard_market/engine_regression/engine_identity.json",
+      "size_bytes": 249,
+      "sha256": "4bfec35dedba46f70327fd69b979e2b4d9ae851847bc0d2672e8ab8d31bc618b"
+    },
+    {
+      "path": "standard_market/engine_regression/execution_note.md",
+      "size_bytes": 1152,
+      "sha256": "537339320188d3d64d40d571ef20f1a3e48eeb8b7a183beaad40337f2b465cff"
+    },
+    {
+      "path": "standard_market/engine_regression/regression_table.csv",
+      "size_bytes": 1312,
+      "sha256": "f23b2fa4b7abd30fa6ae4f5df3a65999eafc3e295b2d9d9d770fa3353c71e6dc"
+    },
+    {
+      "path": "standard_market/engine_regression/regression_validation.json",
+      "size_bytes": 4751,
+      "sha256": "1f0f8f590addea31e9dcef7c542bf466c9ae38d92d373271be231230403a72a0"
+    },
+    {
+      "path": "standard_market/engine_regression/tel_aviv_3r_semantic_correction_rerun.json",
+      "size_bytes": 21329,
+      "sha256": "6c25fe860e985740ff033f5082e2421c69fae8f484b509fe4a42afe8b0fb41e2"
+    },
+    {
+      "path": "standard_market/hardening_changes.json",
+      "size_bytes": 3986,
+      "sha256": "a4c3379186729b9e4c914142de3eb5444ec2692df9218e62c481329071e781d4"
+    },
+    {
+      "path": "standard_market/hardening_rejected_candidates.json",
+      "size_bytes": 1378,
+      "sha256": "70b53adcd49a2880f9ba03759a5a26ffb7f30626fe33e34a7dbbc696c1e58267"
+    },
+    {
+      "path": "standard_market/hardening_validation.json",
+      "size_bytes": 200,
+      "sha256": "45ad9cb5068e414a5a43b3e84159c764491f2880058db61b37d1145f22cc3790"
+    },
+    {
+      "path": "standard_market/manifest.json",
+      "size_bytes": 8302,
+      "sha256": "c5366bf84a9206d772f4a493629377ea8a9bc2e06682ed6790858812eba427c5"
+    },
+    {
+      "path": "standard_market/netanya/competitors.json",
+      "size_bytes": 6272,
+      "sha256": "cfe4af6c228b8177006409a061310fc9c011f66adc17fb5b504efc432d304098"
+    },
+    {
+      "path": "standard_market/netanya/completed_sales_3r.csv",
+      "size_bytes": 2441,
+      "sha256": "92236650e795765a2a95b876a53d7b6d9b5ea9d6713e2b0521bfdcc4c1b7b555"
+    },
+    {
+      "path": "standard_market/netanya/completed_sales_5r.csv",
+      "size_bytes": 3459,
+      "sha256": "f55b20a2e649c63cdcac4f33c3ffe266e38d062fcd3c876ddb85829949fa65b3"
+    },
+    {
+      "path": "standard_market/netanya/current_asking_3r.csv",
+      "size_bytes": 2448,
+      "sha256": "70ff44bce4ec9962fa16a14789c3e5b77e9e5a40d1a365db909b00d5b80b638d"
+    },
+    {
+      "path": "standard_market/netanya/current_asking_5r.csv",
+      "size_bytes": 2240,
+      "sha256": "e5fe02036a3534691aaffaac1293fe3edaaebf8bdcaaa5f2b0b4893db1898248"
+    },
+    {
+      "path": "standard_market/netanya/location.json",
+      "size_bytes": 1013,
+      "sha256": "dad52a7a5c4a93d4cbae877cf9fdea25d06223ab84be1267646553f2b4abcb52"
+    },
+    {
+      "path": "standard_market/netanya/market_summary.json",
+      "size_bytes": 31162,
+      "sha256": "af06733ac53de56d054dbec15a9271e1d3d0731466691d51b66e3e67aa04ab93"
+    },
+    {
+      "path": "standard_market/netanya/research_notes.md",
+      "size_bytes": 2496,
+      "sha256": "0360065e1ccda02df59d48ff817860817d66cd81ffd5297a751c57eadc967421"
+    },
+    {
+      "path": "standard_market/reference_only/petah_tikva_checkpoint.csv",
+      "size_bytes": 831,
+      "sha256": "548f18981fa5d07bc165c2aff376ed484910141db827c786f8f726650468dc6c"
+    },
+    {
+      "path": "standard_market/reference_only/petah_tikva_checkpoint.json",
+      "size_bytes": 1530,
+      "sha256": "14843b919c3e228a047756d4743367e37b9f7e896d56bca82d28317374828705"
+    },
+    {
+      "path": "standard_market/reference_only/pre_hardening_cross_city_output.json",
+      "size_bytes": 4448,
+      "sha256": "64ca368e0ec706d6b86b524c96e625662c5aba217122e43580fbd2d3acc6f3e1"
+    },
+    {
+      "path": "standard_market/tel_aviv/competitors.json",
+      "size_bytes": 6427,
+      "sha256": "4a7e9a8a60be0e0b982f205f3bc8c2949b03076c965badacc92efff116c1ac09"
+    },
+    {
+      "path": "standard_market/tel_aviv/completed_sales_3r.csv",
+      "size_bytes": 8895,
+      "sha256": "ec1e4ada641c37b3ebb753eb70b6a28a33f8ee889a9c72dbde0a65daef3f56c9"
+    },
+    {
+      "path": "standard_market/tel_aviv/completed_sales_5r.csv",
+      "size_bytes": 2941,
+      "sha256": "10cccdf9860d8f583bb23c2b26ffe9d397b79c7905eaa2c1ba18beb9e75bd965"
+    },
+    {
+      "path": "standard_market/tel_aviv/current_asking_3r.csv",
+      "size_bytes": 2951,
+      "sha256": "0da91fa18f1ddb62a3fb7e7262a72051e463d557681ce5eb7b3dc74a4358685c"
+    },
+    {
+      "path": "standard_market/tel_aviv/current_asking_5r.csv",
+      "size_bytes": 2092,
+      "sha256": "7e12b4d84fdad75047f26ef581ab00ffa0c5c6d8317614cd9e24cc3cad890a43"
+    },
+    {
+      "path": "standard_market/tel_aviv/location.json",
+      "size_bytes": 1008,
+      "sha256": "67814d84bbdad8ac55107c631b0d66a29818aa6ec85a69fcbf0ae11251b6a684"
+    },
+    {
+      "path": "standard_market/tel_aviv/market_summary.json",
+      "size_bytes": 39424,
+      "sha256": "9a400cbc2af28ab297e860be6acdf1933818791a0d93b6b9b62c0cd011d9ee3f"
+    },
+    {
+      "path": "standard_market/tel_aviv/research_notes.md",
+      "size_bytes": 2978,
+      "sha256": "80a0951a6e71803f7f559eef7a28b3a2d2da0133b48ef7a9363fe926091d13f7"
+    }
+  ]
+}

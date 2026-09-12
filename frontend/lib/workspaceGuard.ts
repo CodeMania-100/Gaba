@@ -1,46 +1,21 @@
 // Defensive project-context guard (see task: "detect obvious incompatible
 // market metadata... fail loudly instead of rendering"). This is a
-// presentation-layer safety net, not a data-quality tool: the frozen Petah
-// Tikva chain already has its own read-only audit
-// (gabay_pricing_core/audit_petah_tikva_snapshot.py). This just re-checks the
-// same handful of contamination terms against the live payload right before
-// it's rendered, so a bad snapshot can never silently display as if it were
-// Petah Tikva.
+// presentation-layer safety net, not a data-quality tool.
+//
+// Generalized for multi-city market-context switching: with Ashkelon now a
+// real, supported context (barnea), a free-text scan for the word "אשקלון"
+// would flag every legitimate Barnea payload as contamination -- so this
+// guard is now a tier-aware STRUCTURED geography check only (see
+// lib/geographyValidation.ts, the same validator the backend tests and
+// scripts/audit_market_contexts.py use), never a free-text scan, in any
+// capacity. The workspace's own `market_context` block (populated purely
+// from the backend's static per-slug registry, never derived from
+// evidence) is the trusted source of "what city/submarket did we ask for" --
+// the rest of the payload's own geography-bearing records are checked
+// against it.
 
 import { PetahTikvaWorkspace } from "./api";
-
-const VALID_PETAH_TIKVA_CITY_SPELLINGS = new Set(["פתח תקווה", "פתח תקוה"]);
-
-const CONTAMINATION_TERMS = [
-  /אשקלון/i,
-  /ashkelon/i,
-  /city[ _]wine/i,
-  /עיר היין/,
-  /wine_city/i,
-];
-
-function findContamination(value: unknown): string | null {
-  if (typeof value === "string") {
-    for (const pattern of CONTAMINATION_TERMS) {
-      if (pattern.test(value)) return `${pattern} matched in ${JSON.stringify(value).slice(0, 120)}`;
-    }
-    return null;
-  }
-  if (Array.isArray(value)) {
-    for (const item of value) {
-      const hit = findContamination(item);
-      if (hit) return hit;
-    }
-    return null;
-  }
-  if (value && typeof value === "object") {
-    for (const v of Object.values(value)) {
-      const hit = findContamination(v);
-      if (hit) return hit;
-    }
-  }
-  return null;
-}
+import { findGeographyRecords, GeographyViolation, validateGeographyRecords } from "./geographyValidation";
 
 export interface WorkspaceGuardResult {
   ok: boolean;
@@ -48,16 +23,26 @@ export interface WorkspaceGuardResult {
 }
 
 /** Checked once, right after the workspace payload loads, before anything
- * renders from it. Scans the whole payload (project/metadata/evidence/price
- * list) for the known Ashkelon/"City Wine" terms and confirms the project
- * city is a real Petah Tikva spelling -- never both silently ignored. */
+ * renders from it. If the payload predates `market_context` (should not
+ * happen once the backend always sends it, but defensive), the guard
+ * passes rather than failing on a false negative. */
 export function checkWorkspaceContext(workspace: PetahTikvaWorkspace): WorkspaceGuardResult {
-  if (!VALID_PETAH_TIKVA_CITY_SPELLINGS.has(workspace.project.city)) {
-    return { ok: false, reason: `project.city is not a recognized Petah Tikva spelling: ${JSON.stringify(workspace.project.city)}` };
+  const context = workspace.market_context;
+  if (!context) return { ok: true };
+
+  const acceptedCities = new Set(context.city_spellings?.length ? context.city_spellings : [context.city]);
+  if (!acceptedCities.has(workspace.project.city)) {
+    return { ok: false, reason: `project.city ${JSON.stringify(workspace.project.city)} does not match the requested market context (${context.display_name})` };
   }
-  const hit = findContamination(workspace);
-  if (hit) {
-    return { ok: false, reason: `contaminated field found: ${hit}` };
+
+  const records = findGeographyRecords(workspace);
+  const violations = validateGeographyRecords(records, acceptedCities, context.submarket);
+  if (violations.length > 0) {
+    const v: GeographyViolation = violations[0];
+    return {
+      ok: false,
+      reason: `cross-context geography mismatch (${violations.length} record(s)): ${v.field} expected ${JSON.stringify(v.expected)}, found ${JSON.stringify(v.actual)}`,
+    };
   }
   return { ok: true };
 }

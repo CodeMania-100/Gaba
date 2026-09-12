@@ -1,0 +1,1081 @@
+﻿record_type,city,record_id,field,baseline_value,priority,status
+project,תל אביב-יפו,ta-tidhar-between,contractor_company,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-tidhar-between,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-tidhar-between,architect,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-tidhar-between,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-tidhar-between,latitude,32.05899,HIGH,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-tidhar-between,longitude,34.79285,HIGH,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-tidhar-between,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-tidhar-between,estimated_delivery,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-tidhar-between,number_of_buildings,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-tidhar-between,number_of_floors,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-tidhar-between,number_of_units,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-tidhar-between,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-tidhar-between,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-tidhar-between,area_range_sqm,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-tidhar-between,parking,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-tidhar-between,storage,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-tidhar-between,mamad,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-tidhar-between,payment_terms,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-galipolis,contractor_company,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-galipolis,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-galipolis,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-galipolis,address,,HIGH,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-galipolis,street,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-galipolis,street_number,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-galipolis,latitude,32.05899,HIGH,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-galipolis,longitude,34.79285,HIGH,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-galipolis,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-galipolis,construction_status,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-galipolis,estimated_delivery,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-galipolis,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-galipolis,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-galipolis,area_range_sqm,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-galipolis,parking,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-galipolis,storage,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-galipolis,mamad,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-galipolis,payment_terms,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-galipolis,promotions,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-rayk-east-side,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-rayk-east-side,architect,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-rayk-east-side,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-rayk-east-side,address,,HIGH,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-rayk-east-side,street,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-rayk-east-side,street_number,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-rayk-east-side,latitude,32.05899,HIGH,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-rayk-east-side,longitude,34.79285,HIGH,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-rayk-east-side,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-rayk-east-side,construction_status,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-rayk-east-side,estimated_delivery,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-rayk-east-side,number_of_floors,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-rayk-east-side,number_of_units,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-rayk-east-side,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-rayk-east-side,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-rayk-east-side,storage,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-rayk-east-side,mamad,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-rayk-east-side,payment_terms,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-rayk-east-side,promotions,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-yagur,contractor_company,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-yagur,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-yagur,architect,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-yagur,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-yagur,latitude,32.05899,HIGH,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-yagur,longitude,34.79285,HIGH,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-yagur,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-yagur,construction_status,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-yagur,estimated_delivery,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-yagur,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-yagur,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-yagur,room_range,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-yagur,area_range_sqm,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-yagur,parking,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-yagur,storage,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-yagur,mamad,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-yagur,balcony,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-yagur,garden,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-yagur,payment_terms,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-yagur,promotions,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-yagur,known_unit_variants,[],HIGH,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-family-groove,contractor_company,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-family-groove,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-family-groove,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-family-groove,street_number,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-family-groove,latitude,32.05899,HIGH,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-family-groove,longitude,34.79285,HIGH,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-family-groove,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-family-groove,construction_status,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-family-groove,estimated_delivery,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-family-groove,number_of_buildings,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-family-groove,number_of_floors,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-family-groove,number_of_units,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-family-groove,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-family-groove,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-family-groove,area_range_sqm,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-family-groove,storage,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-family-groove,mamad,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-family-groove,payment_terms,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-family-groove,promotions,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-negba26,contractor_company,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-negba26,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-negba26,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-negba26,latitude,32.05899,HIGH,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-negba26,longitude,34.79285,HIGH,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-negba26,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-negba26,estimated_delivery,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-negba26,number_of_buildings,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-negba26,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-negba26,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-negba26,room_range,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-negba26,area_range_sqm,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-negba26,mamad,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-negba26,balcony,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-negba26,payment_terms,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-negba26,promotions,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-negba26,known_unit_variants,[],HIGH,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-almog-complex,contractor_company,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-almog-complex,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-almog-complex,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-almog-complex,address,,HIGH,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-almog-complex,street,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-almog-complex,street_number,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-almog-complex,latitude,32.05899,HIGH,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-almog-complex,longitude,34.79285,HIGH,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-almog-complex,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-almog-complex,construction_status,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-almog-complex,estimated_delivery,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-almog-complex,number_of_units,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-almog-complex,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-almog-complex,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-almog-complex,room_range,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-almog-complex,area_range_sqm,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-almog-complex,parking,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-almog-complex,storage,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-almog-complex,mamad,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-almog-complex,balcony,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-almog-complex,garden,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-almog-complex,payment_terms,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-almog-complex,promotions,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-almog-complex,known_unit_variants,[],HIGH,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-laguardia-35-45,contractor_company,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-laguardia-35-45,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-laguardia-35-45,architect,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-laguardia-35-45,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-laguardia-35-45,street_number,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-laguardia-35-45,latitude,32.05899,HIGH,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-laguardia-35-45,longitude,34.79285,HIGH,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-laguardia-35-45,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-laguardia-35-45,estimated_delivery,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-laguardia-35-45,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-laguardia-35-45,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-laguardia-35-45,room_range,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-laguardia-35-45,area_range_sqm,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-laguardia-35-45,parking,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-laguardia-35-45,storage,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-laguardia-35-45,mamad,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-laguardia-35-45,balcony,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-laguardia-35-45,garden,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-laguardia-35-45,payment_terms,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-laguardia-35-45,promotions,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-laguardia-35-45,known_unit_variants,[],HIGH,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-gallipoli19,contractor_company,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-gallipoli19,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-gallipoli19,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-gallipoli19,latitude,32.05899,HIGH,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-gallipoli19,longitude,34.79285,HIGH,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-gallipoli19,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-gallipoli19,construction_status,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-gallipoli19,estimated_delivery,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-gallipoli19,number_of_buildings,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-gallipoli19,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-gallipoli19,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-gallipoli19,room_range,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-gallipoli19,area_range_sqm,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-gallipoli19,parking,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-gallipoli19,storage,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-gallipoli19,mamad,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-gallipoli19,balcony,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-gallipoli19,garden,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-gallipoli19,payment_terms,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-gallipoli19,promotions,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-gallipoli19,known_unit_variants,[],HIGH,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-east-side,contractor_company,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-east-side,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-east-side,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-east-side,street,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-east-side,street_number,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-east-side,latitude,32.05899,HIGH,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-east-side,longitude,34.79285,HIGH,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-east-side,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-east-side,construction_status,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-east-side,estimated_delivery,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-east-side,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-east-side,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-east-side,room_range,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-east-side,area_range_sqm,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-east-side,parking,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-east-side,storage,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-east-side,mamad,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-east-side,balcony,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-east-side,garden,,NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-east-side,payment_terms,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-east-side,promotions,[],NORMAL,MISSING_BEFORE_V2
+project,תל אביב-יפו,ta-ybox-east-side,known_unit_variants,[],HIGH,MISSING_BEFORE_V2
+project,נתניה,net-bereshit-family,contractor_company,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-bereshit-family,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-bereshit-family,architect,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-bereshit-family,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-bereshit-family,latitude,32.30321,HIGH,MISSING_BEFORE_V2
+project,נתניה,net-bereshit-family,longitude,34.87567,HIGH,MISSING_BEFORE_V2
+project,נתניה,net-bereshit-family,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-bereshit-family,construction_status,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-bereshit-family,estimated_delivery,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-bereshit-family,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-bereshit-family,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-bereshit-family,area_range_sqm,[],NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-bereshit-family,storage,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-bereshit-family,balcony,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-bereshit-family,payment_terms,[],NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-tzamarot,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-tzamarot,architect,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-tzamarot,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-tzamarot,address,,HIGH,MISSING_BEFORE_V2
+project,נתניה,net-gindi-tzamarot,street,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-tzamarot,street_number,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-tzamarot,latitude,32.30321,HIGH,MISSING_BEFORE_V2
+project,נתניה,net-gindi-tzamarot,longitude,34.87567,HIGH,MISSING_BEFORE_V2
+project,נתניה,net-gindi-tzamarot,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-tzamarot,construction_status,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-tzamarot,estimated_delivery,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-tzamarot,number_of_buildings,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-tzamarot,number_of_floors,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-tzamarot,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-tzamarot,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-tzamarot,area_range_sqm,[],NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-tzamarot,parking,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-tzamarot,storage,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-tzamarot,mamad,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-tzamarot,payment_terms,[],NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-tzamarot,promotions,[],NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-tzamarot,known_unit_variants,[],HIGH,MISSING_BEFORE_V2
+project,נתניה,net-mashknot-hapark,contractor_company,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-mashknot-hapark,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-mashknot-hapark,architect,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-mashknot-hapark,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-mashknot-hapark,street_number,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-mashknot-hapark,latitude,32.30321,HIGH,MISSING_BEFORE_V2
+project,נתניה,net-mashknot-hapark,longitude,34.87567,HIGH,MISSING_BEFORE_V2
+project,נתניה,net-mashknot-hapark,estimated_delivery,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-mashknot-hapark,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-mashknot-hapark,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-mashknot-hapark,parking,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-mashknot-hapark,storage,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-mashknot-hapark,mamad,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-mashknot-hapark,balcony,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-mashknot-hapark,garden,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-mashknot-hapark,payment_terms,[],NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-mashknot-hapark,promotions,[],NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-mashknot-hapark,known_unit_variants,[],HIGH,MISSING_BEFORE_V2
+project,נתניה,net-gindi-newnorth,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-newnorth,architect,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-newnorth,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-newnorth,address,,HIGH,MISSING_BEFORE_V2
+project,נתניה,net-gindi-newnorth,street,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-newnorth,street_number,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-newnorth,latitude,32.30321,HIGH,MISSING_BEFORE_V2
+project,נתניה,net-gindi-newnorth,longitude,34.87567,HIGH,MISSING_BEFORE_V2
+project,נתניה,net-gindi-newnorth,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-newnorth,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-newnorth,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-newnorth,room_range,[],NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-newnorth,area_range_sqm,[],NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-newnorth,parking,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-newnorth,storage,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-newnorth,mamad,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-newnorth,balcony,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-newnorth,garden,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-newnorth,payment_terms,[],NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-newnorth,promotions,[],NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gindi-newnorth,known_unit_variants,[],HIGH,MISSING_BEFORE_V2
+project,נתניה,net-ashdar-country,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-ashdar-country,architect,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-ashdar-country,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-ashdar-country,address,,HIGH,MISSING_BEFORE_V2
+project,נתניה,net-ashdar-country,street,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-ashdar-country,street_number,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-ashdar-country,latitude,32.30321,HIGH,MISSING_BEFORE_V2
+project,נתניה,net-ashdar-country,longitude,34.87567,HIGH,MISSING_BEFORE_V2
+project,נתניה,net-ashdar-country,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-ashdar-country,construction_status,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-ashdar-country,estimated_delivery,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-ashdar-country,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-ashdar-country,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-ashdar-country,room_range,[],NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-ashdar-country,area_range_sqm,[],NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-ashdar-country,storage,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-ashdar-country,mamad,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-ashdar-country,balcony,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-ashdar-country,garden,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-ashdar-country,payment_terms,[],NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-ashdar-country,promotions,[],NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gabay-park,contractor_company,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gabay-park,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gabay-park,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gabay-park,latitude,32.30321,HIGH,MISSING_BEFORE_V2
+project,נתניה,net-gabay-park,longitude,34.87567,HIGH,MISSING_BEFORE_V2
+project,נתניה,net-gabay-park,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gabay-park,construction_status,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gabay-park,estimated_delivery,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gabay-park,number_of_buildings,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gabay-park,number_of_floors,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gabay-park,number_of_units,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gabay-park,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gabay-park,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gabay-park,room_range,[],NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gabay-park,area_range_sqm,[],NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gabay-park,storage,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gabay-park,mamad,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gabay-park,balcony,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gabay-park,garden,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-gabay-park,promotions,[],NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-david,contractor_company,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-david,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-david,architect,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-david,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-david,address,,HIGH,MISSING_BEFORE_V2
+project,נתניה,net-david,street,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-david,street_number,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-david,latitude,32.30321,HIGH,MISSING_BEFORE_V2
+project,נתניה,net-david,longitude,34.87567,HIGH,MISSING_BEFORE_V2
+project,נתניה,net-david,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-david,construction_status,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-david,estimated_delivery,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-david,number_of_buildings,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-david,number_of_floors,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-david,number_of_units,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-david,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-david,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-david,area_range_sqm,[],NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-david,parking,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-david,storage,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-david,mamad,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-david,balcony,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-david,garden,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-david,payment_terms,[],NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-david,known_unit_variants,[],HIGH,MISSING_BEFORE_V2
+project,נתניה,net-the-strip,contractor_company,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-the-strip,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-the-strip,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-the-strip,address,,HIGH,MISSING_BEFORE_V2
+project,נתניה,net-the-strip,street,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-the-strip,street_number,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-the-strip,latitude,32.30321,HIGH,MISSING_BEFORE_V2
+project,נתניה,net-the-strip,longitude,34.87567,HIGH,MISSING_BEFORE_V2
+project,נתניה,net-the-strip,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-the-strip,construction_status,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-the-strip,estimated_delivery,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-the-strip,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-the-strip,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-the-strip,area_range_sqm,[],NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-the-strip,balcony,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-the-strip,garden,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-the-strip,payment_terms,[],NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-the-strip,promotions,[],NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-aqua-sense,contractor_company,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-aqua-sense,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-aqua-sense,architect,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-aqua-sense,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-aqua-sense,latitude,32.30321,HIGH,MISSING_BEFORE_V2
+project,נתניה,net-aqua-sense,longitude,34.87567,HIGH,MISSING_BEFORE_V2
+project,נתניה,net-aqua-sense,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-aqua-sense,construction_status,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-aqua-sense,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-aqua-sense,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-aqua-sense,area_range_sqm,[],NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-aqua-sense,parking,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-aqua-sense,storage,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-aqua-sense,mamad,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-aqua-sense,balcony,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-aqua-sense,garden,,NORMAL,MISSING_BEFORE_V2
+project,נתניה,net-aqua-sense,known_unit_variants,[],HIGH,MISSING_BEFORE_V2
+project,אשקלון,ash-halomot-barnea,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-halomot-barnea,architect,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-halomot-barnea,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-halomot-barnea,address,,HIGH,MISSING_BEFORE_V2
+project,אשקלון,ash-halomot-barnea,street,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-halomot-barnea,street_number,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-halomot-barnea,latitude,31.68751,HIGH,MISSING_BEFORE_V2
+project,אשקלון,ash-halomot-barnea,longitude,34.57109,HIGH,MISSING_BEFORE_V2
+project,אשקלון,ash-halomot-barnea,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-halomot-barnea,construction_status,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-halomot-barnea,estimated_delivery,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-halomot-barnea,number_of_buildings,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-halomot-barnea,number_of_floors,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-halomot-barnea,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-halomot-barnea,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-halomot-barnea,area_range_sqm,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-halomot-barnea,parking,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-halomot-barnea,storage,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-halomot-barnea,mamad,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-halomot-barnea,payment_terms,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-halomot-barnea,promotions,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-halomot-barnea,known_unit_variants,[],HIGH,MISSING_BEFORE_V2
+project,אשקלון,ash-demri-barnea,contractor_company,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-demri-barnea,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-demri-barnea,architect,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-demri-barnea,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-demri-barnea,address,,HIGH,MISSING_BEFORE_V2
+project,אשקלון,ash-demri-barnea,street,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-demri-barnea,street_number,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-demri-barnea,latitude,31.68751,HIGH,MISSING_BEFORE_V2
+project,אשקלון,ash-demri-barnea,longitude,34.57109,HIGH,MISSING_BEFORE_V2
+project,אשקלון,ash-demri-barnea,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-demri-barnea,construction_status,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-demri-barnea,estimated_delivery,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-demri-barnea,number_of_buildings,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-demri-barnea,number_of_floors,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-demri-barnea,number_of_units,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-demri-barnea,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-demri-barnea,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-demri-barnea,room_range,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-demri-barnea,area_range_sqm,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-demri-barnea,parking,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-demri-barnea,storage,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-demri-barnea,mamad,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-demri-barnea,balcony,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-demri-barnea,garden,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-demri-barnea,payment_terms,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-demri-barnea,promotions,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-demri-barnea,known_unit_variants,[],HIGH,MISSING_BEFORE_V2
+project,אשקלון,ash-ramot,developer_company,,HIGH,MISSING_BEFORE_V2
+project,אשקלון,ash-ramot,development_company,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ramot,contractor_company,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ramot,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ramot,architect,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ramot,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ramot,address,,HIGH,MISSING_BEFORE_V2
+project,אשקלון,ash-ramot,street,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ramot,street_number,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ramot,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ramot,construction_status,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ramot,estimated_delivery,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ramot,number_of_buildings,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ramot,number_of_floors,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ramot,number_of_units,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ramot,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ramot,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ramot,room_range,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ramot,area_range_sqm,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ramot,parking,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ramot,storage,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ramot,mamad,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ramot,balcony,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ramot,garden,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ramot,payment_terms,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ramot,promotions,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ramot,known_unit_variants,[],HIGH,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-ramot,contractor_company,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-ramot,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-ramot,architect,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-ramot,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-ramot,address,,HIGH,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-ramot,street,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-ramot,street_number,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-ramot,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-ramot,construction_status,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-ramot,estimated_delivery,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-ramot,number_of_floors,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-ramot,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-ramot,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-ramot,area_range_sqm,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-ramot,parking,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-ramot,storage,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-ramot,mamad,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-ramot,balcony,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-ramot,garden,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-ramot,payment_terms,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-ramot,promotions,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-ramot,known_unit_variants,[],HIGH,MISSING_BEFORE_V2
+project,אשקלון,ash-peretz-wine,contractor_company,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-peretz-wine,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-peretz-wine,architect,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-peretz-wine,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-peretz-wine,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-peretz-wine,construction_status,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-peretz-wine,estimated_delivery,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-peretz-wine,number_of_buildings,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-peretz-wine,number_of_floors,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-peretz-wine,number_of_units,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-peretz-wine,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-peretz-wine,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-peretz-wine,area_range_sqm,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-peretz-wine,parking,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-peretz-wine,storage,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-peretz-wine,mamad,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-peretz-wine,balcony,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-peretz-wine,payment_terms,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-peretz-wine,promotions,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-wine,contractor_company,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-wine,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-wine,architect,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-wine,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-wine,latitude,31.68751,HIGH,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-wine,longitude,34.57109,HIGH,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-wine,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-wine,construction_status,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-wine,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-wine,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-wine,area_range_sqm,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-wine,parking,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-wine,storage,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-wine,mamad,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-wine,balcony,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-wine,payment_terms,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-wine,promotions,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-ayal-peretz-wine,known_unit_variants,[],HIGH,MISSING_BEFORE_V2
+project,אשקלון,ash-avisror-wine,contractor_company,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-avisror-wine,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-avisror-wine,architect,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-avisror-wine,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-avisror-wine,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-avisror-wine,construction_status,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-avisror-wine,estimated_delivery,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-avisror-wine,number_of_buildings,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-avisror-wine,number_of_floors,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-avisror-wine,number_of_units,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-avisror-wine,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-avisror-wine,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-avisror-wine,room_range,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-avisror-wine,area_range_sqm,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-avisror-wine,parking,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-avisror-wine,storage,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-avisror-wine,mamad,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-avisror-wine,balcony,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-avisror-wine,garden,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-avisror-wine,payment_terms,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-avisror-wine,promotions,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-avisror-wine,known_unit_variants,[],HIGH,MISSING_BEFORE_V2
+project,אשקלון,ash-efi-wine,contractor_company,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-efi-wine,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-efi-wine,architect,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-efi-wine,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-efi-wine,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-efi-wine,construction_status,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-efi-wine,estimated_delivery,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-efi-wine,number_of_buildings,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-efi-wine,number_of_floors,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-efi-wine,number_of_units,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-efi-wine,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-efi-wine,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-efi-wine,area_range_sqm,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-efi-wine,parking,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-efi-wine,storage,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-efi-wine,mamad,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-efi-wine,balcony,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-efi-wine,garden,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-efi-wine,payment_terms,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-efi-wine,known_unit_variants,[],HIGH,MISSING_BEFORE_V2
+project,אשקלון,ash-jade,contractor_company,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-jade,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-jade,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-jade,latitude,31.68751,HIGH,MISSING_BEFORE_V2
+project,אשקלון,ash-jade,longitude,34.57109,HIGH,MISSING_BEFORE_V2
+project,אשקלון,ash-jade,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-jade,construction_status,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-jade,estimated_delivery,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-jade,number_of_floors,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-jade,number_of_units,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-jade,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-jade,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-jade,parking,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-jade,storage,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-jade,mamad,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-jade,balcony,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-jade,garden,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-jade,payment_terms,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-jade,promotions,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-dimri-wine,contractor_company,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-dimri-wine,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-dimri-wine,architect,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-dimri-wine,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-dimri-wine,address,,HIGH,MISSING_BEFORE_V2
+project,אשקלון,ash-dimri-wine,street,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-dimri-wine,street_number,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-dimri-wine,latitude,31.68751,HIGH,MISSING_BEFORE_V2
+project,אשקלון,ash-dimri-wine,longitude,34.57109,HIGH,MISSING_BEFORE_V2
+project,אשקלון,ash-dimri-wine,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-dimri-wine,construction_status,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-dimri-wine,estimated_delivery,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-dimri-wine,number_of_floors,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-dimri-wine,number_of_units,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-dimri-wine,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-dimri-wine,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-dimri-wine,room_range,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-dimri-wine,area_range_sqm,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-dimri-wine,parking,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-dimri-wine,storage,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-dimri-wine,mamad,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-dimri-wine,balcony,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-dimri-wine,garden,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-dimri-wine,payment_terms,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-dimri-wine,known_unit_variants,[],HIGH,MISSING_BEFORE_V2
+project,אשקלון,ash-yama-marina,contractor_company,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-yama-marina,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-yama-marina,architect,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-yama-marina,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-yama-marina,latitude,31.68751,HIGH,MISSING_BEFORE_V2
+project,אשקלון,ash-yama-marina,longitude,34.57109,HIGH,MISSING_BEFORE_V2
+project,אשקלון,ash-yama-marina,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-yama-marina,construction_status,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-yama-marina,estimated_delivery,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-yama-marina,number_of_buildings,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-yama-marina,number_of_floors,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-yama-marina,number_of_units,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-yama-marina,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-yama-marina,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-yama-marina,room_range,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-yama-marina,area_range_sqm,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-yama-marina,parking,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-yama-marina,storage,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-yama-marina,mamad,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-yama-marina,balcony,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-yama-marina,garden,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-yama-marina,payment_terms,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-yama-marina,known_unit_variants,[],HIGH,MISSING_BEFORE_V2
+project,אשקלון,ash-lev-agamim,contractor_company,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-lev-agamim,marketing_company,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-lev-agamim,architect,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-lev-agamim,financing_bank,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-lev-agamim,permit_status,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-lev-agamim,construction_status,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-lev-agamim,estimated_delivery,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-lev-agamim,number_of_buildings,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-lev-agamim,number_of_floors,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-lev-agamim,number_of_units,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-lev-agamim,apartments_per_floor,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-lev-agamim,number_of_elevators,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-lev-agamim,room_range,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-lev-agamim,area_range_sqm,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-lev-agamim,parking,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-lev-agamim,storage,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-lev-agamim,mamad,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-lev-agamim,balcony,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-lev-agamim,garden,,NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-lev-agamim,payment_terms,[],NORMAL,MISSING_BEFORE_V2
+project,אשקלון,ash-lev-agamim,known_unit_variants,[],HIGH,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-laguardia-garden-68,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-laguardia-garden-68,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-laguardia-garden-68,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-laguardia-garden-68,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-laguardia-garden-68,parking,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-laguardia-garden-68,storage,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-laguardia-garden-68,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-laguardia-garden-68,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-taoz3-garden-175,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-taoz3-garden-175,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-taoz3-garden-175,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-taoz3-garden-175,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-taoz3-garden-175,parking,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-taoz3-garden-175,storage,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-taoz3-garden-175,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-taoz3-garden-175,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-yadeliyahu-2r-garden90,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-yadeliyahu-2r-garden90,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-yadeliyahu-2r-garden90,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-yadeliyahu-2r-garden90,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-yadeliyahu-2r-garden90,parking,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-yadeliyahu-2r-garden90,storage,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-yadeliyahu-2r-garden90,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-yadeliyahu-2r-garden90,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-archive-yiftach4-garden57,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-archive-yiftach4-garden57,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-archive-yiftach4-garden57,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-moshe-dayan-duplex180,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-moshe-dayan-duplex180,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-moshe-dayan-duplex180,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-moshe-dayan-duplex180,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-moshe-dayan-duplex180,parking,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-moshe-dayan-duplex180,storage,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-moshe-dayan-duplex180,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-moshe-dayan-duplex180,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-margolin29-duplex93,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-margolin29-duplex93,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-margolin29-duplex93,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-margolin29-duplex93,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-margolin29-duplex93,parking,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-margolin29-duplex93,storage,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-margolin29-duplex93,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-margolin29-duplex93,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-new-5r-penthouse180,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-new-5r-penthouse180,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-new-5r-penthouse180,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-new-5r-penthouse180,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-new-5r-penthouse180,parking,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-new-5r-penthouse180,storage,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-new-5r-penthouse180,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-new-5r-penthouse180,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-gibor5r-penthouse198,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-gibor5r-penthouse198,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-gibor5r-penthouse198,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-gibor5r-penthouse198,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-gibor5r-penthouse198,parking,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-gibor5r-penthouse198,storage,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-gibor5r-penthouse198,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-gibor5r-penthouse198,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-yiftach6-penthouse166,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-yiftach6-penthouse166,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-yiftach6-penthouse166,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-yiftach6-penthouse166,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-yiftach6-penthouse166,parking,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-yiftach6-penthouse166,storage,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-yiftach6-penthouse166,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,תל אביב-יפו,ta-ask-yiftach6-penthouse166,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-dekel-duplex160,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-dekel-duplex160,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-dekel-duplex160,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-dekel-duplex160,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-dekel-duplex160,parking,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-dekel-duplex160,storage,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-dekel-duplex160,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-dekel-duplex160,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-park-duplex140,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-park-duplex140,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-park-duplex140,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-park-duplex140,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-park-duplex140,parking,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-park-duplex140,storage,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-park-duplex140,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-park-duplex140,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-triplex158,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-triplex158,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-triplex158,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-triplex158,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-triplex158,parking,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-triplex158,storage,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-triplex158,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-triplex158,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-triplex158,price,,HIGH,MISSING_BEFORE_V2
+asking,נתניה,net-ask-hartom-penthouse229,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-hartom-penthouse229,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-hartom-penthouse229,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-hartom-penthouse229,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-hartom-penthouse229,parking,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-hartom-penthouse229,storage,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-hartom-penthouse229,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-hartom-penthouse229,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-moran-penthouse180,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-moran-penthouse180,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-moran-penthouse180,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-moran-penthouse180,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-moran-penthouse180,parking,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-moran-penthouse180,storage,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-moran-penthouse180,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-moran-penthouse180,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-shvat4-penthouse255,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-shvat4-penthouse255,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-shvat4-penthouse255,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-shvat4-penthouse255,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-shvat4-penthouse255,parking,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-shvat4-penthouse255,storage,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-shvat4-penthouse255,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-ask-shvat4-penthouse255,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-archive-park9-garden-duplex150,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-archive-park9-garden-duplex150,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-archive-park9-garden-duplex150,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-archive-park9-garden-duplex150,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-archive-park9-garden-duplex150,storage,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-archive-park9-garden-duplex150,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-archive-hanofar-garden120,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-archive-hanofar-garden120,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-archive-hanofar-garden120,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-archive-hanofar-garden120,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-archive-hanofar-garden120,parking,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-archive-hanofar-garden120,storage,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-archive-hanofar-garden120,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,net-archive-hanofar-garden120,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-dekel-6r160-4290,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-dekel-6r160-4290,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-dekel-6r160-4290,floor,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-dekel-6r160-4290,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-dekel-6r160-4290,parking,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-dekel-6r160-4290,storage,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-dekel-6r160-4290,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-dekel-6r160-4290,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-dekel-6r160-4290,observed_date,,HIGH,MISSING_BEFORE_V2
+asking,נתניה,r1-net-dekel-6r160-3850,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-dekel-6r160-3850,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-dekel-6r160-3850,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-dekel-6r160-3850,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-dekel-6r160-3850,parking,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-dekel-6r160-3850,storage,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-dekel-6r160-3850,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-dekel-6r160-3850,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-dekel-6r160-3850,observed_date,,HIGH,MISSING_BEFORE_V2
+asking,נתניה,r1-net-bnei-reich21-4775,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-bnei-reich21-4775,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-bnei-reich21-4775,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-bnei-reich21-4775,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-bnei-reich21-4775,parking,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-bnei-reich21-4775,storage,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-bnei-reich21-4775,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-bnei-reich21-4775,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-bnei-reich21-4775,observed_date,,HIGH,MISSING_BEFORE_V2
+asking,נתניה,r1-net-park-garden150-4120,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-park-garden150-4120,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-park-garden150-4120,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-park-garden150-4120,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-park-garden150-4120,parking,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-park-garden150-4120,storage,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-park-garden150-4120,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-park-garden150-4120,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-park-garden150-4120,observed_date,,HIGH,MISSING_BEFORE_V2
+asking,נתניה,r1-net-park23-penthouse160-4100,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-park23-penthouse160-4100,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-park23-penthouse160-4100,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-park23-penthouse160-4100,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-park23-penthouse160-4100,parking,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-park23-penthouse160-4100,storage,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-park23-penthouse160-4100,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-park23-penthouse160-4100,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,נתניה,r1-net-park23-penthouse160-4100,observed_date,,HIGH,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-maalehagat-duplex200,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-maalehagat-duplex200,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-maalehagat-duplex200,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-maalehagat-duplex200,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-maalehagat-duplex200,parking,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-maalehagat-duplex200,storage,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-maalehagat-duplex200,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-maalehagat-duplex200,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-barnea-duplex5r138,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-barnea-duplex5r138,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-barnea-duplex5r138,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-barnea-duplex5r138,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-barnea-duplex5r138,parking,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-barnea-duplex5r138,storage,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-barnea-duplex5r138,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-barnea-duplex5r138,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-zionut-duplex132,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-zionut-duplex132,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-zionut-duplex132,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-zionut-duplex132,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-zionut-duplex132,parking,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-zionut-duplex132,storage,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-zionut-duplex132,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-zionut-duplex132,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-blasberg-garden205,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-blasberg-garden205,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-blasberg-garden205,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-blasberg-garden205,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-blasberg-garden205,parking,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-blasberg-garden205,storage,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-blasberg-garden205,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-blasberg-garden205,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-blasberg-garden210,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-blasberg-garden210,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-blasberg-garden210,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-blasberg-garden210,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-blasberg-garden210,parking,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-blasberg-garden210,storage,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-blasberg-garden210,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-blasberg-garden210,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-maalehagat32-conflict,internal_area,,HIGH,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-maalehagat32-conflict,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-maalehagat32-conflict,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-maalehagat32-conflict,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-maalehagat32-conflict,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-maalehagat32-conflict,parking,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-maalehagat32-conflict,storage,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-maalehagat32-conflict,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-maalehagat32-conflict,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-homeless-penthouse170,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-homeless-penthouse170,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-mini529103,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-mini529103,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-mini529103,storage,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-wine22-penthouse160,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-wine22-penthouse160,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,ash-ask-wine22-penthouse160,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-arie-ben-eliezer-3850,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-arie-ben-eliezer-3850,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-arie-ben-eliezer-3850,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-arie-ben-eliezer-3850,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-arie-ben-eliezer-3850,parking,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-arie-ben-eliezer-3850,storage,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-arie-ben-eliezer-3850,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-arie-ben-eliezer-3850,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-arie-ben-eliezer-3850,observed_date,,HIGH,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-arie-ben-eliezer-3000,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-arie-ben-eliezer-3000,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-arie-ben-eliezer-3000,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-arie-ben-eliezer-3000,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-arie-ben-eliezer-3000,parking,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-arie-ben-eliezer-3000,storage,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-arie-ben-eliezer-3000,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-arie-ben-eliezer-3000,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-arie-ben-eliezer-3000,observed_date,,HIGH,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-kadesh12-penthouse227-2799,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-kadesh12-penthouse227-2799,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-kadesh12-penthouse227-2799,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-kadesh12-penthouse227-2799,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-kadesh12-penthouse227-2799,parking,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-kadesh12-penthouse227-2799,storage,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-kadesh12-penthouse227-2799,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-kadesh12-penthouse227-2799,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-kadesh12-penthouse227-2799,observed_date,,HIGH,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-kadesh12-penthouse227-2690,balcony_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-kadesh12-penthouse227-2690,garden_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-kadesh12-penthouse227-2690,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-kadesh12-penthouse227-2690,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-kadesh12-penthouse227-2690,parking,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-kadesh12-penthouse227-2690,storage,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-kadesh12-penthouse227-2690,mamad,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-kadesh12-penthouse227-2690,orientation,,NORMAL,MISSING_BEFORE_V2
+asking,אשקלון,r1-ash-kadesh12-penthouse227-2690,observed_date,,HIGH,MISSING_BEFORE_V2
+sold_context,תל אביב-יפו,ta-sale-laguardia70-20260209,balcony_area,,NORMAL,MISSING_BEFORE_V2
+sold_context,תל אביב-יפו,ta-sale-laguardia70-20260209,garden_area,,NORMAL,MISSING_BEFORE_V2
+sold_context,תל אביב-יפו,ta-sale-laguardia70-20260209,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+sold_context,תל אביב-יפו,ta-sale-laguardia70-20260209,floor,,NORMAL,MISSING_BEFORE_V2
+sold_context,תל אביב-יפו,ta-sale-laguardia70-20260209,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+sold_context,תל אביב-יפו,ta-sale-yiftach4-20240703,balcony_area,,NORMAL,MISSING_BEFORE_V2
+sold_context,תל אביב-יפו,ta-sale-yiftach4-20240703,garden_area,,NORMAL,MISSING_BEFORE_V2
+sold_context,תל אביב-יפו,ta-sale-yiftach4-20240703,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+sold_context,תל אביב-יפו,ta-sale-yiftach4-20240703,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+sold_context,תל אביב-יפו,ta-sale-yiftach2-202411,balcony_area,,NORMAL,MISSING_BEFORE_V2
+sold_context,תל אביב-יפו,ta-sale-yiftach2-202411,garden_area,,NORMAL,MISSING_BEFORE_V2
+sold_context,תל אביב-יפו,ta-sale-yiftach2-202411,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+sold_context,תל אביב-יפו,ta-sale-yiftach2-202411,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+sold_context,תל אביב-יפו,ta-sale-yiftach2-3r-202411,balcony_area,,NORMAL,MISSING_BEFORE_V2
+sold_context,תל אביב-יפו,ta-sale-yiftach2-3r-202411,garden_area,,NORMAL,MISSING_BEFORE_V2
+sold_context,תל אביב-יפו,ta-sale-yiftach2-3r-202411,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+sold_context,תל אביב-יפו,ta-sale-yiftach2-3r-202411,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+sold_context,נתניה,net-historical-ashdar-penthouse,rooms,,NORMAL,MISSING_BEFORE_V2
+sold_context,נתניה,net-historical-ashdar-penthouse,garden_area,,NORMAL,MISSING_BEFORE_V2
+sold_context,נתניה,net-historical-ashdar-penthouse,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+sold_context,נתניה,net-historical-ashdar-penthouse,deal_date,,NORMAL,MISSING_BEFORE_V2
+sold_context,אשקלון,ash-sale-hagalshan1-garden-20230228,balcony_area,,NORMAL,MISSING_BEFORE_V2
+sold_context,אשקלון,ash-sale-hagalshan1-garden-20230228,garden_area,,NORMAL,MISSING_BEFORE_V2
+sold_context,אשקלון,ash-sale-hagalshan1-garden-20230228,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+sold_context,אשקלון,ash-sale-hagalshan1-garden-20230228,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+sold_context,אשקלון,ash-sale-lachish14-garden-20251201,balcony_area,,NORMAL,MISSING_BEFORE_V2
+sold_context,אשקלון,ash-sale-lachish14-garden-20251201,garden_area,,NORMAL,MISSING_BEFORE_V2
+sold_context,אשקלון,ash-sale-lachish14-garden-20251201,outdoor_area,,NORMAL,MISSING_BEFORE_V2
+sold_context,אשקלון,ash-sale-lachish14-garden-20251201,number_of_levels,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-tidhar-between#1,balcony_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-tidhar-between#1,garden_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-tidhar-between#1,floor,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-tidhar-between#1,floors,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-tidhar-between#1,orientation,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-tidhar-between#1,parking,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-tidhar-between#1,storage,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-tidhar-between#1,mamad,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-tidhar-between#1,observed_date,,HIGH,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-tidhar-between#2,balcony_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-tidhar-between#2,garden_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-tidhar-between#2,floor,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-tidhar-between#2,floors,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-tidhar-between#2,orientation,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-tidhar-between#2,parking,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-tidhar-between#2,storage,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-tidhar-between#2,mamad,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-tidhar-between#2,observed_date,,HIGH,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-galipolis#3,balcony_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-galipolis#3,garden_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-galipolis#3,floor,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-galipolis#3,floors,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-galipolis#3,orientation,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-galipolis#3,parking,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-galipolis#3,storage,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-galipolis#3,mamad,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-galipolis#3,observed_date,,HIGH,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-rayk-east-side#4,internal_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-rayk-east-side#4,balcony_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-rayk-east-side#4,garden_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-rayk-east-side#4,floor,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-rayk-east-side#4,floors,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-rayk-east-side#4,orientation,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-rayk-east-side#4,parking,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-rayk-east-side#4,storage,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-rayk-east-side#4,mamad,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-rayk-east-side#4,observed_date,,HIGH,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-rayk-east-side#5,balcony_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-rayk-east-side#5,garden_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-rayk-east-side#5,floor,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-rayk-east-side#5,floors,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-rayk-east-side#5,orientation,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-rayk-east-side#5,parking,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-rayk-east-side#5,storage,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-rayk-east-side#5,mamad,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-rayk-east-side#5,price_ils,,HIGH,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-rayk-east-side#5,observed_date,,HIGH,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-rayk-east-side#6,balcony_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-rayk-east-side#6,garden_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-rayk-east-side#6,floor,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-rayk-east-side#6,floors,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-rayk-east-side#6,orientation,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-rayk-east-side#6,parking,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-rayk-east-side#6,storage,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-rayk-east-side#6,mamad,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-rayk-east-side#6,observed_date,,HIGH,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-family-groove#7,balcony_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-family-groove#7,garden_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-family-groove#7,floor,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-family-groove#7,floors,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-family-groove#7,orientation,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-family-groove#7,parking,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-family-groove#7,storage,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,תל אביב-יפו,ta-family-groove#7,mamad,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-bereshit-family#8,internal_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-bereshit-family#8,balcony_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-bereshit-family#8,garden_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-bereshit-family#8,floors,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-bereshit-family#8,orientation,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-bereshit-family#8,parking,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-bereshit-family#8,storage,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-bereshit-family#8,mamad,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-bereshit-family#9,internal_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-bereshit-family#9,balcony_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-bereshit-family#9,garden_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-bereshit-family#9,floors,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-bereshit-family#9,orientation,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-bereshit-family#9,parking,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-bereshit-family#9,storage,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-bereshit-family#9,mamad,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-bereshit-family#9,observed_date,,HIGH,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-ashdar-country#10,rooms,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-ashdar-country#10,garden_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-ashdar-country#10,floor,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-ashdar-country#10,floors,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-ashdar-country#10,orientation,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-ashdar-country#10,parking,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-ashdar-country#10,storage,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-ashdar-country#10,mamad,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-ashdar-country#10,observed_date,,HIGH,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-gabay-park#11,balcony_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-gabay-park#11,garden_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-gabay-park#11,floor,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-gabay-park#11,floors,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-gabay-park#11,orientation,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-gabay-park#11,parking,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-gabay-park#11,storage,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-gabay-park#11,mamad,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-gabay-park#11,price_ils,,HIGH,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-gabay-park#11,observed_date,,HIGH,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-the-strip#12,balcony_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-the-strip#12,garden_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-the-strip#12,floors,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-the-strip#12,orientation,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-the-strip#12,parking,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-the-strip#12,storage,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,נתניה,net-the-strip#12,mamad,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-peretz-wine#13,rooms,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-peretz-wine#13,internal_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-peretz-wine#13,balcony_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-peretz-wine#13,garden_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-peretz-wine#13,floors,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-peretz-wine#13,orientation,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-peretz-wine#13,parking,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-peretz-wine#13,storage,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-peretz-wine#13,mamad,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-jade#14,balcony_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-jade#14,garden_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-jade#14,floor,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-jade#14,floors,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-jade#14,orientation,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-jade#14,parking,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-jade#14,storage,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-jade#14,mamad,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-jade#15,balcony_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-jade#15,garden_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-jade#15,floor,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-jade#15,floors,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-jade#15,orientation,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-jade#15,parking,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-jade#15,storage,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-jade#15,mamad,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-jade#16,balcony_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-jade#16,garden_area_sqm,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-jade#16,floor,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-jade#16,floors,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-jade#16,orientation,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-jade#16,parking,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-jade#16,storage,,NORMAL,MISSING_BEFORE_V2
+competitor_variant,אשקלון,ash-jade#16,mamad,,NORMAL,MISSING_BEFORE_V2

@@ -1,0 +1,129 @@
+﻿record_type,scope,field,before_known,total,before_pct,after_known,after_pct,delta_known,remaining_unknown
+comparable,ALL,internal_area_sqm,13,13,100.0,13,100.0,0,0
+comparable,ALL,balcony_area_sqm,4,13,30.8,5,38.5,1,8
+comparable,ALL,garden_area_sqm,1,13,7.7,1,7.7,0,12
+comparable,ALL,total_outdoor_area_sqm,5,13,38.5,6,46.2,1,7
+comparable,ALL,floor,12,13,92.3,12,92.3,0,1
+comparable,ALL,number_of_levels,1,13,7.7,1,7.7,0,12
+comparable,ALL,parking_present,5,13,38.5,7,53.8,2,6
+comparable,ALL,parking_count,2,13,15.4,2,15.4,0,11
+comparable,ALL,storage_present,3,13,23.1,4,30.8,1,9
+comparable,ALL,storage_area_sqm,0,13,0.0,1,7.7,1,12
+comparable,ALL,mamad,4,13,30.8,6,46.2,2,7
+comparable,ALL,orientation_count,0,13,0.0,2,15.4,2,11
+comparable,ALL,orientation_directions,1,13,7.7,0,0.0,-1,13
+comparable,ALL,price_ils,12,13,92.3,12,92.3,0,1
+comparable,ALL,observed_date,12,13,92.3,10,76.9,-2,3
+comparable,ALL,listing_model_id,13,13,100.0,13,100.0,0,0
+comparable,ALL,direct_url,13,13,100.0,13,100.0,0,0
+comparable,תל אביב-יפו,internal_area_sqm,4,4,100.0,4,100.0,0,0
+comparable,תל אביב-יפו,balcony_area_sqm,2,4,50.0,2,50.0,0,2
+comparable,תל אביב-יפו,garden_area_sqm,1,4,25.0,1,25.0,0,3
+comparable,תל אביב-יפו,total_outdoor_area_sqm,3,4,75.0,3,75.0,0,1
+comparable,תל אביב-יפו,floor,4,4,100.0,4,100.0,0,0
+comparable,תל אביב-יפו,number_of_levels,0,4,0.0,0,0.0,0,4
+comparable,תל אביב-יפו,parking_present,3,4,75.0,3,75.0,0,1
+comparable,תל אביב-יפו,parking_count,0,4,0.0,0,0.0,0,4
+comparable,תל אביב-יפו,storage_present,1,4,25.0,1,25.0,0,3
+comparable,תל אביב-יפו,storage_area_sqm,0,4,0.0,1,25.0,1,3
+comparable,תל אביב-יפו,mamad,2,4,50.0,3,75.0,1,1
+comparable,תל אביב-יפו,orientation_count,0,4,0.0,1,25.0,1,3
+comparable,תל אביב-יפו,orientation_directions,1,4,25.0,0,0.0,-1,4
+comparable,תל אביב-יפו,price_ils,4,4,100.0,4,100.0,0,0
+comparable,תל אביב-יפו,observed_date,4,4,100.0,2,50.0,-2,2
+comparable,תל אביב-יפו,listing_model_id,4,4,100.0,4,100.0,0,0
+comparable,תל אביב-יפו,direct_url,4,4,100.0,4,100.0,0,0
+comparable,נתניה,internal_area_sqm,5,5,100.0,5,100.0,0,0
+comparable,נתניה,balcony_area_sqm,0,5,0.0,1,20.0,1,4
+comparable,נתניה,garden_area_sqm,0,5,0.0,0,0.0,0,5
+comparable,נתניה,total_outdoor_area_sqm,0,5,0.0,1,20.0,1,4
+comparable,נתניה,floor,4,5,80.0,4,80.0,0,1
+comparable,נתניה,number_of_levels,0,5,0.0,0,0.0,0,5
+comparable,נתניה,parking_present,0,5,0.0,1,20.0,1,4
+comparable,נתניה,parking_count,0,5,0.0,0,0.0,0,5
+comparable,נתניה,storage_present,0,5,0.0,1,20.0,1,4
+comparable,נתניה,storage_area_sqm,0,5,0.0,0,0.0,0,5
+comparable,נתניה,mamad,0,5,0.0,1,20.0,1,4
+comparable,נתניה,orientation_count,0,5,0.0,0,0.0,0,5
+comparable,נתניה,orientation_directions,0,5,0.0,0,0.0,0,5
+comparable,נתניה,price_ils,4,5,80.0,4,80.0,0,1
+comparable,נתניה,observed_date,4,5,80.0,4,80.0,0,1
+comparable,נתניה,listing_model_id,5,5,100.0,5,100.0,0,0
+comparable,נתניה,direct_url,5,5,100.0,5,100.0,0,0
+comparable,אשקלון,internal_area_sqm,4,4,100.0,4,100.0,0,0
+comparable,אשקלון,balcony_area_sqm,2,4,50.0,2,50.0,0,2
+comparable,אשקלון,garden_area_sqm,0,4,0.0,0,0.0,0,4
+comparable,אשקלון,total_outdoor_area_sqm,2,4,50.0,2,50.0,0,2
+comparable,אשקלון,floor,4,4,100.0,4,100.0,0,0
+comparable,אשקלון,number_of_levels,1,4,25.0,1,25.0,0,3
+comparable,אשקלון,parking_present,2,4,50.0,3,75.0,1,1
+comparable,אשקלון,parking_count,2,4,50.0,2,50.0,0,2
+comparable,אשקלון,storage_present,2,4,50.0,2,50.0,0,2
+comparable,אשקלון,storage_area_sqm,0,4,0.0,0,0.0,0,4
+comparable,אשקלון,mamad,2,4,50.0,2,50.0,0,2
+comparable,אשקלון,orientation_count,0,4,0.0,1,25.0,1,3
+comparable,אשקלון,orientation_directions,0,4,0.0,0,0.0,0,4
+comparable,אשקלון,price_ils,4,4,100.0,4,100.0,0,0
+comparable,אשקלון,observed_date,4,4,100.0,4,100.0,0,0
+comparable,אשקלון,listing_model_id,4,4,100.0,4,100.0,0,0
+comparable,אשקלון,direct_url,4,4,100.0,4,100.0,0,0
+project,ALL,contractor_company,2,9,22.2,3,33.3,1,6
+project,ALL,financing_bank,0,9,0.0,0,0.0,0,9
+project,ALL,estimated_delivery,1,9,11.1,1,11.1,0,8
+project,ALL,number_of_buildings,7,9,77.8,8,88.9,1,1
+project,ALL,number_of_floors,4,9,44.4,6,66.7,2,3
+project,ALL,number_of_units,5,9,55.6,8,88.9,3,1
+project,ALL,room_range,9,9,100.0,9,100.0,0,0
+project,ALL,area_range_sqm,9,9,100.0,9,100.0,0,0
+project,ALL,parking,4,9,44.4,4,44.4,0,5
+project,ALL,storage,1,9,11.1,1,11.1,0,8
+project,ALL,mamad,2,9,22.2,6,66.7,4,3
+project,ALL,payment_terms,9,9,100.0,9,100.0,0,0
+project,ALL,known_unit_variants,9,9,100.0,9,100.0,0,0
+project,ALL,architect,4,9,44.4,8,88.9,4,1
+project,ALL,address,7,9,77.8,8,88.9,1,1
+project,תל אביב-יפו,contractor_company,1,3,33.3,2,66.7,1,1
+project,תל אביב-יפו,financing_bank,0,3,0.0,0,0.0,0,3
+project,תל אביב-יפו,estimated_delivery,1,3,33.3,1,33.3,0,2
+project,תל אביב-יפו,number_of_buildings,2,3,66.7,3,100.0,1,0
+project,תל אביב-יפו,number_of_floors,1,3,33.3,3,100.0,2,0
+project,תל אביב-יפו,number_of_units,1,3,33.3,3,100.0,2,0
+project,תל אביב-יפו,room_range,3,3,100.0,3,100.0,0,0
+project,תל אביב-יפו,area_range_sqm,3,3,100.0,3,100.0,0,0
+project,תל אביב-יפו,parking,1,3,33.3,1,33.3,0,2
+project,תל אביב-יפו,storage,0,3,0.0,0,0.0,0,3
+project,תל אביב-יפו,mamad,0,3,0.0,2,66.7,2,1
+project,תל אביב-יפו,payment_terms,3,3,100.0,3,100.0,0,0
+project,תל אביב-יפו,known_unit_variants,3,3,100.0,3,100.0,0,0
+project,תל אביב-יפו,architect,1,3,33.3,3,100.0,2,0
+project,תל אביב-יפו,address,2,3,66.7,2,66.7,0,1
+project,נתניה,contractor_company,0,3,0.0,0,0.0,0,3
+project,נתניה,financing_bank,0,3,0.0,0,0.0,0,3
+project,נתניה,estimated_delivery,0,3,0.0,0,0.0,0,3
+project,נתניה,number_of_buildings,3,3,100.0,3,100.0,0,0
+project,נתניה,number_of_floors,3,3,100.0,3,100.0,0,0
+project,נתניה,number_of_units,3,3,100.0,3,100.0,0,0
+project,נתניה,room_range,3,3,100.0,3,100.0,0,0
+project,נתניה,area_range_sqm,3,3,100.0,3,100.0,0,0
+project,נתניה,parking,3,3,100.0,3,100.0,0,0
+project,נתניה,storage,1,3,33.3,1,33.3,0,2
+project,נתניה,mamad,2,3,66.7,3,100.0,1,0
+project,נתניה,payment_terms,3,3,100.0,3,100.0,0,0
+project,נתניה,known_unit_variants,3,3,100.0,3,100.0,0,0
+project,נתניה,architect,2,3,66.7,3,100.0,1,0
+project,נתניה,address,2,3,66.7,3,100.0,1,0
+project,אשקלון,contractor_company,1,3,33.3,1,33.3,0,2
+project,אשקלון,financing_bank,0,3,0.0,0,0.0,0,3
+project,אשקלון,estimated_delivery,0,3,0.0,0,0.0,0,3
+project,אשקלון,number_of_buildings,2,3,66.7,2,66.7,0,1
+project,אשקלון,number_of_floors,0,3,0.0,0,0.0,0,3
+project,אשקלון,number_of_units,1,3,33.3,2,66.7,1,1
+project,אשקלון,room_range,3,3,100.0,3,100.0,0,0
+project,אשקלון,area_range_sqm,3,3,100.0,3,100.0,0,0
+project,אשקלון,parking,0,3,0.0,0,0.0,0,3
+project,אשקלון,storage,0,3,0.0,0,0.0,0,3
+project,אשקלון,mamad,0,3,0.0,1,33.3,1,2
+project,אשקלון,payment_terms,3,3,100.0,3,100.0,0,0
+project,אשקלון,known_unit_variants,3,3,100.0,3,100.0,0,0
+project,אשקלון,architect,1,3,33.3,2,66.7,1,1
+project,אשקלון,address,3,3,100.0,3,100.0,0,0

@@ -1,7 +1,7 @@
 "use client";
 
 import { PetahTikvaWorkspace } from "@/lib/api";
-import { deriveCompetitorMatrix } from "@/lib/executiveVisuals";
+import { deriveCompetitorMatrix, deriveDefaultMatrixCompetitors } from "@/lib/executiveVisuals";
 import { PROJECT_PHASE_LABELS, ProjectPhase } from "@/lib/marketingStrategy";
 
 interface Props {
@@ -22,7 +22,14 @@ interface Props {
  * any field this workspace doesn't have shows "לא פורסם" rather than being
  * filled in. Family selection is controlled by the parent section. */
 export default function CompetitorComparisonMatrix({ workspace, projectPhase, family, rowKeys, title }: Props) {
-  const matrix = deriveCompetitorMatrix(workspace, family, PROJECT_PHASE_LABELS[projectPhase]);
+  // Petah Tikva keeps its own curated 3-competitor selection untouched; the
+  // three multi-city contexts have no such curation, so their real
+  // competitor_landscape projects are used instead (see
+  // deriveDefaultMatrixCompetitors) -- never Petah Tikva's names, which
+  // would simply never match and render every cell as "לא פורסם".
+  const isPetahTikva = !workspace.market_context || workspace.market_context.slug === "petah_tikva";
+  const competitorOverride = isPetahTikva ? undefined : deriveDefaultMatrixCompetitors(workspace, family);
+  const matrix = deriveCompetitorMatrix(workspace, family, PROJECT_PHASE_LABELS[projectPhase], competitorOverride);
   const rows = rowKeys ? matrix.rows.filter((r) => rowKeys.includes(r.key)) : matrix.rows;
   if (rows.length === 0) return null;
 

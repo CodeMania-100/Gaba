@@ -1,0 +1,860 @@
+{
+  "research_as_of": "2026-09-11",
+  "city": "אשקלון",
+  "neighborhood": "ברנע",
+  "geographic_scope": {
+    "tier_1": "ברנע exact label",
+    "tier_2": "Barnea-family subdivisions: גני ברנע and מצפה ברנע",
+    "tier_3": "broader Ashkelon context, competitor/reference only unless explicitly required"
+  },
+  "location_broadening_used": {
+    "3R": "yes — Tier 2 Barnea-family subdivisions used because strict ברנע exact-label 3R evidence is sparse",
+    "5R": "yes — Tier 2 Barnea-family subdivisions used for a stable comparable set"
+  },
+  "engine_identity": {
+    "repository": "CodeMania-100/Gaba",
+    "branch": "demo-online-v1",
+    "commit": "17b12526a139c30941aacffb4ce871de21a38fa7",
+    "path": "gabay_pricing_core/pricing_core/market_range.py",
+    "git_blob_sha": "97b55065dc533369f93c5731cf58bcda240d1d7a"
+  },
+  "families": {
+    "3R": {
+      "target_internal_area": 69.0,
+      "target_area_band": [
+        58.65,
+        79.35
+      ],
+      "target_balcony_area": 12.0,
+      "status": "consensus",
+      "confidence": "medium",
+      "supported_range": {
+        "lower": 1271000.0,
+        "upper": 1339000.0,
+        "support_lanes": [
+          "current_asking",
+          "sold"
+        ]
+      },
+      "market_indication_point_ils": 1305000.0,
+      "lanes": {
+        "completed_sales": {
+          "lane": "sold",
+          "confidence": "high",
+          "range": {
+            "lower": 1271000.0,
+            "center": 1286000.0,
+            "upper": 1339000.0
+          },
+          "primary_contributor_count": 3,
+          "primary_contributors": [
+            {
+              "lane": "sold",
+              "group_key": "אצ\"ל 39",
+              "source_ids": [
+                "אצל39-20260803"
+              ],
+              "observed_prices": [
+                1400000.0
+              ],
+              "observed_areas": [
+                76.0
+              ],
+              "representative_observed_price": 1400000.0,
+              "representative_observed_area": 76.0,
+              "representative_price_per_sqm": 18421.05,
+              "area_normalized_indication_ils": 1271000.0,
+              "newest_event_date": "2026-08-03",
+              "neighborhood": "ברנע",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 1271000.0,
+              "geography_tiers": [
+                "tier_2"
+              ]
+            },
+            {
+              "lane": "sold",
+              "group_key": "מונטיפיורי 20",
+              "source_ids": [
+                "מונטיפיורי20-20251125",
+                "מונטיפיורי20-20260527"
+              ],
+              "observed_prices": [
+                1100000.0,
+                1100000.0
+              ],
+              "observed_areas": [
+                59.0,
+                59.0
+              ],
+              "representative_observed_price": 1100000.0,
+              "representative_observed_area": 59.0,
+              "representative_price_per_sqm": 18644.07,
+              "area_normalized_indication_ils": 1286000.0,
+              "newest_event_date": "2026-05-27",
+              "neighborhood": "ברנע",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 1286000.0,
+              "geography_tiers": [
+                "tier_2"
+              ]
+            },
+            {
+              "lane": "sold",
+              "group_key": "מונטיפיורי 18",
+              "source_ids": [
+                "מונטיפיורי18-20251204",
+                "מונטיפיורי18-20260412"
+              ],
+              "observed_prices": [
+                1070000.0,
+                1220000.0
+              ],
+              "observed_areas": [
+                59.0,
+                59.0
+              ],
+              "representative_observed_price": 1145000.0,
+              "representative_observed_area": 59.0,
+              "representative_price_per_sqm": 19406.78,
+              "area_normalized_indication_ils": 1339000.0,
+              "newest_event_date": "2026-04-12",
+              "neighborhood": "ברנע",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 1339000.0,
+              "geography_tiers": [
+                "tier_2"
+              ]
+            }
+          ],
+          "reference_records": [],
+          "warnings": [],
+          "methodology_notes": [
+            "Each building contributes once, using the median observed price-per-sqm within the selected sale window.",
+            "Primary completed-sale lookback is 24 months; fallback is 60 months only when independent-building evidence is insufficient.",
+            "A completed sale must be within 15% of the target internal area to be a primary sold-lane contributor; the recency fallback widens time only, never this size-relevance requirement."
+          ],
+          "can_enter_consensus": true,
+          "candidate_outcomes": [
+            {
+              "source_id": "אצל39-20260803",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "אצ\"ל 39",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            },
+            {
+              "source_id": "מונטיפיורי20-20260527",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "מונטיפיורי 20",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            },
+            {
+              "source_id": "מונטיפיורי20-20251125",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "מונטיפיורי 20",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            },
+            {
+              "source_id": "מונטיפיורי18-20260412",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "מונטיפיורי 18",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            },
+            {
+              "source_id": "מונטיפיורי18-20251204",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "מונטיפיורי 18",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            }
+          ],
+          "accepted_record_count": 5,
+          "descriptive_summary": {
+            "price_ils": {
+              "q1": 1100000.0,
+              "median": 1100000.0,
+              "q3": 1220000.0
+            },
+            "price_per_sqm_ils": {
+              "q1": 18421.05,
+              "median": 18644.07,
+              "q3": 18644.07
+            }
+          }
+        },
+        "current_asking": {
+          "lane": "current_asking",
+          "confidence": "high",
+          "range": {
+            "lower": 1084000.0,
+            "center": 1338000.0,
+            "upper": 1371000.0
+          },
+          "primary_contributor_count": 3,
+          "primary_contributors": [
+            {
+              "lane": "current_asking",
+              "group_key": "שדרות ירושלים 113",
+              "source_ids": [
+                "asking-7e59853cee9908ca"
+              ],
+              "observed_prices": [
+                1550000.0
+              ],
+              "observed_areas": [
+                78.0
+              ],
+              "representative_observed_price": 1550000.0,
+              "representative_observed_area": 78.0,
+              "representative_price_per_sqm": 19871.79,
+              "area_normalized_indication_ils": 1371000.0,
+              "newest_event_date": null,
+              "neighborhood": "ברנע",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 1371000.0,
+              "geography_tiers": [
+                "tier_1"
+              ]
+            },
+            {
+              "lane": "current_asking",
+              "group_key": "מונטיפיורי 20",
+              "source_ids": [
+                "voBnoyndxip"
+              ],
+              "observed_prices": [
+                1260000.0
+              ],
+              "observed_areas": [
+                65.0
+              ],
+              "representative_observed_price": 1260000.0,
+              "representative_observed_area": 65.0,
+              "representative_price_per_sqm": 19384.62,
+              "area_normalized_indication_ils": 1338000.0,
+              "newest_event_date": "2026-09-03",
+              "neighborhood": "ברנע",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 1338000.0,
+              "geography_tiers": [
+                "tier_2"
+              ]
+            },
+            {
+              "lane": "current_asking",
+              "group_key": "מונטיפיורי 18",
+              "source_ids": [
+                "CqokJD8JOmq"
+              ],
+              "observed_prices": [
+                1100000.0
+              ],
+              "observed_areas": [
+                70.0
+              ],
+              "representative_observed_price": 1100000.0,
+              "representative_observed_area": 70.0,
+              "representative_price_per_sqm": 15714.29,
+              "area_normalized_indication_ils": 1084000.0,
+              "newest_event_date": "2026-09-04",
+              "neighborhood": "ברנע",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 1084000.0,
+              "geography_tiers": [
+                "tier_2"
+              ]
+            }
+          ],
+          "reference_records": [],
+          "warnings": [],
+          "methodology_notes": [
+            "Current asking evidence uses exact normalized neighborhood matches when available."
+          ],
+          "can_enter_consensus": true,
+          "candidate_outcomes": [],
+          "accepted_record_count": 3,
+          "descriptive_summary": {
+            "price_ils": {
+              "q1": 1180000.0,
+              "median": 1260000.0,
+              "q3": 1405000.0
+            },
+            "price_per_sqm_ils": {
+              "q1": 17549.45,
+              "median": 19384.62,
+              "q3": 19628.21
+            }
+          }
+        },
+        "new_development": {
+          "lane": "new_development",
+          "confidence": "insufficient",
+          "range": {
+            "lower": null,
+            "center": null,
+            "upper": null
+          },
+          "primary_contributor_count": 0,
+          "primary_contributors": [],
+          "reference_records": [],
+          "warnings": [],
+          "methodology_notes": [
+            "Only explicitly priced unit offers are used.",
+            "Exact-neighborhood offers with known unit area can create target-equivalent indications.",
+            "Offers with missing area or from other neighborhoods remain visible as reference evidence and do not create a normalized range contribution."
+          ],
+          "can_enter_consensus": false,
+          "candidate_outcomes": [],
+          "accepted_record_count": 0,
+          "descriptive_summary": {
+            "price_ils": {
+              "q1": null,
+              "median": null,
+              "q3": null
+            },
+            "price_per_sqm_ils": {
+              "q1": null,
+              "median": null,
+              "q3": null
+            }
+          }
+        }
+      },
+      "warnings": [
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "methodology": {
+        "version": "market-range-v2-program-regime",
+        "sold_primary_lookback_months": 24,
+        "sold_fallback_lookback_months": 60,
+        "min_independent_sold_buildings": 2,
+        "min_independent_contributors_for_medium": 2,
+        "min_independent_contributors_for_high": 3,
+        "sold_primary_area_tolerance_pct": 0.15
+      },
+      "engine_regression_status": "exact_match",
+      "hardening_note": "Final deepening added a 70 m² Tier-2 Barnea-family asking record at מונטיפיורי 18. The former extremely_narrow_boundary_overlap no longer remains because the final evidence widened the asking lane naturally; no averaging or artificial widening was applied."
+    },
+    "5R": {
+      "target_internal_area": 111.1,
+      "target_area_band": [
+        94.435,
+        127.765
+      ],
+      "target_balcony_area": 12.0,
+      "status": "consensus",
+      "confidence": "medium",
+      "supported_range": {
+        "lower": 1631000.0,
+        "upper": 1805000.0,
+        "support_lanes": [
+          "current_asking",
+          "sold"
+        ]
+      },
+      "market_indication_point_ils": 1718000.0,
+      "lanes": {
+        "completed_sales": {
+          "lane": "sold",
+          "confidence": "high",
+          "range": {
+            "lower": 1543000.0,
+            "center": 1724000.0,
+            "upper": 2844000.0
+          },
+          "primary_contributor_count": 6,
+          "primary_contributors": [
+            {
+              "lane": "sold",
+              "group_key": "קדש 25",
+              "source_ids": [
+                "sold-a7b421f6b4d4d827"
+              ],
+              "observed_prices": [
+                3200000.0
+              ],
+              "observed_areas": [
+                125.0
+              ],
+              "representative_observed_price": 3200000.0,
+              "representative_observed_area": 125.0,
+              "representative_price_per_sqm": 25600.0,
+              "area_normalized_indication_ils": 2844000.0,
+              "newest_event_date": "2026-07-09",
+              "neighborhood": "ברנע",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 2844000.0,
+              "geography_tiers": [
+                "tier_2"
+              ]
+            },
+            {
+              "lane": "sold",
+              "group_key": "בלפור 37",
+              "source_ids": [
+                "sold-edeab84fe3d13401"
+              ],
+              "observed_prices": [
+                1750000.0
+              ],
+              "observed_areas": [
+                126.0
+              ],
+              "representative_observed_price": 1750000.0,
+              "representative_observed_area": 126.0,
+              "representative_price_per_sqm": 13888.89,
+              "area_normalized_indication_ils": 1543000.0,
+              "newest_event_date": "2026-07-06",
+              "neighborhood": "ברנע",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 1543000.0,
+              "geography_tiers": [
+                "tier_2"
+              ]
+            },
+            {
+              "lane": "sold",
+              "group_key": "יעקב מרידור 11",
+              "source_ids": [
+                "sold-bc747a7778b00be8"
+              ],
+              "observed_prices": [
+                2000000.0
+              ],
+              "observed_areas": [
+                125.0
+              ],
+              "representative_observed_price": 2000000.0,
+              "representative_observed_area": 125.0,
+              "representative_price_per_sqm": 16000.0,
+              "area_normalized_indication_ils": 1778000.0,
+              "newest_event_date": "2026-06-28",
+              "neighborhood": "ברנע",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 1778000.0,
+              "geography_tiers": [
+                "tier_2"
+              ]
+            },
+            {
+              "lane": "sold",
+              "group_key": "מונטיפיורי 17",
+              "source_ids": [
+                "sold-e3c2ad393b617a3e"
+              ],
+              "observed_prices": [
+                2200000.0
+              ],
+              "observed_areas": [
+                124.0
+              ],
+              "representative_observed_price": 2200000.0,
+              "representative_observed_area": 124.0,
+              "representative_price_per_sqm": 17741.94,
+              "area_normalized_indication_ils": 1971000.0,
+              "newest_event_date": "2026-05-12",
+              "neighborhood": "ברנע",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 1971000.0,
+              "geography_tiers": [
+                "tier_2"
+              ]
+            },
+            {
+              "lane": "sold",
+              "group_key": "אצ\"ל 47",
+              "source_ids": [
+                "sold-0b2d1e6ce7a983cd"
+              ],
+              "observed_prices": [
+                1625000.0
+              ],
+              "observed_areas": [
+                109.0
+              ],
+              "representative_observed_price": 1625000.0,
+              "representative_observed_area": 109.0,
+              "representative_price_per_sqm": 14908.26,
+              "area_normalized_indication_ils": 1656000.0,
+              "newest_event_date": "2026-04-26",
+              "neighborhood": "ברנע",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 1656000.0,
+              "geography_tiers": [
+                "tier_2"
+              ]
+            },
+            {
+              "lane": "sold",
+              "group_key": "הציונות 67",
+              "source_ids": [
+                "sold-24aecd686442236d",
+                "sold-ef7deacaa28b9281"
+              ],
+              "observed_prices": [
+                1640000.0,
+                1850000.0
+              ],
+              "observed_areas": [
+                113.0,
+                119.0
+              ],
+              "representative_observed_price": 1745000.0,
+              "representative_observed_area": 116.0,
+              "representative_price_per_sqm": 15029.75,
+              "area_normalized_indication_ils": 1670000.0,
+              "newest_event_date": "2026-03-15",
+              "neighborhood": "ברנע",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 1670000.0,
+              "geography_tiers": [
+                "tier_2"
+              ]
+            }
+          ],
+          "reference_records": [],
+          "warnings": [],
+          "methodology_notes": [
+            "Each building contributes once, using the median observed price-per-sqm within the selected sale window.",
+            "Primary completed-sale lookback is 24 months; fallback is 60 months only when independent-building evidence is insufficient.",
+            "A completed sale must be within 15% of the target internal area to be a primary sold-lane contributor; the recency fallback widens time only, never this size-relevance requirement."
+          ],
+          "can_enter_consensus": true,
+          "candidate_outcomes": [
+            {
+              "source_id": "sold-a7b421f6b4d4d827",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "קדש 25",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            },
+            {
+              "source_id": "sold-edeab84fe3d13401",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "בלפור 37",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            },
+            {
+              "source_id": "sold-24aecd686442236d",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "הציונות 67",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            },
+            {
+              "source_id": "sold-ef7deacaa28b9281",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "הציונות 67",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            },
+            {
+              "source_id": "sold-bc747a7778b00be8",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "יעקב מרידור 11",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            },
+            {
+              "source_id": "sold-e3c2ad393b617a3e",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "מונטיפיורי 17",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            },
+            {
+              "source_id": "sold-0b2d1e6ce7a983cd",
+              "primary_sold_contributor": true,
+              "exclusion_reasons": [],
+              "group_key": "אצ\"ל 47",
+              "group_basis": "address",
+              "building_identity_verified": true,
+              "location_identity_verified": true
+            }
+          ],
+          "accepted_record_count": 7,
+          "descriptive_summary": {
+            "price_ils": {
+              "q1": 1695000.0,
+              "median": 1850000.0,
+              "q3": 2100000.0
+            },
+            "price_per_sqm_ils": {
+              "q1": 14710.77,
+              "median": 15546.22,
+              "q3": 16870.97
+            }
+          }
+        },
+        "current_asking": {
+          "lane": "current_asking",
+          "confidence": "medium",
+          "range": {
+            "lower": 1631000.0,
+            "center": 1737000.0,
+            "upper": 1805000.0
+          },
+          "primary_contributor_count": 4,
+          "primary_contributors": [
+            {
+              "lane": "current_asking",
+              "group_key": "יעקב מרידור",
+              "source_ids": [
+                "q46o5v4f"
+              ],
+              "observed_prices": [
+                1878000.0
+              ],
+              "observed_areas": [
+                123.0
+              ],
+              "representative_observed_price": 1878000.0,
+              "representative_observed_area": 123.0,
+              "representative_price_per_sqm": 15268.29,
+              "area_normalized_indication_ils": 1696000.0,
+              "newest_event_date": "2026-09-04",
+              "neighborhood": "ברנע",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 1696000.0,
+              "geography_tiers": [
+                "tier_1"
+              ]
+            },
+            {
+              "lane": "current_asking",
+              "group_key": "יעקב מרידור 8",
+              "source_ids": [
+                "5Qw3ywI0vdC"
+              ],
+              "observed_prices": [
+                1950000.0
+              ],
+              "observed_areas": [
+                120.0
+              ],
+              "representative_observed_price": 1950000.0,
+              "representative_observed_area": 120.0,
+              "representative_price_per_sqm": 16250.0,
+              "area_normalized_indication_ils": 1805000.0,
+              "newest_event_date": "2026-06-16",
+              "neighborhood": "ברנע",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 1805000.0,
+              "geography_tiers": [
+                "tier_2"
+              ]
+            },
+            {
+              "lane": "current_asking",
+              "group_key": "הציונות 74",
+              "source_ids": [
+                "Wq2auyIvNCb"
+              ],
+              "observed_prices": [
+                1850000.0
+              ],
+              "observed_areas": [
+                126.0
+              ],
+              "representative_observed_price": 1850000.0,
+              "representative_observed_area": 126.0,
+              "representative_price_per_sqm": 14682.54,
+              "area_normalized_indication_ils": 1631000.0,
+              "newest_event_date": "2026-09-01",
+              "neighborhood": "ברנע",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 1631000.0,
+              "geography_tiers": [
+                "tier_2"
+              ]
+            },
+            {
+              "lane": "current_asking",
+              "group_key": "דרך היין 9",
+              "source_ids": [
+                "asking-eafe653df7ed9bbf"
+              ],
+              "observed_prices": [
+                1999999.0
+              ],
+              "observed_areas": [
+                125.0
+              ],
+              "representative_observed_price": 1999999.0,
+              "representative_observed_area": 125.0,
+              "representative_price_per_sqm": 15999.99,
+              "area_normalized_indication_ils": 1778000.0,
+              "newest_event_date": null,
+              "neighborhood": "ברנע",
+              "distance_m": null,
+              "reasons": [
+                "independent_group_contribution",
+                "area_normalized_using_observed_price_per_sqm"
+              ],
+              "target_equivalent_indication": 1778000.0,
+              "geography_tiers": [
+                "tier_1"
+              ]
+            }
+          ],
+          "reference_records": [],
+          "warnings": [
+            "target_area_outside_observed_area_envelope"
+          ],
+          "methodology_notes": [
+            "Current asking evidence uses exact normalized neighborhood matches when available."
+          ],
+          "can_enter_consensus": true,
+          "candidate_outcomes": [],
+          "accepted_record_count": 4,
+          "descriptive_summary": {
+            "price_ils": {
+              "q1": 1871000.0,
+              "median": 1914000.0,
+              "q3": 1962499.75
+            },
+            "price_per_sqm_ils": {
+              "q1": 15121.85,
+              "median": 15634.14,
+              "q3": 16062.49
+            }
+          }
+        },
+        "new_development": {
+          "lane": "new_development",
+          "confidence": "insufficient",
+          "range": {
+            "lower": null,
+            "center": null,
+            "upper": null
+          },
+          "primary_contributor_count": 0,
+          "primary_contributors": [],
+          "reference_records": [],
+          "warnings": [],
+          "methodology_notes": [
+            "Only explicitly priced unit offers are used.",
+            "Exact-neighborhood offers with known unit area can create target-equivalent indications.",
+            "Offers with missing area or from other neighborhoods remain visible as reference evidence and do not create a normalized range contribution."
+          ],
+          "can_enter_consensus": false,
+          "candidate_outcomes": [],
+          "accepted_record_count": 0,
+          "descriptive_summary": {
+            "price_ils": {
+              "q1": null,
+              "median": null,
+              "q3": null
+            },
+            "price_per_sqm_ils": {
+              "q1": null,
+              "median": null,
+              "q3": null
+            }
+          }
+        }
+      },
+      "warnings": [
+        "target_is_smaller_or_larger_than_observed_primary_comparable_areas",
+        "target_balcony_present_without_verified_monetary_adjustment"
+      ],
+      "methodology": {
+        "version": "market-range-v2-program-regime",
+        "sold_primary_lookback_months": 24,
+        "sold_fallback_lookback_months": 60,
+        "min_independent_sold_buildings": 2,
+        "min_independent_contributors_for_medium": 2,
+        "min_independent_contributors_for_high": 3,
+        "sold_primary_area_tolerance_pct": 0.15
+      },
+      "engine_regression_status": "exact_match"
+    }
+  }
+}

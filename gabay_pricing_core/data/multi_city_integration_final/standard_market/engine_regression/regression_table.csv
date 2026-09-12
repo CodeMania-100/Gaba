@@ -1,0 +1,7 @@
+city,submarket,family,research_status,engine_status,research_confidence,engine_confidence,research_lower_ils,engine_lower_ils,research_upper_ils,engine_upper_ils,research_support_lanes,engine_support_lanes,research_market_point_ils,engine_derived_market_point_ils,exact_match
+תל אביב-יפו,יד אליהו,3R,consensus,consensus,medium,medium,2560000.0,2560000.0,2748000.0,2748000.0,current_asking;sold,current_asking;sold,2654000.0,2654000.0,True
+תל אביב-יפו,יד אליהו,5R,consensus,consensus,medium,medium,3921000.0,3921000.0,3988000.0,3988000.0,current_asking;sold,current_asking;sold,3954000.0,3954000.0,True
+נתניה,קריית השרון,3R,consensus,consensus,medium,medium,1958000.0,1958000.0,2162000.0,2162000.0,current_asking;sold,current_asking;sold,2060000.0,2060000.0,True
+נתניה,קריית השרון,5R,consensus,consensus,medium,medium,2490000.0,2490000.0,2683000.0,2683000.0,current_asking;sold,current_asking;sold,2586000.0,2586000.0,True
+אשקלון,ברנע,3R,consensus,consensus,medium,medium,1271000.0,1271000.0,1339000.0,1339000.0,current_asking;sold,current_asking;sold,1305000.0,1305000.0,True
+אשקלון,ברנע,5R,consensus,consensus,medium,medium,1631000.0,1631000.0,1805000.0,1805000.0,current_asking;sold,current_asking;sold,1718000.0,1718000.0,True

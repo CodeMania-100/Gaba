@@ -32,6 +32,12 @@ const PRODUCT_TYPE_LABELS: Record<string, string> = {
   penthouse: "פנטהאוז",
   penthouse_roof: "פנטהאוז גג",
   roof_duplex: "דופלקס גג",
+  // The multi-city register's own product_types vocabulary (see
+  // special_full_v2/competitor_projects_v2.json) -- additive only.
+  standard_apartments: "דירות רגילות",
+  garden: "דירות גן",
+  garden_duplex: "דופלקס גן",
+  large_apartment: "יחידות גדולות",
 };
 
 export function productTypesLabel(project: CompetitorRegisterProject): string | null {

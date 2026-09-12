@@ -1,0 +1,240 @@
+{
+  "generated_at": "2026-09-11",
+  "frozen_at": "2026-09-11T18:20:22.845648+00:00",
+  "dataset_status": "FROZEN_AFTER_SEMANTIC_RECONCILIATION",
+  "dataset_version": "multi-city-2026-09-11-final-hardening-v1",
+  "engine_identity": {
+    "repository": "CodeMania-100/Gaba",
+    "branch": "demo-online-v1",
+    "commit": "17b12526a139c30941aacffb4ce871de21a38fa7",
+    "path": "gabay_pricing_core/pricing_core/market_range.py",
+    "git_blob_sha": "97b55065dc533369f93c5731cf58bcda240d1d7a"
+  },
+  "engine_methodology_version": "market-range-v2-program-regime",
+  "petah_tikva_reference_only": true,
+  "do_not_overwrite_petah_tikva_application_data": true,
+  "application_integration_write_scope": [
+    "תל אביב-יפו/יד אליהו",
+    "נתניה/קריית השרון",
+    "אשקלון/ברנע"
+  ],
+  "no_further_exploratory_city_research_required": true,
+  "all_six_engine_regressions_exact_match": true,
+  "validation": {
+    "all_accepted_evidence_coordinates": true,
+    "all_competitor_coordinates": true,
+    "opaque_primary_provenance_refs": [],
+    "missing_source_titles": [],
+    "petah_in_integration_comparison": false
+  },
+  "files": [
+    {
+      "path": "FINAL_HARDENING_REPORT.md",
+      "size_bytes": 4304,
+      "sha256": "bef09e77e9b9df7d92aa5a07255ecbd2d6149eb53fe1a82d8d6c2b855a5500eb"
+    },
+    {
+      "path": "README.md",
+      "size_bytes": 4150,
+      "sha256": "a6da1de8a6a60e1b9846e4f7613586af5ee3013e83ca09efee1d8f95fcdf8e26"
+    },
+    {
+      "path": "ashkelon/competitors.json",
+      "size_bytes": 9829,
+      "sha256": "f72692b3de9b499dec281d59ae62c3552ac7a3bddb2fbf6516db19a6692f2924"
+    },
+    {
+      "path": "ashkelon/completed_sales_3r.csv",
+      "size_bytes": 3319,
+      "sha256": "86ac608337611c4fe6b03d63617cf46a413d0ef7ca08a731b8f4e6894055e0c8"
+    },
+    {
+      "path": "ashkelon/completed_sales_5r.csv",
+      "size_bytes": 3465,
+      "sha256": "6aa100217f5830228622be472ae36dc4f78d5ea978f660e5fcba90a3076dcf1b"
+    },
+    {
+      "path": "ashkelon/current_asking_3r.csv",
+      "size_bytes": 2167,
+      "sha256": "d1690e6cf07489cce8faddcc2b72327d210b58c64ae4e015fa28b8aa2bbf7b61"
+    },
+    {
+      "path": "ashkelon/current_asking_5r.csv",
+      "size_bytes": 3010,
+      "sha256": "0bee01d734784485dc1aacec00eb25e4a7f0f144c97b33d1a72c612d29f7b85b"
+    },
+    {
+      "path": "ashkelon/location.json",
+      "size_bytes": 1748,
+      "sha256": "0ffdf6b84cc28040ee035af7c79fd5fa6b18192cc1cb82698d13d2716ee610d5"
+    },
+    {
+      "path": "ashkelon/market_summary.json",
+      "size_bytes": 30618,
+      "sha256": "3dd791e35ecf07e50d803f0d117e3bf97fdd69f7cf5d0676050fdde7fbde040e"
+    },
+    {
+      "path": "ashkelon/research_notes.md",
+      "size_bytes": 2909,
+      "sha256": "5cd4e7fd71c89de3cead1ad86cb3e519e9067cc39a0ccc52afe1151343652fdd"
+    },
+    {
+      "path": "calculation_audit.json",
+      "size_bytes": 105261,
+      "sha256": "7e49ad0527823bf1ff9cd158dd41e597b12d8ea3bec678738c1592363f36d8df"
+    },
+    {
+      "path": "cross_city_comparison.csv",
+      "size_bytes": 2561,
+      "sha256": "7ba4fa00de3f83b543b9fadf1b312a4aaa106426443bbc6490efef96ee48e5e5"
+    },
+    {
+      "path": "cross_city_comparison.json",
+      "size_bytes": 4805,
+      "sha256": "20d11b9b44cf6fbc021787844ce153297648b036513069a68f1aac859bbcac25"
+    },
+    {
+      "path": "engine_regression/application_engine_outputs.json",
+      "size_bytes": 104341,
+      "sha256": "96477ec5fb1cb163ae93f8a07074d3a158629ce3496e1f14340fe6c406af76d7"
+    },
+    {
+      "path": "engine_regression/engine_identity.json",
+      "size_bytes": 249,
+      "sha256": "4bfec35dedba46f70327fd69b979e2b4d9ae851847bc0d2672e8ab8d31bc618b"
+    },
+    {
+      "path": "engine_regression/execution_note.md",
+      "size_bytes": 1152,
+      "sha256": "537339320188d3d64d40d571ef20f1a3e48eeb8b7a183beaad40337f2b465cff"
+    },
+    {
+      "path": "engine_regression/regression_table.csv",
+      "size_bytes": 1312,
+      "sha256": "f23b2fa4b7abd30fa6ae4f5df3a65999eafc3e295b2d9d9d770fa3353c71e6dc"
+    },
+    {
+      "path": "engine_regression/regression_validation.json",
+      "size_bytes": 4751,
+      "sha256": "1f0f8f590addea31e9dcef7c542bf466c9ae38d92d373271be231230403a72a0"
+    },
+    {
+      "path": "engine_regression/tel_aviv_3r_semantic_correction_rerun.json",
+      "size_bytes": 21329,
+      "sha256": "6c25fe860e985740ff033f5082e2421c69fae8f484b509fe4a42afe8b0fb41e2"
+    },
+    {
+      "path": "hardening_changes.json",
+      "size_bytes": 3986,
+      "sha256": "a4c3379186729b9e4c914142de3eb5444ec2692df9218e62c481329071e781d4"
+    },
+    {
+      "path": "hardening_rejected_candidates.json",
+      "size_bytes": 1378,
+      "sha256": "70b53adcd49a2880f9ba03759a5a26ffb7f30626fe33e34a7dbbc696c1e58267"
+    },
+    {
+      "path": "hardening_validation.json",
+      "size_bytes": 200,
+      "sha256": "45ad9cb5068e414a5a43b3e84159c764491f2880058db61b37d1145f22cc3790"
+    },
+    {
+      "path": "netanya/competitors.json",
+      "size_bytes": 6272,
+      "sha256": "cfe4af6c228b8177006409a061310fc9c011f66adc17fb5b504efc432d304098"
+    },
+    {
+      "path": "netanya/completed_sales_3r.csv",
+      "size_bytes": 2441,
+      "sha256": "92236650e795765a2a95b876a53d7b6d9b5ea9d6713e2b0521bfdcc4c1b7b555"
+    },
+    {
+      "path": "netanya/completed_sales_5r.csv",
+      "size_bytes": 3459,
+      "sha256": "f55b20a2e649c63cdcac4f33c3ffe266e38d062fcd3c876ddb85829949fa65b3"
+    },
+    {
+      "path": "netanya/current_asking_3r.csv",
+      "size_bytes": 2448,
+      "sha256": "70ff44bce4ec9962fa16a14789c3e5b77e9e5a40d1a365db909b00d5b80b638d"
+    },
+    {
+      "path": "netanya/current_asking_5r.csv",
+      "size_bytes": 2240,
+      "sha256": "e5fe02036a3534691aaffaac1293fe3edaaebf8bdcaaa5f2b0b4893db1898248"
+    },
+    {
+      "path": "netanya/location.json",
+      "size_bytes": 1013,
+      "sha256": "dad52a7a5c4a93d4cbae877cf9fdea25d06223ab84be1267646553f2b4abcb52"
+    },
+    {
+      "path": "netanya/market_summary.json",
+      "size_bytes": 31162,
+      "sha256": "af06733ac53de56d054dbec15a9271e1d3d0731466691d51b66e3e67aa04ab93"
+    },
+    {
+      "path": "netanya/research_notes.md",
+      "size_bytes": 2496,
+      "sha256": "0360065e1ccda02df59d48ff817860817d66cd81ffd5297a751c57eadc967421"
+    },
+    {
+      "path": "reference_only/petah_tikva_checkpoint.csv",
+      "size_bytes": 831,
+      "sha256": "548f18981fa5d07bc165c2aff376ed484910141db827c786f8f726650468dc6c"
+    },
+    {
+      "path": "reference_only/petah_tikva_checkpoint.json",
+      "size_bytes": 1530,
+      "sha256": "14843b919c3e228a047756d4743367e37b9f7e896d56bca82d28317374828705"
+    },
+    {
+      "path": "reference_only/pre_hardening_cross_city_output.json",
+      "size_bytes": 4448,
+      "sha256": "64ca368e0ec706d6b86b524c96e625662c5aba217122e43580fbd2d3acc6f3e1"
+    },
+    {
+      "path": "tel_aviv/competitors.json",
+      "size_bytes": 6427,
+      "sha256": "4a7e9a8a60be0e0b982f205f3bc8c2949b03076c965badacc92efff116c1ac09"
+    },
+    {
+      "path": "tel_aviv/completed_sales_3r.csv",
+      "size_bytes": 8895,
+      "sha256": "ec1e4ada641c37b3ebb753eb70b6a28a33f8ee889a9c72dbde0a65daef3f56c9"
+    },
+    {
+      "path": "tel_aviv/completed_sales_5r.csv",
+      "size_bytes": 2941,
+      "sha256": "10cccdf9860d8f583bb23c2b26ffe9d397b79c7905eaa2c1ba18beb9e75bd965"
+    },
+    {
+      "path": "tel_aviv/current_asking_3r.csv",
+      "size_bytes": 2951,
+      "sha256": "0da91fa18f1ddb62a3fb7e7262a72051e463d557681ce5eb7b3dc74a4358685c"
+    },
+    {
+      "path": "tel_aviv/current_asking_5r.csv",
+      "size_bytes": 2092,
+      "sha256": "7e12b4d84fdad75047f26ef581ab00ffa0c5c6d8317614cd9e24cc3cad890a43"
+    },
+    {
+      "path": "tel_aviv/location.json",
+      "size_bytes": 1008,
+      "sha256": "67814d84bbdad8ac55107c631b0d66a29818aa6ec85a69fcbf0ae11251b6a684"
+    },
+    {
+      "path": "tel_aviv/market_summary.json",
+      "size_bytes": 39424,
+      "sha256": "9a400cbc2af28ab297e860be6acdf1933818791a0d93b6b9b62c0cd011d9ee3f"
+    },
+    {
+      "path": "tel_aviv/research_notes.md",
+      "size_bytes": 2978,
+      "sha256": "80a0951a6e71803f7f559eef7a28b3a2d2da0133b48ef7a9363fe926091d13f7"
+    }
+  ],
+  "semantic_reconciliation_date": "2026-09-12",
+  "pricing_methodology_changed": false,
+  "galipolis_starting_price_non_quantitative": true
+}

@@ -147,7 +147,10 @@ export default function MarketGeoMap({ workspace, selection, onSelectionChange }
   const askingAll = useMemo(() => deriveAskingPoints(workspace), [workspace]);
   const soldAll = useMemo(() => deriveSoldPoints(workspace), [workspace]);
   const competitorAll = useMemo(() => deriveCompetitorPoints(workspace), [workspace]);
-  const projectArea = useMemo(() => deriveProjectAreaPoint(askingAll), [askingAll]);
+  const projectAreaLabel = workspace.market_context && !workspace.market_context.slug.includes("petah_tikva")
+    ? (workspace.project.commercial_area || workspace.project.official_neighborhood)
+    : undefined;
+  const projectArea = useMemo(() => deriveProjectAreaPoint(askingAll, projectAreaLabel), [askingAll, projectAreaLabel]);
 
   const askingByFamily = useMemo(() => askingAll.filter((p) => p.family === family), [askingAll, family]);
   const soldByFamily = useMemo(() => soldAll.filter((p) => p.family === family), [soldAll, family]);
@@ -229,16 +232,28 @@ export default function MarketGeoMap({ workspace, selection, onSelectionChange }
     setSelected(null);
   }, [selectionKey]);
 
-  // ---- map init (once) ----
+  // ---- map init (once per mount) ----
+  // Reads the workspace's own per-market-context center/zoom when present
+  // (see workspace.map, populated from that context's location.json),
+  // falling back to Petah Tikva's original hardcoded literal only when
+  // absent -- keeps Petah Tikva's own render byte-identical. This effect
+  // itself still only runs once per mount (empty deps, unchanged); a market-
+  // context switch re-centers correctly because the page gives this
+  // component's subtree a `key={marketContext}`, forcing a full remount
+  // (and therefore a fresh run of this effect) rather than relying on this
+  // effect reacting to a workspace prop change.
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return;
+    const fallbackCenter: [number, number] = [34.887, 32.082];
+    const center = workspace.map?.center ?? fallbackCenter;
+    const zoom = workspace.map?.zoom ?? 13;
     let map: maplibregl.Map;
     try {
       map = new maplibregl.Map({
         container: containerRef.current,
         style: BASEMAP_STYLE,
-        center: [34.887, 32.082],
-        zoom: 13,
+        center,
+        zoom,
         attributionControl: { compact: true },
       });
     } catch {

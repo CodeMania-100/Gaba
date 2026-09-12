@@ -1,0 +1,36 @@
+{
+  "city": "אשקלון",
+  "neighborhood": "ברנע",
+  "selection_reason": "Mature conventional Barnea-area residential market with resale, current listings and nearby development; strict Barnea labeling is fragmented across Barnea, Ganei Barnea and Mitzpe Barnea in public sources.",
+  "center": {
+    "lat": 31.68751,
+    "lng": 34.57109,
+    "precision": "submarket_centroid",
+    "source_title": "Barne’a — OpenStreetMap neighborhood via Mapcarta",
+    "source_url": "https://mapcarta.com/12936800",
+    "retrieved_at": "2026-09-11"
+  },
+  "geography_definition": {
+    "tier_1": "ברנע exact label",
+    "tier_2": "Barnea-family subdivisions: גני ברנע and מצפה ברנע",
+    "tier_3": "broader Ashkelon context, competitor/reference only unless explicitly required"
+  },
+  "broadening_used": {
+    "3R": "yes — Tier 2 Barnea-family subdivisions used because strict ברנע exact-label 3R evidence is sparse",
+    "5R": "yes — Tier 2 Barnea-family subdivisions used for a stable comparable set"
+  },
+  "integration_key": {
+    "city": "אשקלון",
+    "selected_submarket": "ברנע"
+  },
+  "pricing_scope_adapter": {
+    "enabled": true,
+    "canonical_pricing_scope_neighborhood": "ברנע",
+    "applies_to_geography_tiers": [
+      "tier_1",
+      "tier_2"
+    ],
+    "raw_neighborhood_preserved": true,
+    "reason": "The research specification permits documented Tier-2 broadening before changing apartment specifications. The frozen engine accepts an exact normalized neighborhood label for asking/new-development lanes, so accepted Tier-2 Barnea-family records are mapped to the canonical pricing scope only at the engine adapter boundary. This changes no prices, areas, lane logic, or premiums."
+  }
+}

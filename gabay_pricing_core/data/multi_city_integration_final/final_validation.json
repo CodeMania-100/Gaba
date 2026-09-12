@@ -1,0 +1,25 @@
+{
+  "dataset_status": "FROZEN",
+  "validated_at": "2026-09-12",
+  "checks": {
+    "archived rows are not CURRENT_ASKING": true,
+    "STARTING_PRICE is never quantitative": true,
+    "CONTEXT_ONLY is never quantitative": true,
+    "no note contradicts price_type": true,
+    "no note contradicts quantitative_unit_price_area": true,
+    "all corrected standard-engine outputs exactly match rerun results": true,
+    "Yiftach archived observed_date remains null": true,
+    "Yiftach retrieved_at retained": true,
+    "GALIPOLIS excluded from standard quantitative new-development lane": true,
+    "pricing methodology unchanged": true,
+    "other five standard city/family outputs unchanged": true,
+    "V3 is overlay over V2, not replacement": true
+  },
+  "violations": {
+    "archived_current_asking": [],
+    "starting_price_quantitative": [],
+    "context_only_quantitative": [],
+    "note_semantic_conflicts": []
+  },
+  "pass": true
+}

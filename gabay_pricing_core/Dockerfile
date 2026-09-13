@@ -34,6 +34,7 @@ COPY gabay_pricing_core/inventory_source_rows.json ./backend/inventory_source_ro
 # list, competitor register seed, special-unit master data, standard
 # attribute enrichment, and the one-time map-geocoding pass.
 COPY gabay_pricing_core/data/frozen ./backend/data/frozen
+COPY gabay_pricing_core/data/multi_city_integration_final ./backend/data/multi_city_integration_final
 
 # Small diagnostic inputs used by the demo-project/inventory-preview flow
 # (app_api/demo_snapshot.py) -- three specific files, not the diagnostics/

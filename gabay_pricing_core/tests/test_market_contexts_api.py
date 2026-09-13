@@ -388,6 +388,72 @@ def test_unknown_attribute_remains_null_not_zero():
     assert universe[0]["parking"] == ""
 
 
+# --- One-time map-coordinate enrichment (competitor register) ---------------
+
+def test_map_coordinate_enrichment_never_touches_a_project_precision_project():
+    from app_api.multi_city_map_coordinate_enrichment import apply_map_coordinate_enrichment
+
+    projects = [{
+        "project_id": "ash-ramot", "project_name": "רמות אשקלון", "city": "אשקלון",
+        "latitude": 31.67666, "longitude": 34.59663, "coordinate_precision": "PROJECT",
+    }]
+    enriched = apply_map_coordinate_enrichment(projects, DATA_ROOT)
+    assert enriched[0]["latitude"] == 31.67666
+    assert enriched[0]["longitude"] == 34.59663
+    assert enriched[0]["coordinate_precision"] == "PROJECT"
+    assert enriched[0]["map_coordinate_enrichment"] is None
+
+
+def test_map_coordinate_enrichment_applies_a_matching_resolved_entry():
+    from app_api.multi_city_map_coordinate_enrichment import apply_map_coordinate_enrichment
+
+    # ta-tidhar-between is a real resolved entry in the frozen enrichment
+    # file (GEOCODED_ADDRESS, from the project's own on-file address text).
+    projects = [{
+        "project_id": "ta-tidhar-between", "project_name": "TIDHAR בין השדרות", "city": "תל אביב-יפו",
+        "latitude": 32.05899, "longitude": 34.79285, "coordinate_precision": "NEIGHBORHOOD_CENTROID",
+    }]
+    enriched = apply_map_coordinate_enrichment(projects, DATA_ROOT)
+    assert enriched[0]["coordinate_precision"] == "GEOCODED_ADDRESS"
+    assert (enriched[0]["latitude"], enriched[0]["longitude"]) != (32.05899, 34.79285)
+    assert enriched[0]["map_coordinate_enrichment"]["matched"] is True
+
+
+def test_map_coordinate_enrichment_leaves_unmatched_project_at_its_centroid():
+    from app_api.multi_city_map_coordinate_enrichment import apply_map_coordinate_enrichment
+
+    projects = [{
+        "project_id": "no-such-project-id", "project_name": "GALIPOLIS", "city": "תל אביב-יפו",
+        "latitude": 32.05899, "longitude": 34.79285, "coordinate_precision": "NEIGHBORHOOD_CENTROID",
+    }]
+    enriched = apply_map_coordinate_enrichment(projects, DATA_ROOT)
+    assert enriched[0]["latitude"] == 32.05899
+    assert enriched[0]["longitude"] == 34.79285
+    assert enriched[0]["coordinate_precision"] == "NEIGHBORHOOD_CENTROID"
+    assert enriched[0]["map_coordinate_enrichment"] is None
+
+
+@pytest.mark.parametrize("city,expected_project_count", [
+    ("תל אביב-יפו", 10),
+    ("נתניה", 9),
+    ("אשקלון", 13),
+])
+def test_multi_city_competitor_landscape_improves_coordinates_without_dropping_or_duplicating_projects(city, expected_project_count):
+    from app_api.multi_city_competitor_register import build_multi_city_competitor_landscape
+
+    landscape = build_multi_city_competitor_landscape(DATA_ROOT, city, {"3R": {"lanes": {}}, "5R": {"lanes": {}}})
+    projects = landscape["projects"]
+
+    assert len(projects) == expected_project_count
+    # No project is ever left without a coordinate, and PROJECT-precision
+    # projects are never relabeled by the enrichment pass.
+    precisions = {p["coordinate_precision"] for p in projects}
+    assert precisions.issubset({"PROJECT", "GEOCODED_ADDRESS", "GEOCODED_STREET", "NEIGHBORHOOD_CENTROID"})
+    # At least one project in each city improved beyond the shared
+    # neighborhood centroid -- the whole point of the enrichment pass.
+    assert any(p["coordinate_precision"] in ("GEOCODED_ADDRESS", "GEOCODED_STREET", "PROJECT") for p in projects)
+
+
 # --- Coordinate precision (centroid never presented as exact) ----------------
 
 def test_neighborhood_centroid_marker_not_stripped_to_exact():
@@ -416,3 +482,193 @@ def test_segment_normalization_handles_underscore_and_semicolon():
     assert normalize_segment_string_to_units("APT1_2") == {"1", "2"}
     assert normalize_segment_string_to_units(None) == set()
     assert normalize_segment_string_to_units("") == set()
+
+
+# --- Evidence-visibility pass: per-record contributor status -----------------
+
+def test_annotate_sold_contributor_status_matches_by_source_id():
+    from app_api.market_context_workspace import _annotate_sold_contributor_status
+
+    lane_obj = {
+        "primary_contributors": [{"group_key": "עמק איילון 24", "source_ids": ["src-1", "src-2"], "target_equivalent_indication": 3094000.0}],
+        "candidate_outcomes": [{"source_id": "src-1", "exclusion_reasons": []}],
+    }
+    contributing = _annotate_sold_contributor_status({"source_id": "src-1", "quality_status": "usable"}, lane_obj)
+    assert contributing["contributes_to_pricing"] is True
+    assert contributing["target_equivalent_indication_ils"] == 3094000.0
+    assert contributing["non_contribution_reason"] is None
+
+
+def test_annotate_sold_contributor_status_non_contributor_uses_qa_note_reason():
+    from app_api.market_context_workspace import _annotate_sold_contributor_status
+
+    lane_obj = {"primary_contributors": [], "candidate_outcomes": []}
+    row = {"source_id": "src-9", "quality_status": "quarantined", "qa_note": "material_area_conflict"}
+    result = _annotate_sold_contributor_status(row, lane_obj)
+    assert result["contributes_to_pricing"] is False
+    assert result["target_equivalent_indication_ils"] is None
+    assert result["non_contribution_reason"] == "material_area_conflict"
+
+
+def test_annotate_sold_contributor_status_handles_missing_lane():
+    from app_api.market_context_workspace import _annotate_sold_contributor_status
+
+    result = _annotate_sold_contributor_status({"source_id": None, "quality_status": "usable"}, None)
+    assert result["contributes_to_pricing"] is False
+    assert result["non_contribution_reason"] == "not_a_primary_contributor"
+
+
+def test_annotate_asking_contributor_status_matches_by_record_uid():
+    from app_api.market_context_workspace import _annotate_asking_contributor_status
+
+    lane_obj = {"primary_contributors": [{"group_key": "עמק איילון 2", "source_ids": ["asking-1"], "target_equivalent_indication": 2577000.0}]}
+    row = {"record_uid": "asking-1", "exclusion_reasons": []}
+    result = _annotate_asking_contributor_status(row, lane_obj)
+    assert result["contributes_to_pricing"] is True
+    assert result["target_equivalent_indication_ils"] == 2577000.0
+
+
+def test_annotate_asking_contributor_status_accepted_but_not_contributor_never_mutates_exclusion_reasons():
+    from app_api.market_context_workspace import _annotate_asking_contributor_status
+
+    lane_obj = {"primary_contributors": []}
+    row = {"record_uid": "asking-2", "exclusion_reasons": []}
+    result = _annotate_asking_contributor_status(row, lane_obj)
+    # Original QA/status-based split must stay untouched (accepted_records/
+    # rejected_records key off exclusion_reasons) -- only the new,
+    # separate non_contribution_reason field carries this information.
+    assert result["exclusion_reasons"] == []
+    assert result["contributes_to_pricing"] is False
+    assert result["non_contribution_reason"] == "accepted_but_not_primary_contributor"
+
+
+def test_annotate_asking_contributor_status_rejected_keeps_its_own_reason():
+    from app_api.market_context_workspace import _annotate_asking_contributor_status
+
+    lane_obj = {"primary_contributors": []}
+    row = {"record_uid": "asking-3", "exclusion_reasons": ["outside_target_area_band"]}
+    result = _annotate_asking_contributor_status(row, lane_obj)
+    assert result["non_contribution_reason"] == "outside_target_area_band"
+
+
+# --- Evidence-visibility pass: multi-city standard_attribute_enrichment ------
+
+@pytest.mark.parametrize("city,family_key,rooms", [
+    ("תל אביב-יפו", "standard_3r", 3),
+    ("נתניה", "standard_5r", 5),
+])
+def test_multi_city_standard_attribute_enrichment_populates_new_development_comparables(city, family_key, rooms):
+    from app_api.market_context_workspace import _build_standard_attribute_enrichment_multi_city
+    from app_api.multi_city_competitor_register import build_multi_city_competitor_landscape
+
+    landscape = build_multi_city_competitor_landscape(DATA_ROOT, city, {"3R": {"lanes": {}}, "5R": {"lanes": {}}})
+    enrichment = _build_standard_attribute_enrichment_multi_city(landscape["projects"], {"3R": [], "5R": []})
+    comparables = enrichment["families"][family_key]["new_development_comparables"]
+
+    assert len(comparables) > 0
+    for c in comparables:
+        assert c["project"]
+        # Every comparable actually has a variant matching this family's room
+        # count -- the same family-relevance filter Petah Tikva's own
+        # standard_attribute_enrichment.py applies, never every project
+        # regardless of fit.
+        assert any(v["rooms"] == rooms for v in c["unit_variants"])
+        for v in c["unit_variants"]:
+            assert v["price"] is not None  # variants without a price are dropped
+
+
+def test_multi_city_new_development_comparable_shape_matches_frontend_contract():
+    from app_api.market_context_workspace import _mc_new_development_comparable
+
+    project = {
+        "project_name": "TIDHAR בין השדרות", "address": "לה גווארדיה 69, תל אביב-יפו",
+        "display_classification": "direct", "construction_status": "construction underway",
+        "estimated_delivery": None, "payment_terms": ["20/80"], "source_urls": ["https://example.com/x"],
+        "warnings": [],
+        "known_unit_variants": [
+            {"rooms": "3", "internal_area_sqm": "71", "balcony_area_sqm": None, "garden_area_sqm": None, "floor": None,
+             "orientation": None, "parking": None, "storage": None, "price_ils": "3700000", "price_basis": "VERIFIED_UNIT_PRICE"},
+            {"rooms": "5", "internal_area_sqm": None, "balcony_area_sqm": None, "garden_area_sqm": None, "floor": None,
+             "orientation": None, "parking": None, "storage": None, "price_ils": None, "price_basis": None},  # no price -> dropped
+        ],
+    }
+    comparable = _mc_new_development_comparable(project)
+    assert comparable["project"] == "TIDHAR בין השדרות"
+    assert comparable["register_classification"] == "direct"
+    assert len(comparable["unit_variants"]) == 1  # the priceless variant was dropped
+    variant = comparable["unit_variants"][0]
+    assert variant["rooms"] == 3.0
+    assert variant["internal_area"] == 71.0
+    assert variant["price"] == 3700000.0
+    assert comparable["project_level"]["status"] == "construction underway"
+    assert comparable["project_level"]["payment_terms"] == "20/80"
+    assert comparable["provenance"] == [{"source": "https://example.com/x"}]
+
+
+def test_multi_city_starting_price_context_only_set_when_a_variant_is_a_starting_price():
+    from app_api.market_context_workspace import _mc_starting_price_context
+
+    assert _mc_starting_price_context([{"rooms": 3.0, "price": 2000000.0, "price_basis": "VERIFIED_UNIT_PRICE"}]) is None
+    ctx = _mc_starting_price_context([{"rooms": 3.0, "price": 1800000.0, "price_basis": "starting price"}])
+    assert ctx == {"value": 1800000.0, "applies_to": "3 חדרים"}
+
+
+# --- Evidence-visibility pass: evidence-coordinate enrichment ----------------
+
+def test_resolve_evidence_coordinate_returns_none_when_address_missing_or_unmatched():
+    from app_api.multi_city_map_coordinate_enrichment import resolve_evidence_coordinate
+
+    lookup = {("נתניה", "הרב שלום 1"): {"lat": 32.3, "lng": 34.8, "coordinate_precision": "GEOCODED_ADDRESS"}}
+    assert resolve_evidence_coordinate(lookup, "נתניה", None) is None
+    assert resolve_evidence_coordinate(lookup, "נתניה", "רחוב אחר 5") is None
+    assert resolve_evidence_coordinate(lookup, "נתניה", "הרב שלום 1") == (32.3, 34.8, "GEOCODED_ADDRESS")
+
+
+def test_evidence_coordinate_enrichment_file_loads_and_is_keyed_by_city_address():
+    from app_api.multi_city_map_coordinate_enrichment import load_evidence_coordinate_enrichment
+
+    lookup = load_evidence_coordinate_enrichment(DATA_ROOT)
+    assert len(lookup) > 0
+    # A real resolved address from this pass's own run log.
+    assert ("תל אביב-יפו", "עמק איילון 24") in lookup
+    entry = lookup[("תל אביב-יפו", "עמק איילון 24")]
+    assert entry["coordinate_precision"] in ("GEOCODED_ADDRESS", "GEOCODED_STREET")
+
+
+@pytest.mark.parametrize("slug", NON_PT_SLUGS)
+def test_asking_records_never_falsely_claim_address_precision(tmp_path, slug):
+    """Multi-city asking rows share one submarket centroid unless the
+    evidence-coordinate enrichment resolved their own address -- they must
+    never be labeled "address" precision merely because pushAskingPoint's
+    old hardcoded default assumed individually-scraped coordinates."""
+    c = client(tmp_path)
+    ws = _workspace(c, slug)
+    for fam in ("3R", "5R"):
+        for r in ws["evidence_provenance"]["current_asking"][fam]["accepted_records"]:
+            assert r.get("coordinate_precision") in ("submarket_centroid_fallback", "GEOCODED_ADDRESS", "GEOCODED_STREET", None)
+
+
+@pytest.mark.parametrize("slug", NON_PT_SLUGS)
+def test_sold_and_asking_records_carry_contributor_status_fields(tmp_path, slug):
+    c = client(tmp_path)
+    ws = _workspace(c, slug)
+    for fam in ("3R", "5R"):
+        sold_records = ws["evidence_provenance"]["sold"][fam]["records"]
+        assert len(sold_records) > 0
+        for r in sold_records:
+            assert "contributes_to_pricing" in r
+            assert "target_equivalent_indication_ils" in r
+        asking_records = ws["evidence_provenance"]["current_asking"][fam]["accepted_records"] + ws["evidence_provenance"]["current_asking"][fam]["rejected_records"]
+        for r in asking_records:
+            assert "contributes_to_pricing" in r
+            assert "non_contribution_reason" in r
+
+
+def test_petah_tikva_workspace_unaffected_by_visibility_pass(tmp_path):
+    """Petah Tikva's own payload builder is never touched by any of the
+    multi-city visibility-pass additions above."""
+    c = client(tmp_path)
+    ws = _workspace(c, "petah_tikva")
+    sold_records = ws["evidence_provenance"]["sold"]["3R"]["records"]
+    assert len(sold_records) > 0
+    assert "contributes_to_pricing" not in sold_records[0]

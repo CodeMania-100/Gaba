@@ -16,6 +16,7 @@ import {
   deriveSpecialTypologyContextPoints,
   deriveSpecialUnitMapCoverage,
   deriveSpecialUnitSubjectFacts,
+  groupCompetitorPointsByCoordinate,
   MarketMapFamily,
   MarketMapPoint,
   MarketMapSelection,
@@ -70,6 +71,12 @@ const SPECIAL_STATUS_OPACITY_EXPRESSION = [
   0.9,
   0.45,
 ];
+// Standard-mode fallback (last two entries) now mirrors SPECIAL_STATUS_
+// OPACITY_EXPRESSION's own contributesToPricing-aware fallback instead of a
+// flat 1 -- competitorVisible (see MarketGeoMap component body) re-stamps
+// contributesToPricing to the currently-selected family before this paint
+// expression ever runs, so a project eligible for 3R but not 5R now visibly
+// dims when 5R is selected (task item 7), never only in the detail panel.
 const COMPETITOR_OPACITY_EXPRESSION = [
   "case",
   ["==", ["get", "specialStatus"], "participating"],
@@ -78,7 +85,9 @@ const COMPETITOR_OPACITY_EXPRESSION = [
   0.7,
   ["==", ["get", "specialStatus"], "excluded"],
   0.3,
+  ["get", "contributesToPricing"],
   1,
+  0.4,
 ];
 
 // Individual per-point ₪/m² labels only appear once the map is zoomed close
@@ -153,7 +162,7 @@ export default function MarketGeoMap({ workspace, selection, onSelectionChange, 
   // when selection.kind === "standard_family".
   const askingAll = useMemo(() => deriveAskingPoints(workspace), [workspace]);
   const soldAll = useMemo(() => deriveSoldPoints(workspace), [workspace]);
-  const competitorAll = useMemo(() => deriveCompetitorPoints(workspace), [workspace]);
+  const competitorAll = useMemo(() => groupCompetitorPointsByCoordinate(deriveCompetitorPoints(workspace)), [workspace]);
   const projectAreaLabel = workspace.market_context && !workspace.market_context.slug.includes("petah_tikva")
     ? (workspace.project.commercial_area || workspace.project.official_neighborhood)
     : undefined;
@@ -184,7 +193,7 @@ export default function MarketGeoMap({ workspace, selection, onSelectionChange, 
     [workspace, specialUnitNumber]
   );
   const specialCompetitorAll = useMemo(
-    () => (specialUnitNumber != null ? deriveSpecialCompetitorPoints(workspace, specialUnitNumber) : []),
+    () => (specialUnitNumber != null ? groupCompetitorPointsByCoordinate(deriveSpecialCompetitorPoints(workspace, specialUnitNumber)) : []),
     [workspace, specialUnitNumber]
   );
   const specialCoverage = useMemo(
@@ -214,13 +223,24 @@ export default function MarketGeoMap({ workspace, selection, onSelectionChange, 
     () => (layers.sold ? activeSold.filter((p) => !onlyEvidence || p.contributesToPricing) : []),
     [activeSold, layers.sold, onlyEvidence]
   );
-  const competitorVisible = useMemo(
-    () =>
-      layers.competitor
-        ? activeCompetitor.filter((p) => !onlyEvidence || (isSpecial ? p.contributesToPricing : pointContributesForFamily(p, workspace, family)))
-        : [],
-    [activeCompetitor, layers.competitor, onlyEvidence, workspace, family, isSpecial]
-  );
+  const competitorVisible = useMemo(() => {
+    if (!layers.competitor) return [];
+    // Standard mode: re-stamp each point's contributesToPricing to this
+    // specific selected family (deriveCompetitorPoints itself only knows
+    // "eligible for either family") so switching 3R<->5R visibly re-colors/
+    // re-dims markers on the map itself, not only the text inside an
+    // already-open detail panel (task item 7: family selection must
+    // visibly change evidence relevance). Special mode is untouched --
+    // contributesToPricing there already equals specialStatus==="participating".
+    const withFamilyContribution = isSpecial
+      ? activeCompetitor
+      : activeCompetitor.map((p) =>
+          p.kind === "competitor_group"
+            ? { ...p, contributesToPricing: (p.groupMembers ?? []).some((m) => pointContributesForFamily(m, workspace, family)) }
+            : { ...p, contributesToPricing: pointContributesForFamily(p, workspace, family) }
+        );
+    return withFamilyContribution.filter((p) => !onlyEvidence || p.contributesToPricing);
+  }, [activeCompetitor, layers.competitor, onlyEvidence, workspace, family, isSpecial]);
 
   // Keep "last special unit" synced so leaving and returning to "דירות
   // מיוחדות" (or a fresh external selection, e.g. from UnitDrawer) restores
@@ -299,10 +319,15 @@ export default function MarketGeoMap({ workspace, selection, onSelectionChange, 
     const map = mapRef.current;
     if (!map || !mapReady) return;
 
+    // Project-area is added FIRST (MapLibre paints later-added layers on
+    // top) so its single ★ reference marker never visually covers a sold/
+    // asking cluster or a competitor (individual or aggregate) marker that
+    // happens to sit at or near the same coordinate -- previously added
+    // last, it could hide an aggregate competitor marker entirely.
+    ensureProjectAreaSource(map);
     ensurePointSource(map, "src-asking", "cluster-asking", "point-asking", "label-asking", COLORS.asking);
     ensurePointSource(map, "src-sold", "cluster-sold", "point-sold", "label-sold", COLORS.sold);
     ensureCompetitorSource(map);
-    ensureProjectAreaSource(map);
 
     const handlers = registerInteractions(map, setSelected, setHover, pointsById);
     return () => handlers.forEach((off) => off());
@@ -348,8 +373,17 @@ export default function MarketGeoMap({ workspace, selection, onSelectionChange, 
       // context-only comparable blow out the initial zoom.
       const core = [...askingVisible, ...soldVisible, ...competitorVisible, ...(projectArea ? [projectArea] : [])].filter((p) => {
         if (p.kind === "project_area") return true;
-        if (isSpecial) return p.kind === "competitor" ? p.specialStatus !== "excluded" : p.specialStatus === "participating";
-        return p.kind === "competitor" || p.contributesToPricing;
+        // A competitor_group carries no specialStatus/contributesToPricing
+        // of its own (see groupCompetitorPointsByCoordinate) -- treated the
+        // same as an individual competitor pin here so a context where
+        // every competitor collapsed into one shared-coordinate group (e.g.
+        // Netanya, Tel Aviv) still gets that group included in the initial
+        // fit, exactly as an unaggregated competitor always was.
+        if (p.kind === "competitor" || p.kind === "competitor_group") {
+          return isSpecial ? p.specialStatus !== "excluded" : true;
+        }
+        if (isSpecial) return p.specialStatus === "participating";
+        return p.contributesToPricing;
       });
       if (core.length > 0) {
         const bounds = new maplibregl.LngLatBounds();
@@ -616,7 +650,14 @@ export default function MarketGeoMap({ workspace, selection, onSelectionChange, 
 
         {selected && (
           <div dir="rtl" className="w-[28%] shrink-0 overflow-y-auto rounded-md border border-hairline bg-surface p-3" style={{ height: 620 }}>
-            <DetailPanel point={selected} workspace={workspace} family={family} onClose={() => setSelected(null)} onOpenFullComparison={onOpenFullComparison} />
+            <DetailPanel
+              point={selected}
+              workspace={workspace}
+              family={family}
+              onClose={() => setSelected(null)}
+              onOpenFullComparison={onOpenFullComparison}
+              onSelectPoint={setSelected}
+            />
           </div>
         )}
       </div>
@@ -627,8 +668,9 @@ export default function MarketGeoMap({ workspace, selection, onSelectionChange, 
         hasProjectArea={!!projectArea}
         hasSold={soldVisible.length > 0}
         hasAsking={askingVisible.length > 0}
-        hasCompetitorDirect={competitorVisible.some((p) => p.classification === "direct")}
-        hasCompetitorOther={competitorVisible.some((p) => p.classification !== "direct")}
+        hasCompetitorDirect={competitorVisible.some((p) => p.kind === "competitor" && p.classification === "direct")}
+        hasCompetitorOther={competitorVisible.some((p) => p.kind === "competitor" && p.classification !== "direct")}
+        hasCompetitorGroup={competitorVisible.some((p) => p.kind === "competitor_group")}
       />
 
       {/* One-time selection pulse (feedback item 1): a static ring marks the
@@ -665,6 +707,11 @@ function toFeatureCollection(points: MarketMapPoint[], _ppsmDomain?: [number, nu
         // context_only / excluded get three distinct opacities so an
         // excluded comparable never looks identical to a voting one.
         specialStatus: p.specialStatus ?? null,
+        // Only set for kind === "competitor_group" -- drives the aggregate
+        // marker's own count label ("9 פרויקטים" etc.), never a MapLibre
+        // cluster count (this grouping is precision-aware, computed once in
+        // lib/marketMap.ts, not a zoom-dependent screen-distance cluster).
+        groupCount: p.groupMembers?.length ?? null,
       },
     })),
   };
@@ -746,6 +793,7 @@ function ensureCompetitorSource(map: maplibregl.Map) {
     id: "point-competitor",
     type: "circle",
     source: "src-competitor",
+    filter: ["==", ["get", "kind"], "competitor"],
     paint: {
       "circle-color": ["case", ["==", ["get", "classification"], "direct"], COLORS.competitor_direct, COLORS.competitor_other],
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -759,6 +807,7 @@ function ensureCompetitorSource(map: maplibregl.Map) {
     id: "label-competitor",
     type: "symbol",
     source: "src-competitor",
+    filter: ["==", ["get", "kind"], "competitor"],
     // Competitor names stay permanent at broad zoom (feedback item 8) --
     // only individual ₪/m² labels are zoom-gated. Collision handling
     // (text-optional, no allow-overlap) still hides a label if it can't fit
@@ -767,6 +816,57 @@ function ensureCompetitorSource(map: maplibregl.Map) {
       "text-field": ["get", "title"],
       "text-size": 11,
       "text-offset": [0, 1.2],
+      "text-anchor": "top",
+      "text-font": ["Noto Sans Regular"],
+      "text-allow-overlap": false,
+      "text-optional": true,
+    },
+    paint: { "text-color": "#7c4a03", "text-halo-color": "#ffffff", "text-halo-width": 1.4 },
+  });
+
+  // Aggregate marker for competitors that only ever resolved to the same
+  // approximate/neighborhood-centroid coordinate (see lib/marketMap.ts's
+  // groupCompetitorPointsByCoordinate) -- a visibly bigger circle carrying
+  // its own count badge, so e.g. 9 Netanya projects read as one clear "9
+  // פרויקטים" marker instead of N literally overlapping, invisible pins.
+  // Genuine per-project (address/street) coordinates never produce this
+  // kind and keep rendering through point-competitor above, unchanged.
+  map.addLayer({
+    id: "point-competitor-group",
+    type: "circle",
+    source: "src-competitor",
+    filter: ["==", ["get", "kind"], "competitor_group"],
+    paint: {
+      "circle-color": COLORS.competitor_direct,
+      "circle-opacity": 0.95,
+      "circle-radius": 13,
+      "circle-stroke-width": 2.5,
+      "circle-stroke-color": "#ffffff",
+    },
+  });
+  map.addLayer({
+    id: "count-competitor-group",
+    type: "symbol",
+    source: "src-competitor",
+    filter: ["==", ["get", "kind"], "competitor_group"],
+    layout: {
+      "text-field": ["to-string", ["get", "groupCount"]],
+      "text-size": 12,
+      "text-font": ["Noto Sans Regular"],
+      "text-allow-overlap": true,
+      "text-ignore-placement": true,
+    },
+    paint: { "text-color": "#ffffff" },
+  });
+  map.addLayer({
+    id: "label-competitor-group",
+    type: "symbol",
+    source: "src-competitor",
+    filter: ["==", ["get", "kind"], "competitor_group"],
+    layout: {
+      "text-field": ["concat", ["to-string", ["get", "groupCount"]], " פרויקטים"],
+      "text-size": 11,
+      "text-offset": [0, 1.7],
       "text-anchor": "top",
       "text-font": ["Noto Sans Regular"],
       "text-allow-overlap": false,
@@ -805,6 +905,7 @@ function applySelectionEmphasis(map: maplibregl.Map, selectedId: string | null) 
     { layer: "point-asking", baseRadius: 5.5, boostedRadius: 9, baseStroke: 1 },
     { layer: "point-sold", baseRadius: 5.5, boostedRadius: 9, baseStroke: 1 },
     { layer: "point-competitor", baseRadius: 7, boostedRadius: 11, baseStroke: ["case", ["==", ["get", "classification"], "direct"], 2.5, 1.2] },
+    { layer: "point-competitor-group", baseRadius: 13, boostedRadius: 17, baseStroke: 2.5 },
     { layer: "point-project-area", baseRadius: 9, boostedRadius: 13, baseStroke: 2.5 },
   ];
   for (const { layer, baseRadius, boostedRadius, baseStroke } of configs) {
@@ -820,6 +921,7 @@ function ringColorFor(point: MarketMapPoint): string {
   if (point.kind === "sold") return COLORS.sold;
   if (point.kind === "asking") return COLORS.asking;
   if (point.kind === "project_area") return COLORS.project_area;
+  if (point.kind === "competitor_group") return COLORS.competitor_direct;
   return point.classification === "direct" ? COLORS.competitor_direct : COLORS.competitor_other;
 }
 
@@ -829,7 +931,13 @@ function registerInteractions(
   setHover: (h: { point: MarketMapPoint; x: number; y: number } | null) => void,
   pointsById: React.MutableRefObject<Map<string, MarketMapPoint>>
 ): (() => void)[] {
-  const pointLayers = ["point-asking", "point-sold", "point-competitor", "point-project-area"];
+  // Registration order matters when two layers' hit-areas overlap at the
+  // same click point (both handlers fire; the one registered LAST wins the
+  // resulting setSelected call) -- project-area is listed first so a
+  // competitor or competitor-group marker sitting at/near the same pixel
+  // always wins the click over the single, less-specific project-area
+  // reference point, matching its lower z-order in ensure*Source below.
+  const pointLayers = ["point-project-area", "point-asking", "point-sold", "point-competitor", "point-competitor-group"];
   const clusterLayers = ["cluster-asking", "cluster-sold"];
   const offs: (() => void)[] = [];
 
@@ -1056,6 +1164,14 @@ function HoverContent({ point }: { point: MarketMapPoint }) {
       </div>
     );
   }
+  if (point.kind === "competitor_group") {
+    return (
+      <div className="flex flex-col gap-0.5">
+        <span className="font-semibold text-slate-900">{point.groupMembers?.length ?? 0} פרויקטים באזור זה</span>
+        <span className="text-slate-500">מיקום משוער ברמת השכונה</span>
+      </div>
+    );
+  }
   return <span className="font-semibold text-slate-900">{point.title}</span>;
 }
 
@@ -1065,12 +1181,14 @@ function DetailPanel({
   family,
   onClose,
   onOpenFullComparison,
+  onSelectPoint,
 }: {
   point: MarketMapPoint;
   workspace: PetahTikvaWorkspace;
   family: MarketMapFamily;
   onClose: () => void;
   onOpenFullComparison?: (competitorName: string) => void;
+  onSelectPoint: (p: MarketMapPoint) => void;
 }) {
   return (
     <div className="flex flex-col gap-2">
@@ -1084,6 +1202,9 @@ function DetailPanel({
       {point.kind === "sold" && <SoldDetail point={point} workspace={workspace} />}
       {point.kind === "asking" && <AskingDetail point={point} workspace={workspace} />}
       {point.kind === "competitor" && <CompetitorDetail point={point} workspace={workspace} family={family} onOpenFullComparison={onOpenFullComparison} />}
+      {point.kind === "competitor_group" && (
+        <CompetitorGroupDetail point={point} onOpenFullComparison={onOpenFullComparison} onSelectPoint={onSelectPoint} />
+      )}
       {point.kind === "project_area" && (
         <p className="text-xs text-slate-500">
           המיקום מסמן את אזור ההדגמה. כתובת מדויקת לא סופקה במסגרת המטלה.
@@ -1092,6 +1213,95 @@ function DetailPanel({
 
       <PrecisionNote point={point} />
     </div>
+  );
+}
+
+/** "9 פרויקטים באזור זה" -- opened by clicking the aggregate marker for
+ * competitors that only ever resolved to the same approximate/
+ * neighborhood-centroid coordinate (see lib/marketMap.ts's
+ * groupCompetitorPointsByCoordinate). Every member is a real, already-
+ * derived competitor point -- nothing here recomputes classification/price/
+ * relevance. "פתח פרויקט" hands that exact point back to the normal
+ * selection flow (onSelectPoint === the same setSelected used for every
+ * other pin), and "פתח השוואה מלאה" reuses the exact same canonical
+ * pin-and-navigate callback as an individual competitor's panel -- never a
+ * second selection or comparison path. */
+function CompetitorGroupDetail({
+  point,
+  onOpenFullComparison,
+  onSelectPoint,
+}: {
+  point: MarketMapPoint;
+  onOpenFullComparison?: (competitorName: string) => void;
+  onSelectPoint: (p: MarketMapPoint) => void;
+}) {
+  const members = point.groupMembers ?? [];
+  return (
+    <div className="flex flex-col gap-2">
+      <p className="text-xs text-slate-500">
+        {members.length} פרויקטים באזור זה · מיקום משוער ברמת השכונה — לא ניתן לקבוע מיקום מדויק לכל פרויקט בנפרד.
+      </p>
+      <ul className="flex max-h-[420px] flex-col gap-2 overflow-y-auto">
+        {members.map((m) => (
+          <CompetitorGroupMemberRow key={m.id} member={m} onOpenFullComparison={onOpenFullComparison} onSelectPoint={onSelectPoint} />
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+const GROUP_MEMBER_CLASSIFICATION_LABELS: Record<string, string> = {
+  direct: "מתחרה ישיר",
+  relevant: "להשוואה",
+  context: "הקשר",
+};
+
+function CompetitorGroupMemberRow({
+  member,
+  onOpenFullComparison,
+  onSelectPoint,
+}: {
+  member: MarketMapPoint;
+  onOpenFullComparison?: (competitorName: string) => void;
+  onSelectPoint: (p: MarketMapPoint) => void;
+}) {
+  const classificationLabel = member.classification ? GROUP_MEMBER_CLASSIFICATION_LABELS[member.classification] ?? member.classification : null;
+  return (
+    <li className="rounded-md border border-slate-200 p-2">
+      <div className="flex items-start justify-between gap-2">
+        <span className="text-sm font-semibold text-slate-900">{member.title}</span>
+        {classificationLabel && (
+          <span className="shrink-0 rounded bg-amber-50 px-1.5 py-0.5 text-[11px] font-medium text-amber-800">{classificationLabel}</span>
+        )}
+      </div>
+      {/* fact.priceLabel already carries its own "החל מ־" prefix when
+          isStartingPriceOnly (see lib/competitorRegister.ts's
+          priceDisplayLabel) -- never prepend it again here. */}
+      {member.fact?.priceLabel && <div className="mt-0.5 text-xs text-slate-600">{member.fact.priceLabel}</div>}
+      {member.fact?.productMix && <div className="mt-0.5 text-xs text-slate-500">{member.fact.productMix}</div>}
+      {/* Same facts CompetitorDetail already shows for a standalone
+          competitor -- every field is already sitting on this exact member
+          object (see lib/marketMap.ts groupMembers comment), so a project
+          loses none of its detail merely for sharing a fallback coordinate
+          with others (task: aggregate markers must not hide commercial
+          facts already collected). */}
+      <div className="mt-1 grid grid-cols-2 gap-x-3 gap-y-0.5">
+        {member.fact?.developer && <Fact label="יזם" value={member.fact.developer} />}
+        {member.fact?.areaLabel && <Fact label="שטח" value={member.fact.areaLabel} />}
+        {member.fact?.floorRangeLabel && <Fact label="קומות" value={member.fact.floorRangeLabel} />}
+        {member.fact?.status && <Fact label="שלב" value={member.fact.status} />}
+      </div>
+      <div className="mt-1.5 flex items-center gap-3">
+        <button onClick={() => onSelectPoint(member)} className="text-xs text-slate-500 underline hover:text-slate-800">
+          פתח פרויקט
+        </button>
+        {onOpenFullComparison && (
+          <button onClick={() => onOpenFullComparison(member.title)} className="text-xs font-medium text-accent underline hover:text-accent/80">
+            פתח השוואה מלאה
+          </button>
+        )}
+      </div>
+    </li>
   );
 }
 
@@ -1170,10 +1380,14 @@ function SpecialRelevanceSection({ point, workspace }: { point: MarketMapPoint; 
   const subject = deriveSpecialUnitSubjectFacts(workspace, point.specialUnitNumber);
 
   const bullets: string[] = [];
-  if (point.kind === "sold") bullets.push("ראיה מסוג עסקה שהושלמה");
-  if (point.kind === "asking") bullets.push("ראיה מסוג הצעה נוכחית");
-  if (point.kind === "competitor") bullets.push("פרויקט חדש מתחרה");
-  if (point.specialTierLabel) bullets.push(SPECIAL_TIER_LABELS[point.specialTierLabel] ?? point.specialTierLabel);
+  // The record's own relevant_segments/applicable_segments text, when it
+  // names this exact unit -- leads the list, matching how directly it
+  // answers "why is this relevant to the selected special apartment".
+  if (point.specialRelevantToLabel) bullets.push(point.specialRelevantToLabel);
+  if (point.kind === "sold") bullets.push("סוג ראיה: עסקה שהושלמה");
+  if (point.kind === "asking") bullets.push("סוג ראיה: מודעה פעילה");
+  if (point.kind === "competitor") bullets.push("סוג ראיה: פרויקט חדש מתחרה");
+  if (point.specialTierLabel) bullets.push(`סטטוס: ${SPECIAL_TIER_LABELS[point.specialTierLabel] ?? point.specialTierLabel}`);
   if (subject?.internalArea != null && point.internalArea != null) {
     const diffPct = (point.internalArea - subject.internalArea) / subject.internalArea;
     if (Math.abs(diffPct) <= 0.15) bullets.push("שטח דומה לדירה שלנו");
@@ -1194,6 +1408,13 @@ function SpecialRelevanceSection({ point, workspace }: { point: MarketMapPoint; 
           </ul>
         </div>
       )}
+      {/* The pricing engine's own already-computed normalized value for THIS
+          comparable (SpecialUnitComparable.normalized_value_ils) -- a fact
+          it already produced, not a new interpretation of the difference
+          shown in the comparison table below (task item 13's ban on
+          inventing a monetary interpretation applies to computing a NEW
+          premium here, not to displaying the engine's own real output). */}
+      {point.specialNormalizedValueIls != null && <Fact label="ערך מנורמל לפי המנוע" value={ils(point.specialNormalizedValueIls)} />}
       {subject && <SpecialComparisonTable subject={subject} point={point} />}
     </>
   );
@@ -1258,10 +1479,27 @@ function SoldDetail({ point, workspace }: { point: MarketMapPoint; workspace: Pe
       <Fact label="כתובת" value={point.address} />
       <Fact label="חדרים" value={familyLabel || (point.rooms != null ? num(point.rooms) : undefined)} />
       <Fact label="שטח" value={point.internalArea != null ? `${num(point.internalArea)} מ״ר` : undefined} />
+      <Fact label="קומה" value={point.floor != null ? String(point.floor) : undefined} />
       <Fact label="מחיר" value={point.priceIls != null ? ils(point.priceIls) : undefined} />
       <Fact label="מחיר למ״ר" value={point.pricePerSqm != null ? `${ils(point.pricePerSqm)} למ״ר` : undefined} />
       <Fact label="תאריך" value={point.date} />
-      <Fact label="מקור" value="רשות המסים (נתוני עסקאות)" />
+      {/* Real backend source string when this dataset carries one (multi-city:
+          e.g. "WizBid / Tax-derived"); falls back to Petah Tikva's own fixed
+          government-registry label only when the field is genuinely absent,
+          never overwritten with a guess. */}
+      <Fact label="מקור" value={point.source ?? "רשות המסים (נתוני עסקאות)"} />
+      <Fact label="אזור גאוגרפי" value={point.geographyTier} />
+      {/* The engine's own already-computed area-normalized/target-equivalent
+          indication for our target unit size -- e.g. "the transaction was
+          77 מ״ר ב־₪2.07M, but for our target the engine translated that
+          evidence to ₪1.887M" (task item 5). Never a new calculation. */}
+      {point.targetEquivalentIndicationIls != null && (
+        <Fact label="אינדיקציה מנורמלת ליעד שלנו" value={ils(point.targetEquivalentIndicationIls)} />
+      )}
+      {!point.contributesToPricing && point.nonContributionReason && (
+        <p className="text-[11px] text-slate-400">הסיבה: {point.nonContributionReason}</p>
+      )}
+      {point.note && <p className="text-[11px] text-slate-500">{point.note}</p>}
       {point.transactions && point.transactions.length > 1 && (
         <details className="mt-1 text-xs">
           <summary className="cursor-pointer text-slate-500 underline">כל העסקאות בכתובת זו</summary>
@@ -1301,17 +1539,27 @@ function AskingDetail({ point, workspace }: { point: MarketMapPoint; workspace: 
       <Fact label="ממ״ד" value={point.hasSecureRoom == null ? undefined : point.hasSecureRoom ? "יש" : "אין"} />
       <Fact label="מצב" value={point.condition} />
       <Fact label="תאריך פרסום" value={point.date} />
+      <Fact label="אזור גאוגרפי" value={point.geographyTier} />
       {point.sourceUrl ? (
         <div className="flex items-center justify-between gap-2 text-xs">
           <span className="text-slate-500">מקור</span>
           <a href={point.sourceUrl} target="_blank" rel="noreferrer" className="font-medium text-blue-700 underline">
-            מדלן ↗
+            {point.source ?? "מדלן"} ↗
           </a>
         </div>
       ) : (
-        <Fact label="מקור" value="מדלן" />
+        <Fact label="מקור" value={point.source ?? "מדלן"} />
+      )}
+      {/* Same target-equivalent indication concept as SoldDetail (see task
+          item 5) -- the engine's own already-computed area-normalized figure
+          for our target unit size, never a new calculation. */}
+      {point.targetEquivalentIndicationIls != null && (
+        <Fact label="אינדיקציה מנורמלת ליעד שלנו" value={ils(point.targetEquivalentIndicationIls)} />
       )}
       {point.exclusionReason && <p className="text-[11px] text-slate-400">לא נכללה בחישוב: {point.exclusionReason}</p>}
+      {!point.exclusionReason && !point.contributesToPricing && point.nonContributionReason && (
+        <p className="text-[11px] text-slate-400">הסיבה: {point.nonContributionReason}</p>
+      )}
       {isSpecial && <SpecialRelevanceSection point={point} workspace={workspace} />}
     </div>
   );
@@ -1333,23 +1581,28 @@ function CompetitorDetail({
   const classificationLabel = point.classification === "direct" ? "תחרות ישירה" : point.classification === "relevant" ? "תחרות רלוונטית" : "הקשר שוק";
   const geoLabel = point.geographyRole === "core" ? "אותו תת־שוק" : point.geographyRole === "adjacent" ? "אזור סמוך" : "הקשר רחב";
   const project = workspace.competitor_landscape.projects.find((p) => p.project_name === point.title);
-  const eligibility = project?.quantitative_eligibility as Record<string, { eligible: boolean }> | undefined;
-  const eligible = eligibility?.[family === "3R" ? "standard_3r" : "standard_5r"]?.eligible ?? false;
+  const eligibility = project?.quantitative_eligibility as Record<string, { eligible: boolean; reason?: string }> | undefined;
+  const familyKey = family === "3R" ? "standard_3r" : "standard_5r";
+  const eligible = eligibility?.[familyKey]?.eligible ?? false;
+  const eligibilityReason = eligibility?.[familyKey]?.reason;
 
   return (
     <div className="flex flex-col gap-1.5">
       <div className="flex items-center gap-1.5">
         <span className="w-fit rounded bg-amber-50 px-2 py-0.5 text-[11px] font-medium text-amber-800">{classificationLabel}</span>
-        <span className="text-[11px] text-slate-400">{point.address ? point.address.split(",")[1]?.trim() || point.address : ""}</span>
       </div>
+      {point.address && <span className="text-[11px] text-slate-400">{point.address}</span>}
       {isSpecial ? (
         <SpecialParticipationBadge status={point.specialStatus ?? "context_only"} reason={point.specialStatusReason} />
       ) : (
-        <ParticipationBadge
-          contributes={eligible}
-          contributingLabel="משתתף בחישוב (משפחה נבחרת)"
-          contextLabel="מידע להקשר בלבד — אינו משתתף בחישוב (משפחה נבחרת)"
-        />
+        <div className="flex flex-col gap-0.5">
+          <ParticipationBadge
+            contributes={eligible}
+            contributingLabel="משתתף בחישוב (משפחה נבחרת)"
+            contextLabel="מידע להקשר בלבד — אינו משתתף בחישוב (משפחה נבחרת)"
+          />
+          {!eligible && eligibilityReason && <p className="text-[11px] text-slate-400">הסיבה: {eligibilityReason}</p>}
+        </div>
       )}
 
       {point.highlights != null && point.highlights.length > 0 && (
@@ -1371,6 +1624,10 @@ function CompetitorDetail({
       {fact?.priceLabel && (
         <p className="text-[11px] text-slate-400">{fact.isStartingPriceOnly ? "מחיר התחלתי בפרויקט — לא מחיר דירה ספציפית" : "מחיר דירה ספציפית"}</p>
       )}
+      {/* Already computed by buildFactSheet (currentPriceIls / area_sqm_range
+          midpoint) but never surfaced here before -- an approximation since
+          area is a range midpoint, labeled as such. */}
+      <Fact label="מחיר למ״ר (משוער)" value={fact?.pricePerSqmIls != null ? `${ils(fact.pricePerSqmIls)} למ״ר` : undefined} />
       <Fact label="תנאי תשלום" value={fact?.paymentTerms ?? "לא פורסם"} />
       <Fact label="מסירה" value={fact?.delivery ?? "לא פורסם"} />
       <Fact label="שלב הפרויקט" value={fact?.status ?? "לא פורסם"} />
@@ -1387,20 +1644,27 @@ function CompetitorDetail({
         </div>
       )}
 
-      {onOpenFullComparison && (
-        <button
-          onClick={() => onOpenFullComparison(point.title)}
-          className="mt-1 w-fit text-xs font-medium text-accent underline hover:text-accent/80"
-        >
-          פתח השוואה מלאה
-        </button>
-      )}
+      <div className="mt-1 flex items-center gap-3">
+        {onOpenFullComparison && (
+          <button onClick={() => onOpenFullComparison(point.title)} className="w-fit text-xs font-medium text-accent underline hover:text-accent/80">
+            פתח השוואה מלאה
+          </button>
+        )}
+        {point.sourceUrl && (
+          <a href={point.sourceUrl} target="_blank" rel="noreferrer" className="w-fit text-xs text-slate-500 underline hover:text-slate-700">
+            פתח מקור
+          </a>
+        )}
+      </div>
     </div>
   );
 }
 
 function PrecisionNote({ point }: { point: MarketMapPoint }) {
-  if (point.kind === "project_area") return null;
+  // project_area has no per-record precision to report; competitor_group
+  // already states "מיקום משוער ברמת השכונה" explicitly in its own panel
+  // text above, so repeating the generic note here would be redundant.
+  if (point.kind === "project_area" || point.kind === "competitor_group") return null;
   const label =
     point.coordinatePrecision === "address" ? "מיקום לפי כתובת" : point.coordinatePrecision === "street" ? "מיקום משוער לפי רחוב" : "מיקום משוער";
   return <p className="text-[10px] text-slate-300">{label}</p>;
@@ -1420,6 +1684,7 @@ interface MapLegendProps {
   hasAsking: boolean;
   hasCompetitorDirect: boolean;
   hasCompetitorOther: boolean;
+  hasCompetitorGroup: boolean;
 }
 
 // Larger, higher-contrast, presentation-legible legend -- shape distinction
@@ -1427,7 +1692,7 @@ interface MapLegendProps {
 // relying on color alone. Follows the map's own color mode: colors mean
 // evidence *type* in סוג מקור mode, and mean ₪/m² in מחיר למ״ר mode -- the
 // two meanings are never shown superimposed on one another.
-function MapLegend({ viewMode, ppsmScale, hasProjectArea, hasSold, hasAsking, hasCompetitorDirect, hasCompetitorOther }: MapLegendProps) {
+function MapLegend({ viewMode, ppsmScale, hasProjectArea, hasSold, hasAsking, hasCompetitorDirect, hasCompetitorOther, hasCompetitorGroup }: MapLegendProps) {
   // אזור הפרויקט and the competitor/asking shapes never change color with
   // the mode toggle (only the "sold" dots do -- see the setPaintProperty
   // call above) -- kept as a small persistent symbol reference in both
@@ -1446,6 +1711,7 @@ function MapLegend({ viewMode, ppsmScale, hasProjectArea, hasSold, hasAsking, ha
       {hasAsking && <LegendItem symbol="○" color={COLORS.asking} label="דירה מוצעת" outline />}
       {hasCompetitorDirect && <LegendItem symbol="◆" color={COLORS.competitor_direct} label="מתחרה ישיר" />}
       {hasCompetitorOther && <LegendItem symbol="◇" color={COLORS.competitor_other} label="מתחרה רלוונטי" outline />}
+      {hasCompetitorGroup && <LegendItem symbol="Ⓝ" color={COLORS.competitor_direct} label="כמה פרויקטים באותו מיקום משוער" />}
     </div>
   );
 

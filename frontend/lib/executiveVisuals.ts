@@ -94,6 +94,11 @@ export interface CompletedSaleObservation {
   priceIls: number | null;
   areaSqm: number | null;
   pricePerSqm: number;
+  // Visibility-pass additions (see MarketEvidenceRegister) -- every one a
+  // straight passthrough of an already-computed backend field.
+  floor: string | number | null;
+  contributesToPricing: boolean;
+  targetEquivalentIndicationIls: number | null;
 }
 
 export interface QuarterlyTrendPoint {
@@ -161,6 +166,14 @@ function collectCompletedSaleObservations(workspace: PetahTikvaWorkspace): Compl
         priceIls: price,
         areaSqm: area,
         pricePerSqm: ppsm,
+        floor: (r.floor as string | number | null) ?? null,
+        // Every observation here already passed the quality_status==="usable"
+        // gate above; contributes_to_pricing (when the backend computed it)
+        // narrows further to "became a primary contributor for this family",
+        // defaulting true to match this function's pre-existing behavior for
+        // datasets that don't carry the field (e.g. Petah Tikva's own).
+        contributesToPricing: (r.contributes_to_pricing as boolean | undefined) ?? true,
+        targetEquivalentIndicationIls: (r.target_equivalent_indication_ils as number | null) ?? null,
       });
     }
   }
@@ -360,14 +373,30 @@ export interface AskingListingMarker {
   areaSqm: number | null;
   askingPriceIls: number | null;
   askingPpsm: number | null;
+  // Visibility-pass additions (see MarketEvidenceRegister) -- every one a
+  // straight passthrough of an already-computed backend field.
+  floor: string | number | null;
+  contributesToPricing: boolean;
+  targetEquivalentIndicationIls: number | null;
+  nonContributionReason: string | null;
 }
 
 export function deriveAskingListingMarkers(workspace: PetahTikvaWorkspace): AskingListingMarker[] {
   const out: AskingListingMarker[] = [];
   for (const fam of ["3R", "5R"] as const) {
-    const records = (workspace.evidence_provenance.current_asking[fam]?.accepted_records as JsonRecord[] | undefined) ?? [];
+    const laneData = workspace.evidence_provenance.current_asking[fam];
+    // Both accepted and rejected records -- rejected listings still carry
+    // real coordinates and facts (they simply didn't pass QA/status), and
+    // showing them lets the register honestly demonstrate what "רק ראיות
+    // שנכנסו לחישוב" actually filters out, matching the map's own existing
+    // included/context/excluded distinction rather than silently hiding them.
+    const records = [
+      ...((laneData?.accepted_records as JsonRecord[] | undefined) ?? []),
+      ...((laneData?.rejected_records as JsonRecord[] | undefined) ?? []),
+    ];
     for (const r of records) {
       if (r.latitude == null || r.longitude == null) continue;
+      const exclusionReasons = (r.exclusion_reasons as string[] | undefined) ?? [];
       out.push({
         id: String(r.listing_id ?? `${fam}-${out.length}`),
         family: fam,
@@ -378,6 +407,10 @@ export function deriveAskingListingMarkers(workspace: PetahTikvaWorkspace): Aski
         areaSqm: (r.area as number | null) ?? null,
         askingPriceIls: (r.asking_price as number | null) ?? null,
         askingPpsm: (r.asking_ppsm as number | null) ?? null,
+        floor: (r.floor as string | number | null) ?? null,
+        contributesToPricing: (r.contributes_to_pricing as boolean | undefined) ?? exclusionReasons.length === 0,
+        targetEquivalentIndicationIls: (r.target_equivalent_indication_ils as number | null) ?? null,
+        nonContributionReason: (r.non_contribution_reason as string | null) ?? (exclusionReasons[0] ?? null),
       });
     }
   }

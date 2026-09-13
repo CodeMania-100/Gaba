@@ -24,6 +24,7 @@ from . import multi_city_special_market as special_market
 from . import multi_city_standard_market as standard_market
 from .market_context_registry import MarketContextRegistration
 from .multi_city_competitor_register import build_multi_city_competitor_landscape
+from .multi_city_map_coordinate_enrichment import load_evidence_coordinate_enrichment, resolve_evidence_coordinate
 from .multi_city_precision_overlay import apply_comparable_overlay
 from .petah_tikva_workspace import _special_price_list_row, _unit_sort_key, build_petah_tikva_workspace_payload
 
@@ -98,6 +99,122 @@ def _lane_contributor_count(family_block: dict[str, Any], lane: str) -> int:
     return lane_obj["primary_contributor_count"] if lane_obj else 0
 
 
+# ---------------------------------------------------------------------------
+# Per-record contributor status (visibility pass) -- the frozen engine
+# already computes, per family/lane, exactly which records became a primary
+# contributor and what area-normalized/target-equivalent indication each
+# contributing group produced (market_summary.json's own
+# lanes.<lane>.primary_contributors[].{source_ids,target_equivalent_
+# indication}); completed_sales additionally carries a per-record
+# candidate_outcomes list with an explicit exclusion_reasons array. Nothing
+# here recomputes eligibility or a range -- this only joins each already-
+# built evidence record back onto that existing computation by stable id, so
+# "נכנסה לחישוב: כן/לא" and the target-equivalent figure can be shown
+# honestly on the map/register without a second contributor-selection rule.
+# ---------------------------------------------------------------------------
+
+
+def _contributor_group_lookup(lane_obj: dict[str, Any] | None) -> dict[str, dict[str, Any]]:
+    lookup: dict[str, dict[str, Any]] = {}
+    if not lane_obj:
+        return lookup
+    for group in lane_obj.get("primary_contributors") or []:
+        for source_id in group.get("source_ids") or []:
+            lookup[source_id] = group
+    return lookup
+
+
+def _sold_candidate_outcome_lookup(lane_obj: dict[str, Any] | None) -> dict[str, dict[str, Any]]:
+    lookup: dict[str, dict[str, Any]] = {}
+    if not lane_obj:
+        return lookup
+    for outcome in lane_obj.get("candidate_outcomes") or []:
+        source_id = outcome.get("source_id")
+        if source_id:
+            lookup[source_id] = outcome
+    return lookup
+
+
+def _annotate_sold_contributor_status(record: dict[str, Any], lane_obj: dict[str, Any] | None) -> dict[str, Any]:
+    """Joined by `source_id` -- confirmed by direct comparison against the
+    frozen market_summary.json that completed-sale contributor identity is
+    keyed by source_id, not record_uid (the two datasets' record_uid values
+    are independently generated and never referenced by the lane)."""
+
+    contributor_groups = _contributor_group_lookup(lane_obj)
+    outcomes = _sold_candidate_outcome_lookup(lane_obj)
+    source_id = record.get("source_id")
+    group = contributor_groups.get(source_id) if source_id else None
+
+    if group is not None:
+        record["contributes_to_pricing"] = True
+        record["target_equivalent_indication_ils"] = group.get("target_equivalent_indication")
+        record["non_contribution_reason"] = None
+    else:
+        record["contributes_to_pricing"] = False
+        record["target_equivalent_indication_ils"] = None
+        outcome = outcomes.get(source_id) if source_id else None
+        if outcome and outcome.get("exclusion_reasons"):
+            record["non_contribution_reason"] = "; ".join(outcome["exclusion_reasons"])
+        elif record.get("quality_status") != "usable":
+            record["non_contribution_reason"] = record.get("qa_note") or record.get("quality_status")
+        else:
+            record["non_contribution_reason"] = "not_a_primary_contributor"
+    return record
+
+
+def _apply_asking_coordinate_enrichment(
+    record: dict[str, Any], evidence_coord_lookup: dict[tuple[str, str], dict[str, Any]], city: str,
+) -> dict[str, Any]:
+    """deriveAskingPoints (lib/marketMap.ts) reads latitude/longitude/
+    coordinate_precision straight off the evidence record itself (unlike
+    sold/special evidence, which are joined through market_map_geocodes by
+    address) -- so the one-time evidence-coordinate enrichment is applied
+    directly here, overriding only these three fields, never the record's
+    other, already-real facts. A record whose address wasn't resolved keeps
+    its original (near-always submarket-centroid) coordinate untouched."""
+
+    resolved = resolve_evidence_coordinate(evidence_coord_lookup, city, record.get("address"))
+    if resolved:
+        lat, lng, coordinate_precision = resolved
+        record["latitude"] = lat
+        record["longitude"] = lng
+        record["coordinate_precision"] = coordinate_precision
+    return record
+
+
+def _annotate_asking_contributor_status(record: dict[str, Any], lane_obj: dict[str, Any] | None) -> dict[str, Any]:
+    """Joined by `record_uid` -- confirmed by direct comparison against the
+    frozen market_summary.json that current-asking contributor identity is
+    keyed by this dataset's own record_uid (also used as `listing_id`).
+
+    Deliberately never touches `exclusion_reasons` (that field stays exactly
+    the QA/status-based split build_asking_evidence_record already computed,
+    which is what the accepted_records/rejected_records split below keys
+    off) -- "accepted but not a primary contributor" is real supporting
+    context, not a QA rejection, so it is surfaced as its own
+    non_contribution_reason value instead of being folded into
+    exclusion_reasons (see task vocabulary item 11: מידע תומך / הקשר, a
+    distinct bucket from לא נכנסה לחישוב)."""
+
+    contributor_groups = _contributor_group_lookup(lane_obj)
+    record_uid = record.get("record_uid")
+    group = contributor_groups.get(record_uid) if record_uid else None
+
+    if group is not None:
+        record["contributes_to_pricing"] = True
+        record["target_equivalent_indication_ils"] = group.get("target_equivalent_indication")
+        record["non_contribution_reason"] = None
+    else:
+        record["contributes_to_pricing"] = False
+        record["target_equivalent_indication_ils"] = None
+        if record["exclusion_reasons"]:
+            record["non_contribution_reason"] = "; ".join(record["exclusion_reasons"])
+        else:
+            record["non_contribution_reason"] = "accepted_but_not_primary_contributor"
+    return record
+
+
 def _build_funnel(root: Path, context: MarketContextRegistration, family_blocks: dict[str, dict[str, Any]]) -> dict[str, Any]:
     """Real counts only (never fabricated placeholders) -- raw CSV row
     counts plus each lane's own already-computed primary_contributor_count,
@@ -137,13 +254,41 @@ def _build_funnel(root: Path, context: MarketContextRegistration, family_blocks:
 
 
 _STANDARD_COORDINATE_PRECISION = {"submarket_centroid_fallback": "approximate", "selected_submarket_centroid_fallback": "approximate"}
-_SPECIAL_COORDINATE_PRECISION = {"NEIGHBORHOOD_CENTROID": "approximate", "PROJECT": "address"}
+_SPECIAL_COORDINATE_PRECISION = {
+    "NEIGHBORHOOD_CENTROID": "approximate",
+    "PROJECT": "address",
+    # One-time map-coordinate enrichment (see
+    # app_api/multi_city_map_coordinate_enrichment.py) geocoded from the
+    # project's own address/street text already on file -- never a curated
+    # PROJECT coordinate, so kept as its own honest precision tier.
+    "GEOCODED_ADDRESS": "address",
+    "GEOCODED_STREET": "street",
+}
+
+
+def _resolved_row_coordinate(
+    evidence_coord_lookup: dict[tuple[str, str], dict[str, Any]], city: str, address: str | None,
+    fallback_lat: float | None, fallback_lng: float | None, fallback_precision_raw: str | None,
+) -> tuple[float | None, float | None, str]:
+    """Prefers the one-time evidence-coordinate enrichment pass (see
+    multi_city_map_coordinate_enrichment.resolve_evidence_coordinate) over
+    the row's own frozen (near-always centroid) lat/lng -- never the reverse,
+    and never touching the row's own original fields. Falls back to the raw
+    coordinate/precision exactly as before when this address wasn't
+    resolved."""
+
+    resolved = resolve_evidence_coordinate(evidence_coord_lookup, city, address)
+    if resolved:
+        lat, lng, coordinate_precision = resolved
+        return lat, lng, _SPECIAL_COORDINATE_PRECISION.get(coordinate_precision, "approximate")
+    return fallback_lat, fallback_lng, _STANDARD_COORDINATE_PRECISION.get(fallback_precision_raw, "approximate")
 
 
 def _build_map_geocodes(
     root: Path, context: MarketContextRegistration,
     sold_rows_by_family: dict[str, list[dict]], competitor_projects: list[dict],
     special_asking_rows: list[dict], special_sold_rows: list[dict],
+    evidence_coord_lookup: dict[tuple[str, str], dict[str, Any]],
 ) -> dict[str, Any]:
     """Synthesizes the exact MapGeocodeFile shape the frontend already
     consumes (lib/marketMap.ts) directly from this dataset's own per-row
@@ -151,26 +296,27 @@ def _build_map_geocodes(
     one-time geocoding pass at all, since every record already carries
     coordinates.
 
-    KNOWN LIMITATION: multi-city frozen evidence currently provides mostly
-    neighborhood/submarket-centroid coordinates rather than per-address
-    coordinates. Markers are therefore approximate and may overlap. No
-    coordinates are inferred or fabricated here -- every value below is
-    read straight from the frozen row, never guessed or spread out.
-    (Confirmed by direct read: the only coordinate_precision value on
-    standard_market rows is "submarket_centroid_fallback", and
-    special_full_v2/competitor_projects_v2.json is "NEIGHBORHOOD_CENTROID"
-    except 6 "PROJECT"-precision projects)
-    -- so almost every marker here is honestly "approximate", never "address"
-    -- consistent with the map's own required included/context/excluded and
-    precision-state distinctions."""
+    Every sold/special row here now prefers the one-time evidence-coordinate
+    enrichment pass (see app_api/multi_city_map_coordinate_enrichment.py,
+    build_multi_city_evidence_coordinate_enrichment_v1.py) over its own
+    frozen coordinate when that address was successfully geocoded --
+    otherwise it keeps its existing submarket/neighborhood-centroid
+    fallback, honestly labeled "approximate". Competitor projects go through
+    a separate, already-applied enrichment upstream in
+    build_multi_city_competitor_landscape (their coordinate_precision on the
+    row is already GEOCODED_ADDRESS/GEOCODED_STREET/PROJECT where resolved).
+    No coordinate is ever inferred, fabricated, or spread out for
+    appearance -- every value below is read straight from a real, frozen,
+    or once-geocoded source."""
 
     sold_resolved = []
     for family_rows in sold_rows_by_family.values():
         for row in family_rows:
-            precision = _STANDARD_COORDINATE_PRECISION.get(row.get("coordinate_precision"), "approximate")
-            rec = standard_market.build_map_geocode_record(
-                f"sold:{row.get('record_uid')}", row.get("address"), _to_float(row.get("latitude")), _to_float(row.get("longitude")), precision,
+            lat, lng, precision = _resolved_row_coordinate(
+                evidence_coord_lookup, context.city, row.get("address"),
+                _to_float(row.get("latitude")), _to_float(row.get("longitude")), row.get("coordinate_precision"),
             )
+            rec = standard_market.build_map_geocode_record(f"sold:{row.get('record_uid')}", row.get("address"), lat, lng, precision)
             if rec:
                 sold_resolved.append(rec)
 
@@ -191,11 +337,11 @@ def _build_map_geocodes(
     def _special_resolved(rows: list[dict]) -> list[dict]:
         out = []
         for row in rows:
-            precision = _SPECIAL_COORDINATE_PRECISION.get(row.get("coordinate_precision"), "approximate")
-            rec = standard_market.build_map_geocode_record(
-                f"special:{row.get('listing_id') or row.get('record_id')}", row.get("address"),
-                _to_float(row.get("lat")), _to_float(row.get("lng")), precision,
+            lat, lng, precision = _resolved_row_coordinate(
+                evidence_coord_lookup, context.city, row.get("address"),
+                _to_float(row.get("lat")), _to_float(row.get("lng")), row.get("coordinate_precision"),
             )
+            rec = standard_market.build_map_geocode_record(f"special:{row.get('listing_id') or row.get('record_id')}", row.get("address"), lat, lng, precision)
             if rec:
                 out.append(rec)
         return out
@@ -226,6 +372,130 @@ def _to_float(value: Any) -> float | None:
         return float(value)
     except (TypeError, ValueError):
         return None
+
+
+# ---------------------------------------------------------------------------
+# standard_attribute_enrichment for multi-city contexts (visibility pass) --
+# Petah Tikva's own standard_attribute_enrichment.py reshapes a separate,
+# PT-only curated research file (data/frozen/standard_unit_attribute_
+# enrichment_v1.json) that has no multi-city equivalent; this workspace
+# previously left the section entirely empty for the three non-PT contexts,
+# which silently starved ProductComparisonSection.tsx's per-competitor
+# תואם/שונה/לא ידוע comparison cards (lib/standardEnrichment.ts's
+# pickStrongestComparables reads exactly these two arrays) even though the
+# real facts they need already exist on competitor_landscape.projects and
+# the raw current_asking rows. This reshapes those already-known fields into
+# the exact same contract PT's own file uses (unit_variants[].rooms/
+# internal_area/balcony_area/floor/orientation/parking/storage/price,
+# project_level.status/delivery/payment_terms, starting_price_context) --
+# no new research, no new computation, field names/values read straight
+# from competitor_projects_v2.json / current_asking_*.csv.
+# ---------------------------------------------------------------------------
+
+
+def _mc_unit_variants(project: dict[str, Any]) -> list[dict[str, Any]]:
+    variants = []
+    for v in project.get("known_unit_variants") or []:
+        price = _to_float(v.get("price_ils"))
+        if price is None:
+            continue
+        variants.append({
+            "rooms": _to_float(v.get("rooms")),
+            "internal_area": _to_float(v.get("internal_area_sqm")),
+            "balcony_area": _to_float(v.get("balcony_area_sqm")),
+            "garden_area": _to_float(v.get("garden_area_sqm")),
+            "floor": v.get("floor"),
+            "orientation": v.get("orientation"),
+            "parking": v.get("parking"),
+            "storage": v.get("storage"),
+            "price": price,
+            "price_basis": v.get("price_basis"),
+        })
+    return variants
+
+
+def _mc_starting_price_context(variants: list[dict[str, Any]]) -> dict[str, Any] | None:
+    starting = [v for v in variants if v.get("price_basis") == "starting price"]
+    if not starting:
+        return None
+    cheapest = min(starting, key=lambda v: v["price"])
+    applies_to = f"{int(cheapest['rooms'])} חדרים" if cheapest.get("rooms") else "כלל הפרויקט"
+    return {"value": cheapest["price"], "applies_to": applies_to}
+
+
+def _mc_new_development_comparable(project: dict[str, Any]) -> dict[str, Any]:
+    variants = _mc_unit_variants(project)
+    payment_terms = project.get("payment_terms") or []
+    return {
+        "project": project.get("project_name"),
+        "address": project.get("address"),
+        "register_classification": project.get("display_classification"),
+        "unit_variants": variants,
+        "project_level": {
+            "status": project.get("construction_status") or project.get("project_status"),
+            "delivery": project.get("estimated_delivery"),
+            "payment_terms": "; ".join(str(t) for t in payment_terms) if payment_terms else None,
+        },
+        "starting_price_context": _mc_starting_price_context(variants),
+        "provenance": [{"source": s} for s in (project.get("source_urls") or [])],
+        "qa_notes": project.get("warnings") or [],
+    }
+
+
+def _mc_current_asking_comparable(row: dict[str, str]) -> dict[str, Any]:
+    return {
+        "address": row.get("address"),
+        "asking_price": _to_float(row.get("price_ils")),
+        "rooms": _to_float(row.get("rooms")),
+        "built_area": _to_float(row.get("area_sqm")),
+        "advertised_area": None,
+        "balcony_area": _to_float(row.get("balcony_area_sqm")),
+        "garden_area": None,
+        "floor": row.get("floor") or None,
+        "orientation": None,
+        "parking_count": None,
+        "storage": None,
+        "elevator": None,
+        "mamad": None,
+        "condition": None,
+    }
+
+
+def _build_standard_attribute_enrichment_multi_city(
+    competitor_projects: list[dict[str, Any]], asking_rows_by_family: dict[str, list[dict[str, str]]],
+) -> dict[str, Any]:
+    families: dict[str, Any] = {}
+    for family_key, rooms_target in (("standard_3r", 3), ("standard_5r", 5)):
+        family_label = "3R" if family_key == "standard_3r" else "5R"
+        # Same family-relevance filter Petah Tikva's own build_standard_
+        # attribute_enrichment applies (competitor_families): only include a
+        # project when at least one of its own unit variants is actually
+        # this family's room count -- never every project regardless of fit.
+        nd_comparables = [
+            _mc_new_development_comparable(p)
+            for p in competitor_projects
+            if any(_to_float(v.get("rooms")) == rooms_target for v in (p.get("known_unit_variants") or []))
+        ]
+        families[family_key] = {
+            "subject_reference": None,
+            "current_asking_comparables": [_mc_current_asking_comparable(r) for r in asking_rows_by_family[family_label]],
+            "new_development_comparables": nd_comparables,
+            "matched_observations": {},
+            "floor_observations": [],
+            "research_gaps": [],
+        }
+    return {
+        "version": "multi_city_v1",
+        "retrieved_at": None,
+        "scope": None,
+        "methodology_guards": [
+            "No coefficient/price-per-attribute is derived here -- every value is a straight passthrough of an "
+            "already-collected competitor/asking field, reshaped only for display.",
+        ],
+        "existing_standard_universe_context": None,
+        "new_development_floor_pair_search": None,
+        "families": families,
+    }
 
 
 def _build_multi_city_workspace_payload(context: MarketContextRegistration, root: Path) -> dict[str, Any]:
@@ -310,9 +580,41 @@ def _build_multi_city_workspace_payload(context: MarketContextRegistration, root
     asking_rows_by_family = {family: standard_market.load_current_asking(root, context.standard_market_dir, family) for family in ("3R", "5R")}
     competitors_raw = standard_market.load_new_development_competitors(root, context.standard_market_dir)
 
+    # One-time evidence-coordinate enrichment (see build_multi_city_evidence_
+    # coordinate_enrichment_v1.py) -- loaded once per request, applied below
+    # to asking records directly (deriveAskingPoints reads lat/lng straight
+    # off the record) and inside _build_map_geocodes for sold/special rows
+    # (which are joined by address through market_map_geocodes instead).
+    evidence_coord_lookup = load_evidence_coordinate_enrichment(root)
+
+    sold_records_by_family = {
+        family: [
+            _annotate_sold_contributor_status(standard_market.build_sold_evidence_record(r), family_blocks[family]["evidence_lanes"]["sold"])
+            for r in sold_rows_by_family[family]
+        ]
+        for family in ("3R", "5R")
+    }
+    asking_records_by_family = {
+        family: [
+            _annotate_asking_contributor_status(
+                _apply_asking_coordinate_enrichment(standard_market.build_asking_evidence_record(r), evidence_coord_lookup, context.city),
+                family_blocks[family]["evidence_lanes"]["current_asking"],
+            )
+            for r in asking_rows_by_family[family]
+        ]
+        for family in ("3R", "5R")
+    }
+
     evidence_provenance = {
-        "sold": {family: {"family": family, "records": [standard_market.build_sold_evidence_record(r) for r in sold_rows_by_family[family]]} for family in ("3R", "5R")},
-        "current_asking": {family: {"family": family, "accepted_records": [standard_market.build_asking_evidence_record(r) for r in asking_rows_by_family[family] if r.get("status") == "accepted"], "rejected_records": [standard_market.build_asking_evidence_record(r) for r in asking_rows_by_family[family] if r.get("status") != "accepted"]} for family in ("3R", "5R")},
+        "sold": {family: {"family": family, "records": sold_records_by_family[family]} for family in ("3R", "5R")},
+        "current_asking": {
+            family: {
+                "family": family,
+                "accepted_records": [r for r in asking_records_by_family[family] if not r["exclusion_reasons"]],
+                "rejected_records": [r for r in asking_records_by_family[family] if r["exclusion_reasons"]],
+            }
+            for family in ("3R", "5R")
+        },
         "new_development": {family: {"family": family, "records": competitors_raw} for family in ("3R", "5R")},
         "funnel_stages": ["raw", "qa", "geography", "area_and_recency", "independent_groups", "contributor"],
         "source_registry": {
@@ -326,6 +628,7 @@ def _build_multi_city_workspace_payload(context: MarketContextRegistration, root
     special_sold_rows_raw = special_market.load_sold_rows(root, context.standard_market_dir)
     market_map_geocodes = _build_map_geocodes(
         root, context, sold_rows_by_family, competitor_landscape["projects"], special_asking_rows_raw, special_sold_rows_raw,
+        evidence_coord_lookup,
     )
 
     map_center = location.get("center") or {}
@@ -378,14 +681,7 @@ def _build_multi_city_workspace_payload(context: MarketContextRegistration, root
             "case_study_3r_new_development": None,
         },
         "competitor_landscape": competitor_landscape,
-        "standard_attribute_enrichment": {
-            "version": "multi_city_v1", "retrieved_at": None, "scope": None, "methodology_guards": [],
-            "existing_standard_universe_context": None, "new_development_floor_pair_search": None,
-            "families": {
-                "standard_3r": {"subject_reference": None, "current_asking_comparables": [], "new_development_comparables": [], "matched_observations": {}, "floor_observations": [], "research_gaps": []},
-                "standard_5r": {"subject_reference": None, "current_asking_comparables": [], "new_development_comparables": [], "matched_observations": {}, "floor_observations": [], "research_gaps": []},
-            },
-        },
+        "standard_attribute_enrichment": _build_standard_attribute_enrichment_multi_city(competitor_landscape["projects"], asking_rows_by_family),
         "special_unit_market_context": special_unit_context,
         "price_list": full_price_list,
         "market_map_geocodes": market_map_geocodes,

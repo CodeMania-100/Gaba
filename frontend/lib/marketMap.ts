@@ -14,7 +14,7 @@ import { CompetitorRegisterProject, JsonRecord, PetahTikvaWorkspace, SpecialUnit
 import { buildFactSheet, CompetitorFactSheet } from "./competitorIntelligence";
 import { ils } from "./format";
 
-export type MarketMapKind = "asking" | "sold" | "competitor" | "project_area";
+export type MarketMapKind = "asking" | "sold" | "competitor" | "competitor_group" | "project_area";
 export type MarketMapFamily = "3R" | "5R";
 export type CoordinatePrecision = "address" | "street" | "approximate";
 
@@ -79,6 +79,24 @@ export interface MarketMapPoint {
   // invented) -- shown only for honesty, never affects any calculation.
   exclusionReason?: string;
 
+  // Visibility-pass additions (sold/asking standard evidence) -- every one a
+  // straight passthrough of an already-computed backend field, never a new
+  // calculation. source/geographyTier/qaNote are raw provenance; the engine
+  // already decides, per family, which records became a primary contributor
+  // and what area-normalized/target-equivalent indication each one produced
+  // (market_summary.json lanes.*.primary_contributors[].target_equivalent_
+  // indication) -- surfaced here so "the transaction was X but for our
+  // target the engine translated it to Y" can be shown honestly.
+  source?: string;
+  geographyTier?: string;
+  qaNote?: string;
+  targetEquivalentIndicationIls?: number;
+  // Real reason a record did NOT become a primary contributor -- distinct
+  // from exclusionReason (a QA/status rejection): this covers "accepted but
+  // not selected as this family's primary contributor" too, matching the
+  // task's three-way vocabulary (נכנסה לחישוב / מידע תומך / לא נכנסה).
+  nonContributionReason?: string;
+
   // competitor extras
   fact?: CompetitorFactSheet;
   // Short, presentation-ready notable-facts bullets and relevance tags,
@@ -94,6 +112,14 @@ export interface MarketMapPoint {
   // known_features, etc.) -- always a pass-through of an existing backend
   // field, never generated.
   note?: string;
+
+  // Only set when kind === "competitor_group" (see
+  // groupCompetitorPointsByCoordinate below): the individual competitor
+  // points this synthetic marker stands in for, each one exactly what
+  // deriveCompetitorPoints would have produced for it standalone. Selecting
+  // one from the group's detail panel hands that same, real point back to
+  // the normal selection flow -- never a second competitor representation.
+  groupMembers?: MarketMapPoint[];
 
   // Special-unit evidence extras -- only set when this point was derived for
   // a specific special-unit selection (see deriveSpecial*Points below).
@@ -111,6 +137,17 @@ export interface MarketMapPoint {
   // only for the subject-vs-evidence comparison table's "סוג" row; left
   // unset (rendered as "—") when the source doesn't say, never guessed.
   specialEvidenceType?: string;
+  // The pricing engine's own already-computed normalized value for this
+  // specific comparable (SpecialUnitComparable.normalized_value_ils) --
+  // real evidence of *why* this record influenced the suggested price, not
+  // a new calculation. Only set for participating/context comparables that
+  // actually went through the engine (never for basket-level rejects, which
+  // never reached it).
+  specialNormalizedValueIls?: number;
+  // Short "רלוונטי לדירה X" text derived from the record's own
+  // relevant_segments/applicable_segments field when it names this unit
+  // specifically -- never invented when the source is silent.
+  specialRelevantToLabel?: string;
 }
 
 // ---------------------------------------------------------------------------
@@ -158,6 +195,22 @@ const CONDITION_LABELS: Record<string, string> = {
   preserved: "שמור",
 };
 
+// Multi-city standard asking rows carry their own coordinate_precision
+// (near-always "submarket_centroid_fallback", or "GEOCODED_ADDRESS"/
+// "GEOCODED_STREET" after the one-time evidence-coordinate enrichment pass
+// -- see app_api/multi_city_map_coordinate_enrichment.py); Petah Tikva's own
+// asking rows never carry this field at all (its listings are individually
+// scraped, genuinely address-level already). So: read the field when
+// present, and only fall back to "address" (Petah Tikva's real precision)
+// when it's absent -- never claim "address" for a row that's actually
+// sitting on a shared centroid.
+const ASKING_COORDINATE_PRECISION_MAP: Record<string, CoordinatePrecision> = {
+  submarket_centroid_fallback: "approximate",
+  selected_submarket_centroid_fallback: "approximate",
+  GEOCODED_ADDRESS: "address",
+  GEOCODED_STREET: "street",
+};
+
 function pushAskingPoint(points: MarketMapPoint[], r: JsonRecord, fam: MarketMapFamily, contributes: boolean, exclusionReasons?: string[]) {
   if (r.latitude == null || r.longitude == null) return;
   const listingId = String(r.listing_id ?? "");
@@ -177,9 +230,7 @@ function pushAskingPoint(points: MarketMapPoint[], r: JsonRecord, fam: MarketMap
     floor: (r.floor as string | null) ?? undefined,
     date: (r.first_seen as string | null) ?? undefined,
     contributesToPricing: contributes,
-    // Scraped listing coordinates are already address-resolved (not a
-    // geocoded street centroid), so "address" precision is accurate.
-    coordinatePrecision: "address",
+    coordinatePrecision: r.coordinate_precision != null ? (ASKING_COORDINATE_PRECISION_MAP[r.coordinate_precision as string] ?? "approximate") : "address",
     hasBalcony: typeof r.has_balcony === "boolean" ? r.has_balcony : undefined,
     hasElevator: typeof r.has_elevator === "boolean" ? r.has_elevator : undefined,
     hasSecureRoom: typeof r.has_secure_room === "boolean" ? r.has_secure_room : undefined,
@@ -187,6 +238,11 @@ function pushAskingPoint(points: MarketMapPoint[], r: JsonRecord, fam: MarketMap
     condition: r.condition != null ? (CONDITION_LABELS[r.condition as string] ?? (r.condition as string)) : undefined,
     sourceUrl: (r.url as string | null) ?? undefined,
     exclusionReason: exclusionReasons?.length ? (EXCLUSION_REASON_LABELS[exclusionReasons[0]] ?? exclusionReasons[0]) : undefined,
+    source: (r.source as string | null) ?? undefined,
+    geographyTier: (r.geography_tier as string | null) ?? undefined,
+    qaNote: (r.qa_note as string | null) ?? undefined,
+    targetEquivalentIndicationIls: (r.target_equivalent_indication_ils as number | null) ?? undefined,
+    nonContributionReason: (r.non_contribution_reason as string | null) ?? undefined,
   });
 }
 
@@ -255,11 +311,18 @@ export function deriveSoldPoints(workspace: PetahTikvaWorkspace): MarketMapPoint
       title: "עסקה שבוצעה",
       address,
       family,
+      rooms: (latest.rooms as number | undefined) ?? undefined,
+      floor: (latest.floor as string | undefined) ?? undefined,
       priceIls: latest.price as number,
       pricePerSqm: latest.price_per_sqm as number,
       priceBasis: "sold",
       internalArea: latest.area as number,
       date: latest.event_date as string,
+      // The map only ever plots quality_status === "usable" transactions
+      // (filtered above), so every mapped sold point is real, usable
+      // evidence for its family -- contributesToPricing stays true exactly
+      // as before; contributor-vs-only-usable status now additionally shown
+      // via targetEquivalentIndicationIls/nonContributionReason below.
       contributesToPricing: true,
       coordinatePrecision: geo.precision,
       transactionCount: records.length,
@@ -269,6 +332,11 @@ export function deriveSoldPoints(workspace: PetahTikvaWorkspace): MarketMapPoint
         area: r.area as number,
         date: r.event_date as string,
       })),
+      source: (latest.source as string | undefined) ?? undefined,
+      geographyTier: (latest.geography_tier as string | undefined) ?? undefined,
+      qaNote: (latest.qa_note as string | undefined) ?? undefined,
+      targetEquivalentIndicationIls: (latest.target_equivalent_indication_ils as number | undefined) ?? undefined,
+      nonContributionReason: (latest.non_contribution_reason as string | undefined) ?? undefined,
     });
   }
   return points;
@@ -438,6 +506,7 @@ export function deriveCompetitorPoints(workspace: PetahTikvaWorkspace): MarketMa
       fact,
       highlights: deriveCompetitorHighlights(p),
       relevanceTags: deriveCompetitorRelevanceTags(p),
+      sourceUrl: (p.source_urls as string[] | undefined)?.[0],
     });
   }
   return points;
@@ -447,13 +516,86 @@ export function deriveCompetitorPoints(workspace: PetahTikvaWorkspace): MarketMa
  * currently-selected family -- reuses the same per-family eligibility flags
  * already computed on the workspace (competitor quantitative_eligibility),
  * never a new rule. For asking/sold points, contributesToPricing is already
- * family-specific (see above); for competitors it's re-checked per family. */
+ * family-specific (see above); for competitors it's re-checked per family.
+ * A competitor_group point (see groupCompetitorPointsByCoordinate) has no
+ * project_name of its own to look up -- it contributes for this family
+ * whenever ANY of its real members individually would, so "רק ראיות שנכנסו
+ * לחישוב" never hides a group that genuinely has an eligible member inside
+ * it. */
 export function pointContributesForFamily(point: MarketMapPoint, workspace: PetahTikvaWorkspace, family: MarketMapFamily): boolean {
+  if (point.kind === "competitor_group") {
+    return (point.groupMembers ?? []).some((m) => pointContributesForFamily(m, workspace, family));
+  }
   if (point.kind !== "competitor") return point.contributesToPricing;
   const project = workspace.competitor_landscape.projects.find((p) => p.project_name === point.title);
   const eligibility = project?.quantitative_eligibility as Record<string, { eligible: boolean }> | undefined;
   const key = family === "3R" ? "standard_3r" : "standard_5r";
   return eligibility?.[key]?.eligible ?? false;
+}
+
+// ---------------------------------------------------------------------------
+// Overlapping-competitor aggregation -- several frozen multi-city contexts
+// (e.g. Netanya/Kiryat Hasharon, Tel Aviv/Yad Eliyahu) only ever resolved a
+// project's location to a shared, low-precision neighborhood-centroid
+// fallback rather than a defensible per-project coordinate. Rendered
+// individually, N such competitors paint N literally overlapping pins at
+// the exact same point -- visually indistinguishable from zero, and easily
+// hidden entirely under the project-area marker. This never invents a
+// better coordinate: the group still sits at exactly the one real (shared)
+// coordinate the geocoding pass actually resolved -- it only changes how
+// many pins get drawn there.
+// ---------------------------------------------------------------------------
+
+/** Collapses competitor points that share the exact same coordinate AND are
+ * only "approximate" (neighborhood-centroid fallback) OR "street" (a
+ * street-level geocode with no distinguishing house number) precision into
+ * one synthetic competitor_group point carrying all of them as
+ * groupMembers -- these are exactly the two tiers where a shared coordinate
+ * reflects a genuine remaining fallback (neighborhood or street), not a
+ * per-project location. A genuine per-project "address" coordinate is NEVER
+ * grouped, even if it happens to sit close to others geographically (task:
+ * "For competitors with genuine address precision, continue rendering
+ * individual markers at their real coordinates"). Grouping is scoped
+ * per-precision (an approximate collision and a street collision never
+ * merge into one group, so the group's own precision label stays honest)
+ * and is an exact-coordinate match, not a screen-distance/zoom-level
+ * heuristic, so it never depends on how far in the map is currently zoomed.
+ * A coordinate shared by only one competitor is returned unchanged as a
+ * normal individual point. */
+export function groupCompetitorPointsByCoordinate(points: MarketMapPoint[]): MarketMapPoint[] {
+  const byCoord = new Map<string, MarketMapPoint[]>();
+  const individual: MarketMapPoint[] = [];
+
+  for (const p of points) {
+    if (p.coordinatePrecision !== "approximate" && p.coordinatePrecision !== "street") {
+      individual.push(p);
+      continue;
+    }
+    const key = `${p.coordinatePrecision}:${p.lat.toFixed(5)},${p.lng.toFixed(5)}`;
+    const list = byCoord.get(key);
+    if (list) list.push(p);
+    else byCoord.set(key, [p]);
+  }
+
+  const result = [...individual];
+  for (const [key, members] of byCoord) {
+    if (members.length === 1) {
+      result.push(members[0]);
+      continue;
+    }
+    const first = members[0];
+    result.push({
+      id: `competitor-group:${key}`,
+      kind: "competitor_group",
+      lat: first.lat,
+      lng: first.lng,
+      title: `${members.length} פרויקטים`,
+      contributesToPricing: members.some((m) => m.contributesToPricing),
+      coordinatePrecision: first.coordinatePrecision,
+      groupMembers: members,
+    });
+  }
+  return result;
 }
 
 // ---------------------------------------------------------------------------
@@ -473,6 +615,26 @@ interface StatusEntry {
   status: SpecialParticipation;
   reason?: string;
   tier?: string;
+  // The engine's own per-comparable normalized value and the record's own
+  // relevant_segments/applicable_segments-derived "why relevant to this
+  // unit" label -- both already computed/collected, just not previously
+  // read out of SpecialUnitComparable.raw (see task: special-unit evidence
+  // cards must say "why it is relevant to the selected special apartment").
+  normalizedValueIls?: number;
+  relevantToLabel?: string;
+}
+
+/** A record's own relevant_segments ("APT3") / applicable_segments
+ * ("APT38;APT39;APT36_37") field, when it names the given unit specifically
+ * -- never inferred from category/size, only ever a plain token match
+ * against the source's own text. Returns undefined (never guessed) when the
+ * field is absent or doesn't name this unit. */
+function relevantToLabel(raw: JsonRecord | undefined, unitNumber: SpecialUnitNumber): string | undefined {
+  const segments = (raw?.relevant_segments as string | undefined) ?? (raw?.applicable_segments as string | undefined);
+  if (!segments) return undefined;
+  const tokens = segments.split(/[;,]/).map((s) => s.trim());
+  const namesUnit = tokens.some((t) => (t.match(/\d+/g) ?? []).some((n) => Number(n) === unitNumber));
+  return namesUnit ? `רלוונטי לדירה ${unitNumber}` : undefined;
 }
 
 /** label -> participation status, built from one lane of an already-computed
@@ -483,17 +645,22 @@ interface StatusEntry {
  * of the classification itself. */
 function buildStatusIndex(
   indication: SpecialUnitIndication | null | undefined,
-  lane: "sold" | "current_asking" | "new_development"
+  lane: "sold" | "current_asking" | "new_development",
+  unitNumber: SpecialUnitNumber
 ): Map<string, StatusEntry> {
   const map = new Map<string, StatusEntry>();
   if (!indication) return map;
   const laneResult = indication.lanes[lane];
   if (laneResult) {
-    for (const c of laneResult.comps_used) map.set(c.label, { status: "participating", tier: c.tier });
-    for (const c of laneResult.comps_context_only) map.set(c.label, { status: "context_only", tier: c.tier });
+    for (const c of laneResult.comps_used) {
+      map.set(c.label, { status: "participating", tier: c.tier, normalizedValueIls: c.normalized_value_ils, relevantToLabel: relevantToLabel(c.raw, unitNumber) });
+    }
+    for (const c of laneResult.comps_context_only) {
+      map.set(c.label, { status: "context_only", tier: c.tier, normalizedValueIls: c.normalized_value_ils, relevantToLabel: relevantToLabel(c.raw, unitNumber) });
+    }
   }
   for (const e of indication.excluded) {
-    if (e.lane === lane) map.set(e.label, { status: "excluded", reason: e.reason });
+    if (e.lane === lane) map.set(e.label, { status: "excluded", reason: e.reason, relevantToLabel: relevantToLabel(e.raw, unitNumber) });
   }
   return map;
 }
@@ -510,7 +677,7 @@ function pricePerSqmOrUndefined(price: number | undefined, area: number | undefi
 export function deriveSpecialSoldPoints(workspace: PetahTikvaWorkspace, unitNumber: SpecialUnitNumber): MarketMapPoint[] {
   const context = workspace.special_unit_market_context.units[String(unitNumber)];
   if (!context) return [];
-  const statusIdx = buildStatusIndex(context.market_indication, "sold");
+  const statusIdx = buildStatusIndex(context.market_indication, "sold", unitNumber);
   const geocodes = workspace.market_map_geocodes?.special_sold?.resolved ?? [];
   const geoByAddress = new Map(geocodes.map((g) => [g.address, g]));
 
@@ -555,6 +722,8 @@ export function deriveSpecialSoldPoints(workspace: PetahTikvaWorkspace, unitNumb
       specialStatus: status,
       specialStatusReason: reason,
       specialTierLabel: entry?.tier,
+      specialNormalizedValueIls: entry?.normalizedValueIls,
+      specialRelevantToLabel: entry?.relevantToLabel,
       note: (latest.floor_configuration as string | undefined) ?? undefined,
       transactionCount: records.length,
     });
@@ -569,7 +738,7 @@ export function deriveSpecialSoldPoints(workspace: PetahTikvaWorkspace, unitNumb
 export function deriveSpecialAskingPoints(workspace: PetahTikvaWorkspace, unitNumber: SpecialUnitNumber): MarketMapPoint[] {
   const context = workspace.special_unit_market_context.units[String(unitNumber)];
   if (!context) return [];
-  const statusIdx = buildStatusIndex(context.market_indication, "current_asking");
+  const statusIdx = buildStatusIndex(context.market_indication, "current_asking", unitNumber);
   const geocodes = workspace.market_map_geocodes?.special_asking?.resolved ?? [];
   const geoByAddress = new Map(geocodes.map((g) => [g.address, g]));
 
@@ -604,6 +773,8 @@ export function deriveSpecialAskingPoints(workspace: PetahTikvaWorkspace, unitNu
       specialStatus: status,
       specialStatusReason: entry?.reason,
       specialTierLabel: entry?.tier,
+      specialNormalizedValueIls: entry?.normalizedValueIls,
+      specialRelevantToLabel: entry?.relevantToLabel ?? relevantToLabel(r, unitNumber),
       specialEvidenceType: (r.type as string | undefined) ?? undefined,
       note: (r.known_features as string | undefined) ?? undefined,
       sourceUrl: (r.source_url as string | undefined) ?? undefined,
@@ -636,11 +807,15 @@ export function deriveSpecialCompetitorPoints(workspace: PetahTikvaWorkspace, un
 
   const laneResult = indication.lanes.new_development;
   if (laneResult) {
-    for (const c of laneResult.comps_used) consider(c.label, { status: "participating", tier: c.tier });
-    for (const c of laneResult.comps_context_only) consider(c.label, { status: "context_only", tier: c.tier });
+    for (const c of laneResult.comps_used) {
+      consider(c.label, { status: "participating", tier: c.tier, normalizedValueIls: c.normalized_value_ils, relevantToLabel: relevantToLabel(c.raw, unitNumber) });
+    }
+    for (const c of laneResult.comps_context_only) {
+      consider(c.label, { status: "context_only", tier: c.tier, normalizedValueIls: c.normalized_value_ils, relevantToLabel: relevantToLabel(c.raw, unitNumber) });
+    }
   }
   for (const e of indication.excluded) {
-    if (e.lane === "new_development") consider(e.label, { status: "excluded", reason: e.reason });
+    if (e.lane === "new_development") consider(e.label, { status: "excluded", reason: e.reason, relevantToLabel: relevantToLabel(e.raw, unitNumber) });
   }
 
   const geocodes = workspace.market_map_geocodes?.competitors.resolved ?? [];
@@ -668,9 +843,12 @@ export function deriveSpecialCompetitorPoints(workspace: PetahTikvaWorkspace, un
       specialStatus: entry.status,
       specialStatusReason: entry.reason,
       specialTierLabel: entry.tier,
+      specialNormalizedValueIls: entry.normalizedValueIls,
+      specialRelevantToLabel: entry.relevantToLabel,
       fact,
       highlights: registerProject ? deriveCompetitorHighlights(registerProject) : undefined,
       relevanceTags: registerProject ? deriveCompetitorRelevanceTags(registerProject) : undefined,
+      sourceUrl: (registerProject?.source_urls as string[] | undefined)?.[0],
     });
   }
   return points;

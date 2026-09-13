@@ -1,0 +1,236 @@
+{
+  "version": "multi_city_competitor_coordinate_enrichment_v1",
+  "generated_at": "2026-09-13T15:58:02.350540+00:00",
+  "geocoder": "nominatim_openstreetmap",
+  "source": "data/multi_city_integration_final/special_full_v2/competitor_projects_v2.json",
+  "note": "One-time coordinate lookup only, from address/street text already present on the frozen competitor register -- no new commercial fact was collected, and special_full_v2/competitor_projects_v2.json itself was never modified. Applied at workspace-build time as an additive overlay (see app_api/multi_city_map_coordinate_enrichment.py); a project already at PROJECT precision is never touched, and a project with neither an address nor a street on file keeps its existing neighborhood-centroid fallback.",
+  "resolution_priority": [
+    "PROJECT (untouched)",
+    "GEOCODED_ADDRESS",
+    "GEOCODED_STREET",
+    "NEIGHBORHOOD_CENTROID (untouched fallback)"
+  ],
+  "validation": {
+    "city_tokens": {
+      "תל אביב-יפו": [
+        "תל אביב",
+        "תל־אביב",
+        "יפו",
+        "tel aviv",
+        "yafo",
+        "tel aviv-yafo"
+      ],
+      "נתניה": [
+        "נתניה",
+        "netanya"
+      ],
+      "אשקלון": [
+        "אשקלון",
+        "ashkelon",
+        "ashqelon"
+      ]
+    },
+    "max_distance_km_from_city_centroid": 12.0,
+    "note": "Every accepted record must (a) name its own city in the geocoder's own address components and (b) fall within max_distance_km_from_city_centroid of that city's existing neighborhood-centroid coordinate. Results coarser than street level are rejected as no improvement over the existing fallback."
+  },
+  "counts": {
+    "total_projects": 32,
+    "already_project_precision": 6,
+    "no_address_or_street_on_file": 9,
+    "geocode_attempted": 17,
+    "resolved": 13,
+    "unresolved": 4
+  },
+  "resolved": [
+    {
+      "project_id": "ta-tidhar-between",
+      "project_name": "TIDHAR בין השדרות",
+      "city": "תל אביב-יפו",
+      "input_kind": "address",
+      "query_text": "לה גווארדיה 69, תל אביב-יפו",
+      "lat": 32.059328,
+      "lng": 34.798785,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "69, לה גווארדיה, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6767589, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "project_id": "ta-rayk-east-side",
+      "project_name": "RAYK EAST SIDE",
+      "city": "תל אביב-יפו",
+      "input_kind": "address",
+      "query_text": "לוחמי גליפולי 56-58, תל אביב-יפו",
+      "lat": 32.0579177,
+      "lng": 34.7945689,
+      "coordinate_precision": "GEOCODED_STREET",
+      "resolved_label": "לוחמי גליפולי, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6775393, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "project_id": "ta-yagur",
+      "project_name": "יגור / קן התור",
+      "city": "תל אביב-יפו",
+      "input_kind": "address",
+      "query_text": "יגור 8, יד אליהו, תל אביב-יפו",
+      "lat": 32.057373,
+      "lng": 34.79673,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "8, יגור, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6775393, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "project_id": "ta-family-groove",
+      "project_name": "FAMILY GROOVE TLV — נגבה 21-27",
+      "city": "תל אביב-יפו",
+      "input_kind": "address",
+      "query_text": "נגבה 21-27, תל אביב-יפו",
+      "lat": 32.0543827,
+      "lng": 34.7959971,
+      "coordinate_precision": "GEOCODED_STREET",
+      "resolved_label": "נגבה, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6775393, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "project_id": "ta-negba26",
+      "project_name": "נגבה 26",
+      "city": "תל אביב-יפו",
+      "input_kind": "address",
+      "query_text": "נגבה 26, תל אביב-יפו",
+      "lat": 32.054074,
+      "lng": 34.797185,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "26, נגבה, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6775393, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "project_id": "ta-laguardia-35-45",
+      "project_name": "לה גווארדיה 35-45",
+      "city": "תל אביב-יפו",
+      "input_kind": "address",
+      "query_text": "לה גווארדיה 35-45, תל אביב-יפו",
+      "lat": 32.0593469,
+      "lng": 34.7883698,
+      "coordinate_precision": "GEOCODED_STREET",
+      "resolved_label": "לה גווארדיה, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6777517, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "project_id": "ta-ybox-gallipoli19",
+      "project_name": "YBOX גליפולי 19",
+      "city": "תל אביב-יפו",
+      "input_kind": "address",
+      "query_text": "לוחמי גליפולי 19, תל אביב-יפו",
+      "lat": 32.057224,
+      "lng": 34.794271,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "19, לוחמי גליפולי, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6775393, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "project_id": "net-gabay-park",
+      "project_name": "גבאי על הפארק",
+      "city": "נתניה",
+      "input_kind": "address",
+      "query_text": "שדרות בנימין 98, נתניה",
+      "lat": 32.324435,
+      "lng": 34.8566362,
+      "coordinate_precision": "GEOCODED_STREET",
+      "resolved_label": "שדרות בנימין, רמת אפרים, נתניה, נפת השרון, מחוז המרכז, 4231204, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "project_id": "net-aqua-sense",
+      "project_name": "AQUA SENSE",
+      "city": "נתניה",
+      "input_kind": "address",
+      "query_text": "אמנון ליפקין שחק 8, נתניה",
+      "lat": 32.3157013,
+      "lng": 34.8511389,
+      "coordinate_precision": "GEOCODED_STREET",
+      "resolved_label": "אמנון ליפקין שחק, Tubruq, נתניה, נפת השרון, מחוז המרכז, 4231204, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "project_id": "ash-ayal-peretz-wine",
+      "project_name": "אייל פרץ בעיר היין",
+      "city": "אשקלון",
+      "input_kind": "address",
+      "query_text": "דוריף 86, אשקלון",
+      "lat": 31.6870916,
+      "lng": 34.5958884,
+      "coordinate_precision": "GEOCODED_STREET",
+      "resolved_label": "דוריף, עיר היין, אזור התעשיה הצפוני, אשקלון, נפת אשקלון, מחוז הדרום, 7928900, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "project_id": "ash-jade",
+      "project_name": "JADE אשקלון",
+      "city": "אשקלון",
+      "input_kind": "address",
+      "query_text": "היוצרים 45, אשקלון",
+      "lat": 31.6837231,
+      "lng": 34.5853039,
+      "coordinate_precision": "GEOCODED_STREET",
+      "resolved_label": "היוצרים, גני ברנע, אזור התעשיה הצפוני, אשקלון, נפת אשקלון, מחוז הדרום, 7861842, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "project_id": "ash-yama-marina",
+      "project_name": "YAMA — מרינה אשקלון",
+      "city": "אשקלון",
+      "input_kind": "address",
+      "query_text": "יפה נוף 27, אשקלון",
+      "lat": 31.6809659,
+      "lng": 34.5584094,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "27, Yefe Nof, אשקלון, נפת אשקלון, מחוז הדרום, 7861831, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "project_id": "ash-project-k-wine",
+      "project_name": "K — עיר היין אשקלון",
+      "city": "אשקלון",
+      "input_kind": "address",
+      "query_text": "המיל השלישי 1, עיר היין, אשקלון",
+      "lat": 31.6841827,
+      "lng": 34.5993807,
+      "coordinate_precision": "GEOCODED_STREET",
+      "resolved_label": "המיל השלישי, עיר היין, אזור התעשיה הצפוני, אשקלון, נפת אשקלון, מחוז הדרום, 7928900, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    }
+  ],
+  "unresolved": [
+    {
+      "project_id": "ta-ybox-east-side",
+      "project_name": "YBOX East Side TLV",
+      "city": "תל אביב-יפו",
+      "input_kind": "address",
+      "query_text": "יד לבנים 19 / המערכה, תל אביב-יפו",
+      "reason": "no_results"
+    },
+    {
+      "project_id": "net-bereshit-family",
+      "project_name": "בראשית פמלי — קריית השרון",
+      "city": "נתניה",
+      "input_kind": "address",
+      "query_text": "חורשת האלונים 12, נתניה",
+      "reason": "no_results"
+    },
+    {
+      "project_id": "net-mashknot-hapark",
+      "project_name": "משכנות הפארק — משהב",
+      "city": "נתניה",
+      "input_kind": "address",
+      "query_text": "שפיגלמן, קריית השרון, נתניה",
+      "reason": "no_results"
+    },
+    {
+      "project_id": "ash-halomot-barnea",
+      "project_name": "חלומות ברנע הירוקה",
+      "city": "אשקלון",
+      "input_kind": "address",
+      "query_text": "שדרות הציונות 5, אשקלון",
+      "reason": "no_results"
+    }
+  ]
+}

@@ -38,6 +38,7 @@ from typing import Any, Literal
 
 from .multi_city_special_market import QUANTITATIVE_PRICE_TYPES, _coerce_bool, _coerce_float, load_competitor_projects
 from .multi_city_precision_overlay import apply_project_overlay
+from .multi_city_map_coordinate_enrichment import apply_map_coordinate_enrichment
 
 DisplayClassification = Literal["direct", "relevant", "context"]
 
@@ -154,7 +155,8 @@ def build_multi_city_competitor_landscape(
 
     raw_projects = [p for p in load_competitor_projects(pricing_core_data_dir) if p.get("city") == city]
     reshaped = [_reshape_project(p) for p in raw_projects]
-    enriched = apply_project_overlay(reshaped, pricing_core_data_dir, city)
+    overlaid = apply_project_overlay(reshaped, pricing_core_data_dir, city)
+    enriched = apply_map_coordinate_enrichment(overlaid, pricing_core_data_dir)
 
     classification_counts = {"direct": 0, "relevant": 0, "context": 0}
     geography_counts: dict[str, int] = {}

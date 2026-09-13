@@ -1,0 +1,837 @@
+{
+  "version": "multi_city_evidence_coordinate_enrichment_v1",
+  "generated_at": "2026-09-13T16:23:27.410088+00:00",
+  "geocoder": "nominatim_openstreetmap",
+  "sources": [
+    "data/multi_city_integration_final/standard_market/<dir>/completed_sales_{3r,5r}.csv",
+    "data/multi_city_integration_final/standard_market/<dir>/current_asking_{3r,5r}.csv",
+    "data/multi_city_integration_final/special_full_v2/<dir>/sold_special_v2.csv",
+    "data/multi_city_integration_final/special_full_v2/<dir>/asking_special_v2.csv"
+  ],
+  "note": "One-time coordinate lookup only, from each row's own already-on-file address text -- keyed by (city, address), never by individual row, since several rows legitimately share one building address. No source CSV was ever modified. Applied at workspace-build time as an additive overlay (see app_api/multi_city_map_coordinate_enrichment.py); a row whose address has no resolved entry here keeps its existing submarket/neighborhood-centroid fallback untouched.",
+  "validation": {
+    "city_tokens": {
+      "תל אביב-יפו": [
+        "תל אביב",
+        "תל־אביב",
+        "יפו",
+        "tel aviv",
+        "yafo",
+        "tel aviv-yafo"
+      ],
+      "נתניה": [
+        "נתניה",
+        "netanya"
+      ],
+      "אשקלון": [
+        "אשקלון",
+        "ashkelon",
+        "ashqelon"
+      ]
+    },
+    "max_distance_km_from_city_centroid": 12.0
+  },
+  "counts": {
+    "unique_addresses": 89,
+    "resolved": 65,
+    "unresolved": 24
+  },
+  "resolved": [
+    {
+      "city": "אשקלון",
+      "address": "אריה בן אליעזר",
+      "first_seen_in": "special_asking",
+      "lat": 31.6854854,
+      "lng": 34.5750125,
+      "coordinate_precision": "GEOCODED_STREET",
+      "resolved_label": "אריה בן אליעזר, נאות ברנע, אשקלון, נפת אשקלון, מחוז הדרום, 7861842, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "אשקלון",
+      "address": "בלפור 1",
+      "first_seen_in": "standard_asking",
+      "lat": 31.6867087,
+      "lng": 34.5764155,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "גן ילדים מצפה ברנע, 1, 3, בלפור, מצפה ברנע, אשקלון, נפת אשקלון, מחוז הדרום, 7861842, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "אשקלון",
+      "address": "בלפור 37",
+      "first_seen_in": "standard_sold",
+      "lat": 31.6899103,
+      "lng": 34.5798282,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "37, בלפור, מצפה ברנע, אשקלון, נפת אשקלון, מחוז הדרום, 7861842, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "אשקלון",
+      "address": "דרך היין 22",
+      "first_seen_in": "special_asking",
+      "lat": 31.6866129,
+      "lng": 34.5973057,
+      "coordinate_precision": "GEOCODED_STREET",
+      "resolved_label": "דרך ארץ, עיר היין, אזור התעשיה הצפוני, אשקלון, נפת אשקלון, מחוז הדרום, 7928900, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "אשקלון",
+      "address": "דרך היין 9",
+      "first_seen_in": "standard_asking",
+      "lat": 31.6811787,
+      "lng": 34.5948051,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "9, דרך ארץ, עיר היין, אזור התעשיה הצפוני, אשקלון, נפת אשקלון, מחוז הדרום, 7859700, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "אשקלון",
+      "address": "הגלשן 1",
+      "first_seen_in": "special_sold",
+      "lat": 31.7019985,
+      "lng": 34.578851,
+      "coordinate_precision": "GEOCODED_STREET",
+      "resolved_label": "הגלשן, עיר ימים, אשקלון, נפת אשקלון, מחוז הדרום, 7861841, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "אשקלון",
+      "address": "הציונות 67",
+      "first_seen_in": "standard_sold",
+      "lat": 31.6883263,
+      "lng": 34.5809673,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "67, הציונות, מצפה ברנע, אשקלון, נפת אשקלון, מחוז הדרום, 7861842, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "אשקלון",
+      "address": "הציונות 74",
+      "first_seen_in": "standard_asking",
+      "lat": 31.6871202,
+      "lng": 34.5812215,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "74, הציונות, גני ברנע, אזור התעשיה הצפוני, אשקלון, נפת אשקלון, מחוז הדרום, 7861842, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "אשקלון",
+      "address": "יעקב מרידור",
+      "first_seen_in": "standard_asking",
+      "lat": 31.6802651,
+      "lng": 34.578962,
+      "coordinate_precision": "GEOCODED_STREET",
+      "resolved_label": "יעקב מרידור, גני ברנע, אזור התעשיה הצפוני, אשקלון, נפת אשקלון, מחוז הדרום, 7861842, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "אשקלון",
+      "address": "יעקב מרידור 11",
+      "first_seen_in": "standard_sold",
+      "lat": 31.6802651,
+      "lng": 34.578962,
+      "coordinate_precision": "GEOCODED_STREET",
+      "resolved_label": "יעקב מרידור, גני ברנע, אזור התעשיה הצפוני, אשקלון, נפת אשקלון, מחוז הדרום, 7861842, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "אשקלון",
+      "address": "יעקב מרידור 8",
+      "first_seen_in": "standard_asking",
+      "lat": 31.6802651,
+      "lng": 34.578962,
+      "coordinate_precision": "GEOCODED_STREET",
+      "resolved_label": "יעקב מרידור, גני ברנע, אזור התעשיה הצפוני, אשקלון, נפת אשקלון, מחוז הדרום, 7861842, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "אשקלון",
+      "address": "לכיש 14",
+      "first_seen_in": "special_sold",
+      "lat": 31.6666198,
+      "lng": 34.5812673,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "14, לכיש, מגדל, אזור התעשיה הצפוני, אשקלון, נפת אשקלון, מחוז הדרום, 7859700, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "אשקלון",
+      "address": "מונטיפיורי 17",
+      "first_seen_in": "standard_sold",
+      "lat": 31.6813161,
+      "lng": 34.5777308,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "17, משה מונטיפיורי, נאות ברנע, אשקלון, נפת אשקלון, מחוז הדרום, 7861842, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "אשקלון",
+      "address": "מונטיפיורי 18",
+      "first_seen_in": "standard_sold",
+      "lat": 31.6808937,
+      "lng": 34.5769736,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "18, משה מונטיפיורי, נאות ברנע, אשקלון, נפת אשקלון, מחוז הדרום, 7861842, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "אשקלון",
+      "address": "מונטיפיורי 20",
+      "first_seen_in": "standard_sold",
+      "lat": 31.6808938,
+      "lng": 34.5772928,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "20, משה מונטיפיורי, נאות ברנע, אשקלון, נפת אשקלון, מחוז הדרום, 7861842, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "אשקלון",
+      "address": "מעלה הגת",
+      "first_seen_in": "special_asking",
+      "lat": 31.6920915,
+      "lng": 34.5783532,
+      "coordinate_precision": "GEOCODED_STREET",
+      "resolved_label": "מעלה הגת, רמת כרמים, אשקלון, נפת אשקלון, מחוז הדרום, 7861842, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "אשקלון",
+      "address": "מעלה הגת 32",
+      "first_seen_in": "special_asking",
+      "lat": 31.6920026,
+      "lng": 34.5817666,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "32, מעלה הגת, רמת כרמים, אשקלון, נפת אשקלון, מחוז הדרום, 7861842, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "אשקלון",
+      "address": "משה שרת 34, ברנע, אשקלון",
+      "first_seen_in": "special_asking",
+      "lat": 31.6842475,
+      "lng": 34.577117,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "34, משה שרת, נאות ברנע, אשקלון, נפת אשקלון, מחוז הדרום, 7861842, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "אשקלון",
+      "address": "ענבר 5, ברנע, אשקלון",
+      "first_seen_in": "special_asking",
+      "lat": 31.6925621,
+      "lng": 34.5708649,
+      "coordinate_precision": "GEOCODED_STREET",
+      "resolved_label": "ענבר, ברנע ב', אשקלון, נפת אשקלון, מחוז הדרום, 7861847, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "אשקלון",
+      "address": "קדש 25",
+      "first_seen_in": "standard_sold",
+      "lat": 31.6891464,
+      "lng": 34.5832981,
+      "coordinate_precision": "GEOCODED_STREET",
+      "resolved_label": "קדש, מצפה ברנע, אשקלון, נפת אשקלון, מחוז הדרום, 7861842, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "אשקלון",
+      "address": "שדרות ירושלים / ברנע ב׳",
+      "first_seen_in": "special_asking",
+      "lat": 31.6976957,
+      "lng": 34.5783991,
+      "coordinate_precision": "GEOCODED_STREET",
+      "resolved_label": "שדרות ירושלים, ברנע ג', אשקלון, נפת אשקלון, מחוז הדרום, 7861841, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "אשקלון",
+      "address": "שדרות ירושלים 113",
+      "first_seen_in": "standard_asking",
+      "lat": 31.6895565,
+      "lng": 34.575518,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "113, שדרות ירושלים, מצפה ברנע, אשקלון, נפת אשקלון, מחוז הדרום, 7861842, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "נתניה",
+      "address": "בני ו. רייך 21, קריית השרון, נתניה",
+      "first_seen_in": "special_asking",
+      "lat": 32.2957129,
+      "lng": 34.8769343,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "21, בני וו. רייך, קרית השרון, נתניה, נפת השרון, מחוז המרכז, 4250609, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "נתניה",
+      "address": "בני וו. רייך 21",
+      "first_seen_in": "special_asking",
+      "lat": 32.2957129,
+      "lng": 34.8769343,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "21, בני וו. רייך, קרית השרון, נתניה, נפת השרון, מחוז המרכז, 4250609, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "נתניה",
+      "address": "דגניה 44",
+      "first_seen_in": "standard_sold",
+      "lat": 32.3086689,
+      "lng": 34.8743101,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "44, דגניה, קרית השרון, נתניה, נפת השרון, מחוז המרכז, 4250609, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "נתניה",
+      "address": "דגניה 59",
+      "first_seen_in": "standard_sold",
+      "lat": 32.3015215,
+      "lng": 34.874061,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "59, דגניה, קרית השרון, נתניה, נפת השרון, מחוז המרכז, 4250609, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "נתניה",
+      "address": "דגניה 67",
+      "first_seen_in": "standard_sold",
+      "lat": 32.2999997,
+      "lng": 34.8737781,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "67, דגניה, קרית השרון, נתניה, נפת השרון, מחוז המרכז, 4250609, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "נתניה",
+      "address": "דגניה 80",
+      "first_seen_in": "standard_sold",
+      "lat": 32.2985988,
+      "lng": 34.8731981,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "80, דגניה, קרית השרון, נתניה, נפת השרון, מחוז המרכז, 4250609, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "נתניה",
+      "address": "הדקל",
+      "first_seen_in": "special_asking",
+      "lat": 32.3014889,
+      "lng": 34.8748667,
+      "coordinate_precision": "GEOCODED_STREET",
+      "resolved_label": "הדקל, קרית השרון, נתניה, נפת השרון, מחוז המרכז, 4250609, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "נתניה",
+      "address": "המורן",
+      "first_seen_in": "special_asking",
+      "lat": 32.3021382,
+      "lng": 34.8783901,
+      "coordinate_precision": "GEOCODED_STREET",
+      "resolved_label": "המורן, קרית השרון, קריית רבין, נתניה, נפת השרון, מחוז המרכז, 4250609, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "נתניה",
+      "address": "הנופר",
+      "first_seen_in": "special_asking",
+      "lat": 32.3015907,
+      "lng": 34.8766798,
+      "coordinate_precision": "GEOCODED_STREET",
+      "resolved_label": "הנופר, קרית השרון, נתניה, נפת השרון, מחוז המרכז, 4250609, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "נתניה",
+      "address": "הר מירון 7",
+      "first_seen_in": "standard_asking",
+      "lat": 32.3093491,
+      "lng": 34.8716115,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "7, הר מירון, קרית השרון, נתניה, נפת השרון, מחוז המרכז, 4250609, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "נתניה",
+      "address": "הרטום",
+      "first_seen_in": "special_asking",
+      "lat": 32.3104634,
+      "lng": 34.872438,
+      "coordinate_precision": "GEOCODED_STREET",
+      "resolved_label": "הרטום, קרית השרון, משכנות זבולון, נתניה, נפת השרון, מחוז המרכז, 4231204, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "נתניה",
+      "address": "זאב ליבר 9",
+      "first_seen_in": "standard_sold",
+      "lat": 32.3004303,
+      "lng": 34.8718807,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "9, זאב ליבר, קרית השרון, נתניה, נפת השרון, מחוז המרכז, 4250609, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "נתניה",
+      "address": "קריית השרון / נתניה",
+      "first_seen_in": "special_asking",
+      "lat": 32.2848206,
+      "lng": 34.8624463,
+      "coordinate_precision": "GEOCODED_STREET",
+      "resolved_label": "שדרות גיבורי ישראל, אזור התעשיה פולג, קריית נורדאו, נתניה, נפת השרון, מחוז המרכז, 4250519, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "נתניה",
+      "address": "שבט 4",
+      "first_seen_in": "standard_sold",
+      "lat": 32.2951485,
+      "lng": 34.8705886,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "4, שבט, קרית השרון, נתניה, נפת השרון, מחוז המרכז, 4250609, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "גוש עציון 20",
+      "first_seen_in": "standard_asking",
+      "lat": 32.054658,
+      "lng": 34.787608,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "20, גוש עציון, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6775393, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "דימונה 5",
+      "first_seen_in": "standard_sold",
+      "lat": 32.055452,
+      "lng": 34.798519,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "5, דימונה, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6767589, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "הגיבור האלמוני",
+      "first_seen_in": "standard_asking",
+      "lat": 32.0620903,
+      "lng": 34.7988378,
+      "coordinate_precision": "GEOCODED_STREET",
+      "resolved_label": "הגיבור האלמוני, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6789731, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "הפלמ\"ח 21",
+      "first_seen_in": "standard_asking",
+      "lat": 32.06323,
+      "lng": 34.79535,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "21, הפלמ\"ח, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6789731, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "טור מלכא 6",
+      "first_seen_in": "standard_asking",
+      "lat": 32.055243,
+      "lng": 34.795754,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "6, טור מלכא, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6775393, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "יגור 18",
+      "first_seen_in": "standard_asking",
+      "lat": 32.058162,
+      "lng": 34.796754,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "18, יגור, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6775393, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "יד לבנים 23",
+      "first_seen_in": "standard_sold",
+      "lat": 32.061142,
+      "lng": 34.795656,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "23, שדרות יד לבנים, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6789731, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "יד לבנים 25",
+      "first_seen_in": "standard_sold",
+      "lat": 32.061107,
+      "lng": 34.796259,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "25, שדרות יד לבנים, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6789731, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "יפתח 2",
+      "first_seen_in": "special_sold",
+      "lat": 32.058491,
+      "lng": 34.799161,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "2, יפתח, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6767589, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "יפתח 4",
+      "first_seen_in": "special_sold",
+      "lat": 32.058479,
+      "lng": 34.798793,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "4, יפתח, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6767589, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "יפתח 6",
+      "first_seen_in": "special_asking",
+      "lat": 32.058474,
+      "lng": 34.798419,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "6, יפתח, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6767589, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "לה גווארדיה",
+      "first_seen_in": "special_asking",
+      "lat": 32.0593469,
+      "lng": 34.7883698,
+      "coordinate_precision": "GEOCODED_STREET",
+      "resolved_label": "לה גווארדיה, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6777517, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "לה גווארדיה 52",
+      "first_seen_in": "standard_asking",
+      "lat": 32.058896,
+      "lng": 34.795599,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "52, לה גווארדיה, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6775393, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "לה גווארדיה 58",
+      "first_seen_in": "standard_asking",
+      "lat": 32.058862,
+      "lng": 34.797194,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "58א, לה גווארדיה, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6789731, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "לה גווארדיה 65",
+      "first_seen_in": "standard_sold",
+      "lat": 32.059317,
+      "lng": 34.798015,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "65, לה גווארדיה, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6767589, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "לה גווארדיה 67",
+      "first_seen_in": "standard_sold",
+      "lat": 32.059323,
+      "lng": 34.798406,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "67, לה גווארדיה, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6767589, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "לה גווארדיה 70",
+      "first_seen_in": "special_sold",
+      "lat": 32.0591554,
+      "lng": 34.8020573,
+      "coordinate_precision": "GEOCODED_STREET",
+      "resolved_label": "לה גווארדיה, תל־אביב–יפו, אורות, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6767589, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "לוחמי גליפולי 19",
+      "first_seen_in": "standard_sold",
+      "lat": 32.057224,
+      "lng": 34.794271,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "19, לוחמי גליפולי, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6775393, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "לוחמי גליפולי 42/46",
+      "first_seen_in": "standard_sold",
+      "lat": 32.0579177,
+      "lng": 34.7945689,
+      "coordinate_precision": "GEOCODED_STREET",
+      "resolved_label": "לוחמי גליפולי, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6775393, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "לוחמי גליפולי 44",
+      "first_seen_in": "standard_sold",
+      "lat": 32.060292,
+      "lng": 34.794835,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "44, לוחמי גליפולי, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6777517, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "לוחמי גליפולי 55",
+      "first_seen_in": "standard_sold",
+      "lat": 32.062934,
+      "lng": 34.794548,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "55, לוחמי גליפולי, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6789731, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "לוחמי גליפולי 58",
+      "first_seen_in": "standard_sold",
+      "lat": 32.062399,
+      "lng": 34.794926,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "58, לוחמי גליפולי, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6789731, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "מרגולין 29",
+      "first_seen_in": "special_asking",
+      "lat": 32.058641,
+      "lng": 34.793511,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "29, מרגולין, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6775393, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "נגבה 21",
+      "first_seen_in": "standard_sold",
+      "lat": 32.05445,
+      "lng": 34.79706,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "21, נגבה, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6775393, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "נגבה 26",
+      "first_seen_in": "standard_sold",
+      "lat": 32.054074,
+      "lng": 34.797185,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "26, נגבה, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6775393, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "נגבה 32",
+      "first_seen_in": "standard_asking",
+      "lat": 32.054078,
+      "lng": 34.79831,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "32, נגבה, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6775393, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "סמטת תעוז 3",
+      "first_seen_in": "special_asking",
+      "lat": 32.056714,
+      "lng": 34.798277,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "3, סמטת תעוז, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6767589, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "עמק איילון 2",
+      "first_seen_in": "standard_asking",
+      "lat": 32.059923,
+      "lng": 34.794861,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "2, עמק איילון, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6777517, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "עמק איילון 24",
+      "first_seen_in": "standard_sold",
+      "lat": 32.059893,
+      "lng": 34.799185,
+      "coordinate_precision": "GEOCODED_ADDRESS",
+      "resolved_label": "24, עמק איילון, תל־אביב–יפו, יד אליהו, תל־אביב–יפו, נפת תל אביב, מחוז תל אביב, 6789731, ישראל",
+      "geocoder": "nominatim_openstreetmap"
+    }
+  ],
+  "unresolved": [
+    {
+      "city": "אשקלון",
+      "address": "אברהם בלסברג",
+      "first_seen_in": "special_asking",
+      "reason": "no_results"
+    },
+    {
+      "city": "אשקלון",
+      "address": "אצ\"ל 39",
+      "first_seen_in": "standard_sold",
+      "reason": "no_results"
+    },
+    {
+      "city": "אשקלון",
+      "address": "אצ\"ל 47",
+      "first_seen_in": "standard_sold",
+      "reason": "no_results"
+    },
+    {
+      "city": "אשקלון",
+      "address": "ברנע",
+      "first_seen_in": "special_asking",
+      "reason": "no_better_than_centroid"
+    },
+    {
+      "city": "אשקלון",
+      "address": "שדרות הציונות",
+      "first_seen_in": "special_asking",
+      "reason": "no_better_than_centroid"
+    },
+    {
+      "city": "אשקלון",
+      "address": "שדרות קדש 12",
+      "first_seen_in": "special_asking",
+      "reason": "no_results"
+    },
+    {
+      "city": "נתניה",
+      "address": "אברהם שפיגלמן 12",
+      "first_seen_in": "standard_sold",
+      "reason": "no_results"
+    },
+    {
+      "city": "נתניה",
+      "address": "אברהם שפיגלמן 16",
+      "first_seen_in": "standard_sold",
+      "reason": "no_results"
+    },
+    {
+      "city": "נתניה",
+      "address": "אשדר בקאנטרי, קריית השרון",
+      "first_seen_in": "special_sold",
+      "reason": "no_results"
+    },
+    {
+      "city": "נתניה",
+      "address": "דקל, קריית השרון, נתניה",
+      "first_seen_in": "special_asking",
+      "reason": "no_results"
+    },
+    {
+      "city": "נתניה",
+      "address": "דרך דגניה",
+      "first_seen_in": "standard_asking",
+      "reason": "no_better_than_centroid"
+    },
+    {
+      "city": "נתניה",
+      "address": "דרך דגניה 46",
+      "first_seen_in": "standard_asking",
+      "reason": "no_results"
+    },
+    {
+      "city": "נתניה",
+      "address": "דרך דגניה 67",
+      "first_seen_in": "standard_asking",
+      "reason": "no_results"
+    },
+    {
+      "city": "נתניה",
+      "address": "דרך הפארק",
+      "first_seen_in": "special_asking",
+      "reason": "no_better_than_centroid"
+    },
+    {
+      "city": "נתניה",
+      "address": "דרך הפארק 15, קריית השרון, נתניה",
+      "first_seen_in": "special_sold",
+      "reason": "no_results"
+    },
+    {
+      "city": "נתניה",
+      "address": "דרך הפארק 23",
+      "first_seen_in": "special_asking",
+      "reason": "no_results"
+    },
+    {
+      "city": "נתניה",
+      "address": "דרך הפארק 25",
+      "first_seen_in": "standard_asking",
+      "reason": "no_results"
+    },
+    {
+      "city": "נתניה",
+      "address": "דרך הפארק 29",
+      "first_seen_in": "standard_asking",
+      "reason": "no_results"
+    },
+    {
+      "city": "נתניה",
+      "address": "דרך הפארק 9",
+      "first_seen_in": "special_asking",
+      "reason": "no_results"
+    },
+    {
+      "city": "נתניה",
+      "address": "חשוון 4",
+      "first_seen_in": "standard_sold",
+      "reason": "no_results"
+    },
+    {
+      "city": "נתניה",
+      "address": "טום לנטוס 21",
+      "first_seen_in": "standard_sold",
+      "reason": "no_results"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "דרך משה דיין",
+      "first_seen_in": "special_asking",
+      "reason": "no_better_than_centroid"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "יד אליהו",
+      "first_seen_in": "special_asking",
+      "reason": "too_coarse"
+    },
+    {
+      "city": "תל אביב-יפו",
+      "address": "יד אליהו, תל אביב-יפו (exact street not exposed in search result)",
+      "first_seen_in": "special_asking",
+      "reason": "no_results"
+    }
+  ]
+}

@@ -85,23 +85,49 @@ def build_asking_evidence_record(row: dict[str, str]) -> dict[str, Any]:
     dataset's own `record_uid` deliberately: market_summary.json's lane
     `primary_contributors[].source_ids` already reference the same
     `record_uid` values, so "contributes to pricing" highlighting keeps
-    working unmodified."""
+    working unmodified.
+
+    Extended (visibility pass) with every other already-on-file raw column
+    this dataset's current_asking_*.csv actually carries (confirmed by
+    direct read of the CSV headers) that wasn't previously surfaced: rooms
+    was already present; floor/source/geography_tier/neighborhood/balcony_
+    area/parking/storage/qa_note/record_uid are new here -- every one a
+    straight passthrough of an existing column, never a new computation.
+    `record_uid` is kept on the record (not just as `listing_id`) so the
+    workspace layer can join it against the lane's own primary_contributors
+    without re-deriving it."""
 
     price = _to_float(row.get("price_ils"))
     area = _to_float(row.get("area_sqm"))
     lat, lng = _to_float(row.get("latitude")), _to_float(row.get("longitude"))
     return {
         "listing_id": row.get("record_uid"),
+        "record_uid": row.get("record_uid"),
         "address": row.get("address"),
+        "city": row.get("city"),
         "latitude": lat,
         "longitude": lng,
+        # Raw value from the CSV (always "submarket_centroid_fallback" today)
+        # -- the workspace layer may override lat/longitude/this field with a
+        # real address-level coordinate from the one-time evidence-coordinate
+        # enrichment pass (see market_context_workspace._apply_asking_
+        # coordinate_enrichment); never hardcode "address" precision here,
+        # since every row starts out sharing one submarket centroid.
+        "coordinate_precision": row.get("coordinate_precision") or None,
         "rooms": _to_float(row.get("rooms")),
         "asking_price": price,
         "asking_ppsm": (price / area) if price is not None and area else None,
         "area": area,
         "floor": row.get("floor") or None,
-        "first_seen": row.get("published_at") or row.get("retrieved_at") or None,
+        "balcony_area": _to_float(row.get("balcony_area_sqm")),
+        "parking": row.get("parking") or None,
+        "storage": row.get("storage") or None,
+        "geography_tier": row.get("geography_tier") or None,
+        "neighborhood": row.get("neighborhood") or None,
+        "source": row.get("source") or None,
         "url": row.get("source_url") or None,
+        "first_seen": row.get("published_at") or row.get("retrieved_at") or None,
+        "qa_note": row.get("qa_note") or None,
         "exclusion_reasons": [] if row.get("status") == "accepted" else [row.get("status") or "excluded"],
     }
 
@@ -111,16 +137,36 @@ def build_sold_evidence_record(row: dict[str, str]) -> dict[str, Any]:
     convention app_api.petah_tikva_workspace._sold_evidence_section's own
     records already use (address/event_date/price/price_per_sqm/area/
     quality_status) -- read directly by lib/marketMap.ts's
-    deriveSoldPoints()."""
+    deriveSoldPoints().
+
+    Extended (visibility pass) with every other already-on-file raw column
+    this dataset's completed_sales_*.csv actually carries (confirmed by
+    direct read of the CSV headers) that wasn't previously surfaced: rooms/
+    floor/source/geography_tier/neighborhood/qa_note/source_url/source_id/
+    record_uid are new here -- every one a straight passthrough of an
+    existing column, never a new computation. `source_id`/`record_uid` are
+    kept on the record so the workspace layer can join it against the
+    lane's own market_summary.json candidate_outcomes/primary_contributors
+    (completed-sale contributor identity there is keyed by `source_id`, not
+    `record_uid` -- confirmed by direct comparison of the two datasets)."""
 
     price = _to_float(row.get("price_ils"))
     area = _to_float(row.get("area_sqm"))
     return {
         "address": row.get("address"),
         "event_date": row.get("event_date"),
+        "rooms": _to_float(row.get("rooms")),
+        "floor": row.get("floor") or None,
         "price": price,
         "price_per_sqm": (price / area) if price is not None and area else None,
         "area": area,
+        "geography_tier": row.get("geography_tier") or None,
+        "neighborhood": row.get("neighborhood") or None,
+        "source": row.get("source") or None,
+        "url": row.get("source_url") or None,
+        "qa_note": row.get("qa_note") or None,
+        "source_id": row.get("source_id") or None,
+        "record_uid": row.get("record_uid") or None,
         # This dataset's own `status` column (e.g. "accepted") already IS
         # the QA verdict -- never re-run sold QA here, this is frozen,
         # already-QA'd evidence, unlike Petah Tikva's citywide feed which

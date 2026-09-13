@@ -5,6 +5,7 @@ import * as maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { PetahTikvaWorkspace, SpecialUnitIndication } from "@/lib/api";
 import {
+  countFamilyRelevantCompetitors,
   deriveAskingPoints,
   deriveCompetitorPoints,
   deriveProjectAreaPoint,
@@ -21,6 +22,7 @@ import {
   MarketMapPoint,
   MarketMapSelection,
   pointContributesForFamily,
+  rematchCompetitorPointForFamily,
   SPECIAL_UNIT_NUMBERS,
   SpecialUnitMapCoverage,
   SpecialUnitNumber,
@@ -71,12 +73,20 @@ const SPECIAL_STATUS_OPACITY_EXPRESSION = [
   0.9,
   0.45,
 ];
-// Standard-mode fallback (last two entries) now mirrors SPECIAL_STATUS_
-// OPACITY_EXPRESSION's own contributesToPricing-aware fallback instead of a
-// flat 1 -- competitorVisible (see MarketGeoMap component body) re-stamps
-// contributesToPricing to the currently-selected family before this paint
-// expression ever runs, so a project eligible for 3R but not 5R now visibly
-// dims when 5R is selected (task item 7), never only in the detail panel.
+// Standard-mode fallback (last two entries) is driven by familyRelevant, NOT
+// contributesToPricing -- P0 fix ("the map still does not follow the
+// selected product"): relevance ("is this even a known 3R/5R product") and
+// quantitative eligibility ("does it have an exact enough price+area pair
+// to numerically enter the range") are two different questions. Muting only
+// on the stricter eligibility signal dimmed plenty of genuinely relevant
+// competitors that simply lack a perfect price/area pair; familyRelevant
+// (see lib/marketMap.ts's isRelevantToFamily) is the coarser, more
+// inclusive "known 3-room/5-room product" signal the task asks for --
+// competitorVisible (see MarketGeoMap component body) re-stamps it to the
+// currently-selected family before this paint expression ever runs, so a
+// project relevant to 3R but not 5R visibly dims when 5R is selected, never
+// only in the detail panel. "רק ראיות שנכנסו לחישוב" itself still filters on
+// contributesToPricing, unchanged -- this opacity fallback is purely visual.
 const COMPETITOR_OPACITY_EXPRESSION = [
   "case",
   ["==", ["get", "specialStatus"], "participating"],
@@ -85,7 +95,7 @@ const COMPETITOR_OPACITY_EXPRESSION = [
   0.7,
   ["==", ["get", "specialStatus"], "excluded"],
   0.3,
-  ["get", "contributesToPricing"],
+  ["get", "familyRelevant"],
   1,
   0.4,
 ];
@@ -225,20 +235,25 @@ export default function MarketGeoMap({ workspace, selection, onSelectionChange, 
   );
   const competitorVisible = useMemo(() => {
     if (!layers.competitor) return [];
-    // Standard mode: re-stamp each point's contributesToPricing to this
-    // specific selected family (deriveCompetitorPoints itself only knows
-    // "eligible for either family") so switching 3R<->5R visibly re-colors/
-    // re-dims markers on the map itself, not only the text inside an
-    // already-open detail panel (task item 7: family selection must
-    // visibly change evidence relevance). Special mode is untouched --
-    // contributesToPricing there already equals specialStatus==="participating".
+    // Standard mode: re-stamp each point's contributesToPricing AND re-match
+    // its own displayed price/fact to this specific selected family
+    // (deriveCompetitorPoints itself only knows "eligible for either
+    // family", family-agnostically -- see rematchCompetitorPointForFamily's
+    // own docstring) so switching 3R<->5R visibly re-colors/re-dims markers
+    // on the map (task item 7), AND so the popup/tooltip/group-member price
+    // the user actually sees is always this family's own real variant, never
+    // an unrelated room count's price (P0 fix). Special mode is untouched --
+    // contributesToPricing there already equals specialStatus==="participating",
+    // and special competitor points already source price from their own
+    // matched comparable, never from a standard family.
     const withFamilyContribution = isSpecial
       ? activeCompetitor
-      : activeCompetitor.map((p) =>
-          p.kind === "competitor_group"
-            ? { ...p, contributesToPricing: (p.groupMembers ?? []).some((m) => pointContributesForFamily(m, workspace, family)) }
-            : { ...p, contributesToPricing: pointContributesForFamily(p, workspace, family) }
-        );
+      : activeCompetitor.map((p) => {
+          const rematched = rematchCompetitorPointForFamily(p, workspace, family);
+          return rematched.kind === "competitor_group"
+            ? { ...rematched, contributesToPricing: (rematched.groupMembers ?? []).some((m) => pointContributesForFamily(m, workspace, family)) }
+            : { ...rematched, contributesToPricing: pointContributesForFamily(rematched, workspace, family) };
+        });
     return withFamilyContribution.filter((p) => !onlyEvidence || p.contributesToPricing);
   }, [activeCompetitor, layers.competitor, onlyEvidence, workspace, family, isSpecial]);
 
@@ -602,7 +617,16 @@ export default function MarketGeoMap({ workspace, selection, onSelectionChange, 
               <span className="font-semibold text-ink">{askingRelevantCount}</span> מודעות רלוונטיות
             </span>
             <span>
-              <span className="font-semibold text-ink">{competitorAll.length}</span> פרויקטים מתחרים
+              {/* P0 fix ("audit the count shown above the map and the actual
+                  rendered competitor set: they must come from the same
+                  derivation"): count exactly the competitors that are both
+                  actually rendered (competitorVisible -- already respects the
+                  layer toggle and "רק ראיות שנכנסו לחישוב") AND relevant to
+                  the selected family, via the same isRelevantToFamily signal
+                  that drives the map's own emphasis/muting and aggregate
+                  split label. Never competitorAll.length, which counts raw
+                  map entries (pins + one per group) regardless of family. */}
+              <span className="font-semibold text-ink">{countFamilyRelevantCompetitors(competitorVisible, workspace, family)}</span> פרויקטים רלוונטיים
             </span>
           </div>
           {soldFamilyCoverage.mappedTotal < soldFamilyCoverage.includedTotal && (
@@ -702,16 +726,32 @@ function toFeatureCollection(points: MarketMapPoint[], _ppsmDomain?: [number, nu
         kind: p.kind,
         classification: p.classification ?? null,
         contributesToPricing: p.contributesToPricing,
+        // P0 fix ("the map still does not follow the selected product"):
+        // the coarser "is this even a known product match for the currently
+        // selected family" signal (see lib/marketMap.ts's isRelevantToFamily),
+        // distinct from contributesToPricing -- drives the standard-mode
+        // opacity fallback (see COMPETITOR_OPACITY_EXPRESSION) so an
+        // unrelated/unknown-product competitor visibly mutes even when it
+        // happens to be a strict quantitative contributor for some other
+        // family. Only meaningful for kind === "competitor"/"competitor_group".
+        familyRelevant: p.familyRelevant ?? null,
         pricePerSqm: p.pricePerSqm ?? null,
         // Only set in special-unit mode (task item 25) -- participating /
         // context_only / excluded get three distinct opacities so an
         // excluded comparable never looks identical to a voting one.
         specialStatus: p.specialStatus ?? null,
         // Only set for kind === "competitor_group" -- drives the aggregate
-        // marker's own count label ("9 פרויקטים" etc.), never a MapLibre
-        // cluster count (this grouping is precision-aware, computed once in
-        // lib/marketMap.ts, not a zoom-dependent screen-distance cluster).
+        // marker's own count label, never a MapLibre cluster count (this
+        // grouping is precision-aware, computed once in lib/marketMap.ts,
+        // not a zoom-dependent screen-distance cluster).
         groupCount: p.groupMembers?.length ?? null,
+        // How many of those members are familyRelevant right now -- the
+        // aggregate circle's own number reads THIS, never the raw total, so
+        // a 7-member group that's really "3 relevant · 4 context" never
+        // shows a bare "7" that disagrees with the relevant-projects count
+        // shown above the map (both are computed by the exact same
+        // isRelevantToFamily rule -- see countFamilyRelevantCompetitors).
+        groupRelevantCount: p.groupRelevantCount ?? null,
       },
     })),
   };
@@ -827,8 +867,15 @@ function ensureCompetitorSource(map: maplibregl.Map) {
   // Aggregate marker for competitors that only ever resolved to the same
   // approximate/neighborhood-centroid coordinate (see lib/marketMap.ts's
   // groupCompetitorPointsByCoordinate) -- a visibly bigger circle carrying
-  // its own count badge, so e.g. 9 Netanya projects read as one clear "9
-  // פרויקטים" marker instead of N literally overlapping, invisible pins.
+  // its own count badge. P0 fix ("the map still does not follow the
+  // selected product"): the badge's own number/label must never flatten a
+  // family-mixed group into one undifferentiated total again -- both now
+  // read groupRelevantCount/title (recomputed per family by
+  // rematchCompetitorPointForFamily, see lib/marketMap.ts), never the raw
+  // groupCount, so e.g. 7 Netanya projects that are really "3 relevant · 4
+  // context" for the selected product read as exactly that, not a bare "7".
+  // The circle itself also dims like an individual pin (familyRelevant)
+  // when it has no relevant member at all -- never a flat, always-bold 0.95.
   // Genuine per-project (address/street) coordinates never produce this
   // kind and keep rendering through point-competitor above, unchanged.
   map.addLayer({
@@ -838,7 +885,12 @@ function ensureCompetitorSource(map: maplibregl.Map) {
     filter: ["==", ["get", "kind"], "competitor_group"],
     paint: {
       "circle-color": COLORS.competitor_direct,
-      "circle-opacity": 0.95,
+      // familyRelevant is only ever set in standard mode (rematchCompetitorPointForFamily
+      // is never called for special-unit points, see its own docstring) --
+      // dim only when it's explicitly false, so special-unit mode (where
+      // this property is always absent/null) keeps its original flat 0.95,
+      // exactly as before this fix.
+      "circle-opacity": ["case", ["==", ["get", "familyRelevant"], false], 0.4, 0.95],
       "circle-radius": 13,
       "circle-stroke-width": 2.5,
       "circle-stroke-color": "#ffffff",
@@ -850,7 +902,11 @@ function ensureCompetitorSource(map: maplibregl.Map) {
     source: "src-competitor",
     filter: ["==", ["get", "kind"], "competitor_group"],
     layout: {
-      "text-field": ["to-string", ["get", "groupCount"]],
+      // Falls back to the raw total only in special-unit mode, where
+      // groupRelevantCount is never set (special mode has its own
+      // specialStatus-based participation, not a standard family) --
+      // standard mode always has a real (possibly 0) groupRelevantCount.
+      "text-field": ["to-string", ["coalesce", ["get", "groupRelevantCount"], ["get", "groupCount"]]],
       "text-size": 12,
       "text-font": ["Noto Sans Regular"],
       "text-allow-overlap": true,
@@ -864,7 +920,12 @@ function ensureCompetitorSource(map: maplibregl.Map) {
     source: "src-competitor",
     filter: ["==", ["get", "kind"], "competitor_group"],
     layout: {
-      "text-field": ["concat", ["to-string", ["get", "groupCount"]], " פרויקטים"],
+      // The group's own already-computed split label ("3 רלוונטיים · 4
+      // הקשר" / "N רלוונטיים" / "N פרויקטים בהקשר" -- see lib/marketMap.ts's
+      // competitorGroupTitle) -- every kind's on-map label already reads
+      // "title" (see label-competitor above), so this stops reconstructing
+      // a second, independent "N פרויקטים" string that could disagree with it.
+      "text-field": ["get", "title"],
       "text-size": 11,
       "text-offset": [0, 1.7],
       "text-anchor": "top",
@@ -1236,10 +1297,15 @@ function CompetitorGroupDetail({
   onSelectPoint: (p: MarketMapPoint) => void;
 }) {
   const members = point.groupMembers ?? [];
+  // point.title is already the family-aware split string computed by
+  // competitorGroupTitle (e.g. "3 רלוונטיים · 4 הקשר") -- shown as this
+  // panel's own h3 header above (see the parent switch). This line adds only
+  // the location-grouping fact itself (why they're one dot), never a second,
+  // possibly-stale count.
   return (
     <div className="flex flex-col gap-2">
       <p className="text-xs text-slate-500">
-        {members.length} פרויקטים באזור זה · מיקום משוער ברמת השכונה — לא ניתן לקבוע מיקום מדויק לכל פרויקט בנפרד.
+        {members.length} פרויקטים חולקים מיקום זה · מיקום משוער ברמת השכונה — לא ניתן לקבוע מיקום מדויק לכל פרויקט בנפרד.
       </p>
       <ul className="flex max-h-[420px] flex-col gap-2 overflow-y-auto">
         {members.map((m) => (
@@ -1266,13 +1332,24 @@ function CompetitorGroupMemberRow({
   onSelectPoint: (p: MarketMapPoint) => void;
 }) {
   const classificationLabel = member.classification ? GROUP_MEMBER_CLASSIFICATION_LABELS[member.classification] ?? member.classification : null;
+  // P0 fix ("competitors known not to offer 3R -> muted background context"):
+  // familyRelevant is only ever stamped false/true for standard competitors
+  // (see rematchCompetitorPointForFamily) -- special-unit members never set
+  // it, so the `=== false` check (not a truthy/falsy read) keeps this row's
+  // normal styling for anything that isn't an explicit non-match.
+  const isContextOnly = member.familyRelevant === false;
   return (
-    <li className="rounded-md border border-slate-200 p-2">
+    <li className={`rounded-md border p-2 ${isContextOnly ? "border-slate-200 bg-slate-50 opacity-70" : "border-slate-200"}`}>
       <div className="flex items-start justify-between gap-2">
         <span className="text-sm font-semibold text-slate-900">{member.title}</span>
-        {classificationLabel && (
-          <span className="shrink-0 rounded bg-amber-50 px-1.5 py-0.5 text-[11px] font-medium text-amber-800">{classificationLabel}</span>
-        )}
+        <div className="flex shrink-0 items-center gap-1">
+          {isContextOnly && (
+            <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[11px] font-medium text-slate-500">הקשר — לא רלוונטי לתמהיל שנבחר</span>
+          )}
+          {classificationLabel && (
+            <span className="shrink-0 rounded bg-amber-50 px-1.5 py-0.5 text-[11px] font-medium text-amber-800">{classificationLabel}</span>
+          )}
+        </div>
       </div>
       {/* fact.priceLabel already carries its own "החל מ־" prefix when
           isStartingPriceOnly (see lib/competitorRegister.ts's

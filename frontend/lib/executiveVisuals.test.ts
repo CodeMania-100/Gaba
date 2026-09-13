@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { deriveCompletedSalesOverview } from "./executiveVisuals";
+import { deriveCompetitorMatrix, deriveCompletedSalesOverview, deriveDefaultMatrixCompetitors } from "./executiveVisuals";
 import { PetahTikvaWorkspace } from "./api";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -167,5 +167,104 @@ describe("deriveCompletedSalesOverview", () => {
     };
     const overview = deriveCompletedSalesOverview(workspace);
     expect(overview.transactionCount).toBe(2); // only the two sold records, never the asking record
+  });
+});
+
+// ---------------------------------------------------------------------------
+// P0 — "Fix competitor/product matching globally". Petah Tikva used to fall
+// back to a hardcoded 3-name list (MATRIX_COMPETITORS, now removed) for the
+// price-positioning/product-attribute matrix regardless of which family
+// (3R/5R) was selected, while the three multi-city contexts already
+// filtered by real family relevance. That inconsistency is exactly what let
+// a special-unit-only project with no standard-family register entry at all
+// (the task's own example, "NAVE PARK") occupy a 3R/5R matrix column. Every
+// market context must now go through the identical selection+matching rule.
+// ---------------------------------------------------------------------------
+
+function petahTikvaShapedWorkspace(projects: Rec[]): PetahTikvaWorkspace {
+  return {
+    competitor_landscape: { projects },
+    families: [
+      { family: "3R", target: { internal_area: 69 }, market: { supported_lower: 1_800_000, supported_upper: 2_000_000 } },
+      { family: "5R", target: { internal_area: 110 }, market: { supported_lower: 3_000_000, supported_upper: 3_400_000 } },
+    ],
+    price_list: [],
+    standard_attribute_enrichment: {
+      families: { standard_3r: { new_development_comparables: [] }, standard_5r: { new_development_comparables: [] } },
+    },
+    special_unit_market_context: { units: {} },
+    // No market_context key at all -- exactly how the real Petah Tikva
+    // payload arrives (see market_context_workspace.build_market_context_
+    // workspace_payload's is_petah_tikva branch) -- the fix must not special-
+    // case on this field's absence/presence anymore.
+  } as unknown as PetahTikvaWorkspace;
+}
+
+describe("deriveDefaultMatrixCompetitors / deriveCompetitorMatrix (P0 fix)", () => {
+  it("acceptance test: 3 חדרים — סטנדרט must not show a NAVE-PARK-style 6R-only project's price", () => {
+    const workspace = petahTikvaShapedWorkspace([
+      {
+        project_name: "NAVE PARK",
+        display_classification: "relevant",
+        relevance: ["standard_5r"], // not standard_3r at all -- never selected for a 3R matrix
+        known_unit_variants: [{ rooms: "6", price_ils: "3850000", price_basis: null }],
+      },
+      {
+        project_name: "THE SPOT",
+        display_classification: "direct",
+        relevance: ["standard_3r"],
+        known_unit_variants: [{ rooms: "3", price_ils: "2050000", price_basis: null, internal_area_sqm: "70" }],
+      },
+    ]);
+
+    const matrix3R = deriveCompetitorMatrix(workspace, "3R", "שיווק פעיל");
+    expect(matrix3R.columns).not.toContain("NAVE PARK"); // never selected -- not standard_3r-relevant
+    expect(matrix3R.columns).toContain("THE SPOT");
+    const priceRow = matrix3R.rows.find((r) => r.key === "price")!;
+    expect(priceRow.values.join(" ")).not.toContain("3,850,000"); // the 6R price never leaks in anywhere
+    expect(priceRow.values.join(" ")).toContain("2,050,000"); // THE SPOT's real 3R variant price is shown
+  });
+
+  it("Petah Tikva is no longer special-cased: a project relevant to standard_3r is selected for the 3R matrix exactly like a multi-city project would be", () => {
+    const workspace = petahTikvaShapedWorkspace([
+      { project_name: "פרויקט א", display_classification: "direct", relevance: ["standard_3r"], known_unit_variants: [{ rooms: "3", price_ils: "1900000", price_basis: null }] },
+      { project_name: "פרויקט ב", display_classification: "relevant", relevance: ["standard_5r"], known_unit_variants: [{ rooms: "5", price_ils: "3200000", price_basis: null }] },
+    ]);
+    const selected = deriveDefaultMatrixCompetitors(workspace, "3R");
+    expect(selected.map((c) => c.displayName)).toEqual(["פרויקט א"]);
+  });
+
+  it("when two relevant projects share the same classification, the one with a real room-matching priced variant is preferred over one without", () => {
+    const workspace = petahTikvaShapedWorkspace([
+      {
+        project_name: "בלי דגם תואם",
+        display_classification: "relevant",
+        relevance: ["standard_3r"],
+        known_unit_variants: [{ rooms: "5", price_ils: "3000000", price_basis: null }], // relevant, but no 3R variant
+      },
+      {
+        project_name: "עם דגם תואם",
+        display_classification: "relevant",
+        relevance: ["standard_3r"],
+        known_unit_variants: [{ rooms: "3", price_ils: "2000000", price_basis: null }],
+      },
+    ]);
+    const selected = deriveDefaultMatrixCompetitors(workspace, "3R");
+    expect(selected[0].displayName).toBe("עם דגם תואם");
+  });
+
+  it("a selected project with no matching variant shows לא פורסם for price, never a different room count's price", () => {
+    const workspace = petahTikvaShapedWorkspace([
+      {
+        project_name: "רק חמישה חדרים",
+        display_classification: "direct",
+        relevance: ["standard_3r"], // relevant per geography/classification, but its only priced data is 5R
+        known_unit_variants: [{ rooms: "5", price_ils: "3300000", price_basis: null }],
+      },
+    ]);
+    const matrix = deriveCompetitorMatrix(workspace, "3R", "שיווק פעיל");
+    const priceRow = matrix.rows.find((r) => r.key === "price")!;
+    expect(priceRow.values).toContain("לא פורסם");
+    expect(priceRow.values.join(" ")).not.toContain("3,300,000");
   });
 });

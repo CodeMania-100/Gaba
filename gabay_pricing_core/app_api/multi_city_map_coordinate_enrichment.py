@@ -35,6 +35,17 @@ from .multi_city_standard_market import MULTI_CITY_ROOT_DIRNAME
 
 ENRICHMENT_FILENAME = "multi_city_competitor_coordinate_enrichment_v1.json"
 
+# P0 "coordinate coverage" follow-up: a second, lower-priority overlay for
+# projects the primary (address-on-file) pass above could never even
+# attempt -- those with no address/street on file at all. See
+# build_multi_city_competitor_url_location_enrichment_v1.py's own docstring
+# for the full investigation; as of that pass this file resolves 0 projects
+# (every candidate's own source page named only a neighborhood, never a
+# street, except one whose named street does not exist in Netanya per the
+# geocoder) -- kept wired in so a future rerun (a source page updated, or
+# OSM gaining the missing street) improves coverage with no code change.
+URL_LOCATION_ENRICHMENT_FILENAME = "multi_city_competitor_url_location_enrichment_v1.json"
+
 # Kept in sync with the two precision tags the geocoding script writes
 # (see build_multi_city_competitor_coordinate_enrichment_v1.py); never
 # reuses the source dataset's own "PROJECT" value.
@@ -43,6 +54,14 @@ _GEOCODED_PRECISIONS = {"GEOCODED_ADDRESS", "GEOCODED_STREET"}
 
 def load_map_coordinate_enrichment(pricing_core_data_dir: Path) -> dict[str, dict[str, Any]]:
     path = pricing_core_data_dir / "data" / "frozen" / ENRICHMENT_FILENAME
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    return {entry["project_id"]: entry for entry in payload.get("resolved", [])}
+
+
+def load_url_location_enrichment(pricing_core_data_dir: Path) -> dict[str, dict[str, Any]]:
+    path = pricing_core_data_dir / "data" / "frozen" / URL_LOCATION_ENRICHMENT_FILENAME
+    if not path.exists():
+        return {}
     payload = json.loads(path.read_text(encoding="utf-8"))
     return {entry["project_id"]: entry for entry in payload.get("resolved", [])}
 
@@ -72,16 +91,24 @@ def apply_map_coordinate_enrichment(projects: list[dict[str, Any]], pricing_core
     with the matching subset of the one-time geocoding pass's resolved
     entries. A project already at PROJECT precision is never touched even if
     a resolved entry exists for it; a project with no resolved entry passes
-    through with its existing neighborhood-centroid coordinate untouched."""
+    through with its existing neighborhood-centroid coordinate untouched.
+
+    Two overlays are tried, in priority order, per project -- never both:
+    the primary address/street-on-file pass, then (only if that one has no
+    entry) the source_url-derived pass above, which exists precisely for
+    the projects the primary pass could never attempt (no address/street on
+    file to begin with). Whichever one has an entry wins; a project with an
+    entry in neither keeps its existing neighborhood-centroid coordinate."""
 
     by_project_id = load_map_coordinate_enrichment(pricing_core_data_dir)
+    url_location_by_project_id = load_url_location_enrichment(pricing_core_data_dir)
 
     enriched: list[dict[str, Any]] = []
     for project in projects:
         if project.get("coordinate_precision") == "PROJECT":
             enriched.append({**project, "map_coordinate_enrichment": None})
             continue
-        entry = by_project_id.get(project.get("project_id"))
+        entry = by_project_id.get(project.get("project_id")) or url_location_by_project_id.get(project.get("project_id"))
         enriched.append(_merge_coordinate(project, entry) if entry else {**project, "map_coordinate_enrichment": None})
     return enriched
 

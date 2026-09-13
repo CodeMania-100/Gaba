@@ -15,12 +15,15 @@
 import { describe, expect, it } from "vitest";
 import { PetahTikvaWorkspace } from "./api";
 import {
+  countFamilyRelevantCompetitors,
   deriveSpecialAskingPoints,
   deriveSpecialCompetitorPoints,
   deriveSpecialSoldPoints,
   groupCompetitorPointsByCoordinate,
+  isRelevantToFamily,
   MarketMapPoint,
   pointContributesForFamily,
+  rematchCompetitorPointForFamily,
 } from "./marketMap";
 
 function competitorPoint(overrides: Partial<MarketMapPoint>): MarketMapPoint {
@@ -426,5 +429,240 @@ describe("special-unit evidence field mapping (P0 display-integrity fix)", () =>
     expect(points[0].specialStatus).toBe("excluded");
     expect(points[0].specialNormalizedValueIls).toBeUndefined();
     expect(points[0].internalArea).toBeUndefined();
+  });
+});
+
+// ---------------------------------------------------------------------------
+// P0 — "Fix competitor/product matching globally". deriveCompetitorPoints
+// builds every standard competitor point once, family-agnostically (a real
+// architectural constraint -- the same points are reused across a 3R<->5R
+// toggle). rematchCompetitorPointForFamily is what MarketGeoMap's own
+// competitorVisible now calls before display, so the map popup/tooltip/
+// group-member price the user actually sees is always the currently
+// selected family's own real variant -- never an unrelated room count's
+// price baked in at derivation time.
+// ---------------------------------------------------------------------------
+
+function workspaceWithCompetitorProject(project: Record<string, unknown>): PetahTikvaWorkspace {
+  return {
+    competitor_landscape: { projects: [project] },
+    standard_attribute_enrichment: {
+      families: { standard_3r: { new_development_comparables: [] }, standard_5r: { new_development_comparables: [] } },
+    },
+    special_unit_market_context: { units: {} },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } as any;
+}
+
+describe("rematchCompetitorPointForFamily (P0 fix)", () => {
+  it("re-matches a standard competitor point's price/fact to the given family's own room count", () => {
+    const workspace = workspaceWithCompetitorProject({
+      project_name: "זאב ברנדה 22",
+      display_classification: "direct",
+      relevance: ["standard_3r", "standard_5r"],
+      known_unit_variants: [
+        { rooms: "3", price_ils: "2400000", price_basis: null },
+        { rooms: "5", price_ils: "1900000", price_basis: null }, // deliberately cheaper
+      ],
+    });
+    const point = competitorPoint({ title: "זאב ברנדה 22", priceIls: 1900000 }); // stale, cross-family value as built once by deriveCompetitorPoints
+
+    const rematched3R = rematchCompetitorPointForFamily(point, workspace, "3R");
+    expect(rematched3R.priceIls).toBe(2400000);
+    expect(rematched3R.fact?.currentPriceIls).toBe(2400000);
+
+    const rematched5R = rematchCompetitorPointForFamily(point, workspace, "5R");
+    expect(rematched5R.priceIls).toBe(1900000);
+  });
+
+  it("re-matches every member of a competitor_group point independently", () => {
+    const workspace = {
+      competitor_landscape: {
+        projects: [
+          { project_name: "A", display_classification: "relevant", relevance: ["standard_3r"], known_unit_variants: [{ rooms: "3", price_ils: "2000000", price_basis: null }] },
+          { project_name: "B", display_classification: "relevant", relevance: ["standard_5r"], known_unit_variants: [{ rooms: "5", price_ils: "3500000", price_basis: null }] },
+        ],
+      },
+      standard_attribute_enrichment: {
+        families: { standard_3r: { new_development_comparables: [] }, standard_5r: { new_development_comparables: [] } },
+      },
+      special_unit_market_context: { units: {} },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any;
+    const group = competitorPoint({
+      kind: "competitor_group",
+      title: "2 פרויקטים",
+      groupMembers: [competitorPoint({ title: "A" }), competitorPoint({ title: "B" })],
+    });
+
+    const rematched = rematchCompetitorPointForFamily(group, workspace, "3R");
+    expect(rematched.groupMembers?.[0].priceIls).toBe(2000000); // A has a 3R match
+    expect(rematched.groupMembers?.[1].priceIls).toBeUndefined(); // B has no 3R match -- never shows its 5R price
+  });
+
+  it("never touches a special-unit competitor point -- it already sources price from its own matched comparable, not a standard family", () => {
+    const workspace = workspaceWithCompetitorProject({
+      project_name: "פרויקט מיוחד",
+      display_classification: "relevant",
+      relevance: ["standard_3r"],
+      known_unit_variants: [{ rooms: "3", price_ils: "9999999", price_basis: null }],
+    });
+    const specialPoint = competitorPoint({ title: "פרויקט מיוחד", specialUnitNumber: 39, priceIls: 4800000 });
+    const rematched = rematchCompetitorPointForFamily(specialPoint, workspace, "3R");
+    expect(rematched.priceIls).toBe(4800000); // untouched, never overwritten with the standard register's 3R price
+    expect(rematched).toBe(specialPoint); // same object -- not even copied
+  });
+});
+
+// P0 fix ("the map still does not follow the selected product"): relevance
+// (the project's researched room_range, coarser than the quantitative
+// eligibility that drives "רק ראיות שנכנסו לחישוב") must independently
+// govern visual emphasis/muting and the aggregate marker's own split label.
+describe("isRelevantToFamily (P0 fix)", () => {
+  it("is relevant when the project's relevance tags include the selected family's product", () => {
+    const workspace = workspaceWithCompetitorProject({
+      project_name: "A",
+      relevance: ["standard_3r", "standard_5r"],
+    });
+    const point = competitorPoint({ title: "A" });
+    expect(isRelevantToFamily(point, workspace, "3R")).toBe(true);
+    expect(isRelevantToFamily(point, workspace, "5R")).toBe(true);
+  });
+
+  it("is not relevant when the project is known NOT to offer that room count", () => {
+    const workspace = workspaceWithCompetitorProject({
+      project_name: "A",
+      relevance: ["standard_5r"], // known to be 5R only
+    });
+    const point = competitorPoint({ title: "A" });
+    expect(isRelevantToFamily(point, workspace, "3R")).toBe(false);
+    expect(isRelevantToFamily(point, workspace, "5R")).toBe(true);
+  });
+
+  it("treats unknown/unresearched product mix (no relevance tags) as context, not a confirmed match", () => {
+    const workspace = workspaceWithCompetitorProject({ project_name: "A", relevance: [] });
+    const point = competitorPoint({ title: "A" });
+    expect(isRelevantToFamily(point, workspace, "3R")).toBe(false);
+  });
+
+  it("for a competitor_group, is relevant iff at least one member is relevant", () => {
+    const workspace = {
+      competitor_landscape: {
+        projects: [
+          { project_name: "A", relevance: ["standard_5r"] },
+          { project_name: "B", relevance: [] },
+        ],
+      },
+      standard_attribute_enrichment: {
+        families: { standard_3r: { new_development_comparables: [] }, standard_5r: { new_development_comparables: [] } },
+      },
+      special_unit_market_context: { units: {} },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any;
+    const group = competitorPoint({
+      kind: "competitor_group",
+      title: "2 פרויקטים",
+      groupMembers: [competitorPoint({ title: "A" }), competitorPoint({ title: "B" })],
+    });
+    expect(isRelevantToFamily(group, workspace, "3R")).toBe(false); // neither A nor B is 3R-relevant
+    expect(isRelevantToFamily(group, workspace, "5R")).toBe(true); // A is
+  });
+});
+
+describe("rematchCompetitorPointForFamily -- family-aware group aggregate title (P0 fix)", () => {
+  function threeMemberWorkspace() {
+    return {
+      competitor_landscape: {
+        projects: [
+          { project_name: "A", relevance: ["standard_3r"] }, // relevant
+          { project_name: "B", relevance: ["standard_3r"] }, // relevant
+          { project_name: "C", relevance: ["standard_5r"] }, // context (not 3R)
+        ],
+      },
+      standard_attribute_enrichment: {
+        families: { standard_3r: { new_development_comparables: [] }, standard_5r: { new_development_comparables: [] } },
+      },
+      special_unit_market_context: { units: {} },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any;
+  }
+
+  it("splits the aggregate label into 'X רלוונטיים · Y הקשר' when the group is a mix", () => {
+    const workspace = threeMemberWorkspace();
+    const group = competitorPoint({
+      kind: "competitor_group",
+      title: "3 פרויקטים",
+      groupMembers: [competitorPoint({ title: "A" }), competitorPoint({ title: "B" }), competitorPoint({ title: "C" })],
+    });
+    const rematched = rematchCompetitorPointForFamily(group, workspace, "3R");
+    expect(rematched.title).toBe("2 רלוונטיים · 1 הקשר");
+    expect(rematched.groupRelevantCount).toBe(2);
+    expect(rematched.familyRelevant).toBe(true);
+  });
+
+  it("labels a fully-relevant group as just 'X רלוונטיים' with no context split", () => {
+    const workspace = threeMemberWorkspace();
+    const group = competitorPoint({
+      kind: "competitor_group",
+      title: "2 פרויקטים",
+      groupMembers: [competitorPoint({ title: "A" }), competitorPoint({ title: "B" })],
+    });
+    const rematched = rematchCompetitorPointForFamily(group, workspace, "3R");
+    expect(rematched.title).toBe("2 רלוונטיים");
+    expect(rematched.groupRelevantCount).toBe(2);
+  });
+
+  it("labels a fully-context group (none relevant) distinctly, never claiming a confirmed match count", () => {
+    const workspace = threeMemberWorkspace();
+    const group = competitorPoint({
+      kind: "competitor_group",
+      title: "1 פרויקטים",
+      groupMembers: [competitorPoint({ title: "C" })],
+    });
+    const rematched = rematchCompetitorPointForFamily(group, workspace, "3R");
+    expect(rematched.title).toBe("1 פרויקטים בהקשר");
+    expect(rematched.groupRelevantCount).toBe(0);
+    expect(rematched.familyRelevant).toBe(false);
+  });
+
+  it("stamps familyRelevant on individual (non-group) points too", () => {
+    const workspace = workspaceWithCompetitorProject({ project_name: "A", relevance: ["standard_5r"] });
+    const point = competitorPoint({ title: "A" });
+    const rematched3R = rematchCompetitorPointForFamily(point, workspace, "3R");
+    expect(rematched3R.familyRelevant).toBe(false);
+    const rematched5R = rematchCompetitorPointForFamily(point, workspace, "5R");
+    expect(rematched5R.familyRelevant).toBe(true);
+  });
+});
+
+describe("countFamilyRelevantCompetitors (P0 fix -- same derivation as the map's own rendered set)", () => {
+  it("counts individual points and only the relevant members inside groups, never raw group entry counts", () => {
+    const workspace = {
+      competitor_landscape: {
+        projects: [
+          { project_name: "A", relevance: ["standard_3r"] },
+          { project_name: "B", relevance: ["standard_3r"] },
+          { project_name: "C", relevance: ["standard_5r"] },
+          { project_name: "D", relevance: ["standard_3r"] },
+        ],
+      },
+      standard_attribute_enrichment: {
+        families: { standard_3r: { new_development_comparables: [] }, standard_5r: { new_development_comparables: [] } },
+      },
+      special_unit_market_context: { units: {} },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any;
+    const points: MarketMapPoint[] = [
+      competitorPoint({ title: "D" }), // individually resolved, relevant
+      competitorPoint({
+        kind: "competitor_group",
+        title: "3 פרויקטים",
+        groupMembers: [competitorPoint({ title: "A" }), competitorPoint({ title: "B" }), competitorPoint({ title: "C" })],
+      }),
+    ];
+    // Netanya-shaped case from the bug report: 1 standalone + a group of 3
+    // (2 relevant, 1 context) => 3 total relevant, never "4 map entries" or
+    // the group's raw member count alone.
+    expect(countFamilyRelevantCompetitors(points, workspace, "3R")).toBe(3);
   });
 });

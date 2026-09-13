@@ -9,13 +9,16 @@ import {
   CompetitorFamilyFilter,
   CompetitorFilterGroup,
   developerLabel,
+  matchedVariantSummary,
   matchesFamilyFilter,
+  multiModelSummaryLabel,
   paymentTermsLabel,
   priceDisplayLabel,
   productTypesLabel,
   roomRangeLabel,
   standoutFeatureLabel,
 } from "@/lib/competitorRegister";
+import { num } from "@/lib/format";
 import { ProjectPhase } from "@/lib/marketingStrategy";
 import MarketPositionSection from "./MarketPositionSection";
 
@@ -85,7 +88,7 @@ export default function CompetitorRegister({ workspace, projectPhase, family }: 
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {visibleProjects.map((project) => (
-            <CompetitorRegisterCard key={project.project_name} project={project} />
+            <CompetitorRegisterCard key={project.project_name} project={project} family={family} familyFilter={familyFilter} />
           ))}
         </div>
 
@@ -127,18 +130,45 @@ function FilterGroup<T extends string>({
   );
 }
 
-function CompetitorRegisterCard({ project }: { project: CompetitorRegisterProject }) {
+function CompetitorRegisterCard({
+  project,
+  family,
+  familyFilter,
+}: {
+  project: CompetitorRegisterProject;
+  family: "3R" | "5R";
+  familyFilter: CompetitorFamilyFilter;
+}) {
   const [showSource, setShowSource] = useState(false);
 
   const location = (project.address as string | null) ?? (project.neighborhood as string | null) ?? "—";
   const developer = developerLabel(project);
-  const rooms = roomRangeLabel(project);
-  const area = areaRangeLabel(project);
-  const price = priceDisplayLabel(project);
   const products = productTypesLabel(project);
   const standout = standoutFeatureLabel(project);
   const terms = paymentTermsLabel(project);
   const classification = project.display_classification;
+
+  // P0 fix ("matched-variant fact consistency"): while Tab 2 is scoped to a
+  // selected family (the same 3R/5R selection every other surface here
+  // already follows), prefer THIS project's own matched model for that
+  // family -- rooms/area/price all read from the one matchedVariantSummary
+  // bundle, never independently (task: "3 חדרים · 71 מ״ר · ₪3.7M", never a
+  // project-wide range that happens to show "—" for a field the matched
+  // model actually has). Only when this project has no model at all for the
+  // selected family -- or the register's own explicit "הכל" filter is
+  // active, where the visible cards legitimately span several room counts --
+  // does the card fall back to a compact multi-model summary, and only when
+  // that project even has more than one distinct priced model; otherwise the
+  // existing project-wide range (itself now variant-fallback-aware, see
+  // lib/competitorRegister.ts) is exactly as informative and is kept.
+  const familyRooms = family === "3R" ? 3 : 5;
+  const matched = matchedVariantSummary(project, familyRooms);
+  const multiModel = !matched && familyFilter === "all" ? multiModelSummaryLabel(project) : null;
+
+  const rooms = matched ? `${num(matched.rooms)} חדרים` : roomRangeLabel(project);
+  const area = matched ? matched.areaLabel : areaRangeLabel(project);
+  const roomsArea = multiModel ?? ([rooms, area].filter(Boolean).join(" · ") || null);
+  const price = matched ? matched.priceLabel : priceDisplayLabel(project);
 
   return (
     <div className="flex flex-col gap-2 rounded-md border border-hairline p-4">
@@ -155,7 +185,7 @@ function CompetitorRegisterCard({ project }: { project: CompetitorRegisterProjec
       <dl className="flex flex-col gap-1 text-sm">
         <Row label="מיקום" value={location} />
         {products && <Row label="סוגי דירות" value={products} />}
-        {(rooms || area) && <Row label="חדרים / שטח" value={[rooms, area].filter(Boolean).join(" · ")} />}
+        {roomsArea && <Row label="חדרים / שטח" value={roomsArea} />}
         {price && <Row label="מחיר" value={price} />}
         {standout && <Row label="מאפיין בולט" value={standout} />}
         {terms && <Row label="תנאי תשלום" value={terms} />}

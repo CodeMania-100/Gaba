@@ -152,6 +152,25 @@ export interface MarketMapPoint {
   // check the display invariant "a participating area-normalized comparable
   // must show a real area", never to alter any figure.
   specialCalculationMethod?: "area_normalized_median" | "raw_price_median";
+
+  // P0 fix ("the map still does not follow the selected product"): whether
+  // this STANDARD competitor point is genuinely relevant to the currently
+  // selected family at all (see isRelevantToFamily) -- a coarser, more
+  // inclusive signal than contributesToPricing/quantitative eligibility
+  // (which additionally requires an exact verified price+area pair to
+  // numerically enter the price range). Drives visual emphasis/muting on
+  // the map and the aggregate group's own split label -- never drives "רק
+  // ראיות שנכנסו לחישוב" (that stays contributesToPricing, unchanged). Only
+  // ever set (by rematchCompetitorPointForFamily) for standard competitor
+  // points/groups; special-unit points use specialStatus instead.
+  familyRelevant?: boolean;
+  // Only set for kind === "competitor_group": how many of groupMembers are
+  // familyRelevant for the currently selected family -- the map's own
+  // aggregate-circle number and MapLibre label layer both read this (via
+  // the GeoJSON feature properties, see toFeatureCollection) instead of the
+  // group's raw total member count, so the on-map badge can never disagree
+  // with the "X relevant" figure shown elsewhere on the same screen.
+  groupRelevantCount?: number;
 }
 
 // ---------------------------------------------------------------------------
@@ -535,6 +554,112 @@ export function pointContributesForFamily(point: MarketMapPoint, workspace: Peta
   const eligibility = project?.quantitative_eligibility as Record<string, { eligible: boolean }> | undefined;
   const key = family === "3R" ? "standard_3r" : "standard_5r";
   return eligibility?.[key]?.eligible ?? false;
+}
+
+/** P0 fix ("the map still does not follow the selected product"): whether a
+ * competitor project is genuinely relevant to the given family AT ALL --
+ * explicitly known to offer a matching room product (the register's own
+ * relevance[] tags, derived backend-side from the project's researched
+ * room_range) -- a COARSER, more inclusive signal than pointContributesForFamily
+ * (which additionally requires an exact verified price+area pair to
+ * numerically enter the price range). This is what drives visual emphasis
+ * vs muting on the map (task: "competitors explicitly relevant to
+ * standard_3r / known 3-room product -> normal/emphasized; ... unknown
+ * product mix -> context, not counted/emphasized") -- a project with no
+ * room_range research at all is exactly as unemphasized as one explicitly
+ * confirmed to lack this room count, since relevance[] excludes the family
+ * tag in both cases -- neither is a confirmed match, so neither may be
+ * counted as one. Deliberately never used for "רק ראיות שנכנסו לחישוב"
+ * (that filter stays pointContributesForFamily, unchanged) -- this is a
+ * separate, purely-visual "is this even the right product" dimension. */
+export function isRelevantToFamily(point: MarketMapPoint, workspace: PetahTikvaWorkspace, family: MarketMapFamily): boolean {
+  if (point.kind === "competitor_group") {
+    return (point.groupMembers ?? []).some((m) => isRelevantToFamily(m, workspace, family));
+  }
+  if (point.kind !== "competitor") return point.contributesToPricing;
+  const project = workspace.competitor_landscape.projects.find((p) => p.project_name === point.title);
+  const relevanceKey = family === "3R" ? "standard_3r" : "standard_5r";
+  return ((project?.relevance as string[] | undefined) ?? []).includes(relevanceKey);
+}
+
+/** "N רלוונטיים" / "N פרויקטים בהקשר" / "N רלוונטיים · M הקשר" -- the
+ * aggregate marker's own label must never flatten a family-mixed group into
+ * a single undifferentiated count again (task: "Do not aggregate seven
+ * projects into a badge labelled simply 7 פרויקטים when only three are
+ * relevant"). */
+function competitorGroupTitle(members: MarketMapPoint[], workspace: PetahTikvaWorkspace, family: MarketMapFamily): string {
+  const relevantCount = members.filter((m) => isRelevantToFamily(m, workspace, family)).length;
+  const contextCount = members.length - relevantCount;
+  if (relevantCount === 0) return `${members.length} פרויקטים בהקשר`;
+  if (contextCount === 0) return `${relevantCount} רלוונטיים`;
+  return `${relevantCount} רלוונטיים · ${contextCount} הקשר`;
+}
+
+const MAP_FAMILY_ROOMS: Record<MarketMapFamily, number> = { "3R": 3, "5R": 5 };
+
+/** P0 fix: deriveCompetitorPoints builds every standard competitor point
+ * ONCE, family-agnostically (see its own docstring) -- point.fact/priceIls
+ * there reflect whatever buildFactSheet's no-family-context fallback picks
+ * (the cheapest priced variant across every room count), which is exactly
+ * the bug that let a map popup show an unrelated room count's price
+ * regardless of which family (3R/5R) was actually selected. A caller that
+ * DOES know the current family (MarketGeoMap's own competitorVisible, which
+ * already re-stamps contributesToPricing the same way) must call this
+ * first, so the popup/tooltip/group-member price the user actually sees
+ * always matches a real variant of the currently selected family -- never
+ * mutates the input point. Also re-stamps familyRelevant (see its own
+ * docstring) and, for a competitor_group, recomputes its own split title/
+ * familyRelevant from its members' relevance to THIS family -- never a
+ * static, family-agnostic count baked in once at grouping time. Special-
+ * unit competitor points are left untouched: they already source price/
+ * area from the specific matched SpecialUnitComparable (see
+ * deriveSpecialCompetitorPoints), not from a standard family at all. */
+export function rematchCompetitorPointForFamily(point: MarketMapPoint, workspace: PetahTikvaWorkspace, family: MarketMapFamily): MarketMapPoint {
+  if (point.kind === "competitor_group") {
+    const members = (point.groupMembers ?? []).map((m) => rematchCompetitorPointForFamily(m, workspace, family));
+    const relevantCount = members.filter((m) => isRelevantToFamily(m, workspace, family)).length;
+    return {
+      ...point,
+      groupMembers: members,
+      title: competitorGroupTitle(members, workspace, family),
+      familyRelevant: relevantCount > 0,
+      groupRelevantCount: relevantCount,
+    };
+  }
+  if (point.kind !== "competitor" || point.specialUnitNumber != null) return point;
+  const fact = buildFactSheet(workspace, point.title, point.title, MAP_FAMILY_ROOMS[family]);
+  return {
+    ...point,
+    familyRelevant: isRelevantToFamily(point, workspace, family),
+    fact,
+    priceIls: fact.currentPriceIls ?? undefined,
+    priceBasis: fact.isStartingPriceOnly ? "starting_price" : "unit_price",
+  };
+}
+
+/** P0 fix ("audit the count shown above the map and the actual rendered
+ * competitor set: they must come from the same derivation"): the real
+ * number of PROJECTS relevant to this family, counted the identical way the
+ * map itself emphasizes them (isRelevantToFamily) -- summed across both
+ * individually-resolved pins and every relevant member inside an aggregate
+ * group. Deliberately never points.length (that counts map ENTRIES --
+ * individual pins plus one entry per aggregate group -- not projects, and
+ * is not family-filtered at all; it happened to read as a small, plausible-
+ * looking number purely by coincidence, which is exactly what made the
+ * mismatch against the aggregate badge's own real member count so
+ * confusing). Call on the already family-rematched point set (competitorVisible
+ * in "כל נתוני השוק" mode) so this always agrees with what the map actually
+ * shows, never a separately-filtered count. */
+export function countFamilyRelevantCompetitors(points: MarketMapPoint[], workspace: PetahTikvaWorkspace, family: MarketMapFamily): number {
+  let count = 0;
+  for (const p of points) {
+    if (p.kind === "competitor_group") {
+      count += (p.groupMembers ?? []).filter((m) => isRelevantToFamily(m, workspace, family)).length;
+    } else if (p.kind === "competitor" && isRelevantToFamily(p, workspace, family)) {
+      count += 1;
+    }
+  }
+  return count;
 }
 
 // ---------------------------------------------------------------------------

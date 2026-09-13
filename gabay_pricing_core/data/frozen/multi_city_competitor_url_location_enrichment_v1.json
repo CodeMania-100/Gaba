@@ -1,0 +1,96 @@
+{
+  "version": "multi_city_competitor_url_location_enrichment_v1",
+  "generated_at": "2026-09-13T19:49:23.227589+00:00",
+  "geocoder": "nominatim_openstreetmap",
+  "source": "manual review of each project's own already-stored source_urls (special_full_v2/competitor_projects_v2.json's source_urls field), for the subset of address==null / coordinate_precision != PROJECT projects that multi_city_competitor_coordinate_enrichment_v1 could not attempt (it only geocodes an address/street already on the record).",
+  "note": "Location enrichment only -- no new pricing, no new commercial fact, no change to evidence eligibility. Every candidate's own official/source page was reviewed for a stated street name; a project with only a neighborhood/area name on its own source page is NOT geocoded (no improvement over the existing neighborhood-centroid fallback -- same rule the address-based pass already enforces). A project with a real street name is geocoded and validated the same way as the address-based pass (must resolve within this project's own city, never accepted from a same-named street in a different city). Applied at workspace-build time as a second, lower-priority overlay behind multi_city_competitor_coordinate_enrichment_v1 (see app_api/multi_city_map_coordinate_enrichment.py) -- special_full_v2/competitor_projects_v2.json itself was never opened for writing and never modified.",
+  "resolution_priority": [
+    "PROJECT (untouched)",
+    "multi_city_competitor_coordinate_enrichment_v1 (address/street already on file, untouched)",
+    "this file: GEOCODED_ADDRESS / GEOCODED_STREET (from the project's own source_url text)",
+    "NEIGHBORHOOD_CENTROID (untouched fallback)"
+  ],
+  "counts": {
+    "candidates_reviewed": 9,
+    "had_street_level_text": 1,
+    "resolved": 0,
+    "no_street_level_text_on_own_source_page": 8,
+    "street_named_but_unresolved": 1
+  },
+  "resolved": [],
+  "reviewed": [
+    {
+      "project_id": "net-gindi-tzamarot",
+      "project_name": "גינדי צמרות נתניה",
+      "city": "נתניה",
+      "source_url_reviewed": "https://gindi.com/project/gindi-tzamarot-netanya/",
+      "location_text_found": "מזרח נתניה (East Netanya) -- area name only, no street stated.",
+      "outcome": "no_street_level_text_on_own_source_page"
+    },
+    {
+      "project_id": "net-gindi-newnorth",
+      "project_name": "הצפון החדש בקריית השרון — גינדי",
+      "city": "נתניה",
+      "source_url_reviewed": "https://www.nadlancenter.co.il/article/15084",
+      "location_text_found": "קריית השרון - נתניה (Kiryat HaSharon neighborhood) -- area name only, no street stated.",
+      "outcome": "no_street_level_text_on_own_source_page"
+    },
+    {
+      "project_id": "net-ashdar-country",
+      "project_name": "אשדר וקאנטרי",
+      "city": "נתניה",
+      "source_url_reviewed": "https://www.ashtromconstruction.co.il/projects/ashdar-and-country-building",
+      "location_text_found": "קריית השרון, near פארק האלונים -- area name only, no street stated. (second source_url, makorrishon.co.il, returned HTTP 403 and could not be reviewed.)",
+      "outcome": "no_street_level_text_on_own_source_page"
+    },
+    {
+      "project_id": "net-david",
+      "project_name": "DAVID נתניה",
+      "city": "נתניה",
+      "source_url_reviewed": "https://www.boh.co.il/projects/44",
+      "location_text_found": "צפון מרכז נתניה, \"על דרך דוד רזיאל\" (on David Raziel road) -- the one candidate with an actual street name on its own official page. (the boh.co.il page also names a sales-office address in Bnei Brak -- explicitly not the project's own location, not used here. Second source_url, nadlanshark.co.il, no longer resolves (DNS failure).)",
+      "outcome": "street_named_but_unresolved: no_results",
+      "street_name_reviewed": "דרך דוד רזיאל"
+    },
+    {
+      "project_id": "net-the-strip",
+      "project_name": "THE STRIP נתניה",
+      "city": "נתניה",
+      "source_url_reviewed": "https://www.yad2.co.il/yad1/project/19096",
+      "location_text_found": "yad2.co.il source_url returned only a bot-verification page (Radware), no content. Second source_url, auraisrael.co.il, returned HTTP 404. Neither source_url could be reviewed.",
+      "outcome": "no_street_level_text_on_own_source_page"
+    },
+    {
+      "project_id": "ta-galipolis",
+      "project_name": "GALIPOLIS",
+      "city": "תל אביב-יפו",
+      "source_url_reviewed": "https://almog-ltd.com/project/galipoliz/",
+      "location_text_found": "\"בלב שכונת יד אליהו... דקות ספורות מרחוב לה-גווארדיה\" (Yad Eliyahu neighborhood, minutes from La-Guardia street) -- a nearby reference street, not stated as the project's own address; not reliable enough to geocode as this project's location.",
+      "outcome": "no_street_level_text_on_own_source_page"
+    },
+    {
+      "project_id": "ta-almog-complex",
+      "project_name": "Almog The Complex",
+      "city": "תל אביב-יפו",
+      "source_url_reviewed": "https://almog-ltd.com/project/%D7%AA%D7%90-almog-the-complex/",
+      "location_text_found": "יד אליהו (Yad Eliyahu) -- area name only, no street stated for the project itself (only nearby highways/roads mentioned as landmarks).",
+      "outcome": "no_street_level_text_on_own_source_page"
+    },
+    {
+      "project_id": "ash-demri-barnea",
+      "project_name": "דמרי ברנע — historical phases",
+      "city": "אשקלון",
+      "source_url_reviewed": "https://www.megureit.co.il/projects",
+      "location_text_found": "רמת כרמים (Ramat Karmim neighborhood) -- area name only, no street stated.",
+      "outcome": "no_street_level_text_on_own_source_page"
+    },
+    {
+      "project_id": "ash-dimri-wine",
+      "project_name": "מגדלי עיר היין",
+      "city": "אשקלון",
+      "source_url_reviewed": "https://www.dimri.co.il/projects/%D7%A2%D7%99%D7%A8-%D7%94%D7%99%D7%99%D7%9F/",
+      "location_text_found": "\"בלב שכונת עיר היין\" (Ir HaYayin neighborhood) -- area name only. The page's one street address (\"שדרות ירושלים 1, נתיבות\") is the developer's own office in a different city, not this project's location -- not used here. (second source_url, project.dimri.co.il, confirmed the same: neighborhood name only, no street.)",
+      "outcome": "no_street_level_text_on_own_source_page"
+    }
+  ]
+}

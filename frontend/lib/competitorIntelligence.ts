@@ -25,14 +25,19 @@ import {
 } from "./api";
 import {
   areaRangeLabel,
+  coerceNumber,
   developerLabel,
   floorRangeLabel,
   normalizeProjectName,
   paymentTermsLabel as registerPaymentTermsLabel,
-  priceDisplayLabel,
+  pickRoomMatchedVariant,
   productTypesLabel,
   roomRangeLabel,
+  validRange,
+  variantAreaSqm,
+  variantFloorLabel,
 } from "./competitorRegister";
+import { ils, num } from "./format";
 import { computePriceBreakdown, MarketingStrategyState } from "./marketingStrategy";
 import { deliveryLabel, paymentTermsLabel as enrichmentPaymentTermsLabel, projectStatusLabel } from "./standardEnrichment";
 
@@ -115,7 +120,26 @@ function parsePriceSegment(segment: string | null | undefined): { label: string 
   return { label: `${rooms} חדרים – החל מ-₪${m[2]}M`, priceIls };
 }
 
-export function buildFactSheet(workspace: PetahTikvaWorkspace, displayName: string, matchName: string): CompetitorFactSheet {
+function formatPriceLabel(priceIls: number | null, isStartingPriceOnly: boolean): string | null {
+  if (priceIls == null) return null;
+  return isStartingPriceOnly ? `החל מ־${ils(priceIls)}` : ils(priceIls);
+}
+
+/** `rooms`, when given, is the ONLY standard-family room count this fact
+ * sheet may price against -- a project with several unit variants across
+ * different room counts (or, formerly, Petah Tikva's hardcoded 3-competitor
+ * matrix list showing a special-unit-only project regardless of family) must
+ * never have an unrelated room count's price presented as though it were
+ * this family's own (P0: "3 חדרים — סטנדרט must not show a NAVE PARK 6R
+ * price"). When a project has no variant matching `rooms` at all, only its
+ * genuine project-level facts remain (developer/status/delivery/payment/
+ * area range/floor range/a whole-project starting price) -- unit-specific
+ * price/area-per-sqm stay null ("לא פורסם" wherever rendered), never
+ * silently substituted from a different room count. Omitting `rooms`
+ * entirely (a caller with no family context, e.g. a special-unit lookup)
+ * preserves the previous "cheapest priced variant, any room count"
+ * behavior -- unchanged for those callers. */
+export function buildFactSheet(workspace: PetahTikvaWorkspace, displayName: string, matchName: string, rooms?: number): CompetitorFactSheet {
   const reg = findRegisterProject(workspace, matchName);
   const enrich = findEnrichmentComparable(workspace, matchName);
   const projectLevel = (enrich?.project_level as JsonRecord | undefined) ?? {};
@@ -129,28 +153,71 @@ export function buildFactSheet(workspace: PetahTikvaWorkspace, displayName: stri
   const startingCtx = (enrich?.starting_price_context as { value?: number } | null | undefined) ?? null;
 
   if (reg) {
-    const variants = (reg.known_unit_variants as { price_ils?: number | null; price_basis?: string }[] | undefined) ?? [];
-    const priced = variants.filter((v) => v.price_ils != null);
+    const variants = (reg.known_unit_variants as JsonRecord[] | undefined) ?? [];
     let currentPriceIls: number | null = null;
     let isStartingPriceOnly = false;
-    if (priced.length > 0) {
-      currentPriceIls = Math.min(...priced.map((v) => v.price_ils as number));
-      isStartingPriceOnly =
-        priced.some((v) => v.price_basis === "starting price") ||
-        (startingCtx?.value != null && priced.some((v) => v.price_ils === startingCtx.value));
-    } else if (reg.project_price_from_ils != null) {
-      currentPriceIls = reg.project_price_from_ils as number;
-      isStartingPriceOnly = true;
+    // Set only when a SINGLE matched variant is actually driving the price
+    // above -- once true, area/floor/₪-per-מ״ר below may ONLY be read from
+    // that same variant object, never from the project-wide range (task P0:
+    // "use that same canonical variant object for rooms/area/price/...";
+    // "never use the 3R price with 5R area or vice versa"). A project-level
+    // "starting from" price (the `else if` branches below) is a genuine
+    // whole-project fact, not tied to any one model, so it keeps using the
+    // project-wide range instead -- that's not a mismatch, it's the correct
+    // source for a figure that was never model-specific to begin with.
+    let matchedVariantAreaSqm: number | null = null;
+    let matchedVariantFloorLabel: string | null = null;
+    let usedMatchedVariant = false;
+
+    if (rooms != null) {
+      const matched = pickRoomMatchedVariant(reg, rooms);
+      if (matched) {
+        currentPriceIls = coerceNumber(matched.price_ils) ?? null;
+        isStartingPriceOnly =
+          matched.price_basis === "starting price" || (startingCtx?.value != null && currentPriceIls === startingCtx.value);
+        matchedVariantAreaSqm = variantAreaSqm(matched) ?? null;
+        matchedVariantFloorLabel = variantFloorLabel(matched);
+        usedMatchedVariant = true;
+      } else if (reg.project_price_from_ils != null) {
+        // A genuine project-level fact (the project's own "starting from"
+        // marketing price, not tied to any one room count) -- safe to show
+        // regardless of which family is selected, unlike a specific other
+        // room's variant.
+        currentPriceIls = reg.project_price_from_ils as number;
+        isStartingPriceOnly = true;
+      }
+    } else {
+      const priced = variants.filter((v) => coerceNumber(v.price_ils) != null);
+      if (priced.length > 0) {
+        const cheapest = priced.reduce((best, v) => (coerceNumber(v.price_ils)! < coerceNumber(best.price_ils)! ? v : best));
+        currentPriceIls = coerceNumber(cheapest.price_ils) ?? null;
+        isStartingPriceOnly =
+          priced.some((v) => v.price_basis === "starting price") ||
+          (startingCtx?.value != null && priced.some((v) => coerceNumber(v.price_ils) === startingCtx.value));
+      } else if (reg.project_price_from_ils != null) {
+        currentPriceIls = reg.project_price_from_ils as number;
+        isStartingPriceOnly = true;
+      }
     }
 
-    const areaRange = reg.area_sqm_range as [number, number] | null | undefined;
+    const areaRange = validRange(reg.area_sqm_range);
     const areaMidSqm = areaRange ? (areaRange[0] + areaRange[1]) / 2 : null;
-    const pricePerSqmIls = currentPriceIls != null && areaMidSqm ? currentPriceIls / areaMidSqm : null;
+    // The matched variant's own exact area is strictly more precise than the
+    // project-wide range for a ₪/מ״ר figure -- and once we matched one, it is
+    // the ONLY allowed source (never silently fall back to the project range
+    // just because the matched variant itself lacks an area -- that would
+    // show a ₪/מ״ר figure computed from a different area than the one
+    // displayed as "area" for this same model, exactly the inconsistency
+    // this fix exists to prevent). The range-midpoint fallback (already
+    // labeled "משוער" everywhere it's shown) is used only when no specific
+    // variant matched at all.
+    const pricePerSqmArea = usedMatchedVariant ? matchedVariantAreaSqm : areaMidSqm;
+    const pricePerSqmIls = currentPriceIls != null && pricePerSqmArea ? currentPriceIls / pricePerSqmArea : null;
 
     return {
       displayName,
       developer: developerLabel(reg),
-      priceLabel: priceDisplayLabel(reg),
+      priceLabel: formatPriceLabel(currentPriceIls, isStartingPriceOnly),
       isStartingPriceOnly,
       currentPriceIls,
       paymentTerms: registerPaymentTermsLabel(reg) ?? enrichmentPaymentTermsLabel(projectLevel.payment_terms as string | null),
@@ -159,8 +226,8 @@ export function buildFactSheet(workspace: PetahTikvaWorkspace, displayName: stri
       classification: reg.display_classification,
       productMix: [productTypesLabel(reg), roomRangeLabel(reg)].filter(Boolean).join(" · ") || null,
       relevanceToUs: (reg.relevance as string[] | undefined)?.join(", ") ?? null,
-      areaLabel: areaRangeLabel(reg),
-      floorRangeLabel: floorRangeLabel(reg),
+      areaLabel: usedMatchedVariant ? (matchedVariantAreaSqm != null ? `${num(matchedVariantAreaSqm)} מ״ר` : null) : areaRangeLabel(reg),
+      floorRangeLabel: usedMatchedVariant ? matchedVariantFloorLabel : floorRangeLabel(reg),
       pricePerSqmIls,
     };
   }

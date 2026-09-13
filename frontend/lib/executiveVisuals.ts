@@ -278,7 +278,11 @@ export function deriveExecutiveInsights(workspace: PetahTikvaWorkspace): Executi
 
   // 2. Market positioning -- reuse the existing competitor-intelligence
   // price-gap rule as-is (frozen market indication, not proposed price).
-  const theSpotFact = buildFactSheet(workspace, "THE SPOT", "THE SPOT");
+  // rooms=3 matches the "3R" comparison two lines down -- THE SPOT's price
+  // here must be its own 3-room variant (or a genuine project-level
+  // starting price), never an unrelated room count's price (same P0 fix as
+  // the matrix, see buildFactSheet's own docstring).
+  const theSpotFact = buildFactSheet(workspace, "THE SPOT", "THE SPOT", 3);
   const theSpotComparison = computePriceComparison(workspace, theSpotFact, "3R", null);
   if (theSpotComparison) {
     const gap = evaluatePriceGapAlert(
@@ -491,34 +495,54 @@ export interface CompetitorMatrix {
   rows: CompetitorMatrixRow[];
 }
 
-// Petah Tikva's own curated 3-competitor selection -- a deliberate editorial
-// choice (mixing a core_exact_target contributor with adjacent-submarket
-// context), not a rule any generic ranking reproduces. Kept exactly as-is,
-// used only for the Petah Tikva context, so this batch's multi-city work
-// causes zero drift here.
-const MATRIX_COMPETITORS = [
-  { displayName: "THE SPOT", matchName: "THE SPOT" },
-  { displayName: "זאב ברנדה 22", matchName: "זאב ברנדה 22" },
-  { displayName: "NAVE PARK", matchName: "NAVE PARK נווה פארק" },
-];
-
 const NOT_PUBLISHED = "לא פורסם";
 
-/** For the three multi-city contexts (which have no such curated list),
- * picks up to 3 competitor_landscape projects relevant to this family --
- * "direct" classification first, then "relevant", by name for a
- * deterministic order -- so the price-positioning matrix compares against
- * this context's own real competitors instead of Petah Tikva's names
- * (which would simply never match and show "לא פורסם" for everything). */
+const FAMILY_ROOMS: Record<"3R" | "5R", number> = { "3R": 3, "5R": 5 };
+
+/** The one competitor-matrix selection rule for EVERY market context,
+ * Petah Tikva included -- P0 fix: Petah Tikva used to fall back to a
+ * hardcoded 3-name list (MATRIX_COMPETITORS, now removed) regardless of
+ * which family was selected, while the multi-city contexts already picked
+ * relevant competitors dynamically. That inconsistency is exactly what let
+ * a special-unit-only project (e.g. "NAVE PARK", which has no standard-
+ * family register entry at all and was only ever reachable through this
+ * removed hardcoded list) appear under a 3R/5R matrix it has no relevance
+ * to. Picks up to 3 competitor_landscape projects actually relevant to this
+ * family (relevance includes standard_3r/standard_5r) -- "direct"
+ * classification first, then "relevant"/"context", and within the same
+ * classification tier a project that actually has a priced unit variant
+ * matching this family's room count is preferred over one that doesn't (so
+ * the matrix isn't left showing "לא פורסם" for price when a better-matched
+ * real competitor exists), by name last for a fully deterministic order. A
+ * project without any matching variant may still be selected (it remains
+ * "general market context" per its own relevance/classification -- see
+ * buildFactSheet's own room-matching, which is what actually keeps its
+ * price cell honest as "לא פורסם" rather than a wrong room count's price). */
 export function deriveDefaultMatrixCompetitors(workspace: PetahTikvaWorkspace, family: "3R" | "5R"): { displayName: string; matchName: string }[] {
   const relevanceKey = family === "3R" ? "standard_3r" : "standard_5r";
+  const rooms = FAMILY_ROOMS[family];
   const rank: Record<string, number> = { direct: 0, relevant: 1, context: 2 };
+  const hasMatchingVariant = (p: JsonRecord) => {
+    const variants = (p.known_unit_variants as JsonRecord[] | undefined) ?? [];
+    return variants.some((v) => Number(v.rooms) === rooms && v.price_ils != null);
+  };
   const projects = workspace.competitor_landscape.projects
     .filter((p) => ((p.relevance as string[] | undefined) ?? []).includes(relevanceKey))
-    .sort((a, b) => (rank[a.display_classification] ?? 3) - (rank[b.display_classification] ?? 3) || a.project_name.localeCompare(b.project_name));
+    .sort((a, b) => {
+      const rankDiff = (rank[a.display_classification] ?? 3) - (rank[b.display_classification] ?? 3);
+      if (rankDiff !== 0) return rankDiff;
+      const matchDiff = Number(hasMatchingVariant(b)) - Number(hasMatchingVariant(a));
+      if (matchDiff !== 0) return matchDiff;
+      return a.project_name.localeCompare(b.project_name);
+    });
   return projects.slice(0, 3).map((p) => ({ displayName: p.project_name, matchName: p.project_name }));
 }
 
+/** competitorOverride is only ever an escape hatch for a caller that already
+ * has its own competitor list (none currently do -- deriveDefaultMatrixCompetitors
+ * is the one real selection rule now, for every market context); omitting it
+ * always falls back to that same relevance-based selection, never a
+ * hardcoded name list. */
 export function deriveCompetitorMatrix(
   workspace: PetahTikvaWorkspace,
   family: "3R" | "5R",
@@ -546,8 +570,12 @@ export function deriveCompetitorMatrix(
         : `קומות ${Math.min(...familyFloors)}–${Math.max(...familyFloors)} (בפיזור בבניין)`
       : NOT_PUBLISHED;
 
-  const competitors = competitorOverride ?? MATRIX_COMPETITORS;
-  const facts: CompetitorFactSheet[] = competitors.map((c) => buildFactSheet(workspace, c.displayName, c.matchName));
+  const competitors = competitorOverride ?? deriveDefaultMatrixCompetitors(workspace, family);
+  // rooms=FAMILY_ROOMS[family] is the whole P0 fix in one call: a competitor
+  // may only price this matrix column from ITS OWN variant matching this
+  // family's room count (or a genuine project-level starting price) -- never
+  // a different room count's price shown as though it were this family's.
+  const facts: CompetitorFactSheet[] = competitors.map((c) => buildFactSheet(workspace, c.displayName, c.matchName, FAMILY_ROOMS[family]));
 
   const columns = ["הפרויקט שלנו", ...competitors.map((c) => c.displayName)];
 

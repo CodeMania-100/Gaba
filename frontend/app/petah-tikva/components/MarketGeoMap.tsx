@@ -1408,13 +1408,43 @@ function SpecialRelevanceSection({ point, workspace }: { point: MarketMapPoint; 
           </ul>
         </div>
       )}
-      {/* The pricing engine's own already-computed normalized value for THIS
-          comparable (SpecialUnitComparable.normalized_value_ils) -- a fact
-          it already produced, not a new interpretation of the difference
-          shown in the comparison table below (task item 13's ban on
-          inventing a monetary interpretation applies to computing a NEW
-          premium here, not to displaying the engine's own real output). */}
-      {point.specialNormalizedValueIls != null && <Fact label="ערך מנורמל לפי המנוע" value={ils(point.specialNormalizedValueIls)} />}
+      {/* Small P0 display-integrity fix: the engine's own already-computed
+          normalized value for THIS comparable (SpecialUnitComparable.
+          normalized_value_ils) must never be shown next to a missing
+          observed price/area -- both are now sourced the same way
+          (comparable_price_ils/comparable_area_sqm, see lib/marketMap.ts),
+          so a participating comparable can no longer show a real normalized
+          value while its own inputs display "—". Grouped into one block
+          (task: "show these three values together... makes it obvious how
+          the evidence was transformed") rather than scattered across the
+          card. Not a new interpretation of the comparison table below --
+          the engine's own real output, not computed here (item 13's ban on
+          inventing a monetary interpretation is about computing a NEW
+          premium, not displaying an existing one). */}
+      {point.specialNormalizedValueIls != null && (
+        <div className="rounded-md border border-accent/30 bg-accent/5 p-2">
+          <div className="text-[11px] font-semibold text-slate-500">כך הראיה תורגמה לדירת היעד</div>
+          <div className="mt-1 flex flex-col gap-0.5">
+            <Fact label="מחיר שנצפה" value={point.priceIls != null ? ils(point.priceIls) : undefined} />
+            <Fact label="שטח פנימי" value={point.internalArea != null ? `${num(point.internalArea)} מ״ר` : undefined} />
+            <Fact label="ערך מנורמל לדירת היעד" value={ils(point.specialNormalizedValueIls)} />
+          </div>
+          {/* Invariant: a participating/context comparable whose lane
+              actually area-normalizes (current_asking/new_development)
+              cannot produce a normalized value without a comparable area --
+              NormalizedComparable.comparable_area_sqm is a required,
+              non-optional engine field (see pricing_core.special_market_
+              indication), so seeing this means the record's own raw source
+              is missing an area the engine itself must have had. Surfaced
+              rather than silently hidden behind "—" (task: "stop and report
+              it rather than hiding the issue"). */}
+          {point.internalArea == null && point.specialCalculationMethod === "area_normalized_median" && (
+            <p className="mt-1 text-[11px] font-medium text-red-600">
+              ⚠ שטח חסר לרשומה זו למרות ערך מנורמל מהמנוע — כדאי לבדוק את מקור הנתונים.
+            </p>
+          )}
+        </div>
+      )}
       {subject && <SpecialComparisonTable subject={subject} point={point} />}
     </>
   );
@@ -1434,7 +1464,11 @@ function SpecialComparisonTable({ subject, point }: { subject: SpecialUnitSubjec
       subjectValue: subject.internalArea != null ? num(subject.internalArea) : dash,
       evidenceValue: point.internalArea != null ? num(point.internalArea) : dash,
     },
-    { label: "שטח חוץ", subjectValue: subject.outdoorArea != null ? num(subject.outdoorArea) : dash, evidenceValue: dash },
+    {
+      label: "שטח חוץ",
+      subjectValue: subject.outdoorArea != null ? num(subject.outdoorArea) : dash,
+      evidenceValue: point.outdoorArea != null ? num(point.outdoorArea) : dash,
+    },
     { label: "קומות", subjectValue: subject.floor != null ? String(subject.floor) : dash, evidenceValue: point.floor != null ? String(point.floor) : dash },
   ];
 

@@ -672,3 +672,59 @@ def test_petah_tikva_workspace_unaffected_by_visibility_pass(tmp_path):
     sold_records = ws["evidence_provenance"]["sold"]["3R"]["records"]
     assert len(sold_records) > 0
     assert "contributes_to_pricing" not in sold_records[0]
+
+
+# --- P0 display-integrity invariant: a participating/context special-unit --
+# comparable can never carry a normalized_value_ils without a visible
+# comparable_area_sqm. Structurally guaranteed by NormalizedComparable being
+# a required-field dataclass (pricing_core/special_market_indication.py) --
+# normalized_value_ils is itself computed FROM comparable_area_sqm inside
+# NormalizedComparable.build() -- but verified here directly against the
+# real, live API response for every unit/category/context combination named
+# in the task ("Check this across garden / duplex / triplex and all three
+# multi-city contexts"), so a future change to the engine or its
+# serialization can never silently reintroduce the gap the frontend bug
+# exposed. This is a read-only structural check -- no pricing/methodology
+# value asserted here is computed by the test itself.
+
+UNIT_CATEGORY = {"1": "garden", "2": "garden", "3": "garden", "36": "triplex", "37": "triplex", "38": "duplex", "39": "duplex"}
+
+
+@pytest.mark.parametrize("slug", NON_PT_SLUGS)
+def test_special_unit_comparables_never_have_a_normalized_value_without_a_visible_area(tmp_path, slug):
+    c = client(tmp_path)
+    ws = _workspace(c, slug)
+    units = ws["special_unit_market_context"]["units"]
+    checked_any = False
+
+    for unit_number, unit_category in UNIT_CATEGORY.items():
+        context = units.get(unit_number)
+        if not context or not context.get("market_indication"):
+            continue
+        for lane_name, lane in context["market_indication"]["lanes"].items():
+            for comp in [*lane["comps_used"], *lane["comps_context_only"]]:
+                checked_any = True
+                assert comp["normalized_value_ils"] is not None
+                # The literal invariant from the task: a comparable that
+                # produced a normalized value while its own lane actually
+                # area-normalizes (current_asking/new_development) must
+                # carry a real, positive comparable_area_sqm -- if this ever
+                # fails, stop and report it rather than silently trusting
+                # the frontend to hide the gap (per the task's explicit
+                # instruction), since it would mean that record should never
+                # have been eligible for area normalization in the first
+                # place.
+                if lane["calculation_method"] == "area_normalized_median":
+                    assert comp["comparable_area_sqm"] is not None, (
+                        f"{slug} unit {unit_number} ({unit_category}) lane={lane_name}: "
+                        f"comparable {comp['label']!r} has normalized_value_ils={comp['normalized_value_ils']} "
+                        f"but comparable_area_sqm is None -- this record should not have been area-normalized."
+                    )
+                    assert comp["comparable_area_sqm"] > 0
+                # comparable_price_ils is likewise a required field on every
+                # comparable regardless of lane (sold's own raw_price_median
+                # still populates it -- see NormalizedComparable.build()).
+                assert comp["comparable_price_ils"] is not None
+                assert comp["comparable_price_ils"] > 0
+
+    assert checked_any, f"{slug}: expected at least one special-unit comparable across garden/duplex/triplex to exercise this invariant"

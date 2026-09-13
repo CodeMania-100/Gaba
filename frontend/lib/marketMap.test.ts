@@ -14,7 +14,14 @@
 
 import { describe, expect, it } from "vitest";
 import { PetahTikvaWorkspace } from "./api";
-import { groupCompetitorPointsByCoordinate, MarketMapPoint, pointContributesForFamily } from "./marketMap";
+import {
+  deriveSpecialAskingPoints,
+  deriveSpecialCompetitorPoints,
+  deriveSpecialSoldPoints,
+  groupCompetitorPointsByCoordinate,
+  MarketMapPoint,
+  pointContributesForFamily,
+} from "./marketMap";
 
 function competitorPoint(overrides: Partial<MarketMapPoint>): MarketMapPoint {
   return {
@@ -172,5 +179,252 @@ describe("pointContributesForFamily with competitor_group points", () => {
     const group = competitorPoint({ kind: "competitor_group", title: "1 פרויקט", groupMembers: [competitorPoint({ title: "A" })] });
     expect(pointContributesForFamily(group, workspace, "3R")).toBe(false);
     expect(pointContributesForFamily(group, workspace, "5R")).toBe(false);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// P0 display-integrity fix: a participating special-unit comparable must
+// never show a real normalized_value_ils next to a missing evidence-side
+// area -- the presentation derivation must prefer the pricing engine's own
+// canonical comparable_area_sqm/comparable_price_ils (guaranteed non-null
+// whenever normalized_value_ils is set, since NormalizedComparable is a
+// required-field dataclass), falling back to a raw-source field ONLY for
+// records with no canonical comparable at all (excluded records). The bug
+// was that several derive*Points functions read a raw field name that only
+// exists on Petah Tikva's own hand-curated special-unit data (price/date/
+// area_m2/type), silently returning undefined for the three multi-city
+// contexts, which use different column names (deal_amount/deal_date/
+// internal_area/product_type) on the exact same shared derivation path.
+// ---------------------------------------------------------------------------
+
+const RESOLVED_GEO = { lat: 32.3, lng: 34.87, coordinate_source: "geocoded_address" as const, verified: true };
+
+describe("special-unit evidence field mapping (P0 display-integrity fix)", () => {
+  it("deriveSpecialSoldPoints reads price/date from the multi-city dataset's own column names (deal_amount/deal_date), not only Petah Tikva's (price/date)", () => {
+    const workspace = {
+      special_unit_market_context: {
+        units: {
+          "1": {
+            sold_selected: [
+              {
+                address: "הדקל 5",
+                // Multi-city sold_special_v2.csv column names -- NOT price/date.
+                deal_amount: "2400000",
+                deal_date: "2026-01-15",
+                internal_area: "80",
+                rooms: "4",
+                product_type: "duplex",
+              },
+            ],
+            sold_rejected: [],
+            market_indication: {
+              lanes: {
+                sold: {
+                  calculation_method: "raw_price_median",
+                  comps_used: [
+                    {
+                      lane: "sold", tier: "tier_b_size_relaxed", label: "הדקל 5",
+                      comparable_price_ils: 2400000, comparable_area_sqm: 80, subject_area_sqm: 75,
+                      normalized_value_ils: 2250000, note: "", raw: {},
+                    },
+                  ],
+                  comps_context_only: [], reference_ils: 2400000, is_provisional: false, is_direct_quality: false, label: "",
+                },
+              },
+              excluded: [],
+            },
+          },
+        },
+      },
+      market_map_geocodes: { special_sold: { resolved: [{ record_id: "x", address: "הדקל 5", ...RESOLVED_GEO, precision: "address", resolved_label: null }] } },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any;
+
+    const points = deriveSpecialSoldPoints(workspace, 1);
+    expect(points).toHaveLength(1);
+    expect(points[0].priceIls).toBe(2400000);
+    expect(points[0].date).toBe("2026-01-15");
+    expect(points[0].internalArea).toBe(80);
+    expect(points[0].rooms).toBe(4);
+    expect(points[0].specialEvidenceType).toBe("duplex");
+  });
+
+  it("deriveSpecialSoldPoints prefers the canonical comparable_area_sqm/comparable_price_ils over the raw record even when both are present", () => {
+    const workspace = {
+      special_unit_market_context: {
+        units: {
+          "1": {
+            sold_selected: [{ address: "הדקל 5", deal_amount: "9999999", internal_area: "999" }], // raw values deliberately wrong/stale
+            sold_rejected: [],
+            market_indication: {
+              lanes: {
+                sold: {
+                  calculation_method: "raw_price_median",
+                  comps_used: [
+                    {
+                      lane: "sold", tier: "tier_b_size_relaxed", label: "הדקל 5",
+                      comparable_price_ils: 2400000, comparable_area_sqm: 80, subject_area_sqm: 75,
+                      normalized_value_ils: 2250000, note: "", raw: {},
+                    },
+                  ],
+                  comps_context_only: [], reference_ils: 2400000, is_provisional: false, is_direct_quality: false, label: "",
+                },
+              },
+              excluded: [],
+            },
+          },
+        },
+      },
+      market_map_geocodes: { special_sold: { resolved: [{ record_id: "x", address: "הדקל 5", ...RESOLVED_GEO, precision: "address", resolved_label: null }] } },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any;
+
+    const points = deriveSpecialSoldPoints(workspace, 1);
+    expect(points[0].priceIls).toBe(2400000); // canonical, not the raw 9999999
+    expect(points[0].internalArea).toBe(80); // canonical, not the raw 999
+  });
+
+  it("deriveSpecialAskingPoints reads price/area/product-type from the multi-city dataset's own column names (price/internal_area/product_type), not only Petah Tikva's (price_ils/area_m2/type)", () => {
+    const workspace = {
+      special_unit_market_context: {
+        units: {
+          "39": {
+            direct_comparables: [
+              { address: "הדקל 12", price: "5250000", internal_area: "160", rooms: "6", floor: "11", product_type: "duplex" },
+            ],
+            broadened_comparables: [],
+            market_indication: {
+              lanes: {
+                current_asking: {
+                  calculation_method: "area_normalized_median",
+                  comps_used: [
+                    {
+                      lane: "current_asking", tier: "tier_a_direct", label: "הדקל 12",
+                      comparable_price_ils: 5250000, comparable_area_sqm: 160, subject_area_sqm: 158.6,
+                      normalized_value_ils: 5211000, note: "", raw: {},
+                    },
+                  ],
+                  comps_context_only: [], reference_ils: 5211000, is_provisional: false, is_direct_quality: true, label: "",
+                },
+              },
+              excluded: [],
+            },
+          },
+        },
+      },
+      market_map_geocodes: { special_asking: { resolved: [{ record_id: "x", address: "הדקל 12", ...RESOLVED_GEO, precision: "address", resolved_label: null }] } },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any;
+
+    const points = deriveSpecialAskingPoints(workspace, 39);
+    expect(points).toHaveLength(1);
+    expect(points[0].priceIls).toBe(5250000);
+    expect(points[0].internalArea).toBe(160);
+    expect(points[0].specialEvidenceType).toBe("duplex");
+    expect(points[0].specialNormalizedValueIls).toBe(5211000);
+  });
+
+  it("invariant: a participating comparable whose lane calculation_method is area_normalized_median always has a visible internalArea (asking)", () => {
+    const workspace = {
+      special_unit_market_context: {
+        units: {
+          "39": {
+            direct_comparables: [{ address: "הדקל 12", price: "5250000", internal_area: "160" }],
+            broadened_comparables: [],
+            market_indication: {
+              lanes: {
+                current_asking: {
+                  calculation_method: "area_normalized_median",
+                  comps_used: [
+                    {
+                      lane: "current_asking", tier: "tier_a_direct", label: "הדקל 12",
+                      comparable_price_ils: 5250000, comparable_area_sqm: 160, subject_area_sqm: 158.6,
+                      normalized_value_ils: 5211000, note: "", raw: {},
+                    },
+                  ],
+                  comps_context_only: [], reference_ils: 5211000, is_provisional: false, is_direct_quality: true, label: "",
+                },
+              },
+              excluded: [],
+            },
+          },
+        },
+      },
+      market_map_geocodes: { special_asking: { resolved: [{ record_id: "x", address: "הדקל 12", ...RESOLVED_GEO, precision: "address", resolved_label: null }] } },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any;
+
+    const points = deriveSpecialAskingPoints(workspace, 39);
+    const violatesInvariant = points.some((p) => p.specialNormalizedValueIls != null && p.specialCalculationMethod === "area_normalized_median" && p.internalArea == null);
+    expect(violatesInvariant).toBe(false);
+    expect(points[0].internalArea).not.toBeNull();
+    expect(points[0].internalArea).toBeDefined();
+  });
+
+  it("deriveSpecialCompetitorPoints reads internalArea/rooms/price from the specific matched variant's own raw row, not only the generic register fact", () => {
+    const workspace = {
+      special_unit_market_context: {
+        units: {
+          "39": {
+            market_indication: {
+              lanes: {
+                new_development: {
+                  calculation_method: "area_normalized_median",
+                  comps_used: [
+                    {
+                      lane: "new_development", tier: "tier_a_direct", label: "פרויקט X (duplex)",
+                      comparable_price_ils: 4800000, comparable_area_sqm: 150, subject_area_sqm: 158.6,
+                      normalized_value_ils: 5078400, note: "",
+                      raw: { internal_area_sqm: "150", price_ils: "4800000", rooms: "5", floor: "8", unit_type: "duplex" },
+                    },
+                  ],
+                  comps_context_only: [], reference_ils: 5078400, is_provisional: false, is_direct_quality: true, label: "",
+                },
+              },
+              excluded: [],
+            },
+          },
+        },
+      },
+      market_map_geocodes: { competitors: { resolved: [{ record_id: "competitor:פרויקט X", address: "פרויקט X", ...RESOLVED_GEO, precision: "address", resolved_label: null }] } },
+      competitor_landscape: { projects: [{ project_name: "פרויקט X", display_classification: "relevant", known_unit_variants: [] }] },
+      standard_attribute_enrichment: { families: { standard_3r: { new_development_comparables: [] }, standard_5r: { new_development_comparables: [] } } },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any;
+
+    const points = deriveSpecialCompetitorPoints(workspace, 39);
+    expect(points).toHaveLength(1);
+    expect(points[0].internalArea).toBe(150);
+    expect(points[0].rooms).toBe(5);
+    expect(points[0].priceIls).toBe(4800000); // the matched variant's own price, not a generic register figure
+    expect(points[0].specialEvidenceType).toBe("duplex");
+    // Same invariant, competitor lane.
+    expect(points[0].specialNormalizedValueIls).not.toBeNull();
+    expect(points[0].internalArea).not.toBeNull();
+  });
+
+  it("an excluded record (no canonical comparable) never claims a normalized value, so the invariant does not apply even when its area is unknown", () => {
+    const workspace = {
+      special_unit_market_context: {
+        units: {
+          "39": {
+            direct_comparables: [{ address: "רחוב לא ידוע 1" }], // no area/price at all
+            broadened_comparables: [],
+            market_indication: {
+              lanes: {},
+              excluded: [{ lane: "current_asking", label: "רחוב לא ידוע 1", reason: "numeric_completeness_failed", raw: {} }],
+            },
+          },
+        },
+      },
+      market_map_geocodes: { special_asking: { resolved: [{ record_id: "x", address: "רחוב לא ידוע 1", ...RESOLVED_GEO, precision: "approximate", resolved_label: null }] } },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any;
+
+    const points = deriveSpecialAskingPoints(workspace, 39);
+    expect(points).toHaveLength(1);
+    expect(points[0].specialStatus).toBe("excluded");
+    expect(points[0].specialNormalizedValueIls).toBeUndefined();
+    expect(points[0].internalArea).toBeUndefined();
   });
 });

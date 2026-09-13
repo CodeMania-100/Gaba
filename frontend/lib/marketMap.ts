@@ -148,6 +148,10 @@ export interface MarketMapPoint {
   // relevant_segments/applicable_segments field when it names this unit
   // specifically -- never invented when the source is silent.
   specialRelevantToLabel?: string;
+  // The lane's own calculation_method (see StatusEntry) -- used only to
+  // check the display invariant "a participating area-normalized comparable
+  // must show a real area", never to alter any figure.
+  specialCalculationMethod?: "area_normalized_median" | "raw_price_median";
 }
 
 // ---------------------------------------------------------------------------
@@ -622,6 +626,75 @@ interface StatusEntry {
   // cards must say "why it is relevant to the selected special apartment").
   normalizedValueIls?: number;
   relevantToLabel?: string;
+  // Canonical pricing-engine values for THIS specific comparable (see
+  // NormalizedComparable in pricing_core/special_market_indication.py) --
+  // only ever set for participating/context comparables that actually
+  // reached the engine (comps_used/comps_context_only). Both are REQUIRED,
+  // non-optional dataclass fields on NormalizedComparable -- structurally
+  // guaranteed non-null whenever normalizedValueIls is set (normalized_
+  // value_ils is itself computed FROM comparable_area_sqm via
+  // area_normalize()) -- so once a caller prefers these over any raw-source
+  // field, a participating/context comparable can never show a real
+  // normalized value next to a missing area/price again (see P0 bug:
+  // "a participating comparable can show a real normalized_value_ils while
+  // the evidence-side שטח פנים displays —"). Excluded records never reach
+  // this far (the engine never area-normalizes them), so they carry no
+  // canonical value here by design -- raw-source fallback is the only
+  // option for those, same as before.
+  comparableAreaSqm?: number;
+  comparablePriceIls?: number;
+  // The comparable's own lane-level calculation method (see
+  // SpecialUnitLaneResult.calculation_method) -- "area_normalized_median"
+  // for current_asking/new_development, "raw_price_median" for sold.
+  // Carried per-entry (not looked up separately) purely so the render layer
+  // can check the invariant "a participating area-normalized comparable
+  // must have a visible area" without re-threading the whole lane object.
+  calculationMethod?: "area_normalized_median" | "raw_price_median";
+  // The comparable's own raw source record (SpecialUnitComparable.raw /
+  // ExcludedRecord.raw) -- kept alongside so a caller with no better local
+  // raw object (deriveSpecialCompetitorPoints merges several unit variants
+  // per project, so it has no single natural "the raw row" otherwise) can
+  // still read rooms/floor/product-type/outdoor-area facts the engine
+  // itself doesn't carry as a first-class NormalizedComparable field.
+  raw?: JsonRecord;
+}
+
+/** JSON payload values for every raw special-unit field this module reads
+ * arrive as strings (the backend passes the original CSV DictReader row
+ * through as `raw` verbatim, never coerced) -- this never trusts a naive
+ * `as number` cast, which would silently keep a string at runtime. */
+function coerceNumber(v: unknown): number | undefined {
+  if (typeof v === "number") return Number.isFinite(v) ? v : undefined;
+  if (typeof v === "string" && v.trim() !== "") {
+    const n = Number(v);
+    if (Number.isFinite(n)) return n;
+  }
+  return undefined;
+}
+
+/** Prefers the pricing engine's own canonical value for this comparable
+ * (only ever set for a record that actually reached NormalizedComparable);
+ * falls back to the first present raw field, trying every field-name
+ * variant the different source datasets use for the same fact -- Petah
+ * Tikva's hand-curated basket and each multi-city city's raw CSV export
+ * name several of these facts differently (e.g. sold price is `price` in
+ * one, `deal_amount` in the other) -- never guessed when every source is
+ * absent. */
+function preferCanonicalNumber(canonical: number | undefined, raw: JsonRecord | undefined, ...rawKeys: string[]): number | undefined {
+  if (canonical != null) return canonical;
+  for (const key of rawKeys) {
+    const v = coerceNumber(raw?.[key]);
+    if (v != null) return v;
+  }
+  return undefined;
+}
+
+function firstRawString(raw: JsonRecord | undefined, ...rawKeys: string[]): string | undefined {
+  for (const key of rawKeys) {
+    const v = raw?.[key];
+    if (typeof v === "string" && v.trim() !== "") return v;
+  }
+  return undefined;
 }
 
 /** A record's own relevant_segments ("APT3") / applicable_segments
@@ -653,14 +726,25 @@ function buildStatusIndex(
   const laneResult = indication.lanes[lane];
   if (laneResult) {
     for (const c of laneResult.comps_used) {
-      map.set(c.label, { status: "participating", tier: c.tier, normalizedValueIls: c.normalized_value_ils, relevantToLabel: relevantToLabel(c.raw, unitNumber) });
+      map.set(c.label, {
+        status: "participating", tier: c.tier, normalizedValueIls: c.normalized_value_ils,
+        relevantToLabel: relevantToLabel(c.raw, unitNumber), comparableAreaSqm: c.comparable_area_sqm,
+        comparablePriceIls: c.comparable_price_ils, calculationMethod: laneResult.calculation_method, raw: c.raw,
+      });
     }
     for (const c of laneResult.comps_context_only) {
-      map.set(c.label, { status: "context_only", tier: c.tier, normalizedValueIls: c.normalized_value_ils, relevantToLabel: relevantToLabel(c.raw, unitNumber) });
+      map.set(c.label, {
+        status: "context_only", tier: c.tier, normalizedValueIls: c.normalized_value_ils,
+        relevantToLabel: relevantToLabel(c.raw, unitNumber), comparableAreaSqm: c.comparable_area_sqm,
+        comparablePriceIls: c.comparable_price_ils, calculationMethod: laneResult.calculation_method, raw: c.raw,
+      });
     }
   }
   for (const e of indication.excluded) {
-    if (e.lane === lane) map.set(e.label, { status: "excluded", reason: e.reason, relevantToLabel: relevantToLabel(e.raw, unitNumber) });
+    // Excluded records never reached NormalizedComparable -- the engine
+    // never area-normalized them, so no comparableAreaSqm/comparablePriceIls/
+    // calculationMethod exists for them by design (see StatusEntry).
+    if (e.lane === lane) map.set(e.label, { status: "excluded", reason: e.reason, relevantToLabel: relevantToLabel(e.raw, unitNumber), raw: e.raw });
   }
   return map;
 }
@@ -701,8 +785,17 @@ export function deriveSpecialSoldPoints(workspace: PetahTikvaWorkspace, unitNumb
     const status: SpecialParticipation = entry?.status ?? (basketReason ? "excluded" : "context_only");
     const reason = entry?.reason ?? basketReason;
     const latest = records[0];
-    const price = latest.price as number | undefined;
-    const area = latest.internal_area as number | undefined;
+    // Canonical pricing-engine values first -- guaranteed consistent with
+    // specialNormalizedValueIls, since the engine computed both from the
+    // same comparable object (see StatusEntry/P0 bug fix). Raw-source
+    // fallback (only reached for excluded/no-comparable records) tries both
+    // this dataset's own sold_special_v2.csv column names (deal_amount/
+    // deal_date/internal_area) and Petah Tikva's differently-named basket
+    // fields (price/date/internal_area) -- confirmed by direct comparison
+    // of the two sources, never guessed.
+    const price = preferCanonicalNumber(entry?.comparablePriceIls, latest, "price", "deal_amount");
+    const area = preferCanonicalNumber(entry?.comparableAreaSqm, latest, "internal_area", "internal_area_sqm");
+    const dateStr = firstRawString(latest, "date", "deal_date");
     points.push({
       id: `special_sold:${unitNumber}:${address}`,
       kind: "sold",
@@ -714,8 +807,10 @@ export function deriveSpecialSoldPoints(workspace: PetahTikvaWorkspace, unitNumb
       pricePerSqm: pricePerSqmOrUndefined(price, area),
       priceBasis: "sold",
       internalArea: area,
-      rooms: latest.rooms as number | undefined,
-      date: latest.date as string | undefined,
+      outdoorArea: preferCanonicalNumber(undefined, latest, "outdoor_area", "garden_area", "balcony_area"),
+      floor: firstRawString(latest, "floor"),
+      rooms: coerceNumber(latest.rooms),
+      date: dateStr,
       contributesToPricing: status === "participating",
       coordinatePrecision: geo.precision,
       specialUnitNumber: unitNumber,
@@ -724,7 +819,9 @@ export function deriveSpecialSoldPoints(workspace: PetahTikvaWorkspace, unitNumb
       specialTierLabel: entry?.tier,
       specialNormalizedValueIls: entry?.normalizedValueIls,
       specialRelevantToLabel: entry?.relevantToLabel,
-      note: (latest.floor_configuration as string | undefined) ?? undefined,
+      specialCalculationMethod: entry?.calculationMethod,
+      specialEvidenceType: firstRawString(latest, "product_type"),
+      note: firstRawString(latest, "floor_configuration"),
       transactionCount: records.length,
     });
   }
@@ -751,8 +848,14 @@ export function deriveSpecialAskingPoints(workspace: PetahTikvaWorkspace, unitNu
     const geo = geoByAddress.get(address);
     if (!geo) continue;
     const entry = statusIdx.get(address) ?? (r.type ? statusIdx.get(r.type as string) : undefined);
-    const price = r.price_ils as number | undefined;
-    const area = r.area_m2 as number | undefined;
+    // Canonical pricing-engine values first (see deriveSpecialSoldPoints's
+    // own comment -- identical rationale). Raw-source fallback tries both
+    // Petah Tikva's own asking-evidence field names (price_ils/area_m2/type)
+    // and each multi-city city's raw asking_special_v2.csv column names
+    // (price/internal_area/product_type) -- confirmed by direct comparison,
+    // never guessed.
+    const price = preferCanonicalNumber(entry?.comparablePriceIls, r, "price_ils", "price");
+    const area = preferCanonicalNumber(entry?.comparableAreaSqm, r, "area_m2", "internal_area", "internal_area_sqm");
     const status: SpecialParticipation = entry?.status ?? "context_only";
     points.push({
       id: `special_asking:${unitNumber}:${address}`,
@@ -765,7 +868,8 @@ export function deriveSpecialAskingPoints(workspace: PetahTikvaWorkspace, unitNu
       pricePerSqm: pricePerSqmOrUndefined(price, area),
       priceBasis: "asking",
       internalArea: area,
-      rooms: r.rooms as number | undefined,
+      outdoorArea: preferCanonicalNumber(undefined, r, "outdoor_area", "garden_area", "balcony_area"),
+      rooms: coerceNumber(r.rooms),
       floor: r.floor as string | undefined,
       contributesToPricing: status === "participating",
       coordinatePrecision: geo.precision,
@@ -775,7 +879,8 @@ export function deriveSpecialAskingPoints(workspace: PetahTikvaWorkspace, unitNu
       specialTierLabel: entry?.tier,
       specialNormalizedValueIls: entry?.normalizedValueIls,
       specialRelevantToLabel: entry?.relevantToLabel ?? relevantToLabel(r, unitNumber),
-      specialEvidenceType: (r.type as string | undefined) ?? undefined,
+      specialCalculationMethod: entry?.calculationMethod,
+      specialEvidenceType: firstRawString(r, "type", "product_type"),
       note: (r.known_features as string | undefined) ?? undefined,
       sourceUrl: (r.source_url as string | undefined) ?? undefined,
     });
@@ -808,14 +913,22 @@ export function deriveSpecialCompetitorPoints(workspace: PetahTikvaWorkspace, un
   const laneResult = indication.lanes.new_development;
   if (laneResult) {
     for (const c of laneResult.comps_used) {
-      consider(c.label, { status: "participating", tier: c.tier, normalizedValueIls: c.normalized_value_ils, relevantToLabel: relevantToLabel(c.raw, unitNumber) });
+      consider(c.label, {
+        status: "participating", tier: c.tier, normalizedValueIls: c.normalized_value_ils,
+        relevantToLabel: relevantToLabel(c.raw, unitNumber), comparableAreaSqm: c.comparable_area_sqm,
+        comparablePriceIls: c.comparable_price_ils, calculationMethod: laneResult.calculation_method, raw: c.raw,
+      });
     }
     for (const c of laneResult.comps_context_only) {
-      consider(c.label, { status: "context_only", tier: c.tier, normalizedValueIls: c.normalized_value_ils, relevantToLabel: relevantToLabel(c.raw, unitNumber) });
+      consider(c.label, {
+        status: "context_only", tier: c.tier, normalizedValueIls: c.normalized_value_ils,
+        relevantToLabel: relevantToLabel(c.raw, unitNumber), comparableAreaSqm: c.comparable_area_sqm,
+        comparablePriceIls: c.comparable_price_ils, calculationMethod: laneResult.calculation_method, raw: c.raw,
+      });
     }
   }
   for (const e of indication.excluded) {
-    if (e.lane === "new_development") consider(e.label, { status: "excluded", reason: e.reason, relevantToLabel: relevantToLabel(e.raw, unitNumber) });
+    if (e.lane === "new_development") consider(e.label, { status: "excluded", reason: e.reason, relevantToLabel: relevantToLabel(e.raw, unitNumber), raw: e.raw });
   }
 
   const geocodes = workspace.market_map_geocodes?.competitors.resolved ?? [];
@@ -827,6 +940,17 @@ export function deriveSpecialCompetitorPoints(workspace: PetahTikvaWorkspace, un
     if (!geo) continue;
     const fact = buildFactSheet(workspace, name, name);
     const registerProject = workspace.competitor_landscape.projects.find((p) => p.project_name === name);
+    // Canonical pricing-engine values for the SPECIFIC matched unit variant
+    // first -- fact.currentPriceIls (from buildFactSheet) is a generic
+    // "cheapest variant across the whole project" figure from the unrelated
+    // standard competitor-register pathway, which can genuinely differ from
+    // the exact comparable this special unit's indication actually used;
+    // entry.raw here is that variant's own raw competitor_unit_variants_v2.
+    // csv row (internal_area_sqm/price_ils/rooms/floor/unit_type) for
+    // multi-city contexts -- never guessed, and only used as a fallback
+    // when no canonical value exists (e.g. an excluded record).
+    const priceIls = preferCanonicalNumber(entry.comparablePriceIls, entry.raw, "price_ils") ?? fact.currentPriceIls ?? undefined;
+    const internalArea = preferCanonicalNumber(entry.comparableAreaSqm, entry.raw, "internal_area_sqm", "internal_area");
     points.push({
       id: geo.record_id,
       kind: "competitor",
@@ -834,8 +958,13 @@ export function deriveSpecialCompetitorPoints(workspace: PetahTikvaWorkspace, un
       lng: geo.lng,
       title: name,
       address: (registerProject?.address as string | null) ?? undefined,
-      priceIls: fact.currentPriceIls ?? undefined,
+      priceIls,
+      pricePerSqm: pricePerSqmOrUndefined(priceIls, internalArea),
       priceBasis: fact.isStartingPriceOnly ? "starting_price" : "unit_price",
+      internalArea,
+      outdoorArea: preferCanonicalNumber(undefined, entry.raw, "garden_area_sqm", "balcony_area_sqm"),
+      rooms: coerceNumber(entry.raw?.rooms),
+      floor: firstRawString(entry.raw, "floor"),
       classification: registerProject?.display_classification,
       contributesToPricing: entry.status === "participating",
       coordinatePrecision: geo.precision,
@@ -845,6 +974,8 @@ export function deriveSpecialCompetitorPoints(workspace: PetahTikvaWorkspace, un
       specialTierLabel: entry.tier,
       specialNormalizedValueIls: entry.normalizedValueIls,
       specialRelevantToLabel: entry.relevantToLabel,
+      specialCalculationMethod: entry.calculationMethod,
+      specialEvidenceType: firstRawString(entry.raw, "unit_type"),
       fact,
       highlights: registerProject ? deriveCompetitorHighlights(registerProject) : undefined,
       relevanceTags: registerProject ? deriveCompetitorRelevanceTags(registerProject) : undefined,

@@ -16,7 +16,7 @@ interface Props {
  * a live structural breakdown of the inventory (standard vs. special, and
  * within each, the real room-count mix). Same computeSalesProgress/
  * computeRevenueSummary used by PricingDecisionBoard and
- * MarketingStrategyPanel -- kept in perfect sync since it's the same
+ * StrategyWorkspace -- kept in perfect sync since it's the same
  * calculation, just displayed once at the top too. */
 export default function ProjectKpiSummary({ workspace, rows, state }: Props) {
   const progress = computeSalesProgress(rows, state.soldUnitNumbers);

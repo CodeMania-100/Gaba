@@ -130,12 +130,7 @@ export default function CompetitiveIntelligence({
       </div>
 
       <div className="mt-5 border-t border-slate-200 pt-5">
-        <MarketPositionSection
-          workspace={workspace}
-          projectPhase={marketingStrategy.projectPhase}
-          family={family}
-          onFamilyChange={onFamilyChange}
-        />
+        <MarketPositionSection workspace={workspace} projectPhase={marketingStrategy.projectPhase} family={family} />
       </div>
     </section>
   );

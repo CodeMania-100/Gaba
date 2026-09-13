@@ -34,15 +34,26 @@ export interface MatchStateRow extends ProductComparisonRow {
   matchState: AttributeMatchState | null; // null = not an attribute row, no badge
 }
 
-const UNKNOWN_VALUE = "—";
+// Every literal placeholder buildProductComparisonRows can put on either
+// side of a row when a value is genuinely not known/supplied -- "—" (no
+// concept applies), "לא פורסם" (competitor side: not published), "לא הוזן"
+// (our side: no company value entered). A row must never be classified
+// "different" merely because one side uses one of these placeholders
+// instead of a real value (see task: "do not infer שונה merely because
+// competitor information is absent").
+const UNKNOWN_VALUES = new Set(["—", "לא פורסם", "לא הוזן", "לא ידוע"]);
 
 function normalize(v: string): string {
   return v.trim().toLowerCase();
 }
 
+function isUnknownValue(v: string): boolean {
+  return UNKNOWN_VALUES.has(v.trim());
+}
+
 export function deriveMatchState(row: ProductComparisonRow): AttributeMatchState | null {
   if (!ATTRIBUTE_ROW_LABELS.has(row.label)) return null;
-  if (row.subjectValue === UNKNOWN_VALUE || row.competitorValue === UNKNOWN_VALUE) return "unknown";
+  if (isUnknownValue(row.subjectValue) || isUnknownValue(row.competitorValue)) return "unknown";
   return normalize(row.subjectValue) === normalize(row.competitorValue) ? "match" : "different";
 }
 
@@ -50,14 +61,16 @@ export function deriveMatchStateRows(rows: ProductComparisonRow[]): MatchStateRo
   return rows.map((r) => ({ ...r, matchState: deriveMatchState(r) }));
 }
 
+// Hebrew UI labels -- the surrounding interface is entirely Hebrew, so
+// these badges never show the internal state names in English.
 export const MATCH_STATE_LABELS: Record<AttributeMatchState, string> = {
-  match: "MATCH",
-  different: "DIFFERENT",
-  unknown: "UNKNOWN",
+  match: "תואם",
+  different: "שונה",
+  unknown: "לא ידוע",
 };
 
 export const MATCH_STATE_COLORS: Record<AttributeMatchState, string> = {
-  match: "bg-emerald-100 text-emerald-800",
-  different: "bg-amber-100 text-amber-900",
-  unknown: "bg-slate-100 text-slate-500",
+  match: "bg-supported/15 text-supported",
+  different: "bg-warning/15 text-warning",
+  unknown: "bg-hairline/50 text-ink-muted",
 };

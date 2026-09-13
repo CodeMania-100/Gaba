@@ -4,6 +4,7 @@ import { useState } from "react";
 import { StandardAttributeEnrichmentFamily } from "@/lib/api";
 import { ils } from "@/lib/format";
 import { floorEvidenceForFamily, FloorPairSummary } from "@/lib/researchContext";
+import { translateResearchNote } from "@/lib/researchNoteTranslations";
 
 interface Props {
   family: StandardAttributeEnrichmentFamily;
@@ -96,7 +97,7 @@ function FloorPairCard({ pair }: { pair: FloorPairSummary }) {
   return (
     <div>
       <div className="text-sm font-semibold text-slate-800">{pair.address}</div>
-      {pair.matchBasis && <p className="mt-0.5 text-[11px] text-slate-400">{pair.matchBasis}</p>}
+      {pair.matchBasis && <p className="mt-0.5 text-[11px] text-slate-400">{translateResearchNote(pair.matchBasis)}</p>}
 
       {/* Compact bar visualization (task item 19) -- one row per floor,
           width proportional to price, no charting library. */}
@@ -130,7 +131,7 @@ function FloorPairCard({ pair }: { pair: FloorPairSummary }) {
         </p>
       </div>
 
-      {pair.qaNote && <p className="mt-1.5 rounded bg-amber-50 px-2 py-1.5 text-[11px] text-amber-900">{pair.qaNote}</p>}
+      {pair.qaNote && <p className="mt-1.5 rounded bg-amber-50 px-2 py-1.5 text-[11px] text-amber-900">{translateResearchNote(pair.qaNote)}</p>}
 
       <span className="mt-2 inline-block rounded bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-600">
         ראיה תצפיתית · לא נגזר ממנה כלל כספי אוטומטי

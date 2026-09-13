@@ -10,7 +10,7 @@ import PriceListConsistency from "./components/PriceListConsistency";
 import ProjectKpiSummary from "./components/ProjectKpiSummary";
 import BuildingExplorer from "./components/BuildingExplorer";
 import UnitDrawer from "./components/UnitDrawer";
-import MarketingStrategyPanel from "./components/MarketingStrategyPanel";
+import StrategyWorkspace from "./components/StrategyWorkspace";
 import WorkspaceTabs, { TopTab } from "./components/WorkspaceTabs";
 import MarketAndCompetitionWorkspace, { MarketInnerTab } from "./components/MarketAndCompetitionWorkspace";
 import MarketContextSelector from "./components/MarketContextSelector";
@@ -23,16 +23,34 @@ export default function PetahTikvaWorkspacePage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [mismatch, setMismatch] = useState<string | null>(null);
-  // Standard 3R/5R family, shared by the market/competition workspace --
-  // unrelated to the map's own selection below (a special-unit map
-  // selection must never break these standard-only sections).
-  const [marketFamily, setMarketFamily] = useState<"3R" | "5R">("3R");
   // The geo map's own selection -- can be a standard family OR one of the 7
   // special units. Fully independent state; only the explicit "הצג ... על
   // המפה" drawer action (see openMapEvidence below) deliberately syncs the
   // two.
   const [mapSelection, setMapSelection] = useState<MarketMapSelection>({ kind: "standard_family", family: "3R" });
   const [selectedUnit, setSelectedUnit] = useState<PtkPriceListRow | null>(null);
+  // The single source of truth for "which apartment does Tab 2's product-
+  // comparison section (במה המוצר שלנו שונה מהמתחרים?) currently describe" --
+  // set from every real selection action anywhere in the app, so it can
+  // represent a standard family OR a specific special unit, and is never
+  // silently stuck on a previous subject. null until the user makes an
+  // explicit selection, in which case a sensible default is derived from
+  // the loaded workspace below (see effectiveComparisonUnit). Two distinct
+  // ways to set it, both converging on this one state:
+  //   - selectUnit(row) below: opening an apartment's drawer (board row,
+  //     floor tile, a finding link) -- also opens the drawer.
+  //   - setComparisonUnit directly, passed to Tab 2's own apartment-type
+  //     selector -- changes the comparison subject WITHOUT opening the
+  //     drawer, since picking "5 חדרים"/"טריפלקס" there is a type choice,
+  //     not "open this specific apartment".
+  const [comparisonUnit, setComparisonUnit] = useState<PtkPriceListRow | null>(null);
+  // The one competitor most recently pinned via the map's "פתח השוואה מלאה"
+  // -- a plain project-name string (the same identity used throughout
+  // competitor_landscape/new_development_comparables), read by
+  // ProductComparisonSection to force-show/expand that exact competitor.
+  // null until an explicit map action sets it; reset on market-context
+  // switch below since competitor identities are specific to one context.
+  const [selectedCompetitorName, setSelectedCompetitorName] = useState<string | null>(null);
 
   const [marketingStrategy, setMarketingStrategy] = useState<MarketingStrategyState>(defaultMarketingStrategyState());
 
@@ -106,31 +124,54 @@ export default function PetahTikvaWorkspacePage() {
   const handleMarketContextChange = useCallback((slug: MarketContextSlug) => {
     setMarketContext(slug);
     setSelectedUnit(null);
+    setComparisonUnit(null);
+    setSelectedCompetitorName(null);
     setMapSelection({ kind: "standard_family", family: "3R" });
-    setMarketFamily("3R");
     setMarketInnerTab("map");
   }, []);
 
+  // "פתח השוואה מלאה" (map competitor popup) -- pins that exact competitor
+  // and jumps to Tab ב (מול מי אנחנו מתחרים?) of השוק והמתחרים, mirroring
+  // openFamilyEvidence/openMapEvidence above. Never touches comparisonUnit:
+  // the comparison must reflect whatever product group is CURRENTLY
+  // selected, not force a family switch of its own.
+  const openCompetitorComparison = useCallback((competitorName: string) => {
+    setSelectedCompetitorName(competitorName);
+    setActiveTab("market");
+    setMarketInnerTab("competitors");
+  }, []);
+
+  // Opens an apartment's drawer AND makes it the current product-comparison
+  // subject (see comparisonUnit above) -- the one action every "select a
+  // unit" entry point in the app (board row, floor tile, consistency
+  // finding, strategy-impact row) should go through, so Tab 2's comparison
+  // section always reflects whatever apartment was looked at last, standard
+  // or special, with no separate "sync the comparison tab" step required.
+  const selectUnit = useCallback((row: PtkPriceListRow) => {
+    setSelectedUnit(row);
+    setComparisonUnit(row);
+  }, []);
+
   // "הצג ראיות והשוואות" (UnitDrawer) -- closes the drawer, jumps to השוק
-  // והמתחרים, and opens Tab ג (product comparison) for this unit's family.
-  const openFamilyEvidence = useCallback((f: "3R" | "5R") => {
+  // והמתחרים, and opens Tab ב (product comparison). comparisonUnit is
+  // already this same unit (selectUnit set it when the drawer opened), so
+  // Tab ב's apartment-type selector already shows and reacts to it -- no
+  // separate family state to sync here anymore.
+  const openFamilyEvidence = useCallback(() => {
     setSelectedUnit(null);
-    setMarketFamily(f);
     setActiveTab("market");
     setMarketInnerTab("competitors");
   }, []);
 
   // "הצג את ראיות השוק על המפה" (UnitDrawer) -- closes the drawer, switches
   // the map to this exact unit's evidence (special-unit basket, or standard
-  // family), and jumps to Tab א of השוק והמתחרים. For a standard unit this
-  // also syncs marketFamily, since navigating here is a deliberate single
-  // "show me this unit's context" action (unlike the map's own family
-  // toggle, which stays fully independent).
+  // family), and jumps to Tab א of השוק והמתחרים. mapSelection stays its own
+  // independent state (the map's own family/unit toggle, deliberately
+  // separate from the comparison subject) -- only it is synced here.
   const openMapEvidence = useCallback((row: PtkPriceListRow) => {
     setSelectedUnit(null);
     if (pricingRouteOf(row) === "standard_family") {
       const f = row.family as "3R" | "5R";
-      setMarketFamily(f);
       setMapSelection({ kind: "standard_family", family: f });
     } else {
       const n = Number(row.unit_number);
@@ -175,6 +216,12 @@ export default function PetahTikvaWorkspacePage() {
   // this application, for historical research), so there is exactly one
   // market indication and one proposed price everywhere.
   const displayRows: PtkPriceListRow[] = data.price_list;
+
+  // Falls back to a real, concrete row (never null/undefined) so the
+  // comparison section always has a subject -- a 3R row when nothing has
+  // been explicitly selected yet, matching today's baseline view, but a
+  // genuine selection always wins once one exists.
+  const effectiveComparisonUnit: PtkPriceListRow = comparisonUnit ?? displayRows.find((r) => r.family === "3R") ?? displayRows[0];
 
   return (
     <div className="min-h-screen bg-canvas pb-16">
@@ -226,13 +273,13 @@ export default function PetahTikvaWorkspacePage() {
 
               <div className="rounded-lg border border-hairline bg-surface p-5">
                 {pricingView === "stacking" ? (
-                  <BuildingExplorer rows={displayRows} marketingStrategy={marketingStrategy} onSelectUnit={setSelectedUnit} />
+                  <BuildingExplorer rows={displayRows} marketingStrategy={marketingStrategy} onSelectUnit={selectUnit} />
                 ) : (
-                  <PricingDecisionBoard rows={displayRows} state={marketingStrategy} onSelectUnit={setSelectedUnit} />
+                  <PricingDecisionBoard rows={displayRows} state={marketingStrategy} onSelectUnit={selectUnit} />
                 )}
               </div>
 
-              <PriceListConsistency workspace={data} rows={displayRows} state={marketingStrategy} onSelectUnit={setSelectedUnit} />
+              <PriceListConsistency workspace={data} rows={displayRows} state={marketingStrategy} onSelectUnit={selectUnit} />
             </>
           }
           marketContent={
@@ -240,20 +287,22 @@ export default function PetahTikvaWorkspacePage() {
               key={marketContext}
               workspace={data}
               marketingStrategy={marketingStrategy}
-              family={marketFamily}
-              onFamilyChange={setMarketFamily}
               mapSelection={mapSelection}
               onMapSelectionChange={setMapSelection}
               innerTab={marketInnerTab}
               onInnerTabChange={setMarketInnerTab}
+              comparisonUnit={effectiveComparisonUnit}
+              onComparisonUnitChange={setComparisonUnit}
+              selectedCompetitorName={selectedCompetitorName}
+              onOpenFullComparison={openCompetitorComparison}
             />
           }
           strategyContent={
-            <MarketingStrategyPanel
+            <StrategyWorkspace
               rows={displayRows}
               state={marketingStrategy}
               onChange={setMarketingStrategy}
-              onOpenUnit={setSelectedUnit}
+              onOpenUnit={selectUnit}
               onBackToPriceList={() => setActiveTab("pricing")}
             />
           }

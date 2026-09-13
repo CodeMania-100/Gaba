@@ -27,6 +27,7 @@ import {
   areaRangeLabel,
   developerLabel,
   floorRangeLabel,
+  normalizeProjectName,
   paymentTermsLabel as registerPaymentTermsLabel,
   priceDisplayLabel,
   productTypesLabel,
@@ -68,11 +69,19 @@ function findRegisterProject(workspace: PetahTikvaWorkspace, name: string): Comp
 
 /** The standard_attribute_enrichment comparable carries project_level.status/
  * delivery/payment_terms that the competitor register does not -- searched
- * across both families since a project can appear in either or both. */
+ * across both families since a project can appear in either or both.
+ * Compared via normalizeProjectName (not a raw === ) because at least one
+ * real competitor's name disagrees on dash character between the two
+ * datasets -- the register's own "רוטשילד 163–165" (en dash) vs this
+ * dataset's "רוטשילד 163-165" (hyphen); without normalizing, this lookup
+ * silently returned undefined for that project and its delivery/status
+ * were shown as "לא פורסם" even though the enrichment dataset actually has
+ * them. */
 function findEnrichmentComparable(workspace: PetahTikvaWorkspace, name: string): JsonRecord | undefined {
+  const target = normalizeProjectName(name);
   for (const famKey of ["standard_3r", "standard_5r"] as const) {
     const found = workspace.standard_attribute_enrichment.families[famKey].new_development_comparables.find(
-      (c) => c.project === name
+      (c) => normalizeProjectName(c.project as string) === target
     );
     if (found) return found;
   }

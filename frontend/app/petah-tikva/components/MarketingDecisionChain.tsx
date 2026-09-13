@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { PtkPriceListRow } from "@/lib/api";
 import { CONFIDENCE_LABELS, roomsOf, unitTypeLabel } from "@/lib/family";
+import { productGroupLabelOf } from "@/lib/comparisonSubject";
 import { ils, num, rangeOrPoint } from "@/lib/format";
 import { ConsistencyFinding } from "@/lib/priceListConsistency";
 import {
@@ -13,8 +14,11 @@ import {
   GROUP_ADJUSTMENT_HELPER,
   GROUP_ADJUSTMENT_LABEL,
   MarketingStrategyState,
+  PHASE_ADJUSTMENT_RECAP_LABEL,
   PROJECT_ADJUSTMENT_HELPER,
   PROJECT_ADJUSTMENT_LABEL,
+  salesPerformanceAdjustmentLabel,
+  SALES_PROGRESS_ADJUSTMENT_LABEL,
   StrategyAdjustment,
   UNIT_ADJUSTMENT_HELPER,
   UNIT_ADJUSTMENT_LABEL,
@@ -110,8 +114,13 @@ export default function MarketingDecisionChain({ row, state, onChange, confidenc
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <RecapRow label="השפעת שלב הפרויקט על המחיר" pct={breakdown.phasePct} effectIls={breakdown.phaseEffectIls} />
-          <RecapRow label="השפעת קצב המכירות על המחיר" pct={breakdown.salesProgressPct} effectIls={breakdown.salesProgressEffectIls} />
+          <RecapRow label={PHASE_ADJUSTMENT_RECAP_LABEL} pct={breakdown.phasePct} effectIls={breakdown.phaseEffectIls} />
+          <RecapRow label={SALES_PROGRESS_ADJUSTMENT_LABEL} pct={breakdown.salesProgressPct} effectIls={breakdown.salesProgressEffectIls} />
+          <RecapRow
+            label={salesPerformanceAdjustmentLabel(productGroupLabelOf(row))}
+            pct={breakdown.salesPerformancePct}
+            effectIls={breakdown.salesPerformanceEffectIls}
+          />
           <EditableAdjustmentRow
             levelLabel={PROJECT_ADJUSTMENT_LABEL}
             helperText={PROJECT_ADJUSTMENT_HELPER}
@@ -256,7 +265,7 @@ function SendToMondayApprovalButton({
 }
 
 /** Read-only recap of a project-wide adjustment that is edited elsewhere
- * (phase/sales-progress adjustments live in MarketingStrategyPanel, not
+ * (phase/sales-progress adjustments live in StrategyWorkspace, not
  * per-unit) -- still discoverable here, quieter when 0%. */
 function RecapRow({ label, pct, effectIls }: { label: string; pct: number; effectIls: number | null }) {
   return (

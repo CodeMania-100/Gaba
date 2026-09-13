@@ -147,6 +147,17 @@ const EXCLUSION_REASON_LABELS: Record<string, string> = {
   outside_target_commercial_area: "מחוץ לאזור המסחרי הממוקד",
 };
 
+// Yad2 listing "condition" codes -- a short, closed English enum from the
+// source data (never full prose), translated here at the same derivation
+// point exclusionReason/highlights already use, so the map's detail panel
+// never shows a raw English condition code.
+const CONDITION_LABELS: Record<string, string> = {
+  new: "חדש",
+  asNew: "כמו חדש",
+  renovated: "משופץ",
+  preserved: "שמור",
+};
+
 function pushAskingPoint(points: MarketMapPoint[], r: JsonRecord, fam: MarketMapFamily, contributes: boolean, exclusionReasons?: string[]) {
   if (r.latitude == null || r.longitude == null) return;
   const listingId = String(r.listing_id ?? "");
@@ -173,7 +184,7 @@ function pushAskingPoint(points: MarketMapPoint[], r: JsonRecord, fam: MarketMap
     hasElevator: typeof r.has_elevator === "boolean" ? r.has_elevator : undefined,
     hasSecureRoom: typeof r.has_secure_room === "boolean" ? r.has_secure_room : undefined,
     parkingCount: typeof r.parking === "number" ? r.parking : undefined,
-    condition: (r.condition as string | null) ?? undefined,
+    condition: r.condition != null ? (CONDITION_LABELS[r.condition as string] ?? (r.condition as string)) : undefined,
     sourceUrl: (r.url as string | null) ?? undefined,
     exclusionReason: exclusionReasons?.length ? (EXCLUSION_REASON_LABELS[exclusionReasons[0]] ?? exclusionReasons[0]) : undefined,
   });

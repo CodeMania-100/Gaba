@@ -1,13 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { JsonRecord, PetahTikvaWorkspace, PtkFamily, StandardAttributeEnrichment, StandardAttributeEnrichmentFamily } from "@/lib/api";
-import { CLASSIFICATION_COLORS, CLASSIFICATION_LABELS } from "@/lib/competitorRegister";
+import { CLASSIFICATION_COLORS, CLASSIFICATION_LABELS, normalizeProjectName } from "@/lib/competitorRegister";
 import {
   ComparableItem,
   buildProductComparisonRows,
   comparableName,
   factScopeLabel,
+  findComparableForCompetitorName,
   INSUFFICIENT_FLOOR_DATA_MESSAGE,
   NO_FLOOR_RULE_MESSAGE,
   noVerifiedRuleMessage,
@@ -16,6 +17,8 @@ import {
 } from "@/lib/standardEnrichment";
 import { ils } from "@/lib/format";
 import { deriveMatchStateRows, MATCH_STATE_COLORS, MATCH_STATE_LABELS } from "@/lib/competitorMatchStates";
+import { ROOM_FAMILY_LABELS } from "@/lib/family";
+import { translateResearchNote } from "@/lib/researchNoteTranslations";
 import { ProjectPhase } from "@/lib/marketingStrategy";
 import CompetitorComparisonMatrix from "./CompetitorComparisonMatrix";
 
@@ -31,17 +34,59 @@ interface Props {
   enrichment: StandardAttributeEnrichment;
   activePrice: number | null;
   priceLabel: string;
+  // The one competitor most recently pinned via the map's "פתח השוואה מלאה"
+  // -- when this family has a real comparable entry for it, that exact
+  // competitor is force-included (even if it isn't one of
+  // pickStrongestComparables' top picks) and auto-expanded/scrolled to, so
+  // the button never lands on a comparison that silently shows a different
+  // project instead. null/absent behaves exactly as before (auto-picked
+  // top-3 only).
+  pinnedCompetitorName?: string | null;
 }
 
 const PRIMARY_ROW_COUNT = 6;
 
-export default function ProductComparisonSection({ workspace, projectPhase, family, familyKey, enrichment, activePrice, priceLabel }: Props) {
+export default function ProductComparisonSection({
+  workspace,
+  projectPhase,
+  family,
+  familyKey,
+  enrichment,
+  activePrice,
+  priceLabel,
+  pinnedCompetitorName,
+}: Props) {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const [sourcesIndex, setSourcesIndex] = useState<number | null>(null);
+  const pinnedCardRef = useRef<HTMLDivElement | null>(null);
 
   const fam = enrichment.families[familyKey];
   const rooms = family.family === "3R" ? 3 : 5;
-  const comparables = pickStrongestComparables(fam, rooms, family.target.internal_area, 3);
+  const autoComparables = pickStrongestComparables(fam, rooms, family.target.internal_area, 3);
+  const pinnedComparable = pinnedCompetitorName ? findComparableForCompetitorName(fam, rooms, family.target.internal_area, pinnedCompetitorName) : null;
+  // Compared via normalizeProjectName, not a raw === -- the map's pinned
+  // name comes from the register (competitor_landscape), which can use a
+  // different dash character than this same competitor's own entry in
+  // new_development_comparables (see lib/competitorRegister.ts's
+  // normalizeProjectName). A raw string mismatch here would both fail to
+  // recognize the pinned competitor as already-auto-included (rendering it
+  // twice) and fail to find its own index to expand/scroll to.
+  const pinnedNameNormalized = pinnedCompetitorName ? normalizeProjectName(pinnedCompetitorName) : null;
+  const pinnedAlreadyIncluded = pinnedComparable != null && autoComparables.some((c) => normalizeProjectName(comparableName(c)) === pinnedNameNormalized);
+  const comparables = pinnedComparable && !pinnedAlreadyIncluded ? [pinnedComparable, ...autoComparables] : autoComparables;
+  const pinnedIndex = pinnedNameNormalized ? comparables.findIndex((c) => normalizeProjectName(comparableName(c)) === pinnedNameNormalized) : -1;
+
+  // Expand and scroll to the pinned competitor's own card whenever a new
+  // one is pinned (or one is already pinned when this family first mounts)
+  // -- never on an unrelated re-render, and never overriding a subsequent
+  // manual expand/collapse click.
+  useEffect(() => {
+    if (pinnedIndex >= 0) {
+      setExpandedIndex(pinnedIndex);
+      pinnedCardRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pinnedCompetitorName, familyKey]);
 
   const subject = {
     price: activePrice,
@@ -57,7 +102,7 @@ export default function ProductComparisonSection({ workspace, projectPhase, fami
       <div className="mb-1">
         <h2 className="font-heading text-lg font-bold text-ink">במה המוצר שלנו שונה מהמתחרים?</h2>
         <p className="text-xs text-ink-muted">
-          השוואת מאפיינים אמיתיים — ללא המצאת מקדמי מחיר. מחיר {priceLabel} מוצג לצורך התמצאות בלבד.
+          {ROOM_FAMILY_LABELS[family.family] ?? family.family} · השוואת מאפיינים אמיתיים — ללא המצאת מקדמי מחיר. מחיר {priceLabel} מוצג לצורך התמצאות בלבד.
         </p>
       </div>
 
@@ -75,21 +120,29 @@ export default function ProductComparisonSection({ workspace, projectPhase, fami
             const status =
               item.kind === "new_development" ? projectStatusLabel((item.competitor.project_level as JsonRecord)?.status as string) : null;
 
+            const isPinned = i === pinnedIndex;
             return (
-              <div key={i} className="flex flex-col gap-2 rounded-md border border-hairline p-3">
+              <div
+                key={i}
+                ref={isPinned ? pinnedCardRef : undefined}
+                className={`flex flex-col gap-2 rounded-md border p-3 ${isPinned ? "border-accent ring-1 ring-accent" : "border-hairline"}`}
+              >
                 <div className="flex items-start justify-between gap-2">
                   <div>
                     <div className="font-semibold text-ink">{comparableName(item)}</div>
                     {item.kind === "new_development" && <div className="text-xs text-ink-muted">יזם: {developer ?? "לא פורסם"}</div>}
                   </div>
-                  {classification && (
-                    <span className={`shrink-0 rounded px-1.5 py-0.5 text-xs font-medium ${CLASSIFICATION_COLORS[classification as "direct" | "relevant" | "context"]}`}>
-                      {CLASSIFICATION_LABELS[classification as "direct" | "relevant" | "context"]}
-                    </span>
-                  )}
-                  {item.kind === "current_asking" && (
-                    <span className="shrink-0 rounded bg-canvas px-1.5 py-0.5 text-xs font-medium text-ink-muted">הצעה קיימת</span>
-                  )}
+                  <div className="flex shrink-0 flex-col items-end gap-1">
+                    {isPinned && <span className="rounded bg-accent/15 px-1.5 py-0.5 text-xs font-medium text-accent">נבחר מהמפה</span>}
+                    {classification && (
+                      <span className={`rounded px-1.5 py-0.5 text-xs font-medium ${CLASSIFICATION_COLORS[classification as "direct" | "relevant" | "context"]}`}>
+                        {CLASSIFICATION_LABELS[classification as "direct" | "relevant" | "context"]}
+                      </span>
+                    )}
+                    {item.kind === "current_asking" && (
+                      <span className="rounded bg-canvas px-1.5 py-0.5 text-xs font-medium text-ink-muted">הצעה קיימת</span>
+                    )}
+                  </div>
                 </div>
 
                 {status && <div className="text-xs text-ink-muted">סטטוס: {status}</div>}
@@ -270,7 +323,7 @@ function NoAutomaticRuleNotes({
       {open && (
         <div className="mt-2 text-xs text-ink-muted">
           <div className="mb-1 font-semibold text-ink-muted">{NO_FLOOR_RULE_MESSAGE}</div>
-          <p>{enrichment.new_development_floor_pair_search?.note ?? INSUFFICIENT_FLOOR_DATA_MESSAGE}</p>
+          <p>{translateResearchNote(enrichment.new_development_floor_pair_search?.note) ?? INSUFFICIENT_FLOOR_DATA_MESSAGE}</p>
 
           {hasMatchedObservations && (
             <div className="mt-2">
@@ -285,7 +338,7 @@ function NoAutomaticRuleNotes({
           {fam.research_gaps.length > 0 && (
             <ul className="mt-2 list-inside list-disc">
               {fam.research_gaps.map((g, i) => (
-                <li key={i}>{g}</li>
+                <li key={i}>{translateResearchNote(g)}</li>
               ))}
             </ul>
           )}

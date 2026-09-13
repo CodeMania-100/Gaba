@@ -11,41 +11,26 @@ interface Props {
   workspace: PetahTikvaWorkspace;
   projectPhase: ProjectPhase;
   family: "3R" | "5R";
-  onFamilyChange: (f: "3R" | "5R") => void;
 }
 
 /** "איפה המחיר שלנו ממוקם מול האלטרנטיבות?" -- price-positioning only,
  * kept apart from the genuine product-attribute comparison in
- * ProductComparisonSection. Market-position chart + the price-only rows of
- * the competitor matrix share one family toggle, controlled by the parent
- * section so it never contradicts the map's own family filter. Both are
- * pure re-displays of lib/executiveVisuals.ts derivations -- no independent
- * market calculation, and this never introduces a second "proposed price":
- * it only shows where the existing proposed price sits against
- * alternatives. */
-export default function MarketPositionSection({ workspace, projectPhase, family, onFamilyChange }: Props) {
+ * ProductComparisonSection. `family` is read-only here -- it's driven by
+ * the single canonical comparison-subject selector one level up
+ * (MarketAndCompetitionWorkspace), never a toggle of this component's own,
+ * so this can never show a family that disagrees with the rest of the tab.
+ * Both pieces below are pure re-displays of lib/executiveVisuals.ts
+ * derivations -- no independent market calculation, and this never
+ * introduces a second "proposed price": it only shows where the existing
+ * proposed price sits against alternatives. */
+export default function MarketPositionSection({ workspace, projectPhase, family }: Props) {
   const categories = useMemo(() => deriveMarketPosition(workspace, family), [workspace, family]);
 
   return (
     <div className="flex flex-col gap-5">
-      <div className="flex flex-wrap items-start justify-between gap-2">
-        <div>
-          <h2 className="font-heading text-lg font-bold text-ink">איפה המחיר שלנו ממוקם מול האלטרנטיבות?</h2>
-          <p className="text-xs text-ink-muted">השוואת מיקום מחיר בלבד — לא השוואת מאפייני מוצר — עבור המשפחה הנבחרת</p>
-        </div>
-        <div className="flex overflow-hidden rounded-md border border-hairline">
-          {(["3R", "5R"] as const).map((f) => (
-            <button
-              key={f}
-              onClick={() => onFamilyChange(f)}
-              className={`px-3 py-1.5 text-xs font-medium transition-colors ${
-                family === f ? "bg-ink text-surface" : "bg-surface text-ink-muted hover:bg-canvas"
-              }`}
-            >
-              {f === "3R" ? "3 חדרים" : "5 חדרים"}
-            </button>
-          ))}
-        </div>
+      <div>
+        <h2 className="font-heading text-lg font-bold text-ink">איפה המחיר שלנו ממוקם מול האלטרנטיבות?</h2>
+        <p className="text-xs text-ink-muted">השוואת מיקום מחיר בלבד — לא השוואת מאפייני מוצר — עבור המשפחה הנבחרת</p>
       </div>
 
       <MarketPositionChart categories={categories} />

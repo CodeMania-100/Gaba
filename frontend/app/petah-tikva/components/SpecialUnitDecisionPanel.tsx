@@ -243,7 +243,11 @@ function PriceHeader({
 // B. Highlighted comparable + confidence explanation
 // ---------------------------------------------------------------------------
 
-function HighlightedComparableCard({
+// Exported so the מול מי אנחנו מתחרים? market tab can reuse the exact same
+// comparable-facts rendering for a currently-selected special unit -- the
+// canonical special-unit comparison derivation stays defined once, here,
+// shared by the drawer and the market tab rather than duplicated.
+export function HighlightedComparableCard({
   row,
   categoryLabel,
   highlighted,
@@ -362,7 +366,8 @@ function CompactApartmentFacts({ row }: { row: PtkPriceListRow }) {
 // Compact variant of UnitDrawer's SiblingComparisonCard -- same data/rule,
 // tighter layout to match this drawer's overall density. Only unit 36/37
 // render anything.
-function SiblingComparisonCompact({ row, workspace }: { row: PtkPriceListRow; workspace: PetahTikvaWorkspace }) {
+// Exported for the same reason as HighlightedComparableCard above.
+export function SiblingComparisonCompact({ row, workspace }: { row: PtkPriceListRow; workspace: PetahTikvaWorkspace }) {
   const siblingNumber = row.unit_number === "36" ? "37" : row.unit_number === "37" ? "36" : null;
   if (!siblingNumber) return null;
   const sibling = workspace.price_list.find((r) => r.unit_number === siblingNumber);

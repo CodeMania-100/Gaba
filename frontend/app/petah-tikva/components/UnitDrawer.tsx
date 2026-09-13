@@ -29,11 +29,14 @@ interface Props {
   workspace: PetahTikvaWorkspace;
   marketingStrategy: MarketingStrategyState;
   onChangeMarketingStrategy: (updater: (prev: MarketingStrategyState) => MarketingStrategyState) => void;
-  // Closes the drawer and scrolls the main page to the family's full
-  // evidence section with that family selected -- the "הצג ראיות והשוואות"
-  // drill-down for standard units. Special units use their own inline
-  // SpecialUnitAnalysis toggle instead (no page navigation needed).
-  onOpenFamilyEvidence: (family: "3R" | "5R") => void;
+  // Closes the drawer and jumps to Tab 2's product-comparison section --
+  // the "הצג ראיות והשוואות" drill-down for standard units. Takes no
+  // argument: this unit already became the canonical comparison subject the
+  // moment its drawer was opened (see page.tsx's selectUnit), so Tab 2's
+  // apartment-type selector already reflects it. Special units use their
+  // own inline SpecialUnitAnalysis toggle instead (no page navigation
+  // needed).
+  onOpenFamilyEvidence: () => void;
   // "הצג את ראיות השוק על המפה" -- closes the drawer, switches MarketGeoMap
   // to this exact unit (special basket, or standard family), and scrolls to
   // it. A separate destination from onOpenFamilyEvidence above (the
@@ -174,7 +177,7 @@ export default function UnitDrawer({ row, workspace, marketingStrategy, onChange
             <>
               {/* Unified top card -- which apartment, what market range, what
                   proposed price, what confidence, why -- and nothing else. */}
-              <StandardPriceHeader row={row} isSold={isSold} />
+              <StandardPriceHeader row={row} state={marketingStrategy} isSold={isSold} />
 
               {/* 1. פרטי הדירה -- supporting detail, not the lead anymore */}
               <UnitFactsBlock row={row} isSold={isSold} isSpecial={false} />
@@ -213,10 +216,14 @@ function Fact({ label, value }: { label: string; value: string }) {
 // calculation.
 // ---------------------------------------------------------------------------
 
-function StandardPriceHeader({ row, isSold }: { row: PtkPriceListRow; isSold: boolean }) {
+function StandardPriceHeader({ row, state, isSold }: { row: PtkPriceListRow; state: MarketingStrategyState; isSold: boolean }) {
   const rooms = roomsOf(row);
   const confidence = row.market_range?.confidence ?? null;
-  const marketIls = row.proposed_list_price_ils;
+  // The one canonical path (market indication -> unit logic -> company
+  // strategy, including sales-performance-by-product-group) -- never
+  // row.proposed_list_price_ils directly, so this header always agrees
+  // with the "מחיר שיווק מוצע" figure further down in the decision chain.
+  const proposedIls = computePriceBreakdown(state, row).proposedIls;
 
   return (
     <section className="rounded-lg border-2 border-ink/80 bg-gradient-to-b from-canvas to-surface p-4">
@@ -228,7 +235,7 @@ function StandardPriceHeader({ row, isSold }: { row: PtkPriceListRow; isSold: bo
       </p>
 
       <div className="text-xs font-semibold text-ink-muted">מחיר שיווק מוצע</div>
-      <div className="text-3xl font-bold text-ink">{ils(marketIls)}</div>
+      <div className="text-3xl font-bold text-ink">{ils(proposedIls)}</div>
 
       <div className="mt-2 flex flex-wrap items-center gap-2">
         <span className={`rounded px-2 py-1 text-xs font-medium ${CONFIDENCE_COLORS[confidence ?? ""] ?? "bg-canvas text-ink-muted"}`}>
@@ -314,7 +321,7 @@ function MarketIndicationBlockStandard({
 }: {
   row: PtkPriceListRow;
   workspace: PetahTikvaWorkspace;
-  onOpenFamilyEvidence: (family: "3R" | "5R") => void;
+  onOpenFamilyEvidence: () => void;
   onOpenMapEvidence: (row: PtkPriceListRow) => void;
 }) {
   const [openLane, setOpenLane] = useState<"sold" | "current_asking" | "new_development" | null>(null);
@@ -345,7 +352,7 @@ function MarketIndicationBlockStandard({
         <p className="text-sm text-ink-muted">אין נתוני שוק זמינים למשפחה זו.</p>
       )}
       <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
-        <button onClick={() => onOpenFamilyEvidence(row.family as "3R" | "5R")} className="text-xs text-ink-muted underline hover:text-ink">
+        <button onClick={onOpenFamilyEvidence} className="text-xs text-ink-muted underline hover:text-ink">
           הצג ראיות והשוואות
         </button>
         <button onClick={() => onOpenMapEvidence(row)} className="text-xs text-ink-muted underline hover:text-ink">

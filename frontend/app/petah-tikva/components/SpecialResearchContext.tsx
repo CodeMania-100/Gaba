@@ -2,6 +2,7 @@
 
 import { ils, num } from "@/lib/format";
 import { HighConfidenceListingLink, HistoricalDuplexContext, TriplexContextCard } from "@/lib/researchContext";
+import { translateResearchNote } from "@/lib/researchNoteTranslations";
 
 /** "טריפלקסים שנמצאו בשוק" -- Apt36/37 (task item 7). Collapsed by default;
  * every card is explicitly marked context-only, never a participating
@@ -56,7 +57,7 @@ export function HistoricalDuplexContextSection({ context }: { context: Historica
         <span className="mt-1.5 inline-block rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-medium text-slate-500">
           עסקה היסטורית מדווחת · הקשר בלבד
         </span>
-        {context.reason && <p className="mt-1.5 text-[11px] text-slate-400">{context.reason}</p>}
+        {context.reason && <p className="mt-1.5 text-[11px] text-slate-400">{translateResearchNote(context.reason)}</p>}
       </div>
     </details>
   );

@@ -101,6 +101,13 @@ interface Props {
   // *other* sections.
   selection: MarketMapSelection;
   onSelectionChange: (s: MarketMapSelection) => void;
+  // "פתח השוואה מלאה" (competitor detail panel) -- pins this exact
+  // competitor as the selected one and jumps to the canonical product-
+  // comparison area (מול מי אנחנו מתחרים?) in Tab 2, instead of the previous
+  // dead scroll-to-a-nonexistent-id link. Optional so callers that don't
+  // offer the full comparison view (there are none today, but this keeps
+  // the map usable standalone) simply hide the action.
+  onOpenFullComparison?: (competitorName: string) => void;
 }
 
 /** Real geographic decision-support map (MapLibre GL JS + a free light
@@ -118,7 +125,7 @@ interface Props {
  * special apartment's evidence is a unit-specific basket
  * (workspace.special_unit_market_context), never a generic room-count
  * family (see task "Map Batch -- special apartments"). */
-export default function MarketGeoMap({ workspace, selection, onSelectionChange }: Props) {
+export default function MarketGeoMap({ workspace, selection, onSelectionChange, onOpenFullComparison }: Props) {
   const isSpecial = selection.kind === "special_unit";
   const family: MarketMapFamily = selection.kind === "standard_family" ? selection.family : "3R";
   const specialUnitNumber: SpecialUnitNumber | null = selection.kind === "special_unit" ? selection.unitNumber : null;
@@ -309,10 +316,14 @@ export default function MarketGeoMap({ workspace, selection, onSelectionChange }
 
     pointsById.current = new Map([...askingVisible, ...soldVisible, ...competitorVisible, ...(projectArea ? [projectArea] : [])].map((p) => [p.id, p]));
 
-    const ppsmDomain = isSpecial ? specialUnitPpsmDomain([...activeSold, ...activeAsking]) : soldPpsmDomain(activeSold);
+    // Scale is derived from the currently visible/filtered points (post
+    // layer-checkbox and "רק ראיות שנכנסו לחישוב" filtering) -- never the
+    // wider unfiltered set -- so the legend's price scale always matches
+    // exactly what's painted on the map right now.
+    const ppsmScale = isSpecial ? specialUnitPpsmScale([...soldVisible, ...askingVisible]) : soldPpsmScale(soldVisible);
 
     setGeoJsonData(map, "src-asking", toFeatureCollection(askingVisible));
-    setGeoJsonData(map, "src-sold", toFeatureCollection(soldVisible, viewMode === "ppsm" ? ppsmDomain : undefined));
+    setGeoJsonData(map, "src-sold", toFeatureCollection(soldVisible));
     setGeoJsonData(map, "src-competitor", toFeatureCollection(competitorVisible));
     setGeoJsonData(map, "src-project-area", toFeatureCollection(projectArea ? [projectArea] : []));
 
@@ -320,7 +331,7 @@ export default function MarketGeoMap({ workspace, selection, onSelectionChange }
       map.setPaintProperty(
         "point-sold",
         "circle-color",
-        viewMode === "ppsm" ? ["interpolate", ["linear"], ["get", "pricePerSqm"], ...ppsmColorStops(ppsmDomain)] : COLORS.sold
+        viewMode === "ppsm" ? ["interpolate", ["linear"], ["get", "pricePerSqm"], ...ppsmColorStops(ppsmScale)] : COLORS.sold
       );
     }
 
@@ -406,7 +417,13 @@ export default function MarketGeoMap({ workspace, selection, onSelectionChange }
     if (map && bounds) map.fitBounds(bounds, { padding: 60, duration: 800 });
   };
 
-  const ppsmDomain = isSpecial ? specialUnitPpsmDomain([...activeSold, ...activeAsking]) : soldPpsmDomain(activeSold);
+  const ppsmScale = isSpecial ? specialUnitPpsmScale([...soldVisible, ...askingVisible]) : soldPpsmScale(soldVisible);
+  // Whether מחיר למ״ר is even offered as a mode -- based on the unfiltered
+  // evidence for this family/unit selection, so toggling a layer checkbox or
+  // "רק ראיות שנכנסו לחישוב" never makes the mode itself appear/disappear.
+  // ppsmScale above (filtered/visible) is what actually drives the paint
+  // color and the legend's numbers while the mode is active.
+  const ppsmAvailable = (isSpecial ? specialUnitPpsmScale([...activeSold, ...activeAsking]) : soldPpsmScale(activeSold)) != null;
   const priceLabelsVisible = currentZoom >= PRICE_LABEL_MIN_ZOOM;
 
   return (
@@ -512,7 +529,7 @@ export default function MarketGeoMap({ workspace, selection, onSelectionChange }
         <LayerCheckbox label="עסקאות שבוצעו" checked={layers.sold} onChange={(v) => setLayers((s) => ({ ...s, sold: v }))} />
         <LayerCheckbox label="דירות מוצעות" checked={layers.asking} onChange={(v) => setLayers((s) => ({ ...s, asking: v }))} />
         <LayerCheckbox label="פרויקטים מתחרים" checked={layers.competitor} onChange={(v) => setLayers((s) => ({ ...s, competitor: v }))} />
-        {ppsmDomain && (
+        {ppsmAvailable && (
           <div className="mr-auto flex overflow-hidden rounded-md border border-hairline">
             <button
               onClick={() => setViewMode("source")}
@@ -599,12 +616,20 @@ export default function MarketGeoMap({ workspace, selection, onSelectionChange }
 
         {selected && (
           <div dir="rtl" className="w-[28%] shrink-0 overflow-y-auto rounded-md border border-hairline bg-surface p-3" style={{ height: 620 }}>
-            <DetailPanel point={selected} workspace={workspace} family={family} onClose={() => setSelected(null)} />
+            <DetailPanel point={selected} workspace={workspace} family={family} onClose={() => setSelected(null)} onOpenFullComparison={onOpenFullComparison} />
           </div>
         )}
       </div>
 
-      <MapLegend ppsmDomain={viewMode === "ppsm" ? ppsmDomain : null} />
+      <MapLegend
+        viewMode={viewMode}
+        ppsmScale={ppsmScale}
+        hasProjectArea={!!projectArea}
+        hasSold={soldVisible.length > 0}
+        hasAsking={askingVisible.length > 0}
+        hasCompetitorDirect={competitorVisible.some((p) => p.classification === "direct")}
+        hasCompetitorOther={competitorVisible.some((p) => p.classification !== "direct")}
+      />
 
       {/* One-time selection pulse (feedback item 1): a static ring marks the
           selected point permanently; ::after plays a single expanding fade
@@ -871,30 +896,48 @@ function registerInteractions(
   return offs;
 }
 
-function soldPpsmDomain(points: MarketMapPoint[]): [number, number] | undefined {
+export interface PpsmScale {
+  low: number;
+  median: number;
+  high: number;
+}
+
+function medianOf(values: number[]): number {
+  const sorted = [...values].sort((a, b) => a - b);
+  const mid = Math.floor(sorted.length / 2);
+  return sorted.length % 2 !== 0 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
+}
+
+// Real min/median/max of the currently visible/filtered ₪/m² points -- never
+// a hardcoded threshold. Drives both the map's price-color interpolation and
+// the legend's price-scale labels, so the two always describe the same data.
+function soldPpsmScale(points: MarketMapPoint[]): PpsmScale | undefined {
   const values = points.map((p) => p.pricePerSqm).filter((v): v is number => v != null);
   if (values.length < 8) return undefined;
-  return [Math.min(...values), Math.max(...values)];
+  return { low: Math.min(...values), median: medianOf(values), high: Math.max(...values) };
 }
 
 // A special unit's whole evidence basket is a handful of records (never the
 // hundreds a standard family has), so the standard 8-item sold-only
 // threshold would never fire -- combines sold+asking and uses a lower,
-// still-defensible minimum (task item 18: never compute ₪/m² from too few
-// or non-unit-level records; every value here already only exists on a
-// point when that record has its own real price+area, see
-// lib/marketMap.ts's pricePerSqmOrUndefined).
-function specialUnitPpsmDomain(points: MarketMapPoint[]): [number, number] | undefined {
+// still-defensible minimum (never compute ₪/m² from too few or non-unit
+// -level records; every value here already only exists on a point when that
+// record has its own real price+area, see lib/marketMap.ts's
+// pricePerSqmOrUndefined).
+function specialUnitPpsmScale(points: MarketMapPoint[]): PpsmScale | undefined {
   const values = points.map((p) => p.pricePerSqm).filter((v): v is number => v != null);
   if (values.length < 3) return undefined;
-  return [Math.min(...values), Math.max(...values)];
+  return { low: Math.min(...values), median: medianOf(values), high: Math.max(...values) };
 }
 
-function ppsmColorStops(domain: [number, number] | undefined): (string | number)[] {
-  if (!domain) return [0, "#5f8a72", 1, "#5f8a72"];
-  const [lo, hi] = domain;
-  const mid = (lo + hi) / 2;
-  return [lo, "#7fb3d5", mid, "#f4d35e", hi, "#c2543a"];
+function ppsmColorStops(scale: PpsmScale | undefined): (string | number)[] {
+  if (!scale || scale.low >= scale.high) return [0, "#5f8a72", 1, "#5f8a72"];
+  const { low, high } = scale;
+  // interpolate() requires strictly increasing stops -- the real median is
+  // used when it falls strictly between the edges, falling back to the
+  // midpoint only on the rare skewed distribution where it collides with one.
+  const mid = scale.median > low && scale.median < high ? scale.median : (low + high) / 2;
+  return [low, "#7fb3d5", mid, "#f4d35e", high, "#c2543a"];
 }
 
 // ---------------------------------------------------------------------------
@@ -1021,11 +1064,13 @@ function DetailPanel({
   workspace,
   family,
   onClose,
+  onOpenFullComparison,
 }: {
   point: MarketMapPoint;
   workspace: PetahTikvaWorkspace;
   family: MarketMapFamily;
   onClose: () => void;
+  onOpenFullComparison?: (competitorName: string) => void;
 }) {
   return (
     <div className="flex flex-col gap-2">
@@ -1038,7 +1083,7 @@ function DetailPanel({
 
       {point.kind === "sold" && <SoldDetail point={point} workspace={workspace} />}
       {point.kind === "asking" && <AskingDetail point={point} workspace={workspace} />}
-      {point.kind === "competitor" && <CompetitorDetail point={point} workspace={workspace} family={family} />}
+      {point.kind === "competitor" && <CompetitorDetail point={point} workspace={workspace} family={family} onOpenFullComparison={onOpenFullComparison} />}
       {point.kind === "project_area" && (
         <p className="text-xs text-slate-500">
           המיקום מסמן את אזור ההדגמה. כתובת מדויקת לא סופקה במסגרת המטלה.
@@ -1272,7 +1317,17 @@ function AskingDetail({ point, workspace }: { point: MarketMapPoint; workspace: 
   );
 }
 
-function CompetitorDetail({ point, workspace, family }: { point: MarketMapPoint; workspace: PetahTikvaWorkspace; family: MarketMapFamily }) {
+function CompetitorDetail({
+  point,
+  workspace,
+  family,
+  onOpenFullComparison,
+}: {
+  point: MarketMapPoint;
+  workspace: PetahTikvaWorkspace;
+  family: MarketMapFamily;
+  onOpenFullComparison?: (competitorName: string) => void;
+}) {
   const fact = point.fact;
   const isSpecial = point.specialUnitNumber != null;
   const classificationLabel = point.classification === "direct" ? "תחרות ישירה" : point.classification === "relevant" ? "תחרות רלוונטית" : "הקשר שוק";
@@ -1310,6 +1365,8 @@ function CompetitorDetail({ point, workspace, family }: { point: MarketMapPoint;
 
       <Fact label="יזם" value={fact?.developer ?? "לא פורסם"} />
       <Fact label="מוצרים" value={fact?.productMix ?? "לא פורסם"} />
+      <Fact label="שטח" value={fact?.areaLabel ?? "לא פורסם"} />
+      <Fact label="קומות" value={fact?.floorRangeLabel ?? "לא פורסם"} />
       <Fact label="מחיר" value={fact?.priceLabel ?? "לא פורסם"} />
       {fact?.priceLabel && (
         <p className="text-[11px] text-slate-400">{fact.isStartingPriceOnly ? "מחיר התחלתי בפרויקט — לא מחיר דירה ספציפית" : "מחיר דירה ספציפית"}</p>
@@ -1330,12 +1387,14 @@ function CompetitorDetail({ point, workspace, family }: { point: MarketMapPoint;
         </div>
       )}
 
-      <button
-        onClick={() => document.getElementById("competitor-map-section")?.scrollIntoView({ behavior: "smooth", block: "start" })}
-        className="mt-1 w-fit text-xs text-slate-500 underline hover:text-slate-800"
-      >
-        פתח השוואה מלאה
-      </button>
+      {onOpenFullComparison && (
+        <button
+          onClick={() => onOpenFullComparison(point.title)}
+          className="mt-1 w-fit text-xs font-medium text-accent underline hover:text-accent/80"
+        >
+          פתח השוואה מלאה
+        </button>
+      )}
     </div>
   );
 }
@@ -1347,39 +1406,88 @@ function PrecisionNote({ point }: { point: MarketMapPoint }) {
   return <p className="text-[10px] text-slate-300">{label}</p>;
 }
 
-// Larger, higher-contrast, presentation-legible legend (feedback item 9) --
-// shape distinction between the four kinds is the point, so symbols are
-// sized up rather than relying on color alone.
-function MapLegend({ ppsmDomain }: { ppsmDomain: [number, number] | undefined | null }) {
+interface MapLegendProps {
+  viewMode: ViewMode;
+  // Real min/median/max of the currently visible ₪/m² points -- undefined
+  // when there isn't enough currently-visible data to support a scale (the
+  // price section is omitted entirely rather than showing a fabricated one).
+  ppsmScale: PpsmScale | undefined;
+  // Each symbol only appears when that category actually has a currently
+  // visible/rendered point -- never a fixed list of all five regardless of
+  // what's really on screen.
+  hasProjectArea: boolean;
+  hasSold: boolean;
+  hasAsking: boolean;
+  hasCompetitorDirect: boolean;
+  hasCompetitorOther: boolean;
+}
+
+// Larger, higher-contrast, presentation-legible legend -- shape distinction
+// between the kinds is the point, so symbols are sized up rather than
+// relying on color alone. Follows the map's own color mode: colors mean
+// evidence *type* in סוג מקור mode, and mean ₪/m² in מחיר למ״ר mode -- the
+// two meanings are never shown superimposed on one another.
+function MapLegend({ viewMode, ppsmScale, hasProjectArea, hasSold, hasAsking, hasCompetitorDirect, hasCompetitorOther }: MapLegendProps) {
+  // אזור הפרויקט and the competitor/asking shapes never change color with
+  // the mode toggle (only the "sold" dots do -- see the setPaintProperty
+  // call above) -- kept as a small persistent symbol reference in both
+  // modes so a viewer can still tell sold/asking/competitor/project points
+  // apart by shape while price mode is active.
+  const symbols = (
+    <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+      {hasProjectArea && <LegendItem symbol="★" color={COLORS.project_area} label="אזור הפרויקט" />}
+      {hasSold && (
+        <LegendItem
+          symbol="●"
+          color={viewMode === "ppsm" ? undefined : COLORS.sold}
+          label={viewMode === "ppsm" ? "עסקה שבוצעה (צבע = מחיר למ״ר)" : "עסקה שבוצעה"}
+        />
+      )}
+      {hasAsking && <LegendItem symbol="○" color={COLORS.asking} label="דירה מוצעת" outline />}
+      {hasCompetitorDirect && <LegendItem symbol="◆" color={COLORS.competitor_direct} label="מתחרה ישיר" />}
+      {hasCompetitorOther && <LegendItem symbol="◇" color={COLORS.competitor_other} label="מתחרה רלוונטי" outline />}
+    </div>
+  );
+
   return (
-    <div className="flex flex-col gap-2 rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700">
-      <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-        <LegendItem symbol="★" color={COLORS.project_area} label="אזור הפרויקט" />
-        <LegendItem symbol="●" color={COLORS.sold} label="עסקה שבוצעה" />
-        <LegendItem symbol="○" color={COLORS.asking} label="דירה מוצעת" outline />
-        <LegendItem symbol="◆" color={COLORS.competitor_direct} label="מתחרה ישיר" />
-        <LegendItem symbol="◇" color={COLORS.competitor_other} label="מתחרה רלוונטי" outline />
-      </div>
-      {/* Explains the ₪X K price-per-sqm labels that appear on individual
-          points at close zoom, so a first-time viewer doesn't mistake them
-          for a count or an id (feedback item 7). */}
-      <div className="text-xs text-slate-500">לדוגמה: 26K = ₪26,000 למ״ר (מוצג על נקודות בודדות בזום קרוב)</div>
-      {ppsmDomain && (
-        <span className="flex items-center gap-2 text-xs">
-          <span className="h-2 w-24 rounded-full" style={{ background: "linear-gradient(to left, #c2543a, #f4d35e, #7fb3d5)" }} />
-          <span>
-            {ils(ppsmDomain[0])} ─── {ils(ppsmDomain[1])} למ״ר
+    <div className="flex flex-col gap-2 rounded-md border border-hairline bg-canvas px-4 py-3 text-sm text-ink">
+      {symbols}
+
+      {viewMode === "source" ? (
+        // Explains the ₪X K price-per-sqm labels that appear on individual
+        // points at close zoom, so a first-time viewer doesn't mistake them
+        // for a count or an id.
+        <div className="text-xs text-ink-muted">לדוגמה: 26K = ₪26,000 למ״ר (מוצג על נקודות בודדות בזום קרוב)</div>
+      ) : ppsmScale ? (
+        <div className="flex items-center gap-3 text-xs">
+          <span className="h-2 w-32 shrink-0 rounded-full" style={{ background: "linear-gradient(to left, #c2543a, #f4d35e, #7fb3d5)" }} />
+          <span className="flex items-center gap-1.5 text-ink-muted">
+            <span>נמוך {ils(ppsmScale.low)}</span>
+            <span className="text-ink-muted/50">·</span>
+            <span>חציון {ils(ppsmScale.median)}</span>
+            <span className="text-ink-muted/50">·</span>
+            <span>גבוה {ils(ppsmScale.high)}</span>
+            <span>למ״ר</span>
           </span>
-        </span>
+        </div>
+      ) : (
+        <div className="text-xs text-ink-muted">אין כרגע מספיק עסקאות גלויות כדי להציג סולם מחיר.</div>
       )}
     </div>
   );
 }
 
-function LegendItem({ symbol, color, label, outline }: { symbol: string; color: string; label: string; outline?: boolean }) {
+function LegendItem({ symbol, color, label, outline }: { symbol: string; color?: string; label: string; outline?: boolean }) {
+  // color === undefined marks the one symbol whose color is currently
+  // encoding price rather than category (see MapLegend) -- shown in a
+  // neutral ink tone instead of a swatch color that would misrepresent
+  // what's actually painted on the map right now.
   return (
     <span className="flex items-center gap-2">
-      <span className="w-4 text-center text-base leading-none" style={{ color: outline ? undefined : color, WebkitTextStroke: outline ? `1.5px ${color}` : undefined }}>
+      <span
+        className={`w-4 text-center text-base leading-none ${color == null ? "text-ink-muted" : ""}`}
+        style={color != null ? { color: outline ? undefined : color, WebkitTextStroke: outline ? `1.5px ${color}` : undefined } : undefined}
+      >
         {symbol}
       </span>
       {label}

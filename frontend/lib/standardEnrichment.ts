@@ -6,6 +6,8 @@
 
 import { JsonRecord, StandardAttributeEnrichmentFamily } from "./api";
 import { ils, num } from "./format";
+import { normalizeProjectName } from "./competitorRegister";
+import { translateResearchNote } from "./researchNoteTranslations";
 
 export const FACT_SCOPE_LABELS: Record<string, string> = {
   unit_specific_fact: "נתון לדירה המסוימת",
@@ -221,13 +223,22 @@ interface SubjectSpec {
   orientation: string | null;
 }
 
-/** Renders a row only when the competitor side actually carries a value --
- * "unknown vs unknown" rows are never emitted. */
+/** Renders a row whenever EITHER side actually carries a value -- only a
+ * genuine "unknown vs unknown" pair is skipped entirely. Previously this
+ * dropped the row whenever the competitor side was merely unpublished, even
+ * when our own side had a real, known value (e.g. our balcony area) -- that
+ * silently hid the comparison instead of showing it as an explicit unknown,
+ * which read as if the attribute had never been compared at all. A missing
+ * competitor value now renders literally as "לא פורסם" (not published),
+ * never "אין" (which would wrongly assert the competitor confirmed having
+ * none) -- see lib/competitorMatchStates.ts, which treats this string (and
+ * "—"/"לא הוזן") as an unknown match state, never "different". */
 export function buildProductComparisonRows(subject: SubjectSpec, item: ComparableItem): ProductComparisonRow[] {
   const rows: ProductComparisonRow[] = [];
   const push = (label: string, subjectValue: string | null, competitorValue: unknown, scope: string | null) => {
-    if (competitorValue == null || competitorValue === "") return;
-    rows.push({ label, subjectValue: subjectValue ?? "—", competitorValue: String(competitorValue), scope });
+    const hasCompetitorValue = competitorValue != null && competitorValue !== "";
+    if (subjectValue == null && !hasCompetitorValue) return;
+    rows.push({ label, subjectValue: subjectValue ?? "—", competitorValue: hasCompetitorValue ? String(competitorValue) : "לא פורסם", scope });
   };
 
   if (item.kind === "current_asking") {
@@ -289,18 +300,45 @@ export function buildProductComparisonRows(subject: SubjectSpec, item: Comparabl
     push(
       variant ? "מחיר התחלתי (לא משויך לדגם זה)" : "מחיר התחלתי",
       subject.price != null ? ils(subject.price) : null,
-      `${ils(startingPrice.value as number)} (${startingPrice.applies_to ?? "כלל הפרויקט"})`,
+      `${ils(startingPrice.value as number)} (${translateResearchNote(startingPrice.applies_to as string | null) ?? "כלל הפרויקט"})`,
       "starting_price_context"
     );
   }
 
   push("סטטוס הפרויקט", null, projectStatusLabel(projectLevel.status as string | null), "project_level_fact");
   push("מועד מסירה", null, deliveryLabel(projectLevel.delivery as string | null), "project_level_fact");
-  push("תנאי תשלום", null, paymentTermsLabel(projectLevel.payment_terms as string | null), "project_level_fact");
+  // Gabay's own payment terms are not part of this demo's data model at all
+  // (never "not yet known" -- genuinely "no company term exists to compare
+  // yet"), so this row explicitly says so rather than showing the more
+  // ambiguous "—" a genuinely-inapplicable field would use.
+  push("תנאי תשלום", "לא הוזן", paymentTermsLabel(projectLevel.payment_terms as string | null), "project_level_fact");
 
   return rows;
 }
 
 export function comparableName(item: ComparableItem): string {
   return item.kind === "new_development" ? (item.competitor.project as string) : ((item.record.address as string) ?? "הצעה קיימת");
+}
+
+/** Looks up one specific new-development competitor by its exact project
+ * name (the same name used by workspace.competitor_landscape.projects and
+ * by lib/competitorIntelligence.ts's findEnrichmentComparable -- this is
+ * the one existing exact-match convention already relied on elsewhere in
+ * this codebase, not a new fuzzy-matching scheme). Used to force a
+ * specific, map-selected competitor into the product-comparison view even
+ * when it isn't one of pickStrongestComparables' top picks -- never a
+ * second, parallel comparable-selection algorithm. Returns null when this
+ * family has no comparable entry for that competitor at all (e.g. it only
+ * competes in the other room family), in which case the caller simply
+ * falls back to the normal auto-picked list. */
+export function findComparableForCompetitorName(
+  family: StandardAttributeEnrichmentFamily,
+  rooms: number,
+  targetArea: number | null,
+  name: string
+): ComparableItem | null {
+  const target = normalizeProjectName(name);
+  const competitor = family.new_development_comparables.find((c) => normalizeProjectName(c.project as string) === target);
+  if (!competitor) return null;
+  return { kind: "new_development", competitor, variant: pickVariant(competitor, rooms, targetArea) };
 }

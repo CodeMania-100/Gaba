@@ -21,7 +21,11 @@ import {
   FAMILY_BUCKET_LABELS,
   familyBucketOf,
   MarketingStrategyState,
+  PHASE_ADJUSTMENT_RECAP_LABEL,
+  salesPerformanceAdjustmentLabel,
+  SALES_PROGRESS_ADJUSTMENT_LABEL,
 } from "./marketingStrategy";
+import { productGroupLabelOf } from "./comparisonSubject";
 
 // ---------------------------------------------------------------------------
 // Apartment mix donut (task item 4)
@@ -589,10 +593,10 @@ export function deriveWaterfallSteps(state: MarketingStrategyState, row: PtkPric
 
   return [
     { key: "market", label: "אינדיקציית שוק", valueIls: breakdown.marketIndicationIls, kind: "base", isZero: false },
-    { key: "phase", label: "השפעת שלב הפרויקט", valueIls: breakdown.phaseEffectIls, kind: "adjustment", isZero: breakdown.phasePct === 0 },
+    { key: "phase", label: PHASE_ADJUSTMENT_RECAP_LABEL, valueIls: breakdown.phaseEffectIls, kind: "adjustment", isZero: breakdown.phasePct === 0 },
     {
       key: "sales_progress",
-      label: "השפעת קצב המכירות",
+      label: SALES_PROGRESS_ADJUSTMENT_LABEL,
       valueIls: breakdown.salesProgressEffectIls,
       kind: "adjustment",
       isZero: breakdown.salesProgressPct === 0,
@@ -617,6 +621,13 @@ export function deriveWaterfallSteps(state: MarketingStrategyState, row: PtkPric
       valueIls: pctEffect(unitAdjustment.adjustment_pct),
       kind: "adjustment",
       isZero: unitAdjustment.adjustment_pct === 0,
+    },
+    {
+      key: "sales_performance",
+      label: salesPerformanceAdjustmentLabel(productGroupLabelOf(row)),
+      valueIls: breakdown.salesPerformanceEffectIls,
+      kind: "adjustment",
+      isZero: breakdown.salesPerformancePct === 0,
     },
     { key: "proposed", label: "מחיר שיווק מוצע", valueIls: breakdown.proposedIls, kind: "result", isZero: false },
   ];

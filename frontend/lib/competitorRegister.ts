@@ -125,6 +125,19 @@ export function matchesFamilyFilter(project: CompetitorRegisterProject, filter: 
   return relevance.includes(filter);
 }
 
+/** The register (competitor_landscape) and the various evidence/enrichment
+ * datasets were compiled separately and don't always agree on which dash
+ * character sits inside a numeric address range -- e.g. the register's own
+ * "רוטשילד 163–165" (en dash, U+2013) is "רוטשילד 163-165" (plain hyphen)
+ * in standard_attribute_enrichment's new_development_comparables. Collapses
+ * every dash-like character (hyphen, non-breaking hyphen, figure/en/em
+ * dash, horizontal bar) to a plain "-" so the two spellings compare equal
+ * -- never a fuzzy/approximate match, just character-normalization of what
+ * is genuinely the same name. */
+export function normalizeProjectName(name: string): string {
+  return name.replace(/[‐-―]/g, "-").trim();
+}
+
 /** Fuzzy-matches a decision-board competitor project name (from the strict
  * new_development evidence records, e.g. "זאב ברנדה" or "רוטשילד 163-165")
  * to its richer register entry (e.g. "זאב ברנדה 22" / "רוטשילד 163–165").

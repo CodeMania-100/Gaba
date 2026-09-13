@@ -23,7 +23,6 @@ interface Props {
   workspace: PetahTikvaWorkspace;
   projectPhase: ProjectPhase;
   family: "3R" | "5R";
-  onFamilyChange: (f: "3R" | "5R") => void;
 }
 
 const GROUP_FILTERS: { key: CompetitorFilterGroup; label: string }[] = [
@@ -51,7 +50,7 @@ const COLLAPSED_PROJECT_COUNT = 6;
  * canonical competitor register grid (renamed from CompetitorMap.tsx, which
  * despite its old name was never a map -- see MarketGeoMap.tsx for the real
  * geographic view, Tab א). No new comparison logic lives here. */
-export default function CompetitorRegister({ workspace, projectPhase, family, onFamilyChange }: Props) {
+export default function CompetitorRegister({ workspace, projectPhase, family }: Props) {
   const [groupFilter, setGroupFilter] = useState<CompetitorFilterGroup>("all");
   const [familyFilter, setFamilyFilter] = useState<CompetitorFamilyFilter>("all");
   const [showAllProjects, setShowAllProjects] = useState(false);
@@ -68,7 +67,7 @@ export default function CompetitorRegister({ workspace, projectPhase, family, on
   return (
     <div className="flex flex-col gap-5">
       <div className="rounded-lg border-2 border-ink/80 bg-gradient-to-b from-canvas to-surface p-5">
-        <MarketPositionSection workspace={workspace} projectPhase={projectPhase} family={family} onFamilyChange={onFamilyChange} />
+        <MarketPositionSection workspace={workspace} projectPhase={projectPhase} family={family} />
       </div>
 
       <section id="competitor-register-section" className="flex flex-col gap-4">

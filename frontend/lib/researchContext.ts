@@ -8,6 +8,16 @@
 // nothing here computes a price or a monetary adjustment.
 
 import { JsonRecord, StandardAttributeEnrichmentFamily } from "./api";
+import { SPECIAL_UNIT_TYPE_LABELS } from "./family";
+
+// facts.property_type on a first-researcher record is a raw backend type
+// code (e.g. "duplex"), not display text -- reuses the same label map the
+// rest of the app already uses for special-unit types, with a safe fallback
+// for anything genuinely unrecognized rather than ever printing the code.
+function propertyTypeLabel(raw: string | undefined, fallback: string): string {
+  if (!raw) return fallback;
+  return SPECIAL_UNIT_TYPE_LABELS[raw] ?? fallback;
+}
 
 // ---------------------------------------------------------------------------
 // Standard 3R/5R matched-floor observations (task items 1-5)
@@ -125,7 +135,7 @@ export function triplexContextCards(records: JsonRecord[]): TriplexContextCard[]
       address,
       rooms,
       areaSqm,
-      propertyType: (facts.property_type as string | undefined) ?? "טריפלקס",
+      propertyType: propertyTypeLabel(facts.property_type as string | undefined, "טריפלקס"),
     });
   }
   return cards;
@@ -153,7 +163,7 @@ export function historicalDuplexContext(records: JsonRecord[]): HistoricalDuplex
     rooms: (facts.rooms as number | null) ?? null,
     internalAreaSqm: (facts.built_internal_area_m2 as number | null) ?? null,
     outdoorAreaSqm: (facts.outdoor_area_m2 as number | null) ?? null,
-    propertyType: (facts.property_type as string | undefined) ?? "דופלקס",
+    propertyType: propertyTypeLabel(facts.property_type as string | undefined, "דופלקס"),
     reason: (record.why_relevant as string | null) ?? null,
   };
 }

@@ -281,8 +281,12 @@ export function deriveExecutiveInsights(workspace: PetahTikvaWorkspace): Executi
   // rooms=3 matches the "3R" comparison two lines down -- THE SPOT's price
   // here must be its own 3-room variant (or a genuine project-level
   // starting price), never an unrelated room count's price (same P0 fix as
-  // the matrix, see buildFactSheet's own docstring).
-  const theSpotFact = buildFactSheet(workspace, "THE SPOT", "THE SPOT", 3);
+  // the matrix, see buildFactSheet's own docstring). The 3R family's own
+  // target area is passed through so a project with several current 3R
+  // variants picks the one closest to it, not simply the cheapest (task:
+  // "one canonical matched competitor variant for every selected subject").
+  const our3RAreaSqm = workspace.families.find((f) => f.family === "3R")?.target.internal_area ?? null;
+  const theSpotFact = buildFactSheet(workspace, "THE SPOT", "THE SPOT", 3, our3RAreaSqm);
   const theSpotComparison = computePriceComparison(workspace, theSpotFact, "3R", null);
   if (theSpotComparison) {
     const gap = evaluatePriceGapAlert(
@@ -575,7 +579,12 @@ export function deriveCompetitorMatrix(
   // may only price this matrix column from ITS OWN variant matching this
   // family's room count (or a genuine project-level starting price) -- never
   // a different room count's price shown as though it were this family's.
-  const facts: CompetitorFactSheet[] = competitors.map((c) => buildFactSheet(workspace, c.displayName, c.matchName, FAMILY_ROOMS[family]));
+  // ourAreaSqm (already computed above) is this SAME family's own target
+  // area -- passed through so a competitor with several current same-room
+  // variants picks the one closest to it, the identical canonical rule the
+  // map/register/product-comparison surfaces now all share (task: "one
+  // canonical matched competitor variant for every selected subject").
+  const facts: CompetitorFactSheet[] = competitors.map((c) => buildFactSheet(workspace, c.displayName, c.matchName, FAMILY_ROOMS[family], ourAreaSqm));
 
   const columns = ["הפרויקט שלנו", ...competitors.map((c) => c.displayName)];
 

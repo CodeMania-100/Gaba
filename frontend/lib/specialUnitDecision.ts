@@ -221,7 +221,52 @@ export interface LaneFunnel {
  * first so it is never mis-grouped as the softer cottage/single-family
  * category. Falls back to a generic technical-reason label (never raw
  * English) when nothing matches; the raw reason is preserved on
- * ExcludedEntry.rawReason for "פירוט מלא של הראיות והמקורות". */
+ * ExcludedEntry.rawReason for "פירוט מלא של הראיות והמקורות".
+ *
+ * P0 fix ("exclusion-reason tokens... if the token set is finite and
+ * already known, implement the centralized translation"): the multi-city
+ * freeze pass also emits three closed, colon/equals-delimited machine-token
+ * vocabularies (qa_status_excluded:X, price_type_not_quantitative:X,
+ * numeric_status=X) that previously matched none of the keyword rules above
+ * and always collapsed to the generic fallback -- confirmed by enumerating
+ * every distinct reason actually observed across all four market contexts.
+ * Each *_LABELS table below is exactly that observed, finite vocabulary; an
+ * unrecognized suffix (a token this list has never seen) still falls
+ * through to the generic fallback, never guessed. Deliberately NOT
+ * attempted here: the dataset's own free-text research sentences (e.g.
+ * "matching floorplan known (rooms=5, area=148 m²) but no unit-specific
+ * price published...") -- these embed varying facts per record, so they are
+ * not a finite token set the way the three vocabularies below are; keyword-
+ * matching them would risk exactly the fuzzy, incomplete categorization
+ * this fix is meant to avoid. */
+const QA_STATUS_EXCLUDED_LABELS: Record<string, string> = {
+  CONFLICT: "קונפליקט בין מקורות נתונים",
+  CONTEXT_ONLY: "נשמר כהקשר בלבד, לא לשימוש כמותי",
+  HISTORICAL_CONTEXT: "הקשר היסטורי בלבד",
+  HISTORICAL_MARKETING_CONTEXT: "הקשר שיווקי היסטורי בלבד",
+};
+
+const PRICE_TYPE_NOT_QUANTITATIVE_LABELS: Record<string, string> = {
+  STARTING_PRICE: "מחיר התחלתי בלבד, לא מחיר יחידה מדויק",
+  CONTEXT_ONLY: "מחיר הקשר בלבד, לא לשימוש כמותי",
+  HISTORICAL_MARKETING_PRICE: "מחיר שיווקי היסטורי",
+};
+
+const NUMERIC_STATUS_LABELS: Record<string, string> = {
+  // "quarantined_price_conflict" is deliberately absent here -- it already
+  // matches the pre-existing price_conflict rule above (checked first), so
+  // adding it here would be unreachable dead code, not a second real path.
+  context_only_excluded: "נשמר כהקשר בלבד, לא לשימוש כמותי",
+};
+
+// The one free-text sentence confirmed to repeat byte-for-byte across every
+// context (42 real occurrences, never varying) -- an exact match against a
+// genuinely fixed, already-observed string, not a keyword/substring guess.
+const FIXED_PROSE_REASON_LABELS: Record<string, string> = {
+  "unit-specific price found but no matching floorplan area could be joined -- excluded from area-normalized calculation":
+    "לא נמצאה התאמה בין מחיר הדירה לשטח הידוע",
+};
+
 export function groupExclusionReason(rawReason: string, category: string, categoryLabel: string): string {
   const r = rawReason.toLowerCase();
   if (r.includes("property_form_conflict")) return `סוג הנכס אינו מתאים ל${categoryLabel}`;
@@ -229,6 +274,20 @@ export function groupExclusionReason(rawReason: string, category: string, catego
   if (r.includes("triplex") && category === "duplex") return "טריפלקס במקום דופלקס";
   if (r.includes("price_conflict") || r.includes("price conflict")) return "סתירת מחיר בין מקורות";
   if (r.includes("no verified") || r.includes("no_verified")) return "אין עדות ישירה מספקת";
+
+  const qaStatusMatch = rawReason.match(/^qa_status_excluded:(\w+)/);
+  if (qaStatusMatch && QA_STATUS_EXCLUDED_LABELS[qaStatusMatch[1]]) return QA_STATUS_EXCLUDED_LABELS[qaStatusMatch[1]];
+
+  const priceTypeMatch = rawReason.match(/^price_type_not_quantitative:(\w+)/);
+  if (priceTypeMatch && PRICE_TYPE_NOT_QUANTITATIVE_LABELS[priceTypeMatch[1]]) return PRICE_TYPE_NOT_QUANTITATIVE_LABELS[priceTypeMatch[1]];
+
+  const numericStatusMatch = rawReason.match(/^numeric_status=(\w+)/);
+  if (numericStatusMatch && NUMERIC_STATUS_LABELS[numericStatusMatch[1]]) return NUMERIC_STATUS_LABELS[numericStatusMatch[1]];
+
+  if (r === "numeric_completeness_failed") return "חוסר נתונים כמותיים מלאים";
+
+  if (FIXED_PROSE_REASON_LABELS[rawReason]) return FIXED_PROSE_REASON_LABELS[rawReason];
+
   return "סיבה טכנית אחרת (ראו פירוט מלא)";
 }
 

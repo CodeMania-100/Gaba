@@ -15,6 +15,8 @@ import {
   matchedVariantSummary,
   multiModelSummaryLabel,
   pickRoomMatchedVariant,
+  registerPromotionLabels,
+  registerSpecificationLabels,
   roomRangeLabel,
 } from "./competitorRegister";
 
@@ -60,6 +62,11 @@ describe("areaRangeLabel (P0 fix)", () => {
     expect(areaRangeLabel(p)).toBe("77 מ״ר");
   });
 
+  it("parses a THIRD real shape this field arrives in -- a single 'lo–hi' string, not an array (K — עיר היין אשקלון's real data)", () => {
+    const p = project({ area_sqm_range: "77.42–156.6", known_unit_variants: [] });
+    expect(areaRangeLabel(p)).toBe("77.4–156.6 מ״ר"); // num() rounds to 1 decimal digit, same as every other area label
+  });
+
   it("returns null (never a guess) when neither a project-level range nor any variant area exists", () => {
     const p = project({ known_unit_variants: [{ rooms: "3", price_ils: "1000000" }] });
     expect(areaRangeLabel(p)).toBeNull();
@@ -75,6 +82,17 @@ describe("roomRangeLabel and floorRangeLabel variant fallback (P0 fix)", () => {
       ],
     });
     expect(roomRangeLabel(p)).toBe("3–5 חדרים");
+  });
+
+  it("roomRangeLabel parses the real single 'lo–hi' string shape, never silently narrowing to a variant-derived range instead", () => {
+    const p = project({
+      room_range: "3–6",
+      known_unit_variants: [
+        { rooms: "3", price_ils: "1", internal_area_sqm: "1" },
+        { rooms: "5", price_ils: "1", internal_area_sqm: "1" },
+      ],
+    });
+    expect(roomRangeLabel(p)).toBe("3–6 חדרים");
   });
 
   it("floorRangeLabel derives from variants when floors_range is absent (the multi-city dataset never has floors_range at all)", () => {
@@ -174,5 +192,78 @@ describe("multiModelSummaryLabel (P0 fix)", () => {
   it("returns null when no variant is priced at all", () => {
     const p = project({ known_unit_variants: [{ rooms: "3", internal_area_sqm: "70" }] });
     expect(multiModelSummaryLabel(p)).toBeNull();
+  });
+});
+
+// Final P0 data-visibility audit: a variant explicitly flagged by the
+// research itself as not a current representative price (price_basis
+// "HISTORICAL_MARKETING_PRICE"/"CONTEXT_ONLY", after the multi-city
+// reshape) must never be picked as "the" matched model for a room count --
+// real case: Ashkelon's "פרץ בוני הנגב בעיר היין" had only one 5R-priced
+// variant, a ₪1,441,898 historical government-program price explicitly
+// noted "preserved for context only, not current market quantitative
+// evidence" -- and pickRoomMatchedVariant picked it anyway, showing a stale
+// historical figure as though it were this project's current 5R price.
+describe("pickRoomMatchedVariant excludes non-current price_basis values (P0 fix)", () => {
+  it("never picks a variant explicitly marked HISTORICAL_MARKETING_PRICE, even when it is the only priced variant for that room count", () => {
+    const p = project({
+      known_unit_variants: [{ rooms: "5", price_ils: "1441898", price_basis: "HISTORICAL_MARKETING_PRICE", internal_area_sqm: "126" }],
+    });
+    expect(pickRoomMatchedVariant(p, 5)).toBeNull();
+  });
+
+  it("never picks a variant explicitly marked CONTEXT_ONLY", () => {
+    const p = project({
+      known_unit_variants: [{ rooms: "3", price_ils: "2100000", price_basis: "CONTEXT_ONLY", internal_area_sqm: "155" }],
+    });
+    expect(pickRoomMatchedVariant(p, 3)).toBeNull();
+  });
+
+  it("still picks a normal current-priced variant when one exists alongside an ineligible one", () => {
+    const p = project({
+      known_unit_variants: [
+        { rooms: "5", price_ils: "1441898", price_basis: "HISTORICAL_MARKETING_PRICE", internal_area_sqm: "126" },
+        { rooms: "5", price_ils: "4200000", price_basis: "VERIFIED_UNIT_PRICE", internal_area_sqm: "130" },
+      ],
+    });
+    expect(pickRoomMatchedVariant(p, 5)?.price_ils).toBe("4200000");
+  });
+
+  it("still picks Petah Tikva's own untagged (price_basis undefined) variants exactly as before", () => {
+    const p = project({ known_unit_variants: [{ rooms: 3, price_ils: 2150000, area_sqm: 77 }] });
+    expect(pickRoomMatchedVariant(p, 3)?.price_ils).toBe(2150000);
+  });
+});
+
+describe("registerPromotionLabels / registerSpecificationLabels (P0 fix: surface existing promotions/specification_features)", () => {
+  it("reads the multi-city register's array-of-objects promotions shape (TIDHAR's real data)", () => {
+    const p = project({
+      promotions: [{ promotion_text: "10 שנות אחריות תדהר", promotion_type: "warranty_campaign", validity: null, source_url: "https://example.com" }],
+    });
+    expect(registerPromotionLabels(p)).toEqual(["10 שנות אחריות תדהר"]);
+  });
+
+  it("reads Petah Tikva's own array-of-plain-strings promotions shape", () => {
+    const p = project({ promotions: ["bridge financing terms", "last apartments / immediate occupancy campaign"] });
+    expect(registerPromotionLabels(p)).toEqual(["bridge financing terms", "last apartments / immediate occupancy campaign"]);
+  });
+
+  it("returns an empty array (never a placeholder) when there are genuinely no promotions", () => {
+    expect(registerPromotionLabels(project({ promotions: [] }))).toEqual([]);
+    expect(registerPromotionLabels(project({}))).toEqual([]);
+  });
+
+  it("reads the multi-city register's premium_specification field", () => {
+    const p = project({ premium_specification: "New-development specification; exact feature set varies by model." });
+    expect(registerSpecificationLabels(p)).toEqual(["New-development specification; exact feature set varies by model."]);
+  });
+
+  it("falls back to Petah Tikva's own special_product_notes field", () => {
+    const p = project({ special_product_notes: "5–6 room roof duplexes on floors 9–10, 148–192 sqm built." });
+    expect(registerSpecificationLabels(p)).toEqual(["5–6 room roof duplexes on floors 9–10, 148–192 sqm built."]);
+  });
+
+  it("returns an empty array when neither field is present", () => {
+    expect(registerSpecificationLabels(project({}))).toEqual([]);
   });
 });

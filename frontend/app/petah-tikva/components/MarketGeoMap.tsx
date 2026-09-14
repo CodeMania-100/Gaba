@@ -1368,6 +1368,18 @@ function CompetitorGroupMemberRow({
         {member.fact?.floorRangeLabel && <Fact label="קומות" value={member.fact.floorRangeLabel} />}
         {member.fact?.status && <Fact label="שלב" value={member.fact.status} />}
       </div>
+      {/* P0 data-visibility audit: the standalone popup (CompetitorDetail)
+          already shows this same project's deriveCompetitorHighlights
+          bullets (room range / product types / parking / storage / mamad /
+          elevator / starting price) -- a project loses none of that just for
+          sharing a fallback coordinate with others in this group. */}
+      {member.highlights != null && member.highlights.length > 0 && (
+        <ul className="mt-1 flex flex-col gap-0.5 text-[11px] text-slate-500">
+          {member.highlights.map((h, i) => (
+            <li key={i}>• {h}</li>
+          ))}
+        </ul>
+      )}
       <div className="mt-1.5 flex items-center gap-3">
         <button onClick={() => onSelectPoint(member)} className="text-xs text-slate-500 underline hover:text-slate-800">
           פתח פרויקט

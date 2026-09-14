@@ -12,6 +12,7 @@
 
 import { CompetitorRegisterProject, JsonRecord, PetahTikvaWorkspace, SpecialUnitIndication } from "./api";
 import { buildFactSheet, CompetitorFactSheet } from "./competitorIntelligence";
+import { roomRangeLabel } from "./competitorRegister";
 import { ils } from "./format";
 
 export type MarketMapKind = "asking" | "sold" | "competitor" | "competitor_group" | "project_area";
@@ -443,28 +444,46 @@ const RELEVANCE_TAG_LABELS: Record<string, string> = {
   penthouse: "פנטהאוז",
 };
 
-function formatRoomRange(range: unknown): string | null {
-  if (!Array.isArray(range) || range.length !== 2) return null;
-  const [lo, hi] = range as [number, number];
-  if (lo == null || hi == null) return null;
-  return lo === hi ? `${lo} חדרים` : `${lo}–${hi} חדרים`;
-}
-
 // A project-level field is only claimed "for every apartment" when the
 // register's own free-text value says so -- otherwise we show the fact
 // (storage/parking exists) without overclaiming universal coverage.
-function isPerUnit(value?: string): boolean {
+function isPerUnit(value?: string | null): boolean {
   return value != null && /every (apartment|unit)/i.test(value);
+}
+
+// P0 fix ("search for the same class [of schema mismatch] everywhere"):
+// a verified project-level fact like parking/storage/mamad/elevator arrives
+// in TWO different shapes depending on which dataset it came from -- Petah
+// Tikva's own seed wraps it as {status, value} (value often a free-text
+// description, e.g. "parking registered to every apartment"), while the
+// multi-city register writes a plain boolean. This function previously read
+// storage/parking as object-only (`field?.value`) -- silently dropping every
+// multi-city project's real `true` -- while mamad was read as boolean-only
+// (`field === true`) -- silently dropping every Petah Tikva project's real
+// {status, value:true}. Two real, live, opposite-direction bugs, same root
+// cause. This reader accepts both shapes so neither dataset's already-
+// collected fact goes missing depending on which one happens to be current.
+function featureValue(field: unknown): { verified: boolean; detail: string | null } {
+  if (typeof field === "boolean") return { verified: field, detail: null };
+  if (field != null && typeof field === "object") {
+    const value = (field as { value?: unknown }).value;
+    if (typeof value === "string") return { verified: true, detail: value };
+    if (typeof value === "boolean") return { verified: value, detail: null };
+  }
+  return { verified: false, detail: null };
 }
 
 /** Short, notable-facts bullets for a competitor's detail card ("מה בולט
  * מול הפרויקט שלנו?") -- every bullet reads directly off the competitor
  * register's own fields, nothing compared or invented (task: "use existing
- * metadata only"). */
+ * metadata only"). roomRangeLabel (not a locally-reimplemented range
+ * formatter) so this bullet benefits from the same project-level-then-
+ * variant-fallback derivation every other room-range display already uses --
+ * never a second, possibly-disagreeing room-range reader. */
 export function deriveCompetitorHighlights(project: CompetitorRegisterProject): string[] {
   const bullets: string[] = [];
 
-  const roomRange = formatRoomRange(project.room_range);
+  const roomRange = roomRangeLabel(project);
   if (roomRange) bullets.push(roomRange);
 
   const productTypes = ((project.product_types as string[] | undefined) ?? [])
@@ -472,16 +491,35 @@ export function deriveCompetitorHighlights(project: CompetitorRegisterProject): 
     .filter((v, i, arr): v is string => v != null && arr.indexOf(v) === i);
   if (productTypes.length) bullets.push(productTypes.join(" / "));
 
-  const storage = project.storage as { value?: string } | null | undefined;
-  if (storage?.value) bullets.push(isPerUnit(storage.value) ? "מחסן פרטי לכל דירה" : "מחסן פרטי");
+  const storage = featureValue(project.storage);
+  if (storage.verified) bullets.push(isPerUnit(storage.detail) ? "מחסן פרטי לכל דירה" : "מחסן פרטי");
 
-  const parking = project.parking as { value?: string } | null | undefined;
-  if (parking?.value) bullets.push(isPerUnit(parking.value) ? "חניה לכל דירה" : "חניה");
+  const parking = featureValue(project.parking);
+  if (parking.verified) bullets.push(isPerUnit(parking.detail) ? "חניה לכל דירה" : "חניה");
 
-  if (project.mamad === true) bullets.push("ממ״ד");
+  const mamad = featureValue(project.mamad);
+  if (mamad.verified) bullets.push("ממ״ד");
+
+  // Elevator was never read for a competitor anywhere in the app before this
+  // fix -- verified true for several real projects in both datasets (see
+  // lib/marketMap.test.ts), silently invisible on every competitor surface.
+  const elevator = featureValue(project.elevator);
+  if (elevator.verified) bullets.push("מעלית");
 
   if (typeof project.project_price_from_ils === "number") {
     bullets.push(`מחיר התחלתי ${ils(project.project_price_from_ils)}`);
+  }
+
+  // P0 data-visibility fix: number_of_floors (how many stories the BUILDING
+  // has -- a distinct fact from floorRangeLabel's "which floor is a known
+  // UNIT on") was never read anywhere in the app for a competitor before
+  // this fix, despite being populated for 17 real multi-city projects (a
+  // number for most, a free-text range like "7-15" for a few -- shown
+  // verbatim either way, never coerced/guessed). Kept as its own bullet
+  // rather than folded into floorRangeLabel/"קומות" so the two distinct
+  // facts (building height vs. a specific unit's floor) are never conflated.
+  if (project.number_of_floors != null && project.number_of_floors !== "") {
+    bullets.push(`בניין בן ${project.number_of_floors} קומות`);
   }
 
   return bullets;
@@ -597,6 +635,19 @@ function competitorGroupTitle(members: MarketMapPoint[], workspace: PetahTikvaWo
 
 const MAP_FAMILY_ROOMS: Record<MarketMapFamily, number> = { "3R": 3, "5R": 5 };
 
+// The currently selected comparison subject's own internal area (task:
+// "Resolve the FAMILY GROOVE / JADE variant conflict... one canonical
+// matched competitor variant for every selected comparison subject") -- for
+// a standard family, that subject is this family's own target apartment
+// (workspace.families[].target.internal_area, the same figure
+// lib/executiveVisuals.ts's deriveCompetitorMatrix already uses as
+// "ourAreaSqm"). Passed to pickRoomMatchedVariant/buildFactSheet so a
+// project with several current same-room variants picks the one closest to
+// what the user is actually comparing against, not simply the cheapest.
+function familyTargetAreaSqm(workspace: PetahTikvaWorkspace, family: MarketMapFamily): number | null {
+  return workspace.families.find((f) => f.family === family)?.target.internal_area ?? null;
+}
+
 /** P0 fix: deriveCompetitorPoints builds every standard competitor point
  * ONCE, family-agnostically (see its own docstring) -- point.fact/priceIls
  * there reflect whatever buildFactSheet's no-family-context fallback picks
@@ -627,7 +678,7 @@ export function rematchCompetitorPointForFamily(point: MarketMapPoint, workspace
     };
   }
   if (point.kind !== "competitor" || point.specialUnitNumber != null) return point;
-  const fact = buildFactSheet(workspace, point.title, point.title, MAP_FAMILY_ROOMS[family]);
+  const fact = buildFactSheet(workspace, point.title, point.title, MAP_FAMILY_ROOMS[family], familyTargetAreaSqm(workspace, family));
   return {
     ...point,
     familyRelevant: isRelevantToFamily(point, workspace, family),
@@ -797,6 +848,21 @@ function coerceNumber(v: unknown): number | undefined {
   return undefined;
 }
 
+// Some special-unit source CSVs (mamad/storage) carry a Python str(bool)
+// artifact -- the literal string "True"/"False" -- rather than a JSON
+// boolean or a {status,value} object. Tolerant of all three so a genuinely
+// verified fact from this source never reads as absent just because of how
+// its boolean got serialized.
+function parseBoolFlag(v: unknown): boolean | undefined {
+  if (typeof v === "boolean") return v;
+  if (typeof v === "string") {
+    const s = v.trim().toLowerCase();
+    if (s === "true") return true;
+    if (s === "false") return false;
+  }
+  return undefined;
+}
+
 /** Prefers the pricing engine's own canonical value for this comparable
  * (only ever set for a record that actually reached NormalizedComparable);
  * falls back to the first present raw field, trying every field-name
@@ -805,7 +871,7 @@ function coerceNumber(v: unknown): number | undefined {
  * name several of these facts differently (e.g. sold price is `price` in
  * one, `deal_amount` in the other) -- never guessed when every source is
  * absent. */
-function preferCanonicalNumber(canonical: number | undefined, raw: JsonRecord | undefined, ...rawKeys: string[]): number | undefined {
+export function preferCanonicalNumber(canonical: number | undefined, raw: JsonRecord | undefined, ...rawKeys: string[]): number | undefined {
   if (canonical != null) return canonical;
   for (const key of rawKeys) {
     const v = coerceNumber(raw?.[key]);
@@ -814,7 +880,7 @@ function preferCanonicalNumber(canonical: number | undefined, raw: JsonRecord | 
   return undefined;
 }
 
-function firstRawString(raw: JsonRecord | undefined, ...rawKeys: string[]): string | undefined {
+export function firstRawString(raw: JsonRecord | undefined, ...rawKeys: string[]): string | undefined {
   for (const key of rawKeys) {
     const v = raw?.[key];
     if (typeof v === "string" && v.trim() !== "") return v;
@@ -921,6 +987,12 @@ export function deriveSpecialSoldPoints(workspace: PetahTikvaWorkspace, unitNumb
     const price = preferCanonicalNumber(entry?.comparablePriceIls, latest, "price", "deal_amount");
     const area = preferCanonicalNumber(entry?.comparableAreaSqm, latest, "internal_area", "internal_area_sqm");
     const dateStr = firstRawString(latest, "date", "deal_date");
+    // P0 data-visibility fix: source/geographyTier were never read for a
+    // special sold point -- every multi-city sold row has a real
+    // geography_tier and source_name (or, for Petah Tikva's own tax-archive
+    // rows, a differently-named source) that never reached the popup, which
+    // fell back to the hardcoded "רשות המסים (נתוני עסקאות)" label even for
+    // non-Petah-Tikva evidence that came from an entirely different source.
     points.push({
       id: `special_sold:${unitNumber}:${address}`,
       kind: "sold",
@@ -945,8 +1017,14 @@ export function deriveSpecialSoldPoints(workspace: PetahTikvaWorkspace, unitNumb
       specialNormalizedValueIls: entry?.normalizedValueIls,
       specialRelevantToLabel: entry?.relevantToLabel,
       specialCalculationMethod: entry?.calculationMethod,
-      specialEvidenceType: firstRawString(latest, "product_type"),
-      note: firstRawString(latest, "floor_configuration"),
+      // Petah Tikva's own tax-archive sold rows carry no source/geography_tier
+      // concept at all -- these legitimately stay undefined for them (falling
+      // back to the PT-appropriate "רשות המסים" label below), while every
+      // multi-city row's real source_name/geography_tier now reaches the popup.
+      source: firstRawString(latest, "source", "source_name"),
+      geographyTier: firstRawString(latest, "geography_tier"),
+      specialEvidenceType: firstRawString(latest, "product_type", "tax_property_type"),
+      note: firstRawString(latest, "floor_configuration") ?? (latest.qa_notes as string | undefined),
       transactionCount: records.length,
     });
   }
@@ -995,7 +1073,7 @@ export function deriveSpecialAskingPoints(workspace: PetahTikvaWorkspace, unitNu
       internalArea: area,
       outdoorArea: preferCanonicalNumber(undefined, r, "outdoor_area", "garden_area", "balcony_area"),
       rooms: coerceNumber(r.rooms),
-      floor: r.floor as string | undefined,
+      floor: (r.floor as string | undefined) || undefined,
       contributesToPricing: status === "participating",
       coordinatePrecision: geo.precision,
       specialUnitNumber: unitNumber,
@@ -1006,8 +1084,19 @@ export function deriveSpecialAskingPoints(workspace: PetahTikvaWorkspace, unitNu
       specialRelevantToLabel: entry?.relevantToLabel ?? relevantToLabel(r, unitNumber),
       specialCalculationMethod: entry?.calculationMethod,
       specialEvidenceType: firstRawString(r, "type", "product_type"),
-      note: (r.known_features as string | undefined) ?? undefined,
+      note: (r.known_features as string | undefined) ?? (r.qa_notes as string | undefined) ?? undefined,
       sourceUrl: (r.source_url as string | undefined) ?? undefined,
+      // P0 data-visibility fix: these five were never read for a special
+      // asking point at all -- every multi-city listing has real, populated
+      // observed_date/geography_tier/parking/mamad/source_name that simply
+      // never reached the popup. hasSecureRoom/parkingCount reuse the exact
+      // field names the standard asking derivation already uses (see above
+      // in this file) so both surfaces stay on one shared vocabulary.
+      date: firstRawString(r, "first_seen", "observed_date"),
+      geographyTier: firstRawString(r, "geography_tier"),
+      parkingCount: coerceNumber(r.parking),
+      hasSecureRoom: parseBoolFlag(r.mamad),
+      source: firstRawString(r, "source", "source_name"),
     });
   }
   return points;
@@ -1128,7 +1217,25 @@ export function deriveSpecialTypologyContextPoints(workspace: PetahTikvaWorkspac
     const record = records.find((r) => {
       if (r.context_type !== "triplex_context") return false;
       const address = ((r.normalized as JsonRecord | undefined) ?? r).address as string | undefined;
-      return address != null && address.includes(geo.address);
+      if (address == null) return false;
+      if (address.includes(geo.address)) return true;
+      // P0 fix ("triplex map record lost by address-prefix mismatch"):
+      // geo.address is the query string this street was geocoded WITH (its
+      // full official name, e.g. "מנחם אוסישקין 22"); this unit's own
+      // research record can instead use the shorter, commonly-used form of
+      // the same street ("אוסישקין 22, פתח תקווה") -- the given-name prefix
+      // dropped, exactly matching how the street is casually referred to.
+      // Never a fuzzy/guessed relaxation: geo.resolved_label is the
+      // geocoder's OWN already-verified canonical street name for this
+      // exact coordinate (its first comma-segment, for a street-precision
+      // result) -- reusing that specific value, together with the same
+      // house number, is a deterministic normalization of the SAME
+      // real-world address, not a broader substring match that could pick
+      // up an unrelated street.
+      if (geo.precision !== "street" || !geo.resolved_label) return false;
+      const canonicalStreet = geo.resolved_label.split(",")[0]?.trim();
+      const houseNumber = geo.address.match(/\d+/)?.[0];
+      return canonicalStreet != null && canonicalStreet !== "" && houseNumber != null && address.includes(canonicalStreet) && address.includes(houseNumber);
     });
     if (!record) continue;
     const facts = (record.normalized as JsonRecord | undefined) ?? record;

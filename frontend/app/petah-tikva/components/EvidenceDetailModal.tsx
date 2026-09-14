@@ -121,10 +121,28 @@ function AskingTable({ workspace, family }: { workspace: PetahTikvaWorkspace; fa
   );
 }
 
+// P0 data-visibility fix: a multi-city new_development record carries no
+// top-level rooms/area_sqm/price_ils/ppsm at all -- the per-room-count facts
+// live in its own unit_prices[] array instead (e.g. TIDHAR בין השדרות's
+// record has unit_prices: [{rooms:3,...}, {rooms:5,...}]), which this table
+// never read, so every multi-city row showed "—" for all four columns even
+// though the exact family this table is already scoped to has a real,
+// populated price+area for that project. Petah Tikva's own records already
+// carry these fields at the top level (no unit_prices array at all) --
+// falling back to the family-matched unit_prices entry only when the
+// top-level field is absent keeps that path completely unchanged. ppsm is
+// computed from the SAME entry's own price+area (never a different record's
+// figure) only when the record doesn't already publish its own ppsm.
+function pickUnitPrice(record: JsonRecord, targetRooms: number): JsonRecord | null {
+  const prices = (record.unit_prices as JsonRecord[] | undefined) ?? [];
+  return prices.find((p) => Number(p.rooms) === targetRooms) ?? null;
+}
+
 function CompetitorTable({ workspace, family }: { workspace: PetahTikvaWorkspace; family: "3R" | "5R" }) {
   const section = workspace.evidence_provenance.new_development[family];
   const records = (section?.records as JsonRecord[]) ?? [];
   const verified = records.filter((r) => r.field_provenance);
+  const targetRooms = family === "3R" ? 3 : 5;
 
   const familyData = workspace.families.find((f) => f.family === family);
   const contributorSourceIds = new Set<string>(
@@ -140,19 +158,26 @@ function CompetitorTable({ workspace, family }: { workspace: PetahTikvaWorkspace
       </p>
       <Table
         head={["פרויקט", "יזם", "חדרים", "שטח", "מחיר", "₪/מ״ר", "תפקיד בטווח", "הערה"]}
-        rows={records.map((r) => [
-          <span key="name">
-            {r.project_name ?? "—"}
-            {r.field_provenance && <span className="ms-1 rounded bg-blue-50 px-1 py-0.5 text-[10px] text-blue-700">שדה מאומת</span>}
-          </span>,
-          r.developer ?? "—",
-          num(r.rooms, 0),
-          r.area_sqm != null ? num(r.area_sqm) : r.area_min_sqm != null ? `${num(r.area_min_sqm)}–${num(r.area_max_sqm)} (טווח)` : "—",
-          ils(r.price_ils),
-          r.ppsm != null ? num(r.ppsm, 0) : "—",
-          <RoleBadge key="role" role={competitorRecordRole(r, contributorSourceIds)} />,
-          (r.warnings as string[] | undefined)?.[0] ? translateWarning((r.warnings as string[])[0]) : "—",
-        ])}
+        rows={records.map((r) => {
+          const unitPrice = pickUnitPrice(r, targetRooms);
+          const rooms = r.rooms ?? unitPrice?.rooms;
+          const areaSqm = (r.area_sqm as number | undefined) ?? (unitPrice?.area_sqm as number | undefined);
+          const priceIls = (r.price_ils as number | undefined) ?? (unitPrice?.price_ils as number | undefined);
+          const ppsm = r.ppsm != null ? r.ppsm : priceIls != null && areaSqm ? priceIls / areaSqm : null;
+          return [
+            <span key="name">
+              {r.project_name ?? "—"}
+              {r.field_provenance && <span className="ms-1 rounded bg-blue-50 px-1 py-0.5 text-[10px] text-blue-700">שדה מאומת</span>}
+            </span>,
+            r.developer ?? "—",
+            rooms != null ? num(rooms as number, 0) : "—",
+            areaSqm != null ? num(areaSqm) : r.area_min_sqm != null ? `${num(r.area_min_sqm)}–${num(r.area_max_sqm)} (טווח)` : "—",
+            priceIls != null ? ils(priceIls) : "—",
+            ppsm != null ? num(ppsm, 0) : "—",
+            <RoleBadge key="role" role={competitorRecordRole(r, contributorSourceIds)} />,
+            (r.warnings as string[] | undefined)?.[0] ? translateWarning((r.warnings as string[])[0]) : "—",
+          ];
+        })}
       />
 
       {verified.length > 0 && (

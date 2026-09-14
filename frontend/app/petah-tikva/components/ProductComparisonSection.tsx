@@ -260,9 +260,19 @@ function SourcesPanel({ item }: { item: ComparableItem }) {
   }
 
   const competitor = item.competitor;
-  const projectProvenance = ((competitor.project_level as JsonRecord)?.provenance as JsonRecord[] | undefined) ?? [];
+  const projectLevel = (competitor.project_level as JsonRecord) ?? {};
+  const projectProvenance = (projectLevel.provenance as JsonRecord[] | undefined) ?? [];
   const variantProvenance = (item.variant?.provenance as JsonRecord[] | undefined) ?? [];
   const qaNotes = (competitor.qa_notes as string[] | undefined) ?? [];
+  // P0 fix ("surface existing promotions and specification_features
+  // wherever competitor details are expanded") -- project_level.promotions
+  // is a single free-text sentence (or null) in this dataset, never a list;
+  // specification_features is already an array of real, already-collected
+  // fact strings. Compact, real facts only -- an empty/absent source omits
+  // the whole section, never converted to a monetary value.
+  const promotionText = projectLevel.promotions as string | null | undefined;
+  const promotions = promotionText && promotionText.trim() !== "" ? [promotionText] : [];
+  const specification = (projectLevel.specification_features as string[] | undefined) ?? [];
 
   return (
     <div className="rounded border border-dashed border-hairline p-2 text-xs text-ink-muted">
@@ -280,6 +290,26 @@ function SourcesPanel({ item }: { item: ComparableItem }) {
           )}
         </div>
       ))}
+      {promotions.length > 0 && (
+        <div className="mt-1">
+          <div className="font-semibold text-ink-muted">הטבות / מבצעים:</div>
+          <ul className="list-inside list-disc">
+            {promotions.map((p, i) => (
+              <li key={i}>{p}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {specification.length > 0 && (
+        <div className="mt-1">
+          <div className="font-semibold text-ink-muted">מפרט ומאפיינים:</div>
+          <ul className="list-inside list-disc">
+            {specification.map((s, i) => (
+              <li key={i}>{s}</li>
+            ))}
+          </ul>
+        </div>
+      )}
       {qaNotes.length > 0 && (
         <div className="mt-1">
           <div className="font-semibold text-ink-muted">הערות QA:</div>

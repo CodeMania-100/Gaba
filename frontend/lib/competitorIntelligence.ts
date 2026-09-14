@@ -138,8 +138,24 @@ function formatPriceLabel(priceIls: number | null, isStartingPriceOnly: boolean)
  * silently substituted from a different room count. Omitting `rooms`
  * entirely (a caller with no family context, e.g. a special-unit lookup)
  * preserves the previous "cheapest priced variant, any room count"
- * behavior -- unchanged for those callers. */
-export function buildFactSheet(workspace: PetahTikvaWorkspace, displayName: string, matchName: string, rooms?: number): CompetitorFactSheet {
+ * behavior -- unchanged for those callers.
+ *
+ * subjectAreaSqm (task: "Resolve the FAMILY GROOVE / JADE variant
+ * conflict"): the currently selected comparison subject's own internal
+ * area (the family's target.internal_area, or a specific special unit's own
+ * area) -- passed straight through to pickRoomMatchedVariant so that when a
+ * project has several current, eligible same-room variants, the one closest
+ * in area to what the user is actually comparing against is picked, not
+ * simply the cheapest. Omitting it falls back to the deterministic
+ * cheapest-among-eligible rule, unchanged from before subject-aware
+ * matching existed. */
+export function buildFactSheet(
+  workspace: PetahTikvaWorkspace,
+  displayName: string,
+  matchName: string,
+  rooms?: number,
+  subjectAreaSqm?: number | null
+): CompetitorFactSheet {
   const reg = findRegisterProject(workspace, matchName);
   const enrich = findEnrichmentComparable(workspace, matchName);
   const projectLevel = (enrich?.project_level as JsonRecord | undefined) ?? {};
@@ -170,7 +186,7 @@ export function buildFactSheet(workspace: PetahTikvaWorkspace, displayName: stri
     let usedMatchedVariant = false;
 
     if (rooms != null) {
-      const matched = pickRoomMatchedVariant(reg, rooms);
+      const matched = pickRoomMatchedVariant(reg, rooms, subjectAreaSqm);
       if (matched) {
         currentPriceIls = coerceNumber(matched.price_ils) ?? null;
         isStartingPriceOnly =

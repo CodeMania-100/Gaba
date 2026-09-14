@@ -6,7 +6,7 @@
 
 import { JsonRecord, StandardAttributeEnrichmentFamily } from "./api";
 import { ils, num } from "./format";
-import { normalizeProjectName } from "./competitorRegister";
+import { normalizeProjectName, pickCanonicalVariant } from "./competitorRegister";
 import { translateResearchNote } from "./researchNoteTranslations";
 
 export const FACT_SCOPE_LABELS: Record<string, string> = {
@@ -152,19 +152,35 @@ export function deliveryLabel(raw: string | null | undefined): string | null {
   return `${dateMatch[1]} (${rest})`;
 }
 
-/** One new-development comparable's variant closest in rooms/area to the
- * subject -- deterministic (rooms exact match required, then smallest area
- * difference), never a weighted score. Returns null if the project has no
- * variant for this family's room count. */
+/** One new-development comparable's variant matching the subject's room
+ * count -- now the exact same canonical rule lib/competitorRegister.ts's
+ * pickRoomMatchedVariant uses (see pickCanonicalVariant there), just adapted
+ * to this dataset's own field names (rooms/internal_area-or-advertised_area/
+ * price/price_basis-or-PT's-own-price_scope) -- task: "Resolve the FAMILY
+ * GROOVE / JADE variant conflict -- we need one canonical matched
+ * competitor variant for every selected comparison subject." Before this
+ * fix, this picker used "closest area to target" while the register/map's
+ * own picker used "cheapest" -- two different rules over the same
+ * underlying variants could (and, for these two real projects, did) pick
+ * two different physical units for the same family. Both now share
+ * identical exclusion (historical/context-only/conflicted) and tie-break
+ * (closest area, falling back to cheapest when area is unknown) logic, so
+ * for the same project/rooms/subject-area input they always agree. */
 export function pickVariant(competitor: JsonRecord, rooms: number, targetArea: number | null): JsonRecord | null {
   const variants = (competitor.unit_variants as JsonRecord[] | undefined) ?? [];
-  const matching = variants.filter((v) => v.rooms === rooms);
-  if (matching.length === 0) return null;
-  if (targetArea == null) return matching[0];
-  const withArea = matching.filter((v) => v.internal_area != null || v.advertised_area != null);
-  if (withArea.length === 0) return matching[0];
-  const areaOf = (v: JsonRecord) => (v.internal_area ?? v.advertised_area) as number;
-  return withArea.reduce((best, v) => (Math.abs(areaOf(v) - targetArea) < Math.abs(areaOf(best) - targetArea) ? v : best));
+  const candidates = variants.map((v) => ({
+    ...v,
+    rooms: v.rooms as number | undefined,
+    areaSqm: (v.internal_area ?? v.advertised_area) as number | undefined,
+    priceIls: v.price as number | undefined,
+    // Petah Tikva's own unit_variants never set price_basis at all -- their
+    // closest analog is price_scope (e.g. "common_starting_price_for_floor_
+    // range"), a free-text description rather than the multi-city dataset's
+    // closed enum, but reading it here costs nothing and stays ready if a
+    // PT price_scope value ever needs excluding the same way.
+    priceBasis: (v.price_basis ?? v.price_scope) as string | undefined,
+  }));
+  return pickCanonicalVariant(candidates, rooms, targetArea);
 }
 
 const CLASSIFICATION_RANK: Record<string, number> = { direct: 0, relevant: 1, context: 2 };
@@ -233,6 +249,27 @@ interface SubjectSpec {
  * never "אין" (which would wrongly assert the competitor confirmed having
  * none) -- see lib/competitorMatchStates.ts, which treats this string (and
  * "—"/"לא הוזן") as an unknown match state, never "different". */
+// P0 data-visibility fix: a variant's own storage field arrives as a plain
+// boolean for most projects, but as a richer {present, area} object for
+// several real Petah Tikva 5R comparables (e.g. "השופט ברנדייס 47":
+// {present: true, area: 5.5}) -- the strict === true/=== false check below
+// correctly avoids the null-vs-false confusion, but an object matches
+// neither branch, so a verified storage fact (sometimes with a real m²
+// figure) silently rendered as though storage had never been researched at
+// all. Read the object shape's own "present" flag (and its area, when
+// given) instead of dropping it.
+function storageLabel(storage: unknown): string | null {
+  if (storage === true) return "יש";
+  if (storage === false) return "אין";
+  if (storage != null && typeof storage === "object") {
+    const present = (storage as JsonRecord).present;
+    const area = (storage as JsonRecord).area;
+    if (present === true) return typeof area === "number" ? `יש (${num(area)} מ״ר)` : "יש";
+    if (present === false) return "אין";
+  }
+  return null;
+}
+
 export function buildProductComparisonRows(subject: SubjectSpec, item: ComparableItem): ProductComparisonRow[] {
   const rows: ProductComparisonRow[] = [];
   const push = (label: string, subjectValue: string | null, competitorValue: unknown, scope: string | null) => {
@@ -253,7 +290,7 @@ export function buildProductComparisonRows(subject: SubjectSpec, item: Comparabl
     push("קומה", subject.floor != null ? String(subject.floor) : null, r.floor != null ? String(r.floor) : null, fieldScope);
     push("כיוון", subject.orientation ?? null, r.orientation != null ? String(r.orientation) : null, fieldScope);
     push("חניה", null, r.parking_count != null ? num(r.parking_count as number) : null, fieldScope);
-    push("מחסן", null, r.storage === true ? "יש" : r.storage === false ? "אין" : null, fieldScope);
+    push("מחסן", null, storageLabel(r.storage), fieldScope);
     push("מעלית", null, r.elevator === true ? "יש" : r.elevator === false ? "אין" : null, fieldScope);
     push("ממ״ד", null, r.mamad === true ? "יש" : r.mamad === false ? "אין" : null, fieldScope);
     push("מצב", null, r.condition != null ? String(r.condition) : null, fieldScope);
@@ -289,7 +326,7 @@ export function buildProductComparisonRows(subject: SubjectSpec, item: Comparabl
       variantScope
     );
     push("חניה", null, variant.parking != null ? num(variant.parking as number) : null, variantScope);
-    push("מחסן", null, variant.storage === true ? "יש" : variant.storage === false ? "אין" : null, variantScope);
+    push("מחסן", null, storageLabel(variant.storage), variantScope);
   }
 
   // The project's general starting price is always shown as its own,

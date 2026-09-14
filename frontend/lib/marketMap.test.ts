@@ -16,9 +16,11 @@ import { describe, expect, it } from "vitest";
 import { PetahTikvaWorkspace } from "./api";
 import {
   countFamilyRelevantCompetitors,
+  deriveCompetitorHighlights,
   deriveSpecialAskingPoints,
   deriveSpecialCompetitorPoints,
   deriveSpecialSoldPoints,
+  deriveSpecialTypologyContextPoints,
   groupCompetitorPointsByCoordinate,
   isRelevantToFamily,
   MarketMapPoint,
@@ -252,6 +254,65 @@ describe("special-unit evidence field mapping (P0 display-integrity fix)", () =>
     expect(points[0].specialEvidenceType).toBe("duplex");
   });
 
+  // Final P0 data-visibility audit: source/geographyTier were never read for
+  // a special sold point -- every multi-city row's real geography_tier and
+  // source_name never reached the popup, which instead ALWAYS fell back to
+  // the hardcoded "רשות המסים (נתוני עסקאות)" label even for non-Petah-Tikva
+  // evidence from an entirely different source (e.g. "Yad1 / public
+  // transaction mirror"). Petah Tikva's own tax-archive rows genuinely carry
+  // neither field, so they correctly keep falling back to that label.
+  it("deriveSpecialSoldPoints reads source/geographyTier from the multi-city column names (source_name/geography_tier)", () => {
+    const workspace = {
+      special_unit_market_context: {
+        units: {
+          "1": {
+            sold_selected: [
+              {
+                address: "דרך הפארק 15",
+                deal_amount: "4050000",
+                deal_date: "2025-10-30",
+                internal_area: "159",
+                rooms: "5",
+                geography_tier: "CORE",
+                source_name: "Yad1 / public transaction mirror",
+              },
+            ],
+            sold_rejected: [],
+            market_indication: { lanes: {}, excluded: [] },
+          },
+        },
+      },
+      market_map_geocodes: { special_sold: { resolved: [{ record_id: "x", address: "דרך הפארק 15", ...RESOLVED_GEO, precision: "address", resolved_label: null }] } },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any;
+
+    const points = deriveSpecialSoldPoints(workspace, 1);
+    expect(points).toHaveLength(1);
+    expect(points[0].geographyTier).toBe("CORE");
+    expect(points[0].source).toBe("Yad1 / public transaction mirror");
+  });
+
+  it("deriveSpecialSoldPoints leaves source/geographyTier undefined for Petah Tikva's own tax-archive rows (no such field on file)", () => {
+    const workspace = {
+      special_unit_market_context: {
+        units: {
+          "38": {
+            sold_selected: [{ address: "כתובת פ״ת", price: "2720000", date: "2026-01-01", internal_area: "165", tax_property_type: "דירה בבית קומות" }],
+            sold_rejected: [],
+            market_indication: { lanes: {}, excluded: [] },
+          },
+        },
+      },
+      market_map_geocodes: { special_sold: { resolved: [{ record_id: "x", address: "כתובת פ״ת", ...RESOLVED_GEO, precision: "address", resolved_label: null }] } },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any;
+
+    const points = deriveSpecialSoldPoints(workspace, 38);
+    expect(points[0].source).toBeUndefined();
+    expect(points[0].geographyTier).toBeUndefined();
+    expect(points[0].specialEvidenceType).toBe("דירה בבית קומות"); // tax_property_type fallback
+  });
+
   it("deriveSpecialSoldPoints prefers the canonical comparable_area_sqm/comparable_price_ils over the raw record even when both are present", () => {
     const workspace = {
       special_unit_market_context: {
@@ -325,6 +386,68 @@ describe("special-unit evidence field mapping (P0 display-integrity fix)", () =>
     expect(points[0].internalArea).toBe(160);
     expect(points[0].specialEvidenceType).toBe("duplex");
     expect(points[0].specialNormalizedValueIls).toBe(5211000);
+  });
+
+  // Final P0 data-visibility audit: date/geographyTier/parkingCount/
+  // hasSecureRoom/source were never read for a special asking point at all,
+  // even though every multi-city listing carries real values for all five
+  // under observed_date/geography_tier/parking/mamad/source_name -- and
+  // mamad arrives as the literal string "True"/"False" (a Python str(bool)
+  // artifact), not a JSON boolean.
+  it("deriveSpecialAskingPoints reads date/geographyTier/parkingCount/hasSecureRoom/source from the multi-city column names, including mamad's string-boolean shape", () => {
+    const workspace = {
+      special_unit_market_context: {
+        units: {
+          "39": {
+            direct_comparables: [
+              {
+                address: "דרך היין 22",
+                price: "3780000",
+                internal_area: "160",
+                rooms: "5",
+                floor: "19",
+                product_type: "penthouse",
+                observed_date: "2026-09-11",
+                geography_tier: "CORE",
+                parking: "3",
+                mamad: "True",
+                source_name: "ad — דרך היין 22 פנטהאוז",
+              },
+            ],
+            broadened_comparables: [],
+            market_indication: { lanes: {}, excluded: [] },
+          },
+        },
+      },
+      market_map_geocodes: { special_asking: { resolved: [{ record_id: "x", address: "דרך היין 22", ...RESOLVED_GEO, precision: "address", resolved_label: null }] } },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any;
+
+    const points = deriveSpecialAskingPoints(workspace, 39);
+    expect(points).toHaveLength(1);
+    expect(points[0].date).toBe("2026-09-11");
+    expect(points[0].geographyTier).toBe("CORE");
+    expect(points[0].parkingCount).toBe(3);
+    expect(points[0].hasSecureRoom).toBe(true);
+    expect(points[0].source).toBe("ad — דרך היין 22 פנטהאוז");
+  });
+
+  it("deriveSpecialAskingPoints never confuses mamad: 'False' with mamad genuinely unknown", () => {
+    const base = {
+      address: "כתובת",
+      price: "1000000",
+      internal_area: "60",
+    };
+    const workspaceFor = (mamad: unknown) => ({
+      special_unit_market_context: {
+        units: { "39": { direct_comparables: [{ ...base, mamad }], broadened_comparables: [], market_indication: { lanes: {}, excluded: [] } } },
+      },
+      market_map_geocodes: { special_asking: { resolved: [{ record_id: "x", address: "כתובת", ...RESOLVED_GEO, precision: "address", resolved_label: null }] } },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    }) as any;
+
+    expect(deriveSpecialAskingPoints(workspaceFor("False"), 39)[0].hasSecureRoom).toBe(false);
+    expect(deriveSpecialAskingPoints(workspaceFor(undefined), 39)[0].hasSecureRoom).toBeUndefined();
   });
 
   it("invariant: a participating comparable whose lane calculation_method is area_normalized_median always has a visible internalArea (asking)", () => {
@@ -450,6 +573,11 @@ function workspaceWithCompetitorProject(project: Record<string, unknown>): Petah
       families: { standard_3r: { new_development_comparables: [] }, standard_5r: { new_development_comparables: [] } },
     },
     special_unit_market_context: { units: {} },
+    // No subject area on file -- rematchCompetitorPointForFamily's own
+    // familyTargetAreaSqm helper reads this (top-level, PtkFamily[]), then
+    // falls back to cheapest-among-eligible when it's absent, exactly
+    // preserving these tests' existing "cheapest wins" expectations.
+    families: [],
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } as any;
 }
@@ -487,6 +615,7 @@ describe("rematchCompetitorPointForFamily (P0 fix)", () => {
         families: { standard_3r: { new_development_comparables: [] }, standard_5r: { new_development_comparables: [] } },
       },
       special_unit_market_context: { units: {} },
+      families: [],
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } as any;
     const group = competitorPoint({
@@ -583,6 +712,7 @@ describe("rematchCompetitorPointForFamily -- family-aware group aggregate title 
         families: { standard_3r: { new_development_comparables: [] }, standard_5r: { new_development_comparables: [] } },
       },
       special_unit_market_context: { units: {} },
+      families: [],
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } as any;
   }
@@ -664,5 +794,177 @@ describe("countFamilyRelevantCompetitors (P0 fix -- same derivation as the map's
     // (2 relevant, 1 context) => 3 total relevant, never "4 map entries" or
     // the group's raw member count alone.
     expect(countFamilyRelevantCompetitors(points, workspace, "3R")).toBe(3);
+  });
+});
+
+// Final P0 data-visibility audit: deriveCompetitorHighlights previously read
+// storage/parking as object-only ({value: "..."}) -- silently dropping every
+// multi-city project's plain-boolean true -- and mamad as boolean-only
+// (=== true) -- silently dropping every Petah Tikva project's
+// {status, value: true} shape. Both datasets' already-collected facts must
+// show up regardless of which shape this particular project happens to use.
+describe("deriveCompetitorHighlights (P0 data-visibility fix)", () => {
+  it("shows parking/storage/mamad from Petah Tikva's own {status, value} object shape", () => {
+    const project = {
+      project_name: "פרויקט פתח תקווה",
+      room_range: null,
+      product_types: [],
+      parking: { status: "verified_project_level", value: "parking registered to every apartment" },
+      storage: { status: "verified_project_level", value: "private storage registered to every apartment" },
+      mamad: { status: "verified_project_level", value: true },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any;
+    const bullets = deriveCompetitorHighlights(project);
+    expect(bullets).toContain("חניה לכל דירה");
+    expect(bullets).toContain("מחסן פרטי לכל דירה");
+    expect(bullets).toContain("ממ״ד");
+  });
+
+  it("shows parking/storage/mamad/elevator from the multi-city register's plain-boolean shape", () => {
+    const project = {
+      project_name: "פרויקט רב-עירוני",
+      room_range: null,
+      product_types: [],
+      parking: true,
+      storage: true,
+      mamad: true,
+      elevator: true,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any;
+    const bullets = deriveCompetitorHighlights(project);
+    expect(bullets).toContain("חניה");
+    expect(bullets).toContain("מחסן פרטי");
+    expect(bullets).toContain("ממ״ד");
+    expect(bullets).toContain("מעלית");
+  });
+
+  it("never claims a feature that is explicitly false or genuinely absent, in either shape", () => {
+    const projectFalse = {
+      project_name: "A",
+      room_range: null,
+      product_types: [],
+      parking: false,
+      storage: { status: "verified_project_level", value: false },
+      mamad: null,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any;
+    const bullets = deriveCompetitorHighlights(projectFalse);
+    expect(bullets).not.toContain("חניה");
+    expect(bullets).not.toContain("מחסן פרטי");
+    expect(bullets).not.toContain("ממ״ד");
+  });
+
+  it("room-range bullet uses the same canonical roomRangeLabel (variant-fallback-aware), never a second reimplementation", () => {
+    const project = {
+      project_name: "TIDHAR-like",
+      room_range: null, // absent at project level
+      product_types: [],
+      known_unit_variants: [
+        { rooms: "3", price_ils: "1", internal_area_sqm: "1" },
+        { rooms: "5", price_ils: "1", internal_area_sqm: "1" },
+      ],
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any;
+    expect(deriveCompetitorHighlights(project)).toContain("3–5 חדרים");
+  });
+
+  it("shows a distinct building-height bullet from number_of_floors -- a real number, never confused with a specific unit's own floor", () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const projectNumeric = { project_name: "A", room_range: null, product_types: [], number_of_floors: 23 } as any;
+    expect(deriveCompetitorHighlights(projectNumeric)).toContain("בניין בן 23 קומות");
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const projectRange = { project_name: "B", room_range: null, product_types: [], number_of_floors: "7-15" } as any;
+    expect(deriveCompetitorHighlights(projectRange)).toContain("בניין בן 7-15 קומות");
+  });
+
+  it("omits the building-height bullet when number_of_floors is genuinely unknown", () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const project = { project_name: "A", room_range: null, product_types: [], number_of_floors: null } as any;
+    expect(deriveCompetitorHighlights(project).some((b) => b.includes("בניין"))).toBe(false);
+  });
+});
+
+// Regression test: "triplex map record lost by address-prefix mismatch"
+// (real Petah Tikva data) -- the geocode for "מנחם אוסישקין 22" (street
+// precision, resolved_label "אוסישקין, נווה מעוז, ...") never matched
+// TRIPLEX_USSISHKIN_22_ARCHIVE's own normalized.address ("אוסישקין 22, פתח
+// תקווה", missing the "מנחם" given-name prefix the geocode query used), so
+// this real record's point was silently dropped from the map. Fixed by
+// falling back to the geocoder's own already-verified canonical street name
+// (never a fuzzy/invented match) when the raw substring check fails.
+describe("deriveSpecialTypologyContextPoints (P0 fix -- address-prefix mismatch)", () => {
+  function workspaceWith(records: Partial<Record<string, unknown>>[]) {
+    return {
+      special_unit_market_context: { units: { "36": { first_researcher_context: records } } },
+      market_map_geocodes: {
+        special_typology_context: {
+          resolved: [
+            {
+              record_id: "special_typology_context:מנחם אוסישקין 22",
+              address: "מנחם אוסישקין 22",
+              lat: 32.0901831,
+              lng: 34.8892991,
+              coordinate_source: "geocoded_address",
+              precision: "street",
+              resolved_label: "אוסישקין, נווה מעוז, לב המושבה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4926040, ישראל",
+              verified: true,
+            },
+          ],
+        },
+      },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any;
+  }
+
+  it("matches a record whose own address drops the geocoded street's given-name prefix", () => {
+    const workspace = workspaceWith([
+      {
+        context_type: "triplex_context",
+        normalized: { address: "אוסישקין 22, פתח תקווה", rooms: 6, advertised_area_m2: 150, asking_price_ils: 2300000 },
+      },
+    ]);
+    const points = deriveSpecialTypologyContextPoints(workspace, 36);
+    expect(points).toHaveLength(1);
+    expect(points[0].address).toBe("מנחם אוסישקין 22");
+    expect(points[0].rooms).toBe(6);
+    expect(points[0].internalArea).toBe(150);
+    expect(points[0].priceIls).toBe(2300000);
+  });
+
+  it("still matches the exact/full-substring case directly, unchanged", () => {
+    const workspace = workspaceWith([{ context_type: "triplex_context", normalized: { address: "מנחם אוסישקין 22, פתח תקווה" } }]);
+    expect(deriveSpecialTypologyContextPoints(workspace, 36)).toHaveLength(1);
+  });
+
+  it("never matches a genuinely different street, even one sharing the house number", () => {
+    const workspace = workspaceWith([{ context_type: "triplex_context", normalized: { address: "מונטיפיורי 22, פתח תקווה" } }]);
+    expect(deriveSpecialTypologyContextPoints(workspace, 36)).toHaveLength(0);
+  });
+
+  it("never falls back for an address-precision geocode (house number leads resolved_label there, not the street) -- no invented match", () => {
+    const workspace = {
+      special_unit_market_context: {
+        units: { "36": { first_researcher_context: [{ context_type: "triplex_context", normalized: { address: "רופין 8, פתח תקווה" } }] } },
+      },
+      market_map_geocodes: {
+        special_typology_context: {
+          resolved: [
+            {
+              record_id: "x",
+              address: "ארתור רופין 8",
+              lat: 32.09,
+              lng: 34.87,
+              coordinate_source: "geocoded_address",
+              precision: "address",
+              resolved_label: "8, ארתור רופין, נווה מעוז, פתח תקווה, ישראל",
+              verified: true,
+            },
+          ],
+        },
+      },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any;
+    expect(deriveSpecialTypologyContextPoints(workspace, 36)).toHaveLength(0);
   });
 });

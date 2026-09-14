@@ -15,6 +15,8 @@ import {
   paymentTermsLabel,
   priceDisplayLabel,
   productTypesLabel,
+  registerPromotionLabels,
+  registerSpecificationLabels,
   roomRangeLabel,
   standoutFeatureLabel,
 } from "@/lib/competitorRegister";
@@ -63,6 +65,11 @@ export default function CompetitorRegister({ workspace, projectPhase, family }: 
     (p) => (groupFilter === "all" || p.display_classification === groupFilter) && matchesFamilyFilter(p, familyFilter)
   );
   const visibleProjects = showAllProjects ? projects : projects.slice(0, COLLAPSED_PROJECT_COUNT);
+  // The currently selected family's own target area -- see
+  // matchedVariantSummary's own docstring (task: "one canonical matched
+  // competitor variant for every selected comparison subject"). Computed
+  // once here, not per-card, since it's the same value for every card.
+  const subjectAreaSqm = workspace.families.find((f) => f.family === family)?.target.internal_area ?? null;
 
   const h3 = landscape.quantitative_headline["3R"];
   const h5 = landscape.quantitative_headline["5R"];
@@ -88,7 +95,13 @@ export default function CompetitorRegister({ workspace, projectPhase, family }: 
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {visibleProjects.map((project) => (
-            <CompetitorRegisterCard key={project.project_name} project={project} family={family} familyFilter={familyFilter} />
+            <CompetitorRegisterCard
+              key={project.project_name}
+              project={project}
+              family={family}
+              familyFilter={familyFilter}
+              subjectAreaSqm={subjectAreaSqm}
+            />
           ))}
         </div>
 
@@ -134,10 +147,12 @@ function CompetitorRegisterCard({
   project,
   family,
   familyFilter,
+  subjectAreaSqm,
 }: {
   project: CompetitorRegisterProject;
   family: "3R" | "5R";
   familyFilter: CompetitorFamilyFilter;
+  subjectAreaSqm: number | null;
 }) {
   const [showSource, setShowSource] = useState(false);
 
@@ -162,13 +177,15 @@ function CompetitorRegisterCard({
   // existing project-wide range (itself now variant-fallback-aware, see
   // lib/competitorRegister.ts) is exactly as informative and is kept.
   const familyRooms = family === "3R" ? 3 : 5;
-  const matched = matchedVariantSummary(project, familyRooms);
+  const matched = matchedVariantSummary(project, familyRooms, subjectAreaSqm);
   const multiModel = !matched && familyFilter === "all" ? multiModelSummaryLabel(project) : null;
 
   const rooms = matched ? `${num(matched.rooms)} חדרים` : roomRangeLabel(project);
   const area = matched ? matched.areaLabel : areaRangeLabel(project);
   const roomsArea = multiModel ?? ([rooms, area].filter(Boolean).join(" · ") || null);
   const price = matched ? matched.priceLabel : priceDisplayLabel(project);
+  const promotions = registerPromotionLabels(project);
+  const specification = registerSpecificationLabels(project);
 
   return (
     <div className="flex flex-col gap-2 rounded-md border border-hairline p-4">
@@ -206,6 +223,31 @@ function CompetitorRegisterCard({
               </li>
             ))}
           </ul>
+          {/* P0 fix ("surface existing promotions and specification_features
+              wherever competitor details are expanded") -- compact, real
+              stored facts only, never converted to a monetary value; an
+              empty array omits the whole section rather than showing it
+              blank. */}
+          {promotions.length > 0 && (
+            <div className="mt-2">
+              <div className="font-semibold text-ink-muted">הטבות / מבצעים:</div>
+              <ul className="list-inside list-disc">
+                {promotions.map((p, i) => (
+                  <li key={i}>{p}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {specification.length > 0 && (
+            <div className="mt-2">
+              <div className="font-semibold text-ink-muted">מפרט ומאפיינים:</div>
+              <ul className="list-inside list-disc">
+                {specification.map((s, i) => (
+                  <li key={i}>{s}</li>
+                ))}
+              </ul>
+            </div>
+          )}
           {((project.source_urls as string[] | undefined)?.length ?? 0) > 0 && (
             <div className="mt-2">
               <div className="font-semibold text-ink-muted">מקורות:</div>

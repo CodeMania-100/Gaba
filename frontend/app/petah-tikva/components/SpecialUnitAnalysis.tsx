@@ -4,6 +4,7 @@ import { useState } from "react";
 import { JsonRecord, PtkPriceListRow, SpecialUnitContext, SpecialUnitMarketContext } from "@/lib/api";
 import { displayFamilyLabel, CONFIDENCE_COLORS, CONFIDENCE_LABELS } from "@/lib/family";
 import { ils, num } from "@/lib/format";
+import { preferCanonicalNumber } from "@/lib/marketMap";
 import SpecialUnitCalculation from "./SpecialUnitCalculation";
 import FirstResearcherContext from "./FirstResearcherContext";
 
@@ -26,6 +27,17 @@ const EVIDENCE_CLASS_LABELS: Record<string, string> = {
   broadened_current_low_confidence_activity: "הצעה מורחבת (ביטחון נמוך)",
   size_relaxed_current: "הצעה נוכחית, טווח שטח מורחב",
   premium_context: "הקשר פרימיום",
+  // The multi-city dataset's own evidence-class vocabulary (its field is
+  // named validation_status, not evidence_class -- see MarketEvidenceCard's
+  // tolerant read below) -- additive only, never touches the PT values above.
+  DIRECT: "הצעה ישירה",
+  DIRECT_LISTING_PRODUCT_VERIFIED: "הצעה ישירה, מוצר מאומת",
+  DIRECT_SEARCH_RESULT_PRODUCT_VERIFIED: "תוצאת חיפוש ישירה, מוצר מאומת",
+  PRODUCT_BROADENED: "הצעה מורחבת (סוג מוצר)",
+  SIZE_RELAXED: "הצעה מורחבת (טווח שטח)",
+  CONTEXT_ONLY: "הקשר בלבד",
+  HISTORICAL_CONTEXT: "הקשר היסטורי",
+  CONFLICT: "קונפליקט נתונים",
 };
 
 const SEVERITY_COLORS: Record<string, string> = {
@@ -163,9 +175,21 @@ export default function SpecialUnitAnalysis({ row, context, marketContext }: Pro
   );
 }
 
+// P0 data-visibility fix: this card's own field names (evidence_class/type/
+// area_m2/price_ils/known_features) are Petah Tikva's own vocabulary --
+// every multi-city direct/broadened comparable uses a different sibling
+// name for the same fact (validation_status/product_type/internal_area/
+// price/qa_notes, all confirmed present on real records), which this card
+// never read at all, so every multi-city comparable rendered with nothing
+// but an address and (when present) a room count. Read both names,
+// preferring the PT one so its existing behavior is exactly unchanged.
 function MarketEvidenceCard({ record }: { record: JsonRecord }) {
   const [showSource, setShowSource] = useState(false);
-  const evidenceClass = record.evidence_class as string | undefined;
+  const evidenceClass = (record.evidence_class as string | undefined) ?? (record.validation_status as string | undefined);
+  const propertyType = (record.type as string | undefined) ?? (record.product_type as string | undefined);
+  const areaSqm = preferCanonicalNumber(record.area_m2 as number | undefined, record, "internal_area");
+  const priceIls = preferCanonicalNumber(record.price_ils as number | undefined, record, "price");
+  const knownFeatures = (record.known_features as string | undefined) ?? (record.qa_notes as string | undefined);
 
   return (
     <div className="rounded-md border border-slate-200 p-2 text-sm">
@@ -178,9 +202,9 @@ function MarketEvidenceCard({ record }: { record: JsonRecord }) {
         )}
       </div>
       <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-600">
-        {record.type != null && (
+        {propertyType != null && (
           <span>
-            סוג: <span className="font-medium text-slate-800">{String(record.type)}</span>
+            סוג: <span className="font-medium text-slate-800">{propertyType}</span>
           </span>
         )}
         {record.rooms != null && (
@@ -188,23 +212,23 @@ function MarketEvidenceCard({ record }: { record: JsonRecord }) {
             חדרים: <span className="font-medium text-slate-800">{num(record.rooms as number)}</span>
           </span>
         )}
-        {record.area_m2 != null && (
+        {areaSqm != null && (
           <span>
-            שטח: <span className="font-medium text-slate-800">{num(record.area_m2 as number)} מ״ר</span>
+            שטח: <span className="font-medium text-slate-800">{num(areaSqm)} מ״ר</span>
           </span>
         )}
-        {record.floor != null && (
+        {record.floor != null && record.floor !== "" && (
           <span>
             קומה: <span className="font-medium text-slate-800">{String(record.floor)}</span>
           </span>
         )}
-        {record.price_ils != null && (
+        {priceIls != null && (
           <span>
-            מחיר: <span className="font-medium text-slate-800">{ils(record.price_ils as number)}</span>
+            מחיר: <span className="font-medium text-slate-800">{ils(priceIls)}</span>
           </span>
         )}
       </div>
-      {record.known_features != null && <p className="mt-1 text-xs text-slate-500">{String(record.known_features)}</p>}
+      {knownFeatures != null && <p className="mt-1 text-xs text-slate-500">{knownFeatures}</p>}
 
       {record.source_url != null && (
         <button onClick={() => setShowSource((v) => !v)} className="mt-1 text-[11px] text-slate-400 underline hover:text-slate-600">
@@ -252,7 +276,17 @@ function SoldContextTable({ selected, rejected, additions }: { selected: JsonRec
                 </td>
                 <td className="px-2 py-1">{s.rooms != null ? num(s.rooms as number) : "—"}</td>
                 <td className="px-2 py-1">{s.internal_area != null ? `${num(s.internal_area as number)} מ״ר` : "—"}</td>
-                <td className="px-2 py-1">{s.price != null ? ils(s.price as number) : "—"}</td>
+                {/* P0 data-visibility fix: multi-city sold rows carry no
+                    "price" field at all -- the real figure is under
+                    deal_amount (see lib/marketMap.ts's own deriveSpecialSoldPoints,
+                    which already reads both) -- previously every multi-city
+                    special sale showed "—" here despite a real, populated price. */}
+                <td className="px-2 py-1">
+                  {(() => {
+                    const price = preferCanonicalNumber(undefined, s as JsonRecord, "price", "deal_amount");
+                    return price != null ? ils(price) : "—";
+                  })()}
+                </td>
                 <td className="px-2 py-1 text-xs">
                   {excluded ? (
                     <span className="text-red-700">לא נכלל — קונפליקט מחיר</span>
@@ -265,16 +299,24 @@ function SoldContextTable({ selected, rejected, additions }: { selected: JsonRec
               </tr>
             );
           })}
-          {rejected.map((r, i) => (
-            <tr key={`rej-${i}`} className="border-t border-slate-100 opacity-50">
-              <td className="px-2 py-1">{String(r.address ?? "—")}</td>
-              <td className="px-2 py-1" colSpan={2}>
-                {String(r.reason)}
-              </td>
-              <td className="px-2 py-1" />
-              <td className="px-2 py-1 text-xs text-red-700">הוסר</td>
-            </tr>
-          ))}
+          {rejected.map((r, i) => {
+            // P0 data-visibility fix: multi-city sold_rejected rows (raw CSV
+            // rows) carry no "reason" key at all -- String(undefined) was
+            // literally rendering the text "undefined" to the user. Their
+            // real explanation lives in qa_notes; a project-level fact is
+            // shown rather than nothing when even that is absent.
+            const reason = (r.reason as string | undefined) ?? (r.qa_notes as string | undefined) ?? "סיבה לא פורסמה";
+            return (
+              <tr key={`rej-${i}`} className="border-t border-slate-100 opacity-50">
+                <td className="px-2 py-1">{String(r.address ?? "—")}</td>
+                <td className="px-2 py-1" colSpan={2}>
+                  {reason}
+                </td>
+                <td className="px-2 py-1" />
+                <td className="px-2 py-1 text-xs text-red-700">הוסר</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>

@@ -20,7 +20,7 @@ import {
   SpecialLaneName,
   triplexEvidenceStory,
 } from "@/lib/specialUnitDecision";
-import { SPECIAL_UNIT_CATEGORY_LABELS } from "@/lib/marketMap";
+import { firstRawString, SPECIAL_UNIT_CATEGORY_LABELS } from "@/lib/marketMap";
 import { highConfidenceListingLink, historicalDuplexContext, triplexContextCards } from "@/lib/researchContext";
 import PriceAxisChart from "./PriceAxisChart";
 import EvidenceFunnel from "./EvidenceFunnel";
@@ -257,7 +257,17 @@ export function HighlightedComparableCard({
   highlighted: NonNullable<ReturnType<typeof deriveHighlightedComparable>>;
 }) {
   const c = highlighted.comparable;
-  const rawType = (c.raw?.tax_property_type as string | undefined) ?? (c.raw?.floor_configuration as string | undefined) ?? null;
+  // P0 data-visibility fix: a comparable's own property-type text lives
+  // under different keys depending on which dataset it came from -- Petah
+  // Tikva's tax-archive records use tax_property_type, its asking records
+  // use type, and every multi-city record (sold and asking alike) uses
+  // product_type. Reading only tax_property_type/floor_configuration (a
+  // different concept, kept as a last-resort fallback) left this row
+  // showing "לא ידוע" for every multi-city comparable and most Petah Tikva
+  // asking ones, even though the real value was sitting right there under a
+  // sibling key -- the exact tolerant-reader pattern already proven correct
+  // for map points (see deriveSpecialSoldPoints' own firstRawString use).
+  const rawType = firstRawString(c.raw, "tax_property_type", "product_type", "type", "floor_configuration") ?? null;
   const areaDeltaLabel = `${highlighted.areaDeltaSqm > 0 ? "+" : ""}${num(highlighted.areaDeltaSqm, 1)} מ״ר`;
 
   return (

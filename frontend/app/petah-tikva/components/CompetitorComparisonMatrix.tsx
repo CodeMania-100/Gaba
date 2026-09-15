@@ -1,7 +1,7 @@
 "use client";
 
 import { PetahTikvaWorkspace } from "@/lib/api";
-import { deriveCompetitorMatrix } from "@/lib/executiveVisuals";
+import { deriveCompetitorMatrix, filterMeaningfulMatrixRows, NOT_PUBLISHED } from "@/lib/executiveVisuals";
 import { PROJECT_PHASE_LABELS, ProjectPhase } from "@/lib/marketingStrategy";
 
 interface Props {
@@ -28,36 +28,54 @@ export default function CompetitorComparisonMatrix({ workspace, projectPhase, fa
   // deriveDefaultMatrixCompetitors) -- no more Petah-Tikva-only hardcoded
   // name list that ignored which family was selected.
   const matrix = deriveCompetitorMatrix(workspace, family, PROJECT_PHASE_LABELS[projectPhase]);
-  const rows = rowKeys ? matrix.rows.filter((r) => rowKeys.includes(r.key)) : matrix.rows;
+  const keyFiltered = rowKeys ? matrix.rows.filter((r) => rowKeys.includes(r.key)) : matrix.rows;
+  // UI cleanup: a row nobody actually published anything for (every
+  // competitor column reads "לא פורסם") is dropped, and once nothing
+  // meaningful is left the whole section is hidden rather than showing a
+  // large, mostly-empty table -- never a change to the underlying values.
+  const rows = filterMeaningfulMatrixRows(keyFiltered);
   if (rows.length === 0) return null;
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-2">
       <h3 className="font-heading text-base font-semibold text-ink">{title ?? "מיקום מול פרויקטים מתחרים"}</h3>
 
       <div className="overflow-x-auto rounded-md border border-hairline">
-        <table className="w-full min-w-[640px] text-sm">
+        <table className="w-full min-w-[560px] table-fixed text-sm">
           <thead className="bg-canvas">
             <tr>
-              <th className="px-3 py-2 text-start text-xs font-medium text-ink-muted"></th>
+              <th className="w-28 px-3 py-2 text-start text-xs font-medium text-ink-muted"></th>
               {matrix.columns.map((col, i) => (
-                <th key={col} className={`px-3 py-2 text-start text-xs font-semibold ${i === 0 ? "text-ink" : "text-ink-muted"}`}>
+                <th key={col} className={`break-words px-3 py-2 text-center text-xs font-semibold ${i === 0 ? "text-ink" : "text-ink-muted"}`}>
                   {col}
                 </th>
               ))}
             </tr>
           </thead>
           <tbody>
-            {rows.map((row) => (
-              <tr key={row.key} className="border-t border-hairline">
-                <td className="px-3 py-2 text-xs text-ink-muted">{row.label}</td>
-                {row.values.map((v, i) => (
-                  <td key={i} className={`px-3 py-2 text-xs ${i === 0 ? "font-semibold text-ink" : "text-ink-muted"} ${v === "לא פורסם" ? "text-ink-muted/50" : ""}`}>
-                    {v}
-                  </td>
-                ))}
-              </tr>
-            ))}
+            {rows.map((row) => {
+              // The commercial-terms row alone carries genuinely long prose
+              // (financing/promotion digests) -- allowed to wrap and read
+              // start-aligned like a sentence, while every other (short,
+              // number/label-shaped) row stays centered so values line up
+              // in a clean column instead of hugging alternating edges.
+              const isProseRow = row.key === "commercial_terms";
+              return (
+                <tr key={row.key} className="border-t border-hairline">
+                  <td className="px-3 py-1.5 align-middle text-xs text-ink-muted">{row.label}</td>
+                  {row.values.map((v, i) => (
+                    <td
+                      key={i}
+                      className={`break-words px-3 py-1.5 align-middle text-xs ${isProseRow ? "text-start" : "text-center"} ${
+                        i === 0 ? "font-semibold text-ink" : "text-ink-muted"
+                      } ${v === NOT_PUBLISHED ? "text-ink-muted/50" : ""}`}
+                    >
+                      {v}
+                    </td>
+                  ))}
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

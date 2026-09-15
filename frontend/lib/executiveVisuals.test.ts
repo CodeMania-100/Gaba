@@ -1,5 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { deriveCompetitorMatrix, deriveCompletedSalesOverview, deriveDefaultMatrixCompetitors } from "./executiveVisuals";
+import {
+  CompetitorMatrixRow,
+  deriveCompetitorMatrix,
+  deriveCompletedSalesOverview,
+  deriveDefaultMatrixCompetitors,
+  filterMeaningfulMatrixRows,
+  NOT_PUBLISHED,
+} from "./executiveVisuals";
 import { PetahTikvaWorkspace } from "./api";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -266,5 +273,39 @@ describe("deriveDefaultMatrixCompetitors / deriveCompetitorMatrix (P0 fix)", () 
     const priceRow = matrix.rows.find((r) => r.key === "price")!;
     expect(priceRow.values).toContain("לא פורסם");
     expect(priceRow.values.join(" ")).not.toContain("3,300,000");
+  });
+});
+
+describe("filterMeaningfulMatrixRows (UI cleanup: hide empty comparison rows/section)", () => {
+  function row(key: string, values: string[]): CompetitorMatrixRow {
+    return { key, label: key, values };
+  }
+
+  it("drops a row where every competitor column is unpublished, even when our own column has a value", () => {
+    const rows = [row("delivery", [NOT_PUBLISHED, NOT_PUBLISHED, NOT_PUBLISHED])];
+    expect(filterMeaningfulMatrixRows(rows)).toHaveLength(0);
+  });
+
+  it("keeps a row when at least one competitor column has a real value", () => {
+    const rows = [row("delivery", [NOT_PUBLISHED, "2029", NOT_PUBLISHED])];
+    const kept = filterMeaningfulMatrixRows(rows);
+    expect(kept).toHaveLength(1);
+    expect(kept[0].key).toBe("delivery");
+  });
+
+  it("never drops a row based on our own column alone -- only competitor columns count", () => {
+    const rows = [row("area", ["71 מ״ר", NOT_PUBLISHED, NOT_PUBLISHED])];
+    expect(filterMeaningfulMatrixRows(rows)).toHaveLength(0);
+  });
+
+  it("filtering every row to nothing is exactly the signal callers use to hide the whole section", () => {
+    const rows = [row("delivery", [NOT_PUBLISHED, NOT_PUBLISHED]), row("payment", [NOT_PUBLISHED, NOT_PUBLISHED])];
+    expect(filterMeaningfulMatrixRows(rows)).toEqual([]);
+  });
+
+  it("never mutates row values -- only selects which rows pass through", () => {
+    const original = row("area", ["71 מ״ר", "65 מ״ר"]);
+    const [kept] = filterMeaningfulMatrixRows([original]);
+    expect(kept).toBe(original);
   });
 });

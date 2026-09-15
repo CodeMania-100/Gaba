@@ -500,7 +500,19 @@ export interface CompetitorMatrix {
   rows: CompetitorMatrixRow[];
 }
 
-const NOT_PUBLISHED = "לא פורסם";
+export const NOT_PUBLISHED = "לא פורסם";
+
+/** Display-only row filter (UI cleanup task: "השוואת מאפיינים מול פרויקטים
+ * מתחרים should only render when it contains meaningful comparison data") --
+ * drops a row when every competitor column (values[1:]; values[0] is always
+ * our own "שלנו" column) is unpublished. Never touches row content/values
+ * themselves, never invents or hides a real value -- a row with at least one
+ * real competitor figure is always kept, even if our own column or other
+ * competitors show "לא פורסם". Callers combine this with rows.length === 0
+ * to hide the whole section once nothing meaningful is left. */
+export function filterMeaningfulMatrixRows(rows: CompetitorMatrixRow[]): CompetitorMatrixRow[] {
+  return rows.filter((row) => row.values.slice(1).some((v) => v !== NOT_PUBLISHED));
+}
 
 const FAMILY_ROOMS: Record<"3R" | "5R", number> = { "3R": 3, "5R": 5 };
 

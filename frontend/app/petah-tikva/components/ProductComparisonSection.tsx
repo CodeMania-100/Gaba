@@ -20,6 +20,8 @@ import { deriveMatchStateRows, MATCH_STATE_COLORS, MATCH_STATE_LABELS } from "@/
 import { ROOM_FAMILY_LABELS } from "@/lib/family";
 import { translateResearchNote } from "@/lib/researchNoteTranslations";
 import { ProjectPhase } from "@/lib/marketingStrategy";
+import { deriveCommercialOfferSummary, findCommercialProject } from "@/lib/commercialTerms";
+import { CompetitorInsight, CompetitorInsightInput, deriveCompetitorInsights } from "@/lib/competitorInsights";
 import CompetitorComparisonMatrix from "./CompetitorComparisonMatrix";
 
 interface Props {
@@ -45,6 +47,18 @@ interface Props {
 }
 
 const PRIMARY_ROW_COUNT = 6;
+
+// UI cleanup only -- purely a display-weight choice, never a semantic one:
+// buildProductComparisonRows/deriveMatchState already decide what a cell's
+// text IS ("לא פורסם" vs a real value); this only decides how heavily that
+// text is rendered, so a card with several unpublished competitor fields
+// doesn't read as a wall of bold, alarming text. The exact same placeholder
+// strings lib/competitorMatchStates.ts already treats as "unknown".
+const PLACEHOLDER_VALUES = new Set(["—", "לא פורסם", "לא הוזן", "לא ידוע"]);
+
+function valueCellTone(value: string): string {
+  return PLACEHOLDER_VALUES.has(value.trim()) ? "font-normal text-ink-muted/60" : "font-medium text-ink";
+}
 
 export default function ProductComparisonSection({
   workspace,
@@ -97,6 +111,23 @@ export default function ProductComparisonSection({
     orientation: null,
   };
 
+  // "תובנות שיווקיות מול המתחרים" -- reads the SAME already-vetted
+  // comparables list (pickStrongestComparables / the pinned competitor)
+  // rendered as detailed cards below; never a separate competitor
+  // selection. Requires workspace only for the commercial-terms enrichment
+  // lookup (findCommercialProject) -- price-position/legacy-payment/legacy-
+  // delivery insights don't need it, but this whole strip is gated on
+  // workspace being present anyway (matching the pattern the comparison
+  // matrix below already uses) to keep the derivation simple.
+  const insightInputs: CompetitorInsightInput[] = workspace
+    ? comparables.map((item) => {
+        const competitorName = comparableName(item);
+        const commercialProject = findCommercialProject(workspace, competitorName);
+        return { competitorName, item, commercialSummary: deriveCommercialOfferSummary(commercialProject) };
+      })
+    : [];
+  const insights: CompetitorInsight[] = workspace ? deriveCompetitorInsights(family, insightInputs) : [];
+
   return (
     <section className="rounded-lg border border-hairline bg-surface p-5">
       <div className="mb-1">
@@ -106,10 +137,18 @@ export default function ProductComparisonSection({
         </p>
       </div>
 
+      {insights.length > 0 && <CompetitorInsightsStrip insights={insights} />}
+
       {comparables.length === 0 ? (
         <p className="mt-3 text-sm text-ink-muted">אין כרגע נתוני השוואת מוצר עשירים עבור משפחה זו.</p>
       ) : (
-        <div className="mt-3 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        // items-start (rather than grid's default stretch): cards size to
+        // their own content instead of being forced to the tallest card's
+        // height, so a card with fewer known rows doesn't end up with a
+        // large blank block at the bottom -- their headers still line up
+        // across the row, since that's the row's own top edge, independent
+        // of stretch mode.
+        <div className="mt-3 grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {comparables.map((item, i) => {
             const rows = buildProductComparisonRows(subject, item);
             const expanded = expandedIndex === i;
@@ -127,7 +166,7 @@ export default function ProductComparisonSection({
                 ref={isPinned ? pinnedCardRef : undefined}
                 className={`flex flex-col gap-2 rounded-md border p-3 ${isPinned ? "border-accent ring-1 ring-accent" : "border-hairline"}`}
               >
-                <div className="flex items-start justify-between gap-2">
+                <div className="flex items-center justify-between gap-2">
                   <div>
                     <div className="font-semibold text-ink">{comparableName(item)}</div>
                     {item.kind === "new_development" && <div className="text-xs text-ink-muted">יזם: {developer ?? "לא פורסם"}</div>}
@@ -154,21 +193,21 @@ export default function ProductComparisonSection({
                     <thead>
                       <tr className="text-[11px] font-normal text-ink-muted/70">
                         <th className="w-[28%] text-start font-normal"></th>
-                        <th className="w-[27%] text-end font-normal">שלנו</th>
-                        <th className="w-[27%] text-end font-normal">המתחרה</th>
+                        <th className="w-[27%] text-center font-normal">שלנו</th>
+                        <th className="w-[27%] text-center font-normal">המתחרה</th>
                         <th className="w-[18%] text-end font-normal"></th>
                       </tr>
                     </thead>
                     <tbody>
                       {deriveMatchStateRows(visibleRows).map((row) => (
                         <tr key={row.label} className="border-t border-hairline">
-                          <td className="py-1 text-ink-muted">{row.label}</td>
-                          <td className="py-1 text-end font-medium text-ink">{row.subjectValue}</td>
-                          <td className="py-1 text-end font-medium text-ink">
+                          <td className="py-1.5 align-middle text-ink-muted">{row.label}</td>
+                          <td className={`break-words py-1.5 text-center align-middle ${valueCellTone(row.subjectValue)}`}>{row.subjectValue}</td>
+                          <td className={`break-words py-1.5 text-center align-middle ${valueCellTone(row.competitorValue)}`}>
                             {row.competitorValue}
                             {row.scope && <span className="ms-1 text-[10px] font-normal text-ink-muted/70">({factScopeLabel(row.scope)})</span>}
                           </td>
-                          <td className="py-1 text-end">
+                          <td className="py-1.5 text-end align-middle">
                             {row.matchState && (
                               <span className={`rounded px-1.5 py-0.5 text-[10px] font-semibold ${MATCH_STATE_COLORS[row.matchState]}`}>
                                 {MATCH_STATE_LABELS[row.matchState]}
@@ -384,3 +423,28 @@ const MATCHED_OBSERVATION_LABELS: Record<string, string> = {
   parking: "חניה",
   storage: "מחסן",
 };
+
+/** "תובנות שיווקיות מול המתחרים" -- a compact strip, deliberately smaller
+ * and less detailed than the cards below it: a badge, the competitor name,
+ * one sentence, and an optional short qualifier -- never a raw-data dump.
+ * The section itself is only ever rendered by the caller when insights.
+ * length > 0 (see deriveCompetitorInsights's own "hide when nothing
+ * meaningful" contract), so there is no empty/placeholder state to handle
+ * here. */
+function CompetitorInsightsStrip({ insights }: { insights: CompetitorInsight[] }) {
+  return (
+    <div className="mt-3">
+      <h3 className="text-xs font-semibold text-ink-muted">תובנות שיווקיות מול המתחרים</h3>
+      <div className="mt-1.5 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+        {insights.map((insight, i) => (
+          <div key={i} className="rounded-md border border-hairline bg-canvas p-3">
+            <span className="inline-block rounded bg-accent/15 px-1.5 py-0.5 text-[10px] font-semibold text-accent">{insight.badgeLabel}</span>
+            <div className="mt-1.5 text-xs font-medium text-ink-muted">{insight.competitorName}</div>
+            <p className="mt-0.5 text-sm text-ink">{insight.sentence}</p>
+            {insight.qualifier && <p className="mt-1 text-[11px] text-ink-muted">{insight.qualifier}</p>}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}

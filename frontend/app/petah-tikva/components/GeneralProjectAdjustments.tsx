@@ -3,8 +3,10 @@
 import { useState } from "react";
 import { PtkPriceListRow } from "@/lib/api";
 import {
+  clampTargetSellThroughPct,
   computeRevenueSummary,
   MarketingStrategyState,
+  projectTargetSellThroughPctFor,
   PROJECT_ADJUSTMENT_LABEL,
   SALES_PROGRESS_ADJUSTMENT_LABEL,
   sellThroughGapPoints,
@@ -31,8 +33,12 @@ interface Props {
 export default function GeneralProjectAdjustments({ rows, state, onChange }: Props) {
   const [open, setOpen] = useState(false);
   const revenue = computeRevenueSummary(rows, state);
-  const projectStatus = sellThroughStatus(state.actualSellThroughPct, state.targetSellThroughPct);
-  const gap = sellThroughGapPoints(state.actualSellThroughPct, state.targetSellThroughPct);
+  // Resolved for the currently selected project phase only -- switching
+  // phase loads that phase's own target, never carries another phase's
+  // value across (see projectTargetSellThroughPctFor's own contract).
+  const currentPhaseTarget = projectTargetSellThroughPctFor(state);
+  const projectStatus = sellThroughStatus(state.actualSellThroughPct, currentPhaseTarget);
+  const gap = sellThroughGapPoints(state.actualSellThroughPct, currentPhaseTarget);
 
   const anyActive = state.salesProgressAdjustment.adjustment_pct !== 0 || state.projectAdjustment.adjustment_pct !== 0;
 
@@ -64,14 +70,24 @@ export default function GeneralProjectAdjustments({ rows, state, onChange }: Pro
                 <span className="text-ink-muted">%</span>
               </label>
               <label className="flex items-center gap-1">
-                <span className="text-ink-muted">יעד קצב מכירות</span>
+                <span className="text-ink-muted">יעד מכירות מצטבר עד שלב זה</span>
                 <input
                   type="number"
                   step={1}
                   min={0}
                   max={100}
-                  value={state.targetSellThroughPct}
-                  onChange={(e) => onChange((prev) => ({ ...prev, targetSellThroughPct: Number(e.target.value) || 0 }))}
+                  value={currentPhaseTarget ?? ""}
+                  onChange={(e) => {
+                    const raw = e.target.value;
+                    const value = raw.trim() === "" ? null : clampTargetSellThroughPct(Number(raw));
+                    // Writes only the CURRENTLY selected phase's entry --
+                    // every other phase's stored target is untouched.
+                    onChange((prev) => ({
+                      ...prev,
+                      targetSellThroughPctByPhase: { ...prev.targetSellThroughPctByPhase, [prev.projectPhase]: value },
+                    }));
+                  }}
+                  placeholder="—"
                   className="w-14 rounded-md border border-hairline px-1.5 py-1"
                 />
                 <span className="text-ink-muted">%</span>

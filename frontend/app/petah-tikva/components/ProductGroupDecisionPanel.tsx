@@ -14,6 +14,7 @@ import {
   MarketingStrategyState,
   PRICE_POSITION_LABELS,
   PricePositionKind,
+  PROJECT_PHASE_LABELS,
   ProductGroupDecisionRow,
   StrategyAdjustment,
 } from "@/lib/marketingStrategy";
@@ -48,12 +49,37 @@ export default function ProductGroupDecisionPanel({ rows, state, group, onChange
   const [showUnits, setShowUnits] = useState(false);
   const groupRows = rows.filter((r) => productGroupKeyOf(r) === group.key);
   const impact = deriveProductGroupStrategyImpact(rows, state, group.key);
-  const hasAnyInput = group.soldUnits != null || group.targetSellThroughPct != null || group.adjustment.adjustment_pct !== 0;
+  // "Any data worth offering a clear button for" must look across EVERY
+  // phase's stored target, not just the currently-displayed one -- clearing
+  // the group wipes every phase's target too (see clearGroup), so the
+  // button must appear whenever any of them holds real data.
+  const rawGroupInput = state.productGroupSales[group.key];
+  const hasAnyTargetAnyPhase = rawGroupInput ? Object.values(rawGroupInput.targetSellThroughPctByPhase).some((v) => v != null) : false;
+  const hasAnyInput = group.soldUnits != null || hasAnyTargetAnyPhase || group.adjustment.adjustment_pct !== 0;
 
-  function updateGroup(patch: Partial<{ soldUnits: number | null; targetSellThroughPct: number | null; adjustment: StrategyAdjustment }>) {
+  function updateGroup(patch: Partial<{ soldUnits: number | null; adjustment: StrategyAdjustment }>) {
     onChange((prev) => {
       const current = prev.productGroupSales[group.key] ?? emptyProductGroupSalesInput();
       return { ...prev, productGroupSales: { ...prev.productGroupSales, [group.key]: { ...current, ...patch } } };
+    });
+  }
+
+  /** Writes ONLY the currently selected project phase's own target entry --
+   * every other phase's stored target for this group is left untouched
+   * (task: "update only: selected group + current project phase"). */
+  function updateGroupTargetForCurrentPhase(value: number | null) {
+    onChange((prev) => {
+      const current = prev.productGroupSales[group.key] ?? emptyProductGroupSalesInput();
+      return {
+        ...prev,
+        productGroupSales: {
+          ...prev.productGroupSales,
+          [group.key]: {
+            ...current,
+            targetSellThroughPctByPhase: { ...current.targetSellThroughPctByPhase, [prev.projectPhase]: value },
+          },
+        },
+      };
     });
   }
 
@@ -145,7 +171,7 @@ export default function ProductGroupDecisionPanel({ rows, state, group, onChange
             />
           </label>
           <label className="flex items-center gap-1.5">
-            <span className="text-ink-muted">יעד מכירות לשלב הנוכחי (%)</span>
+            <span className="text-ink-muted">יעד מכירות מצטבר עד {PROJECT_PHASE_LABELS[state.projectPhase]} (%)</span>
             <input
               type="number"
               step={1}
@@ -154,7 +180,7 @@ export default function ProductGroupDecisionPanel({ rows, state, group, onChange
               value={group.targetSellThroughPct ?? ""}
               onChange={(e) => {
                 const raw = e.target.value;
-                updateGroup({ targetSellThroughPct: raw.trim() === "" ? null : clampTargetSellThroughPct(Number(raw)) });
+                updateGroupTargetForCurrentPhase(raw.trim() === "" ? null : clampTargetSellThroughPct(Number(raw)));
               }}
               placeholder="—"
               className="w-14 rounded-md border border-hairline px-1.5 py-1"
@@ -162,6 +188,7 @@ export default function ProductGroupDecisionPanel({ rows, state, group, onChange
           </label>
         </div>
         <p className="mt-1 text-[11px] text-ink-muted/70">איזה אחוז מהדירות מסוג זה ציפינו למכור עד שלב זה.</p>
+        <p className="text-[11px] text-ink-muted/70">היעד נשמר בנפרד לכל אבן דרך בפרויקט.</p>
 
         {/* Human-readable recap -- only once real data exists; never a
             fabricated sentence over missing data (task item 5). */}

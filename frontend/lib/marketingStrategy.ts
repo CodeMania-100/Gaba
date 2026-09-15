@@ -69,13 +69,22 @@ export interface MarketingStrategyState {
   internalProjectSales: InternalProjectSaleRecord[];
   // Marketing-entered demo input (a plain percentage, not derived from
   // soldUnitNumbers) -- 0 = not supplied. Purely descriptive, compared
-  // against targetSellThroughPct below to produce the read-only gap; never
-  // feeds salesProgressAdjustment automatically.
+  // against targetSellThroughPctByPhase below to produce the read-only gap;
+  // never feeds salesProgressAdjustment automatically. Stays one current/
+  // global figure (never keyed per phase) -- actual sell-through is a fact
+  // about today, not a per-milestone benchmark.
   actualSellThroughPct: number;
-  // Marketing-entered benchmark, not computed. 0 = not supplied. Purely a
-  // display comparison against actualSellThroughPct -- never feeds
-  // salesProgressAdjustment automatically.
-  targetSellThroughPct: number;
+  // Marketing-entered benchmark: the CUMULATIVE sell-through target for
+  // reaching a given project phase/milestone (e.g. presale 10%, launch 25%,
+  // regular_sales 60%, final_inventory 90% -- illustrative only, never
+  // hard-coded; every value here is whatever Marketing actually typed in).
+  // Keyed per phase -- never a single shared value -- so switching
+  // projectPhase never silently carries one milestone's target into
+  // another: a phase with no entry yet is unset (null), never inferred from
+  // another phase and never defaulted to 0%. Purely a display comparison
+  // against actualSellThroughPct -- never feeds salesProgressAdjustment
+  // automatically. See projectTargetSellThroughPctFor.
+  targetSellThroughPctByPhase: Record<ProjectPhase, number | null>;
   // Explicit, Marketing-entered percentage tied to the CURRENTLY SELECTED
   // project phase -- keyed per phase (never a single shared value) so
   // switching projectPhase never silently carries one stage's adjustment
@@ -110,7 +119,12 @@ export function defaultMarketingStrategyState(): MarketingStrategyState {
     soldUnitNumbers: new Set(),
     internalProjectSales: [],
     actualSellThroughPct: 0,
-    targetSellThroughPct: 0,
+    targetSellThroughPctByPhase: {
+      presale: null,
+      launch: null,
+      regular_sales: null,
+      final_inventory: null,
+    },
     phaseAdjustments: {
       presale: { ...EMPTY_ADJUSTMENT },
       launch: { ...EMPTY_ADJUSTMENT },
@@ -164,6 +178,17 @@ export function phaseAdjustmentFor(state: MarketingStrategyState, phase: Project
   return state.phaseAdjustments[phase] ?? EMPTY_ADJUSTMENT;
 }
 
+/** The project-wide cumulative sell-through TARGET entered for one specific
+ * phase (defaults to the currently-selected state.projectPhase) -- never a
+ * cross-phase fallback. A phase with no entry yet is null (unset), never
+ * inherited from another phase and never coerced to 0%. Mirrors
+ * phaseAdjustmentFor's own contract exactly, for the same reason: switching
+ * projectPhase must only ever change WHICH phase's own value is read, never
+ * invent or carry one. */
+export function projectTargetSellThroughPctFor(state: MarketingStrategyState, phase: ProjectPhase = state.projectPhase): number | null {
+  return state.targetSellThroughPctByPhase[phase] ?? null;
+}
+
 /** Sum of whichever explicit manual adjustments apply to this unit (project
  * + its family bucket + the unit itself). Each level defaults to 0% when
  * unset -- never an invented nonzero default. This is the "manual_adjustment_pct"
@@ -199,11 +224,18 @@ export function manualAdjustmentPct(state: MarketingStrategyState, row: PtkPrice
 export interface ProductGroupSalesInput {
   // null = "not entered" (unknown) -- never coerced to 0. An integer,
   // 0 <= soldUnits <= that group's real inventory count (see
-  // clampSoldUnits).
+  // clampSoldUnits). One current/global cumulative actual value -- never
+  // keyed per phase (unlike the target below): "how many are sold" is a
+  // fact about today, regardless of which project phase is selected.
   soldUnits: number | null;
-  // 0-100, optional company input: the target for the CURRENT project
-  // stage (state.projectPhase) -- never an invented launch-date-based pace.
-  targetSellThroughPct: number | null;
+  // 0-100, optional company input: the CUMULATIVE sell-through target for
+  // reaching a given project phase/milestone (e.g. presale 10%, launch 25%,
+  // regular_sales 60%, final_inventory 90% -- illustrative only, never
+  // hard-coded). Keyed per phase so switching state.projectPhase never
+  // silently carries one milestone's target into another -- a phase with no
+  // entry yet is unset (null), never inferred from another phase and never
+  // coerced to 0%. See productGroupTargetSellThroughPctFor.
+  targetSellThroughPctByPhase: Partial<Record<ProjectPhase, number | null>>;
   // The one explicit, Marketing-entered price lever this section
   // contributes -- reuses the exact same {adjustment_pct, rationale} shape
   // and control already used by every other strategy-adjustment level.
@@ -213,11 +245,22 @@ export interface ProductGroupSalesInput {
 export type ProductGroupSales = Record<string, ProductGroupSalesInput>;
 
 export function emptyProductGroupSalesInput(): ProductGroupSalesInput {
-  return { soldUnits: null, targetSellThroughPct: null, adjustment: { ...EMPTY_ADJUSTMENT } };
+  return { soldUnits: null, targetSellThroughPctByPhase: {}, adjustment: { ...EMPTY_ADJUSTMENT } };
 }
 
 function getGroupSalesInput(state: MarketingStrategyState, key: string): ProductGroupSalesInput {
   return state.productGroupSales[key] ?? emptyProductGroupSalesInput();
+}
+
+/** The product group's own cumulative sell-through TARGET entered for one
+ * specific phase (defaults to the currently-selected state.projectPhase) --
+ * never a cross-phase fallback, exactly like projectTargetSellThroughPctFor
+ * above. A phase with no entry yet is null, never inherited/coerced. */
+export function productGroupTargetSellThroughPctFor(
+  input: ProductGroupSalesInput,
+  phase: ProjectPhase
+): number | null {
+  return input.targetSellThroughPctByPhase[phase] ?? null;
 }
 
 /** The one term this feature adds to computePriceBreakdown's total: a plain
@@ -289,12 +332,16 @@ export function deriveProductGroupSales(rows: PtkPriceListRow[], state: Marketin
     const groupRows = rows.filter((r) => productGroupKeyOf(r) === seg.key);
     const inventoryCount = groupRows.length;
     const input = getGroupSalesInput(state, seg.key);
+    // Resolved for the CURRENT project phase only -- see
+    // productGroupTargetSellThroughPctFor's own contract. soldUnits stays
+    // one current/global actual value regardless of phase.
+    const targetSellThroughPct = productGroupTargetSellThroughPctFor(input, state.projectPhase);
     const sellThroughPct = input.soldUnits != null && inventoryCount > 0 ? (input.soldUnits / inventoryCount) * 100 : null;
-    const deltaPct = sellThroughPct != null && input.targetSellThroughPct != null ? sellThroughPct - input.targetSellThroughPct : null;
+    const deltaPct = sellThroughPct != null && targetSellThroughPct != null ? sellThroughPct - targetSellThroughPct : null;
 
     let status: ProductGroupSellThroughStatus;
     if (sellThroughPct == null) status = "unknown";
-    else if (input.targetSellThroughPct == null) status = "no_target";
+    else if (targetSellThroughPct == null) status = "no_target";
     else if (Math.abs(deltaPct!) <= PRODUCT_GROUP_STATUS_TOLERANCE_POINTS) status = "on_target";
     else status = deltaPct! > 0 ? "above_target" : "below_target";
 
@@ -306,7 +353,7 @@ export function deriveProductGroupSales(rows: PtkPriceListRow[], state: Marketin
       inventoryCount,
       soldUnits: input.soldUnits,
       sellThroughPct,
-      targetSellThroughPct: input.targetSellThroughPct,
+      targetSellThroughPct,
       deltaPct,
       status,
       adjustment: input.adjustment,
@@ -426,11 +473,13 @@ export function computeSalesProgress(rows: PtkPriceListRow[], soldUnitNumbers: S
 
 /** Purely descriptive ahead/behind-target comparison. Never feeds back into
  * salesProgressAdjustment -- Marketing always types that percentage in
- * manually. targetPct === 0 means no benchmark was supplied. */
+ * manually. targetPct === null means no benchmark was supplied for the
+ * phase being displayed -- a genuine, Marketing-entered 0% target (unusual
+ * but valid) is NOT the same as "unset" and must not be treated as one. */
 export type SellThroughStatus = "no_target" | "ahead" | "on_target" | "behind";
 
-export function sellThroughStatus(actualPct: number, targetPct: number): SellThroughStatus {
-  if (!targetPct) return "no_target";
+export function sellThroughStatus(actualPct: number, targetPct: number | null): SellThroughStatus {
+  if (targetPct == null) return "no_target";
   const diff = actualPct - targetPct;
   if (Math.abs(diff) < 0.5) return "on_target";
   return diff > 0 ? "ahead" : "behind";
@@ -447,10 +496,10 @@ export const SELL_THROUGH_STATUS_LABELS: Record<SellThroughStatus, string> = {
  * never a price adjustment. Marketing still has to type
  * salesProgressAdjustment.adjustment_pct in manually; this only answers
  * "how far are we from the target," it never feeds the formula (see task
- * item 2). null when no target was supplied (0 = "not set", not a real
- * target of 0%). */
-export function sellThroughGapPoints(actualPct: number, targetPct: number): number | null {
-  if (!targetPct) return null;
+ * item 2). null when no target was supplied for the phase being displayed
+ * (targetPct === null) -- never confused with a genuine 0% target. */
+export function sellThroughGapPoints(actualPct: number, targetPct: number | null): number | null {
+  if (targetPct == null) return null;
   return actualPct - targetPct;
 }
 

@@ -20,6 +20,8 @@ import {
   deriveProductGroupStrategyImpact,
   EMPTY_ADJUSTMENT,
   MarketingStrategyState,
+  productGroupTargetSellThroughPctFor,
+  projectTargetSellThroughPctFor,
   salesPerformancePct,
 } from "./marketingStrategy";
 
@@ -170,8 +172,8 @@ describe("sales performance by product group", () => {
     state = {
       ...state,
       productGroupSales: {
-        "3R": { soldUnits: 15, targetSellThroughPct: 50, adjustment: { ...EMPTY_ADJUSTMENT } },
-        "5R": { soldUnits: 2, targetSellThroughPct: 50, adjustment: { ...EMPTY_ADJUSTMENT } },
+        "3R": { soldUnits: 15, targetSellThroughPctByPhase: { presale: 50 }, adjustment: { ...EMPTY_ADJUSTMENT } },
+        "5R": { soldUnits: 2, targetSellThroughPctByPhase: { presale: 50 }, adjustment: { ...EMPTY_ADJUSTMENT } },
       },
     };
 
@@ -203,8 +205,8 @@ describe("sales performance by product group", () => {
     state = {
       ...state,
       productGroupSales: {
-        "3R": { soldUnits: 15, targetSellThroughPct: 50, adjustment: { adjustment_pct: 2, rationale: "קצב מכירה גבוה מהיעד" } },
-        "5R": { soldUnits: 2, targetSellThroughPct: 50, adjustment: { ...EMPTY_ADJUSTMENT } },
+        "3R": { soldUnits: 15, targetSellThroughPctByPhase: { presale: 50 }, adjustment: { adjustment_pct: 2, rationale: "קצב מכירה גבוה מהיעד" } },
+        "5R": { soldUnits: 2, targetSellThroughPctByPhase: { presale: 50 }, adjustment: { ...EMPTY_ADJUSTMENT } },
       },
     };
 
@@ -265,7 +267,7 @@ describe("sales performance by product group", () => {
     state = {
       ...state,
       productGroupSales: {
-        "3R": { soldUnits: 15, targetSellThroughPct: 50, adjustment: { adjustment_pct: 2, rationale: "test" } },
+        "3R": { soldUnits: 15, targetSellThroughPctByPhase: { presale: 50 }, adjustment: { adjustment_pct: 2, rationale: "test" } },
       },
     };
     const threeRRow = rowsByGroup(rows, "3R")[0];
@@ -295,7 +297,7 @@ describe("sales performance by product group", () => {
       ...state,
       salesProgressAdjustment: { adjustment_pct: -0.5, rationale: "project-wide pace" },
       productGroupSales: {
-        "3R": { soldUnits: 15, targetSellThroughPct: 50, adjustment: { adjustment_pct: 2, rationale: "3R group decision" } },
+        "3R": { soldUnits: 15, targetSellThroughPctByPhase: { presale: 50 }, adjustment: { adjustment_pct: 2, rationale: "3R group decision" } },
       },
     };
 
@@ -331,7 +333,7 @@ describe("sales performance by product group", () => {
       projectPhase: "presale",
       phaseAdjustments: { ...state.phaseAdjustments, presale: { adjustment_pct: 1, rationale: "presale test" } },
       productGroupSales: {
-        "5R": { soldUnits: null, targetSellThroughPct: null, adjustment: { adjustment_pct: 2, rationale: "5R group test" } },
+        "5R": { soldUnits: null, targetSellThroughPctByPhase: {}, adjustment: { adjustment_pct: 2, rationale: "5R group test" } },
       },
     };
 
@@ -382,7 +384,7 @@ describe("sales performance by product group", () => {
     state = {
       ...state,
       productGroupSales: {
-        "3R": { soldUnits: 15, targetSellThroughPct: 50, adjustment: { adjustment_pct: 2, rationale: "test" } },
+        "3R": { soldUnits: 15, targetSellThroughPctByPhase: { presale: 50 }, adjustment: { adjustment_pct: 2, rationale: "test" } },
       },
     };
 
@@ -409,7 +411,7 @@ describe("marketing decision signals (Tab 3 decision-support redesign)", () => {
     const rows = buildInventory().map((r) => (productGroupKeyOf(r) === "3R" ? rowWithPosition(r, "above_range") : r));
     const state: MarketingStrategyState = {
       ...defaultMarketingStrategyState(),
-      productGroupSales: { "3R": { soldUnits: 6, targetSellThroughPct: 50, adjustment: { ...EMPTY_ADJUSTMENT } } }, // 6/24 = 25%
+      productGroupSales: { "3R": { soldUnits: 6, targetSellThroughPctByPhase: { presale: 50 }, adjustment: { ...EMPTY_ADJUSTMENT } } }, // 6/24 = 25%
     };
 
     const group = deriveProductGroupSalesSummary(rows, state).find((g) => g.key === "3R")!;
@@ -425,7 +427,7 @@ describe("marketing decision signals (Tab 3 decision-support redesign)", () => {
     const rows = buildInventory().map((r) => (productGroupKeyOf(r) === "3R" ? rowWithPosition(r, "within_range") : r));
     const state: MarketingStrategyState = {
       ...defaultMarketingStrategyState(),
-      productGroupSales: { "3R": { soldUnits: 6, targetSellThroughPct: 50, adjustment: { ...EMPTY_ADJUSTMENT } } },
+      productGroupSales: { "3R": { soldUnits: 6, targetSellThroughPctByPhase: { presale: 50 }, adjustment: { ...EMPTY_ADJUSTMENT } } },
     };
 
     const group = deriveProductGroupSalesSummary(rows, state).find((g) => g.key === "3R")!;
@@ -443,7 +445,7 @@ describe("marketing decision signals (Tab 3 decision-support redesign)", () => {
     const rows = buildInventory().map((r) => (productGroupKeyOf(r) === "3R" ? rowWithPosition(r, "within_range") : r));
     const state: MarketingStrategyState = {
       ...defaultMarketingStrategyState(),
-      productGroupSales: { "3R": { soldUnits: 20, targetSellThroughPct: 50, adjustment: { ...EMPTY_ADJUSTMENT } } }, // 20/24 ~= 83%
+      productGroupSales: { "3R": { soldUnits: 20, targetSellThroughPctByPhase: { presale: 50 }, adjustment: { ...EMPTY_ADJUSTMENT } } }, // 20/24 ~= 83%
     };
 
     const group = deriveProductGroupSalesSummary(rows, state).find((g) => g.key === "3R")!;
@@ -458,7 +460,7 @@ describe("marketing decision signals (Tab 3 decision-support redesign)", () => {
     const rows = buildInventory().map((r) => (productGroupKeyOf(r) === "3R" ? rowWithPosition(r, "above_range") : r));
     const state: MarketingStrategyState = {
       ...defaultMarketingStrategyState(),
-      productGroupSales: { "3R": { soldUnits: 20, targetSellThroughPct: 50, adjustment: { ...EMPTY_ADJUSTMENT } } },
+      productGroupSales: { "3R": { soldUnits: 20, targetSellThroughPctByPhase: { presale: 50 }, adjustment: { ...EMPTY_ADJUSTMENT } } },
     };
 
     const group = deriveProductGroupSalesSummary(rows, state).find((g) => g.key === "3R")!;
@@ -492,7 +494,7 @@ describe("marketing decision signals (Tab 3 decision-support redesign)", () => {
     // Sold entered but no target -> still insufficient, same rule.
     const partial: MarketingStrategyState = {
       ...state,
-      productGroupSales: { "3R": { soldUnits: 6, targetSellThroughPct: null, adjustment: { ...EMPTY_ADJUSTMENT } } },
+      productGroupSales: { "3R": { soldUnits: 6, targetSellThroughPctByPhase: {}, adjustment: { ...EMPTY_ADJUSTMENT } } },
     };
     const partialGroup = deriveProductGroupSalesSummary(rows, partial).find((g) => g.key === "3R")!;
     expect(partialGroup.signal.kind).toBe("insufficient_data");
@@ -502,7 +504,7 @@ describe("marketing decision signals (Tab 3 decision-support redesign)", () => {
     const rows = buildInventory().map((r) => (productGroupKeyOf(r) === "3R" ? rowWithPosition(r, "within_range", "low") : r));
     const state: MarketingStrategyState = {
       ...defaultMarketingStrategyState(),
-      productGroupSales: { "3R": { soldUnits: 20, targetSellThroughPct: 50, adjustment: { ...EMPTY_ADJUSTMENT } } },
+      productGroupSales: { "3R": { soldUnits: 20, targetSellThroughPctByPhase: { presale: 50 }, adjustment: { ...EMPTY_ADJUSTMENT } } },
     };
 
     const group = deriveProductGroupSalesSummary(rows, state).find((g) => g.key === "3R")!;
@@ -527,7 +529,7 @@ describe("marketing decision signals (Tab 3 decision-support redesign)", () => {
     const rows = buildInventory();
     const state: MarketingStrategyState = {
       ...defaultMarketingStrategyState(),
-      productGroupSales: { "5R": { soldUnits: null, targetSellThroughPct: null, adjustment: { adjustment_pct: -1, rationale: "test" } } },
+      productGroupSales: { "5R": { soldUnits: null, targetSellThroughPctByPhase: {}, adjustment: { adjustment_pct: -1, rationale: "test" } } },
     };
 
     const standard5R = rowsByGroup(rows, "5R");
@@ -584,5 +586,139 @@ describe("marketing decision signals (Tab 3 decision-support redesign)", () => {
     // priority (any above-range unit dominates) -- not an average, not a
     // synthetic midpoint.
     expect(group.market.aggregatePosition).toBe("above_range");
+  });
+});
+
+describe("per-phase sell-through targets (product-group + project-wide)", () => {
+  it("product group: presale 10%, launch 25% -- switching phase changes the displayed/derived target 10 -> 25 and back", () => {
+    const rows = buildInventory();
+    let state: MarketingStrategyState = {
+      ...defaultMarketingStrategyState(),
+      projectPhase: "presale",
+      productGroupSales: {
+        "3R": { soldUnits: 15, targetSellThroughPctByPhase: { presale: 10, launch: 25 }, adjustment: { ...EMPTY_ADJUSTMENT } },
+      },
+    };
+
+    const atPresale = deriveProductGroupSales(rows, state).find((g) => g.key === "3R")!;
+    expect(atPresale.targetSellThroughPct).toBe(10);
+
+    state = { ...state, projectPhase: "launch" };
+    const atLaunch = deriveProductGroupSales(rows, state).find((g) => g.key === "3R")!;
+    expect(atLaunch.targetSellThroughPct).toBe(25);
+
+    state = { ...state, projectPhase: "presale" };
+    const backAtPresale = deriveProductGroupSales(rows, state).find((g) => g.key === "3R")!;
+    expect(backAtPresale.targetSellThroughPct).toBe(10);
+  });
+
+  it("product group: a phase with no entered target returns null (unknown), never the previous phase's value", () => {
+    const rows = buildInventory();
+    const state: MarketingStrategyState = {
+      ...defaultMarketingStrategyState(),
+      projectPhase: "regular_sales", // no entry for this phase below
+      productGroupSales: {
+        "3R": { soldUnits: 15, targetSellThroughPctByPhase: { presale: 10, launch: 25 }, adjustment: { ...EMPTY_ADJUSTMENT } },
+      },
+    };
+
+    const group = deriveProductGroupSales(rows, state).find((g) => g.key === "3R")!;
+    expect(group.targetSellThroughPct).toBeNull();
+    expect(group.status).toBe("no_target");
+
+    // Directly on the helper too, for every unset phase.
+    const input = state.productGroupSales["3R"];
+    expect(productGroupTargetSellThroughPctFor(input, "regular_sales")).toBeNull();
+    expect(productGroupTargetSellThroughPctFor(input, "final_inventory")).toBeNull();
+  });
+
+  it("product group: soldUnits (the actual) stays unchanged when switching phase", () => {
+    const rows = buildInventory();
+    let state: MarketingStrategyState = {
+      ...defaultMarketingStrategyState(),
+      projectPhase: "presale",
+      productGroupSales: {
+        "3R": { soldUnits: 15, targetSellThroughPctByPhase: { presale: 10, launch: 25 }, adjustment: { ...EMPTY_ADJUSTMENT } },
+      },
+    };
+    const before = deriveProductGroupSales(rows, state).find((g) => g.key === "3R")!;
+
+    state = { ...state, projectPhase: "launch" };
+    const after = deriveProductGroupSales(rows, state).find((g) => g.key === "3R")!;
+
+    expect(after.soldUnits).toBe(before.soldUnits);
+    expect(after.sellThroughPct).toBeCloseTo(before.sellThroughPct!, 5);
+    // Only the target changed with the phase switch.
+    expect(before.targetSellThroughPct).toBe(10);
+    expect(after.targetSellThroughPct).toBe(25);
+  });
+
+  it("product group: changing the target alone never changes computePriceBreakdown().proposedIls -- descriptive only", () => {
+    const rows = buildInventory();
+    const threeRRow = rowsByGroup(rows, "3R")[0];
+
+    const withLowTarget: MarketingStrategyState = {
+      ...defaultMarketingStrategyState(),
+      productGroupSales: { "3R": { soldUnits: 15, targetSellThroughPctByPhase: { presale: 10 }, adjustment: { ...EMPTY_ADJUSTMENT } } },
+    };
+    const withHighTarget: MarketingStrategyState = {
+      ...withLowTarget,
+      productGroupSales: { "3R": { soldUnits: 15, targetSellThroughPctByPhase: { presale: 90 }, adjustment: { ...EMPTY_ADJUSTMENT } } },
+    };
+
+    const priceWithLowTarget = computePriceBreakdown(withLowTarget, threeRRow).proposedIls;
+    const priceWithHighTarget = computePriceBreakdown(withHighTarget, threeRRow).proposedIls;
+    expect(priceWithLowTarget).toBe(threeRRow.proposed_list_price_ils);
+    expect(priceWithHighTarget).toBe(threeRRow.proposed_list_price_ils);
+    expect(priceWithLowTarget).toBe(priceWithHighTarget);
+
+    // The target only ever moves the descriptive above/on/below-target
+    // signal, never the price -- confirmed via the two very different
+    // statuses these two targets produce for the identical sellThroughPct.
+    const lowGroup = deriveProductGroupSales(rows, withLowTarget).find((g) => g.key === "3R")!;
+    const highGroup = deriveProductGroupSales(rows, withHighTarget).find((g) => g.key === "3R")!;
+    expect(lowGroup.status).toBe("above_target");
+    expect(highGroup.status).toBe("below_target");
+  });
+
+  it("project-wide: presale 10%, launch 25% -- switching phase changes the resolved target 10 -> 25 and back", () => {
+    let state: MarketingStrategyState = {
+      ...defaultMarketingStrategyState(),
+      projectPhase: "presale",
+      targetSellThroughPctByPhase: { presale: 10, launch: 25, regular_sales: null, final_inventory: null },
+    };
+    expect(projectTargetSellThroughPctFor(state)).toBe(10);
+
+    state = { ...state, projectPhase: "launch" };
+    expect(projectTargetSellThroughPctFor(state)).toBe(25);
+
+    state = { ...state, projectPhase: "presale" };
+    expect(projectTargetSellThroughPctFor(state)).toBe(10);
+  });
+
+  it("project-wide: a phase with no entered target resolves to null, never a previous phase's value or 0%", () => {
+    const state: MarketingStrategyState = {
+      ...defaultMarketingStrategyState(),
+      projectPhase: "final_inventory",
+      targetSellThroughPctByPhase: { presale: 10, launch: 25, regular_sales: 60, final_inventory: null },
+    };
+    expect(projectTargetSellThroughPctFor(state)).toBeNull();
+  });
+
+  it("project-wide: actualSellThroughPct stays unchanged when switching phase, and the target never feeds computePriceBreakdown", () => {
+    const rows = buildInventory();
+    const row = rows[0];
+    let state: MarketingStrategyState = {
+      ...defaultMarketingStrategyState(),
+      projectPhase: "presale",
+      actualSellThroughPct: 42,
+      targetSellThroughPctByPhase: { presale: 10, launch: 25, regular_sales: null, final_inventory: null },
+    };
+    const beforePrice = computePriceBreakdown(state, row).proposedIls;
+
+    state = { ...state, projectPhase: "launch" };
+    expect(state.actualSellThroughPct).toBe(42); // unchanged by the phase switch
+    const afterPrice = computePriceBreakdown(state, row).proposedIls;
+    expect(afterPrice).toBe(beforePrice); // target/phase switch never moves price by itself
   });
 });

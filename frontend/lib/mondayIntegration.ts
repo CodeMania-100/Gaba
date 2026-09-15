@@ -16,6 +16,7 @@ import {
   GROUP_ADJUSTMENT_LABEL,
   MarketingStrategyState,
   PriceBreakdown,
+  projectTargetSellThroughPctFor,
   PROJECT_ADJUSTMENT_LABEL,
   PROJECT_PHASE_LABELS,
   UNIT_ADJUSTMENT_LABEL,
@@ -50,12 +51,15 @@ export function buildMondayApprovalPayload(
   const bucket = familyBucketOf(row);
   const familyAdjustment = state.familyAdjustments[bucket];
   const unitAdjustment = state.unitAdjustments[row.unit_number];
+  // Resolved for the currently selected project phase only -- never
+  // another phase's stored value.
+  const currentPhaseTarget = projectTargetSellThroughPctFor(state);
 
   // Only lines backed by data that actually exists -- never invented (task
   // item 9). Each line is already fully Hebrew; the backend only joins them.
   const rationales: string[] = [`שלב הפרויקט: תרחיש ${PROJECT_PHASE_LABELS[state.projectPhase]}.`];
-  if (state.targetSellThroughPct) {
-    rationales.push(`קצב מכירות: ${state.actualSellThroughPct}% מול יעד של ${state.targetSellThroughPct}%.`);
+  if (currentPhaseTarget != null) {
+    rationales.push(`קצב מכירות: ${state.actualSellThroughPct}% מול יעד של ${currentPhaseTarget}%.`);
   }
   if (state.projectAdjustment.rationale.trim()) {
     rationales.push(`${PROJECT_ADJUSTMENT_LABEL}: ${state.projectAdjustment.rationale.trim()}.`);
@@ -78,7 +82,7 @@ export function buildMondayApprovalPayload(
     confidence: confidence ?? "insufficient",
     project_phase: state.projectPhase,
     sell_through_actual_pct: state.actualSellThroughPct || null,
-    sell_through_target_pct: state.targetSellThroughPct || null,
+    sell_through_target_pct: currentPhaseTarget,
     strategy_effect_pct: breakdown.totalPct,
     rationales,
   };

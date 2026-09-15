@@ -18,6 +18,7 @@ import {
   internalSaleForUnit,
   internalSalesForBucket,
   MarketingStrategyState,
+  projectTargetSellThroughPctFor,
   PROJECT_PHASE_LABELS,
   sellThroughGapPoints,
 } from "@/lib/marketingStrategy";
@@ -372,7 +373,10 @@ function ProjectStatusBlock({ row, workspace, state }: { row: PtkPriceListRow; w
 
   const salesDataSupplied = progress.unitsSold > 0;
 
-  const gap = sellThroughGapPoints(state.actualSellThroughPct, state.targetSellThroughPct);
+  // Resolved for the currently selected project phase only -- never another
+  // phase's stored value (see projectTargetSellThroughPctFor's own contract).
+  const currentPhaseTarget = projectTargetSellThroughPctFor(state);
+  const gap = sellThroughGapPoints(state.actualSellThroughPct, currentPhaseTarget);
 
   return (
     <section>
@@ -380,7 +384,7 @@ function ProjectStatusBlock({ row, workspace, state }: { row: PtkPriceListRow; w
       <div className="grid grid-cols-2 gap-3 rounded-md bg-canvas p-3 text-sm">
         <Fact label="שלב הפרויקט" value={PROJECT_PHASE_LABELS[state.projectPhase]} />
         <Fact label="קצב מכירות בפועל" value={`${num(state.actualSellThroughPct, 0)}%`} />
-        <Fact label="יעד קצב מכירות" value={`${num(state.targetSellThroughPct, 0)}%`} />
+        <Fact label="יעד מכירות מצטבר עד שלב זה" value={currentPhaseTarget != null ? `${num(currentPhaseTarget, 0)}%` : "—"} />
         <Fact
           label="פער מול היעד"
           value={gap != null ? `${gap > 0 ? "+" : ""}${num(gap, 1)} נקודות אחוז` : "—"}

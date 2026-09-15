@@ -1,0 +1,49 @@
+{
+  "dataset": "multi_city_commercial_terms_enrichment_v1",
+  "generated_at": "2026-09-14",
+  "dataset_status": "ENRICHMENT_ONLY",
+  "baseline_modified": false,
+  "pricing_methodology_changed": false,
+  "files": [
+    {
+      "path": "README.md",
+      "size_bytes": 3036,
+      "sha256": "8da26d29e4f150958bfe1fb337ce400a291fb3275c8d999b859a3565dd1002de"
+    },
+    {
+      "path": "conflicts.csv",
+      "size_bytes": 569,
+      "sha256": "f0c6c6e58d53ce4259985a113617b0d9e90dfcc957abfbac83cb6c8cf8a90ba7"
+    },
+    {
+      "path": "coverage_table.csv",
+      "size_bytes": 846,
+      "sha256": "008ae83223987f21091971a0283d95c0665ab0d6c390ef833916637294d2fc7b"
+    },
+    {
+      "path": "historical_expired_findings.csv",
+      "size_bytes": 543,
+      "sha256": "89cd3da3b5e78c124995ee615323f287c86650033e69768e87223e94b13975cd"
+    },
+    {
+      "path": "multi_city_commercial_terms_enrichment_v1.json",
+      "size_bytes": 47778,
+      "sha256": "6a6efba7a1cadf049fe6ca474324e835fbe7cbfaebe2c17474c29a36f677620e"
+    },
+    {
+      "path": "newly_discovered_current_terms.csv",
+      "size_bytes": 8628,
+      "sha256": "f165d4c621398398d5365d6c03d985f9129f46db0558f12e0cdc0c4d8c964e79"
+    },
+    {
+      "path": "unresolved_fields.csv",
+      "size_bytes": 8841,
+      "sha256": "b8ff2c00d04d052b9b48ed10e561dff6033451198538665af6c1ed05746be081"
+    },
+    {
+      "path": "validation.json",
+      "size_bytes": 673,
+      "sha256": "191910af4386d8235a27fd0c390aae89d558bc9ff29d177b067be08732d7960a"
+    }
+  ]
+}

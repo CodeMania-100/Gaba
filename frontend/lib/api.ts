@@ -429,6 +429,210 @@ export interface MapGeocodeFile {
   special_typology_context?: { resolved: MapGeocodeRecord[]; unresolved: JsonRecord[] };
 }
 
+// --- Commercial-terms enrichment (multi_city_commercial_terms_enrichment_v1) --
+// A separate, display/context-only research layer -- see app_api/commercial_
+// terms_enrichment.py and frontend/lib/commercialTerms.ts. Never a pricing
+// input: no field here is read by any market-range/consensus/strategy code,
+// and this type set must never be merged with CompetitorRegisterProject.
+//
+// Some project fields are exact numeric scalars and some are prose range-
+// strings the researcher could not resolve to one number (e.g. rooms: "2-2.5",
+// internal_area_sqm: "67-77"). Never Number()-cast or midpoint-convert one of
+// these -- see lib/commercialTerms.ts's exactNumericArea() guard.
+export type NumericOrRangeText = number | string | null;
+
+// Six real status tokens, each with a DIFFERENT required display treatment
+// (see lib/commercialTerms.ts's isVerifiedCommercialTerm/isCurrentCommercialTerm/
+// isHistoricalCommercialTerm) -- never collapse to a boolean or a single
+// generic "no data" string.
+export type CommercialTermStatus =
+  | "VERIFIED"
+  | "UNKNOWN"
+  | "CURRENT"
+  | "CURRENT_PAGE_NO_EXPLICIT_VALIDITY"
+  | "RECENT_UNCONFIRMED"
+  | "HISTORICAL";
+
+// A term only applies to a subject/candidate when its scope genuinely covers
+// it -- see lib/commercialTerms.ts's commercialTermAppliesToSubject().
+// UNIT_VARIANT appears only on published_prices entries tied to one exact
+// verified unit (as opposed to a room-family starting price).
+export type CommercialScope = "PROJECT_WIDE" | "ROOM_FAMILY" | "CAMPAIGN_GENERAL" | "SELECTED_UNITS" | "UNIT_VARIANT";
+
+export interface CommercialPublishedPrice {
+  rooms: NumericOrRangeText;
+  unit_type?: string;
+  internal_area_sqm?: NumericOrRangeText;
+  outdoor_area_sqm?: NumericOrRangeText;
+  garden_area_sqm?: NumericOrRangeText;
+  price_ils: number;
+  // "VERIFIED_UNIT_PRICE" | "STARTING_PRICE" | "CAMPAIGN_PRICE" observed so
+  // far; kept as a string (not a closed union) since the dataset may add a
+  // new price_type in a future version without this type going stale.
+  price_type: string;
+  scope: CommercialScope;
+  current_status?: CommercialTermStatus;
+  // false for every STARTING_PRICE/CAMPAIGN_PRICE row observed -- true only
+  // when price_ils is tied to one specific, exact unit+area pair. Gates
+  // whether a ₪/מ"ר figure may ever be computed from this row.
+  quantitative_unit_price_area: boolean;
+  // Present only where the researcher flagged their own semantic caveat
+  // (e.g. GALIPOLIS's 3R figure) -- must be surfaced, never discarded.
+  semantic_note?: string;
+}
+
+export interface CommercialInstallment {
+  percent: number;
+  // Concrete milestone tokens ("contract" / "initial/contract" / "occupancy"
+  // / "near_occupancy" / "key_delivery") map to a Hebrew label; anything else
+  // (e.g. "later per campaign", "later/delivery_not_explicit_in_retained_card")
+  // is vague and must NOT be translated into a concrete milestone.
+  timing: string;
+}
+
+// financing_benefit's own field names differ entirely by `type`
+// (contractor_loan has no rate fields; mortgage_and_bridge_campaign uses
+// mortgage_rate_pct/mortgage_rate_type/mortgage_index_linkage; mortgage_campaign
+// uses interest_rate_pct/interest_rate_type/index_linkage) -- confirmed real-
+// data heterogeneity, so every term type below is intentionally loose
+// (JsonRecord intersection) rather than a rigid discriminated union.
+export type CommercialPaymentStructure = JsonRecord & {
+  status: CommercialTermStatus;
+  type?: string;
+  installments?: CommercialInstallment[];
+  // Present instead of installments[] when exact chronology wasn't
+  // recovered (e.g. Zeev Branda's advertised "80/20 option") -- must never
+  // be auto-normalized into a fabricated installments[] array.
+  installments_semantics?: string;
+  scope?: CommercialScope;
+  rooms?: NumericOrRangeText;
+  source_text?: string;
+};
+
+export type CommercialDeferredPayment = JsonRecord & {
+  status: CommercialTermStatus;
+  deferred_payment?: boolean;
+  down_payment_pct?: number;
+  deferred_pct?: number;
+  deferred_until?: string;
+  interest_terms?: string;
+  scope?: CommercialScope;
+};
+
+export type CommercialFinancingBenefit = JsonRecord & {
+  status: CommercialTermStatus;
+  type?: string;
+  scope?: CommercialScope;
+  conditions?: string;
+};
+
+export type CommercialIndexationBenefit = JsonRecord & {
+  status: CommercialTermStatus;
+  // "full_exemption" observed; kept as a string, not a closed union.
+  type?: string;
+  scope?: CommercialScope;
+  source_text?: string;
+  // Present specifically to explain an UNKNOWN indexation status next to a
+  // VERIFIED, unlinked mortgage (see the CRITICAL safeguard in lib/
+  // commercialTerms.ts) -- mortgage linkage and construction-index exemption
+  // are different facts and must never be collapsed into one claim.
+  note?: string;
+};
+
+export type CommercialDiscount = JsonRecord & {
+  status: CommercialTermStatus;
+};
+
+export interface CommercialIncludedBenefit {
+  // "underground_parking" | "mamad" | "sun_balcony" | "private_storage" observed.
+  type: string;
+  scope: CommercialScope;
+  status: CommercialTermStatus;
+}
+
+export interface CommercialPromotion {
+  promotion_type: string;
+  promotion_text: string;
+  scope: CommercialScope;
+  current_status?: CommercialTermStatus;
+  conditions?: string;
+}
+
+export type CommercialDelivery = JsonRecord & {
+  status: CommercialTermStatus;
+  value?: string;
+  scope?: CommercialScope;
+  note?: string;
+};
+
+export interface CommercialOffer {
+  published_prices: CommercialPublishedPrice[];
+  payment_structure: CommercialPaymentStructure;
+  deferred_payment: CommercialDeferredPayment;
+  financing_benefit: CommercialFinancingBenefit;
+  indexation_benefit: CommercialIndexationBenefit;
+  discount: CommercialDiscount;
+  included_benefits: CommercialIncludedBenefit[];
+  promotions: CommercialPromotion[];
+  delivery: CommercialDelivery;
+}
+
+// A superseded/stale offer, kept only as provenance -- must never enter a
+// "current" display (e.g. same-budget alternatives) once built.
+export type CommercialHistoricalOffer = JsonRecord & {
+  status: "HISTORICAL";
+  price_ils?: number;
+  price_type?: string;
+};
+
+// At least two distinct shapes share only status/field/resolution_note (a
+// PRICE_SNAPSHOT_DIFFERENCE and a RESOLVED_BY_PRIMARY_SOURCE observed) --
+// loosely typed rather than forced into one shape. Never interpret a
+// conflict as a discount.
+export type CommercialConflict = JsonRecord & {
+  status: string;
+  field: string;
+  resolution_note: string;
+};
+
+export interface CommercialSource {
+  source_url: string;
+  source_title: string;
+  source_type: string;
+  retrieved_at: string;
+  observed_date: string | null;
+  verification_status: string;
+  source_quote?: string;
+}
+
+export interface CommercialProjectOffer {
+  market_context: string;
+  project_id: string;
+  project_name: string;
+  developer: string | null;
+  selection_relevance?: string;
+  project_status: string | null;
+  construction_status: string | null;
+  permit_status: string | null;
+  commercial_offer: CommercialOffer;
+  commercial_offer_history: CommercialHistoricalOffer[];
+  conflicts: CommercialConflict[];
+  unresolved_fields: string[];
+  sources: CommercialSource[];
+  notes: string[];
+}
+
+// workspace.commercial_intelligence -- a separate top-level branch, never
+// injected into competitor_landscape. Only the 13 curated projects this
+// dataset actually researched appear here (scoped to the current market
+// context already, server-side); absence of a project here means "not
+// researched in this pass," never "no financing/no promotion."
+export interface CommercialIntelligence {
+  version: string;
+  generated_at: string;
+  projects: CommercialProjectOffer[];
+}
+
 export interface PetahTikvaWorkspace {
   version: string;
   project: {
@@ -475,6 +679,10 @@ export interface PetahTikvaWorkspace {
   price_list: PtkPriceListRow[];
   // null until build_map_geocodes_v1.py has been run at least once.
   market_map_geocodes: MapGeocodeFile | null;
+  // Optional: absent on any older cached/mocked payload that predates this
+  // field. See CommercialIntelligence's own docstring for the separation
+  // rule from competitor_landscape.
+  commercial_intelligence?: CommercialIntelligence;
   strategy: {
     note: string;
     disclaimer: string;

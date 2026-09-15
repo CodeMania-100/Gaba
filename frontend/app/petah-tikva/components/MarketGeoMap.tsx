@@ -31,6 +31,7 @@ import {
 } from "@/lib/marketMap";
 import { ils, num } from "@/lib/format";
 import { CONFIDENCE_COLORS, CONFIDENCE_LABELS } from "@/lib/family";
+import { deriveCommercialOfferSummary, findCommercialProject } from "@/lib/commercialTerms";
 
 // MapLibre's default worker-URL detection reads import.meta.url of its own
 // bundled module to locate its sibling tile-parsing worker script; Turbopack
@@ -1709,6 +1710,19 @@ function CompetitorDetail({
   const eligible = eligibility?.[familyKey]?.eligible ?? false;
   const eligibilityReason = eligibility?.[familyKey]?.reason;
 
+  // Commercial-terms enrichment (13 curated competitors, display-only --
+  // see lib/commercialTerms.ts). "תנאי תשלום" below already reflects the
+  // enrichment's own VERIFIED payment terms when available (buildFactSheet's
+  // own priority merge), so this stays to at most one ADDITIONAL compact
+  // line -- indexation/promotions only, never a duplicate payment line
+  // (section 24: "the map stays a map"; richer detail lives behind "פתח
+  // השוואה מלאה").
+  const commercialProject = findCommercialProject(workspace, point.title, (project?.project_id as string | undefined) ?? null);
+  const commercialSummary = deriveCommercialOfferSummary(commercialProject);
+  const commercialBenefitsLine = commercialSummary
+    ? [commercialSummary.indexationLabel, ...commercialSummary.promotionLabels].filter((p): p is string => p != null).slice(0, 2).join(" · ") || null
+    : null;
+
   return (
     <div className="flex flex-col gap-1.5">
       <div className="flex items-center gap-1.5">
@@ -1752,6 +1766,7 @@ function CompetitorDetail({
           area is a range midpoint, labeled as such. */}
       <Fact label="מחיר למ״ר (משוער)" value={fact?.pricePerSqmIls != null ? `${ils(fact.pricePerSqmIls)} למ״ר` : undefined} />
       <Fact label="תנאי תשלום" value={fact?.paymentTerms ?? "לא פורסם"} />
+      {commercialBenefitsLine && <Fact label="הטבות" value={commercialBenefitsLine} />}
       <Fact label="מסירה" value={fact?.delivery ?? "לא פורסם"} />
       <Fact label="שלב הפרויקט" value={fact?.status ?? "לא פורסם"} />
 

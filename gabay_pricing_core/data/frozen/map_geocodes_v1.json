@@ -192,14 +192,20 @@
         "precision": "street",
         "resolved_label": "יצחק ויטנברג, קרית אריה, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 5401773, ישראל",
         "verified": true
-      }
-    ],
-    "unresolved": [
+      },
       {
         "record_id": "competitor:DeFour",
         "address": "ברנדה פינת בלפור, פתח תקווה",
-        "reason": "no_results"
-      },
+        "lat": 32.0807293,
+        "lng": 34.8852882,
+        "coordinate_source": "geocoded_address",
+        "precision": "street",
+        "resolved_label": "זאב ברנדה, קריית אלעזר, המרכז השקט, פתח תקווה, נפת פתח תקווה, מחוז המרכז, 4943729, ישראל",
+        "verified": true,
+        "note": "Final orphaned/unlinked data audit fix: the original address is an intersection description (\"ברנדה פינת בלפור\" -- Brandeis corner Balfour), which the geocoder cannot resolve as a single point (previously reason=no_results). Both named streets independently geocode successfully and sit ~150-200m apart, confirming the intersection is real; the first-named street (ברנדה) is used at street precision, reusing the exact coordinate already independently resolved for -זאב ברנדה 22- elsewhere in this file. Never a building-level guess, never jitter."
+      }
+    ],
+    "unresolved": [
       {
         "record_id": "competitor:חנקין 11",
         "address": "יהושע חנקין 11, פתח תקווה",

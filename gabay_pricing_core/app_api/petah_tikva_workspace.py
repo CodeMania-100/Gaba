@@ -7,6 +7,7 @@ from typing import Any
 
 from pricing_core import compare_decision_scenarios, normalize_inventory_rows, run_sold_qa
 
+from .commercial_terms_enrichment import build_commercial_intelligence_payload
 from .competitor_register import build_competitor_landscape
 from .special_market_indication_data import build_indications_for_all_units
 from .special_unit_context import build_special_unit_market_context
@@ -545,6 +546,7 @@ def build_petah_tikva_workspace_payload(data_dir: Path | None = None) -> dict:
             "program_check": sold_doc["program_check"],
         },
     }
+    payload["commercial_intelligence"] = build_commercial_intelligence_payload(root, "petah_tikva")
     return payload
 
 

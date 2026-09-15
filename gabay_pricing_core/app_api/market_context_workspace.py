@@ -22,6 +22,7 @@ from pricing_core import normalize_inventory_rows
 
 from . import multi_city_special_market as special_market
 from . import multi_city_standard_market as standard_market
+from .commercial_terms_enrichment import build_commercial_intelligence_payload
 from .market_context_registry import MarketContextRegistration
 from .multi_city_competitor_register import build_multi_city_competitor_landscape
 from .multi_city_map_coordinate_enrichment import load_evidence_coordinate_enrichment, resolve_evidence_coordinate
@@ -685,6 +686,7 @@ def _build_multi_city_workspace_payload(context: MarketContextRegistration, root
         "special_unit_market_context": special_unit_context,
         "price_list": full_price_list,
         "market_map_geocodes": market_map_geocodes,
+        "commercial_intelligence": build_commercial_intelligence_payload(root, context.slug),
         "strategy": {
             "note": "Company strategy controls are identical across every market context -- only market evidence/ranges change.",
             "disclaimer": "Pricing methodology is unchanged from Petah Tikva.",

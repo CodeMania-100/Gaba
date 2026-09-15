@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CompetitorRegisterProject, PetahTikvaWorkspace } from "@/lib/api";
+import { CommercialConflict, CompetitorRegisterProject, PetahTikvaWorkspace } from "@/lib/api";
 import {
   areaRangeLabel,
   CLASSIFICATION_COLORS,
@@ -22,6 +22,13 @@ import {
 } from "@/lib/competitorRegister";
 import { num } from "@/lib/format";
 import { ProjectPhase } from "@/lib/marketingStrategy";
+import {
+  commercialSourceLine,
+  compactCommercialOfferLine,
+  conflictNote,
+  deriveCommercialOfferSummary,
+  findCommercialProject,
+} from "@/lib/commercialTerms";
 import MarketPositionSection from "./MarketPositionSection";
 
 interface Props {
@@ -97,6 +104,7 @@ export default function CompetitorRegister({ workspace, projectPhase, family }: 
           {visibleProjects.map((project) => (
             <CompetitorRegisterCard
               key={project.project_name}
+              workspace={workspace}
               project={project}
               family={family}
               familyFilter={familyFilter}
@@ -144,17 +152,29 @@ function FilterGroup<T extends string>({
 }
 
 function CompetitorRegisterCard({
+  workspace,
   project,
   family,
   familyFilter,
   subjectAreaSqm,
 }: {
+  workspace: PetahTikvaWorkspace;
   project: CompetitorRegisterProject;
   family: "3R" | "5R";
   familyFilter: CompetitorFamilyFilter;
   subjectAreaSqm: number | null;
 }) {
   const [showSource, setShowSource] = useState(false);
+
+  // Commercial-terms enrichment (multi_city_commercial_terms_enrichment_v1)
+  // -- a separate, display-only research layer covering 13 curated
+  // competitors. Absent for most projects; that absence must never be
+  // interpreted as "no financing/no promotion/no terms" (see lib/
+  // commercialTerms.ts's own module docstring), so every value below stays
+  // optional and the whole block renders nothing when there's no record.
+  const commercialProject = findCommercialProject(workspace, project.project_name, (project.project_id as string | undefined) ?? null);
+  const commercialSummary = deriveCommercialOfferSummary(commercialProject);
+  const compactCommercialLine = compactCommercialOfferLine(commercialSummary);
 
   const location = (project.address as string | null) ?? (project.neighborhood as string | null) ?? "—";
   const developer = developerLabel(project);
@@ -206,6 +226,7 @@ function CompetitorRegisterCard({
         {price && <Row label="מחיר" value={price} />}
         {standout && <Row label="מאפיין בולט" value={standout} />}
         {terms && <Row label="תנאי תשלום" value={terms} />}
+        {compactCommercialLine && <Row label="תנאי עסקה" value={compactCommercialLine} />}
       </dl>
 
       <button onClick={() => setShowSource((v) => !v)} className="mt-1 w-fit text-xs text-ink-muted underline hover:text-ink">
@@ -248,6 +269,7 @@ function CompetitorRegisterCard({
               </ul>
             </div>
           )}
+          {commercialSummary && <CommercialOfferDetails summary={commercialSummary} conflicts={commercialProject?.conflicts ?? []} />}
           {((project.source_urls as string[] | undefined)?.length ?? 0) > 0 && (
             <div className="mt-2">
               <div className="font-semibold text-ink-muted">מקורות:</div>
@@ -279,6 +301,70 @@ function Row({ label, value }: { label: string; value: string }) {
     <div className="flex justify-between gap-3">
       <dt className="shrink-0 text-ink-muted">{label}</dt>
       <dd className="text-end font-medium text-ink">{value}</dd>
+    </div>
+  );
+}
+
+/** "תנאי העסקה וההטבות" -- the full per-field commercial breakdown (section
+ * 23 of the commercial-terms enrichment task), shown only inside the
+ * already-existing "מקור ופרטים" expansion, never in the compact card. Each
+ * field honors UNKNOWN -> omitted (never "אין"); conflicts are shown as
+ * separate preserved observations, never interpreted as a discount; sources
+ * are auditable name + retrieved-at + link. */
+function CommercialOfferDetails({
+  summary,
+  conflicts,
+}: {
+  summary: NonNullable<ReturnType<typeof deriveCommercialOfferSummary>>;
+  conflicts: CommercialConflict[];
+}) {
+  const hasAnyField =
+    summary.paymentLabel != null ||
+    summary.financingLabels.length > 0 ||
+    summary.indexationLabel != null ||
+    summary.promotionLabels.length > 0 ||
+    summary.includedBenefitLabels.length > 0 ||
+    summary.deliveryLabel != null;
+
+  if (!hasAnyField && !summary.hasConflicts && summary.sources.length === 0) return null;
+
+  return (
+    <div className="mt-2">
+      <div className="font-semibold text-ink-muted">תנאי העסקה וההטבות:</div>
+      <ul className="list-inside list-disc">
+        {summary.paymentLabel && <li>תנאי תשלום: {summary.paymentLabel}</li>}
+        {summary.financingLabels.map((line, i) => (
+          <li key={`fin-${i}`}>{line}</li>
+        ))}
+        {summary.indexationLabel && <li>מדד תשומות בנייה: {summary.indexationLabel}</li>}
+        {summary.deliveryLabel && <li>{summary.deliveryLabel}</li>}
+        {summary.includedBenefitLabels.length > 0 && <li>כלול / מאפייני הצעה: {summary.includedBenefitLabels.join(" · ")}</li>}
+        {summary.promotionLabels.map((p, i) => (
+          <li key={`promo-${i}`}>{p}</li>
+        ))}
+      </ul>
+
+      {summary.hasConflicts && (
+        <div className="mt-2 rounded bg-canvas p-2">
+          <div className="font-semibold text-ink-muted">נמצאו תצפיות מחיר שונות במועדים/מקורות שונים:</div>
+          <ul className="list-inside list-disc">
+            {conflicts.map((c, i) => (
+              <li key={i}>{conflictNote(c)}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {summary.sources.length > 0 && (
+        <div className="mt-2">
+          <div className="font-semibold text-ink-muted">מקורות מסחריים:</div>
+          {summary.sources.map((s, i) => (
+            <a key={i} href={s.source_url} target="_blank" rel="noreferrer" className="block break-all text-accent underline">
+              {commercialSourceLine(s)}
+            </a>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

@@ -213,7 +213,7 @@ export default function ProductComparisonSection({
             workspace={workspace}
             projectPhase={projectPhase}
             family={family.family}
-            rowKeys={["area", "floor", "delivery", "payment"]}
+            rowKeys={["area", "floor", "delivery", "payment", "commercial_terms"]}
             title="השוואת מאפיינים מול פרויקטים מתחרים"
           />
         </div>

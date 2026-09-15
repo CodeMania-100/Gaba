@@ -37,6 +37,7 @@ import {
   variantAreaSqm,
   variantFloorLabel,
 } from "./competitorRegister";
+import { findCommercialProject, resolvePaymentTermsLabel } from "./commercialTerms";
 import { ils, num } from "./format";
 import { computePriceBreakdown, MarketingStrategyState } from "./marketingStrategy";
 import { deliveryLabel, paymentTermsLabel as enrichmentPaymentTermsLabel, projectStatusLabel } from "./standardEnrichment";
@@ -230,13 +231,21 @@ export function buildFactSheet(
     const pricePerSqmArea = usedMatchedVariant ? matchedVariantAreaSqm : areaMidSqm;
     const pricePerSqmIls = currentPriceIls != null && pricePerSqmArea ? currentPriceIls / pricePerSqmArea : null;
 
+    // Priority (sections 25/42 of the commercial-terms enrichment task): a
+    // VERIFIED commercial-enrichment payment_structure wins over the older
+    // generic payment_terms field, which stays only as the fallback for
+    // projects the enrichment didn't research -- never both at once (that
+    // would render a duplicate/conflicting "20/80" line from two sources).
+    const legacyPaymentTerms = registerPaymentTermsLabel(reg) ?? enrichmentPaymentTermsLabel(projectLevel.payment_terms as string | null);
+    const commercialProject = findCommercialProject(workspace, matchName, (reg.project_id as string | undefined) ?? null);
+
     return {
       displayName,
       developer: developerLabel(reg),
       priceLabel: formatPriceLabel(currentPriceIls, isStartingPriceOnly),
       isStartingPriceOnly,
       currentPriceIls,
-      paymentTerms: registerPaymentTermsLabel(reg) ?? enrichmentPaymentTermsLabel(projectLevel.payment_terms as string | null),
+      paymentTerms: resolvePaymentTermsLabel(legacyPaymentTerms, commercialProject),
       delivery: deliveryLabel(projectLevel.delivery as string | null),
       status: projectStatusLabel(projectLevel.status as string | null),
       classification: reg.display_classification,

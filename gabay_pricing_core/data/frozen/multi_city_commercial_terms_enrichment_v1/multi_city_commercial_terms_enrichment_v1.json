@@ -1,0 +1,1390 @@
+{
+  "version": "v1",
+  "generated_at": "2026-09-14",
+  "dataset_name": "multi_city_commercial_terms_enrichment_v1",
+  "methodology": "Commercial-intelligence enrichment only. Existing standard/special pricing evidence, normalization, consensus logic, confidence rules, and market indications are unchanged. No incentive is monetized and no effective price is calculated.",
+  "baseline_policy": {
+    "existing_frozen_market_data_modified": false,
+    "pricing_methodology_changed": false,
+    "effective_price_calculated": false,
+    "incentives_monetized": false
+  },
+  "source_hierarchy": [
+    "developer_or_project_official",
+    "major_project_portal",
+    "reputable_secondary_or_archived_context"
+  ],
+  "market_scope": [
+    "petah_tikva",
+    "tel_aviv_yad_eliyahu",
+    "netanya_kiryat_hasharon",
+    "ashkelon_barnea"
+  ],
+  "projects": [
+    {
+      "market_context": "petah_tikva",
+      "project_id": "pt-the-spot",
+      "project_name": "THE SPOT",
+      "developer": "שיא עינב",
+      "selection_relevance": "High-relevance active urban project already used in the existing competitor/product evidence.",
+      "project_status": "active_marketing",
+      "construction_status": null,
+      "permit_status": null,
+      "commercial_offer": {
+        "published_prices": [
+          {
+            "rooms": 3,
+            "internal_area_sqm": null,
+            "price_ils": 2250000,
+            "price_type": "STARTING_PRICE",
+            "scope": "ROOM_FAMILY",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+            "quantitative_unit_price_area": false
+          }
+        ],
+        "payment_structure": {
+          "status": "UNKNOWN"
+        },
+        "deferred_payment": {
+          "status": "UNKNOWN"
+        },
+        "financing_benefit": {
+          "status": "UNKNOWN"
+        },
+        "indexation_benefit": {
+          "status": "UNKNOWN"
+        },
+        "discount": {
+          "status": "UNKNOWN"
+        },
+        "included_benefits": [],
+        "promotions": [],
+        "delivery": {
+          "status": "UNKNOWN"
+        }
+      },
+      "commercial_offer_history": [],
+      "conflicts": [],
+      "unresolved_fields": [
+        "payment_structure",
+        "financing_benefit",
+        "indexation_benefit",
+        "discount",
+        "delivery"
+      ],
+      "sources": [
+        {
+          "source_url": "https://www.diraly.co.il/projects/the-spot",
+          "source_title": "THE SPOT — project page",
+          "source_type": "major_project_portal",
+          "retrieved_at": "2026-09-14",
+          "observed_date": null,
+          "verification_status": "SECONDARY_VERIFIED"
+        }
+      ],
+      "notes": [
+        "Portal financing/index calculators were not treated as project commercial terms."
+      ]
+    },
+    {
+      "market_context": "petah_tikva",
+      "project_id": "pt-rothschild-163-165",
+      "project_name": "רוטשילד 163-165",
+      "developer": "יוסי קטש בניה ויזמות בע״מ",
+      "selection_relevance": "High-fidelity standard-product competitor with explicit current payment structure.",
+      "project_status": "active_marketing",
+      "construction_status": null,
+      "permit_status": null,
+      "commercial_offer": {
+        "published_prices": [
+          {
+            "rooms": 4,
+            "internal_area_sqm": null,
+            "price_ils": 2390000,
+            "price_type": "STARTING_PRICE",
+            "scope": "ROOM_FAMILY",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+            "quantitative_unit_price_area": false
+          },
+          {
+            "rooms": 5,
+            "internal_area_sqm": null,
+            "price_ils": 2590000,
+            "price_type": "STARTING_PRICE",
+            "scope": "ROOM_FAMILY",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+            "quantitative_unit_price_area": false
+          }
+        ],
+        "payment_structure": {
+          "status": "VERIFIED",
+          "type": "20_80",
+          "installments": [
+            {
+              "percent": 20,
+              "timing": "contract"
+            },
+            {
+              "percent": 80,
+              "timing": "occupancy"
+            }
+          ],
+          "scope": "PROJECT_WIDE",
+          "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+          "source_text": "שלמו 20% בחתימה - 80% באכלוס"
+        },
+        "deferred_payment": {
+          "status": "VERIFIED",
+          "deferred_payment": true,
+          "down_payment_pct": 20,
+          "deferred_pct": 80,
+          "deferred_until": "occupancy",
+          "interest_terms": "not stated",
+          "scope": "PROJECT_WIDE"
+        },
+        "financing_benefit": {
+          "status": "UNKNOWN"
+        },
+        "indexation_benefit": {
+          "status": "UNKNOWN"
+        },
+        "discount": {
+          "status": "UNKNOWN"
+        },
+        "included_benefits": [],
+        "promotions": [
+          {
+            "promotion_type": "limited_time_offer",
+            "promotion_text": "מבצעים לזמן מוגבל",
+            "scope": "PROJECT_WIDE",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+            "verification_status": "VAGUE_PROMOTIONAL_LANGUAGE"
+          }
+        ],
+        "delivery": {
+          "status": "UNKNOWN"
+        }
+      },
+      "commercial_offer_history": [],
+      "conflicts": [],
+      "unresolved_fields": [
+        "financing_benefit",
+        "indexation_benefit",
+        "discount",
+        "delivery"
+      ],
+      "sources": [
+        {
+          "source_url": "https://www.yad2.co.il/yad1/project/12038",
+          "source_title": "רוטשילד 163-165 — Yad1 project page",
+          "source_type": "major_project_portal",
+          "retrieved_at": "2026-09-14",
+          "observed_date": null,
+          "verification_status": "SECONDARY_VERIFIED",
+          "source_quote": "שלמו 20% בחתימה - 80% באכלוס"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "market_context": "petah_tikva",
+      "project_id": "pt-zeev-branda-22",
+      "project_name": "זאב ברנדה 22",
+      "developer": "רכסים",
+      "selection_relevance": "Strong active competitor with explicit special-product inventory and unusually detailed buyer-financing campaign.",
+      "project_status": "active_construction_and_marketing",
+      "construction_status": null,
+      "permit_status": null,
+      "commercial_offer": {
+        "published_prices": [
+          {
+            "rooms": "2-2.5",
+            "internal_area_sqm": "60",
+            "price_ils": 1917000,
+            "price_type": "STARTING_PRICE",
+            "scope": "ROOM_FAMILY",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+            "quantitative_unit_price_area": false
+          },
+          {
+            "rooms": 3,
+            "internal_area_sqm": "67-77",
+            "price_ils": 2058000,
+            "price_type": "STARTING_PRICE",
+            "scope": "ROOM_FAMILY",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+            "quantitative_unit_price_area": false
+          },
+          {
+            "rooms": 4,
+            "internal_area_sqm": "95-102",
+            "price_ils": 2485000,
+            "price_type": "STARTING_PRICE",
+            "scope": "ROOM_FAMILY",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+            "quantitative_unit_price_area": false
+          },
+          {
+            "rooms": 5,
+            "internal_area_sqm": 122,
+            "price_ils": 3180000,
+            "price_type": "STARTING_PRICE",
+            "scope": "ROOM_FAMILY",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+            "quantitative_unit_price_area": false
+          },
+          {
+            "rooms": "5-6",
+            "unit_type": "roof_duplex",
+            "internal_area_sqm": "148-192",
+            "outdoor_area_sqm": "44-110",
+            "price_ils": 4490000,
+            "price_type": "STARTING_PRICE",
+            "scope": "ROOM_FAMILY",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+            "quantitative_unit_price_area": false
+          },
+          {
+            "rooms": "3.5-4",
+            "unit_type": "garden",
+            "internal_area_sqm": "90-97",
+            "garden_area_sqm": "116-146",
+            "price_ils": 3185000,
+            "price_type": "STARTING_PRICE",
+            "scope": "ROOM_FAMILY",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+            "quantitative_unit_price_area": false
+          }
+        ],
+        "payment_structure": {
+          "status": "VERIFIED",
+          "type": "80_20_OPTION",
+          "installments_semantics": "80/20 option advertised; exact milestone wording not recovered",
+          "scope": "CAMPAIGN_GENERAL",
+          "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY"
+        },
+        "deferred_payment": {
+          "status": "VERIFIED",
+          "deferred_payment": true,
+          "scope": "CAMPAIGN_GENERAL",
+          "deferred_until": "key_delivery",
+          "interest_terms": "see financing_benefit"
+        },
+        "financing_benefit": {
+          "status": "VERIFIED",
+          "type": "mortgage_and_bridge_campaign",
+          "mortgage_rate_pct": 2.99,
+          "mortgage_rate_type": "fixed",
+          "mortgage_index_linkage": "unlinked",
+          "term_years": 20,
+          "bridge_financing_until": "key_delivery",
+          "lender_context": "Bank Hapoalim accompanies project",
+          "scope": "CAMPAIGN_GENERAL",
+          "conditions": "subject to lender/developer campaign terms; exact loan amount not published in retained evidence",
+          "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY"
+        },
+        "indexation_benefit": {
+          "status": "UNKNOWN",
+          "note": "Mortgage campaign is unlinked; no verified construction-input-index exemption was found."
+        },
+        "discount": {
+          "status": "UNKNOWN"
+        },
+        "included_benefits": [
+          {
+            "type": "underground_parking",
+            "scope": "PROJECT_WIDE",
+            "status": "VERIFIED"
+          },
+          {
+            "type": "mamad",
+            "scope": "PROJECT_WIDE",
+            "status": "VERIFIED"
+          },
+          {
+            "type": "sun_balcony",
+            "scope": "PROJECT_WIDE",
+            "status": "VERIFIED"
+          }
+        ],
+        "promotions": [],
+        "delivery": {
+          "status": "RECENT_UNCONFIRMED",
+          "value": "2026-11",
+          "note": "Reported project completion/occupancy timing; not converted to a guaranteed delivery date."
+        }
+      },
+      "commercial_offer_history": [],
+      "conflicts": [],
+      "unresolved_fields": [
+        "construction_indexation_benefit",
+        "explicit_discount",
+        "campaign_valid_until"
+      ],
+      "sources": [
+        {
+          "source_url": "https://www.rehasimbuild.co.il/project/%D7%96%D7%90%D7%91-%D7%91%D7%A8%D7%A0%D7%93%D7%94-22/",
+          "source_title": "זאב ברנדה 22 — official developer project page",
+          "source_type": "developer_official",
+          "retrieved_at": "2026-09-14",
+          "observed_date": null,
+          "verification_status": "PRIMARY_SOURCE"
+        },
+        {
+          "source_url": "https://www.yad2.co.il/yad1/project/16515",
+          "source_title": "זאב ברנדה 22 — Yad1 project page",
+          "source_type": "major_project_portal",
+          "retrieved_at": "2026-09-14",
+          "observed_date": null,
+          "verification_status": "SECONDARY_VERIFIED",
+          "source_quote": "משכנתא בריבית קבועה 2.99% ללא הצמדה למשך 20 שנה"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "market_context": "petah_tikva",
+      "project_id": "pt-shabazi-3-5",
+      "project_name": "שבזי 3-5",
+      "developer": "שמי",
+      "selection_relevance": "Relevant presale competitor with broad 3–6R inventory including large special-product context.",
+      "project_status": "presale",
+      "construction_status": null,
+      "permit_status": null,
+      "commercial_offer": {
+        "published_prices": [
+          {
+            "rooms": "3-6",
+            "internal_area_sqm": "83.8-181",
+            "price_ils": 2400000,
+            "price_type": "STARTING_PRICE",
+            "scope": "PROJECT_WIDE",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+            "quantitative_unit_price_area": false
+          }
+        ],
+        "payment_structure": {
+          "status": "UNKNOWN"
+        },
+        "deferred_payment": {
+          "status": "UNKNOWN"
+        },
+        "financing_benefit": {
+          "status": "UNKNOWN"
+        },
+        "indexation_benefit": {
+          "status": "UNKNOWN"
+        },
+        "discount": {
+          "status": "UNKNOWN"
+        },
+        "included_benefits": [
+          {
+            "type": "parking",
+            "scope": "PROJECT_WIDE",
+            "status": "VERIFIED"
+          },
+          {
+            "type": "storage",
+            "scope": "PROJECT_WIDE",
+            "status": "VERIFIED"
+          },
+          {
+            "type": "mamad",
+            "scope": "PROJECT_WIDE",
+            "status": "VERIFIED"
+          },
+          {
+            "type": "elevator",
+            "scope": "PROJECT_WIDE",
+            "status": "VERIFIED"
+          }
+        ],
+        "promotions": [
+          {
+            "promotion_type": "presale_campaign",
+            "promotion_text": "עכשיו במבצע / PRESALE",
+            "scope": "PROJECT_WIDE",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY"
+          }
+        ],
+        "delivery": {
+          "status": "UNKNOWN"
+        }
+      },
+      "commercial_offer_history": [],
+      "conflicts": [],
+      "unresolved_fields": [
+        "payment_structure",
+        "financing_benefit",
+        "indexation_benefit",
+        "discount",
+        "delivery"
+      ],
+      "sources": [
+        {
+          "source_url": "https://www.yad2.co.il/yad1/project/14639",
+          "source_title": "שבזי 3-5 — Yad1 project page",
+          "source_type": "major_project_portal",
+          "retrieved_at": "2026-09-14",
+          "observed_date": null,
+          "verification_status": "SECONDARY_VERIFIED"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "market_context": "tel_aviv_yad_eliyahu",
+      "project_id": "ta-tidhar-between",
+      "project_name": "TIDHAR בין השדרות",
+      "developer": "תדהר",
+      "selection_relevance": "Core Yad Eliyahu project with verified standard-unit pricing in frozen data and explicit current payment campaign.",
+      "project_status": "under_construction_and_marketing",
+      "construction_status": null,
+      "permit_status": null,
+      "commercial_offer": {
+        "published_prices": [
+          {
+            "rooms": 3,
+            "internal_area_sqm": 71,
+            "price_ils": 3700000,
+            "price_type": "VERIFIED_UNIT_PRICE",
+            "scope": "UNIT_VARIANT",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+            "quantitative_unit_price_area": true
+          },
+          {
+            "rooms": 5,
+            "internal_area_sqm": 105,
+            "price_ils": 4758000,
+            "price_type": "VERIFIED_UNIT_PRICE",
+            "scope": "UNIT_VARIANT",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+            "quantitative_unit_price_area": true
+          },
+          {
+            "rooms": "2-5",
+            "internal_area_sqm": null,
+            "price_ils": 2770000,
+            "price_type": "STARTING_PRICE",
+            "scope": "PROJECT_WIDE",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+            "quantitative_unit_price_area": false
+          }
+        ],
+        "payment_structure": {
+          "status": "VERIFIED",
+          "type": "20_80",
+          "installments": [
+            {
+              "percent": 20,
+              "timing": "initial/contract"
+            },
+            {
+              "percent": 80,
+              "timing": "near_occupancy"
+            }
+          ],
+          "scope": "PROJECT_WIDE",
+          "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+          "source_text": "שלמו 20% ואת היתרה בסמוך לאכלוס"
+        },
+        "deferred_payment": {
+          "status": "VERIFIED",
+          "deferred_payment": true,
+          "down_payment_pct": 20,
+          "deferred_pct": 80,
+          "deferred_until": "near_occupancy",
+          "interest_terms": "not stated"
+        },
+        "financing_benefit": {
+          "status": "VERIFIED",
+          "type": "contractor_loan",
+          "amount_ils": null,
+          "interest_terms": "not stated",
+          "scope": "PROJECT_WIDE",
+          "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY"
+        },
+        "indexation_benefit": {
+          "status": "UNKNOWN"
+        },
+        "discount": {
+          "status": "UNKNOWN"
+        },
+        "included_benefits": [
+          {
+            "type": "private_storage",
+            "scope": "PROJECT_WIDE",
+            "status": "VERIFIED"
+          },
+          {
+            "type": "underground_parking",
+            "scope": "PROJECT_WIDE",
+            "status": "VERIFIED"
+          },
+          {
+            "type": "mamad",
+            "scope": "PROJECT_WIDE",
+            "status": "VERIFIED"
+          }
+        ],
+        "promotions": [
+          {
+            "promotion_type": "warranty_campaign",
+            "promotion_text": "10 שנות אחריות תדהר",
+            "scope": "PROJECT_WIDE",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY"
+          }
+        ],
+        "delivery": {
+          "status": "UNKNOWN"
+        }
+      },
+      "commercial_offer_history": [],
+      "conflicts": [],
+      "unresolved_fields": [
+        "construction_indexation_benefit",
+        "explicit_discount",
+        "campaign_valid_until",
+        "exact_delivery"
+      ],
+      "sources": [
+        {
+          "source_url": "https://www.tidhar-benhasderot.co.il/lp/",
+          "source_title": "TIDHAR בין השדרות — official campaign",
+          "source_type": "project_official",
+          "retrieved_at": "2026-09-14",
+          "observed_date": null,
+          "verification_status": "PRIMARY_SOURCE",
+          "source_quote": "שלמו 20% ואת היתרה בסמוך לאכלוס"
+        },
+        {
+          "source_url": "https://www.yad2.co.il/yad1/project/16499",
+          "source_title": "TIDHAR בין השדרות — Yad1",
+          "source_type": "major_project_portal",
+          "retrieved_at": "2026-09-14",
+          "observed_date": null,
+          "verification_status": "SECONDARY_VERIFIED"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "market_context": "tel_aviv_yad_eliyahu",
+      "project_id": "ta-rayk-east",
+      "project_name": "RAYK EAST SIDE",
+      "developer": "RAYK",
+      "selection_relevance": "Core Yad Eliyahu project with large/special product alternatives and an explicit financing campaign.",
+      "project_status": "construction_started",
+      "construction_status": null,
+      "permit_status": null,
+      "commercial_offer": {
+        "published_prices": [
+          {
+            "rooms": "3-6",
+            "internal_area_sqm": null,
+            "price_ils": 2900000,
+            "price_type": "STARTING_PRICE",
+            "scope": "PROJECT_WIDE",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+            "quantitative_unit_price_area": false
+          }
+        ],
+        "payment_structure": {
+          "status": "UNKNOWN"
+        },
+        "deferred_payment": {
+          "status": "UNKNOWN"
+        },
+        "financing_benefit": {
+          "status": "VERIFIED",
+          "type": "mortgage_campaign",
+          "interest_rate_pct": 1.99,
+          "interest_rate_type": "fixed",
+          "index_linkage": "unlinked",
+          "amount_ils": null,
+          "term_months": null,
+          "scope": "CAMPAIGN_GENERAL",
+          "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+          "conditions": "Exact loan amount/term and bank approval conditions not retained."
+        },
+        "indexation_benefit": {
+          "status": "UNKNOWN",
+          "note": "The 1.99% mortgage is described as unlinked; no verified construction-index exemption was found."
+        },
+        "discount": {
+          "status": "UNKNOWN"
+        },
+        "included_benefits": [],
+        "promotions": [],
+        "delivery": {
+          "status": "VERIFIED",
+          "value": "2029",
+          "scope": "PROJECT_WIDE",
+          "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY"
+        }
+      },
+      "commercial_offer_history": [],
+      "conflicts": [],
+      "unresolved_fields": [
+        "payment_structure",
+        "construction_indexation_benefit",
+        "explicit_discount",
+        "campaign_valid_until"
+      ],
+      "sources": [
+        {
+          "source_url": "https://rayklocations.raykgroup.com/east/",
+          "source_title": "RAYK EAST SIDE — official project page",
+          "source_type": "project_official",
+          "retrieved_at": "2026-09-14",
+          "observed_date": null,
+          "verification_status": "PRIMARY_SOURCE"
+        },
+        {
+          "source_url": "https://www.yad2.co.il/yad1/project/16277",
+          "source_title": "RAYK EAST SIDE — Yad1",
+          "source_type": "major_project_portal",
+          "retrieved_at": "2026-09-14",
+          "observed_date": null,
+          "verification_status": "SECONDARY_VERIFIED",
+          "source_quote": "משכנתא 1.99% בריבית קבועה ללא הצמדה"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "market_context": "tel_aviv_yad_eliyahu",
+      "project_id": "ta-galipolis",
+      "project_name": "GALIPOLIS",
+      "developer": "קבוצת אלמוג",
+      "selection_relevance": "Core Yad Eliyahu presale competitor retained with the frozen semantic correction for 3R pricing.",
+      "project_status": "presale",
+      "construction_status": null,
+      "permit_status": null,
+      "commercial_offer": {
+        "published_prices": [
+          {
+            "rooms": 2,
+            "internal_area_sqm": null,
+            "price_ils": 2920000,
+            "price_type": "STARTING_PRICE",
+            "scope": "ROOM_FAMILY",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+            "quantitative_unit_price_area": false
+          },
+          {
+            "rooms": 3,
+            "internal_area_sqm": 73,
+            "price_ils": 3215000,
+            "price_type": "STARTING_PRICE",
+            "scope": "ROOM_FAMILY",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+            "quantitative_unit_price_area": false,
+            "semantic_note": "Frozen integration correction preserved: no durable retained evidence ties ₪3.215M to the exact 73 m² model."
+          },
+          {
+            "rooms": 4,
+            "internal_area_sqm": null,
+            "price_ils": 4150000,
+            "price_type": "CAMPAIGN_PRICE",
+            "scope": "ROOM_FAMILY",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+            "quantitative_unit_price_area": false
+          },
+          {
+            "rooms": 5,
+            "internal_area_sqm": null,
+            "price_ils": 4989000,
+            "price_type": "CAMPAIGN_PRICE",
+            "scope": "ROOM_FAMILY",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+            "quantitative_unit_price_area": false
+          }
+        ],
+        "payment_structure": {
+          "status": "UNKNOWN"
+        },
+        "deferred_payment": {
+          "status": "UNKNOWN"
+        },
+        "financing_benefit": {
+          "status": "UNKNOWN"
+        },
+        "indexation_benefit": {
+          "status": "UNKNOWN"
+        },
+        "discount": {
+          "status": "UNKNOWN"
+        },
+        "included_benefits": [],
+        "promotions": [],
+        "delivery": {
+          "status": "UNKNOWN"
+        }
+      },
+      "commercial_offer_history": [],
+      "conflicts": [],
+      "unresolved_fields": [
+        "payment_structure",
+        "financing_benefit",
+        "indexation_benefit",
+        "explicit_discount",
+        "delivery"
+      ],
+      "sources": [
+        {
+          "source_url": "https://www.diraly.co.il/projects/%D7%92%D7%9C%D7%99%D7%A4%D7%95%D7%9C%D7%99%D7%A1-%D7%91%D7%99%D7%93-%D7%90%D7%9C%D7%99%D7%94%D7%95",
+          "source_title": "GALIPOLIS — Diraly project page",
+          "source_type": "major_project_portal",
+          "retrieved_at": "2026-09-14",
+          "observed_date": null,
+          "verification_status": "SECONDARY_VERIFIED"
+        },
+        {
+          "source_url": "https://www.almog-ltd.com/project/galipolis/",
+          "source_title": "GALIPOLIS — developer project page",
+          "source_type": "developer_official",
+          "retrieved_at": "2026-09-14",
+          "observed_date": null,
+          "verification_status": "PRIMARY_SOURCE"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "market_context": "netanya_kiryat_hasharon",
+      "project_id": "net-bereshit-family",
+      "project_name": "בראשית פמלי — קריית השרון",
+      "developer": "דוד אזולאי",
+      "selection_relevance": "Core Kiryat Hasharon family project with a live official trade-in campaign and room-family pricing.",
+      "project_status": "active_near_occupancy",
+      "construction_status": null,
+      "permit_status": null,
+      "commercial_offer": {
+        "published_prices": [
+          {
+            "rooms": 3,
+            "unit_type": "standard_apartment",
+            "internal_area_sqm": null,
+            "price_ils": 2470000,
+            "price_type": "STARTING_PRICE",
+            "scope": "ROOM_FAMILY",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+            "quantitative_unit_price_area": false
+          },
+          {
+            "rooms": 4,
+            "unit_type": "standard_apartment",
+            "internal_area_sqm": null,
+            "price_ils": 2950000,
+            "price_type": "STARTING_PRICE",
+            "scope": "ROOM_FAMILY",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+            "quantitative_unit_price_area": false
+          },
+          {
+            "rooms": 3,
+            "unit_type": "garden",
+            "internal_area_sqm": null,
+            "price_ils": 2550000,
+            "price_type": "STARTING_PRICE",
+            "scope": "ROOM_FAMILY",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+            "quantitative_unit_price_area": false
+          }
+        ],
+        "payment_structure": {
+          "status": "UNKNOWN"
+        },
+        "deferred_payment": {
+          "status": "UNKNOWN"
+        },
+        "financing_benefit": {
+          "status": "UNKNOWN"
+        },
+        "indexation_benefit": {
+          "status": "UNKNOWN"
+        },
+        "discount": {
+          "status": "UNKNOWN"
+        },
+        "included_benefits": [],
+        "promotions": [
+          {
+            "promotion_type": "trade_in",
+            "promotion_text": "Trade-in program for selected participating apartments",
+            "scope": "SELECTED_UNITS",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+            "conditions": "Participation/eligibility subject to company terms; not guaranteed for every unit."
+          }
+        ],
+        "delivery": {
+          "status": "UNKNOWN"
+        }
+      },
+      "commercial_offer_history": [],
+      "conflicts": [
+        {
+          "status": "PRICE_SNAPSHOT_DIFFERENCE",
+          "field": "3R garden starting price",
+          "frozen_snapshot_value_ils": 2490000,
+          "current_portal_value_ils": 2550000,
+          "resolution_note": "Preserved as separate observations; not interpreted as a discount or same-unit price change."
+        }
+      ],
+      "unresolved_fields": [
+        "payment_structure",
+        "financing_benefit",
+        "indexation_benefit",
+        "explicit_discount",
+        "campaign_valid_until"
+      ],
+      "sources": [
+        {
+          "source_url": "https://www.azoulay-group.co.il/trade-in/",
+          "source_title": "David Azoulay trade-in campaign terms",
+          "source_type": "developer_official",
+          "retrieved_at": "2026-09-14",
+          "observed_date": null,
+          "verification_status": "PRIMARY_SOURCE"
+        },
+        {
+          "source_url": "https://www.yad2.co.il/yad1/project/13271",
+          "source_title": "בראשית פמלי — Yad1 project page",
+          "source_type": "major_project_portal",
+          "retrieved_at": "2026-09-14",
+          "observed_date": null,
+          "verification_status": "SECONDARY_VERIFIED"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "market_context": "netanya_kiryat_hasharon",
+      "project_id": "net-gabay-park",
+      "project_name": "גבאי על הפארק",
+      "developer": "קבוצת גבאי",
+      "selection_relevance": "Core Kiryat Hasharon project with a current 5R price/area offer and explicit 20/80 payment language.",
+      "project_status": "active_marketing",
+      "construction_status": null,
+      "permit_status": null,
+      "commercial_offer": {
+        "published_prices": [
+          {
+            "rooms": 5,
+            "internal_area_sqm": 141.2,
+            "price_ils": 3490000,
+            "price_type": "STARTING_PRICE",
+            "scope": "ROOM_FAMILY",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+            "quantitative_unit_price_area": false
+          }
+        ],
+        "payment_structure": {
+          "status": "VERIFIED",
+          "type": "20_80",
+          "installments": [
+            {
+              "percent": 20,
+              "timing": "initial/contract"
+            },
+            {
+              "percent": 80,
+              "timing": "later/delivery_not_explicit_in_retained_card"
+            }
+          ],
+          "scope": "ROOM_FAMILY",
+          "rooms": 5,
+          "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+          "source_text": "תנאי תשלום 20/80"
+        },
+        "deferred_payment": {
+          "status": "VERIFIED",
+          "deferred_payment": true,
+          "down_payment_pct": 20,
+          "deferred_pct": 80,
+          "deferred_until": "not explicitly stated in retained source",
+          "interest_terms": "not stated",
+          "scope": "ROOM_FAMILY"
+        },
+        "financing_benefit": {
+          "status": "UNKNOWN"
+        },
+        "indexation_benefit": {
+          "status": "UNKNOWN"
+        },
+        "discount": {
+          "status": "UNKNOWN"
+        },
+        "included_benefits": [],
+        "promotions": [],
+        "delivery": {
+          "status": "UNKNOWN"
+        }
+      },
+      "commercial_offer_history": [],
+      "conflicts": [],
+      "unresolved_fields": [
+        "financing_benefit",
+        "indexation_benefit",
+        "explicit_discount",
+        "delivery",
+        "20_80_exact_timing"
+      ],
+      "sources": [
+        {
+          "source_url": "https://www.diraly.co.il/projects/%D7%92%D7%91%D7%90%D7%99-%D7%A2%D7%9C-%D7%94%D7%A4%D7%90%D7%A8%D7%A7",
+          "source_title": "גבאי על הפארק — Diraly",
+          "source_type": "major_project_portal",
+          "retrieved_at": "2026-09-14",
+          "observed_date": null,
+          "verification_status": "SECONDARY_VERIFIED"
+        },
+        {
+          "source_url": "https://www.yad2.co.il/yad1/project/yad2-redirect?project=23159",
+          "source_title": "גבאי על הפארק — Yad1 offer",
+          "source_type": "major_project_portal",
+          "retrieved_at": "2026-09-14",
+          "observed_date": null,
+          "verification_status": "SECONDARY_VERIFIED",
+          "source_quote": "תנאי תשלום 20/80"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "market_context": "netanya_kiryat_hasharon",
+      "project_id": "net-the-strip",
+      "project_name": "THE STRIP נתניה",
+      "developer": "אאורה ישראל",
+      "selection_relevance": "Major active Netanya alternative with explicit current 20/80, index-exemption and price-protection campaign.",
+      "project_status": "active_marketing",
+      "construction_status": null,
+      "permit_status": null,
+      "commercial_offer": {
+        "published_prices": [
+          {
+            "rooms": "3-5",
+            "internal_area_sqm": null,
+            "price_ils": 2500000,
+            "price_type": "STARTING_PRICE",
+            "scope": "PROJECT_WIDE",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+            "quantitative_unit_price_area": false
+          }
+        ],
+        "payment_structure": {
+          "status": "VERIFIED",
+          "type": "20_80",
+          "installments": [
+            {
+              "percent": 20,
+              "timing": "contract/initial"
+            },
+            {
+              "percent": 80,
+              "timing": "later per campaign"
+            }
+          ],
+          "scope": "PROJECT_WIDE",
+          "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY"
+        },
+        "deferred_payment": {
+          "status": "VERIFIED",
+          "deferred_payment": true,
+          "down_payment_pct": 20,
+          "deferred_pct": 80,
+          "deferred_until": "campaign-defined later payment",
+          "interest_terms": "not stated",
+          "scope": "PROJECT_WIDE"
+        },
+        "financing_benefit": {
+          "status": "UNKNOWN"
+        },
+        "indexation_benefit": {
+          "status": "VERIFIED",
+          "type": "full_exemption",
+          "scope": "PROJECT_WIDE",
+          "source_text": "פטור מדד",
+          "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY"
+        },
+        "discount": {
+          "status": "UNKNOWN"
+        },
+        "included_benefits": [],
+        "promotions": [
+          {
+            "promotion_type": "price_protection_cancellation_option",
+            "promotion_text": "Campaign allows cancellation before contractual delivery if the apartment price declines, subject to campaign terms.",
+            "scope": "PROJECT_WIDE",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY"
+          },
+          {
+            "promotion_type": "year_end_pricing",
+            "promotion_text": "מחירי סוף השנה",
+            "scope": "PROJECT_WIDE",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY"
+          }
+        ],
+        "delivery": {
+          "status": "UNKNOWN"
+        }
+      },
+      "commercial_offer_history": [],
+      "conflicts": [],
+      "unresolved_fields": [
+        "financing_benefit",
+        "explicit_discount_amount",
+        "campaign_valid_until",
+        "delivery"
+      ],
+      "sources": [
+        {
+          "source_url": "https://aura-project.co.il/aurasafety/the-strip-netanya/",
+          "source_title": "Aura דירה בבטחון — THE STRIP",
+          "source_type": "developer_official",
+          "retrieved_at": "2026-09-14",
+          "observed_date": null,
+          "verification_status": "PRIMARY_SOURCE",
+          "source_quote": "מחירי סוף השנה, פטור מדד ותנאי 20/80"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "market_context": "ashkelon_barnea",
+      "project_id": "ash-halomot-barnea",
+      "project_name": "חלומות ברנע הירוקה",
+      "developer": "שיכון ובינוי נדל״ן / מכלוף בכור",
+      "selection_relevance": "Major Barnea reference project; official current source indicates occupied status, so stale marketing prices are historical only.",
+      "project_status": "occupied",
+      "construction_status": null,
+      "permit_status": null,
+      "commercial_offer": {
+        "published_prices": [],
+        "payment_structure": {
+          "status": "UNKNOWN"
+        },
+        "deferred_payment": {
+          "status": "UNKNOWN"
+        },
+        "financing_benefit": {
+          "status": "UNKNOWN"
+        },
+        "indexation_benefit": {
+          "status": "UNKNOWN"
+        },
+        "discount": {
+          "status": "UNKNOWN"
+        },
+        "included_benefits": [],
+        "promotions": [],
+        "delivery": {
+          "status": "VERIFIED",
+          "value": "occupied",
+          "scope": "PROJECT_WIDE",
+          "current_status": "CURRENT"
+        }
+      },
+      "commercial_offer_history": [
+        {
+          "offer_type": "starting_price_context",
+          "price_ils": 1619000,
+          "price_type": "HISTORICAL_MARKETING_PRICE",
+          "scope": "ROOM_FAMILY_OR_PROJECT_CONTEXT",
+          "status": "HISTORICAL",
+          "note": "Legacy portals still expose this price while the official developer page identifies the project as occupied."
+        }
+      ],
+      "conflicts": [
+        {
+          "status": "RESOLVED_BY_PRIMARY_SOURCE",
+          "field": "project_status",
+          "primary_current": "occupied",
+          "secondary_stale": "marketing/construction language remains on portals",
+          "resolution_note": "Official developer status controls current-state display; legacy prices remain historical."
+        }
+      ],
+      "unresolved_fields": [
+        "current_published_price",
+        "current_payment_structure",
+        "current_financing_benefit",
+        "current_indexation_benefit",
+        "current_promotions"
+      ],
+      "sources": [
+        {
+          "source_url": "https://shbn.co.il/projects/ashkelon-dreams/",
+          "source_title": "חלומות ברנע — Shikun & Binui official",
+          "source_type": "developer_official",
+          "retrieved_at": "2026-09-14",
+          "observed_date": null,
+          "verification_status": "PRIMARY_SOURCE"
+        },
+        {
+          "source_url": "https://www.ad.co.il/project/1412",
+          "source_title": "חלומות ברנע — archived/legacy project page",
+          "source_type": "archived_project_portal",
+          "retrieved_at": "2026-09-14",
+          "observed_date": null,
+          "verification_status": "SECONDARY_HISTORICAL"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "market_context": "ashkelon_barnea",
+      "project_id": "ash-peretz-city-wine",
+      "project_name": "פרץ בוני הנגב בעיר היין",
+      "developer": "פרץ בוני הנגב",
+      "selection_relevance": "Strong Ashkelon substitute with limited remaining inventory and current developer commercial messaging.",
+      "project_status": "limited_remaining_inventory_near_or_after_occupancy",
+      "construction_status": null,
+      "permit_status": null,
+      "commercial_offer": {
+        "published_prices": [
+          {
+            "rooms": 3,
+            "internal_area_sqm": null,
+            "price_ils": 1790000,
+            "price_type": "STARTING_PRICE",
+            "scope": "ROOM_FAMILY",
+            "current_status": "RECENT_UNCONFIRMED",
+            "quantitative_unit_price_area": false
+          },
+          {
+            "rooms": null,
+            "unit_type": "garden",
+            "internal_area_sqm": null,
+            "price_ils": 2200000,
+            "price_type": "STARTING_PRICE",
+            "scope": "PRODUCT_CLASS",
+            "current_status": "RECENT_UNCONFIRMED",
+            "quantitative_unit_price_area": false
+          },
+          {
+            "rooms": null,
+            "unit_type": "penthouse",
+            "internal_area_sqm": null,
+            "price_ils": 3250000,
+            "price_type": "STARTING_PRICE",
+            "scope": "PRODUCT_CLASS",
+            "current_status": "RECENT_UNCONFIRMED",
+            "quantitative_unit_price_area": false
+          }
+        ],
+        "payment_structure": {
+          "status": "UNKNOWN"
+        },
+        "deferred_payment": {
+          "status": "UNKNOWN"
+        },
+        "financing_benefit": {
+          "status": "UNKNOWN",
+          "promotional_language": "בתנאי מימון מעולים",
+          "note": "No exact schedule, amount, rate or subsidy was published in the retained official source."
+        },
+        "indexation_benefit": {
+          "status": "UNKNOWN"
+        },
+        "discount": {
+          "status": "UNKNOWN"
+        },
+        "included_benefits": [],
+        "promotions": [
+          {
+            "promotion_type": "vague_financing_promotion",
+            "promotion_text": "בתנאי מימון מעולים",
+            "scope": "PROJECT_WIDE",
+            "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+            "verification_status": "VAGUE_PROMOTIONAL_LANGUAGE"
+          }
+        ],
+        "delivery": {
+          "status": "VERIFIED",
+          "value": "אכלוס עוד השנה",
+          "scope": "PROJECT_WIDE",
+          "current_status": "CURRENT_PAGE_NO_EXPLICIT_VALIDITY",
+          "note": "Preserved as published wording; not converted to a precise date."
+        }
+      },
+      "commercial_offer_history": [
+        {
+          "offer_type": "3R starting price",
+          "price_ils": 1680000,
+          "price_type": "HISTORICAL_MARKETING_PRICE",
+          "status": "HISTORICAL",
+          "observed_date": "2026-02-22",
+          "note": "Reported during a remaining-inventory/occupancy-period campaign; not treated as a current discount."
+        }
+      ],
+      "conflicts": [],
+      "unresolved_fields": [
+        "exact_payment_structure",
+        "financing_amount_or_rate",
+        "indexation_benefit",
+        "explicit_discount",
+        "campaign_valid_until"
+      ],
+      "sources": [
+        {
+          "source_url": "https://www.peretzbh.co.il/project/ir-hayain/",
+          "source_title": "עיר היין — Peretz Bonei HaNegev official project page",
+          "source_type": "developer_official",
+          "retrieved_at": "2026-09-14",
+          "observed_date": null,
+          "verification_status": "PRIMARY_SOURCE",
+          "source_quote": "בתנאי מימון מעולים ואכלוס עוד השנה"
+        },
+        {
+          "source_url": "https://www.yad2.co.il/yad1/project/8647",
+          "source_title": "פרץ בוני הנגב בעיר היין — Yad1",
+          "source_type": "major_project_portal",
+          "retrieved_at": "2026-09-14",
+          "observed_date": null,
+          "verification_status": "SECONDARY_VERIFIED"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "market_context": "ashkelon_barnea",
+      "project_id": "ash-jade",
+      "project_name": "JADE אשקלון",
+      "developer": "גוהרי",
+      "selection_relevance": "Important active Ashkelon new-development alternative with a broad published model price ladder.",
+      "project_status": "under_construction",
+      "construction_status": null,
+      "permit_status": null,
+      "commercial_offer": {
+        "published_prices": [
+          {
+            "rooms": 3,
+            "internal_area_sqm": 77.5,
+            "price_ils": 1790000,
+            "price_type": "STARTING_PRICE",
+            "scope": "ROOM_FAMILY",
+            "current_status": "RECENT_UNCONFIRMED",
+            "quantitative_unit_price_area": false
+          },
+          {
+            "rooms": 4,
+            "internal_area_sqm": 106,
+            "price_ils": 2110000,
+            "price_type": "STARTING_PRICE",
+            "scope": "ROOM_FAMILY",
+            "current_status": "RECENT_UNCONFIRMED",
+            "quantitative_unit_price_area": false
+          },
+          {
+            "rooms": 5,
+            "internal_area_sqm": 126,
+            "price_ils": 2290000,
+            "price_type": "STARTING_PRICE",
+            "scope": "ROOM_FAMILY",
+            "current_status": "RECENT_UNCONFIRMED",
+            "quantitative_unit_price_area": false
+          },
+          {
+            "rooms": 6,
+            "internal_area_sqm": 146,
+            "price_ils": 2680000,
+            "price_type": "STARTING_PRICE",
+            "scope": "ROOM_FAMILY",
+            "current_status": "RECENT_UNCONFIRMED",
+            "quantitative_unit_price_area": false
+          },
+          {
+            "rooms": 5,
+            "unit_type": "penthouse",
+            "internal_area_sqm": 152,
+            "price_ils": 4450000,
+            "price_type": "STARTING_PRICE",
+            "scope": "ROOM_FAMILY",
+            "current_status": "RECENT_UNCONFIRMED",
+            "quantitative_unit_price_area": false
+          },
+          {
+            "rooms": 6,
+            "unit_type": "penthouse",
+            "internal_area_sqm": 173,
+            "price_ils": 5250000,
+            "price_type": "STARTING_PRICE",
+            "scope": "ROOM_FAMILY",
+            "current_status": "RECENT_UNCONFIRMED",
+            "quantitative_unit_price_area": false
+          }
+        ],
+        "payment_structure": {
+          "status": "UNKNOWN"
+        },
+        "deferred_payment": {
+          "status": "UNKNOWN"
+        },
+        "financing_benefit": {
+          "status": "UNKNOWN",
+          "note": "Phoenix project/construction financing is known but is not evidence of a buyer financing benefit."
+        },
+        "indexation_benefit": {
+          "status": "UNKNOWN"
+        },
+        "discount": {
+          "status": "UNKNOWN"
+        },
+        "included_benefits": [],
+        "promotions": [
+          {
+            "promotion_type": "launch_or_purchase_terms",
+            "promotion_text": "תנאי רכישה מיוחדים לזמן מוגבל",
+            "scope": "CAMPAIGN_GENERAL",
+            "current_status": "RECENT_UNCONFIRMED",
+            "verification_status": "VAGUE_PROMOTIONAL_LANGUAGE"
+          }
+        ],
+        "delivery": {
+          "status": "CONFLICT_OR_STALE",
+          "value": "2026-07 reported by portal",
+          "note": "Reported delivery month is already past relative to research date while project pages still indicate construction; no newer authoritative delivery date retained."
+        }
+      },
+      "commercial_offer_history": [],
+      "conflicts": [],
+      "unresolved_fields": [
+        "payment_structure",
+        "buyer_financing_benefit",
+        "construction_indexation_benefit",
+        "explicit_discount",
+        "current_delivery_date",
+        "campaign_valid_until"
+      ],
+      "sources": [
+        {
+          "source_url": "https://www.yad2.co.il/yad1/project/19080",
+          "source_title": "JADE אשקלון — Yad1",
+          "source_type": "major_project_portal",
+          "retrieved_at": "2026-09-14",
+          "observed_date": null,
+          "verification_status": "SECONDARY_VERIFIED"
+        },
+        {
+          "source_url": "https://www.diraly.co.il/projects/jade-%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F",
+          "source_title": "JADE אשקלון — Diraly",
+          "source_type": "major_project_portal",
+          "retrieved_at": "2026-09-14",
+          "observed_date": null,
+          "verification_status": "SECONDARY_VERIFIED"
+        },
+        {
+          "source_url": "https://www.i11.co.il/%D7%A4%D7%A8%D7%95%D7%99%D7%A7%D7%98-jade-%D7%91%D7%90%D7%A9%D7%A7%D7%9C%D7%95%D7%9F-%D7%99%D7%95%D7%A6%D7%90-%D7%9C%D7%93%D7%A8%D7%9A/",
+          "source_title": "JADE launch report",
+          "source_type": "reputable_secondary",
+          "retrieved_at": "2026-09-14",
+          "observed_date": "2026-03-05",
+          "verification_status": "SECONDARY_VERIFIED"
+        }
+      ],
+      "notes": []
+    }
+  ]
+}

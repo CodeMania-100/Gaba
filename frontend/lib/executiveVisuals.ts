@@ -14,6 +14,7 @@ import {
   computePriceComparison,
   evaluatePriceGapAlert,
 } from "./competitorIntelligence";
+import { deriveCommercialOfferSummary, findCommercialProject } from "./commercialTerms";
 import { ils } from "./format";
 import {
   computePriceBreakdown,
@@ -626,6 +627,28 @@ export function deriveCompetitorMatrix(
     label: "תנאי תשלום",
     values: [NOT_PUBLISHED, ...facts.map((f) => f.paymentTerms ?? NOT_PUBLISHED)],
   };
+  // Commercial-terms enrichment (section 47 of the commercial-terms
+  // enrichment task): one cross-project comparison row, compact only --
+  // financing/indexation/promotions digest (never a duplicate of the
+  // "payment" row above, which already carries the enrichment's own VERIFIED
+  // payment_structure via buildFactSheet's priority merge -- see lib/
+  // commercialTerms.ts's resolvePaymentTermsLabel). Only the 13 curated
+  // projects this dataset researched show anything here; every other
+  // competitor shows "לא פורסם" here exactly like any other unresearched
+  // field, never "no benefits".
+  const commercialRowValues = competitors.map((c) => {
+    const summary = deriveCommercialOfferSummary(findCommercialProject(workspace, c.matchName));
+    if (!summary) return NOT_PUBLISHED;
+    const digest = [summary.indexationLabel, ...summary.financingLabels, ...summary.promotionLabels].filter(
+      (p): p is string => p != null
+    );
+    return digest.length > 0 ? digest.slice(0, 2).join(" · ") : NOT_PUBLISHED;
+  });
+  const commercialTermsRow: CompetitorMatrixRow = {
+    key: "commercial_terms",
+    label: "הטבות מסחריות",
+    values: [NOT_PUBLISHED, ...commercialRowValues],
+  };
   const phaseRow: CompetitorMatrixRow = {
     key: "phase",
     label: "שלב הפרויקט",
@@ -637,7 +660,7 @@ export function deriveCompetitorMatrix(
     values: [NOT_PUBLISHED, ...facts.map((f) => f.developer ?? NOT_PUBLISHED)],
   };
 
-  return { columns, rows: [priceRow, priceKindRow, areaRow, ppsmRow, floorRow, deliveryRow, paymentRow, phaseRow, developerRow] };
+  return { columns, rows: [priceRow, priceKindRow, areaRow, ppsmRow, floorRow, deliveryRow, paymentRow, commercialTermsRow, phaseRow, developerRow] };
 }
 
 // ---------------------------------------------------------------------------
